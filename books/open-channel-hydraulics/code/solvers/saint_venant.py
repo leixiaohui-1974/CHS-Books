@@ -93,12 +93,12 @@ class SaintVenantSolver:
 
     def set_boundary_conditions(self,
                                upstream: Callable[[float], Tuple[float, float]],
-                               downstream: Callable[[float], Tuple[float, float]]):
+                               downstream: Callable[[float], Tuple[float, float]] = None):
         """设置边界条件
 
         Args:
             upstream: 上游边界函数 f(t) -> (h, Q)
-            downstream: 下游边界函数 f(t) -> (h, Q)
+            downstream: 下游边界函数 f(t) -> (h, Q)，如果为None则使用外推边界
         """
         self.bc_upstream = upstream
         self.bc_downstream = downstream
@@ -138,11 +138,11 @@ class SaintVenantSolver:
 
         return c_max, c_mean
 
-    def compute_timestep(self, cfl: float = 0.7) -> float:
+    def compute_timestep(self, cfl: float = 0.4) -> float:
         """根据CFL条件计算时间步长
 
         Args:
-            cfl: Courant数，应<1，推荐0.5-0.8
+            cfl: Courant数，应<1，推荐0.3-0.5
 
         Returns:
             dt: 时间步长 (s)
@@ -167,7 +167,7 @@ class SaintVenantSolver:
         """
         # 自动计算时间步长
         if self.auto_dt:
-            self.dt = self.compute_timestep(cfl=0.7)
+            self.dt = self.compute_timestep(cfl=0.4)
 
         # 当前状态
         A_old = self.A.copy()
@@ -246,8 +246,8 @@ class SaintVenantSolver:
         if self.h is None:
             raise ValueError("必须先设置初始条件")
 
-        if self.bc_upstream is None or self.bc_downstream is None:
-            raise ValueError("必须先设置边界条件")
+        if self.bc_upstream is None:
+            raise ValueError("必须先设置上游边界条件")
 
         # 初始化结果存储
         if dt_output is None:
