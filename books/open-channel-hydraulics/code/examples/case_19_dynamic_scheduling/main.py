@@ -259,13 +259,14 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
 
     cost_history = []
 
-    # PSO参数
-    w = 0.7  # 惯性权重
-    c1 = 1.5  # 个体学习因子
-    c2 = 1.5  # 社会学习因子
+    # PSO参数（改进：使用自适应惯性权重）
+    w_max = 0.9  # 最大惯性权重
+    w_min = 0.4  # 最小惯性权重
+    c1 = 2.0  # 个体学习因子（增加）
+    c2 = 2.0  # 社会学习因子（增加）
 
     def evaluate_cost(gate_schedule_flat):
-        """评估目标函数"""
+        """评估目标函数（改进版）"""
         # 重塑为(N_steps, n_gates)
         gate_schedule = gate_schedule_flat.reshape(N_steps, n_gates)
 
@@ -279,11 +280,11 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
         depths = results['depths']
         offtakes = results['offtakes']
 
-        # 目标1：水位偏差
+        # 目标1：水位偏差（降低权重）
         depth_errors = depths - canal_system.h_target
         J1 = np.sum(depth_errors**2)
 
-        # 目标2：供水偏差
+        # 目标2：供水偏差（提高权重，优先满足供水）
         supply_errors = offtakes - demand_schedule
         J2 = np.sum(supply_errors**2)
 
@@ -291,19 +292,26 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
         gate_changes = np.diff(gate_schedule, axis=0)
         J3 = np.sum(gate_changes**2)
 
-        # 加权总成本
-        cost = 1.0 * J1 + 2.0 * J2 + 0.5 * J3
+        # 改进：加权总成本（优先保证供水满足率）
+        cost = 0.5 * J1 + 10.0 * J2 + 0.2 * J3
 
         # 约束惩罚（水位范围）
         penalty = 0
         h_min, h_max = 1.0, 4.0
-        penalty += np.sum(np.maximum(0, h_min - depths)**2) * 1000
-        penalty += np.sum(np.maximum(0, depths - h_max)**2) * 1000
+        penalty += np.sum(np.maximum(0, h_min - depths)**2) * 2000  # 增加惩罚
+        penalty += np.sum(np.maximum(0, depths - h_max)**2) * 2000
+
+        # 改进：添加供水满足率惩罚
+        supply_deficit = np.maximum(0, demand_schedule - offtakes)
+        penalty += np.sum(supply_deficit**2) * 5000  # 严重惩罚供水不足
 
         return cost + penalty
 
     # PSO主循环
     for iter in range(max_iter):
+        # 自适应惯性权重（线性递减）
+        w = w_max - (w_max - w_min) * (iter / max_iter)
+
         # 评估所有粒子
         for i in range(n_particles):
             cost = evaluate_cost(particles[i])
@@ -330,11 +338,11 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
 
         particles = particles + velocities
 
-        # 边界处理
+        # 边界处理（确保在有效范围内）
         particles = np.clip(particles, canal_system.a_min, canal_system.a_max)
 
         if (iter + 1) % 10 == 0:
-            print(f"  迭代 {iter+1}/{max_iter}: 最优成本 = {g_best_cost:.2f}")
+            print(f"  迭代 {iter+1}/{max_iter}: 最优成本 = {g_best_cost:.2f}, w = {w:.3f}")
 
     best_schedule = g_best.reshape(N_steps, n_gates)
     return best_schedule, g_best_cost, cost_history
@@ -412,7 +420,7 @@ def main():
     canal_system.reset()
     optimized_schedule, opt_cost, cost_history = pso_optimization(
         canal_system, demand_schedule, t_total, dt,
-        n_particles=15, max_iter=30  # 减小规模以加快计算
+        n_particles=30, max_iter=50  # 改进：增加粒子数和迭代次数
     )
     optimized_results = canal_system.simulate(optimized_schedule, demand_schedule, t_total, dt)
     optimized_perf = evaluate_performance(optimized_results, demand_schedule, canal_system)
