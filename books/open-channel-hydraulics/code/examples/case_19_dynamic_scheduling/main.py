@@ -22,6 +22,11 @@ from matplotlib import font_manager
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
 
+from utils.chinese_font import configure_chinese_font
+
+# 配置中文字体
+configure_chinese_font()
+
 
 def print_separator(title="", width=80):
     """打印分隔线"""
