@@ -92,12 +92,12 @@ class SaintVenantSolver:
         self.set_initial_conditions(h_array, Q_array)
 
     def set_boundary_conditions(self,
-                               upstream: Callable[[float], Tuple[float, float]],
+                               upstream: Callable[[float], Tuple[float, float]] = None,
                                downstream: Callable[[float], Tuple[float, float]] = None):
         """设置边界条件
 
         Args:
-            upstream: 上游边界函数 f(t) -> (h, Q)
+            upstream: 上游边界函数 f(t) -> (h, Q)，如果为None则使用外推边界
             downstream: 下游边界函数 f(t) -> (h, Q)，如果为None则使用外推边界
         """
         self.bc_upstream = upstream
@@ -245,9 +245,6 @@ class SaintVenantSolver:
         """
         if self.h is None:
             raise ValueError("必须先设置初始条件")
-
-        if self.bc_upstream is None:
-            raise ValueError("必须先设置上游边界条件")
 
         # 初始化结果存储
         if dt_output is None:
