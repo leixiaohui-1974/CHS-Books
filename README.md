@@ -134,10 +134,42 @@
 
 ## 配套资源
 
+### 📚 案例库（核心特色）
+
+本系列采用**案例驱动（Case-Driven）**的教学方法，提供27个渐进式案例，从简单到复杂，从理论到实践。
+
+**案例总览**：
+- 🎓 **Level 1**: 基础篇 (Case 01-04) - 单池明渠系统
+- 🚀 **Level 2**: 进阶篇 (Case 05-07) - 多池级联系统
+- ⚙️ **Level 3**: 有压系统 (Case 08-10) - 管道与泵站
+- 🧠 **Level 4**: 模型降阶与辨识 (Case 11-13)
+- 🎯 **Level 5**: 鲁棒与自适应控制 (Case 14-16)
+- 🤖 **Level 6**: 智能控制 (Case 17-20)
+- 🔮 **Level 7**: 数字孪生 (Case 21-24)
+- 🏆 **Level 8**: 综合工程案例 (Case 25-27)
+
+**每个案例包含**：
+- ✅ 完整的Python/MATLAB代码
+- ✅ 详细的理论推导文档
+- ✅ 可调节的参数配置
+- ✅ 可视化结果分析
+- ✅ 扩展思考题
+
+**快速开始**：
+```bash
+cd cases/case01_single_pool_pid/python
+pip install -r requirements.txt
+python simulation.py
+```
+
+**详细信息**：见 [CASES.md](CASES.md) 和 [cases/README.md](cases/README.md)
+
+---
+
 ### 代码仓库
-- 仿真代码（MATLAB/Python）
-- 控制算法实现
-- 案例工程文件
+- 仿真代码（Python + MATLAB双实现）
+- 控制算法库
+- 可复用的模块和工具函数
 
 ### 数据集
 - 实验数据
@@ -147,6 +179,7 @@
 ### 仿真模型
 - 预构建的仿真模型
 - 参数化模板
+- 可视化工具
 
 ### 在线资源
 - 勘误表

@@ -1,0 +1,24 @@
+{
+    "system": {
+        "length": 1000.0,
+        "width": 10.0,
+        "Cd": 0.6,
+        "h_init": 2.0,
+        "Q_in": 19.81,
+        "comment": "Canal dimensions and initial conditions"
+    },
+    "controller": {
+        "Kp": 0.5,
+        "Ki": 0.01,
+        "Kd": 5.0,
+        "comment": "PID controller gains"
+    },
+    "simulation": {
+        "dt": 1.0,
+        "t_end": 2000.0,
+        "h_ref": 2.5,
+        "disturbance_time": 1000.0,
+        "disturbance_magnitude": 5.0,
+        "comment": "Simulation settings"
+    }
+}
