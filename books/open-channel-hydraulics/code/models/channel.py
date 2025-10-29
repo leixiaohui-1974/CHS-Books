@@ -450,3 +450,329 @@ class CircularChannel:
 
     def __repr__(self):
         return f"CircularChannel(D={self.D}m, n={self.n}, S0={self.S0})"
+
+
+class CompoundChannel:
+    """
+    复式断面河道类
+
+    断面组成：主槽（梯形）+ 左滩地 + 右滩地
+
+    断面示意：
+        |<-- bl -->|<----- bm ----->|<-- br -->|
+        ___________                 ___________
+       /左滩地     \               /     右滩地\
+      /             \_____hm_____/             \
+                      主槽
+
+    参数：
+        bm: 主槽底宽 (m)
+        hm: 主槽深度（滩地高度） (m)
+        m1: 主槽边坡系数（水平:垂直）
+        bl: 左滩地宽度 (m)
+        br: 右滩地宽度 (m)
+        m2: 滩地边坡系数
+        nm: 主槽糙率
+        nf: 滩地糙率（左右相同）
+        S0: 河床纵坡
+    """
+
+    def __init__(self, bm: float, hm: float, m1: float,
+                 bl: float, br: float, m2: float,
+                 nm: float, nf: float, S0: float):
+        """初始化复式断面"""
+        # 参数检查
+        if bm <= 0:
+            raise ValueError("主槽底宽必须大于0")
+        if hm <= 0:
+            raise ValueError("主槽深度必须大于0")
+        if m1 < 0 or m2 < 0:
+            raise ValueError("边坡系数不能为负")
+        if bl < 0 or br < 0:
+            raise ValueError("滩地宽度不能为负")
+        if nm <= 0 or nf <= 0:
+            raise ValueError("糙率系数必须大于0")
+        if S0 <= 0:
+            raise ValueError("河床坡度必须大于0")
+
+        # 主槽参数
+        self.bm = bm
+        self.hm = hm
+        self.m1 = m1
+
+        # 滩地参数
+        self.bl = bl
+        self.br = br
+        self.m2 = m2
+
+        # 糙率
+        self.nm = nm
+        self.nf = nf
+
+        # 坡度
+        self.S0 = S0
+
+        # 重力加速度
+        self.g = 9.81
+
+    def main_channel_area(self, h: float) -> float:
+        """计算主槽过水面积
+
+        当 h <= hm 时：梯形面积
+        当 h > hm 时：固定为满槽面积
+        """
+        if h <= self.hm:
+            A = (self.bm + self.m1 * h) * h
+        else:
+            A = (self.bm + self.m1 * self.hm) * self.hm
+        return A
+
+    def main_channel_wetted_perimeter(self, h: float) -> float:
+        """计算主槽湿周"""
+        if h <= self.hm:
+            P = self.bm + 2 * h * np.sqrt(1 + self.m1**2)
+        else:
+            P = self.bm + 2 * self.hm * np.sqrt(1 + self.m1**2)
+        return P
+
+    def main_channel_top_width(self, h: float) -> float:
+        """计算主槽水面宽"""
+        if h <= self.hm:
+            T = self.bm + 2 * self.m1 * h
+        else:
+            T = self.bm + 2 * self.m1 * self.hm
+        return T
+
+    def floodplain_area(self, h: float, side: str = 'left') -> float:
+        """计算滩地过水面积
+
+        Args:
+            h: 总水深
+            side: 'left' 或 'right'
+        """
+        if h <= self.hm:
+            return 0.0
+
+        hf = h - self.hm  # 漫滩深度
+        b_flood = self.bl if side == 'left' else self.br
+
+        # 矩形 + 三角形
+        A = b_flood * hf + 0.5 * self.m2 * hf**2
+        return A
+
+    def floodplain_wetted_perimeter(self, h: float, side: str = 'left') -> float:
+        """计算滩地湿周"""
+        if h <= self.hm:
+            return 0.0
+
+        hf = h - self.hm
+        b_flood = self.bl if side == 'left' else self.br
+
+        # 底边 + 斜边（不包括与主槽的分界线）
+        P = b_flood + hf * np.sqrt(1 + self.m2**2)
+        return P
+
+    def total_area(self, h: float) -> float:
+        """计算总过水面积"""
+        Am = self.main_channel_area(h)
+        Al = self.floodplain_area(h, 'left')
+        Ar = self.floodplain_area(h, 'right')
+        return Am + Al + Ar
+
+    def total_top_width(self, h: float) -> float:
+        """计算总水面宽"""
+        if h <= self.hm:
+            return self.main_channel_top_width(h)
+        else:
+            hf = h - self.hm
+            # 左滩 + 主槽 + 右滩
+            Tl = self.bl + self.m2 * hf
+            Tm = self.main_channel_top_width(h)
+            Tr = self.br + self.m2 * hf
+            return Tl + Tm + Tr
+
+    def discharge_subsection(self, h: float, section: str) -> float:
+        """计算各分区流量
+
+        Args:
+            h: 总水深
+            section: 'main', 'left', 'right'
+        """
+        if section == 'main':
+            A = self.main_channel_area(h)
+            P = self.main_channel_wetted_perimeter(h)
+            n = self.nm
+        elif section == 'left':
+            A = self.floodplain_area(h, 'left')
+            P = self.floodplain_wetted_perimeter(h, 'left')
+            n = self.nf
+        elif section == 'right':
+            A = self.floodplain_area(h, 'right')
+            P = self.floodplain_wetted_perimeter(h, 'right')
+            n = self.nf
+        else:
+            raise ValueError("section 必须是 'main', 'left', 或 'right'")
+
+        if A == 0 or P == 0:
+            return 0.0
+
+        R = A / P
+        Q = (1.0 / n) * A * (R ** (2.0/3.0)) * (self.S0 ** 0.5)
+        return Q
+
+    def discharge(self, h: float) -> Dict[str, float]:
+        """计算总流量及各分区流量
+
+        Returns:
+            字典包含：
+            - 'total': 总流量
+            - 'main': 主槽流量
+            - 'left': 左滩地流量
+            - 'right': 右滩地流量
+            - 'alpha_main': 主槽流量比
+            - 'alpha_flood': 滩地流量比
+        """
+        Qm = self.discharge_subsection(h, 'main')
+        Ql = self.discharge_subsection(h, 'left')
+        Qr = self.discharge_subsection(h, 'right')
+        Q_total = Qm + Ql + Qr
+
+        # 流量分配比
+        alpha_m = Qm / Q_total if Q_total > 0 else 0
+        alpha_f = (Ql + Qr) / Q_total if Q_total > 0 else 0
+
+        return {
+            'total': Q_total,
+            'main': Qm,
+            'left': Ql,
+            'right': Qr,
+            'alpha_main': alpha_m,
+            'alpha_flood': alpha_f
+        }
+
+    def bankfull_discharge(self) -> float:
+        """计算漫滩流量（主槽满流量）"""
+        return self.discharge_subsection(self.hm, 'main')
+
+    def velocity_subsection(self, h: float, section: str) -> float:
+        """计算各分区平均流速"""
+        Q = self.discharge_subsection(h, section)
+
+        if section == 'main':
+            A = self.main_channel_area(h)
+        elif section == 'left':
+            A = self.floodplain_area(h, 'left')
+        elif section == 'right':
+            A = self.floodplain_area(h, 'right')
+        else:
+            raise ValueError("section 必须是 'main', 'left', 或 'right'")
+
+        return Q / A if A > 0 else 0.0
+
+    def froude_number(self, h: float, section: str = 'total') -> float:
+        """计算Froude数
+
+        Args:
+            h: 水深
+            section: 'total' 用总断面，'main' 用主槽
+        """
+        if section == 'total':
+            result = self.discharge(h)
+            Q = result['total']
+            A = self.total_area(h)
+            B = self.total_top_width(h)
+        elif section == 'main':
+            Q = self.discharge_subsection(h, 'main')
+            A = self.main_channel_area(h)
+            B = self.main_channel_top_width(h)
+        else:
+            raise ValueError("section 必须是 'total' 或 'main'")
+
+        if A == 0 or B == 0:
+            return 0.0
+
+        v = Q / A
+        hm = A / B  # 平均水深
+        Fr = v / np.sqrt(self.g * hm)
+        return Fr
+
+    def compute_depth_from_discharge(self, Q_target: float,
+                                     h_min: float = 0.1,
+                                     h_max: float = 10.0,
+                                     tol: float = 1e-6) -> float:
+        """根据流量反算水深
+
+        使用二分法求解
+        """
+        for i in range(100):
+            h_mid = (h_min + h_max) / 2
+            result = self.discharge(h_mid)
+            Q_mid = result['total']
+
+            if abs(Q_mid - Q_target) < tol:
+                return h_mid
+
+            if Q_mid < Q_target:
+                h_min = h_mid
+            else:
+                h_max = h_mid
+
+            if h_max - h_min < 1e-9:
+                break
+
+        return h_mid
+
+    def analyze_flow(self, h: float) -> Dict:
+        """全面分析流动状态
+
+        Returns:
+            包含几何、水力、流量等所有信息的字典
+        """
+        result = self.discharge(h)
+
+        # 几何参数
+        Am = self.main_channel_area(h)
+        Al = self.floodplain_area(h, 'left')
+        Ar = self.floodplain_area(h, 'right')
+        A_total = self.total_area(h)
+
+        # 流速
+        vm = self.velocity_subsection(h, 'main')
+        vl = self.velocity_subsection(h, 'left') if h > self.hm else 0
+        vr = self.velocity_subsection(h, 'right') if h > self.hm else 0
+        v_avg = result['total'] / A_total if A_total > 0 else 0
+
+        # Froude数
+        Fr_total = self.froude_number(h, 'total')
+        Fr_main = self.froude_number(h, 'main') if h <= self.hm else self.froude_number(self.hm, 'main')
+
+        # 漫滩状态
+        is_overbank = h > self.hm
+        overbank_depth = h - self.hm if is_overbank else 0
+
+        return {
+            'depth': h,
+            'is_overbank': is_overbank,
+            'overbank_depth': overbank_depth,
+            'area_main': Am,
+            'area_left': Al,
+            'area_right': Ar,
+            'area_total': A_total,
+            'discharge_main': result['main'],
+            'discharge_left': result['left'],
+            'discharge_right': result['right'],
+            'discharge_total': result['total'],
+            'velocity_main': vm,
+            'velocity_left': vl,
+            'velocity_right': vr,
+            'velocity_avg': v_avg,
+            'alpha_main': result['alpha_main'],
+            'alpha_flood': result['alpha_flood'],
+            'froude_total': Fr_total,
+            'froude_main': Fr_main,
+            'top_width': self.total_top_width(h)
+        }
+
+    def __repr__(self):
+        return (f"CompoundChannel(bm={self.bm}m, hm={self.hm}m, "
+                f"bl={self.bl}m, br={self.br}m, nm={self.nm}, nf={self.nf})")
