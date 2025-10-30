@@ -46,24 +46,43 @@ def create_flood_hydrograph(t, Q_base, Q_peak, t_rise, t_fall):
 
 
 def analyze_flood_wave(times, x_locations, Q_results, Q_base, Q_peak):
-    """分析洪水波特性"""
+    """分析洪水波特性 - 返回每个断面的详细分析"""
     n_locations = len(x_locations)
     peak_times = []
     peak_flows = []
+
+    # 分析每个断面
     for j in range(n_locations):
         Q_loc = Q_results[:, j]
         idx_peak = np.argmax(Q_loc)
         peak_times.append(times[idx_peak])
         peak_flows.append(Q_loc[idx_peak])
-    if len(peak_flows) > 1:
-        attenuation = (peak_flows[0] - peak_flows[-1]) / (peak_flows[0] - Q_base)
-    else:
-        attenuation = 0.0
+
+    # 构建返回字典，包含每个断面的分析
     analysis = {
         'peak_times': np.array(peak_times),
         'peak_flows': np.array(peak_flows),
-        'attenuation': attenuation
+        'attenuation': 0.0  # 整体衰减
     }
+
+    # 为每个断面添加详细分析
+    for j in range(n_locations):
+        # 计算该断面的衰减率（相对于入流断面）
+        if j > 0 and peak_flows[0] > Q_base:
+            attenuation_j = (peak_flows[0] - peak_flows[j]) / (peak_flows[0] - Q_base)
+        else:
+            attenuation_j = 0.0
+
+        analysis[f'x{j}'] = {
+            'Q_peak': peak_flows[j],
+            't_peak': peak_times[j],
+            'attenuation': attenuation_j
+        }
+
+    # 计算整体衰减（第一个断面到最后一个断面）
+    if len(peak_flows) > 1 and peak_flows[0] > Q_base:
+        analysis['attenuation'] = (peak_flows[0] - peak_flows[-1]) / (peak_flows[0] - Q_base)
+
     return analysis
 
 

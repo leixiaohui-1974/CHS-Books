@@ -35,47 +35,68 @@ def compute_critical_depth(Q, b, g=9.81):
     return hc
 
 
-def compute_critical_velocity(Q, b, g=9.81):
-    """计算临界流速"""
-    hc = compute_critical_depth(Q, b, g)
-    vc = Q / (b * hc)
+def compute_critical_velocity(hc, g=9.81):
+    """计算临界流速: vc = sqrt(g*hc)"""
+    vc = np.sqrt(g * hc)
     return vc
 
 
-def free_flow_discharge(H1, D, b, C=0.6, g=9.81):
-    """自由出流流量"""
-    Q = C * b * D * np.sqrt(2 * g * H1)
+def free_flow_discharge(b, H, h1, Cd=0.6, g=9.81):
+    """自由出流流量（进口控制）"""
+    # Q = Cd * b * H * sqrt(2 * g * h1)
+    Q = Cd * b * H * np.sqrt(2 * g * h1)
     return Q
 
 
-def submerged_flow_discharge(H1, H2, L, D, b, n, g=9.81):
-    """淹没出流流量"""
-    delta_H = H1 - H2
-    if delta_H <= 0:
-        return 0.0
-    # 简化：使用能量方程
-    h_loss = n**2 * L / D**(4/3)
-    Q = b * D * np.sqrt(2 * g * delta_H / (1 + h_loss))
-    return Q
+def submerged_flow_discharge(b, H, L, n, S0, h1, h3, zeta_e=0.2, zeta_o=1.0, g=9.81):
+    """淹没出流流量（出口控制）- 返回详细结果"""
+    # 能量方程：h1 + z1 = h3 + z3 + hf_entrance + hf_friction + hf_exit
+    # 假设涵洞水平：z1 = z3
+    delta_h = h1 - h3
+    if delta_h <= 0:
+        return {'Q': 0.0, 'v': 0.0, 'hf_entrance': 0.0, 'hf_friction': 0.0,
+                'hf_exit': 0.0, 'hf_total': 0.0}
 
+    # 假设涵洞内满流
+    A = b * H
+    R = (b * H) / (b + 2 * H)
 
-def pressure_flow_discharge(H1, H2, L, D, b, n, Ke=0.5, Kex=1.0, g=9.81):
-    """压力流流量"""
-    delta_H = H1 - H2
-    if delta_H <= 0:
-        return 0.0
-    # 总损失
-    A = b * D
-    v = np.sqrt(2 * g * delta_H / (1 + Ke + Kex + n**2 * L / D**(4/3)))
+    # 摩阻损失系数
+    Sf = (n**2) / (R**(4.0/3.0))
+
+    # 总损失系数
+    K_total = zeta_e + Sf * L + zeta_o
+
+    # 流速和流量
+    v = np.sqrt(2 * g * delta_h / (1 + K_total))
     Q = A * v
-    return Q
+
+    # 各项损失
+    hf_entrance = zeta_e * v**2 / (2 * g)
+    hf_friction = Sf * L * v**2 / (2 * g)
+    hf_exit = zeta_o * v**2 / (2 * g)
+    hf_total = hf_entrance + hf_friction + hf_exit
+
+    return {
+        'Q': Q,
+        'v': v,
+        'hf_entrance': hf_entrance,
+        'hf_friction': hf_friction,
+        'hf_exit': hf_exit,
+        'hf_total': hf_total
+    }
 
 
-def determine_flow_type(H1, H2, D):
-    """判别流态"""
-    if H2 < 0.67 * D:
+def pressure_flow_discharge(b, H, L, n, S0, h1, h3, zeta_e=0.5, zeta_o=1.0, g=9.81):
+    """压力流流量（满管流）- 返回详细结果"""
+    return submerged_flow_discharge(b, H, L, n, S0, h1, h3, zeta_e, zeta_o, g)
+
+
+def determine_flow_type(h1, h3, H):
+    """判别流态（3参数版本）"""
+    if h3 < 0.67 * H:
         return 'free'  # 自由出流
-    elif H1 < D:
+    elif h1 < H:
         return 'submerged'  # 淹没出流
     else:
         return 'pressure'  # 压力流
@@ -296,7 +317,7 @@ class TestCase12CulvertHydraulics:
         h1 = 1.2  # 上游水深
         h3 = 0.5  # 下游水深（小于临界水深）
 
-        flow_type = determine_flow_type(h1, h3, H, hc)
+        flow_type = determine_flow_type(h1, h3, H)
 
         assert flow_type == 'free'
 
@@ -311,7 +332,7 @@ class TestCase12CulvertHydraulics:
         h1 = 1.5
         h3 = 1.2  # 大于临界水深
 
-        flow_type = determine_flow_type(h1, h3, H, hc)
+        flow_type = determine_flow_type(h1, h3, H)
 
         assert flow_type == 'submerged'
 
@@ -326,7 +347,7 @@ class TestCase12CulvertHydraulics:
         h1 = 2.5  # 进口淹没
         h3 = 2.0  # 出口淹没
 
-        flow_type = determine_flow_type(h1, h3, H, hc)
+        flow_type = determine_flow_type(h1, h3, H)
 
         assert flow_type == 'pressure'
 
