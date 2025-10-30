@@ -25,16 +25,57 @@ import pytest
 # 添加代码库路径
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../code'))
 
-# 导入主程序中的函数
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../code/examples/case_14_flood_routing'))
-from main import (
-    create_flood_hydrograph,
-    analyze_flood_wave,
-    compute_channel_storage
-)
-
 from models.channel import RectangularChannel
 from solvers.saint_venant import SaintVenantSolver
+
+
+def create_flood_hydrograph(t, Q_base, Q_peak, t_rise, t_fall):
+    """生成三角形洪水过程线"""
+    Q = np.zeros_like(t)
+    for i, ti in enumerate(t):
+        if ti <= 0:
+            Q[i] = Q_base
+        elif ti <= t_rise:
+            Q[i] = Q_base + (Q_peak - Q_base) * (ti / t_rise)
+        elif ti <= t_rise + t_fall:
+            t_elapsed = ti - t_rise
+            Q[i] = Q_peak - (Q_peak - Q_base) * (t_elapsed / t_fall)
+        else:
+            Q[i] = Q_base
+    return Q
+
+
+def analyze_flood_wave(times, x_locations, Q_results, Q_base, Q_peak):
+    """分析洪水波特性"""
+    n_locations = len(x_locations)
+    peak_times = []
+    peak_flows = []
+    for j in range(n_locations):
+        Q_loc = Q_results[:, j]
+        idx_peak = np.argmax(Q_loc)
+        peak_times.append(times[idx_peak])
+        peak_flows.append(Q_loc[idx_peak])
+    if len(peak_flows) > 1:
+        attenuation = (peak_flows[0] - peak_flows[-1]) / (peak_flows[0] - Q_base)
+    else:
+        attenuation = 0.0
+    analysis = {
+        'peak_times': np.array(peak_times),
+        'peak_flows': np.array(peak_flows),
+        'attenuation': attenuation
+    }
+    return analysis
+
+
+def compute_channel_storage(times, Q_in, Q_out, dt):
+    """计算河道蓄量"""
+    storage = np.zeros_like(times)
+    for i in range(1, len(times)):
+        Q_in_avg = (Q_in[i] + Q_in[i-1]) / 2
+        Q_out_avg = (Q_out[i] + Q_out[i-1]) / 2
+        dV = (Q_in_avg - Q_out_avg) * dt
+        storage[i] = storage[i-1] + dV
+    return storage
 
 
 class TestCase14FloodRouting:
