@@ -138,17 +138,30 @@ class SaintVenantSolver:
 
         return c_max, c_mean
 
-    def compute_timestep(self, cfl: float = 0.4) -> float:
+    def compute_timestep(self, cfl: float = 0.3, dt_max: float = 60.0) -> float:
         """根据CFL条件计算时间步长
 
         Args:
-            cfl: Courant数，应<1，推荐0.3-0.5
+            cfl: Courant数，应<1，推荐0.3（更保守）
+            dt_max: 最大时间步长限制 (s)，默认60秒
 
         Returns:
             dt: 时间步长 (s)
         """
         c_max, _ = self.compute_wave_speed()
+
+        # 防止除零
+        if c_max < 1e-10:
+            c_max = 1.0
+
         dt = cfl * self.dx / c_max
+
+        # 限制最大时间步长（避免过大跳跃）
+        dt = min(dt, dt_max)
+
+        # 限制最小时间步长（避免过小导致计算缓慢）
+        dt = max(dt, 0.01)
+
         return dt
 
     def advance_lax(self):
@@ -165,9 +178,9 @@ class SaintVenantSolver:
 
         其中 F = Q²/A + gA²/(2b), S = gA(S₀ - Sf)
         """
-        # 自动计算时间步长
+        # 自动计算时间步长（使用更保守的CFL系数）
         if self.auto_dt:
-            self.dt = self.compute_timestep(cfl=0.4)
+            self.dt = self.compute_timestep(cfl=0.3, dt_max=60.0)
 
         # 当前状态
         A_old = self.A.copy()
@@ -274,12 +287,12 @@ class SaintVenantSolver:
             # 推进一步
             self.advance_lax()
 
-            # 检查CFL条件
+            # 检查CFL条件（修正：c_max已包含速度，不应重复添加）
             if self.auto_dt:
                 c_max, _ = self.compute_wave_speed()
-                courant = (np.max(np.abs(self.v)) + c_max) * self.dt / self.dx
+                courant = c_max * self.dt / self.dx
                 if courant > 1.0:
-                    warnings.warn(f"CFL条件违背: Courant = {courant:.3f} > 1.0")
+                    warnings.warn(f"CFL条件违背: Courant = {courant:.3f} > 1.0, t = {self.t:.1f}s")
 
             # 输出
             if next_output_idx < len(output_times):

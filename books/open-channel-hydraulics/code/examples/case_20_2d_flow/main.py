@@ -235,22 +235,28 @@ class ShallowWater2DSolver:
             Q_inflow: 上游总流量 (m³/s)
         """
         # 上游边界（x=0）：固定流量
+        # 改进：确保即使初始时刻也能正确施加边界条件
         if Q_inflow > 0:
-            # 计算湿单元
-            wet_cells = np.sum(self.h[0, :] > self.h_dry)
+            # 计算湿单元（包括稍浅的水深）
+            wet_cells = np.sum(self.h[0, :] > self.h_dry * 0.5)
             if wet_cells > 0:
                 # 均匀分配流量
                 q_per_cell = Q_inflow / (wet_cells * self.dy)  # 单宽流量
                 for j in range(self.Ny):
-                    if self.h[0, j] > self.h_dry:
-                        self.u[0, j] = q_per_cell / self.h[0, j]
+                    if self.h[0, j] > self.h_dry * 0.5:
+                        # 确保水深足够，避免过大流速
+                        h_safe = max(self.h[0, j], 0.1)  # 至少0.1m
+                        self.u[0, j] = q_per_cell / h_safe
+            else:
+                # 如果没有湿单元，保持初始流速（避免完全静止）
+                pass
 
-        # 下游边界（x=Lx）：自由出流
+        # 下游边界（x=Lx）：自由出流（梯度外推）
         self.h[-1, :] = self.h[-2, :]
         self.u[-1, :] = self.u[-2, :]
         self.v[-1, :] = self.v[-2, :]
 
-        # 南北边界（y=0, y=Ly）：固壁
+        # 南北边界（y=0, y=Ly）：固壁（无穿透条件）
         self.v[:, 0] = 0.0
         self.v[:, -1] = 0.0
 
@@ -452,16 +458,25 @@ def main():
     v0 = np.zeros((Nx, Ny))
 
     # 初始时主槽有水（3m深）
+    # 修改：从1D稳态解初始化流速，避免静止初始条件
+    Q_inflow_initial = 500.0  # m³/s
+    channel_width = 50.0  # m
+    h_channel = 3.0  # m
+    A_channel = channel_width * h_channel  # 断面面积
+    u_channel = Q_inflow_initial / A_channel  # 平均流速 ≈ 3.33 m/s
+
     for i in range(Nx):
         for j in range(Ny):
             y = solver.Y[i, j]
             if abs(y - Ly/2) < 25:  # 主槽中心±25m
-                h0[i, j] = 3.0
+                h0[i, j] = h_channel
+                u0[i, j] = u_channel  # 初始化为合理流速
 
     solver.set_initial_conditions(h0, u0, v0)
 
     print(f"\n初始条件：")
-    print(f"  主槽水深：3.0 m")
+    print(f"  主槽水深：{h_channel:.1f} m")
+    print(f"  主槽流速：{u_channel:.2f} m/s（从1D稳态解初始化）")
     print(f"  滩地水深：0.0 m（干地）")
 
     # ==================== 运行模拟 ====================

@@ -30,6 +30,10 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
 
 from models.channel import RectangularChannel
 from solvers.saint_venant import SaintVenantSolver
+from utils.chinese_font import configure_chinese_font
+
+# 配置中文字体
+configure_chinese_font()
 
 
 def print_separator(title="", width=80):
@@ -42,9 +46,9 @@ def print_separator(title="", width=80):
         print(f"{'='*width}")
 
 
-def tidal_elevation(t, h0, A, T, phi=0):
+def tidal_elevation(t, h0, A, T, phi=0, ramp_time=None):
     """
-    计算潮汐水位
+    计算潮汐水位（含缓启动功能）
 
     Args:
         t: 时间 (s)
@@ -52,12 +56,22 @@ def tidal_elevation(t, h0, A, T, phi=0):
         A: 潮汐振幅 (m)
         T: 潮汐周期 (s)
         phi: 初相位 (rad)
+        ramp_time: 缓启动时间 (s)，None表示不使用缓启动
 
     Returns:
         h: 潮位 (m)
     """
     omega = 2 * np.pi / T
-    return h0 + A * np.sin(omega * t + phi)
+
+    # 基础潮汐高度
+    h_tide = h0 + A * np.sin(omega * t + phi)
+
+    # 缓启动：逐渐增加潮汐振幅
+    if ramp_time is not None and t < ramp_time:
+        ramp_factor = 0.5 * (1 - np.cos(np.pi * t / ramp_time))  # 平滑从0到1
+        h_tide = h0 + (h_tide - h0) * ramp_factor
+
+    return h_tide
 
 
 def analyze_tidal_propagation(results, x_grid, times, T):
@@ -208,7 +222,7 @@ def main():
     print(f"  空间步长 Δx = {dx} m")
     print(f"  节点数 nx = {nx}")
     print(f"  模拟时长 = {n_cycles:.1f} 个潮周期 = {t_total/3600:.1f} 小时")
-    print(f"  时间步长：自动（CFL=0.4）")
+    print(f"  时间步长：自动（CFL=0.3，更保守的稳定性条件）")
 
     # ==================== 第五步：创建求解器 ====================
     print("\n【步骤5】创建Saint-Venant求解器")
@@ -230,6 +244,9 @@ def main():
     print("\n【步骤6】边界条件")
     print("-" * 80)
 
+    # 定义缓启动时间（1/4潮周期，约3小时）
+    ramp_time = T_tide / 4.0
+
     # 上游边界：恒定径流
     def bc_upstream(t):
         """上游径流边界"""
@@ -243,13 +260,30 @@ def main():
     # 这里简化为使用外推边界，潮汐通过初始条件影响
     # 完整实现需要特殊的潮汐边界处理
 
-    # 简化方案：使用渐变潮汐影响
+    # 改进方案：使用缓启动和更合理的流量估算
     def bc_downstream(t):
-        """下游边界（简化）"""
-        # 计算潮汐水位
-        h_tide = tidal_elevation(t, h0_tide, A_tide, T_tide, phi=0)
-        # 简化：给定下游流量（假设正向流动）
-        Q_down = Qr * 0.8  # 简化假设
+        """下游边界（改进版：含缓启动）"""
+        # 计算潮汐水位（含缓启动）
+        h_tide = tidal_elevation(t, h0_tide, A_tide, T_tide, phi=0, ramp_time=ramp_time)
+
+        # 改进：基于潮汐变化率估算流量
+        # dh/dt = A*omega*cos(omega*t)
+        omega = 2 * np.pi / T_tide
+        dh_dt = A_tide * omega * np.cos(omega * t)
+
+        # 缓启动修正
+        if t < ramp_time:
+            ramp_factor = 0.5 * (1 - np.cos(np.pi * t / ramp_time))
+            dh_dt *= ramp_factor
+
+        # 潮汐流量估算：Q_tide = b * c * dh（基于特征线法）
+        c_tide = np.sqrt(g * h_tide)
+        Q_tide = b * c_tide * dh_dt * 10  # 乘以经验系数
+
+        # 总流量 = 径流 + 潮汐流量
+        Q_down = Qr + Q_tide
+        Q_down = max(Q_down, 0.1)  # 保证非负
+
         return h_tide, Q_down
 
     solver.set_boundary_conditions(upstream=bc_upstream, downstream=bc_downstream)
@@ -257,6 +291,7 @@ def main():
     print(f"边界条件：")
     print(f"  上游：恒定径流 Q = {Qr} m³/s")
     print(f"  下游：周期性潮汐 h(t) = {h0_tide} + {A_tide}·sin(2πt/T)")
+    print(f"  缓启动时间：{ramp_time/3600:.2f} 小时（避免初始激波）")
 
     # ==================== 第七步：运行模拟 ====================
     print("\n【步骤7】运行模拟")

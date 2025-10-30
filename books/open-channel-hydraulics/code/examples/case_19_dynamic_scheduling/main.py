@@ -22,6 +22,11 @@ from matplotlib import font_manager
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../..'))
 
+from utils.chinese_font import configure_chinese_font
+
+# 配置中文字体
+configure_chinese_font()
+
 
 def print_separator(title="", width=80):
     """打印分隔线"""
@@ -223,16 +228,17 @@ def baseline_scheduling(canal_system, demand_schedule, t_total, dt):
 
 
 def pso_optimization(canal_system, demand_schedule, t_total, dt,
-                    n_particles=20, max_iter=50):
-    """粒子群算法优化闸门调度
+                    n_particles=30, max_iter=50, baseline_schedule=None):
+    """粒子群算法优化闸门调度（深度改进版）
 
     Args:
         canal_system: 渠系模型
         demand_schedule: 需求时程
         t_total: 总时间
         dt: 时间步长
-        n_particles: 粒子数
+        n_particles: 粒子数（增加至30）
         max_iter: 最大迭代数
+        baseline_schedule: 基线解（用于初始化）
 
     Returns:
         best_schedule: 最优闸门开度时程
@@ -242,12 +248,24 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
     N_steps, n_gates = demand_schedule.shape
     n_vars = N_steps * n_gates  # 优化变量维度
 
-    print(f"\nPSO优化：{n_particles}个粒子, {max_iter}次迭代")
+    print(f"\nPSO优化（深度改进版）：{n_particles}个粒子, {max_iter}次迭代")
     print(f"优化变量维度：{n_vars} ({N_steps}时间步 × {n_gates}闸门)")
 
-    # 初始化粒子
+    # 改进：使用基线解初始化部分粒子
     particles = np.random.uniform(canal_system.a_min, canal_system.a_max,
                                  (n_particles, n_vars))
+
+    # 用基线解初始化前20%的粒子（如果提供）
+    if baseline_schedule is not None:
+        n_baseline = max(1, n_particles // 5)
+        baseline_flat = baseline_schedule.flatten()
+        for i in range(n_baseline):
+            # 在基线解周围添加小扰动
+            noise = np.random.normal(0, 0.1, n_vars)
+            particles[i] = np.clip(baseline_flat + noise,
+                                  canal_system.a_min, canal_system.a_max)
+        print(f"  使用基线解初始化了{n_baseline}个粒子")
+
     velocities = np.random.uniform(-0.1, 0.1, (n_particles, n_vars))
 
     # 个体最优和全局最优
@@ -259,13 +277,20 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
 
     cost_history = []
 
-    # PSO参数
-    w = 0.7  # 惯性权重
-    c1 = 1.5  # 个体学习因子
-    c2 = 1.5  # 社会学习因子
+    # PSO参数（改进：使用自适应惯性权重）
+    w_max = 0.9  # 最大惯性权重
+    w_min = 0.4  # 最小惯性权重
+    c1 = 2.0  # 个体学习因子（增加）
+    c2 = 2.0  # 社会学习因子（增加）
 
     def evaluate_cost(gate_schedule_flat):
-        """评估目标函数"""
+        """评估目标函数（深度改进版）
+
+        关键改进：
+        1. 只惩罚供水不足，不惩罚超量供水
+        2. 供水不足使用非线性惩罚（二次+三次项）
+        3. 降低水位偏差权重，因为主要目标是供水
+        """
         # 重塑为(N_steps, n_gates)
         gate_schedule = gate_schedule_flat.reshape(N_steps, n_gates)
 
@@ -273,26 +298,38 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
         canal_system.reset()
 
         # 仿真
-        results = canal_system.simulate(gate_schedule, demand_schedule, t_total, dt)
+        try:
+            results = canal_system.simulate(gate_schedule, demand_schedule, t_total, dt)
+        except:
+            # 如果仿真失败，返回极大惩罚
+            return 1e10
 
         # 成本计算
         depths = results['depths']
         offtakes = results['offtakes']
 
-        # 目标1：水位偏差
+        # 目标1：水位偏差（进一步降低权重）
         depth_errors = depths - canal_system.h_target
         J1 = np.sum(depth_errors**2)
 
-        # 目标2：供水偏差
-        supply_errors = offtakes - demand_schedule
-        J2 = np.sum(supply_errors**2)
+        # 目标2：供水不足惩罚（关键改进：只惩罚不足，不惩罚超量）
+        supply_deficit = np.maximum(0, demand_schedule - offtakes)
+        J2_deficit = np.sum(supply_deficit**2)  # 二次惩罚
+        J2_severe = np.sum(supply_deficit**3)   # 三次惩罚（严重不足）
 
-        # 目标3：操作平滑度（相邻时间步变化）
+        # 目标3：超量供水惩罚（轻微，避免过度浪费水）
+        supply_surplus = np.maximum(0, offtakes - demand_schedule)
+        J3_surplus = np.sum(supply_surplus**2)
+
+        # 目标4：操作平滑度（相邻时间步变化）
         gate_changes = np.diff(gate_schedule, axis=0)
-        J3 = np.sum(gate_changes**2)
+        J4 = np.sum(gate_changes**2)
 
-        # 加权总成本
-        cost = 1.0 * J1 + 2.0 * J2 + 0.5 * J3
+        # 改进：新的加权策略
+        # - 供水不足是首要惩罚
+        # - 水位稳定次要
+        # - 操作平滑和超量供水最低权重
+        cost = 0.1 * J1 + 100.0 * J2_deficit + 50.0 * J2_severe + 0.5 * J3_surplus + 0.1 * J4
 
         # 约束惩罚（水位范围）
         penalty = 0
@@ -300,10 +337,18 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
         penalty += np.sum(np.maximum(0, h_min - depths)**2) * 1000
         penalty += np.sum(np.maximum(0, depths - h_max)**2) * 1000
 
+        # 额外：严重供水不足的硬惩罚（满足率<80%）
+        satisfaction_rate = np.sum(offtakes >= demand_schedule * 0.95) / offtakes.size
+        if satisfaction_rate < 0.8:
+            penalty += 50000 * (0.8 - satisfaction_rate)**2
+
         return cost + penalty
 
     # PSO主循环
     for iter in range(max_iter):
+        # 自适应惯性权重（线性递减）
+        w = w_max - (w_max - w_min) * (iter / max_iter)
+
         # 评估所有粒子
         for i in range(n_particles):
             cost = evaluate_cost(particles[i])
@@ -330,11 +375,11 @@ def pso_optimization(canal_system, demand_schedule, t_total, dt,
 
         particles = particles + velocities
 
-        # 边界处理
+        # 边界处理（确保在有效范围内）
         particles = np.clip(particles, canal_system.a_min, canal_system.a_max)
 
         if (iter + 1) % 10 == 0:
-            print(f"  迭代 {iter+1}/{max_iter}: 最优成本 = {g_best_cost:.2f}")
+            print(f"  迭代 {iter+1}/{max_iter}: 最优成本 = {g_best_cost:.2f}, w = {w:.3f}")
 
     best_schedule = g_best.reshape(N_steps, n_gates)
     return best_schedule, g_best_cost, cost_history
@@ -407,12 +452,13 @@ def main():
     print(f"  供水满足率：{baseline_perf['satisfaction']:.1f}%")
 
     # ==================== 方法2：PSO优化 ====================
-    print_separator("方法2：粒子群算法优化")
+    print_separator("方法2：粒子群算法优化（深度改进版）")
 
     canal_system.reset()
     optimized_schedule, opt_cost, cost_history = pso_optimization(
         canal_system, demand_schedule, t_total, dt,
-        n_particles=15, max_iter=30  # 减小规模以加快计算
+        n_particles=30, max_iter=50,  # 改进：增加粒子数和迭代次数
+        baseline_schedule=baseline_schedule  # 新增：使用基线解初始化
     )
     optimized_results = canal_system.simulate(optimized_schedule, demand_schedule, t_total, dt)
     optimized_perf = evaluate_performance(optimized_results, demand_schedule, canal_system)

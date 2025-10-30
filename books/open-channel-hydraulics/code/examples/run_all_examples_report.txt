@@ -1,0 +1,65 @@
+================================================================================
+明渠水力学案例示例程序批量运行报告
+================================================================================
+
+运行时间: 2025-10-30 03:29:35
+总案例数: 26
+成功: 26
+失败: 0
+成功率: 100.0%
+总耗时: 44.67秒
+
+================================================================================
+详细结果
+================================================================================
+
+case_01_irrigation             ✓ 成功       0.18秒
+case_02_drainage               ✓ 成功       0.19秒
+case_03_landscape              ✓ 成功       0.19秒
+case_04_weir                   ✓ 成功       0.19秒
+case_05_gate                   ✓ 成功       0.19秒
+case_06_drop                   ✓ 成功       0.18秒
+case_07_profile                ✓ 成功       0.20秒
+case_08_bridge                 ✓ 成功       0.20秒
+case_09_roughness              ✓ 成功       0.19秒
+case_10_compound               ✓ 成功       0.19秒
+case_11_transition             ✓ 成功       0.19秒
+case_12_culvert                ✓ 成功       0.19秒
+case_13_unsteady               ✓ 成功       2.11秒
+case_14_flood_routing          ✓ 成功       2.09秒
+case_15_dam_break              ✓ 成功       2.25秒
+case_16_canal_operation        ✓ 成功       1.92秒
+case_17_tidal_river            ✓ 成功       1.66秒
+case_18_wave_reflection        ✓ 成功       1.66秒
+case_19_dynamic_scheduling     ✓ 成功       3.02秒
+case_20_2d_flow                ✓ 成功       8.82秒
+case_21_pipe_flow              ✓ 成功       3.30秒
+case_22_pipe_network           ✓ 成功       3.05秒
+case_23_long_distance          ✓ 成功       2.86秒
+case_25_water_hammer           ✓ 成功       3.10秒
+case_26_moc                    ✓ 成功       4.01秒
+case_28_surge_tank             ✓ 成功       2.52秒
+
+================================================================================
+可视化文件统计
+================================================================================
+
+case_13_unsteady               1 个PNG文件
+case_14_flood_routing          1 个PNG文件
+case_15_dam_break              1 个PNG文件
+case_16_canal_operation        1 个PNG文件
+case_17_tidal_river            1 个PNG文件
+case_18_wave_reflection        1 个PNG文件
+case_19_dynamic_scheduling     1 个PNG文件
+case_20_2d_flow                1 个PNG文件
+case_21_pipe_flow              2 个PNG文件
+case_22_pipe_network           3 个PNG文件
+case_23_long_distance          3 个PNG文件
+case_25_water_hammer           3 个PNG文件
+case_26_moc                    3 个PNG文件
+case_28_surge_tank             3 个PNG文件
+
+总计: 25 个PNG文件
+
+
+================================================================================
