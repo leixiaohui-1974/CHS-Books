@@ -1,0 +1,19 @@
+{
+  "project_name": "多级泵站联合调度设计",
+  "system_config": "3级串联，总扬程150m，9台泵",
+  "intelligence_level": "L2",
+  "performance_metrics": {
+    "flow_diff12_mean": 1.1083333333333334,
+    "flow_diff23_mean": 1.5166666666666666,
+    "flow_diff12_max": 14.0,
+    "flow_diff23_max": 14.0,
+    "flow_match_rate": 78.88888888888889,
+    "h1_mean": 2.6679999999999993,
+    "h1_std": 0.6774235504222352,
+    "h2_mean": 2.4393888888888884,
+    "h2_std": 0.5258333744203775,
+    "total_energy_kwh": 23930.0,
+    "flow_mismatch_count": 19,
+    "coordination_actions": 360
+  }
+}
