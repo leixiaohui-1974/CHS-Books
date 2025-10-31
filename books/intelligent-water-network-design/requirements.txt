@@ -1,0 +1,46 @@
+# 智能水网工程设计教材 - 依赖包
+
+# 基础科学计算
+numpy>=1.20.0
+scipy>=1.7.0
+pandas>=1.3.0
+
+# 绘图和可视化
+matplotlib>=3.4.0
+plotly>=5.3.0
+seaborn>=0.11.0
+
+# 控制系统
+control>=0.9.0
+python-control>=0.9.0
+
+# 优化算法
+pymoo>=0.5.0  # 多目标优化
+deap>=1.3.0   # 遗传算法
+
+# 仿真
+simpy>=4.0.0  # 离散事件仿真
+
+# 数据处理
+pyyaml>=5.4.0  # 配置文件
+jsonschema>=3.2.0  # JSON验证
+
+# 文档生成
+jinja2>=3.0.0  # 模板渲染
+python-docx>=0.8.0  # Word文档生成
+reportlab>=3.6.0  # PDF生成
+
+# 测试
+pytest>=6.2.0
+pytest-cov>=2.12.0
+
+# 可选：深度学习（用于智能控制）
+# tensorflow>=2.6.0
+# pytorch>=1.9.0
+
+# 注：前三本书的依赖
+# 本书复用前三本书的代码，确保它们的依赖也已安装
+# 参见：
+# - books/open-channel-hydraulics/requirements.txt
+# - books/water-system-control/requirements.txt  
+# - books/canal-pipeline-control/requirements.txt（如有）
