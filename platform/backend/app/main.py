@@ -21,8 +21,8 @@ async def lifespan(app: FastAPI):
     """应用生命周期管理"""
     # 启动
     logger.info("🚀 应用启动中...")
-    logger.info(f"📍 环境: {settings.ENVIRONMENT}")
-    logger.info(f"🔧 调试模式: {settings.DEBUG}")
+    logger.info(f"📍 环境: {settings.APP_ENV}")
+    logger.info(f"🔧 调试模式: {settings.APP_DEBUG}")
     
     yield
     
@@ -139,7 +139,7 @@ async def sqlalchemy_exception_handler(request: Request, exc: SQLAlchemyError):
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={
             "detail": "数据库操作失败",
-            "message": str(exc) if settings.DEBUG else "服务器内部错误"
+            "message": str(exc) if settings.APP_DEBUG else "服务器内部错误"
         }
     )
 
@@ -152,7 +152,7 @@ async def general_exception_handler(request: Request, exc: Exception):
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         content={
             "detail": "服务器内部错误",
-            "message": str(exc) if settings.DEBUG else "请联系管理员"
+            "message": str(exc) if settings.APP_DEBUG else "请联系管理员"
         }
     )
 
@@ -171,12 +171,12 @@ async def root():
     """API根路径"""
     return {
         "message": "🎓 工程学习平台 API",
-        "version": settings.VERSION,
+        "version": settings.APP_VERSION,
         "docs": "/docs",
         "redoc": "/redoc",
         "openapi": "/openapi.json",
         "status": "running",
-        "environment": settings.ENVIRONMENT
+        "environment": settings.APP_ENV
     }
 
 
@@ -186,9 +186,10 @@ async def health_check():
     """健康检查端点"""
     return {
         "status": "healthy",
-        "version": settings.VERSION,
-        "environment": settings.ENVIRONMENT,
-        "database": "connected" if engine else "disconnected"
+        "version": settings.APP_VERSION,
+        "environment": settings.APP_ENV,
+        "database": "connected" if engine else "disconnected",
+        "cache": "redis"
     }
 
 
@@ -199,8 +200,8 @@ async def system_info():
     return {
         "project": settings.APP_NAME,
         "version": settings.APP_VERSION,
-        "environment": settings.ENVIRONMENT,
-        "debug": settings.DEBUG,
+        "environment": settings.APP_ENV,
+        "debug": settings.APP_DEBUG,
         "cors_origins": settings.CORS_ORIGINS,
         "features": {
             "user_system": "✅",
@@ -220,6 +221,6 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=8000,
-        reload=settings.DEBUG,
+        reload=settings.APP_DEBUG,
         log_level="info"
     )
