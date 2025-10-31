@@ -1,0 +1,11 @@
+{
+  "project_name": "小型水电站智能发电设计",
+  "design_standard": "GB/T 15945-2008, DL/T 5186-2004",
+  "turbine_config": "HL110-WJ-70混流式水轮机，500kW",
+  "intelligence_level": "L1",
+  "test_summary": {
+    "total_scenarios": 5,
+    "avg_frequency_error": 3.669122927482655,
+    "pass": false
+  }
+}
