@@ -1,0 +1,18 @@
+{
+  "project_name": "区域灌区群联调设计",
+  "system_config": "5灌区（60万亩）+3水库（5000万m³）",
+  "intelligence_level": "L2",
+  "performance_metrics": {
+    "water_allocated": [
+      4260.819085710496,
+      3619.725402536826,
+      3172.685048814053,
+      3299.209661232201,
+      2953.5944995187842
+    ],
+    "allocation_cv": 0.13123722303729432,
+    "reservoir1_mean": 6.475976984868534,
+    "reservoir2_mean": 6.172864610157562,
+    "reservoir3_mean": 5.735833333333335
+  }
+}
