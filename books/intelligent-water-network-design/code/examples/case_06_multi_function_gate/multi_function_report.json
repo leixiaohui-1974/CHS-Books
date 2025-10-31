@@ -1,0 +1,28 @@
+{
+  "project_name": "多功能水闸设计",
+  "functions": [
+    "灌溉",
+    "排涝",
+    "通航",
+    "生态"
+  ],
+  "gate_config": "3孔×4m×3m弧形闸门",
+  "intelligence_level": "L2",
+  "performance_metrics": {
+    "upstream_level_mean": 4.037682084397971,
+    "upstream_level_std": 0.6705148612736552,
+    "downstream_level_mean": 3.3944685545315543,
+    "min_eco_flow": 0.0,
+    "eco_flow_violations": 864,
+    "eco_flow_guarantee_rate": 90.0,
+    "max_upstream_level": 5.0,
+    "flood_risk_count": 2051,
+    "mode_distribution": {
+      "drainage": 1728,
+      "irrigation": 2880,
+      "navigation": 0,
+      "ecology_intervention": 864,
+      "normal": 4032
+    }
+  }
+}

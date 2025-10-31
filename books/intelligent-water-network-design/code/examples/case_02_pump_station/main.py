@@ -313,10 +313,10 @@ class MultiPumpController:
     
     def __init__(self, 
                  n_pumps: int = 3,
-                 Kp: float = 1.5,
-                 Ki: float = 0.3,
-                 Kd: float = 0.05,
-                 setpoint: float = 3.5,
+                 Kp: float = 3.0,      # 优化：增大响应速度
+                 Ki: float = 0.5,      # 优化：增强积分作用
+                 Kd: float = 0.1,      # 优化：增强抑制震荡
+                 setpoint: float = 3.8,  # 优化：提高目标水位，留出缓冲
                  min_run_time: float = 300,    # 5分钟
                  min_stop_time: float = 600):  # 10分钟
         
@@ -330,7 +330,7 @@ class MultiPumpController:
             Kp=Kp, Ki=Ki, Kd=Kd,
             setpoint=setpoint,
             output_limits=(0, n_pumps),
-            windup_limit=2.0
+            windup_limit=3.0  # 优化：增大抗饱和范围
         )
         
         # 泵状态记录
@@ -551,6 +551,15 @@ class PumpStationDigitalTwin:
         dV_inlet = (inflow - Q_pump_total) * self.dt
         dh_inlet = dV_inlet / self.inlet_pool_area
         self.inlet_level += dh_inlet
+        
+        # 溢出保护（优化）
+        if self.inlet_level > 4.8:
+            # 紧急开泵泄水
+            pump_status = [1, 1, 1]  # 全开
+            Q_pump_total = sum([p.Q_rated for i, p in enumerate(self.pumps) if pump_status[i]])
+            dV_inlet = (inflow - Q_pump_total) * self.dt
+            dh_inlet = dV_inlet / self.inlet_pool_area
+            self.inlet_level += dh_inlet
         
         # 水位限制（防止溢出或干涸）
         self.inlet_level = np.clip(self.inlet_level, 0.5, 5.0)

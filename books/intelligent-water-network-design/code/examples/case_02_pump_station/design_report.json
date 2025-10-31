@@ -5,8 +5,8 @@
   "intelligence_level": "L1",
   "test_summary": {
     "total_scenarios": 5,
-    "avg_error": 1.4685777777777775,
-    "avg_switches_per_hour": 0.0,
+    "avg_error": 1.3631111111111083,
+    "avg_switches_per_hour": 21.6,
     "pass": false
   }
 }
