@@ -1,0 +1,66 @@
+# 水力学考研核心100题 - Python代码依赖包
+# Hydraulics Core 100 Problems - Python Dependencies
+#
+# 安装方法 / Installation:
+# pip install -r requirements.txt
+#
+# 最后更新 / Last Updated: 2025-10-31
+
+# 核心计算库 / Core Numerical Computing
+numpy>=2.3.0
+
+# 科学计算库 / Scientific Computing
+scipy>=1.16.0
+
+# 数据可视化 / Data Visualization
+matplotlib>=3.10.0
+
+# 数据处理（可选，部分习题使用）/ Data Processing (Optional, used in some problems)
+pandas>=2.3.0
+
+# ===================================================
+# 说明 / Notes:
+# ===================================================
+#
+# 1. numpy: 用于数值计算、数组操作、线性代数运算
+#    Used for numerical calculations, array operations, linear algebra
+#
+# 2. scipy: 用于高级科学计算、优化、微分方程求解
+#    Used for advanced scientific computing, optimization, differential equations
+#
+# 3. matplotlib: 用于绘制图表、压强分布图、流场可视化
+#    Used for plotting charts, pressure distributions, flow field visualizations
+#
+# 4. pandas: 用于数据处理、表格输出、结果分析（部分题目）
+#    Used for data processing, tabular output, result analysis (some problems)
+#
+# ===================================================
+# 中文字体支持 / Chinese Font Support:
+# ===================================================
+#
+# 代码中使用了中文标注，需要配置matplotlib中文字体：
+# The code uses Chinese annotations, requiring matplotlib Chinese font configuration:
+#
+# 方法1 / Method 1 (Windows):
+#   plt.rcParams['font.sans-serif'] = ['SimHei']
+#   plt.rcParams['axes.unicode_minus'] = False
+#
+# 方法2 / Method 2 (Mac):
+#   plt.rcParams['font.sans-serif'] = ['PingFang HK']
+#   plt.rcParams['axes.unicode_minus'] = False
+#
+# 方法3 / Method 3 (Linux):
+#   安装中文字体 / Install Chinese fonts:
+#   sudo apt-get install fonts-wqy-zenhei fonts-wqy-microhei
+#   plt.rcParams['font.sans-serif'] = ['WenQuanYi Zen Hei']
+#   plt.rcParams['axes.unicode_minus'] = False
+#
+# 注意：在没有中文字体的环境下，代码仍可运行，但图表中的中文会显示为方块
+# Note: Code will still run without Chinese fonts, but Chinese characters in plots will show as boxes
+#
+# ===================================================
+# 测试安装 / Test Installation:
+# ===================================================
+#
+# python -c "import numpy, scipy, matplotlib, pandas; print('All packages installed successfully!')"
+#
