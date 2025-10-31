@@ -1,0 +1,191 @@
+# ========================================
+# Engineering Learning Platform - Git Ignore
+# ========================================
+
+# ----------------------------------------
+# 环境配置
+# ----------------------------------------
+.env
+.env.local
+.env.production
+.env.*.local
+*.env
+
+# ----------------------------------------
+# Python
+# ----------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+.venv
+venv/
+ENV/
+env/
+
+# ----------------------------------------
+# Node.js & Frontend
+# ----------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+.next/
+out/
+.cache/
+.parcel-cache/
+.nuxt/
+dist/
+.turbo
+*.tsbuildinfo
+
+# ----------------------------------------
+# IDE & Editors
+# ----------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# ----------------------------------------
+# 数据库
+# ----------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+postgres_data/
+mongo_data/
+
+# ----------------------------------------
+# 日志
+# ----------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# ----------------------------------------
+# 测试覆盖率
+# ----------------------------------------
+.coverage
+.coverage.*
+coverage/
+*.cover
+*.py,cover
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/
+
+# ----------------------------------------
+# Docker
+# ----------------------------------------
+docker-compose.override.yml
+.dockerignore
+
+# ----------------------------------------
+# 备份文件
+# ----------------------------------------
+*.bak
+*.backup
+*.old
+*.orig
+
+# ----------------------------------------
+# 临时文件
+# ----------------------------------------
+tmp/
+temp/
+*.tmp
+
+# ----------------------------------------
+# 安全凭证
+# ----------------------------------------
+*.pem
+*.key
+*.crt
+*.cer
+secrets/
+credentials/
+
+# ----------------------------------------
+# 对象存储本地缓存
+# ----------------------------------------
+storage/
+uploads/
+media/
+
+# ----------------------------------------
+# 向量数据库本地数据
+# ----------------------------------------
+weaviate_data/
+chromadb_data/
+
+# ----------------------------------------
+# Celery
+# ----------------------------------------
+celerybeat-schedule
+celerybeat.pid
+
+# ----------------------------------------
+# Jupyter Notebook
+# ----------------------------------------
+.ipynb_checkpoints
+
+# ----------------------------------------
+# 系统文件
+# ----------------------------------------
+Thumbs.db
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# ----------------------------------------
+# 部署相关
+# ----------------------------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# ----------------------------------------
+# 监控数据
+# ----------------------------------------
+prometheus_data/
+grafana_data/
+
+# ----------------------------------------
+# 构建产物
+# ----------------------------------------
+build/
+dist/
+*.tar.gz
+*.zip
