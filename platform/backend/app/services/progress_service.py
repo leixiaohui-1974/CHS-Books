@@ -5,7 +5,7 @@
 from typing import Optional, List
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, and_
-from datetime import datetime
+from datetime import datetime, timezone
 
 from app.models.progress import UserProgress, ChapterProgress, CaseProgress, ProgressStatus
 from app.models.book import Book, Chapter, Case
@@ -63,7 +63,7 @@ class ProgressService:
         
         if progress:
             # 更新访问时间
-            progress.last_accessed = datetime.utcnow()
+            progress.last_accessed = datetime.now(timezone.utc)
         else:
             # 创建新进度
             progress = UserProgress(
@@ -169,9 +169,9 @@ class ProgressService:
         
         progress.status = status
         if status == ProgressStatus.IN_PROGRESS and not progress.started_at:
-            progress.started_at = datetime.utcnow()
+            progress.started_at = datetime.now(timezone.utc)
         elif status == ProgressStatus.COMPLETED and not progress.completed_at:
-            progress.completed_at = datetime.utcnow()
+            progress.completed_at = datetime.now(timezone.utc)
         
         await db.commit()
         await db.refresh(progress)
@@ -234,9 +234,9 @@ class ProgressService:
         
         progress.status = status
         if status == ProgressStatus.IN_PROGRESS and not progress.started_at:
-            progress.started_at = datetime.utcnow()
+            progress.started_at = datetime.now(timezone.utc)
         elif status == ProgressStatus.COMPLETED and not progress.completed_at:
-            progress.completed_at = datetime.utcnow()
+            progress.completed_at = datetime.now(timezone.utc)
         
         if score is not None:
             progress.exercise_score = score

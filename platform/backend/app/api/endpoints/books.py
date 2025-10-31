@@ -133,27 +133,55 @@ async def get_book(
     
     logger.info(f"📖 获取书籍详情: {book_id_or_slug}")
     
-    # 临时mock数据
+    book = None
+    # 尝试按ID查询
+    if book_id_or_slug.isdigit():
+        book = await BookService.get_book_by_id(db, int(book_id_or_slug))
+    
+    # 如果没找到，尝试按slug查询
+    if not book:
+        book = await BookService.get_book_by_slug(db, book_id_or_slug)
+    
+    if not book:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"书籍不存在: {book_id_or_slug}"
+        )
+    
+    # 统计章节和案例数
+    from sqlalchemy import select, func
+    from app.models.book import Chapter, Case
+    
+    total_chapters_result = await db.execute(
+        select(func.count(Chapter.id)).where(Chapter.book_id == book.id)
+    )
+    total_chapters = total_chapters_result.scalar() or 0
+    
+    total_cases_result = await db.execute(
+        select(func.count(Case.id)).where(Case.book_id == book.id)
+    )
+    total_cases = total_cases_result.scalar() or 0
+    
     return {
-        "id": 1,
-        "slug": "water-system-control",
-        "title": "水系统控制论",
-        "subtitle": "基于水箱案例的控制理论入门",
-        "description": "通过12个经典水箱案例系统讲解控制理论...",
-        "cover_image": "/covers/book1.jpg",
-        "authors": ["作者1"],
-        "version": "1.0.0",
-        "status": "published",
-        "difficulty": "beginner",
-        "is_free": False,
-        "price": 299.0,
-        "original_price": 399.0,
-        "total_chapters": 6,
-        "total_cases": 24,
-        "estimated_hours": 192,
-        "enrollments": 1523,
-        "avg_rating": 4.8,
-        "tags": ["控制理论", "水利工程"]
+        "id": book.id,
+        "slug": book.slug,
+        "title": book.title,
+        "subtitle": book.subtitle or "",
+        "description": book.description or "",
+        "cover_image": book.cover_image or "",
+        "authors": book.authors or [],
+        "version": book.version or "1.0.0",
+        "status": book.status.value,
+        "difficulty": book.difficulty.value,
+        "is_free": book.is_free,
+        "price": float(book.price) if book.price else 0.0,
+        "original_price": float(book.original_price) if book.original_price else 0.0,
+        "total_chapters": total_chapters,
+        "total_cases": total_cases,
+        "estimated_hours": book.estimated_hours or 0,
+        "enrollments": book.enrollments or 0,
+        "avg_rating": float(book.avg_rating) if book.avg_rating else 0.0,
+        "tags": book.tags or []
     }
 
 
@@ -167,31 +195,52 @@ async def get_book_chapters(
     
     - **book_id**: 书籍ID
     """
-    # TODO: 实现数据库查询，返回章节树
-    
     logger.info(f"📑 获取书籍章节: book_id={book_id}")
+    
+    # 检查书籍是否存在
+    book = await BookService.get_book_by_id(db, book_id)
+    if not book:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"书籍不存在: {book_id}"
+        )
+    
+    # 获取章节树状结构
+    chapters = await BookService.get_book_chapters(db, book_id)
+    
+    # 构建返回数据
+    chapter_list = []
+    for chapter in chapters:
+        chapter_data = {
+            "id": chapter.id,
+            "order": chapter.order,
+            "title": chapter.title,
+            "slug": chapter.slug,
+            "is_free": chapter.is_free or False,
+            "estimated_minutes": chapter.estimated_minutes or 0,
+            "cases": []
+        }
+        
+        # 添加章节下的案例
+        if chapter.cases:
+            for case in chapter.cases:
+                case_data = {
+                    "id": case.id,
+                    "order": case.order,
+                    "title": case.title,
+                    "slug": case.slug,
+                    "difficulty": case.difficulty.value if case.difficulty else "beginner",
+                    "estimated_minutes": case.estimated_minutes or 0,
+                    "has_tool": case.has_tool or False
+                }
+                chapter_data["cases"].append(case_data)
+        
+        chapter_list.append(chapter_data)
     
     return {
         "book_id": book_id,
-        "chapters": [
-            {
-                "id": 1,
-                "order": 1,
-                "title": "第1章：控制系统基础",
-                "is_free": True,
-                "estimated_minutes": 120,
-                "cases": [
-                    {
-                        "id": 1,
-                        "order": 1,
-                        "title": "案例1：家庭水塔自动供水",
-                        "difficulty": "beginner",
-                        "estimated_minutes": 90,
-                        "has_tool": True
-                    }
-                ]
-            }
-        ]
+        "total_chapters": len(chapter_list),
+        "chapters": chapter_list
     }
 
 

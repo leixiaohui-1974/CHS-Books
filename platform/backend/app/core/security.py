@@ -2,7 +2,7 @@
 安全相关功能：密码哈希、JWT令牌生成和验证
 """
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Optional, Union, Any
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -57,9 +57,9 @@ def create_access_token(
     to_encode = data.copy()
     
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(
+        expire = datetime.now(timezone.utc) + timedelta(
             minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES
         )
     
@@ -83,7 +83,7 @@ def create_refresh_token(data: dict) -> str:
         JWT令牌字符串
     """
     to_encode = data.copy()
-    expire = datetime.utcnow() + timedelta(days=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS)
+    expire = datetime.now(timezone.utc) + timedelta(days=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS)
     to_encode.update({"exp": expire, "type": "refresh"})
     encoded_jwt = jwt.encode(
         to_encode,
@@ -142,24 +142,25 @@ async def get_current_user(
         raise credentials_exception
     
     # 从数据库获取用户
-    # TODO: 实现用户查询逻辑
-    # user = await get_user_by_id(db, int(user_id))
-    # if user is None:
-    #     raise credentials_exception
+    from app.models.user import User
+    from sqlalchemy import select
+    result = await db.execute(select(User).where(User.id == int(user_id)))
+    user = result.scalar_one_or_none()
     
-    # 临时返回用户ID
-    return {"id": user_id, "email": payload.get("email")}
+    if user is None:
+        raise credentials_exception
+    
+    return user
 
 
 async def get_current_active_user(
-    current_user: dict = Depends(get_current_user)
+    current_user = Depends(get_current_user)
 ):
     """
     获取当前活跃用户
     """
-    # TODO: 检查用户是否被禁用
-    # if current_user.disabled:
-    #     raise HTTPException(status_code=400, detail="用户已被禁用")
+    if not current_user.is_active:
+        raise HTTPException(status_code=400, detail="用户已被禁用")
     return current_user
 
 

@@ -1,17 +1,18 @@
+#!/usr/bin/env python3
 """
-导入示例数据
+填充示例数据脚本
 """
 
 import asyncio
 import sys
-import json
 from pathlib import Path
-from datetime import datetime
 
+# 添加项目根目录到路径
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from sqlalchemy.ext.asyncio import AsyncSession
-from app.core.database import AsyncSessionLocal
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from app.core.config import settings
+from app.core.database import Base
 from app.services import UserService, BookService
 from app.models.book import BookStatus, DifficultyLevel
 from loguru import logger
@@ -19,208 +20,219 @@ from loguru import logger
 
 async def seed_users(db: AsyncSession):
     """创建示例用户"""
-    logger.info("👤 创建示例用户...")
+    logger.info("📝 创建示例用户...")
     
-    try:
-        # 管理员用户
-        admin = await UserService.create_user(
-            db=db,
-            email="admin@example.com",
-            username="admin",
-            password="admin123",
-            full_name="管理员"
-        )
-        admin.role = "admin"
-        await db.commit()
-        logger.info(f"  ✅ 管理员: {admin.email}")
-        
-        # 普通用户
-        user1 = await UserService.create_user(
-            db=db,
-            email="student@example.com",
-            username="student1",
-            password="password123",
-            full_name="张三"
-        )
-        logger.info(f"  ✅ 用户1: {user1.email}")
-        
-        user2 = await UserService.create_user(
-            db=db,
-            email="teacher@example.com",
-            username="teacher1",
-            password="password123",
-            full_name="李四"
-        )
-        logger.info(f"  ✅ 用户2: {user2.email}")
-        
-        return {"admin": admin, "user1": user1, "user2": user2}
-        
-    except Exception as e:
-        logger.error(f"❌ 创建用户失败: {e}")
-        return {}
+    users = [
+        {
+            "email": "admin@example.com",
+            "username": "admin",
+            "password": "admin123",
+            "full_name": "系统管理员"
+        },
+        {
+            "email": "demo@example.com",
+            "username": "demo",
+            "password": "demo123",
+            "full_name": "演示用户"
+        },
+        {
+            "email": "student@example.com",
+            "username": "student",
+            "password": "student123",
+            "full_name": "学生用户"
+        }
+    ]
+    
+    for user_data in users:
+        try:
+            user = await UserService.create_user(
+                db=db,
+                **user_data
+            )
+            logger.info(f"✅ 创建用户: {user.email}")
+        except Exception as e:
+            logger.warning(f"⚠️  用户已存在或创建失败: {user_data['email']} - {e}")
+    
+    await db.commit()
 
 
 async def seed_books(db: AsyncSession):
     """创建示例书籍"""
     logger.info("📚 创建示例书籍...")
     
-    try:
-        # 书籍1: 水系统控制论
-        book1 = await BookService.create_book(
-            db=db,
-            slug="water-system-control",
-            title="水系统控制论",
-            subtitle="基于水箱案例的控制理论入门",
-            description="通过12个经典水箱案例系统讲解控制理论基础知识...",
-            authors=["张教授", "李教授"],
-            version="1.0.0",
-            status=BookStatus.PUBLISHED,
-            difficulty=DifficultyLevel.BEGINNER,
-            is_free=False,
-            price=299.0,
-            original_price=399.0,
-            trial_chapters=[1, 2],
-            total_chapters=6,
-            total_cases=24,
-            estimated_hours=192,
-            enrollments=1523,
-            avg_rating=4.8,
-            tags=["控制理论", "水利工程", "PID控制"],
-            github_path="books/water-system-control"
-        )
-        logger.info(f"  ✅ 书籍1: {book1.title}")
+    books_data = [
+        {
+            "slug": "water-system-control",
+            "title": "水系统控制论",
+            "subtitle": "基于水箱案例的控制理论入门",
+            "description": "通过12个经典水箱案例系统讲解控制理论基础知识，适合控制工程、水利工程等专业学生学习。",
+            "status": BookStatus.PUBLISHED,
+            "difficulty": DifficultyLevel.BEGINNER,
+            "price": 299.0,
+            "original_price": 399.0,
+            "is_free": False,
+            "estimated_hours": 192,
+            "tags": ["控制理论", "水利工程", "Python"],
+            "authors": ["张教授", "李工程师"],
+            "chapters": [
+                {
+                    "slug": "chapter-01",
+                    "order": 1,
+                    "title": "第1章：控制系统基础",
+                    "is_free": True,
+                    "estimated_minutes": 120,
+                    "cases": [
+                        {
+                            "slug": "case-01-water-tower",
+                            "order": 1,
+                            "title": "案例1：家庭水塔自动供水系统",
+                            "difficulty": DifficultyLevel.BEGINNER,
+                            "estimated_minutes": 90,
+                            "has_tool": True,
+                            "is_free": True,
+                        },
+                        {
+                            "slug": "case-02-water-tank",
+                            "order": 2,
+                            "title": "案例2：水箱液位控制",
+                            "difficulty": DifficultyLevel.BEGINNER,
+                            "estimated_minutes": 90,
+                            "has_tool": True,
+                            "is_free": True,
+                        }
+                    ]
+                },
+                {
+                    "slug": "chapter-02",
+                    "order": 2,
+                    "title": "第2章：PID控制器设计",
+                    "is_free": False,
+                    "estimated_minutes": 180,
+                    "cases": [
+                        {
+                            "slug": "case-03-pid-tuning",
+                            "order": 1,
+                            "title": "案例3：PID参数整定",
+                            "difficulty": DifficultyLevel.INTERMEDIATE,
+                            "estimated_minutes": 120,
+                            "has_tool": True,
+                            "is_free": False,
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "open-channel-hydraulics",
+            "title": "明渠水力学计算",
+            "subtitle": "Python编程与实践",
+            "description": "使用Python语言实现明渠水力学的各种计算方法，包括30个典型案例。",
+            "status": BookStatus.PUBLISHED,
+            "difficulty": DifficultyLevel.INTERMEDIATE,
+            "price": 399.0,
+            "original_price": 499.0,
+            "is_free": False,
+            "estimated_hours": 240,
+            "tags": ["水力学", "明渠", "Python", "数值计算"],
+            "authors": ["王教授"],
+            "chapters": [
+                {
+                    "slug": "chapter-01",
+                    "order": 1,
+                    "title": "第1章：明渠水流基础",
+                    "is_free": True,
+                    "estimated_minutes": 90,
+                    "cases": [
+                        {
+                            "slug": "case-01-uniform-flow",
+                            "order": 1,
+                            "title": "案例1：均匀流计算",
+                            "difficulty": DifficultyLevel.BEGINNER,
+                            "estimated_minutes": 60,
+                            "has_tool": True,
+                            "is_free": True,
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "slug": "canal-pipeline-control",
+            "title": "渠道管道控制",
+            "subtitle": "现代输水系统调控技术",
+            "description": "介绍大型渠道和管道系统的现代化控制技术，包括实时调度、优化控制等。",
+            "status": BookStatus.DRAFT,
+            "difficulty": DifficultyLevel.ADVANCED,
+            "price": 499.0,
+            "is_free": False,
+            "estimated_hours": 300,
+            "tags": ["渠道", "管道", "控制", "调度"],
+            "authors": ["赵博士", "刘教授"],
+            "chapters": []
+        }
+    ]
+    
+    for book_data in books_data:
+        try:
+            # 提取章节数据
+            chapters_data = book_data.pop("chapters", [])
+            
+            # 创建书籍
+            book = await BookService.create_book(db=db, **book_data)
+            logger.info(f"✅ 创建书籍: {book.title}")
+            
+            # 创建章节和案例
+            for chapter_data in chapters_data:
+                cases_data = chapter_data.pop("cases", [])
+                
+                chapter = await BookService.create_chapter(
+                    db=db,
+                    book_id=book.id,
+                    **chapter_data
+                )
+                logger.info(f"  ✅ 创建章节: {chapter.title}")
+                
+                for case_data in cases_data:
+                    case = await BookService.create_case(
+                        db=db,
+                        book_id=book.id,
+                        chapter_id=chapter.id,
+                        **case_data
+                    )
+                    logger.info(f"    ✅ 创建案例: {case.title}")
         
-        # 创建章节
-        chapter1 = await BookService.create_chapter(
-            db=db,
-            book_id=book1.id,
-            slug="control-basics",
-            order=1,
-            title="第1章：控制系统基础",
-            description="介绍控制系统的基本概念和开关控制",
-            is_free=True,
-            learning_objectives=["理解反馈控制原理", "掌握开关控制器设计"],
-            estimated_minutes=120
-        )
-        
-        # 创建案例
-        case1 = await BookService.create_case(
-            db=db,
-            book_id=book1.id,
-            chapter_id=chapter1.id,
-            slug="home-water-tower",
-            order=1,
-            title="案例1：家庭水塔自动供水系统",
-            subtitle="开关控制器设计与仿真",
-            description="设计一个自动控制家庭水塔水位的系统...",
-            difficulty=DifficultyLevel.BEGINNER,
-            estimated_minutes=90,
-            key_concepts=["开关控制", "滞环", "一阶系统"],
-            has_tool=True,
-            tool_config={
-                "entry_function": "run_simulation",
-                "inputs": [
-                    {
-                        "name": "tank_area",
-                        "label": "水箱底面积",
-                        "type": "number",
-                        "unit": "m²",
-                        "default": 1.0,
-                        "min": 0.1,
-                        "max": 10.0
-                    }
-                ]
-            },
-            script_path="books/water-system-control/code/examples/case_01_home_water_tower/main.py"
-        )
-        logger.info(f"    ✅ 案例1: {case1.title}")
-        
-        # 书籍2: 明渠水力学
-        book2 = await BookService.create_book(
-            db=db,
-            slug="open-channel-hydraulics",
-            title="明渠水力学计算",
-            subtitle="基于工程案例的水力计算入门",
-            description="通过30个经典水力工程案例系统讲解明渠水力学计算方法...",
-            authors=["王教授", "赵教授"],
-            version="1.0.0",
-            status=BookStatus.PUBLISHED,
-            difficulty=DifficultyLevel.INTERMEDIATE,
-            is_free=False,
-            price=399.0,
-            original_price=499.0,
-            trial_chapters=[1],
-            total_chapters=13,
-            total_cases=30,
-            estimated_hours=288,
-            enrollments=856,
-            avg_rating=4.7,
-            tags=["水力学", "明渠流", "非恒定流"],
-            github_path="books/open-channel-hydraulics"
-        )
-        logger.info(f"  ✅ 书籍2: {book2.title}")
-        
-        # 书籍3: 运河管道控制
-        book3 = await BookService.create_book(
-            db=db,
-            slug="canal-pipeline-control",
-            title="运河与管道控制",
-            subtitle="闸泵联合调度与智能控制",
-            description="结合明渠水力学和控制理论，讲解运河系统的智能控制...",
-            authors=["刘教授"],
-            version="1.0.0",
-            status=BookStatus.PUBLISHED,
-            difficulty=DifficultyLevel.ADVANCED,
-            is_free=False,
-            price=299.0,
-            trial_chapters=[1],
-            total_chapters=8,
-            total_cases=20,
-            estimated_hours=160,
-            enrollments=423,
-            avg_rating=4.9,
-            tags=["智能控制", "调度优化", "实时控制"],
-            github_path="books/canal-pipeline-control"
-        )
-        logger.info(f"  ✅ 书籍3: {book3.title}")
-        
-        return {"book1": book1, "book2": book2, "book3": book3}
-        
-    except Exception as e:
-        logger.error(f"❌ 创建书籍失败: {e}")
-        import traceback
-        traceback.print_exc()
-        return {}
+        except Exception as e:
+            logger.error(f"❌ 创建书籍失败: {book_data['title']} - {e}")
+    
+    await db.commit()
 
 
 async def main():
     """主函数"""
-    logger.info("="*50)
-    logger.info("导入示例数据")
-    logger.info("="*50)
+    logger.info("🚀 开始填充示例数据...")
     
-    async with AsyncSessionLocal() as db:
+    # 创建数据库引擎
+    engine = create_async_engine(settings.DATABASE_URL, echo=False)
+    
+    # 创建会话工厂
+    async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
+    
+    async with async_session() as db:
         try:
-            # 导入用户
-            users = await seed_users(db)
+            # 填充用户数据
+            await seed_users(db)
             
-            # 导入书籍
-            books = await seed_books(db)
+            # 填充书籍数据
+            await seed_books(db)
             
-            logger.info("\n✅ 示例数据导入完成！")
-            logger.info("="*50)
-            logger.info("\n登录信息:")
-            logger.info("  管理员: admin@example.com / admin123")
-            logger.info("  用户1: student@example.com / password123")
-            logger.info("  用户2: teacher@example.com / password123")
-            logger.info("\n书籍:")
-            logger.info(f"  - {len(books)}本书籍")
-            logger.info("="*50)
+            logger.info("✅ 示例数据填充完成！")
             
         except Exception as e:
-            logger.error(f"❌ 导入数据失败: {e}")
-            import traceback
-            traceback.print_exc()
+            logger.error(f"❌ 填充数据失败: {e}")
+            await db.rollback()
+            raise
+    
+    await engine.dispose()
 
 
 if __name__ == "__main__":

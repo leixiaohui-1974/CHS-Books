@@ -5,7 +5,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Enum as SQLEnum
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from datetime import datetime
+from datetime import datetime, timezone
 import enum
 
 from app.core.database import Base
@@ -81,4 +81,4 @@ class User(Base):
             return False
         if self.premium_expires_at is None:
             return True
-        return datetime.utcnow() < self.premium_expires_at
+        return datetime.now(timezone.utc) < self.premium_expires_at

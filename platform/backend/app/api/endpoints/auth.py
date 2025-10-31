@@ -16,9 +16,11 @@ from app.core.security import (
     create_refresh_token,
     decode_token,
     get_current_user,
+    get_current_active_user,
 )
 from app.core.config import settings
 from app.services import UserService
+from app.models.user import User
 from loguru import logger
 
 router = APIRouter()
@@ -192,15 +194,20 @@ async def logout(current_user: dict = Depends(get_current_user)):
 
 
 @router.get("/me")
-async def get_current_user_info(current_user: dict = Depends(get_current_user)):
+async def get_current_user_info(current_user: User = Depends(get_current_active_user)):
     """
     获取当前用户信息
     
     - 需要认证
     """
     return {
-        "success": True,
-        "data": current_user
+        "id": current_user.id,
+        "email": current_user.email,
+        "username": current_user.username,
+        "full_name": current_user.full_name,
+        "role": current_user.role.value,
+        "is_active": current_user.is_active,
+        "created_at": current_user.created_at.isoformat() if current_user.created_at else None
     }
 
 

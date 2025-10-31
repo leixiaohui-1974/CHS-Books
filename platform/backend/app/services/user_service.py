@@ -220,8 +220,8 @@ class UserService:
             return False
         
         # 软删除
-        from datetime import datetime
-        user.deleted_at = datetime.utcnow()
+        from datetime import datetime, timezone
+        user.deleted_at = datetime.now(timezone.utc)
         user.is_active = False
         
         await db.commit()
