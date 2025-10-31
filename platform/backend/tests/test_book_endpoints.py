@@ -2,7 +2,11 @@
 书籍端点集成测试
 """
 
+import os
+os.environ["TESTING"] = "1"
+
 import pytest
+import pytest_asyncio
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
@@ -16,7 +20,7 @@ from app.models.book import BookStatus, DifficultyLevel
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def db_session():
     """创建测试数据库会话"""
     engine = create_async_engine(TEST_DATABASE_URL, echo=False)
@@ -25,20 +29,22 @@ async def db_session():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     
-    # 创建会话
+    # 创建会话工厂
     async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
     
-    async with async_session() as session:
-        yield session
+    # 创建会话
+    session = async_session()
+    yield session
     
     # 清理
+    await session.close()
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
     
     await engine.dispose()
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def client(db_session):
     """创建测试客户端"""
     async def override_get_db():
@@ -52,7 +58,7 @@ async def client(db_session):
     app.dependency_overrides.clear()
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def sample_books(db_session):
     """创建示例书籍数据"""
     # 创建3本书

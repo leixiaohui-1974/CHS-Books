@@ -2,7 +2,11 @@
 认证端点集成测试
 """
 
+import os
+os.environ["TESTING"] = "1"
+
 import pytest
+import pytest_asyncio
 from httpx import AsyncClient
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
@@ -15,7 +19,7 @@ from app.models.user import User
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def db_session():
     """创建测试数据库会话"""
     engine = create_async_engine(TEST_DATABASE_URL, echo=False)
@@ -24,20 +28,22 @@ async def db_session():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     
-    # 创建会话
+    # 创建会话工厂
     async_session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
     
-    async with async_session() as session:
-        yield session
+    # 创建会话
+    session = async_session()
+    yield session
     
     # 清理
+    await session.close()
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
     
     await engine.dispose()
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def client(db_session):
     """创建测试客户端"""
     async def override_get_db():
@@ -87,7 +93,7 @@ async def test_register_duplicate_email(client):
     })
     
     assert response.status_code == 400
-    assert "邮箱已存在" in response.json()["detail"]
+    assert "已存在" in response.json()["detail"]  # 匹配"邮箱或用户名已存在"
 
 
 @pytest.mark.asyncio
