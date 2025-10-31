@@ -1,0 +1,20 @@
+{
+  "project_name": "供水管网压力分区设计",
+  "system_config": "5个压力分区，服务50万人",
+  "intelligence_level": "L2",
+  "performance_metrics": {
+    "P_mean": 0.3586141766370988,
+    "P_std": 0.053670772041097804,
+    "P_var_mean": 0.0025753211885433842,
+    "P_var_std": 0.0011602247924510623,
+    "P1_mean": 0.4,
+    "P2_mean": 0.3948181215062447,
+    "P3_mean": 0.2799874435412289,
+    "P4_mean": 0.33816755685802863,
+    "P5_mean": 0.3800977612799919,
+    "leakage_mean": 14.620428643515147,
+    "leakage_max": 16.45859212793551,
+    "balance_actions": 1438,
+    "leakage_actions": 1418
+  }
+}
