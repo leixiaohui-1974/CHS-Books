@@ -23,7 +23,7 @@ class EmailService:
         self.smtp_user = os.getenv("SMTP_USER", "")
         self.smtp_password = os.getenv("SMTP_PASSWORD", "")
         self.from_email = os.getenv("FROM_EMAIL", self.smtp_user)
-        self.from_name = os.getenv("FROM_NAME", settings.PROJECT_NAME)
+        self.from_name = os.getenv("FROM_NAME", settings.APP_NAME)
         
         self.enabled = bool(self.smtp_user and self.smtp_password)
         
@@ -88,7 +88,7 @@ class EmailService:
     
     async def send_welcome_email(self, to_email: str, username: str) -> bool:
         """发送欢迎邮件"""
-        subject = f"欢迎加入{settings.PROJECT_NAME}！"
+        subject = f"欢迎加入{settings.APP_NAME}！"
         
         html_content = f"""
         <!DOCTYPE html>
@@ -113,7 +113,7 @@ class EmailService:
                 </div>
                 <div class="content">
                     <p>亲爱的 <strong>{username}</strong>，</p>
-                    <p>感谢您注册{settings.PROJECT_NAME}！我们很高兴您能加入我们的学习社区。</p>
+                    <p>感谢您注册{settings.APP_NAME}！我们很高兴您能加入我们的学习社区。</p>
                     
                     <h3>🚀 开始您的学习之旅</h3>
                     <ul>
@@ -123,16 +123,16 @@ class EmailService:
                     </ul>
                     
                     <div style="text-align: center;">
-                        <a href="{settings.FRONTEND_URL}" class="button">立即开始学习</a>
+                        <a href="{settings.APP_URL}" class="button">立即开始学习</a>
                     </div>
                     
                     <p>如果您有任何问题，请随时联系我们的支持团队。</p>
                     <p>祝学习愉快！<br>
-                    {settings.PROJECT_NAME} 团队</p>
+                    {settings.APP_NAME} 团队</p>
                 </div>
                 <div class="footer">
                     <p>这是一封自动发送的邮件，请勿回复。</p>
-                    <p>&copy; 2025 {settings.PROJECT_NAME}. All rights reserved.</p>
+                    <p>&copy; 2025 {settings.APP_NAME}. All rights reserved.</p>
                 </div>
             </div>
         </body>
@@ -149,7 +149,7 @@ class EmailService:
     ) -> bool:
         """发送密码重置邮件"""
         subject = "重置您的密码"
-        reset_url = f"{settings.FRONTEND_URL}/reset-password?token={reset_token}"
+        reset_url = f"{settings.APP_URL}/reset-password?token={reset_token}"
         
         html_content = f"""
         <!DOCTYPE html>
@@ -192,7 +192,7 @@ class EmailService:
                     
                     <p>如果您没有请求重置密码，请联系我们的支持团队。</p>
                     <p>祝好！<br>
-                    {settings.PROJECT_NAME} 安全团队</p>
+                    {settings.APP_NAME} 安全团队</p>
                 </div>
             </div>
         </body>
@@ -260,7 +260,7 @@ class EmailService:
                     </ul>
                     
                     <p>再次恭喜您！<br>
-                    {settings.PROJECT_NAME} 团队</p>
+                    {settings.APP_NAME} 团队</p>
                 </div>
             </div>
         </body>

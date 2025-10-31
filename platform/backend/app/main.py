@@ -35,7 +35,7 @@ async def lifespan(app: FastAPI):
 
 # 创建FastAPI应用
 app = FastAPI(
-    title=settings.PROJECT_NAME,
+    title=settings.APP_NAME,
     description="""
     ## 工程学习平台 API
     
@@ -64,7 +64,7 @@ app = FastAPI(
     Authorization: Bearer <your_token>
     ```
     """,
-    version=settings.VERSION,
+    version=settings.APP_VERSION,
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
@@ -197,8 +197,8 @@ async def health_check():
 async def system_info():
     """系统信息"""
     return {
-        "project": settings.PROJECT_NAME,
-        "version": settings.VERSION,
+        "project": settings.APP_NAME,
+        "version": settings.APP_VERSION,
         "environment": settings.ENVIRONMENT,
         "debug": settings.DEBUG,
         "cors_origins": settings.CORS_ORIGINS,
