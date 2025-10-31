@@ -1,0 +1,180 @@
+{
+  "project_info": {
+    "name": "灌区首部提水泵站智能化设计",
+    "location": "某县灌区",
+    "design_standard": "GB 50265-2022",
+    "design_year": 2025,
+    "irrigation_area": 5000,
+    "irrigation_area_unit": "亩"
+  },
+  
+  "hydraulic_design": {
+    "design_flow": 3.6,
+    "design_flow_unit": "m³/s",
+    "design_head": 15.0,
+    "design_head_unit": "m",
+    "static_head": 15.0,
+    "pipe_friction_loss": 2.0,
+    "local_loss": 0.5,
+    "safety_margin": 0.5,
+    "pipe_length": 500,
+    "pipe_length_unit": "m",
+    "pipe_diameter": 0.8,
+    "pipe_diameter_unit": "m",
+    "pipe_roughness": 0.0002
+  },
+  
+  "pump_configuration": {
+    "n_pumps": 3,
+    "pump_type": "ZLB-1200",
+    "pump_model": "立式轴流泵",
+    "rated_flow": 1.2,
+    "rated_flow_unit": "m³/s",
+    "rated_head": 15.0,
+    "rated_head_unit": "m",
+    "rated_power": 80.0,
+    "rated_power_unit": "kW",
+    "rated_speed": 1450,
+    "rated_speed_unit": "rpm",
+    "rated_efficiency": 0.78,
+    "operation_mode": "2开1备"
+  },
+  
+  "pool_design": {
+    "inlet_pool": {
+      "area": 225,
+      "area_unit": "m²",
+      "depth": 5.0,
+      "depth_unit": "m",
+      "effective_depth_min": 3.0,
+      "effective_depth_max": 4.5,
+      "volume": 500,
+      "volume_unit": "m³"
+    },
+    "outlet_pool": {
+      "area": 144,
+      "area_unit": "m²",
+      "depth": 4.0,
+      "depth_unit": "m",
+      "volume": 432,
+      "volume_unit": "m³"
+    }
+  },
+  
+  "control_system": {
+    "intelligence_level": "L3",
+    "control_strategy": "多泵协调PID控制",
+    "pid_parameters": {
+      "Kp": 1.5,
+      "Ki": 0.3,
+      "Kd": 0.05,
+      "setpoint": 3.5,
+      "setpoint_unit": "m",
+      "output_limits": [0, 3],
+      "windup_limit": 2.0
+    },
+    "protection_parameters": {
+      "min_run_time": 300,
+      "min_run_time_unit": "s",
+      "min_stop_time": 600,
+      "min_stop_time_unit": "s",
+      "rotation_strategy": "均衡磨损"
+    }
+  },
+  
+  "sensor_configuration": {
+    "water_level": {
+      "type": "超声波/压力式",
+      "range": [0, 5],
+      "range_unit": "m",
+      "accuracy": 0.005,
+      "accuracy_unit": "m",
+      "count": 2,
+      "redundancy": true
+    },
+    "flow_meter": {
+      "type": "电磁流量计",
+      "range": [0, 5],
+      "range_unit": "m³/s",
+      "accuracy": 0.005,
+      "count": 1
+    },
+    "pressure": {
+      "type": "压力变送器",
+      "range": [0, 1.0],
+      "range_unit": "MPa",
+      "accuracy": 0.002,
+      "count": 1
+    },
+    "current": {
+      "type": "电流互感器",
+      "range": [0, 200],
+      "range_unit": "A",
+      "accuracy": 0.005,
+      "count": 3
+    },
+    "vibration": {
+      "type": "振动传感器",
+      "count": 3
+    },
+    "temperature": {
+      "type": "温度传感器",
+      "range": [0, 100],
+      "range_unit": "°C",
+      "accuracy": 1.0,
+      "count": 3
+    }
+  },
+  
+  "performance_targets": {
+    "water_level_control": {
+      "steady_state_error_max": 0.15,
+      "steady_state_error_unit": "m",
+      "response_time_max": 600,
+      "response_time_unit": "s",
+      "overshoot_max": 0.20
+    },
+    "energy": {
+      "average_efficiency_min": 0.75,
+      "annual_energy_max": 500000,
+      "annual_energy_unit": "kWh",
+      "unit_energy_max": 0.14,
+      "unit_energy_unit": "kWh/m³"
+    },
+    "reliability": {
+      "fault_handling_success_rate_min": 0.95,
+      "equipment_utilization_rate_min": 0.90,
+      "run_time_balance_max": 0.10
+    },
+    "safety": {
+      "overflow_count_max": 0,
+      "dryout_count_max": 0,
+      "switches_per_hour_max": 12
+    }
+  },
+  
+  "test_scenarios": {
+    "normal": 30,
+    "disturbance": 30,
+    "fault": 20,
+    "extreme": 20,
+    "total": 100
+  },
+  
+  "investment": {
+    "civil_work": 1800000,
+    "equipment": 1200000,
+    "intelligence_system": 500000,
+    "total": 3500000,
+    "currency": "CNY"
+  },
+  
+  "operation": {
+    "annual_run_hours": 2000,
+    "electricity_price": 0.7,
+    "electricity_price_unit": "CNY/kWh",
+    "annual_electricity_cost": 350000,
+    "maintenance_staff": 2,
+    "unmanned_operation": true
+  }
+}
