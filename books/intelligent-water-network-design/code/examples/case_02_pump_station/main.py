@@ -313,11 +313,11 @@ class MultiPumpController:
     
     def __init__(self, 
                  n_pumps: int = 3,
-                 Kp: float = 3.0,      # 优化：增大响应速度
-                 Ki: float = 0.5,      # 优化：增强积分作用
-                 Kd: float = 0.1,      # 优化：增强抑制震荡
-                 setpoint: float = 3.8,  # 优化：提高目标水位，留出缓冲
-                 min_run_time: float = 300,    # 5分钟
+                 Kp: float = 5.0,      # 再优化：进一步增大响应
+                 Ki: float = 1.0,      # 再优化：更强积分
+                 Kd: float = 0.2,      # 再优化：更强抑制
+                 setpoint: float = 4.0,  # 再优化：进一步提高目标水位
+                 min_run_time: float = 600,    # 10分钟（优化：延长避免频繁启停）
                  min_stop_time: float = 600):  # 10分钟
         
         self.n_pumps = n_pumps
