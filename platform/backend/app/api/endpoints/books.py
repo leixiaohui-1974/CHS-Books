@@ -9,6 +9,7 @@ from typing import List, Optional
 
 from app.core.database import get_db
 from app.core.security import get_current_user
+from app.services import BookService
 from loguru import logger
 
 router = APIRouter()
@@ -74,39 +75,47 @@ async def get_books(
     - **tag**: 筛选标签
     - **search**: 搜索关键词（标题、描述）
     """
-    # TODO: 实现数据库查询
-    # 1. 构建查询条件
-    # 2. 分页
-    # 3. 返回结果
-    
     logger.info(f"📚 获取书籍列表: page={page}, page_size={page_size}")
     
-    # 临时mock数据
+    # 使用服务层查询
+    books, total = await BookService.get_books(
+        db=db,
+        page=page,
+        page_size=page_size,
+        status=status,
+        difficulty=difficulty,
+        tag=tag,
+        search=search
+    )
+    
+    # 转换为响应格式
+    items = []
+    for book in books:
+        items.append({
+            "id": book.id,
+            "slug": book.slug,
+            "title": book.title,
+            "subtitle": book.subtitle,
+            "description": book.description,
+            "cover_image": book.cover_image,
+            "authors": book.authors,
+            "version": book.version,
+            "status": book.status.value,
+            "difficulty": book.difficulty.value,
+            "is_free": book.is_free,
+            "price": book.price,
+            "original_price": book.original_price,
+            "total_chapters": book.total_chapters,
+            "total_cases": book.total_cases,
+            "estimated_hours": book.estimated_hours,
+            "enrollments": book.enrollments,
+            "avg_rating": book.avg_rating,
+            "tags": book.tags
+        })
+    
     return {
-        "total": 3,
-        "items": [
-            {
-                "id": 1,
-                "slug": "water-system-control",
-                "title": "水系统控制论",
-                "subtitle": "基于水箱案例的控制理论入门",
-                "description": "通过12个经典水箱案例系统讲解控制理论...",
-                "cover_image": "/covers/book1.jpg",
-                "authors": ["作者1"],
-                "version": "1.0.0",
-                "status": "published",
-                "difficulty": "beginner",
-                "is_free": False,
-                "price": 299.0,
-                "original_price": 399.0,
-                "total_chapters": 6,
-                "total_cases": 24,
-                "estimated_hours": 192,
-                "enrollments": 1523,
-                "avg_rating": 4.8,
-                "tags": ["控制理论", "水利工程"]
-            }
-        ]
+        "total": total,
+        "items": items
     }
 
 

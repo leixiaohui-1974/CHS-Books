@@ -18,6 +18,7 @@ from app.core.security import (
     get_current_user,
 )
 from app.core.config import settings
+from app.services import UserService
 from loguru import logger
 
 router = APIRouter()
@@ -65,26 +66,40 @@ async def register(
     - **password**: 密码（必填，至少8位）
     - **full_name**: 真实姓名（可选）
     """
-    # TODO: 实现注册逻辑
-    # 1. 检查邮箱和用户名是否已存在
-    # 2. 创建用户
-    # 3. 发送验证邮件
-    
     logger.info(f"📝 新用户注册: {request.email}")
     
-    # 临时实现
-    return {
-        "access_token": create_access_token({"sub": "1", "email": request.email}),
-        "refresh_token": create_refresh_token({"sub": "1"}),
-        "token_type": "bearer",
-        "user": {
-            "id": 1,
-            "email": request.email,
-            "username": request.username,
-            "full_name": request.full_name,
-            "role": "user"
+    try:
+        # 创建用户
+        user = await UserService.create_user(
+            db=db,
+            email=request.email,
+            username=request.username,
+            password=request.password,
+            full_name=request.full_name
+        )
+        
+        # 生成令牌
+        access_token = create_access_token({"sub": str(user.id), "email": user.email})
+        refresh_token = create_refresh_token({"sub": str(user.id)})
+        
+        return {
+            "access_token": access_token,
+            "refresh_token": refresh_token,
+            "token_type": "bearer",
+            "user": {
+                "id": user.id,
+                "email": user.email,
+                "username": user.username,
+                "full_name": user.full_name,
+                "role": user.role.value
+            }
         }
-    }
+        
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
 
 
 @router.post("/login", response_model=LoginResponse)
@@ -98,24 +113,38 @@ async def login(
     - **username**: 用户名或邮箱
     - **password**: 密码
     """
-    # TODO: 实现登录逻辑
-    # 1. 查询用户
-    # 2. 验证密码
-    # 3. 更新登录时间
-    # 4. 返回令牌
+    logger.info(f"🔐 用户登录尝试: {form_data.username}")
     
-    logger.info(f"🔐 用户登录: {form_data.username}")
+    # 验证用户
+    user = await UserService.authenticate_user(
+        db=db,
+        email_or_username=form_data.username,
+        password=form_data.password
+    )
     
-    # 临时实现
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="用户名或密码错误",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    # 生成令牌
+    access_token = create_access_token({"sub": str(user.id), "email": user.email})
+    refresh_token = create_refresh_token({"sub": str(user.id)})
+    
+    logger.info(f"✅ 用户登录成功: {user.email}")
+    
     return {
-        "access_token": create_access_token({"sub": "1", "email": form_data.username}),
-        "refresh_token": create_refresh_token({"sub": "1"}),
+        "access_token": access_token,
+        "refresh_token": refresh_token,
         "token_type": "bearer",
         "user": {
-            "id": 1,
-            "email": form_data.username,
-            "username": form_data.username,
-            "role": "user"
+            "id": user.id,
+            "email": user.email,
+            "username": user.username,
+            "full_name": user.full_name,
+            "role": user.role.value
         }
     }
 
