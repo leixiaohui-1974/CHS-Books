@@ -1,0 +1,20 @@
+{
+  "project_name": "灌区渠系优化配水设计",
+  "system_config": "20000亩，1干渠+5支渠，轮灌制度",
+  "intelligence_level": "L3",
+  "performance_metrics": {
+    "h_main_mean": 4.9910619003784555,
+    "h_main_std": 0.10651867649585332,
+    "water_allocated": [
+      71343.0096650393,
+      75130.36432199126,
+      78353.08459006257,
+      78840.08,
+      78840.08
+    ],
+    "allocation_variance": 8571262.750993483,
+    "allocation_cv": 0.03826955871206706,
+    "rotation_switches": 4,
+    "rotation_count": 0
+  }
+}

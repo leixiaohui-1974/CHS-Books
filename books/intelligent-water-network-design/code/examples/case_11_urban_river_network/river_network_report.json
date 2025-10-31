@@ -1,0 +1,16 @@
+{
+  "project_name": "城市河湖水系联调设计",
+  "system_config": "5水体+8闸站，网络拓扑",
+  "intelligence_level": "L3",
+  "performance_metrics": {
+    "water_level_mean": 2.810280603227731,
+    "water_level_std": 0.42283440797152505,
+    "mode_distribution": {
+      "flood": 36,
+      "landscape": 166,
+      "ecology": 24,
+      "circulation": 62,
+      "normal": 0
+    }
+  }
+}
