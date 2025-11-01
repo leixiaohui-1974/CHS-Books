@@ -17,7 +17,8 @@ from app.api.endpoints import (
     analytics,
     admin,
     order_stats,
-    logs
+    logs,
+    coupons
 )
 
 # 单独导入progress以避免命名冲突
@@ -35,6 +36,7 @@ api_router.include_router(tools.router, prefix="/tools", tags=["工具"])
 api_router.include_router(users.router, prefix="/users", tags=["用户"])
 api_router.include_router(ai_assistant.router, prefix="/ai", tags=["AI助手"])
 api_router.include_router(payments.router, prefix="/payments", tags=["支付"])
+api_router.include_router(coupons.router, prefix="/coupons", tags=["优惠券"])
 api_router.include_router(order_stats.router, prefix="/orders", tags=["订单统计"])
 api_router.include_router(analytics.router, prefix="/analytics", tags=["分析"])
 api_router.include_router(logs.router, prefix="/logs", tags=["日志"])

@@ -13,6 +13,7 @@ from loguru import logger
 from app.models.payment import Order, OrderStatus, PaymentMethod
 from app.models.user import User
 from app.models.book import Book
+from app.services.wechat_payment import wechat_payment
 
 
 class PaymentService:
@@ -385,5 +386,11 @@ async def process_payment(
         return await PaymentService.process_alipay_payment(
             db, order_id, payment_data
         )
+    elif payment_method == PaymentMethod.WECHAT:
+        # 获取订单
+        order = await db.get(Order, order_id)
+        if not order:
+            raise ValueError("订单不存在")
+        return await wechat_payment.create_payment(db, order)
     else:
         raise ValueError(f"不支持的支付方式: {payment_method}")
