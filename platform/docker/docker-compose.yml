@@ -1,0 +1,189 @@
+version: '3.8'
+
+services:
+  # ========================================
+  # PostgreSQL数据库
+  # ========================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: elp-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-elp_db}
+      POSTGRES_USER: ${POSTGRES_USER:-elp_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-elp_password}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - elp-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U elp_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # Redis缓存
+  # ========================================
+  redis:
+    image: redis:7-alpine
+    container_name: elp-redis
+    command: redis-server --requirepass ${REDIS_PASSWORD:-elp_redis_password}
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - elp-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================================
+  # MongoDB文档数据库
+  # ========================================
+  mongo:
+    image: mongo:6
+    container_name: elp-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER:-elp_mongo_user}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD:-elp_mongo_password}
+      MONGO_INITDB_DATABASE: ${MONGODB_DB:-elp_content}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - elp-network
+    restart: unless-stopped
+
+  # ========================================
+  # MinIO对象存储
+  # ========================================
+  minio:
+    image: minio/minio:latest
+    container_name: elp-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_KEY:-minioadmin}
+    ports:
+      - "9000:9000"  # API
+      - "9001:9001"  # Console
+    volumes:
+      - minio_data:/data
+    networks:
+      - elp-network
+    restart: unless-stopped
+
+  # ========================================
+  # 后端API服务
+  # ========================================
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: elp-backend
+    environment:
+      - APP_ENV=production
+      - DATABASE_URL=postgresql+asyncpg://${POSTGRES_USER:-elp_user}:${POSTGRES_PASSWORD:-elp_password}@postgres:5432/${POSTGRES_DB:-elp_db}
+      - REDIS_URL=redis://:${REDIS_PASSWORD:-elp_redis_password}@redis:6379/0
+      - MONGODB_URL=mongodb://${MONGODB_USER:-elp_mongo_user}:${MONGODB_PASSWORD:-elp_mongo_password}@mongo:27017/${MONGODB_DB:-elp_content}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../backend:/app
+      - /workspace/books:/workspace/books:ro
+    depends_on:
+      - postgres
+      - redis
+      - mongo
+    networks:
+      - elp-network
+    restart: unless-stopped
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+  # ========================================
+  # 前端应用
+  # ========================================
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: elp-frontend
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - elp-network
+    restart: unless-stopped
+
+  # ========================================
+  # Celery Worker (任务队列)
+  # ========================================
+  celery-worker:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: elp-celery-worker
+    command: celery -A app.worker worker --loglevel=info
+    environment:
+      - CELERY_BROKER_URL=redis://:${REDIS_PASSWORD:-elp_redis_password}@redis:6379/1
+      - CELERY_RESULT_BACKEND=redis://:${REDIS_PASSWORD:-elp_redis_password}@redis:6379/2
+    volumes:
+      - ../backend:/app
+      - /workspace/books:/workspace/books:ro
+      - /var/run/docker.sock:/var/run/docker.sock  # Docker-in-Docker
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - elp-network
+    restart: unless-stopped
+
+  # ========================================
+  # Nginx反向代理
+  # ========================================
+  nginx:
+    image: nginx:alpine
+    container_name: elp-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - elp-network
+    restart: unless-stopped
+
+# ========================================
+# 网络配置
+# ========================================
+networks:
+  elp-network:
+    driver: bridge
+
+# ========================================
+# 数据卷
+# ========================================
+volumes:
+  postgres_data:
+  redis_data:
+  mongo_data:
+  minio_data:
