@@ -1,0 +1,13 @@
+{
+  "project_name": "多水源供水系统设计",
+  "system_config": "4水源+3水厂+8分区，100万m³/日",
+  "intelligence_level": "L3",
+  "performance_metrics": {
+    "total_cost": 1338.8396858005235,
+    "avg_cost_per_day": 133.88396858005234,
+    "single_source_cost": 180.0,
+    "savings_per_day": 46.11603141994766,
+    "savings_per_year": 16832.351468280896,
+    "emergency_count": 1
+  }
+}
