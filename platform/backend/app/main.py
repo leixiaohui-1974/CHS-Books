@@ -162,7 +162,7 @@ async def general_exception_handler(request: Request, exc: Exception):
 # ========================================
 
 # 注册API路由
-app.include_router(api_router, prefix=settings.API_V1_STR)
+app.include_router(api_router, prefix="/api/v1")
 
 
 # 根路径

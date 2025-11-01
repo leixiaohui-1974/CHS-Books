@@ -14,6 +14,7 @@ from app.api.endpoints import (
     users,
     ai_assistant,
     payments,
+    analytics,
     admin
 )
 
@@ -32,6 +33,7 @@ api_router.include_router(tools.router, prefix="/tools", tags=["工具"])
 api_router.include_router(users.router, prefix="/users", tags=["用户"])
 api_router.include_router(ai_assistant.router, prefix="/ai", tags=["AI助手"])
 api_router.include_router(payments.router, prefix="/payments", tags=["支付"])
+api_router.include_router(analytics.router, prefix="/analytics", tags=["分析"])
 api_router.include_router(progress_endpoints.router, prefix="/progress", tags=["学习进度"])
 api_router.include_router(admin.router, prefix="/admin", tags=["管理"])
 

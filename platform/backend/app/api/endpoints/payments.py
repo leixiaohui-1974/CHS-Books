@@ -35,11 +35,10 @@ class OrderResponse(BaseModel):
     id: int
     order_no: str
     user_id: int
-    book_id: int
+    book_id: int | None
     amount: float
     status: str
-    payment_method: str
-    # payment_status: str  # 暂时注释，使用status字段
+    payment_method: str | None
     created_at: str
     paid_at: str | None = None
     
@@ -107,12 +106,11 @@ async def create_order(
             order_no=order.order_no,
             user_id=order.user_id,
             book_id=order.book_id,
-            amount=order.amount,
+            amount=order.final_price,
             status=order.status.value,
-            payment_method=order.payment_method.value,
-            # payment_status=order.payment_status.value,
+            payment_method=order.payment_method.value if order.payment_method else None,
             created_at=order.created_at.isoformat(),
-            paid_at=order.paid_at.isoformat() if order.paid_at else None
+            paid_at=order.payment_time.isoformat() if order.payment_time else None
         )
         
     except ValueError as e:
@@ -198,12 +196,11 @@ async def get_my_orders(
             order_no=order.order_no,
             user_id=order.user_id,
             book_id=order.book_id,
-            amount=order.amount,
+            amount=order.final_price,
             status=order.status.value,
-            payment_method=order.payment_method.value,
-            # payment_status=order.payment_status.value,
+            payment_method=order.payment_method.value if order.payment_method else None,
             created_at=order.created_at.isoformat(),
-            paid_at=order.paid_at.isoformat() if order.paid_at else None
+            paid_at=order.payment_time.isoformat() if order.payment_time else None
         )
         for order in orders
     ]

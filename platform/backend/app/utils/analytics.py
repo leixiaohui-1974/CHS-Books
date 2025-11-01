@@ -10,7 +10,7 @@ from sqlalchemy import select, func, and_
 from loguru import logger
 
 from app.models.user import User
-from app.models.progress import UserProgress, CaseProgress
+from app.models.progress import UserProgress, CaseProgress, ProgressStatus
 from app.models.book import Book, Case
 
 
@@ -44,37 +44,40 @@ class UserAnalytics:
         )
         total_time = result.scalar() or 0
         
-        # 完成的案例数
+        # 完成的案例数 (通过UserProgress关联)
         result = await db.execute(
             select(func.count(CaseProgress.id))
+            .join(UserProgress, UserProgress.id == CaseProgress.user_progress_id)
             .where(
                 and_(
-                    CaseProgress.user_id == user_id,
-                    CaseProgress.status == "completed"
+                    UserProgress.user_id == user_id,
+                    CaseProgress.status == ProgressStatus.COMPLETED
                 )
             )
         )
         completed_cases = result.scalar() or 0
         
-        # 平均得分
+        # 平均得分 (通过UserProgress关联)
         result = await db.execute(
             select(func.avg(CaseProgress.score))
+            .join(UserProgress, UserProgress.id == CaseProgress.user_progress_id)
             .where(
                 and_(
-                    CaseProgress.user_id == user_id,
-                    CaseProgress.status == "completed",
+                    UserProgress.user_id == user_id,
+                    CaseProgress.status == ProgressStatus.COMPLETED,
                     CaseProgress.score.isnot(None)
                 )
             )
         )
         avg_score = result.scalar() or 0
         
-        # 最近活跃天数
+        # 最近活跃天数 (通过UserProgress关联)
         result = await db.execute(
             select(func.count(func.distinct(func.date(CaseProgress.last_accessed))))
+            .join(UserProgress, UserProgress.id == CaseProgress.user_progress_id)
             .where(
                 and_(
-                    CaseProgress.user_id == user_id,
+                    UserProgress.user_id == user_id,
                     CaseProgress.last_accessed >= start_date
                 )
             )
@@ -123,13 +126,14 @@ class UserAnalytics:
             date_start = date.replace(hour=0, minute=0, second=0, microsecond=0)
             date_end = date.replace(hour=23, minute=59, second=59, microsecond=999999)
             
-            # 当日完成案例数
+            # 当日完成案例数 (通过UserProgress关联)
             result = await db.execute(
                 select(func.count(CaseProgress.id))
+                .join(UserProgress, UserProgress.id == CaseProgress.user_progress_id)
                 .where(
                     and_(
-                        CaseProgress.user_id == user_id,
-                        CaseProgress.status == "completed",
+                        UserProgress.user_id == user_id,
+                        CaseProgress.status == ProgressStatus.COMPLETED,
                         CaseProgress.completed_at.between(date_start, date_end)
                     )
                 )
@@ -203,14 +207,15 @@ class UserAnalytics:
             用户排名信息
         """
         if metric == "score":
-            # 按平均得分排名
+            # 按平均得分排名 (通过UserProgress关联)
             result = await db.execute(
                 select(
-                    CaseProgress.user_id,
+                    UserProgress.user_id,
                     func.avg(CaseProgress.score).label("avg_score")
                 )
+                .join(CaseProgress, CaseProgress.user_progress_id == UserProgress.id)
                 .where(CaseProgress.score.isnot(None))
-                .group_by(CaseProgress.user_id)
+                .group_by(UserProgress.user_id)
                 .order_by(func.avg(CaseProgress.score).desc())
             )
             rankings = result.all()
@@ -227,14 +232,15 @@ class UserAnalytics:
                     }
         
         elif metric == "cases":
-            # 按完成案例数排名
+            # 按完成案例数排名 (通过UserProgress关联)
             result = await db.execute(
                 select(
-                    CaseProgress.user_id,
+                    UserProgress.user_id,
                     func.count(CaseProgress.id).label("case_count")
                 )
-                .where(CaseProgress.status == "completed")
-                .group_by(CaseProgress.user_id)
+                .join(CaseProgress, CaseProgress.user_progress_id == UserProgress.id)
+                .where(CaseProgress.status == ProgressStatus.COMPLETED)
+                .group_by(UserProgress.user_id)
                 .order_by(func.count(CaseProgress.id).desc())
             )
             rankings = result.all()
@@ -274,10 +280,11 @@ class UserAnalytics:
         Returns:
             学习洞察数据
         """
-        # 获取用户的所有案例进度
+        # 获取用户的所有案例进度 (通过UserProgress关联)
         result = await db.execute(
             select(CaseProgress)
-            .where(CaseProgress.user_id == user_id)
+            .join(UserProgress, UserProgress.id == CaseProgress.user_progress_id)
+            .where(UserProgress.user_id == user_id)
         )
         case_progresses = result.scalars().all()
         
@@ -305,7 +312,7 @@ class UserAnalytics:
             })
         
         # 分析2: 学习速度
-        completed = [p for p in case_progresses if p.status == "completed"]
+        completed = [p for p in case_progresses if p.status == ProgressStatus.COMPLETED]
         if completed:
             avg_attempts = sum(p.attempts for p in completed) / len(completed)
             if avg_attempts < 2:

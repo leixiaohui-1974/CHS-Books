@@ -57,11 +57,14 @@ class PaymentService:
             order_no=order_no,
             user_id=user_id,
             book_id=book_id,
-            amount=amount,
+            order_type="book",
+            product_name=book.title,
+            product_description=book.description or "",
+            original_price=amount,
+            discount_amount=0.0,
+            final_price=amount,
             status=OrderStatus.PENDING,
-            payment_method=payment_method,
-            payment_status=PaymentStatus.PENDING,
-            created_at=datetime.now(timezone.utc)
+            payment_method=payment_method
         )
         
         db.add(order)
@@ -109,8 +112,7 @@ class PaymentService:
             
             # 模拟支付成功
             order.status = OrderStatus.PAID
-            order.payment_status = PaymentStatus.SUCCESS
-            order.paid_at = datetime.now(timezone.utc)
+            order.payment_time = datetime.now(timezone.utc)
             order.transaction_id = f"stripe_{stripe_token[:20]}"
             
             await db.commit()
@@ -128,7 +130,6 @@ class PaymentService:
         except Exception as e:
             # 支付失败
             order.status = OrderStatus.FAILED
-            order.payment_status = PaymentStatus.FAILED
             await db.commit()
             
             logger.error(f"Stripe支付失败: {order.order_no}, 错误: {e}")
@@ -172,7 +173,7 @@ class PaymentService:
             
             # 模拟支付成功
             order.status = OrderStatus.PAID
-            order.paid_at = datetime.now(timezone.utc)
+            order.payment_time = datetime.now(timezone.utc)
             order.transaction_id = f"alipay_{alipay_data.get('trade_no', 'mock')}"
             
             await db.commit()
@@ -322,7 +323,7 @@ class PaymentService:
             
             # 模拟退款成功
             order.status = OrderStatus.REFUNDED
-            order.refunded_at = datetime.now(timezone.utc)
+            order.refund_time = datetime.now(timezone.utc)
             order.refund_amount = refund_amount
             
             await db.commit()
@@ -334,7 +335,7 @@ class PaymentService:
                 "success": True,
                 "order_no": order.order_no,
                 "refund_amount": refund_amount,
-                "refunded_at": order.refunded_at.isoformat()
+                "refunded_at": order.refund_time.isoformat()
             }
             
         except Exception as e:
