@@ -6,10 +6,13 @@ from fastapi import APIRouter
 from .endpoints import (
     auth, books, chapters, cases, users, progress, tools, admin,
     payments, analytics, order_stats, logs, ai_assistant, coupons, knowledge,
-    membership, points
+    membership, points, health
 )
 
 api_router = APIRouter()
+
+# 注册健康检查路由（在根路径，不加prefix）
+api_router.include_router(health.router, tags=["系统"])
 
 # 注册认证路由
 api_router.include_router(auth.router, prefix="/auth", tags=["认证"])
