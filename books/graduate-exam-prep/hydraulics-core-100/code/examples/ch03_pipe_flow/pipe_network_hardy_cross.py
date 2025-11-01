@@ -57,7 +57,7 @@ def hardy_cross_iteration(pipes, loops, Q_init, tol=1e-4, max_iter=50):
     
     参数:
         pipes: 管道字典 {pipe_id: {'L': 长度, 'd': 管径, 'C': 系数}}
-        loops: 环路列表，每个环路为管道ID列表（顺时针为正）
+        loops: 环路列表，每个环路为管道规格列表（带符号的pipe_id）
         Q_init: 初始流量字典 {pipe_id: 流量}
         tol: 收敛精度 (m³/s)
         max_iter: 最大迭代次数
@@ -83,9 +83,17 @@ def hardy_cross_iteration(pipes, loops, Q_init, tol=1e-4, max_iter=50):
             sum_dhL_dQ = 0
             
             # 计算环路水头损失和
-            for pipe_id in loop:
+            for pipe_spec in loop:
+                # 处理带符号的管道ID
+                if pipe_spec.startswith('-'):
+                    pipe_id = pipe_spec[1:]
+                    direction = -1
+                else:
+                    pipe_id = pipe_spec
+                    direction = 1
+                
                 pipe = pipes[pipe_id]
-                Q_pipe = Q[pipe_id]
+                Q_pipe = direction * Q[pipe_id]
                 hL = pipe_head_loss(Q_pipe, pipe['L'], pipe['d'], pipe.get('C', 100), n)
                 
                 sum_hL += hL
@@ -93,6 +101,8 @@ def hardy_cross_iteration(pipes, loops, Q_init, tol=1e-4, max_iter=50):
                 # dhL/dQ = n·hL/Q
                 if abs(Q_pipe) > 1e-10:
                     sum_dhL_dQ += abs(n * hL / Q_pipe)
+                else:
+                    sum_dhL_dQ += 1e-6  # 避免除零
             
             # Hardy-Cross校正
             if abs(sum_dhL_dQ) > 1e-10:
@@ -103,8 +113,13 @@ def hardy_cross_iteration(pipes, loops, Q_init, tol=1e-4, max_iter=50):
             max_delta_Q = max(max_delta_Q, abs(delta_Q))
             
             # 更新环路中的流量
-            for pipe_id in loop:
-                Q[pipe_id] += delta_Q
+            for pipe_spec in loop:
+                if pipe_spec.startswith('-'):
+                    pipe_id = pipe_spec[1:]
+                    Q[pipe_id] -= delta_Q  # 反向管道
+                else:
+                    pipe_id = pipe_spec
+                    Q[pipe_id] += delta_Q
             
             print(f"{iteration+1:<6} {loop_idx+1:<8} {sum_hL:<15.6f} {delta_Q:<15.6f} {max_delta_Q:<15.6f}")
         
@@ -296,13 +311,7 @@ def main():
         'AC': {'L': 141, 'd': 0.2, 'C': 100, 'nodes': ('A', 'C')},  # 对角线
     }
     
-    # 环路定义（顺时针为正）
-    loops = [
-        ['AB', 'BC', 'CA'],  # 环路1：逆时针用负号
-        ['AC', 'CD', 'DA'],  # 环路2
-    ]
-    
-    # 注意：AC在两个环路中方向相反
+    # 环路定义（注意：AC在两个环路中方向相反）
     loops = [
         ['AB', 'BC', '-AC'],  # 环路1：A->B->C->A（AC反向）
         ['AC', 'CD', 'DA'],   # 环路2：A->C->D->A

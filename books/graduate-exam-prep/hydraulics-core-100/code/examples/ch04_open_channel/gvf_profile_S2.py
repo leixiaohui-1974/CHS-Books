@@ -220,7 +220,7 @@ def gvf_S2_profile(Q, b, m, n, i, h_upstream, L, g=9.81, num_steps=100):
     return x, h, h0, hc
 
 
-def plot_S2_profile(x, h, h0, hc, b, m, i, Q, filename='gvf_profile_S2.png'):
+def plot_S2_profile(x, h, h0, hc, b, m, i, Q, n=0.025, filename='gvf_profile_S2.png'):
     """绘制S₂水面线"""
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
     
@@ -267,11 +267,12 @@ def plot_S2_profile(x, h, h0, hc, b, m, i, Q, filename='gvf_profile_S2.png'):
     
     dh_dx_vals = []
     Fr_vals = []
-    for i in range(len(h)):
-        A, B, P, R = trapezoidal_geometry(b, m, h[i])
+    for idx in range(len(h)):
+        A, B, P, R = trapezoidal_geometry(b, m, h[idx])
         if_val = manning_friction_slope(Q, A, R, n)
         Fr = froude_number(Q, A, B)
         
+        # 这里的i应该是渠底坡度参数
         numerator = i - if_val
         denominator = 1 - Fr**2
         if abs(denominator) > 0.01:
@@ -397,7 +398,7 @@ def main():
     print(f"下游水深：h = {h[-1]:.3f} m（趋向hc={hc:.3f}m）")
     
     # 绘图
-    plot_S2_profile(x, h, h0, hc, b, m, i, Q)
+    plot_S2_profile(x, h, h0, hc, b, m, i, Q, n)
     
     print("\n" + "="*60)
     print("S₂水面线计算完成！")
