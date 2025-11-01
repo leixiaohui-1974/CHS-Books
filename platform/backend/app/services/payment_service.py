@@ -311,7 +311,7 @@ class PaymentService:
         if refund_amount is None:
             refund_amount = order.amount
         
-        if refund_amount > order.amount:
+        if refund_amount > order.final_price:
             raise ValueError("退款金额不能超过订单金额")
         
         try:
