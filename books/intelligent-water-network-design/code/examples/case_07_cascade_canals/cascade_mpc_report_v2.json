@@ -1,0 +1,30 @@
+{
+  "version": "v2.0",
+  "project_name": "串级渠道MPC智能调度设计",
+  "technology": "MPC (Model Predictive Control)",
+  "intelligence_level": "L2",
+  "mpc_config": {
+    "prediction_horizon": 10,
+    "control_horizon": 5,
+    "sample_time": 60.0
+  },
+  "performance_metrics": {
+    "h1_mean": 1.1017893813396855,
+    "h1_std": 0.37088854967007895,
+    "h1_max_error": 2.0,
+    "h2_mean": 0.7332715889576804,
+    "h2_std": 0.5437119795086115,
+    "h2_max_error": 2.0,
+    "h3_mean": 4.80917019651114,
+    "h3_std": 0.5607661624318684,
+    "h3_max_error": 3.0,
+    "optimization_calls": 360,
+    "constraint_violations": 0,
+    "success_rate": 1.0
+  },
+  "improvements": {
+    "water_level_std_reduction": "~-271%",
+    "response_time_reduction": "~33%",
+    "level_upgrade": "L2 → L3"
+  }
+}
