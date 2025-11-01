@@ -101,17 +101,17 @@ async def create_order(
             payment_method=request.payment_method
         )
         
-    return OrderResponse(
-        id=order.id,
-        order_no=order.order_no,
-        user_id=order.user_id,
-        book_id=order.book_id,
-        amount=float(order.final_price),
-        status=order.status.value,
-        payment_method=order.payment_method.value if order.payment_method else None,
-        created_at=order.created_at.isoformat(),
-        paid_at=order.payment_time.isoformat() if order.payment_time else None
-    )
+        return OrderResponse(
+            id=order.id,
+            order_no=order.order_no,
+            user_id=order.user_id,
+            book_id=order.book_id,
+            amount=float(order.final_price),
+            status=order.status.value,
+            payment_method=order.payment_method.value if order.payment_method else None,
+            created_at=order.created_at.isoformat(),
+            paid_at=order.payment_time.isoformat() if order.payment_time else None
+        )
         
     except ValueError as e:
         raise HTTPException(

@@ -123,8 +123,8 @@ class PaymentService:
             return {
                 "success": True,
                 "order_no": order.order_no,
-                "amount": order.amount,
-                "paid_at": order.paid_at.isoformat()
+                "amount": order.final_price,
+                "paid_at": order.payment_time.isoformat()
             }
             
         except Exception as e:
@@ -309,7 +309,7 @@ class PaymentService:
             raise ValueError(f"订单状态不允许退款: {order.status}")
         
         if refund_amount is None:
-            refund_amount = order.amount
+            refund_amount = order.final_price
         
         if refund_amount > order.final_price:
             raise ValueError("退款金额不能超过订单金额")
