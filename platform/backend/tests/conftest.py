@@ -11,6 +11,11 @@ import asyncio
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
 from app.core.database import Base
+# 导入所有模型以确保它们被注册到Base.metadata
+from app.models import (
+    User, Book, Chapter, Case, UserProgress, ChapterProgress, CaseProgress,
+    Order, Subscription, ToolExecution, Coupon, UserCoupon
+)
 
 
 # 测试数据库配置

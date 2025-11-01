@@ -7,6 +7,7 @@ from .book import Book, Chapter, Case, BookStatus, DifficultyLevel
 from .progress import UserProgress, ChapterProgress, CaseProgress, ProgressStatus
 from .payment import Order, OrderStatus, PaymentMethod, Subscription, SubscriptionStatus
 from .tool import ToolExecution, ToolExecutionStatus
+from .coupon import Coupon, UserCoupon, CouponType, CouponStatus
 
 __all__ = [
     "User",
@@ -27,4 +28,8 @@ __all__ = [
     "SubscriptionStatus",
     "ToolExecution",
     "ToolExecutionStatus",
+    "Coupon",
+    "UserCoupon",
+    "CouponType",
+    "CouponStatus",
 ]

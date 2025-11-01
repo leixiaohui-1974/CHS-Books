@@ -12,7 +12,11 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 
 from main import app
 from app.core.database import Base, get_db
-from app.models.user import User
+# 导入所有模型
+from app.models import (
+    User, Book, Chapter, Case, UserProgress, ChapterProgress, CaseProgress,
+    Order, Subscription, ToolExecution, Coupon, UserCoupon
+)
 
 
 # 测试数据库配置

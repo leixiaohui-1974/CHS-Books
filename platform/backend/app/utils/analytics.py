@@ -59,13 +59,13 @@ class UserAnalytics:
         
         # 平均得分 (通过UserProgress关联)
         result = await db.execute(
-            select(func.avg(CaseProgress.score))
+            select(func.avg(CaseProgress.exercise_score))
             .join(UserProgress, UserProgress.id == CaseProgress.user_progress_id)
             .where(
                 and_(
                     UserProgress.user_id == user_id,
                     CaseProgress.status == ProgressStatus.COMPLETED,
-                    CaseProgress.score.isnot(None)
+                    CaseProgress.exercise_score.isnot(None)
                 )
             )
         )
@@ -73,12 +73,12 @@ class UserAnalytics:
         
         # 最近活跃天数 (通过UserProgress关联)
         result = await db.execute(
-            select(func.count(func.distinct(func.date(CaseProgress.last_accessed))))
+            select(func.count(func.distinct(func.date(CaseProgress.updated_at))))
             .join(UserProgress, UserProgress.id == CaseProgress.user_progress_id)
             .where(
                 and_(
                     UserProgress.user_id == user_id,
-                    CaseProgress.last_accessed >= start_date
+                    CaseProgress.updated_at >= start_date
                 )
             )
         )
@@ -94,7 +94,7 @@ class UserAnalytics:
         return {
             "user_id": user_id,
             "period_days": days,
-            "total_learning_minutes": int(total_time),
+            "total_learning_minutes": int(total_time / 60),  # 转换秒为分钟
             "completed_cases": completed_cases,
             "average_score": round(float(avg_score), 2),
             "active_days": active_days,
@@ -211,12 +211,12 @@ class UserAnalytics:
             result = await db.execute(
                 select(
                     UserProgress.user_id,
-                    func.avg(CaseProgress.score).label("avg_score")
+                    func.avg(CaseProgress.exercise_score).label("avg_score")
                 )
                 .join(CaseProgress, CaseProgress.user_progress_id == UserProgress.id)
-                .where(CaseProgress.score.isnot(None))
+                .where(CaseProgress.exercise_score.isnot(None))
                 .group_by(UserProgress.user_id)
-                .order_by(func.avg(CaseProgress.score).desc())
+                .order_by(func.avg(CaseProgress.exercise_score).desc())
             )
             rankings = result.all()
             
@@ -299,8 +299,8 @@ class UserAnalytics:
         # 分析1: 学习时间段偏好
         hour_distribution = {}
         for progress in case_progresses:
-            if progress.last_accessed:
-                hour = progress.last_accessed.hour
+            if progress.updated_at:
+                hour = progress.updated_at.hour
                 hour_distribution[hour] = hour_distribution.get(hour, 0) + 1
         
         if hour_distribution:
@@ -329,10 +329,10 @@ class UserAnalytics:
                 })
         
         # 分析3: 得分趋势
-        scored = [p for p in completed if p.score is not None]
+        scored = [p for p in completed if p.exercise_score is not None]
         if len(scored) >= 5:
             recent_5 = sorted(scored, key=lambda x: x.completed_at, reverse=True)[:5]
-            avg_recent = sum(p.score for p in recent_5) / 5
+            avg_recent = sum(p.exercise_score for p in recent_5) / 5
             
             if avg_recent >= 90:
                 insights.append({

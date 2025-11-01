@@ -112,11 +112,10 @@ async def test_progress(db_session, test_user, test_book):
         case_progress = CaseProgress(
             user_progress_id=user_progress.id,
             case_id=case.id,
-            status="completed",
-            score=85.0 + i * 5,  # 85, 90, 95
+            status=ProgressStatus.COMPLETED,
+            exercise_score=85.0 + i * 5,  # 85, 90, 95
             attempts=1,
-            completed_at=datetime.now(timezone.utc) - timedelta(days=i),
-            last_accessed=datetime.now(timezone.utc) - timedelta(days=i)
+            completed_at=datetime.now(timezone.utc) - timedelta(days=i)
         )
         db_session.add(case_progress)
     

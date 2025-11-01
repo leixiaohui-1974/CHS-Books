@@ -65,6 +65,7 @@ class User(Base):
     orders = relationship("Order", back_populates="user", cascade="all, delete-orphan")
     subscriptions = relationship("Subscription", back_populates="user", cascade="all, delete-orphan")
     tool_executions = relationship("ToolExecution", back_populates="user", cascade="all, delete-orphan")
+    user_coupons = relationship("UserCoupon", back_populates="user", cascade="all, delete-orphan")
     
     def __repr__(self):
         return f"<User(id={self.id}, email={self.email}, role={self.role})>"
