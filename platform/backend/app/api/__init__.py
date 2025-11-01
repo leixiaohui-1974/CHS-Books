@@ -1,51 +1,50 @@
 """
-API路由入口
+API路由汇总
 """
 
 from fastapi import APIRouter
-
-# 导入所有端点路由
-from app.api.endpoints import (
-    auth,
-    books,
-    chapters,
-    cases,
-    tools,
-    users,
-    ai_assistant,
-    payments,
-    analytics,
-    admin,
-    order_stats,
-    logs,
-    coupons
+from .endpoints import (
+    auth, books, chapters, cases, users, progress, tools, admin,
+    payments, analytics, order_stats, logs, ai_assistant, coupons, knowledge
 )
 
-# 单独导入progress以避免命名冲突
-from app.api.endpoints import progress as progress_endpoints
-
-# 创建主路由
 api_router = APIRouter()
 
-# 注册各个模块的路由
+# 注册认证路由
 api_router.include_router(auth.router, prefix="/auth", tags=["认证"])
+
+# 注册书籍相关路由
 api_router.include_router(books.router, prefix="/books", tags=["书籍"])
 api_router.include_router(chapters.router, prefix="/chapters", tags=["章节"])
 api_router.include_router(cases.router, prefix="/cases", tags=["案例"])
-api_router.include_router(tools.router, prefix="/tools", tags=["工具"])
+
+# 注册用户和进度路由
 api_router.include_router(users.router, prefix="/users", tags=["用户"])
-api_router.include_router(ai_assistant.router, prefix="/ai", tags=["AI助手"])
-api_router.include_router(payments.router, prefix="/payments", tags=["支付"])
-api_router.include_router(coupons.router, prefix="/coupons", tags=["优惠券"])
-api_router.include_router(order_stats.router, prefix="/orders", tags=["订单统计"])
-api_router.include_router(analytics.router, prefix="/analytics", tags=["分析"])
-api_router.include_router(logs.router, prefix="/logs", tags=["日志"])
-api_router.include_router(progress_endpoints.router, prefix="/progress", tags=["学习进度"])
+api_router.include_router(progress.router, prefix="/progress", tags=["学习进度"])
+
+# 注册工具执行路由
+api_router.include_router(tools.router, prefix="/tools", tags=["工具执行"])
+
+# 注册管理员路由
 api_router.include_router(admin.router, prefix="/admin", tags=["管理"])
 
+# 注册支付路由
+api_router.include_router(payments.router, prefix="/payments", tags=["支付"])
 
-# 健康检查端点
-@api_router.get("/health", tags=["系统"])
-async def health_check():
-    """健康检查"""
-    return {"status": "ok", "message": "API is running"}
+# 注册数据分析路由
+api_router.include_router(analytics.router, prefix="/analytics", tags=["数据分析"])
+
+# 注册订单统计路由
+api_router.include_router(order_stats.router, prefix="/order-stats", tags=["订单统计"])
+
+# 注册日志查询路由
+api_router.include_router(logs.router, prefix="/logs", tags=["日志"])
+
+# 注册AI助手路由
+api_router.include_router(ai_assistant.router, prefix="/ai", tags=["AI助手"])
+
+# 注册优惠券路由
+api_router.include_router(coupons.router, prefix="/coupons", tags=["优惠券"])
+
+# 注册RAG知识库路由
+api_router.include_router(knowledge.router, prefix="/knowledge", tags=["RAG知识库"])

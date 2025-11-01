@@ -8,6 +8,9 @@ from .progress import UserProgress, ChapterProgress, CaseProgress, ProgressStatu
 from .payment import Order, OrderStatus, PaymentMethod, Subscription, SubscriptionStatus
 from .tool import ToolExecution, ToolExecutionStatus
 from .coupon import Coupon, UserCoupon, CouponType, CouponStatus
+from .knowledge import KnowledgeBase, Document, DocumentChunk, KnowledgeBaseStatus, DocumentType
+from .membership import UserMembership, ExperienceHistory, MembershipConfig, MembershipLevel, BenefitType
+from .points import PointsAccount, PointsTransaction, PointsProduct, PointsRedemption, PointsRule, TransactionType, PointsReason, ProductType
 
 __all__ = [
     "User",
@@ -32,4 +35,22 @@ __all__ = [
     "UserCoupon",
     "CouponType",
     "CouponStatus",
+    "KnowledgeBase",
+    "Document",
+    "DocumentChunk",
+    "KnowledgeBaseStatus",
+    "DocumentType",
+    "UserMembership",
+    "ExperienceHistory",
+    "MembershipConfig",
+    "MembershipLevel",
+    "BenefitType",
+    "PointsAccount",
+    "PointsTransaction",
+    "PointsProduct",
+    "PointsRedemption",
+    "PointsRule",
+    "TransactionType",
+    "PointsReason",
+    "ProductType",
 ]

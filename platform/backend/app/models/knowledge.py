@@ -79,7 +79,7 @@ class Document(Base):
     file_hash = Column(String(64), nullable=True)  # SHA-256
     
     # 元数据
-    metadata = Column(JSON, nullable=True)
+    meta_data = Column(JSON, nullable=True)
     
     # 统计
     chunk_count = Column(Integer, default=0, nullable=False)
@@ -117,7 +117,7 @@ class DocumentChunk(Base):
     similarity_score = Column(Float, nullable=True)
     
     # 元数据
-    metadata = Column(JSON, nullable=True)
+    meta_data = Column(JSON, nullable=True)
     
     # 时间戳
     created_at = Column(DateTime(timezone=True), server_default=func.now(), nullable=False)
