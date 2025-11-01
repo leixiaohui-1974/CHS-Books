@@ -315,7 +315,7 @@ class PointsService:
             total_cost = product.points_cost * quantity
             
             # 消费积分
-            await self.spend_points(
+            spend_result = await self.spend_points(
                 db=db,
                 user_id=user_id,
                 amount=total_cost,
@@ -355,7 +355,7 @@ class PointsService:
                 "product_name": product.name,
                 "quantity": quantity,
                 "points_cost": total_cost,
-                "balance": account.balance - total_cost,
+                "balance": spend_result["balance"],  # 使用消费后的实际余额
                 "status": redemption.status
             }
             
