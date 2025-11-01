@@ -133,17 +133,17 @@ class CascadeController:
     """
     
     def __init__(self):
-        # 反馈PID控制器（3个）
-        self.pid1 = SimplePIDController(Kp=0.8, Ki=0.15, Kd=0.08, setpoint=3.0,
-                                         output_limits=(0.3, 2.0), windup_limit=1.5)
-        self.pid2 = SimplePIDController(Kp=0.8, Ki=0.15, Kd=0.08, setpoint=2.5,
-                                         output_limits=(0.3, 2.0), windup_limit=1.5)
-        self.pid3 = SimplePIDController(Kp=0.8, Ki=0.15, Kd=0.08, setpoint=2.0,
-                                         output_limits=(0.3, 2.0), windup_limit=1.5)
+        # 反馈PID控制器（3个）（优化：增大PID参数和抗饱和范围）
+        self.pid1 = SimplePIDController(Kp=1.2, Ki=0.25, Kd=0.15, setpoint=3.0,
+                                         output_limits=(0.3, 2.0), windup_limit=2.5)
+        self.pid2 = SimplePIDController(Kp=1.2, Ki=0.25, Kd=0.15, setpoint=2.5,
+                                         output_limits=(0.3, 2.0), windup_limit=2.5)
+        self.pid3 = SimplePIDController(Kp=1.2, Ki=0.25, Kd=0.15, setpoint=2.0,
+                                         output_limits=(0.3, 2.0), windup_limit=2.5)
         
-        # 前馈增益
-        self.K_ff12 = 0.8  # 闸门2→闸门1
-        self.K_ff23 = 0.8  # 闸门3→闸门2
+        # 前馈增益（优化：增大前馈增益）
+        self.K_ff12 = 1.2  # 闸门2→闸门1
+        self.K_ff23 = 1.2  # 闸门3→闸门2
         
         # 解耦矩阵
         self.decoupling_matrix = np.array([

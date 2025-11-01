@@ -9,14 +9,14 @@
   "gate_config": "3孔×4m×3m弧形闸门",
   "intelligence_level": "L2",
   "performance_metrics": {
-    "upstream_level_mean": 4.037682084397971,
-    "upstream_level_std": 0.6705148612736552,
-    "downstream_level_mean": 3.3944685545315543,
+    "upstream_level_mean": 4.023670872340361,
+    "upstream_level_std": 0.6677766906330026,
+    "downstream_level_mean": 3.468228859617243,
     "min_eco_flow": 0.0,
     "eco_flow_violations": 864,
     "eco_flow_guarantee_rate": 90.0,
     "max_upstream_level": 5.0,
-    "flood_risk_count": 2051,
+    "flood_risk_count": 2013,
     "mode_distribution": {
       "drainage": 1728,
       "irrigation": 2880,

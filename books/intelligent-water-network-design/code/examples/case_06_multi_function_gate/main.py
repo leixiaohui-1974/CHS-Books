@@ -129,8 +129,8 @@ class EcologyController:
     def compute_required_opening(self, current_flow: float) -> float:
         """计算保证生态流量所需的开度调整量"""
         if current_flow < self.min_eco_flow:
-            # 流量不足，需要加大开度
-            adjustment = 0.3 * (self.min_eco_flow - current_flow)
+            # 流量不足，需要加大开度（优化：增大调整系数）
+            adjustment = 0.5 * (self.min_eco_flow - current_flow)
             return adjustment
         else:
             return 0
@@ -177,9 +177,9 @@ class MultiFunctionGateController:
         }
     
     def identify_mode(self, month: int, h_upstream: float, rainfall: float) -> str:
-        """工况识别"""
-        # 汛期排涝
-        if 6 <= month <= 8 and (rainfall > 20 or h_upstream > 3.5):
+        """工况识别（优化：降低洪水预警阈值，提高响应速度）"""
+        # 汛期排涝（优化：阈值从3.5降至3.3）
+        if 6 <= month <= 8 and (rainfall > 20 or h_upstream > 3.3):
             return 'drainage'
         
         # 灌溉期

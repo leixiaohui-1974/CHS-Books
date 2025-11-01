@@ -3,15 +3,15 @@
   "system_config": "3级串联，总长15km",
   "intelligence_level": "L2",
   "performance_metrics": {
-    "h1_mean": 4.780141646812751,
-    "h1_std": 0.4750269998124139,
+    "h1_mean": 4.786803470886473,
+    "h1_std": 0.4680714516200719,
     "h1_max_error": 2.0,
-    "h2_mean": 0.7206011136397327,
-    "h2_std": 0.5634988085220212,
+    "h2_mean": 0.5606245574622938,
+    "h2_std": 0.31445584089845463,
     "h2_max_error": 2.0,
-    "h3_mean": 0.5717955219985597,
-    "h3_std": 0.2898440584765681,
-    "h3_max_error": 1.5,
+    "h3_mean": 4.75744442617997,
+    "h3_std": 0.6726339958465216,
+    "h3_max_error": 3.0,
     "feedforward_triggers": 360,
     "total_adjustments": 360
   }

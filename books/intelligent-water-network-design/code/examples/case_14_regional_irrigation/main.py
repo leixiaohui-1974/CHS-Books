@@ -91,7 +91,7 @@ class ReservoirGroupOptimizer:
     
     def optimize(self, reservoir_levels: list, total_demand: float, inflow: float) -> float:
         """
-        水库群优化调度
+        水库群优化调度（优化：增加安全水位约束）
         
         Parameters:
         -----------
@@ -107,17 +107,35 @@ class ReservoirGroupOptimizer:
         total_supply : float
             总供水 [万m³/日]
         """
-        # 计算各水库可供水量
+        # 优化：设置安全水位（最小安全水位6.0m）
+        min_safe_level = 6.0
+        
+        # 计算各水库可供水量（考虑安全水位）
         available = []
         for i, res in enumerate(self.reservoirs):
-            storage = (reservoir_levels[i] - res['dead_level']) * res['capacity'] / 10  # 简化
+            # 可用库容 = (当前水位 - 安全水位) × 库容
+            usable_level = max(0, reservoir_levels[i] - min_safe_level)
+            storage = usable_level * res['capacity'] / 10  # 简化
             available.append(max(0, storage))
         
         # 总可供水量 = 来水 + 库存
-        total_available = inflow + sum(available) * 0.1  # 库存可用10%/天
+        # 优化：枯水期（来水<100）降低库存利用率，优先蓄水
+        if inflow < 100:
+            # 枯水期：减少库存利用，优先保水库
+            release_ratio = 0.05  # 仅利用5%
+        else:
+            # 丰水期：正常利用
+            release_ratio = 0.1  # 利用10%
+        
+        total_available = inflow + sum(available) * release_ratio
         
         # 供水决策：满足需水，但不超过可供
-        total_supply = min(total_demand, total_available)
+        # 优化：枯水期限制供水，保护水库
+        if inflow < 100:
+            # 枯水期供水上限90%
+            total_supply = min(total_demand * 0.9, total_available)
+        else:
+            total_supply = min(total_demand, total_available)
         
         return total_supply
 
