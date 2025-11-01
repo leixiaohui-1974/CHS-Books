@@ -5,7 +5,8 @@ API路由汇总
 from fastapi import APIRouter
 from .endpoints import (
     auth, books, chapters, cases, users, progress, tools, admin,
-    payments, analytics, order_stats, logs, ai_assistant, coupons, knowledge
+    payments, analytics, order_stats, logs, ai_assistant, coupons, knowledge,
+    membership, points
 )
 
 api_router = APIRouter()
@@ -48,3 +49,9 @@ api_router.include_router(coupons.router, prefix="/coupons", tags=["优惠券"])
 
 # 注册RAG知识库路由
 api_router.include_router(knowledge.router, prefix="/knowledge", tags=["RAG知识库"])
+
+# 注册会员体系路由
+api_router.include_router(membership.router, prefix="/membership", tags=["会员体系"])
+
+# 注册积分系统路由
+api_router.include_router(points.router, prefix="/points", tags=["积分系统"])
