@@ -235,8 +235,8 @@ def gvf_M1_profile(Q, b, m, n, i, h_downstream, L, g=9.81, num_steps=100):
     dx_base = L / num_steps
     
     # 逆水流方向计算（从下游到上游）
-    for i in range(num_steps):
-        h_i = h[i]
+    for step in range(num_steps):
+        h_i = h[step]
         
         # 当前断面几何
         A, B, P, R = trapezoidal_geometry(b, m, h_i)
@@ -247,15 +247,15 @@ def gvf_M1_profile(Q, b, m, n, i, h_downstream, L, g=9.81, num_steps=100):
         # 弗劳德数
         Fr = froude_number(Q, A, B, g)
         
-        # 水深梯度 dh/dx
+        # 水深梯度 dh/dx（这里的i是渠底坡度，不是循环变量）
         numerator = i - if_val
         denominator = 1 - Fr**2
         
         if abs(denominator) < 0.01:
             # 接近临界流，强制停止
-            print(f"  警告：Fr={Fr:.3f}接近1，在x={x[i]:.1f}m处停止")
-            x = x[:i+1]
-            h = h[:i+1]
+            print(f"  警告：Fr={Fr:.3f}接近1，在x={x[step]:.1f}m处停止")
+            x = x[:step+1]
+            h = h[:step+1]
             break
         
         dh_dx = numerator / denominator
@@ -267,20 +267,20 @@ def gvf_M1_profile(Q, b, m, n, i, h_downstream, L, g=9.81, num_steps=100):
             dx = dx_base
         
         # 向上游推进
-        x[i+1] = x[i] + dx
-        h[i+1] = h[i] + dh_dx * dx
+        x[step+1] = x[step] + dx
+        h[step+1] = h[step] + dh_dx * dx
         
         # 边界保护
-        if h[i+1] < hc * 1.01:
+        if h[step+1] < hc * 1.01:
             print(f"  警告：水深接近临界深度，停止计算")
-            x = x[:i+2]
-            h = h[:i+2]
+            x = x[:step+2]
+            h = h[:step+2]
             break
         
-        if x[i+1] >= L:
-            x[i+1] = L
-            x = x[:i+2]
-            h = h[:i+2]
+        if x[step+1] >= L:
+            x[step+1] = L
+            x = x[:step+2]
+            h = h[:step+2]
             break
     
     return x, h, h0, hc
@@ -346,14 +346,15 @@ def plot_M1_profile(x, h, h0, hc, b, m, i, Q, filename='gvf_profile_M1.png'):
     # 子图3：dh/dx和Fr变化
     ax3 = axes[1, 0]
     
-    # 计算dh/dx和Fr
+    # 计算dh/dx和Fr（注意：这里需要传入正确的底坡i）
     dh_dx_vals = []
     Fr_vals = []
-    for i in range(len(h)):
-        A, B, P, R = trapezoidal_geometry(b, m, h[i])
+    for idx in range(len(h)):
+        A, B, P, R = trapezoidal_geometry(b, m, h[idx])
         if_val = manning_friction_slope(Q, A, R, 0.025)
         Fr = froude_number(Q, A, B)
         
+        # 这里的i应该是渠底坡度参数
         numerator = i - if_val
         denominator = 1 - Fr**2
         if abs(denominator) > 0.01:
