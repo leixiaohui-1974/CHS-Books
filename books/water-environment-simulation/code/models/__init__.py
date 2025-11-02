@@ -21,6 +21,9 @@ from .river_bend import (RiverBend2D, calculate_bend_mixing_length,
 from .estuary import (EstuarySaltIntrusion1D, calculate_stratification_parameter,
                       calculate_mixing_parameter, calculate_salt_wedge_length, estimate_intake_risk)
 from .lake_cmfr import (LakeCMFR, calculate_critical_load, calculate_flushing_efficiency)
+from .lake_nutrient import (VollenweiderModel, calculate_trophic_state, 
+                             calculate_vollenweider_loading, calculate_phosphorus_budget,
+                             predict_response_time)
 
 __all__ = [
     'Diffusion1D',
@@ -67,4 +70,9 @@ __all__ = [
     'LakeCMFR',
     'calculate_critical_load',
     'calculate_flushing_efficiency',
+    'VollenweiderModel',
+    'calculate_trophic_state',
+    'calculate_vollenweider_loading',
+    'calculate_phosphorus_budget',
+    'predict_response_time',
 ]
