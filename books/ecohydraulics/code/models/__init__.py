@@ -14,6 +14,15 @@ from .indicators import (
     HydrologicAlterationAssessment,
     generate_iha_report
 )
+from .vegetation import (
+    VegetationType,
+    VegetatedChannel,
+    VegetationGrowthModel,
+    create_reed,
+    create_cattail,
+    create_submerged_plant,
+    create_willow_shrub
+)
 
 __all__ = [
     'River', 
@@ -26,5 +35,12 @@ __all__ = [
     'IHACalculator',
     'HydraulicDiversityIndex',
     'HydrologicAlterationAssessment',
-    'generate_iha_report'
+    'generate_iha_report',
+    'VegetationType',
+    'VegetatedChannel',
+    'VegetationGrowthModel',
+    'create_reed',
+    'create_cattail',
+    'create_submerged_plant',
+    'create_willow_shrub'
 ]

@@ -152,7 +152,7 @@ class VegetatedChannel:
         h_eff = min(h, self.vegetation.height)
         
         # 单位面积的迎流面积
-        A_per_area = self.vegetation.density * self.stem_diameter * h_eff * self.coverage
+        A_per_area = self.vegetation.density * self.vegetation.stem_diameter * h_eff * self.coverage
         
         # 阻力
         F_d = 0.5 * rho * self.vegetation.drag_coefficient * A_per_area * v**2
