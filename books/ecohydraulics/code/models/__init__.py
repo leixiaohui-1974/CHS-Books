@@ -115,6 +115,14 @@ from .estuary_coastal import (
     EstuarineWetlandCarbon,
     simulate_storm_surge_protection
 )
+from .advanced_simulation import (
+    ShallowWater2D,
+    AgentBasedFish,
+    MLFlowPredictor,
+    CFDFishway,
+    RemoteSensingGIS,
+    simulate_fishway_optimization
+)
 
 __all__ = [
     'River', 
@@ -198,5 +206,11 @@ __all__ = [
     'MangroveHydrodynamics',
     'EcologicalRevetment',
     'EstuarineWetlandCarbon',
-    'simulate_storm_surge_protection'
+    'simulate_storm_surge_protection',
+    'ShallowWater2D',
+    'AgentBasedFish',
+    'MLFlowPredictor',
+    'CFDFishway',
+    'RemoteSensingGIS',
+    'simulate_fishway_optimization'
 ]
