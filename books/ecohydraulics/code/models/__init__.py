@@ -44,6 +44,10 @@ from .spawning_ground import (
     create_chinese_carp_egg,
     create_standard_spawning_ground
 )
+from .denil_fishway import (
+    DenilFishway,
+    create_denil_design
+)
 from .fish_behavior import (
     FeedingGroundModel,
     create_grass_carp_feeding_model
@@ -121,6 +125,8 @@ __all__ = [
     'create_silver_carp',
     'VerticalSlotFishway',
     'create_standard_fishway',
+    'DenilFishway',
+    'create_denil_design',
     'FishEgg',
     'SpawningGround',
     'create_chinese_carp_egg',
