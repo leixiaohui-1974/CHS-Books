@@ -1,9 +1,9 @@
 # 生态水力学教材
 ## 基于工程案例的水力-生态耦合计算课程
 
-**版本**: v1.0.0-alpha  
-**开发状态**: ✅ 案例1已完成，测试通过  
-**测试覆盖**: 30/30 测试通过 (100%)  
+**版本**: v1.0.5-alpha  
+**开发状态**: ✅ **第一部分全部完成！**（6个案例100%完成）  
+**测试覆盖**: 107/107 测试通过 (100%)  
 **开发日期**: 2025-11-02
 
 ---
@@ -39,11 +39,11 @@
 | 案例 | 名称 | 难度 | 状态 |
 |------|------|------|------|
 | 1 | 河流生态基流计算 | ⭐ | ✅ 已完成 |
-| 2 | 鱼类栖息地适宜性评价 | ⭐⭐ | ⏳ 规划中 |
-| 3 | 河流生态水力指标体系 | ⭐⭐ | ⏳ 规划中 |
-| 4 | 涉水植物生长水力条件 | ⭐⭐ | ⏳ 规划中 |
-| 5 | 水温分层与溶解氧分布 | ⭐⭐⭐ | ⏳ 规划中 |
-| 6 | 底栖生物栖息地评价 | ⭐⭐⭐ | ⏳ 规划中 |
+| 2 | 鱼类栖息地适宜性评价 | ⭐⭐ | ✅ 已完成 |
+| 3 | 河流生态水力指标体系 | ⭐⭐ | ✅ 已完成 |
+| 4 | 涉水植物生长水力条件 | ⭐⭐ | ✅ 已完成 |
+| 5 | 水温分层与溶解氧分布 | ⭐⭐⭐ | ✅ 已完成 |
+| 6 | 底栖生物栖息地评价 | ⭐⭐⭐ | ✅ 已完成 |
 
 ### 第二部分：鱼类生态水力学（案例7-12）
 
@@ -81,22 +81,44 @@ cd /workspace/books/ecohydraulics
 pip install -r requirements.txt
 ```
 
-### 运行案例1
+### 运行案例（全部6个案例）
 
 ```bash
-cd code/examples/case_01_ecological_flow
-python main.py
+# 案例1: 生态基流计算
+cd code/examples/case_01_ecological_flow && python main.py
+
+# 案例2: 栖息地适宜性评价
+cd ../case_02_habitat_suitability && python main.py
+
+# 案例3: 水力指标体系
+cd ../case_03_hydrologic_indicators && python main.py
+
+# 案例4: 植被水力条件
+cd ../case_04_vegetation_hydraulics && python main.py
+
+# 案例5: 水温分层与溶解氧
+cd ../case_05_thermal_stratification && python main.py
+
+# 案例6: 底栖生物栖息地
+cd ../case_06_benthic_habitat && python main.py
 ```
 
-### 运行测试
+### 运行测试（107个测试全部通过）
 
 ```bash
 # 运行所有测试
-pytest tests/ -v
+cd /workspace/books/ecohydraulics
+python3 -m pytest tests/ -v
+# 结果: 107 passed in 0.72s ✅
 
 # 运行单个测试文件
 pytest tests/test_channel.py -v
 pytest tests/test_ecological_flow.py -v
+pytest tests/test_habitat.py -v
+pytest tests/test_indicators.py -v
+pytest tests/test_vegetation.py -v
+pytest tests/test_thermal.py -v
+pytest tests/test_benthic.py -v
 ```
 
 ---

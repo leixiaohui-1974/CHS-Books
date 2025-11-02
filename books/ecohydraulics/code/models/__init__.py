@@ -30,6 +30,7 @@ from .thermal import (
     create_summer_stratification,
     create_winter_stratification
 )
+from .benthic import BenthicHabitatModel
 
 __all__ = [
     'River', 
@@ -54,5 +55,6 @@ __all__ = [
     'DissolvedOxygenModel',
     'ReservoirStratificationAnalyzer',
     'create_summer_stratification',
-    'create_winter_stratification'
+    'create_winter_stratification',
+    'BenthicHabitatModel'
 ]
