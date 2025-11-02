@@ -2,6 +2,95 @@
 
 本文档记录项目的所有重要变更。
 
+## [v0.5.0-release] - 2025-11-02
+
+### 🎉 重大里程碑：地表地下水耦合篇完成！
+
+#### ✅ 新增内容
+
+**案例11-15：地表地下水耦合系统**（全部完成）
+- 案例11：河流-地下水耦合基础理论 - 水量交换机制
+- 案例12：MODFLOW River包实现 - 行业标准方法
+- 案例13：多层含水层系统 - 越流与Hantush-Jacob解
+- 案例14：耦合模型参数率定 - 多源观测联合
+- 案例15：耦合系统不确定性量化 - Monte Carlo与GLUE
+
+**新增模块：gwflow/coupling（~1,200行）**
+- `exchange.py` (200行) - 水量交换计算、传导度、河流梯度
+- `boundary.py` (250行) - 河流、湖泊、ET边界条件类
+- `solver.py` (300行) - 弱耦合、顺序耦合求解器
+- `river_package.py` (280行) - MODFLOW River包完整实现
+- `leakage.py` (150行) - 多层系统、越流计算、Hantush-Jacob解
+- `__init__.py` (20行) - 模块接口
+
+**新增文档**
+- 5个案例README（~40,000字）
+- 第三篇设计方案（~8,000字）
+- 案例11-12、案例13-15完成总结（~10,000字）
+
+#### 📊 统计数据
+
+- **代码行数**: 9,533 → 10,733 (+1,200行)
+- **工具包模块**: 19 → 24 (+5个)
+- **完成案例**: 10 → 15 (+5个)
+- **耦合篇完成度**: 0% → 100%
+- **整体进度**: 55% → 75%
+
+#### 🏆 核心特性
+
+**完整的耦合系统框架**：
+- 河流-地下水交互（断开机制）
+- MODFLOW River包（segments, reaches）
+- 多层含水层系统（aquitard, leakage）
+- 耦合模型率定（联合观测）
+- 不确定性量化（Monte Carlo + GLUE）
+
+**数值方法体系**：
+- 弱耦合迭代（relaxation, convergence）
+- 顺序耦合（one-way coupling）
+- 水量交换公式（conductance-based）
+- 越流计算（leakance coefficient）
+- Hantush-Jacob解析解验证
+
+**高级分析**：
+- 参数可识别性（parameter correlation）
+- 多源观测权重（groundwater + river）
+- 不确定性分解（variance decomposition）
+- 预测区间（prediction intervals）
+- GLUE行为参数集（behavioral sets）
+
+#### ✨ 代码质量
+
+- 完整的类型注解
+- 详细的docstrings
+- 可运行的案例脚本（15-20分钟/案例）
+- 9幅高质量可视化图表
+- 模块化设计，易扩展
+
+#### 📚 知识体系
+
+**理论深度**：
+- 地表地下水交互机制（3种类型）
+- MODFLOW River包数学基础
+- 越流理论与Hantush-Jacob方程
+- 耦合模型率定挑战
+- 不确定性来源与传播
+
+**实践能力**：
+- 建立河流-含水层耦合模型
+- 实现MODFLOW兼容的River包
+- 模拟多层含水层系统
+- 率定耦合模型参数
+- 量化预测不确定性
+
+**对标国际**：
+- MODFLOW River Package ✅
+- FEFLOW 耦合功能 ✅
+- HydroGeoSphere部分功能 ✅
+- 教学友好，代码简洁 💪
+
+---
+
 ## [v0.4.0-release] - 2025-11-02
 
 ### 🎉 重大里程碑：参数率定篇完成
