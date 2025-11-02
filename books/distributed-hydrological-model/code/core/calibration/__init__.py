@@ -16,6 +16,7 @@
 """
 
 from .sce_ua import SCEUA, optimize_sce_ua
+from .glue import GLUE, glue_analysis
 from .objective import (
     ObjectiveFunction,
     nash_sutcliffe_objective,
@@ -26,6 +27,8 @@ from .objective import (
 __all__ = [
     'SCEUA',
     'optimize_sce_ua',
+    'GLUE',
+    'glue_analysis',
     'ObjectiveFunction',
     'nash_sutcliffe_objective',
     'rmse_objective',
