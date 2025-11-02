@@ -1,0 +1,229 @@
+# 供水管网配置
+
+# 水厂参数
+water_plants:
+  - id: "P1"
+    name: "一水厂"
+    capacity: 1000  # m³/h
+    head: 50  # m
+    
+  - id: "P2"
+    name: "二水厂"
+    capacity: 800
+    head: 45
+    
+  - id: "P3"
+    name: "三水厂"
+    capacity: 600
+    head: 48
+
+# 泵站参数
+pump_stations:
+  - id: "PS1"
+    name: "中心泵站"
+    capacity: [0, 500]  # 可调节范围 [min, max] m³/h
+    efficiency: 0.75
+    # 扬程特性曲线 H = a - b*Q^2
+    head_curve:
+      a: 60  # 常数项
+      b: 0.0001  # 二次项系数
+    power_cost: 0.8  # 元/kWh
+    
+  - id: "PS2"
+    name: "东区泵站"
+    capacity: [0, 400]
+    efficiency: 0.72
+    head_curve:
+      a: 55
+      b: 0.00012
+    power_cost: 0.8
+    
+  - id: "PS3"
+    name: "西区泵站"
+    capacity: [0, 400]
+    efficiency: 0.73
+    head_curve:
+      a: 58
+      b: 0.00011
+    power_cost: 0.8
+    
+  - id: "PS4"
+    name: "南区泵站"
+    capacity: [0, 300]
+    efficiency: 0.70
+    head_curve:
+      a: 52
+      b: 0.00013
+    power_cost: 0.8
+    
+  - id: "PS5"
+    name: "北区泵站"
+    capacity: [0, 350]
+    efficiency: 0.74
+    head_curve:
+      a: 56
+      b: 0.00012
+    power_cost: 0.8
+
+# 用户区
+demand_zones:
+  - id: "Z1"
+    name: "居民区A"
+    base_demand: 300  # m³/h
+    min_pressure: 25  # m
+    priority: 1  # 优先级（1最高）
+    
+  - id: "Z2"
+    name: "居民区B"
+    base_demand: 250
+    min_pressure: 25
+    priority: 1
+    
+  - id: "Z3"
+    name: "工业区A"
+    base_demand: 400
+    min_pressure: 30
+    priority: 2
+    
+  - id: "Z4"
+    name: "商业区"
+    base_demand: 200
+    min_pressure: 28
+    priority: 1
+    
+  - id: "Z5"
+    name: "居民区C"
+    base_demand: 180
+    min_pressure: 25
+    priority: 1
+    
+  - id: "Z6"
+    name: "工业区B"
+    base_demand: 350
+    min_pressure: 32
+    priority: 2
+    
+  - id: "Z7"
+    name: "居民区D"
+    base_demand: 220
+    min_pressure: 25
+    priority: 1
+    
+  - id: "Z8"
+    name: "公共设施"
+    base_demand: 150
+    min_pressure: 26
+    priority: 1
+
+# 管道参数
+pipes:
+  # 水厂到泵站
+  - from: "P1"
+    to: "PS1"
+    length: 5000  # m
+    diameter: 800  # mm
+    roughness: 0.012  # 粗糙系数
+    
+  - from: "P2"
+    to: "PS2"
+    length: 4000
+    diameter: 600
+    roughness: 0.012
+    
+  - from: "P3"
+    to: "PS3"
+    length: 3500
+    diameter: 600
+    roughness: 0.012
+  
+  # 泵站到用户区
+  - from: "PS1"
+    to: "Z1"
+    length: 2000
+    diameter: 400
+    roughness: 0.013
+    
+  - from: "PS1"
+    to: "Z4"
+    length: 2500
+    diameter: 400
+    roughness: 0.013
+    
+  - from: "PS2"
+    to: "Z2"
+    length: 1800
+    diameter: 350
+    roughness: 0.013
+    
+  - from: "PS2"
+    to: "Z3"
+    length: 2200
+    diameter: 400
+    roughness: 0.013
+    
+  - from: "PS3"
+    to: "Z5"
+    length: 1500
+    diameter: 300
+    roughness: 0.013
+    
+  - from: "PS3"
+    to: "Z6"
+    length: 2000
+    diameter: 400
+    roughness: 0.013
+    
+  - from: "PS4"
+    to: "Z7"
+    length: 1600
+    diameter: 300
+    roughness: 0.013
+    
+  - from: "PS5"
+    to: "Z8"
+    length: 1400
+    diameter: 300
+    roughness: 0.013
+
+# 调度参数
+scheduling:
+  time_horizon: 24  # 调度时段数（小时）
+  time_step: 1  # 时间步长（小时）
+  
+  # MPC参数
+  mpc:
+    prediction_horizon: 6  # 预测时域
+    control_horizon: 3  # 控制时域
+    
+  # 需水模式（24小时）
+  demand_pattern:
+    - 0.6  # 0-1点
+    - 0.5
+    - 0.5
+    - 0.5
+    - 0.6
+    - 0.8  # 5-6点
+    - 1.2
+    - 1.5
+    - 1.6
+    - 1.4
+    - 1.2  # 10-11点
+    - 1.3
+    - 1.4
+    - 1.3
+    - 1.2
+    - 1.1  # 15-16点
+    - 1.0
+    - 1.1
+    - 1.3
+    - 1.4
+    - 1.3  # 20-21点
+    - 1.1
+    - 0.9
+    - 0.7  # 23-24点
+
+# 物理常数
+constants:
+  gravity: 9.81  # m/s²
+  water_density: 1000  # kg/m³
+  viscosity: 0.001  # Pa·s

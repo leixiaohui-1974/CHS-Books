@@ -1,0 +1,62 @@
+# 水资源承载能力评价参数
+
+# 维度信息
+dimensions:
+  - name: "水资源量"
+    weight_ahp: 0.35
+  - name: "水环境"
+    weight_ahp: 0.25
+  - name: "经济发展"
+    weight_ahp: 0.20
+  - name: "社会发展"
+    weight_ahp: 0.12
+  - name: "管理能力"
+    weight_ahp: 0.08
+
+# AHP判断矩阵（维度层）
+dimension_judgment_matrix:
+  - [1.0, 2.0, 3.0, 4.0, 5.0]
+  - [0.5, 1.0, 2.0, 3.0, 4.0]
+  - [0.33, 0.5, 1.0, 2.0, 3.0]
+  - [0.25, 0.33, 0.5, 1.0, 2.0]
+  - [0.2, 0.25, 0.33, 0.5, 1.0]
+
+# 组合权重参数
+combination_weight_alpha: 0.6  # AHP权重占比
+
+# 承载状态分级标准
+carrying_capacity_grades:
+  excellent:
+    range: [0.8, 1.0]
+    label: "可载"
+    description: "水资源承载能力强"
+  good:
+    range: [0.6, 0.8]
+    label: "临界"
+    description: "基本平衡，需注意"
+  overload:
+    range: [0.4, 0.6]
+    label: "超载"
+    description: "已超载，需采取措施"
+  severe:
+    range: [0.0, 0.4]
+    label: "严重超载"
+    description: "水资源短缺严重"
+
+# 指标理想值（用于TOPSIS）
+ideal_values:
+  人均水资源量: 3000
+  水资源开发利用率: 40
+  地下水开采系数: 0.7
+  水功能区水质达标率: 95
+  污水处理率: 95
+  COD排放强度: 1.5
+  万元GDP用水量: 50
+  农田灌溉水有效利用系数: 0.65
+  工业用水重复利用率: 85
+  城镇供水保证率: 95
+  农村自来水普及率: 95
+  生态用水比例: 20
+  水资源管理制度完善度: 85
+  监测站网密度: 5.0
+  节水宣传教育覆盖率: 85
