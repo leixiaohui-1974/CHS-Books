@@ -23,6 +23,13 @@ from .vegetation import (
     create_submerged_plant,
     create_willow_shrub
 )
+from .thermal import (
+    ThermalStratificationModel,
+    DissolvedOxygenModel,
+    ReservoirStratificationAnalyzer,
+    create_summer_stratification,
+    create_winter_stratification
+)
 
 __all__ = [
     'River', 
@@ -42,5 +49,10 @@ __all__ = [
     'create_reed',
     'create_cattail',
     'create_submerged_plant',
-    'create_willow_shrub'
+    'create_willow_shrub',
+    'ThermalStratificationModel',
+    'DissolvedOxygenModel',
+    'ReservoirStratificationAnalyzer',
+    'create_summer_stratification',
+    'create_winter_stratification'
 ]
