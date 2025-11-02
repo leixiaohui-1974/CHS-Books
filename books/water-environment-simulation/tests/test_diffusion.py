@@ -66,7 +66,7 @@ class TestDiffusion1D:
     def test_implicit_unconditional_stability(self):
         """测试隐式格式无条件稳定性"""
         # 使用大Fourier数（显式格式会不稳定）
-        model = Diffusion1D(L=10.0, T=10.0, nx=20, nt=100, D=0.1)
+        model = Diffusion1D(L=10.0, T=10.0, nx=20, nt=5, D=0.1)
         assert model.Fo > 0.5  # 超过显式稳定条件
         
         model.set_initial_condition(lambda x: np.exp(-((x-5.0)/0.5)**2))

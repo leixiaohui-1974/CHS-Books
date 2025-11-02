@@ -53,7 +53,7 @@ class AdvectionDiffusion1D:
         self.t = np.linspace(0, T, nt)
         
         # 无量纲数
-        self.Pe = u * L / D  # Peclet数
+        self.Pe = u * L / D if D > 0 else float('inf')  # Peclet数
         self.Cr = u * self.dt / self.dx  # Courant数
         self.Fo = D * self.dt / self.dx**2  # Fourier数
         
