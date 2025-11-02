@@ -8,6 +8,12 @@ from .habitat import (
     create_carp_adult_model,
     create_carp_juvenile_model
 )
+from .indicators import (
+    IHACalculator,
+    HydraulicDiversityIndex,
+    HydrologicAlterationAssessment,
+    generate_iha_report
+)
 
 __all__ = [
     'River', 
@@ -16,5 +22,9 @@ __all__ = [
     'SuitabilityCurve',
     'HabitatSuitabilityModel',
     'create_carp_adult_model',
-    'create_carp_juvenile_model'
+    'create_carp_juvenile_model',
+    'IHACalculator',
+    'HydraulicDiversityIndex',
+    'HydrologicAlterationAssessment',
+    'generate_iha_report'
 ]
