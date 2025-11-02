@@ -39,6 +39,11 @@ from .fish_swimming import (
     create_silver_carp
 )
 from .fishway import VerticalSlotFishway, create_standard_fishway
+from .spawning_ground import (
+    FishEgg, SpawningGround,
+    create_chinese_carp_egg,
+    create_standard_spawning_ground
+)
 
 __all__ = [
     'River', 
@@ -71,5 +76,9 @@ __all__ = [
     'create_common_carp',
     'create_silver_carp',
     'VerticalSlotFishway',
-    'create_standard_fishway'
+    'create_standard_fishway',
+    'FishEgg',
+    'SpawningGround',
+    'create_chinese_carp_egg',
+    'create_standard_spawning_ground'
 ]
