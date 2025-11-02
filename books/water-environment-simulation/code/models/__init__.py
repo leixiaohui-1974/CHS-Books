@@ -12,6 +12,10 @@ from .self_purification import (SelfPurificationCapacity, WaterQualityIndex,
 from .multi_source import MultiSourceRiver1D, PointSource, calculate_superposition_factor
 from .nonpoint_source import (SCSCurveNumber, EventMeanConcentration, NonPointSourceRiver1D,
                               calculate_first_flush_factor, calculate_buildup_washoff)
+from .thermal_pollution import (ThermalPlume2D, calculate_surface_heat_exchange,
+                                 calculate_thermal_tolerance, calculate_cooling_efficiency)
+from .lateral_mixing import (LateralMixing2D, calculate_mixing_time,
+                              calculate_complete_mixing_distance, calculate_concentration_at_bank)
 
 __all__ = [
     'Diffusion1D',
@@ -38,4 +42,12 @@ __all__ = [
     'NonPointSourceRiver1D',
     'calculate_first_flush_factor',
     'calculate_buildup_washoff',
+    'ThermalPlume2D',
+    'calculate_surface_heat_exchange',
+    'calculate_thermal_tolerance',
+    'calculate_cooling_efficiency',
+    'LateralMixing2D',
+    'calculate_mixing_time',
+    'calculate_complete_mixing_distance',
+    'calculate_concentration_at_bank',
 ]
