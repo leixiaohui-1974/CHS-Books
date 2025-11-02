@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Planning-yellow.svg)]()
+[![Status](https://img.shields.io/badge/Status-基础篇完成-green.svg)]()
 
 ---
 
@@ -280,15 +280,17 @@ filterpy >= 1.4.5        # 卡尔曼滤波
 ## 🗓️ 开发进度
 
 - [x] 方案设计（2025-11-02完成）
-- [ ] 案例1-5开发（基础篇）
-- [ ] 案例6-10开发（参数率定篇）
+- [x] 案例1-5开发（基础篇）✅ **已完成**
+- [ ] 案例6-10开发（参数率定篇）⏳ 进行中
 - [ ] 案例11-15开发（耦合篇）
 - [ ] 案例16-18开发（应用篇）
 - [ ] 案例19-20开发（智能化篇）
 - [ ] 测试与文档完善
 - [ ] 正式发布v1.0
 
-**预计完成时间**：2027年中（约20个月开发周期）
+**当前版本**: v0.2.0-beta  
+**基础篇**: ✅ 100%完成（2025-11-02）  
+**预计v1.0完成时间**：2027年中（约20个月开发周期）
 
 ---
 
