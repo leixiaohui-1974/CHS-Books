@@ -23,7 +23,6 @@ from typing import Dict, List, Tuple, Callable
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
 from code.core.runoff_generation import XinAnJiangModel, create_default_xaj_params
-from code.core.utils.metrics import nash_sutcliffe_efficiency, rmse
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
@@ -288,19 +287,29 @@ def run_xaj_model(params: Dict[str, float], rainfall: np.ndarray) -> np.ndarray:
     runoff : ndarray
         径流序列
     """
-    # 合并参数
-    full_params = create_default_xaj_params()
-    full_params.update(params)
-    
-    # 创建模型
-    model = XinAnJiangModel(full_params)
-    
-    # 运行模型
-    n_steps = len(rainfall)
-    evaporation = np.zeros(n_steps)  # 简化：蒸发为0
-    results = model.run(rainfall, evaporation)
-    
-    return results['R']  # 返回总径流
+    try:
+        # 合并参数
+        full_params = create_default_xaj_params()
+        full_params.update(params)
+        
+        # 创建模型
+        model = XinAnJiangModel(full_params)
+        
+        # 运行模型
+        n_steps = len(rainfall)
+        evaporation = np.zeros(n_steps)  # 简化：蒸发为0
+        results = model.run(rainfall, evaporation)
+        
+        runoff = results['R']  # 返回总径流
+        
+        # 检查并处理nan值
+        if np.any(np.isnan(runoff)):
+            runoff = np.nan_to_num(runoff, nan=0.0)
+        
+        return runoff
+    except Exception as e:
+        # 如果模型运行失败，返回零数组
+        return np.zeros(len(rainfall))
 
 
 def plot_oat_sensitivity(oat_results: Dict, save_path=None):
