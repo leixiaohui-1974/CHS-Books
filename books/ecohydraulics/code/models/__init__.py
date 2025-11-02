@@ -95,6 +95,9 @@ from .integrated_assessment import (
 from .lake_wetland import (
     LakeHydrodynamics,
     ConstructedWetland,
+    RiparianBuffer,
+    LakeStratification,
+    WetlandRestoration,
     simulate_lake_wind_event,
     design_wetland_system
 )
@@ -167,6 +170,9 @@ __all__ = [
     'IntegratedManagement',
     'LakeHydrodynamics',
     'ConstructedWetland',
+    'RiparianBuffer',
+    'LakeStratification',
+    'WetlandRestoration',
     'simulate_lake_wind_event',
     'design_wetland_system'
 ]

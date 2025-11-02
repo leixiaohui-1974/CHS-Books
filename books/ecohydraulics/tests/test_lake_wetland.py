@@ -4,6 +4,7 @@ import pytest
 import numpy as np
 from code.models.lake_wetland import (
     LakeHydrodynamics, ConstructedWetland,
+    RiparianBuffer, LakeStratification, WetlandRestoration,
     simulate_lake_wind_event, design_wetland_system
 )
 
@@ -159,6 +160,125 @@ class TestConstructedWetland:
         assert 'all_scenarios' in result
         assert 'optimal_scenario' in result
         assert len(result['all_scenarios']) > 0
+
+
+class TestRiparianBuffer:
+    """测试湖滨带缓冲模型"""
+    
+    def test_initialization(self):
+        """测试初始化"""
+        buffer = RiparianBuffer(20.0, 3.0, 0.7)
+        assert buffer.W == 20.0
+        assert abs(buffer.S - 0.03) < 1e-6
+        assert buffer.V == 0.7
+    
+    def test_runoff_velocity(self):
+        """测试径流流速"""
+        buffer = RiparianBuffer(20.0, 3.0, 0.7)
+        v = buffer.runoff_velocity(50.0)
+        assert v > 0
+        assert v < 1.0
+    
+    def test_pollutant_removal(self):
+        """测试污染物削减"""
+        buffer = RiparianBuffer(20.0, 3.0, 0.7)
+        result = buffer.pollutant_removal(5.0, 'N')
+        
+        assert result['removal_rate'] > 0
+        assert result['outlet_concentration'] < result['inlet_concentration']
+    
+    def test_optimal_width_design(self):
+        """测试最优宽度设计"""
+        buffer = RiparianBuffer(20.0, 3.0, 0.7)
+        optimal_w = buffer.optimal_width_design(70.0, 'N')
+        assert optimal_w > 0
+        assert optimal_w <= 50.0
+
+
+class TestLakeStratification:
+    """测试湖泊分层模型"""
+    
+    def test_initialization(self):
+        """测试初始化"""
+        lake = LakeStratification(50.0, 200.0)
+        assert lake.h == 50.0
+        assert lake.A == 200e6
+    
+    def test_thermocline_depth(self):
+        """测试温跃层深度"""
+        lake = LakeStratification(50.0, 200.0)
+        
+        depth_summer = lake.thermocline_depth('summer')
+        depth_winter = lake.thermocline_depth('winter')
+        
+        assert depth_summer > 0
+        assert depth_winter == 0  # 冬季完全混合
+    
+    def test_brunt_vaisala_frequency(self):
+        """测试布伦特-韦萨拉频率"""
+        lake = LakeStratification(50.0, 200.0)
+        N = lake.brunt_vaisala_frequency(0.5)
+        assert N > 0
+    
+    def test_internal_wave_speed(self):
+        """测试内波波速"""
+        lake = LakeStratification(50.0, 200.0)
+        c = lake.internal_wave_speed(15.0, 35.0, 2.0)
+        assert c > 0
+        assert c < 2.0  # 合理范围
+    
+    def test_hypoxia_risk(self):
+        """测试缺氧风险评估"""
+        lake = LakeStratification(50.0, 200.0)
+        result = lake.hypoxia_risk_assessment(8.0, 90)
+        
+        assert 'bottom_do' in result
+        assert 'risk_level' in result
+        assert result['risk_level'] in ['正常', '轻度缺氧', '严重缺氧']
+
+
+class TestWetlandRestoration:
+    """测试湿地恢复模型"""
+    
+    def test_initialization(self):
+        """测试初始化"""
+        wetland = WetlandRestoration(500.0, 0.8)
+        assert wetland.A == 500e4
+        assert wetland.h_target == 0.8
+    
+    def test_ecological_water_requirement(self):
+        """测试生态需水量"""
+        wetland = WetlandRestoration(500.0, 0.8)
+        Q = wetland.ecological_water_requirement(5.0, 2.0)
+        assert Q > 0
+    
+    def test_water_level_recovery_time(self):
+        """测试水位恢复时间"""
+        wetland = WetlandRestoration(500.0, 0.8)
+        # 使用合理的蒸散发值（较小）
+        days = wetland.water_level_recovery_time(0.2, 50000.0, 3.0)
+        assert days > 0
+        assert days < 1000  # 合理范围
+    
+    def test_vegetation_suitability(self):
+        """测试植被适宜性"""
+        wetland = WetlandRestoration(500.0, 0.8)
+        result = wetland.vegetation_suitability(0.6, 200)
+        
+        assert 'suitable_vegetation' in result
+        assert 'suitability_score' in result
+        assert 0 <= result['suitability_score'] <= 1
+    
+    def test_optimal_supplement_schedule(self):
+        """测试最优补水方案"""
+        wetland = WetlandRestoration(500.0, 0.8)
+        monthly_et = np.array([30, 40, 80, 120, 150, 180,
+                              200, 180, 120, 80, 50, 35])
+        
+        schedule = wetland.optimal_supplement_schedule(monthly_et, 800000)
+        
+        assert 'satisfaction_rate' in schedule
+        assert 0 <= schedule['satisfaction_rate'] <= 100
 
 
 class TestIntegrationFunctions:

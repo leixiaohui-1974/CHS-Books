@@ -462,6 +462,394 @@ def simulate_lake_wind_event(lake: LakeHydrodynamics,
     return results
 
 
+class RiparianBuffer:
+    """湖滨带生态缓冲模型（案例31）
+    
+    分析湖滨缓冲带对污染物的削减作用
+    """
+    
+    def __init__(self,
+                 buffer_width: float,
+                 slope: float,
+                 vegetation_density: float = 0.7):
+        """
+        Parameters:
+        -----------
+        buffer_width : float
+            缓冲带宽度 (m)
+        slope : float
+            地表坡度 (%)
+        vegetation_density : float
+            植被覆盖度 (0-1)
+        """
+        self.W = buffer_width
+        self.S = slope / 100  # 转换为小数
+        self.V = vegetation_density
+    
+    def runoff_velocity(self, rainfall_intensity: float) -> float:
+        """径流流速 (m/s)
+        
+        Parameters:
+        -----------
+        rainfall_intensity : float
+            降雨强度 (mm/h)
+        """
+        # Manning公式简化
+        n = 0.05 + 0.15 * self.V  # 植被粗糙度
+        R = 0.01  # 水力半径（假设薄层流）
+        v = (1 / n) * (R ** (2/3)) * (self.S ** 0.5)
+        return v
+    
+    def residence_time(self, rainfall_intensity: float) -> float:
+        """停留时间 (分钟)"""
+        v = self.runoff_velocity(rainfall_intensity)
+        t = self.W / v / 60  # 转换为分钟
+        return t
+    
+    def sediment_trapping(self) -> float:
+        """泥沙拦截率 (%)
+        
+        基于经验公式
+        """
+        # 考虑宽度和植被密度
+        eta = 100 * (1 - np.exp(-0.05 * self.W * self.V))
+        return min(eta, 95)  # 最大95%
+    
+    def pollutant_removal(self,
+                         inlet_concentration: float,
+                         pollutant_type: str) -> Dict:
+        """污染物削减
+        
+        Parameters:
+        -----------
+        inlet_concentration : float
+            入流浓度 (mg/L)
+        pollutant_type : str
+            污染物类型: 'N', 'P', 'COD', 'TSS'
+        """
+        # 不同污染物的削减系数（基于文献综述）
+        removal_coefficients = {
+            'N': 0.4 + 0.3 * self.V,
+            'P': 0.5 + 0.4 * self.V,
+            'COD': 0.3 + 0.3 * self.V,
+            'TSS': 0.6 + 0.3 * self.V
+        }
+        
+        eta = removal_coefficients.get(pollutant_type, 0.3)
+        eta = min(eta, 0.9)  # 最大90%
+        
+        outlet_conc = inlet_concentration * (1 - eta)
+        removal_load = (inlet_concentration - outlet_conc) * 1e-3  # kg/m³
+        
+        return {
+            'inlet_concentration': inlet_concentration,
+            'outlet_concentration': outlet_conc,
+            'removal_rate': eta * 100,
+            'removal_load': removal_load
+        }
+    
+    def optimal_width_design(self,
+                            target_removal: float,
+                            pollutant: str) -> float:
+        """最优缓冲带宽度
+        
+        Parameters:
+        -----------
+        target_removal : float
+            目标削减率 (%)
+        pollutant : str
+            污染物类型
+        """
+        # 迭代求解
+        widths = np.linspace(5, 50, 100)
+        
+        for w in widths:
+            self.W = w
+            result = self.pollutant_removal(100, pollutant)
+            if result['removal_rate'] >= target_removal:
+                return w
+        
+        return 50.0  # 如果未达到，返回最大值
+
+
+class LakeStratification:
+    """湖泊分层与内波模型（案例32）"""
+    
+    def __init__(self,
+                 lake_depth: float,
+                 surface_area: float):
+        """
+        Parameters:
+        -----------
+        lake_depth : float
+            最大水深 (m)
+        surface_area : float
+            湖泊面积 (km²)
+        """
+        self.h = lake_depth
+        self.A = surface_area * 1e6  # m²
+        self.g = 9.81
+    
+    def thermocline_depth(self, mixing_period: str = 'summer') -> float:
+        """温跃层深度估算 (m)
+        
+        Parameters:
+        -----------
+        mixing_period : str
+            'summer' (夏季分层), 'autumn' (秋季), 'winter' (冬季), 'spring' (春季)
+        """
+        if mixing_period == 'summer':
+            z_t = self.h * 0.3
+        elif mixing_period == 'autumn':
+            z_t = self.h * 0.5
+        elif mixing_period == 'spring':
+            z_t = self.h * 0.4
+        else:  # winter
+            z_t = 0  # 完全混合
+        
+        return z_t
+    
+    def brunt_vaisala_frequency(self,
+                                density_gradient: float) -> float:
+        """布伦特-韦萨拉频率 (1/s)
+        
+        表征分层强度
+        
+        Parameters:
+        -----------
+        density_gradient : float
+            密度梯度 (kg/m³/m)
+        """
+        rho_0 = 1000.0
+        N = np.sqrt((self.g / rho_0) * density_gradient)
+        return N
+    
+    def internal_wave_speed(self,
+                           upper_layer_thickness: float,
+                           lower_layer_thickness: float,
+                           density_difference: float) -> float:
+        """内波波速 (m/s)
+        
+        两层模型
+        """
+        h1 = upper_layer_thickness
+        h2 = lower_layer_thickness
+        delta_rho = density_difference
+        rho_0 = 1000.0
+        
+        c = np.sqrt((self.g * delta_rho / rho_0) * (h1 * h2) / (h1 + h2))
+        return c
+    
+    def internal_seiche_period(self,
+                              lake_length: float,
+                              wave_speed: float) -> float:
+        """内涌周期 (小时)
+        
+        Parameters:
+        -----------
+        lake_length : float
+            湖长 (km)
+        wave_speed : float
+            内波波速 (m/s)
+        """
+        L = lake_length * 1000  # 转换为m
+        T = 2 * L / wave_speed / 3600  # 转换为小时
+        return T
+    
+    def mixing_energy_requirement(self,
+                                  temperature_difference: float) -> float:
+        """破坏分层所需能量 (J/m²)
+        
+        Parameters:
+        -----------
+        temperature_difference : float
+            表底温差 (°C)
+        """
+        # 简化计算
+        rho = 1000.0
+        cp = 4200.0  # J/(kg·K)
+        delta_T = temperature_difference
+        
+        E = 0.5 * rho * cp * delta_T * self.h
+        return E
+    
+    def hypoxia_risk_assessment(self,
+                                surface_do: float,
+                                stratification_duration: int) -> Dict:
+        """底层缺氧风险评估
+        
+        Parameters:
+        -----------
+        surface_do : float
+            表层溶解氧 (mg/L)
+        stratification_duration : int
+            分层持续时间 (天)
+        """
+        # 氧消耗速率（经验值）
+        consumption_rate = 0.1  # mg/L/day
+        
+        # 底层DO估算
+        bottom_do = surface_do - consumption_rate * stratification_duration
+        bottom_do = max(bottom_do, 0)
+        
+        if bottom_do < 2:
+            risk_level = "严重缺氧"
+        elif bottom_do < 4:
+            risk_level = "轻度缺氧"
+        else:
+            risk_level = "正常"
+        
+        return {
+            'surface_do': surface_do,
+            'bottom_do': bottom_do,
+            'stratification_days': stratification_duration,
+            'risk_level': risk_level
+        }
+
+
+class WetlandRestoration:
+    """退化湿地生态补水模型（案例33）"""
+    
+    def __init__(self,
+                 wetland_area: float,
+                 target_water_depth: float):
+        """
+        Parameters:
+        -----------
+        wetland_area : float
+            湿地面积 (ha)
+        target_water_depth : float
+            目标水深 (m)
+        """
+        self.A = wetland_area * 1e4  # 转换为m²
+        self.h_target = target_water_depth
+    
+    def ecological_water_requirement(self,
+                                    evapotranspiration: float,
+                                    seepage: float) -> float:
+        """生态需水量 (m³/d)
+        
+        Parameters:
+        -----------
+        evapotranspiration : float
+            蒸散发 (mm/d)
+        seepage : float
+            渗漏 (mm/d)
+        """
+        # 水量平衡
+        ET = evapotranspiration / 1000  # 转换为m
+        S = seepage / 1000
+        
+        Q_eco = self.A * (ET + S)
+        return Q_eco
+    
+    def water_level_recovery_time(self,
+                                  current_depth: float,
+                                  inflow_rate: float,
+                                  evapotranspiration: float) -> float:
+        """水位恢复时间 (天)
+        
+        Parameters:
+        -----------
+        current_depth : float
+            当前水深 (m)
+        inflow_rate : float
+            补水流量 (m³/d)
+        evapotranspiration : float
+            蒸散发 (mm/d)
+        """
+        delta_h = self.h_target - current_depth
+        if delta_h <= 0:
+            return 0
+        
+        volume_deficit = self.A * delta_h
+        ET = evapotranspiration / 1000 * self.A
+        
+        net_inflow = inflow_rate - ET
+        if net_inflow <= 0:
+            return np.inf
+        
+        days = volume_deficit / net_inflow
+        return days
+    
+    def vegetation_suitability(self,
+                              water_depth: float,
+                              inundation_days: int) -> Dict:
+        """植被适宜性评价
+        
+        Parameters:
+        -----------
+        water_depth : float
+            水深 (m)
+        inundation_days : int
+            淹没天数
+        """
+        # 不同植被类型的适宜条件
+        vegetation_types = {
+            '挺水植物': {'depth': (0, 0.8), 'days': (180, 365)},
+            '浮叶植物': {'depth': (0.5, 2.0), 'days': (120, 365)},
+            '沉水植物': {'depth': (0.8, 3.0), 'days': (180, 365)},
+            '湿生植物': {'depth': (0, 0.3), 'days': (60, 180)}
+        }
+        
+        suitable_types = []
+        for veg_type, conditions in vegetation_types.items():
+            depth_ok = conditions['depth'][0] <= water_depth <= conditions['depth'][1]
+            days_ok = conditions['days'][0] <= inundation_days <= conditions['days'][1]
+            
+            if depth_ok and days_ok:
+                suitable_types.append(veg_type)
+        
+        return {
+            'water_depth': water_depth,
+            'inundation_days': inundation_days,
+            'suitable_vegetation': suitable_types,
+            'suitability_score': len(suitable_types) / 4
+        }
+    
+    def optimal_supplement_schedule(self,
+                                   monthly_et: np.ndarray,
+                                   available_water: float) -> Dict:
+        """最优补水方案
+        
+        Parameters:
+        -----------
+        monthly_et : np.ndarray
+            月蒸散发量 (mm)
+        available_water : float
+            可用水量 (m³)
+        """
+        months = ['1月', '2月', '3月', '4月', '5月', '6月',
+                 '7月', '8月', '9月', '10月', '11月', '12月']
+        
+        # 月需水量
+        monthly_demand = (monthly_et / 1000) * self.A
+        total_demand = np.sum(monthly_demand)
+        
+        # 分配系数（优先保证关键月份）
+        allocation_factor = np.ones(12)
+        allocation_factor[[3, 4, 5]] = 1.5  # 春季关键期
+        allocation_factor = allocation_factor / np.sum(allocation_factor) * 12
+        
+        # 补水方案
+        if available_water >= total_demand:
+            monthly_supplement = monthly_demand
+            deficit = 0
+        else:
+            monthly_supplement = (available_water / np.sum(allocation_factor)) * allocation_factor
+            deficit = total_demand - available_water
+        
+        return {
+            'months': months,
+            'monthly_demand': monthly_demand,
+            'monthly_supplement': monthly_supplement,
+            'total_demand': total_demand,
+            'available_water': available_water,
+            'water_deficit': deficit,
+            'satisfaction_rate': min(available_water / total_demand * 100, 100)
+        }
+
+
 def design_wetland_system(target_removal_rate: float,
                           inlet_flow: float,
                           inlet_concentration: float,
