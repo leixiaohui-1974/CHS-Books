@@ -1,0 +1,59 @@
+# 城市需水预测参数配置
+
+# 基准年份
+base_year: 2020
+
+# 预测年份
+forecast_years: [2025, 2030, 2035, 2040, 2045, 2050]
+
+# 定额法参数
+quota_method:
+  # 人均综合生活用水定额 (L/人·日)
+  domestic_quota: 260
+  # 万元工业增加值用水量 (m³/万元)
+  industrial_quota: 42
+  # 万元服务业增加值用水量 (m³/万元)
+  service_quota: 18
+  # 单位绿地面积用水定额 (m³/m²·年)
+  ecology_quota: 1.2
+
+# 情景参数
+scenarios:
+  high_growth:
+    name: "高增长情景"
+    description: "人口增长快、经济高速发展"
+    population_growth_rate: 0.015  # 年均增长率 1.5%
+    gdp_growth_rate: 0.065         # 年均增长率 6.5%
+    water_saving_factor: 0.95      # 节水系数
+  
+  medium_growth:
+    name: "中等增长情景"
+    description: "基准情景，稳健发展"
+    population_growth_rate: 0.010  # 年均增长率 1.0%
+    gdp_growth_rate: 0.055         # 年均增长率 5.5%
+    water_saving_factor: 0.90      # 节水系数
+  
+  low_growth:
+    name: "低增长情景"
+    description: "节水型社会建设成效显著"
+    population_growth_rate: 0.005  # 年均增长率 0.5%
+    gdp_growth_rate: 0.045         # 年均增长率 4.5%
+    water_saving_factor: 0.85      # 节水系数
+
+# 组合预测权重计算方法
+ensemble_method: "inverse_error"  # inverse_error, equal, custom
+
+# 自定义权重（如果ensemble_method为custom）
+custom_weights:
+  quota: 0.25
+  trend: 0.20
+  grey: 0.25
+  nn: 0.30
+
+# 神经网络参数
+neural_network:
+  hidden_layers: [10, 5]    # 隐藏层神经元数
+  learning_rate: 0.001
+  epochs: 1000
+  train_test_split: 0.8
+  random_state: 42
