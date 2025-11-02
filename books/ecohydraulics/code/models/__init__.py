@@ -108,6 +108,13 @@ from .urban_ecohydraulics import (
     UrbanFloodControl,
     design_sponge_city_system
 )
+from .estuary_coastal import (
+    SaltWedge,
+    MangroveHydrodynamics,
+    EcologicalRevetment,
+    EstuarineWetlandCarbon,
+    simulate_storm_surge_protection
+)
 
 __all__ = [
     'River', 
@@ -186,5 +193,10 @@ __all__ = [
     'UrbanRiverRestoration',
     'RainGarden',
     'UrbanFloodControl',
-    'design_sponge_city_system'
+    'design_sponge_city_system',
+    'SaltWedge',
+    'MangroveHydrodynamics',
+    'EcologicalRevetment',
+    'EstuarineWetlandCarbon',
+    'simulate_storm_surge_protection'
 ]
