@@ -101,6 +101,13 @@ from .lake_wetland import (
     simulate_lake_wind_event,
     design_wetland_system
 )
+from .urban_ecohydraulics import (
+    SpongeCityDesign,
+    UrbanRiverRestoration,
+    RainGarden,
+    UrbanFloodControl,
+    design_sponge_city_system
+)
 
 __all__ = [
     'River', 
@@ -174,5 +181,10 @@ __all__ = [
     'LakeStratification',
     'WetlandRestoration',
     'simulate_lake_wind_event',
-    'design_wetland_system'
+    'design_wetland_system',
+    'SpongeCityDesign',
+    'UrbanRiverRestoration',
+    'RainGarden',
+    'UrbanFloodControl',
+    'design_sponge_city_system'
 ]
