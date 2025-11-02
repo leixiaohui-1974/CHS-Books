@@ -53,6 +53,12 @@ from .fish_population import (
     FishPopulationModel,
     create_connectivity_scenario
 )
+from .river_morphology import (
+    PoolRiffleSequence,
+    MeanderChannel,
+    BedStability,
+    design_naturalized_channel
+)
 
 __all__ = [
     'River', 
@@ -94,5 +100,9 @@ __all__ = [
     'create_grass_carp_feeding_model',
     'RiverConnectivityIndex',
     'FishPopulationModel',
-    'create_connectivity_scenario'
+    'create_connectivity_scenario',
+    'PoolRiffleSequence',
+    'MeanderChannel',
+    'BedStability',
+    'design_naturalized_channel'
 ]
