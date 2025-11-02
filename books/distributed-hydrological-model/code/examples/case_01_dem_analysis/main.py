@@ -182,7 +182,7 @@ def d8_flow_direction(dem):
 
 def flow_accumulation(flow_dir):
     """
-    汇流累积计算
+    汇流累积计算（改进版，从高到低递归）
     
     参数:
     ----
@@ -195,42 +195,47 @@ def flow_accumulation(flow_dir):
         汇流累积值(网格数)
     """
     ny, nx = flow_dir.shape
-    flow_acc = np.ones((ny, nx), dtype=np.float64)
+    flow_acc = np.ones((ny, nx), dtype=np.int32)
+    visited = np.zeros((ny, nx), dtype=bool)
     
-    # 方向反查表
-    reverse_dir = {
-        1: (0, -1),   # 从西来
-        2: (-1, -1),  # 从西北来
-        4: (-1, 0),   # 从北来
-        8: (-1, 1),   # 从东北来
-        16: (0, 1),   # 从东来
-        32: (1, 1),   # 从东南来
-        64: (1, 0),   # 从南来
-        128: (1, -1)  # 从西南来
+    # 方向偏移量
+    dir_offset = {
+        1: (0, 1),    # 东
+        2: (1, 1),    # 东南
+        4: (1, 0),    # 南
+        8: (1, -1),   # 西南
+        16: (0, -1),  # 西
+        32: (-1, -1), # 西北
+        64: (-1, 0),  # 北
+        128: (-1, 1)  # 东北
     }
     
-    # 迭代计算（简化版，可能需要多次迭代）
-    for _ in range(max(ny, nx) * 2):
-        changed = False
-        for i in range(ny):
-            for j in range(nx):
-                if flow_dir[i, j] == 0:
-                    continue
-                
-                # 查找所有流向当前网格的上游网格
-                for code, (di, dj) in reverse_dir.items():
-                    ni, nj = i + di, j + dj
-                    if 0 <= ni < ny and 0 <= nj < nx:
-                        if flow_dir[ni, nj] == code:
-                            # 累加上游贡献
-                            old_val = flow_acc[i, j]
-                            flow_acc[i, j] = max(flow_acc[i, j], 
-                                                 1 + flow_acc[ni, nj])
-                            if abs(flow_acc[i, j] - old_val) > 0.1:
-                                changed = True
+    def accumulate(i, j):
+        """递归计算汇流累积"""
+        if visited[i, j]:
+            return flow_acc[i, j]
         
-        if not changed:
-            break
+        visited[i, j] = True
+        
+        if flow_dir[i, j] == 0:
+            return flow_acc[i, j]
+        
+        # 累加所有流向当前网格的上游贡献
+        total = 1
+        for code, (di, dj) in dir_offset.items():
+            ni, nj = i - di, j - dj  # 反向查找上游
+            if 0 <= ni < ny and 0 <= nj < nx:
+                if flow_dir[ni, nj] == code:  # 上游网格流向当前网格
+                    total += accumulate(ni, nj)
+        
+        flow_acc[i, j] = total
+        return total
+    
+    # 从所有网格开始递归计算
+    for i in range(ny):
+        for j in range(nx):
+            if not visited[i, j]:
+                accumulate(i, j)
     
     return flow_acc
 
@@ -569,7 +574,7 @@ def main():
     
     # 5. 提取河网
     print("\n5. 提取河网...")
-    threshold = 50  # 阈值：50个网格
+    threshold = 20  # 阈值：20个网格
     stream = extract_stream_network(flow_acc, threshold=threshold)
     n_stream = np.sum(stream)
     stream_density = n_stream / (nx * ny) * 100
