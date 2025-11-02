@@ -7,6 +7,8 @@ from .advection_diffusion import AdvectionDiffusion1D
 from .reaction import ReactionKinetics, ReactionTransport1D
 from .dissolved_oxygen import StreeterPhelps, DOBODCoupled, calculate_reaeration_coefficient
 from .nutrients import NitrogenCycle, PhosphorusCycle, EutrophicationIndex, calculate_oxygen_consumption
+from .self_purification import (SelfPurificationCapacity, WaterQualityIndex, 
+                                calculate_assimilative_capacity, functional_zone_classification)
 
 __all__ = [
     'Diffusion1D',
@@ -21,4 +23,8 @@ __all__ = [
     'PhosphorusCycle',
     'EutrophicationIndex',
     'calculate_oxygen_consumption',
+    'SelfPurificationCapacity',
+    'WaterQualityIndex',
+    'calculate_assimilative_capacity',
+    'functional_zone_classification',
 ]
