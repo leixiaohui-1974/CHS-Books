@@ -59,6 +59,12 @@ from .river_morphology import (
     BedStability,
     design_naturalized_channel
 )
+from .ecological_revetment import (
+    EcologicalRevetment,
+    VegetatedRevetment,
+    RevetmentStability,
+    design_ecological_revetment
+)
 
 __all__ = [
     'River', 
@@ -104,5 +110,9 @@ __all__ = [
     'PoolRiffleSequence',
     'MeanderChannel',
     'BedStability',
-    'design_naturalized_channel'
+    'design_naturalized_channel',
+    'EcologicalRevetment',
+    'VegetatedRevetment',
+    'RevetmentStability',
+    'design_ecological_revetment'
 ]
