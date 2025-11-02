@@ -13,12 +13,19 @@
 作者: CHS-Books项目组
 """
 
-from .unit_hydrograph import UnitHydrograph, create_snyder_uh, create_scs_uh
-from .muskingum import MuskingumChannel
+from .unit_hydrograph import (
+    UnitHydrograph,
+    create_snyder_uh,
+    create_scs_uh,
+    create_triangular_uh
+)
+from .muskingum import MuskingumChannel, estimate_muskingum_parameters
 
 __all__ = [
     'UnitHydrograph',
     'create_snyder_uh',
     'create_scs_uh',
+    'create_triangular_uh',
     'MuskingumChannel',
+    'estimate_muskingum_parameters',
 ]

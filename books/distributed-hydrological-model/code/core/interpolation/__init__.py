@@ -7,7 +7,7 @@
 
 from .thiessen import thiessen_polygon, thiessen_weights
 from .idw import inverse_distance_weighting
-from .kriging import ordinary_kriging, variogram
+from .kriging import ordinary_kriging, variogram, experimental_variogram
 
 __all__ = [
     'thiessen_polygon',
@@ -15,4 +15,5 @@ __all__ = [
     'inverse_distance_weighting',
     'ordinary_kriging',
     'variogram',
+    'experimental_variogram',
 ]

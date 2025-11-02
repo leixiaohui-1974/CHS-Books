@@ -396,7 +396,7 @@ class XinAnJiangModel:
         self.state['QG'] = QG_new
         self.state['QI'] = QI_new
         
-        return RS, RI_new - QI, RG_new - QG  # 返回增量
+        return RS, QI_new - QI, QG_new - QG  # 返回增量
     
     def reset(self):
         """重置模型状态"""
