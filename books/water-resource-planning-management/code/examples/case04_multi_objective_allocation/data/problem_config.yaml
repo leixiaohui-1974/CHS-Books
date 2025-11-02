@@ -1,0 +1,77 @@
+# 区域水资源多目标优化配置 - 问题配置
+
+# 水源信息
+sources:
+  - name: "地表水"
+    capacity: 150  # 万m³/d
+    development_cost: 1.2  # 元/m³
+  - name: "地下水"
+    capacity: 80
+    development_cost: 1.8
+  - name: "再生水"
+    capacity: 50
+    development_cost: 2.5
+
+# 用水户信息
+users:
+  - name: "城市生活"
+    demand: 100  # 万m³/d
+    benefit: 8.0  # 元/m³
+    guarantee_rate: 0.95
+  - name: "工业"
+    demand: 80
+    benefit: 12.0
+    guarantee_rate: 0.90
+  - name: "农业灌溉"
+    demand: 120
+    benefit: 5.0
+    guarantee_rate: 0.75
+  - name: "生态环境"
+    demand: 30
+    benefit: 3.0
+    guarantee_rate: 0.80
+
+# 输水成本矩阵 (元/m³)
+# 行：水源，列：用户
+transport_costs:
+  - [0.5, 0.6, 0.4, 0.3]  # 地表水
+  - [0.8, 0.7, 0.9, 1.0]  # 地下水
+  - [0.6, 0.5, 1.2, 0.4]  # 再生水
+
+# 优化参数
+optimization:
+  # 线性规划
+  lp:
+    weights:  # 加权法权重组合
+      - [1.0, 0.0]  # 纯效益优先
+      - [0.7, 0.3]  # 效益为主
+      - [0.5, 0.5]  # 折中
+      - [0.3, 0.7]  # 保障为主
+      - [0.0, 1.0]  # 纯保障优先
+  
+  # 遗传算法
+  ga:
+    pop_size: 50
+    n_generations: 100
+    crossover_rate: 0.8
+    mutation_rate: 0.1
+  
+  # 粒子群算法
+  pso:
+    n_particles: 30
+    n_iterations: 100
+    w: 0.7
+    c1: 1.5
+    c2: 1.5
+  
+  # NSGA-II
+  nsga2:
+    pop_size: 50
+    n_generations: 100
+    crossover_rate: 0.9
+    mutation_rate: 0.1
+
+# 约束惩罚系数
+penalty:
+  capacity_violation: 1000  # 供水能力违反
+  demand_violation: 500     # 需求保障违反
