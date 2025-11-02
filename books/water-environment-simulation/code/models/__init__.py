@@ -35,6 +35,14 @@ from .groundwater_transport import (GroundwaterColumn1D, calculate_retardation_f
 from .aquifer_2d import (Aquifer2D, assess_well_risk)
 from .multilayer_aquifer import (MultilayerAquifer, assess_aquitard_protection)
 from .pump_and_treat import (PumpAndTreat, optimize_well_location)
+from .watershed_model import (WatershedModel, assess_land_use_impact)
+from .river_network import (RiverNetworkModel, optimize_gate_schedule)
+from .water_transfer import (WaterTransferModel, assess_mixing_quality)
+from .river_ecosystem import (RiverEcosystemModel, calculate_biodiversity_index)
+from .lake_regime_shift import (LakeRegimeShiftModel, find_critical_load)
+from .wetland_model import (WetlandModel, assess_seasonal_variation)
+from .urban_blackwater import (UrbanBlackwaterModel, optimize_treatment_plan)
+from .watershed_platform import (WatershedPlatform, perform_scenario_analysis)
 
 __all__ = [
     'Diffusion1D',
@@ -106,4 +114,20 @@ __all__ = [
     'assess_aquitard_protection',
     'PumpAndTreat',
     'optimize_well_location',
+    'WatershedModel',
+    'assess_land_use_impact',
+    'RiverNetworkModel',
+    'optimize_gate_schedule',
+    'WaterTransferModel',
+    'assess_mixing_quality',
+    'RiverEcosystemModel',
+    'calculate_biodiversity_index',
+    'LakeRegimeShiftModel',
+    'find_critical_load',
+    'WetlandModel',
+    'assess_seasonal_variation',
+    'UrbanBlackwaterModel',
+    'optimize_treatment_plan',
+    'WatershedPlatform',
+    'perform_scenario_analysis',
 ]
