@@ -1,0 +1,105 @@
+# 梯级水库参数配置
+
+# 水库基本参数
+reservoirs:
+  - id: 1
+    name: "上游水库"
+    normal_level: 850.0  # 正常蓄水位 (m)
+    dead_level: 820.0    # 死水位 (m)
+    max_capacity: 15.0   # 总库容 (亿m³)
+    installed_capacity: 600  # 装机容量 (MW)
+    efficiency: 0.88     # 水轮机效率
+    initial_level: 845.0  # 初始水位 (m)
+    
+  - id: 2
+    name: "中游水库"
+    normal_level: 750.0
+    dead_level: 720.0
+    max_capacity: 12.0
+    installed_capacity: 500
+    efficiency: 0.86
+    initial_level: 745.0
+    
+  - id: 3
+    name: "下游水库"
+    normal_level: 650.0
+    dead_level: 620.0
+    max_capacity: 10.0
+    installed_capacity: 400
+    efficiency: 0.85
+    initial_level: 645.0
+
+# 梯级关系
+cascade:
+  - upstream: 1
+    downstream: 2
+    distance: 50  # 距离 (km)
+    travel_time: 2  # 传播时间 (h)
+  
+  - upstream: 2
+    downstream: 3
+    distance: 40
+    travel_time: 2
+
+# 调度参数
+scheduling:
+  n_periods: 12  # 调度时段数（汛期4个月，逐旬）
+  period_length: 10  # 时段长度（天）
+  
+  # 动态规划离散化
+  dp:
+    n_level_states: 10  # 水位状态数
+    n_discharge_decisions: 8  # 出库流量决策数
+  
+  # 逐次逼近法
+  poa:
+    max_iterations: 20
+    convergence_tolerance: 0.001
+  
+  # 遗传算法
+  ga:
+    pop_size: 50
+    n_generations: 100
+    crossover_rate: 0.8
+    mutation_rate: 0.1
+
+# 约束参数
+constraints:
+  # 出库流量约束 (m³/s)
+  min_discharge: 50
+  max_discharge: 3000
+  
+  # 下泄流量约束（防洪）
+  max_downstream_flow: 8000  # m³/s
+  
+  # 水位变幅约束
+  max_level_change: 5.0  # m/时段
+
+# 库容曲线参数 (V = a + b*Z + c*Z^2)
+# V: 库容(亿m³), Z: 水位(m)
+level_storage:
+  reservoir_1:
+    a: -18000
+    b: 44.5
+    c: -0.026
+  reservoir_2:
+    a: -12000
+    b: 33.0
+    c: -0.022
+  reservoir_3:
+    a: -8000
+    b: 25.5
+    c: -0.020
+
+# 尾水位曲线参数 (Z_tail = a + b*Q)
+# Q: 流量(m³/s), Z_tail: 尾水位(m)
+tailwater:
+  reservoir_1:
+    a: 740.0
+    b: 0.0015
+  reservoir_2:
+    a: 640.0
+    b: 0.0012
+  reservoir_3:
+    a: 540.0
+    b: 0.0010
