@@ -92,6 +92,12 @@ from .integrated_assessment import (
     RiverHealthAssessment,
     IntegratedManagement
 )
+from .lake_wetland import (
+    LakeHydrodynamics,
+    ConstructedWetland,
+    simulate_lake_wind_event,
+    design_wetland_system
+)
 
 __all__ = [
     'River', 
@@ -158,5 +164,9 @@ __all__ = [
     'WatershedEcohydrology',
     'ClimateChangeImpact',
     'RiverHealthAssessment',
-    'IntegratedManagement'
+    'IntegratedManagement',
+    'LakeHydrodynamics',
+    'ConstructedWetland',
+    'simulate_lake_wind_event',
+    'design_wetland_system'
 ]
