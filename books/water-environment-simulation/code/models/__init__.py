@@ -6,6 +6,7 @@ from .diffusion import Diffusion1D, Diffusion2D
 from .advection_diffusion import AdvectionDiffusion1D
 from .reaction import ReactionKinetics, ReactionTransport1D
 from .dissolved_oxygen import StreeterPhelps, DOBODCoupled, calculate_reaeration_coefficient
+from .nutrients import NitrogenCycle, PhosphorusCycle, EutrophicationIndex, calculate_oxygen_consumption
 
 __all__ = [
     'Diffusion1D',
@@ -16,4 +17,8 @@ __all__ = [
     'StreeterPhelps',
     'DOBODCoupled',
     'calculate_reaeration_coefficient',
+    'NitrogenCycle',
+    'PhosphorusCycle',
+    'EutrophicationIndex',
+    'calculate_oxygen_consumption',
 ]
