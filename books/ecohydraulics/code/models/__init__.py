@@ -44,6 +44,15 @@ from .spawning_ground import (
     create_chinese_carp_egg,
     create_standard_spawning_ground
 )
+from .fish_behavior import (
+    FeedingGroundModel,
+    create_grass_carp_feeding_model
+)
+from .fish_population import (
+    RiverConnectivityIndex,
+    FishPopulationModel,
+    create_connectivity_scenario
+)
 
 __all__ = [
     'River', 
@@ -80,5 +89,10 @@ __all__ = [
     'FishEgg',
     'SpawningGround',
     'create_chinese_carp_egg',
-    'create_standard_spawning_ground'
+    'create_standard_spawning_ground',
+    'FeedingGroundModel',
+    'create_grass_carp_feeding_model',
+    'RiverConnectivityIndex',
+    'FishPopulationModel',
+    'create_connectivity_scenario'
 ]

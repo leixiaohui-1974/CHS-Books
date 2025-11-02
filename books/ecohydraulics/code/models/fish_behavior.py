@@ -64,12 +64,12 @@ class FeedingGroundModel:
         # 摄食效率
         feed_eff = self.feeding_efficiency(velocity, prey_dens)
         
-        # 能量收入（简化）
-        energy_gain = feed_eff * feeding_duration * 0.1  # J
+        # 能量收入（简化，增加能量转化系数）
+        energy_gain = feed_eff * feeding_duration * 2.5  # J
         
         # 能量支出
-        BMR = 0.5 * (self.body_weight ** 0.8)  # 基础代谢 W
-        swimming_cost = BMR * ((velocity / 0.6) ** 3)  # 游泳消耗 W
+        BMR = 0.3 * (self.body_weight ** 0.8)  # 基础代谢 W
+        swimming_cost = BMR * ((velocity / 0.6) ** 2.5)  # 游泳消耗 W
         energy_cost = (BMR + swimming_cost) * feeding_duration  # J
         
         net_energy = energy_gain - energy_cost
