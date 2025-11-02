@@ -38,6 +38,7 @@ from .fish_swimming import (
     create_common_carp,
     create_silver_carp
 )
+from .fishway import VerticalSlotFishway, create_standard_fishway
 
 __all__ = [
     'River', 
@@ -68,5 +69,7 @@ __all__ = [
     'create_grass_carp',
     'create_black_carp',
     'create_common_carp',
-    'create_silver_carp'
+    'create_silver_carp',
+    'VerticalSlotFishway',
+    'create_standard_fishway'
 ]
