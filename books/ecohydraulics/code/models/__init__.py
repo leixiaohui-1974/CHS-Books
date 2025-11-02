@@ -65,6 +65,12 @@ from .ecological_revetment import (
     RevetmentStability,
     design_ecological_revetment
 )
+from .floodplain_wetland import (
+    FloodplainHydraulics,
+    WetlandConnectivity,
+    JuvenileFishGrowth,
+    design_ecological_gate_operation
+)
 
 __all__ = [
     'River', 
@@ -114,5 +120,9 @@ __all__ = [
     'EcologicalRevetment',
     'VegetatedRevetment',
     'RevetmentStability',
-    'design_ecological_revetment'
+    'design_ecological_revetment',
+    'FloodplainHydraulics',
+    'WetlandConnectivity',
+    'JuvenileFishGrowth',
+    'design_ecological_gate_operation'
 ]
