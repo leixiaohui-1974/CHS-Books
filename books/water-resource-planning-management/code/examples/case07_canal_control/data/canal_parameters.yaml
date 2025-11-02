@@ -1,0 +1,49 @@
+# 渠道参数配置
+
+# 渠道物理参数
+canal:
+  length: 1000  # 长度 (m)
+  width: 10     # 宽度 (m)
+  slope: 0.001  # 底坡
+  manning_n: 0.025  # 曼宁系数
+  n_sections: 50    # 断面数
+
+# 初始条件
+initial:
+  depth: 2.0    # 初始水深 (m)
+  flow: 20.0    # 初始流量 (m³/s)
+
+# 控制目标
+control:
+  target_depth: 2.0     # 目标水深 (m)
+  target_flow: 20.0     # 目标流量 (m³/s)
+  tolerance: 0.1        # 允许误差 (m)
+
+# PID参数
+pid:
+  Kp: 0.5
+  Ki: 0.1
+  Kd: 0.05
+  output_limits: [-5, 5]  # 流量调整范围 (m³/s)
+
+# MPC参数
+mpc:
+  horizon: 10       # 预测时域
+  dt: 10            # 采样时间 (s)
+  Q_weight: 1.0     # 状态权重
+  R_weight: 0.01    # 控制权重
+
+# 仿真参数
+simulation:
+  duration: 600     # 仿真时间 (s)
+  dt: 10            # 时间步长 (s)
+  
+  # 干扰场景
+  disturbances:
+    - time: 200
+      type: "flow_change"
+      value: 25.0  # 上游流量变化到25 m³/s
+    
+    - time: 400
+      type: "demand_change"
+      value: 18.0  # 下游需水变化到18 m³/s
