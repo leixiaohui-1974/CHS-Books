@@ -20,6 +20,7 @@ from .river_bend import (RiverBend2D, calculate_bend_mixing_length,
                           calculate_curvature_radius, calculate_secondary_flow_strength)
 from .estuary import (EstuarySaltIntrusion1D, calculate_stratification_parameter,
                       calculate_mixing_parameter, calculate_salt_wedge_length, estimate_intake_risk)
+from .lake_cmfr import (LakeCMFR, calculate_critical_load, calculate_flushing_efficiency)
 
 __all__ = [
     'Diffusion1D',
@@ -63,4 +64,7 @@ __all__ = [
     'calculate_mixing_parameter',
     'calculate_salt_wedge_length',
     'estimate_intake_risk',
+    'LakeCMFR',
+    'calculate_critical_load',
+    'calculate_flushing_efficiency',
 ]
