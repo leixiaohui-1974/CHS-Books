@@ -30,6 +30,11 @@ from .density_current import (DensityCurrent2D, calculate_densimetric_froude,
                                estimate_underflow_velocity)
 from .algae_dynamics import (AlgaeGrowthModel, assess_bloom_risk)
 from .lake_3d_eutrophication import (Lake3DEutrophication, calculate_bloom_area)
+from .groundwater_transport import (GroundwaterColumn1D, calculate_retardation_factor,
+                                     calculate_breakthrough_time)
+from .aquifer_2d import (Aquifer2D, assess_well_risk)
+from .multilayer_aquifer import (MultilayerAquifer, assess_aquitard_protection)
+from .pump_and_treat import (PumpAndTreat, optimize_well_location)
 
 __all__ = [
     'Diffusion1D',
@@ -92,4 +97,13 @@ __all__ = [
     'assess_bloom_risk',
     'Lake3DEutrophication',
     'calculate_bloom_area',
+    'GroundwaterColumn1D',
+    'calculate_retardation_factor',
+    'calculate_breakthrough_time',
+    'Aquifer2D',
+    'assess_well_risk',
+    'MultilayerAquifer',
+    'assess_aquitard_protection',
+    'PumpAndTreat',
+    'optimize_well_location',
 ]
