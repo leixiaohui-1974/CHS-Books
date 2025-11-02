@@ -10,6 +10,8 @@ from .nutrients import NitrogenCycle, PhosphorusCycle, EutrophicationIndex, calc
 from .self_purification import (SelfPurificationCapacity, WaterQualityIndex, 
                                 calculate_assimilative_capacity, functional_zone_classification)
 from .multi_source import MultiSourceRiver1D, PointSource, calculate_superposition_factor
+from .nonpoint_source import (SCSCurveNumber, EventMeanConcentration, NonPointSourceRiver1D,
+                              calculate_first_flush_factor, calculate_buildup_washoff)
 
 __all__ = [
     'Diffusion1D',
@@ -31,4 +33,9 @@ __all__ = [
     'MultiSourceRiver1D',
     'PointSource',
     'calculate_superposition_factor',
+    'SCSCurveNumber',
+    'EventMeanConcentration',
+    'NonPointSourceRiver1D',
+    'calculate_first_flush_factor',
+    'calculate_buildup_washoff',
 ]
