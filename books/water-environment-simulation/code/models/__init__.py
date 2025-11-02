@@ -18,6 +18,8 @@ from .lateral_mixing import (LateralMixing2D, calculate_mixing_time,
                               calculate_complete_mixing_distance, calculate_concentration_at_bank)
 from .river_bend import (RiverBend2D, calculate_bend_mixing_length,
                           calculate_curvature_radius, calculate_secondary_flow_strength)
+from .estuary import (EstuarySaltIntrusion1D, calculate_stratification_parameter,
+                      calculate_mixing_parameter, calculate_salt_wedge_length, estimate_intake_risk)
 
 __all__ = [
     'Diffusion1D',
@@ -56,4 +58,9 @@ __all__ = [
     'calculate_bend_mixing_length',
     'calculate_curvature_radius',
     'calculate_secondary_flow_strength',
+    'EstuarySaltIntrusion1D',
+    'calculate_stratification_parameter',
+    'calculate_mixing_parameter',
+    'calculate_salt_wedge_length',
+    'estimate_intake_risk',
 ]
