@@ -31,6 +31,13 @@ from .thermal import (
     create_winter_stratification
 )
 from .benthic import BenthicHabitatModel
+from .fish_swimming import (
+    FishSwimmingModel,
+    create_grass_carp,
+    create_black_carp,
+    create_common_carp,
+    create_silver_carp
+)
 
 __all__ = [
     'River', 
@@ -56,5 +63,10 @@ __all__ = [
     'ReservoirStratificationAnalyzer',
     'create_summer_stratification',
     'create_winter_stratification',
-    'BenthicHabitatModel'
+    'BenthicHabitatModel',
+    'FishSwimmingModel',
+    'create_grass_carp',
+    'create_black_carp',
+    'create_common_carp',
+    'create_silver_carp'
 ]
