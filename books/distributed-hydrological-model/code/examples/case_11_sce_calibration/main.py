@@ -52,18 +52,18 @@ def generate_synthetic_data(true_params: dict, n_days: int = 365) -> tuple:
     observed_runoff : ndarray
         "观测"径流
     """
-    # 生成降雨（随机 + 几场洪水）
+    # 生成降雨（简单模式）
     np.random.seed(42)
-    rainfall = np.random.exponential(2.0, n_days)
+    rainfall = np.zeros(n_days)
     
-    # 添加几场大洪水
+    # 添加几场洪水
     flood_days = [50, 120, 200, 280]
     for day in flood_days:
-        duration = np.random.randint(3, 8)
-        peak = np.random.uniform(40, 80)
+        duration = 5
+        peak = 50.0
         for i in range(duration):
             if day + i < n_days:
-                rainfall[day + i] += peak * np.exp(-0.3 * i)
+                rainfall[day + i] = peak * np.exp(-0.5 * i)
     
     # 生成蒸散发数据（简单季节性模式）
     day_of_year = np.arange(n_days)
@@ -73,10 +73,15 @@ def generate_synthetic_data(true_params: dict, n_days: int = 365) -> tuple:
     model = XinAnJiangModel(true_params)
     results = model.run(rainfall, EM)
     
-    # 添加观测误差
-    noise = np.random.normal(0, 2.0, n_days)
+    # 添加小的观测误差
+    noise = np.random.normal(0, 0.5, n_days)
     observed_runoff = results['R'] + noise
     observed_runoff = np.maximum(observed_runoff, 0)  # 确保非负
+    
+    # 检查是否有NaN
+    if np.any(np.isnan(observed_runoff)):
+        print("警告：生成的观测数据包含NaN，使用零替代")
+        observed_runoff = np.nan_to_num(observed_runoff, nan=0.0)
     
     return rainfall, EM, observed_runoff
 
@@ -120,19 +125,26 @@ def create_calibration_objective(rainfall: np.ndarray,
             results = model.run(rainfall, EM)
             simulated = results['R']
             
+            # 处理NaN和Inf
+            if np.any(np.isnan(simulated)) or np.any(np.isinf(simulated)):
+                return -999.0
+            
             # 计算NSE
             obs_mean = np.mean(observed)
+            if obs_mean == 0:
+                return -999.0
+                
             numerator = np.sum((observed - simulated) ** 2)
             denominator = np.sum((observed - obs_mean) ** 2)
             
-            if denominator == 0:
-                return -999
+            if denominator == 0 or denominator < 1e-10:
+                return -999.0
             
-            nse = 1 - numerator / denominator
+            nse = 1.0 - numerator / denominator
             
-            # 惩罚不合理结果
-            if np.any(np.isnan(simulated)) or np.any(np.isinf(simulated)):
-                return -999
+            # 限制NSE范围
+            if nse < -10:
+                nse = -10.0
             
             return nse
         
@@ -397,15 +409,13 @@ def main():
     print("2. 设置率定参数")
     print("-" * 70)
     
-    # 待率定参数（选择最敏感的几个）
-    param_names = ['WM', 'B', 'KI', 'KG']
+    # 待率定参数（选择最敏感的2个参数进行演示）
+    param_names = ['WM', 'B']
     
     # 参数边界
     bounds = [
         (80, 200),   # WM
         (0.1, 0.5),  # B
-        (0.1, 0.5),  # KI
-        (0.2, 0.6)   # KG
     ]
     
     # 固定其他参数
@@ -454,13 +464,13 @@ def main():
     optimizer = SCEUA(
         objective_func=objective_func,
         bounds=bounds,
-        n_complexes=3,
-        n_points_per_complex=10
+        n_complexes=2,
+        n_points_per_complex=8
     )
     
     # 执行优化
     result = optimizer.optimize(
-        max_iterations=30,
+        max_iterations=20,
         tolerance=1e-4,
         verbose=True
     )
