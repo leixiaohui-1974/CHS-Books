@@ -77,6 +77,15 @@ from .river_package import (
     RiverCell
 )
 
+from .leakage import (
+    MultiLayerSystem,
+    AquiferLayer,
+    AquitardLayer,
+    compute_steady_leakage_1d,
+    hantush_jacob_solution,
+    estimate_leakage_factor
+)
+
 __version__ = '0.5.0'
 
 __all__ = [
@@ -98,4 +107,12 @@ __all__ = [
     # River包
     'RiverPackage',
     'RiverCell',
+    
+    # 越流/多层系统
+    'MultiLayerSystem',
+    'AquiferLayer',
+    'AquitardLayer',
+    'compute_steady_leakage_1d',
+    'hantush_jacob_solution',
+    'estimate_leakage_factor',
 ]
