@@ -1,0 +1,110 @@
+# 不确定性参数配置
+
+# 径流不确定性（正态分布）
+runoff_uncertainty:
+  source_1:  # 地表水
+    mean: 150  # 均值 (万m³/d)
+    std: 30    # 标准差
+    min: 80
+    max: 220
+  
+  source_2:  # 地下水
+    mean: 80
+    std: 15
+    min: 50
+    max: 110
+  
+  source_3:  # 再生水（确定性）
+    mean: 50
+    std: 0
+    min: 50
+    max: 50
+
+# 需水情景（离散分布）
+demand_scenarios:
+  - name: "低需求"
+    probability: 0.2
+    multiplier: 0.85  # 基准需水的倍数
+  
+  - name: "正常需求"
+    probability: 0.5
+    multiplier: 1.0
+  
+  - name: "高需求"
+    probability: 0.3
+    multiplier: 1.15
+
+# 成本不确定性（区间）
+cost_uncertainty:
+  development:  # 开发成本波动范围
+    source_1: [1.0, 1.4]   # [最小, 最大] (元/m³)
+    source_2: [1.5, 2.1]
+    source_3: [2.2, 2.8]
+  
+  transport:  # 输水成本波动范围（相对基准的倍数）
+    min_factor: 0.9
+    max_factor: 1.1
+
+# 基准参数（来自案例2.1）
+base_parameters:
+  sources:
+    - name: "地表水"
+      nominal_capacity: 150
+      base_cost: 1.2
+    - name: "地下水"
+      nominal_capacity: 80
+      base_cost: 1.8
+    - name: "再生水"
+      nominal_capacity: 50
+      base_cost: 2.5
+  
+  users:
+    - name: "城市生活"
+      base_demand: 100
+      benefit: 8.0
+    - name: "工业"
+      base_demand: 80
+      benefit: 12.0
+    - name: "农业灌溉"
+      base_demand: 120
+      benefit: 5.0
+    - name: "生态环境"
+      base_demand: 30
+      benefit: 3.0
+  
+  transport_costs:  # 基准输水成本
+    - [0.5, 0.6, 0.4, 0.3]  # 地表水
+    - [0.8, 0.7, 0.9, 1.0]  # 地下水
+    - [0.6, 0.5, 1.2, 0.4]  # 再生水
+
+# 优化参数
+optimization:
+  # 蒙特卡洛采样
+  monte_carlo:
+    n_samples: 1000  # 采样数
+    random_seed: 42
+  
+  # 鲁棒优化
+  robust:
+    uncertainty_level: 1.5  # 不确定性水平（标准差的倍数）
+  
+  # CVaR风险度量
+  cvar:
+    confidence_level: 0.95  # 置信水平
+
+# 情景定义（典型年份）
+typical_scenarios:
+  - name: "丰水年"
+    probability: 0.25
+    runoff_factor: 1.2   # 径流倍数
+    demand_factor: 0.95  # 需水倍数
+  
+  - name: "平水年"
+    probability: 0.50
+    runoff_factor: 1.0
+    demand_factor: 1.0
+  
+  - name: "枯水年"
+    probability: 0.25
+    runoff_factor: 0.8
+    demand_factor: 1.05
