@@ -71,6 +71,11 @@ from .floodplain_wetland import (
     JuvenileFishGrowth,
     design_ecological_gate_operation
 )
+from .sediment_gravel import (
+    GravelSupplementDesign,
+    EstuaryHydraulics,
+    RestorationAssessment
+)
 
 __all__ = [
     'River', 
@@ -124,5 +129,8 @@ __all__ = [
     'FloodplainHydraulics',
     'WetlandConnectivity',
     'JuvenileFishGrowth',
-    'design_ecological_gate_operation'
+    'design_ecological_gate_operation',
+    'GravelSupplementDesign',
+    'EstuaryHydraulics',
+    'RestorationAssessment'
 ]
