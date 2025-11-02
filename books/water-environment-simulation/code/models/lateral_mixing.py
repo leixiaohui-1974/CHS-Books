@@ -142,20 +142,21 @@ class LateralMixing2D:
             
             # 伪时间步进（达到稳态）
             dt = 0.5 * self.dy**2 / self.Ey  # CFL条件
-            n_steps = int(self.dx / (self.u * dt))
+            n_steps = max(int(self.dx / (self.u * dt)), 1)  # 至少1步
             
+            C_new = C_prev.copy()
             for _ in range(n_steps):
                 # 横向扩散（显式格式）
-                C_new = C_prev.copy()
+                C_temp = C_new.copy()
                 for j in range(1, self.ny-1):
-                    d2C_dy2 = (C_prev[j+1] - 2*C_prev[j] + C_prev[j-1]) / self.dy**2
-                    C_new[j] = C_prev[j] + dt * self.Ey * d2C_dy2
+                    d2C_dy2 = (C_new[j+1] - 2*C_new[j] + C_new[j-1]) / self.dy**2
+                    C_temp[j] = C_new[j] + dt * self.Ey * d2C_dy2
                 
                 # 边界条件：零通量
-                C_new[0] = C_new[1]
-                C_new[-1] = C_new[-2]
+                C_temp[0] = C_temp[1]
+                C_temp[-1] = C_temp[-2]
                 
-                C_prev = C_new
+                C_new = C_temp
             
             C[:, i] = C_new
         
@@ -170,37 +171,35 @@ class LateralMixing2D:
         for source in self.sources:
             ix = np.argmin(np.abs(self.x - source['x']))
             iy = np.argmin(np.abs(self.y - source['y']))
+            # 只在排放点设置浓度
             C[iy, ix] = source['C']
         
         # 从上游向下游逐列求解
         for i in range(1, self.nx):
-            # 构建隐式求解矩阵
-            # (I - dt*Ey*D2y) * C_new = C_prev
+            # 使用显式方法进行横向扩散（更稳定）
+            # 相当于伪时间推进到稳态
             
-            dt = self.dx / self.u
-            alpha = self.Ey * dt / self.dy**2
+            C_prev = C[:, i-1].copy()
             
-            # 三对角矩阵
-            main_diag = np.ones(self.ny) * (1 + 2*alpha)
-            off_diag = np.ones(self.ny-1) * (-alpha)
+            # 伪时间步进
+            dt = 0.5 * self.dy**2 / self.Ey  # CFL条件
+            travel_time = self.dx / self.u
+            n_steps = max(int(travel_time / dt), 10)  # 至少10步
             
-            # 边界条件：零通量
-            main_diag[0] = 1
-            main_diag[-1] = 1
-            off_diag[0] = -1
-            off_diag[-1] = -1
+            C_new = C_prev.copy()
+            for _ in range(n_steps):
+                C_temp = C_new.copy()
+                for j in range(1, self.ny-1):
+                    d2C_dy2 = (C_new[j+1] - 2*C_new[j] + C_new[j-1]) / self.dy**2
+                    C_temp[j] = C_new[j] + dt * self.Ey * d2C_dy2
+                
+                # 边界条件：零通量
+                C_temp[0] = C_temp[1]
+                C_temp[-1] = C_temp[-2]
+                
+                C_new = C_temp
             
-            # 构建稀疏矩阵
-            A = diags([off_diag, main_diag, off_diag], [-1, 0, 1], 
-                     shape=(self.ny, self.ny), format='csr')
-            
-            # 右端项
-            b = C[:, i-1].copy()
-            b[0] = 0  # 边界条件
-            b[-1] = 0
-            
-            # 求解
-            C[:, i] = spsolve(A, b)
+            C[:, i] = C_new
         
         self.C = C
     
