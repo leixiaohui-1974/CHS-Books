@@ -76,6 +76,18 @@ from .sediment_gravel import (
     EstuaryHydraulics,
     RestorationAssessment
 )
+from .hydraulic_structures import (
+    EcologicalWeir,
+    StockingArea,
+    HydropowerScheduling,
+    DamSprayImpact
+)
+from .integrated_assessment import (
+    WatershedEcohydrology,
+    ClimateChangeImpact,
+    RiverHealthAssessment,
+    IntegratedManagement
+)
 
 __all__ = [
     'River', 
@@ -132,5 +144,13 @@ __all__ = [
     'design_ecological_gate_operation',
     'GravelSupplementDesign',
     'EstuaryHydraulics',
-    'RestorationAssessment'
+    'RestorationAssessment',
+    'EcologicalWeir',
+    'StockingArea',
+    'HydropowerScheduling',
+    'DamSprayImpact',
+    'WatershedEcohydrology',
+    'ClimateChangeImpact',
+    'RiverHealthAssessment',
+    'IntegratedManagement'
 ]
