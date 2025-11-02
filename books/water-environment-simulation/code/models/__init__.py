@@ -26,6 +26,8 @@ from .lake_nutrient import (VollenweiderModel, calculate_trophic_state,
                              predict_response_time)
 from .stratified_reservoir import (StratifiedReservoir1D, calculate_buoyancy_frequency,
                                     calculate_richardson_number, estimate_mixing_depth)
+from .density_current import (DensityCurrent2D, calculate_densimetric_froude,
+                               estimate_underflow_velocity)
 
 __all__ = [
     'Diffusion1D',
@@ -81,4 +83,7 @@ __all__ = [
     'calculate_buoyancy_frequency',
     'calculate_richardson_number',
     'estimate_mixing_depth',
+    'DensityCurrent2D',
+    'calculate_densimetric_froude',
+    'estimate_underflow_velocity',
 ]
