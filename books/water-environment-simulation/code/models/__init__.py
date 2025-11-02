@@ -28,6 +28,8 @@ from .stratified_reservoir import (StratifiedReservoir1D, calculate_buoyancy_fre
                                     calculate_richardson_number, estimate_mixing_depth)
 from .density_current import (DensityCurrent2D, calculate_densimetric_froude,
                                estimate_underflow_velocity)
+from .algae_dynamics import (AlgaeGrowthModel, assess_bloom_risk)
+from .lake_3d_eutrophication import (Lake3DEutrophication, calculate_bloom_area)
 
 __all__ = [
     'Diffusion1D',
@@ -86,4 +88,8 @@ __all__ = [
     'DensityCurrent2D',
     'calculate_densimetric_froude',
     'estimate_underflow_velocity',
+    'AlgaeGrowthModel',
+    'assess_bloom_risk',
+    'Lake3DEutrophication',
+    'calculate_bloom_area',
 ]
