@@ -295,18 +295,20 @@ def run_distributed_runoff_model(grid_x, grid_y, basin_mask, rainfall_grid,
             for j in range(nx):
                 if basin_mask[i, j] and (i, j) in models:
                     P = rainfall_grid[t, i, j]
-                    if not np.isnan(P) and P > 0:
-                        # 运行模型
+                    if not np.isnan(P):
+                        # 运行模型（即使P=0也运行，因为模型有状态）
                         model = models[(i, j)]
                         results = model.run(np.array([P]), np.array([0.0]))
-                        runoff_grid[t, i, j] = results['total_runoff'][0]
+                        runoff_grid[t, i, j] = results['R'][0]  # 总径流深
     
     # 计算流域总产流（面积加权平均）
     n_valid_grids = np.sum(basin_mask)
     total_runoff = np.zeros(n_time)
     for t in range(n_time):
-        valid_runoff = runoff_grid[t, basin_mask]
-        total_runoff[t] = np.nanmean(valid_runoff) if n_valid_grids > 0 else 0
+        valid_runoff = runoff_grid[t][basin_mask]
+        # 过滤掉0值和nan值
+        valid_runoff = valid_runoff[~np.isnan(valid_runoff)]
+        total_runoff[t] = np.mean(valid_runoff) if len(valid_runoff) > 0 else 0.0
     
     return runoff_grid, total_runoff
 
