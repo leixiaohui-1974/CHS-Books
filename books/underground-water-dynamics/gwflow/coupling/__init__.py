@@ -72,6 +72,11 @@ from .boundary import (
     ETBoundary
 )
 
+from .river_package import (
+    RiverPackage,
+    RiverCell
+)
+
 __version__ = '0.5.0'
 
 __all__ = [
@@ -89,4 +94,8 @@ __all__ = [
     'RiverBoundary',
     'LakeBoundary',
     'ETBoundary',
+    
+    # River包
+    'RiverPackage',
+    'RiverCell',
 ]
