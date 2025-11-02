@@ -1,0 +1,144 @@
+# 水库群实时调度配置
+
+# 水库参数
+reservoirs:
+  - id: "R1"
+    name: "上游水库"
+    min_level: 180  # m
+    normal_level: 200
+    max_level: 205
+    dead_storage: 50  # 万m³
+    normal_storage: 500
+    capacity: 600
+    installed_power: 300  # MW
+    min_discharge: 50  # m³/s
+    max_discharge: 500
+    
+  - id: "R2"
+    name: "中游水库"
+    min_level: 150
+    normal_level: 165
+    max_level: 170
+    dead_storage: 30
+    normal_storage: 300
+    capacity: 400
+    installed_power: 200
+    min_discharge: 30
+    max_discharge: 400
+    
+  - id: "R3"
+    name: "下游水库"
+    min_level: 120
+    normal_level: 130
+    max_level: 135
+    dead_storage: 20
+    normal_storage: 200
+    capacity: 250
+    installed_power: 150
+    min_discharge: 20
+    max_discharge: 300
+
+# 梯级连接
+cascade:
+  - from: "R1"
+    to: "R2"
+    travel_time: 2  # 水流传播时间（小时）
+  
+  - from: "R2"
+    to: "R3"
+    travel_time: 1
+
+# 水位-库容关系（简化线性）
+level_storage_curves:
+  R1:
+    dead_level: 180
+    normal_level: 200
+    dead_storage: 50
+    normal_storage: 500
+    
+  R2:
+    dead_level: 150
+    normal_level: 165
+    dead_storage: 30
+    normal_storage: 300
+    
+  R3:
+    dead_level: 120
+    normal_level: 130
+    dead_storage: 20
+    normal_storage: 200
+
+# 实时调度参数
+realtime:
+  control_interval: 1  # 控制间隔（小时）
+  prediction_horizon: 12  # 预测时域
+  control_horizon: 6  # 控制时域
+  update_frequency: 1  # 更新频率（小时）
+
+# MPC参数
+mpc:
+  horizon: 12
+  power_weight: 1.0
+  violation_penalty: 1000.0  # 违约惩罚
+  
+# 预测误差参数
+uncertainty:
+  inflow_error_std: 0.15  # 来水预测相对标准差
+  load_error_std: 0.05  # 负荷预测相对标准差
+  confidence_level: 0.95
+
+# 仿真参数
+simulation:
+  duration: 24  # 仿真时长（小时）
+  dt: 1  # 时间步长（小时）
+  
+  # 初始状态
+  initial_storage:
+    R1: 450  # 万m³
+    R2: 270
+    R3: 180
+  
+  # 来水预测（24小时）
+  inflow_forecast:
+    R1: [200, 220, 240, 260, 280, 300, 320, 330, 340, 350, 
+         360, 350, 340, 330, 320, 300, 280, 260, 240, 220, 
+         200, 180, 170, 160]  # m³/s
+    R2: [50, 55, 60, 65, 70, 75, 80, 82, 85, 87,
+         90, 87, 85, 82, 80, 75, 70, 65, 60, 55,
+         50, 45, 42, 40]
+    R3: [30, 33, 36, 39, 42, 45, 48, 49, 51, 52,
+         54, 52, 51, 49, 48, 45, 42, 39, 36, 33,
+         30, 27, 25, 24]
+  
+  # 实际来水（含随机误差）
+  actual_inflow_pattern: "forecast_with_noise"
+  
+  # 电力负荷（24小时，MW）
+  power_demand: [400, 380, 360, 350, 370, 420, 500, 580, 600, 590,
+                 560, 550, 570, 580, 560, 540, 530, 550, 580, 600,
+                 590, 550, 480, 430]
+
+# 约束参数
+constraints:
+  # 水位约束
+  level_constraints: true
+  
+  # 出力约束
+  power_constraints: true
+  
+  # 流量约束
+  discharge_constraints: true
+  
+  # 生态流量
+  ecological_flow:
+    R1: 50  # m³/s
+    R2: 30
+    R3: 20
+
+# 评价指标
+evaluation:
+  metrics:
+    - "total_generation"  # 总发电量
+    - "constraint_violation"  # 约束违约
+    - "computation_time"  # 计算时间
+    - "tracking_error"  # 跟踪误差
