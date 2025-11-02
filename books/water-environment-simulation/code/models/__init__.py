@@ -24,6 +24,8 @@ from .lake_cmfr import (LakeCMFR, calculate_critical_load, calculate_flushing_ef
 from .lake_nutrient import (VollenweiderModel, calculate_trophic_state, 
                              calculate_vollenweider_loading, calculate_phosphorus_budget,
                              predict_response_time)
+from .stratified_reservoir import (StratifiedReservoir1D, calculate_buoyancy_frequency,
+                                    calculate_richardson_number, estimate_mixing_depth)
 
 __all__ = [
     'Diffusion1D',
@@ -75,4 +77,8 @@ __all__ = [
     'calculate_vollenweider_loading',
     'calculate_phosphorus_budget',
     'predict_response_time',
+    'StratifiedReservoir1D',
+    'calculate_buoyancy_frequency',
+    'calculate_richardson_number',
+    'estimate_mixing_depth',
 ]
