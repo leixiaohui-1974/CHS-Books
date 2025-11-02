@@ -1,0 +1,24 @@
+# 流域基本参数
+
+# 流域面积 (km²)
+area: 5000
+
+# 主河道长度 (km)
+river_length: 180
+
+# 平均坡度
+average_slope: 0.002
+
+# 流域特征
+basin_name: "某中型流域"
+location: "示例区域"
+
+# 评价参数
+ecological_flow_ratio: 0.20  # 生态基流占比（20%）
+loss_ratio: 0.05  # 损失率（5%）
+
+# 设计标准
+design_frequencies:
+  - 0.50  # P=50%（平水年）
+  - 0.75  # P=75%（偏枯年）
+  - 0.95  # P=95%（枯水年）
