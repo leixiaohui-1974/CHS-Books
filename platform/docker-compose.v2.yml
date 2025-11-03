@@ -1,0 +1,160 @@
+version: '3.8'
+
+services:
+  # ============================================
+  # PostgreSQL数据库
+  # ============================================
+  postgres:
+    image: postgres:15-alpine
+    container_name: platform_postgres_v2
+    environment:
+      POSTGRES_USER: platform_user
+      POSTGRES_PASSWORD: platform_pass_2024
+      POSTGRES_DB: platform_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U platform_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - platform_network
+
+  # ============================================
+  # Redis缓存
+  # ============================================
+  redis:
+    image: redis:7-alpine
+    container_name: platform_redis_v2
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - platform_network
+
+  # ============================================
+  # MongoDB - 会话数据
+  # ============================================
+  mongo:
+    image: mongo:6
+    container_name: platform_mongo_v2
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin_pass_2024
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - platform_network
+
+  # ============================================
+  # 后端API服务
+  # ============================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.enhanced
+    container_name: platform_backend_v2
+    environment:
+      # 数据库配置
+      DATABASE_URL: postgresql+asyncpg://platform_user:platform_pass_2024@postgres:5432/platform_db
+      REDIS_URL: redis://redis:6379/0
+      MONGODB_URL: mongodb://admin:admin_pass_2024@mongo:27017/
+      
+      # 应用配置
+      APP_NAME: "智能知识平台 V2.0"
+      APP_VERSION: "2.0.0"
+      APP_ENV: production
+      APP_DEBUG: "false"
+      
+      # JWT配置
+      JWT_SECRET_KEY: "your-secret-key-change-in-production"
+      JWT_ALGORITHM: HS256
+      JWT_ACCESS_TOKEN_EXPIRE_MINUTES: 1440
+      
+      # CORS配置
+      CORS_ORIGINS: '["http://localhost:3000","http://localhost:8000"]'
+      
+      # Docker配置
+      DOCKER_HOST: unix:///var/run/docker.sock
+    
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # Docker socket
+      - ./backend/app:/app/app  # 开发模式热重载
+      - backend_logs:/app/logs
+    
+    ports:
+      - "8000:8000"
+    
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    networks:
+      - platform_network
+    
+    restart: unless-stopped
+
+  # ============================================
+  # 前端服务（预留）
+  # ============================================
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: platform_frontend_v2
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     NEXT_PUBLIC_API_URL: http://backend:8000
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - platform_network
+
+# ============================================
+# 数据卷
+# ============================================
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  mongo_data:
+    driver: local
+  backend_logs:
+    driver: local
+
+# ============================================
+# 网络
+# ============================================
+networks:
+  platform_network:
+    driver: bridge
