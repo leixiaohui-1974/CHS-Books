@@ -87,7 +87,9 @@ class BatchRunner:
             ('intelligence_evaluator.py', '智能评估'),
             ('cost_benefit_calculator.py', '成本分析'),
             ('config_generator.py', '配置生成'),
-            ('report_generator.py', '报告生成')
+            ('report_generator.py', '报告生成'),
+            ('sensitivity_analyzer.py', '参数敏感性分析'),
+            ('data_exporter.py', '数据导出')
         ]
         
         results = []
