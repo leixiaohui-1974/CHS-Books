@@ -430,15 +430,19 @@ dynamic_design_L2.py       # L2级动态设计(600行, 22KB) ✅已测试
 dynamic_design_L3.py       # L3级协调控制(900行, 27KB) ✅已测试
 ```
 
-### 辅助工具(7个)
+### 辅助工具(9个)
 ```
 run_all_comparison.py          # 一键对比运行(14KB) ⏳待测试
 visualize_comparison.py        # 快速可视化(14KB) ✅已测试
-performance_analyzer.py        # 性能分析(20KB) ✅已测试 ⭐新增
-pid_tuner.py                   # PID参数优化(25KB) ✅已测试 ⭐新增
-intelligence_evaluator.py      # 智能化评估(30KB) ✅已测试 ⭐⭐新增
-cost_benefit_calculator.py     # 成本效益计算(35KB) ✅已测试 ⭐⭐新增
+performance_analyzer.py        # 性能分析(20KB) ✅已测试
+pid_tuner.py                   # PID参数优化(25KB) ✅已测试
+intelligence_evaluator.py      # 智能化评估(30KB) ✅已测试
+cost_benefit_calculator.py     # 成本效益计算(35KB) ✅已测试
+config_generator.py            # 配置生成器(25KB) ✅已测试 ⭐⭐⭐新增
+cli.py                         # 统一CLI工具(15KB) ✅已测试 ⭐⭐⭐新增
 ```
+
+**⭐推荐**: 使用`cli.py`统一命令行工具，整合了所有功能！
 
 ### 配置文件(5个)
 ```

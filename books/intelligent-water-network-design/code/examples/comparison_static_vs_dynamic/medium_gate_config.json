@@ -1,0 +1,66 @@
+{
+  "project_info": {
+    "name": "某灌区主渠闸门",
+    "location": "某灌区",
+    "scale": "中型",
+    "design_standard": "GB 50288-2018",
+    "design_year": 2024
+  },
+  "gate_design": {
+    "width": 3.0,
+    "max_height": 3.0,
+    "discharge_coef": 0.85,
+    "design_flow": 12.0,
+    "check_flow": 15.0
+  },
+  "hydraulic_conditions": {
+    "upstream_level": 2.5,
+    "downstream_level": 2.0,
+    "channel_slope": 0.0001,
+    "roughness": 0.02
+  },
+  "control_system": {
+    "level": "L2",
+    "sensors": {
+      "upstream_level": true,
+      "downstream_level": true,
+      "gate_opening": true,
+      "flow_rate": false
+    },
+    "controller": {
+      "type": "PID",
+      "Kp": 2.0,
+      "Ki": 0.5,
+      "Kd": 0.1,
+      "control_cycle": 10
+    },
+    "target_precision": 5.0,
+    "response_time": 5.0
+  },
+  "cost_parameters": {
+    "static": {
+      "initial_cost": 30,
+      "annual_staff": 13,
+      "staff_salary": 12,
+      "annual_power": 20,
+      "annual_maintain": 4
+    },
+    "l2": {
+      "sensor_cost": 1.5,
+      "controller_cost": 3.5,
+      "annual_staff": 3,
+      "power_saving_rate": 0.4,
+      "annual_maintain": 12
+    }
+  },
+  "simulation_settings": {
+    "duration": 3600,
+    "time_step": 10,
+    "test_scenarios": [
+      "normal",
+      "step",
+      "disturbance",
+      "extreme"
+    ]
+  }
+}
