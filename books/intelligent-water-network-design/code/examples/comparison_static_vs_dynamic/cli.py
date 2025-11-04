@@ -91,6 +91,36 @@ TOOLS = {
         'desc': '配置文件生成',
         'time': '~5秒',
         'outputs': ['project_config.json']
+    },
+    'batch': {
+        'script': 'batch_runner.py',
+        'desc': '批量运行所有快速工具',
+        'time': '~6秒',
+        'outputs': ['batch_test_report.txt']
+    },
+    'report': {
+        'script': 'report_generator.py',
+        'desc': '生成综合报告',
+        'time': '<1秒',
+        'outputs': ['project_report.md']
+    },
+    'sensitivity': {
+        'script': 'sensitivity_analyzer.py',
+        'desc': 'PID参数敏感性分析',
+        'time': '~2秒',
+        'outputs': ['sensitivity_*.png (5张)', 'sensitivity_analysis_report.txt']
+    },
+    'export': {
+        'script': 'data_exporter.py',
+        'desc': '数据导出(CSV/JSON/TXT)',
+        'time': '<1秒',
+        'outputs': ['export/*.csv (4个)', 'export/*.json (2个)', 'export/*.txt (1个)']
+    },
+    'demo': {
+        'script': 'demo_presenter.py',
+        'desc': '教学演示(交互式10步)',
+        'time': '~10分钟',
+        'outputs': ['(交互式演示)']
     }
 }
 
