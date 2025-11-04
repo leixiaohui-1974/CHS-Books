@@ -225,8 +225,7 @@ class PVModule:
         """
         计算给定电压下的组件电流
         
-        考虑旁路二极管的影响
-        串联电池的电流相同,电压相加
+        简化方法: 假设所有电池工作在相同电流下(串联特性)
         
         Parameters:
         -----------
@@ -237,49 +236,19 @@ class PVModule:
         --------
         float : 组件电流(A)
         """
-        # 使用迭代方法求解
-        # 假设电流I,计算各部分电压,使其和等于总电压
-        
-        def voltage_residual(I):
-            """计算电压差"""
-            V_total = 0.0
-            
-            # 遍历每个旁路二极管保护的子串
-            for i in range(self.Nb):
-                start_idx = i * self.cells_per_bypass
-                end_idx = start_idx + self.cells_per_bypass
-                
-                # 计算子串的总电压
-                V_substring = 0.0
-                for j in range(start_idx, min(end_idx, self.Ns)):
-                    # 每片电池在电流I下的电压
-                    # 使用反函数(从I求V)
-                    V_cell = self._cell_voltage(self.cells[j], I)
-                    V_substring += V_cell
-                
-                # 检查旁路二极管
-                diode = self.bypass_diodes[i]
-                if V_substring < -diode.Vf:
-                    # 旁路二极管导通
-                    V_bypass = -diode.Vf - I * diode.Rs
-                    V_total += V_bypass
-                else:
-                    # 旁路二极管不导通
-                    V_total += V_substring
-            
-            return V_total - voltage
-        
-        # 搜索合适的电流
-        from scipy.optimize import fsolve, brentq
-        
-        # 初始猜测
-        I_guess = self.Isc * 0.5
-        
-        try:
-            I = fsolve(voltage_residual, I_guess, full_output=False)[0]
-            return max(0, I)
-        except:
+        # 边界情况
+        if voltage <= 0:
+            return self.Isc
+        if voltage >= self.Voc:
             return 0.0
+        
+        # 简化计算: 使用平均电池电压
+        V_cell_avg = voltage / self.Ns
+        
+        # 计算第一片电池在该电压下的电流(假设所有电池相同)
+        I = self.cells[0].calculate_current(V_cell_avg)
+        
+        return max(0.0, I)
     
     def _cell_voltage(self, cell: PVCell, current: float) -> float:
         """
@@ -325,10 +294,14 @@ class PVModule:
         --------
         Tuple[np.ndarray, np.ndarray] : 电压数组, 电流数组
         """
-        # 电压范围: 0 到 Voc
-        V_max = self.Voc * 1.1
-        voltages = np.linspace(0, V_max, num_points)
-        currents = np.array([self.calculate_current(v) for v in voltages])
+        # 快速方法: 基于单片电池曲线缩放
+        V_cell, I_cell = self.cells[0].get_iv_curve(num_points)
+        
+        # 电压缩放 (串联)
+        voltages = V_cell * self.Ns
+        
+        # 电流保持不变 (串联)
+        currents = I_cell
         
         return voltages, currents
     
