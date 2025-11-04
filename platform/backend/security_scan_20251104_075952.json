@@ -1,0 +1,430 @@
+{
+  "timestamp": "2025-11-04T07:59:52.403741",
+  "summary": {
+    "high": 3,
+    "medium": 48,
+    "low": 0,
+    "warnings": 1,
+    "info": 0
+  },
+  "vulnerabilities": [
+    {
+      "type": "command_injection",
+      "severity": "high",
+      "file": "monitor_dashboard.py",
+      "line": 26,
+      "description": "使用os.system可能导致命令注入",
+      "code": "os.system('clear' if os.name != 'nt' else 'cls')"
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_api_integration.py",
+      "line": 65,
+      "description": "硬编码密码",
+      "code": "password=\"password123\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 24,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 48,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 84,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 118,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 142,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 172,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 241,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 287,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 336,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_points.py",
+      "line": 372,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_payment_service.py",
+      "line": 44,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_progress_service.py",
+      "line": 21,
+      "description": "硬编码密码",
+      "code": "password=\"password123\""
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_progress_service.py",
+      "line": 55,
+      "description": "硬编码密码",
+      "code": "password=\"password123\""
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_progress_service.py",
+      "line": 120,
+      "description": "硬编码密码",
+      "code": "password=\"password123\""
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 23,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 46,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 75,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 102,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 134,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 164,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 191,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_membership.py",
+      "line": 219,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_analytics.py",
+      "line": 44,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 23,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 52,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 90,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 134,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 181,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 212,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 249,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 285,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 317,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 361,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 367,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_knowledge.py",
+      "line": 400,
+      "description": "硬编码密码",
+      "code": "hashed_password=\"hashed_password\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_user_service.py",
+      "line": 16,
+      "description": "硬编码密码",
+      "code": "password=\"password123\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_user_service.py",
+      "line": 35,
+      "description": "硬编码密码",
+      "code": "password=\"password123\""
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_user_service.py",
+      "line": 53,
+      "description": "硬编码密码",
+      "code": "password=\"password123\""
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_user_service.py",
+      "line": 77,
+      "description": "硬编码密码",
+      "code": "password=\"oldpassword\""
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_user_service.py",
+      "line": 84,
+      "description": "硬编码密码",
+      "code": "old_password=\"oldpassword\","
+    },
+    {
+      "type": "hardcoded_secrets",
+      "severity": "medium",
+      "file": "tests/test_user_service.py",
+      "line": 85,
+      "description": "硬编码密码",
+      "code": "new_password=\"newpassword\""
+    },
+    {
+      "type": "command_injection",
+      "severity": "high",
+      "file": "app/executor/simple_executor.py",
+      "line": 148,
+      "description": "使用exec存在代码注入风险",
+      "code": "exec(script_content, exec_globals)"
+    },
+    {
+      "type": "weak_crypto",
+      "severity": "medium",
+      "file": "app/services/wechat_payment.py",
+      "line": 244,
+      "description": "使用MD5哈希算法（已不安全）",
+      "code": "return hashlib.md5(sign_str.encode(\"utf-8\")).hexdigest().upper()"
+    },
+    {
+      "type": "weak_crypto",
+      "severity": "medium",
+      "file": "app/services/embedding_service.py",
+      "line": 99,
+      "description": "使用MD5哈希算法（已不安全）",
+      "code": "hash_bytes = hashlib.md5(text.encode()).digest()"
+    },
+    {
+      "type": "weak_crypto",
+      "severity": "medium",
+      "file": "app/services/openai_service.py",
+      "line": 159,
+      "description": "使用MD5哈希算法（已不安全）",
+      "code": "hash_bytes = hashlib.md5(text.encode()).digest()"
+    },
+    {
+      "type": "weak_crypto",
+      "severity": "medium",
+      "file": "app/services/rag_service.py",
+      "line": 323,
+      "description": "使用random模块（不适合安全用途）",
+      "code": "return [random.random() for _ in range(64)]  # 使用64维简化版本"
+    },
+    {
+      "type": "weak_crypto",
+      "severity": "medium",
+      "file": "app/services/rag_service.py",
+      "line": 328,
+      "description": "使用random模块（不适合安全用途）",
+      "code": "return random.random() * 0.5  # 模拟低相似度"
+    },
+    {
+      "type": "weak_crypto",
+      "severity": "medium",
+      "file": "app/utils/cache.py",
+      "line": 69,
+      "description": "使用MD5哈希算法（已不安全）",
+      "code": "return hashlib.md5(key_str.encode()).hexdigest()"
+    },
+    {
+      "type": "command_injection",
+      "severity": "high",
+      "file": "app/api/endpoints/execution.py",
+      "line": 281,
+      "description": "使用eval存在代码注入风险",
+      "code": "command = eval(data)  # 简单处理，生产环境应用json.loads"
+    }
+  ],
+  "warnings": [
+    {
+      "type": "api",
+      "severity": "medium",
+      "file": "admin.py",
+      "description": "POST端点可能缺少输入验证",
+      "recommendation": "使用Pydantic模型验证输入"
+    }
+  ],
+  "info": []
+}

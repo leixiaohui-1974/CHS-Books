@@ -1,0 +1,1173 @@
+{
+  "platform": {
+    "name": "intelligent-knowledge-platform",
+    "version": "V2.2.0 Final",
+    "export_time": "2025-11-04T08:00:46.078848"
+  },
+  "directories": {
+    "executor": {
+      "files": 3
+    },
+    "docs": {
+      "files": 1
+    },
+    "sdk": {
+      "files": 1
+    },
+    "scanner": {
+      "files": 2
+    },
+    "examples": {
+      "files": 1
+    },
+    "backend": {
+      "files": 47
+    },
+    "frontend": {
+      "files": 5
+    },
+    "docker": {
+      "files": 2
+    },
+    "sdk/python": {
+      "files": 3
+    },
+    "backend/scripts": {
+      "files": 8
+    },
+    "backend/exports": {
+      "files": 0
+    },
+    "backend/migrations": {
+      "files": 0
+    },
+    "backend/tests": {
+      "files": 16
+    },
+    "backend/app": {
+      "files": 10
+    },
+    "frontend/src": {
+      "files": 7
+    },
+    "docker/nginx": {
+      "files": 1
+    },
+    "backend/app/executors": {
+      "files": 1
+    },
+    "backend/app/models": {
+      "files": 12
+    },
+    "backend/app/db": {
+      "files": 1
+    },
+    "backend/app/executor": {
+      "files": 1
+    },
+    "backend/app/api": {
+      "files": 3
+    },
+    "backend/app/core": {
+      "files": 7
+    },
+    "backend/app/services": {
+      "files": 21
+    },
+    "backend/app/middleware": {
+      "files": 2
+    },
+    "backend/app/utils": {
+      "files": 4
+    },
+    "backend/app/api/endpoints": {
+      "files": 22
+    },
+    "frontend/src/components": {
+      "files": 5
+    },
+    "frontend/src/pages": {
+      "files": 1
+    },
+    "frontend/src/services": {
+      "files": 1
+    },
+    "frontend/src/providers": {
+      "files": 1
+    },
+    "frontend/src/utils": {
+      "files": 1
+    },
+    "frontend/src/app": {
+      "files": 7
+    },
+    "frontend/src/app/dashboard": {
+      "files": 1
+    },
+    "frontend/src/app/books": {
+      "files": 2
+    },
+    "frontend/src/app/tools": {
+      "files": 1
+    },
+    "frontend/src/app/login": {
+      "files": 1
+    },
+    "frontend/src/app/books/[slug]": {
+      "files": 1
+    },
+    "frontend/src/app/tools/[slug]": {
+      "files": 1
+    }
+  },
+  "files": {
+    "PROGRESS_REPORT.md": {
+      "size": 11701,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "FINAL_DEVELOPMENT_REPORT.md": {
+      "size": 14027,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "ROUND8_COMPLETION_SUMMARY.txt": {
+      "size": 15174,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V2.2_FINAL_RELEASE.md": {
+      "size": 8677,
+      "modified": "2025-11-04T07:45:51.798714"
+    },
+    "PROJECT_FINAL_SUMMARY_V1.3.0.md": {
+      "size": 15003,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DEVELOPMENT_SUMMARY_V2.0.md": {
+      "size": 11942,
+      "modified": "2025-11-03T23:37:14.310030"
+    },
+    "V1.3.0_RELEASE_NOTES.md": {
+      "size": 7763,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "start.sh": {
+      "size": 2491,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "docker-compose.production.yml": {
+      "size": 4694,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "PROJECT_STATISTICS.md": {
+      "size": 10239,
+      "modified": "2025-11-04T04:13:27.393422"
+    },
+    "TUTORIAL.md": {
+      "size": 13045,
+      "modified": "2025-11-04T07:42:19.173855"
+    },
+    "LATEST_PROGRESS.md": {
+      "size": 10078,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "IMPLEMENTATION_COMPLETE.txt": {
+      "size": 13305,
+      "modified": "2025-11-04T04:16:25.864848"
+    },
+    "PROJECT_COMPLETION_CERTIFICATE.txt": {
+      "size": 5065,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DEPLOYMENT_CHECKLIST.md": {
+      "size": 7782,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "DEVELOPMENT_PROGRESS_REPORT.md": {
+      "size": 16159,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "V1.1.0_STABLE_RELEASE.md": {
+      "size": 17943,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DEVELOPMENT_COMPLETE_FINAL.md": {
+      "size": 10791,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "PROJECT_FINAL_REPORT.md": {
+      "size": 25287,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "PROJECT_COMPLETION_SUMMARY.txt": {
+      "size": 9002,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DELIVERY_PACKAGE.md": {
+      "size": 7324,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "QUICK_TEST_GUIDE.md": {
+      "size": 2750,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "deploy.sh": {
+      "size": 4582,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "NEXT_STEPS.md": {
+      "size": 7313,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "docker-compose.v2.yml": {
+      "size": 4063,
+      "modified": "2025-11-03T23:44:27.437109"
+    },
+    "LATEST_UPDATE.md": {
+      "size": 6143,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "PROJECT_DELIVERY_PACKAGE.md": {
+      "size": 13932,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "ROUND8_DEVELOPMENT_REPORT.md": {
+      "size": 10996,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DEVELOPMENT_COMPLETE.md": {
+      "size": 6348,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "FINAL_ACCEPTANCE_REPORT.md": {
+      "size": 11030,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "API_EXAMPLES.md": {
+      "size": 13553,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "FINAL_REPORT.md": {
+      "size": 14972,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "FINAL_STATUS_2025-10-31.md": {
+      "size": 19402,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "DEPLOYMENT_READY.txt": {
+      "size": 2583,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "V2.0_文件清单.md": {
+      "size": 9187,
+      "modified": "2025-11-03T23:47:00.932825"
+    },
+    "V1.3.0_FINAL_TEST_REPORT.md": {
+      "size": 8781,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V1.3.1_COMPLETION_CERTIFICATE.txt": {
+      "size": 10528,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "RELEASE_NOTES_v1.0.0.md": {
+      "size": 7395,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "VERSION_HISTORY.md": {
+      "size": 5463,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DEPLOYMENT_FINAL_CHECKLIST.md": {
+      "size": 11531,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "智能知识平台增强方案-V2.0.md": {
+      "size": 74120,
+      "modified": "2025-11-03T23:21:42.381208"
+    },
+    "PROJECT_ROUND_16_SUMMARY.md": {
+      "size": 12272,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V1.4.0_ALPHA_COMPLETION.md": {
+      "size": 7725,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "PROJECT_100_PERCENT_COMPLETE.txt": {
+      "size": 13755,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V1.1.0_COMPLETION_SUMMARY.md": {
+      "size": 11474,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V1.3.0_DEVELOPMENT_PLAN.md": {
+      "size": 4980,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "README_V2.md": {
+      "size": 11863,
+      "modified": "2025-11-04T00:06:02.047875"
+    },
+    "DEVELOPMENT_SUMMARY.txt": {
+      "size": 5271,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "README_FINAL.md": {
+      "size": 8790,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V1.4.0_ROADMAP.md": {
+      "size": 8291,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "SUMMARY.md": {
+      "size": 5512,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DELIVERY_CHECKLIST.md": {
+      "size": 9806,
+      "modified": "2025-11-04T04:14:59.013127"
+    },
+    "PROJECT_FINAL_SUMMARY.md": {
+      "size": 12101,
+      "modified": "2025-11-04T00:04:45.808110"
+    },
+    "V1.3.1_FINAL_ACHIEVEMENT.md": {
+      "size": 11257,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V1.4.0_RAG_UPGRADE_REPORT.md": {
+      "size": 11431,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "USER_MANUAL.md": {
+      "size": 15949,
+      "modified": "2025-11-04T06:27:56.542444"
+    },
+    "docker-compose.optimized.yml": {
+      "size": 4215,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "FINAL_V2_COMPLETION_REPORT.md": {
+      "size": 10705,
+      "modified": "2025-11-03T23:46:02.560932"
+    },
+    "启动指南.md": {
+      "size": 5679,
+      "modified": "2025-11-03T23:44:55.757056"
+    },
+    "README_CN.md": {
+      "size": 10965,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "ROUND6_DEVELOPMENT_REPORT.md": {
+      "size": 7236,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "API_USAGE_EXAMPLES.md": {
+      "size": 12490,
+      "modified": "2025-11-03T23:38:38.525826"
+    },
+    ".env.example": {
+      "size": 6233,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "QUICK_START.md": {
+      "size": 6364,
+      "modified": "2025-11-04T04:12:13.465660"
+    },
+    "QUICK_DEPLOY_GUIDE.md": {
+      "size": 7999,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "PROJECT_SUMMARY.md": {
+      "size": 11060,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "README.md": {
+      "size": 14518,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "DELIVERABLES.md": {
+      "size": 10795,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "FINAL_SUMMARY.md": {
+      "size": 7927,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V1.3.0_FINAL_SUMMARY.txt": {
+      "size": 4231,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V2.1_UPDATE_SUMMARY.md": {
+      "size": 10600,
+      "modified": "2025-11-04T06:30:13.528624"
+    },
+    "ROUND10_V1.1.0_DEVELOPMENT_REPORT.md": {
+      "size": 15261,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "INDEX.md": {
+      "size": 11909,
+      "modified": "2025-11-04T07:48:55.651622"
+    },
+    "V1.2.0_DEVELOPMENT_SUMMARY.md": {
+      "size": 12726,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "PROJECT_STATUS.md": {
+      "size": 6362,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "test.sh": {
+      "size": 2312,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "V1.3.0_STABLE_RELEASE.md": {
+      "size": 8297,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "COMPREHENSIVE_SUMMARY.md": {
+      "size": 11867,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "deploy.py": {
+      "size": 11915,
+      "modified": "2025-11-04T06:28:37.864206"
+    },
+    "FINAL_V2.2_SUMMARY.md": {
+      "size": 11643,
+      "modified": "2025-11-04T07:44:25.760051"
+    },
+    "V2.2_RELEASE_NOTES.md": {
+      "size": 9649,
+      "modified": "2025-11-04T07:14:10.151507"
+    },
+    "TOOLS_DOCUMENTATION.md": {
+      "size": 9400,
+      "modified": "2025-11-04T04:08:55.386298"
+    },
+    "FINAL_PROJECT_SUMMARY.md": {
+      "size": 9650,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "ROUND5_DEVELOPMENT_REPORT.md": {
+      "size": 8551,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "V2.2_DELIVERY_PACKAGE.md": {
+      "size": 12215,
+      "modified": "2025-11-04T07:47:06.729488"
+    },
+    "MAINTENANCE_GUIDE.md": {
+      "size": 12783,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "ACHIEVEMENT_REPORT.md": {
+      "size": 15045,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "V1.3.1_RELEASE_NOTES.md": {
+      "size": 8085,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "PROJECT_OVERVIEW.txt": {
+      "size": 4565,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "LATEST_DEVELOPMENT_REPORT.md": {
+      "size": 16448,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "USER_GUIDE.md": {
+      "size": 10903,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "开发完成报告.md": {
+      "size": 11515,
+      "modified": "2025-11-03T23:39:56.325651"
+    },
+    "V2.0_FINAL_DELIVERY.md": {
+      "size": 20508,
+      "modified": "2025-11-04T04:11:38.973771"
+    },
+    "FINAL_DELIVERY_DOCUMENT.md": {
+      "size": 12426,
+      "modified": "2025-11-03T23:15:12.028934"
+    },
+    "executor/requirements.txt": {
+      "size": 28,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "executor/engine.py": {
+      "size": 9471,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "executor/__init__.py": {
+      "size": 214,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "docs/QUICK_START.md": {
+      "size": 4206,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "scanner/requirements.txt": {
+      "size": 51,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "scanner/main.py": {
+      "size": 9394,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "examples/quickstart_example.py": {
+      "size": 6964,
+      "modified": "2025-11-04T07:10:34.196817"
+    },
+    "backend/security_scan_20251104_075952.json": {
+      "size": 12360,
+      "modified": "2025-11-04T07:59:52.403080"
+    },
+    "backend/admin_tools.py": {
+      "size": 10631,
+      "modified": "2025-11-03T23:54:12.658563"
+    },
+    "backend/performance_analysis_20251104_075854.json": {
+      "size": 6776,
+      "modified": "2025-11-04T07:58:54.228247"
+    },
+    "backend/test_all_tools.py": {
+      "size": 5664,
+      "modified": "2025-11-04T07:44:56.463583"
+    },
+    "backend/requirements.txt": {
+      "size": 3422,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/api_doc_generator.py": {
+      "size": 8840,
+      "modified": "2025-11-04T07:40:15.623382"
+    },
+    "backend/diagnostic_report_20251104_073922.json": {
+      "size": 1170,
+      "modified": "2025-11-04T07:39:22.783949"
+    },
+    "backend/setup_wizard.py": {
+      "size": 17525,
+      "modified": "2025-11-04T07:10:04.544318"
+    },
+    "backend/quickstart.py": {
+      "size": 3903,
+      "modified": "2025-11-03T23:37:42.493959"
+    },
+    "backend/test_case_example.py": {
+      "size": 8917,
+      "modified": "2025-11-03T23:43:27.601223"
+    },
+    "backend/db_migrate.py": {
+      "size": 9019,
+      "modified": "2025-11-04T07:38:46.284306"
+    },
+    "backend/API_REFERENCE.md": {
+      "size": 1960,
+      "modified": "2025-11-04T07:45:01.435507"
+    },
+    "backend/Dockerfile.optimized": {
+      "size": 2299,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/performance_monitor.py": {
+      "size": 5293,
+      "modified": "2025-11-04T04:05:52.654886"
+    },
+    "backend/Dockerfile.enhanced": {
+      "size": 1296,
+      "modified": "2025-11-03T23:44:14.109134"
+    },
+    "backend/health_check.py": {
+      "size": 3691,
+      "modified": "2025-11-04T04:06:07.342839"
+    },
+    "backend/simple_test.py": {
+      "size": 6038,
+      "modified": "2025-11-03T23:44:00.173160"
+    },
+    "backend/container_manager.py": {
+      "size": 7922,
+      "modified": "2025-11-04T07:40:49.266993"
+    },
+    "backend/security_scanner.py": {
+      "size": 17140,
+      "modified": "2025-11-04T07:59:50.887111"
+    },
+    "backend/demo_workflow.py": {
+      "size": 12032,
+      "modified": "2025-11-04T04:09:33.830174"
+    },
+    "backend/postman_collection.json": {
+      "size": 6636,
+      "modified": "2025-11-04T07:45:01.435507"
+    },
+    "backend/system_diagnostics.py": {
+      "size": 10372,
+      "modified": "2025-11-04T07:39:20.739969"
+    },
+    "backend/log_analysis_20251104_074459.json": {
+      "size": 2362,
+      "modified": "2025-11-04T07:44:59.355539"
+    },
+    "backend/performance_analyzer.py": {
+      "size": 15025,
+      "modified": "2025-11-04T07:58:51.972292"
+    },
+    "backend/test_report_20251104_074501.json": {
+      "size": 2060,
+      "modified": "2025-11-04T07:45:01.327508"
+    },
+    "backend/log_analysis_20251104_071145.json": {
+      "size": 2362,
+      "modified": "2025-11-04T07:11:45.589381"
+    },
+    "backend/test_report_20251104_071229.json": {
+      "size": 2057,
+      "modified": "2025-11-04T07:12:29.421321"
+    },
+    "backend/monitor_dashboard.py": {
+      "size": 5783,
+      "modified": "2025-11-04T07:11:02.424558"
+    },
+    "backend/.env.example": {
+      "size": 1427,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/benchmark.py": {
+      "size": 8370,
+      "modified": "2025-11-04T06:26:29.010810"
+    },
+    "backend/integration_test_suite.py": {
+      "size": 10401,
+      "modified": "2025-11-04T07:12:27.089133"
+    },
+    "backend/main.py": {
+      "size": 6818,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/code_quality.py": {
+      "size": 7608,
+      "modified": "2025-11-04T04:07:06.230649"
+    },
+    "backend/e2e_test.py": {
+      "size": 7728,
+      "modified": "2025-11-03T23:53:20.726830"
+    },
+    "backend/benchmark_report_20251104_074459.txt": {
+      "size": 1627,
+      "modified": "2025-11-04T07:44:59.959529"
+    },
+    "backend/Dockerfile": {
+      "size": 1308,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/backup_restore.py": {
+      "size": 3139,
+      "modified": "2025-11-04T04:06:34.866750"
+    },
+    "backend/benchmark_report_20251104_062629.txt": {
+      "size": 1623,
+      "modified": "2025-11-04T06:26:29.810797"
+    },
+    "backend/diagnostic_report_20251104_074459.json": {
+      "size": 1170,
+      "modified": "2025-11-04T07:44:59.227541"
+    },
+    "backend/data_export_import.py": {
+      "size": 13196,
+      "modified": "2025-11-04T08:00:44.416769"
+    },
+    "backend/log_analyzer.py": {
+      "size": 7731,
+      "modified": "2025-11-04T07:11:41.240940"
+    },
+    "backend/manage.py": {
+      "size": 8323,
+      "modified": "2025-11-04T04:05:33.950946"
+    },
+    "frontend/package.json": {
+      "size": 1126,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/tsconfig.json": {
+      "size": 599,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "frontend/Dockerfile": {
+      "size": 1050,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/next.config.js": {
+      "size": 593,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "docker/docker-compose.yml": {
+      "size": 5131,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "sdk/python/requirements.txt": {
+      "size": 218,
+      "modified": "2025-11-04T06:40:24.450858"
+    },
+    "sdk/python/platform_sdk.py": {
+      "size": 11460,
+      "modified": "2025-11-04T06:25:43.804605"
+    },
+    "backend/scripts/init_data.py": {
+      "size": 14686,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/scripts/add_indexes.py": {
+      "size": 6201,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/scripts/seed_data.py": {
+      "size": 8406,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/scripts/deploy_check.py": {
+      "size": 7412,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/scripts/init_db.py": {
+      "size": 2733,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/scripts/backup_restore.py": {
+      "size": 8230,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/scripts/migrate_db.py": {
+      "size": 5454,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/scripts/manage.py": {
+      "size": 9329,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_api_integration.py": {
+      "size": 8059,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/conftest.py": {
+      "size": 1431,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_enhanced_features.py": {
+      "size": 5917,
+      "modified": "2025-11-03T23:36:05.738213"
+    },
+    "backend/tests/test_book_service.py": {
+      "size": 4282,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_performance.py.skip": {
+      "size": 5132,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_points.py": {
+      "size": 11989,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_payment_service.py": {
+      "size": 5549,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_book_endpoints.py": {
+      "size": 5244,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_performance.py": {
+      "size": 5003,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_progress_service.py": {
+      "size": 4339,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_membership.py": {
+      "size": 7371,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_rag_v2.py": {
+      "size": 11577,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_analytics.py": {
+      "size": 5294,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_knowledge.py": {
+      "size": 11715,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_auth_endpoints.py": {
+      "size": 4710,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/tests/test_user_service.py": {
+      "size": 2473,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/main.py": {
+      "size": 6301,
+      "modified": "2025-11-03T23:42:46.265303"
+    },
+    "backend/app/executors/docker_executor.py": {
+      "size": 7587,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/membership.py": {
+      "size": 6112,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/coupon.py": {
+      "size": 3289,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/progress.py": {
+      "size": 5497,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/session.py": {
+      "size": 7227,
+      "modified": "2025-11-03T23:30:11.655365"
+    },
+    "backend/app/models/tool.py": {
+      "size": 2743,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/payment.py": {
+      "size": 4519,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/user.py": {
+      "size": 3306,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/book.py": {
+      "size": 6587,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/knowledge.py": {
+      "size": 4400,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/__init__.py": {
+      "size": 1573,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/models/points.py": {
+      "size": 7901,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/db/indexes.py": {
+      "size": 3169,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/executor/simple_executor.py": {
+      "size": 6809,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/api/__init__.py": {
+      "size": 525,
+      "modified": "2025-11-03T23:35:44.954272"
+    },
+    "backend/app/core/cache.py": {
+      "size": 4990,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/core/config.py": {
+      "size": 8757,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/core/database.py": {
+      "size": 1241,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/core/init_db.py": {
+      "size": 2221,
+      "modified": "2025-11-03T23:42:30.517334"
+    },
+    "backend/app/core/security.py": {
+      "size": 5339,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/core/monitoring.py": {
+      "size": 1686,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/code_intelligence.py": {
+      "size": 15512,
+      "modified": "2025-11-03T23:33:38.934679"
+    },
+    "backend/app/services/wechat_payment.py": {
+      "size": 9217,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/ai_assistant_enhanced.py": {
+      "size": 8312,
+      "modified": "2025-11-03T23:35:29.146318"
+    },
+    "backend/app/services/points_service.py": {
+      "size": 14413,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/result_parser.py": {
+      "size": 8399,
+      "modified": "2025-11-03T23:34:37.534478"
+    },
+    "backend/app/services/vector_store.py": {
+      "size": 10629,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/user_service.py": {
+      "size": 6153,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/embedding_service.py": {
+      "size": 4788,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/rag_service_v2.py": {
+      "size": 15126,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/openai_service.py": {
+      "size": 5834,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/execution_engine.py": {
+      "size": 18625,
+      "modified": "2025-11-03T23:32:14.247016"
+    },
+    "backend/app/services/rag_service.py": {
+      "size": 12517,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/progress_service.py": {
+      "size": 9159,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/coupon_service.py": {
+      "size": 7447,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/ai_service.py": {
+      "size": 14351,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/payment_service.py": {
+      "size": 11695,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/session_service.py": {
+      "size": 11914,
+      "modified": "2025-11-03T23:30:43.439313"
+    },
+    "backend/app/services/__init__.py": {
+      "size": 232,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/book_service.py": {
+      "size": 5564,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/services/membership_service.py": {
+      "size": 12589,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/middleware/rate_limit.py": {
+      "size": 6287,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/middleware/monitoring.py": {
+      "size": 3815,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/utils/email.py": {
+      "size": 11780,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/utils/cache.py": {
+      "size": 4245,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/utils/analytics.py": {
+      "size": 12740,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/utils/logger.py": {
+      "size": 7429,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/api/endpoints/execution.py": {
+      "size": 9415,
+      "modified": "2025-11-03T23:32:51.106861"
+    },
+    "backend/app/api/endpoints/membership.py": {
+      "size": 1219,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/coupons.py": {
+      "size": 3782,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/sessions.py": {
+      "size": 7821,
+      "modified": "2025-11-03T23:31:06.307277"
+    },
+    "backend/app/api/endpoints/admin.py": {
+      "size": 661,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/payments.py": {
+      "size": 9567,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/logs.py": {
+      "size": 6187,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/users.py": {
+      "size": 1490,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/api/endpoints/analytics.py": {
+      "size": 2613,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/tools.py": {
+      "size": 9885,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/api/endpoints/books.py": {
+      "size": 8315,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/progress.py": {
+      "size": 7906,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "backend/app/api/endpoints/ai_assistant.py": {
+      "size": 4511,
+      "modified": "2025-11-03T23:35:36.866296"
+    },
+    "backend/app/api/endpoints/chapters.py": {
+      "size": 482,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/health.py": {
+      "size": 3116,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/cases.py": {
+      "size": 464,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/order_stats.py": {
+      "size": 7933,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/code.py": {
+      "size": 7448,
+      "modified": "2025-11-03T23:34:07.758577"
+    },
+    "backend/app/api/endpoints/knowledge.py": {
+      "size": 11288,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/auth.py": {
+      "size": 7529,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "backend/app/api/endpoints/points.py": {
+      "size": 1844,
+      "modified": "2025-11-03T23:15:12.032934"
+    },
+    "frontend/src/App.tsx": {
+      "size": 675,
+      "modified": "2025-11-04T06:25:08.684774"
+    },
+    "frontend/src/components/ResultDashboard.tsx": {
+      "size": 10879,
+      "modified": "2025-11-03T23:52:07.203233"
+    },
+    "frontend/src/components/LoadingSpinner.tsx": {
+      "size": 1970,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "frontend/src/components/ErrorBoundary.tsx": {
+      "size": 2424,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "frontend/src/components/AIChat.tsx": {
+      "size": 8842,
+      "modified": "2025-11-03T23:52:36.139070"
+    },
+    "frontend/src/components/CodeWorkspace.tsx": {
+      "size": 12525,
+      "modified": "2025-11-03T23:51:35.447418"
+    },
+    "frontend/src/pages/LearningSession.tsx": {
+      "size": 9641,
+      "modified": "2025-11-04T06:25:06.044757"
+    },
+    "frontend/src/services/api.ts": {
+      "size": 5179,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "frontend/src/providers/QueryProvider.tsx": {
+      "size": 545,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "frontend/src/utils/errorHandler.ts": {
+      "size": 3885,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "frontend/src/app/globals.css": {
+      "size": 982,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/src/app/page.tsx": {
+      "size": 9347,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "frontend/src/app/layout.tsx": {
+      "size": 855,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/src/app/dashboard/page.tsx": {
+      "size": 12335,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/src/app/books/page.tsx": {
+      "size": 9832,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/src/app/login/page.tsx": {
+      "size": 9207,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/src/app/books/[slug]/page.tsx": {
+      "size": 17558,
+      "modified": "2025-11-03T23:15:12.036934"
+    },
+    "frontend/src/app/tools/[slug]/page.tsx": {
+      "size": 12685,
+      "modified": "2025-11-03T23:15:12.040934"
+    },
+    "docker/nginx/nginx.prod.conf": {
+      "size": 5413,
+      "modified": "2025-11-03T23:15:12.036934"
+    }
+  }
+}

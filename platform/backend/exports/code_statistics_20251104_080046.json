@@ -1,0 +1,32 @@
+{
+  "export_time": "2025-11-04T08:00:46.089985",
+  "by_extension": {
+    ".py": {
+      "files": 123,
+      "lines": 28860
+    },
+    ".md": {
+      "files": 78,
+      "lines": 38339
+    },
+    ".txt": {
+      "files": 16,
+      "lines": 2274
+    },
+    ".json": {
+      "files": 12,
+      "lines": 2670
+    },
+    ".yml": {
+      "files": 4,
+      "lines": 729
+    }
+  },
+  "by_directory": {},
+  "total": {
+    "files": 233,
+    "lines": 72872,
+    "blank_lines": 0,
+    "comment_lines": 0
+  }
+}

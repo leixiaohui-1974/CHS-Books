@@ -1,0 +1,287 @@
+{
+  "timestamp": "2025-11-04T07:58:54.235063",
+  "results": [
+    {
+      "name": "system",
+      "data": {
+        "cpu": {
+          "usage_percent": 25.0,
+          "count": 4,
+          "frequency_mhz": 2400.0,
+          "status": "good"
+        },
+        "memory": {
+          "total_gb": 15.642253875732422,
+          "available_gb": 14.920642852783203,
+          "used_percent": 4.6,
+          "status": "good"
+        },
+        "swap": {
+          "total_gb": 0.0,
+          "used_percent": 0.0,
+          "status": "good"
+        },
+        "disk": {
+          "total_gb": 125.87103652954102,
+          "used_gb": 18.088581085205078,
+          "used_percent": 15.1,
+          "read_mb": 1752.2451171875,
+          "write_mb": 22834.07421875,
+          "status": "good"
+        },
+        "network": {
+          "sent_mb": 1646.8272075653076,
+          "recv_mb": 6105.004214286804,
+          "status": "good"
+        }
+      }
+    },
+    {
+      "name": "code",
+      "data": {
+        "files_analyzed": 115,
+        "hotspots_found": 15,
+        "hotspots": [
+          {
+            "file": "admin_tools.py",
+            "issues": [
+              "深度嵌套循环"
+            ],
+            "lines": 390
+          },
+          {
+            "file": "test_all_tools.py",
+            "issues": [
+              "函数过长(>100行)"
+            ],
+            "lines": 213
+          },
+          {
+            "file": "api_doc_generator.py",
+            "issues": [
+              "深度嵌套循环"
+            ],
+            "lines": 277
+          },
+          {
+            "file": "setup_wizard.py",
+            "issues": [
+              "函数过长(>100行)"
+            ],
+            "lines": 484
+          },
+          {
+            "file": "quickstart.py",
+            "issues": [
+              "函数过长(>100行)"
+            ],
+            "lines": 135
+          },
+          {
+            "file": "test_case_example.py",
+            "issues": [
+              "深度嵌套循环",
+              "函数过长(>100行)"
+            ],
+            "lines": 284
+          },
+          {
+            "file": "db_migrate.py",
+            "issues": [
+              "深度嵌套循环"
+            ],
+            "lines": 289
+          },
+          {
+            "file": "simple_test.py",
+            "issues": [
+              "函数过长(>100行)"
+            ],
+            "lines": 230
+          },
+          {
+            "file": "demo_workflow.py",
+            "issues": [
+              "深度嵌套循环",
+              "函数过长(>100行)"
+            ],
+            "lines": 397
+          },
+          {
+            "file": "system_diagnostics.py",
+            "issues": [
+              "深度嵌套循环"
+            ],
+            "lines": 350
+          }
+        ]
+      }
+    },
+    {
+      "name": "database",
+      "data": {
+        "slow_queries": 0,
+        "total_queries": 0,
+        "avg_query_time_ms": 0,
+        "recommendations": []
+      }
+    },
+    {
+      "name": "api",
+      "data": {
+        "total_endpoints": 92,
+        "files": 21,
+        "endpoints": [
+          {
+            "file": "execution.py",
+            "routes": 4,
+            "async_endpoints": 9,
+            "sync_endpoints": 2
+          },
+          {
+            "file": "membership.py",
+            "routes": 2,
+            "async_endpoints": 2,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "coupons.py",
+            "routes": 3,
+            "async_endpoints": 3,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "sessions.py",
+            "routes": 8,
+            "async_endpoints": 8,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "admin.py",
+            "routes": 2,
+            "async_endpoints": 2,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "payments.py",
+            "routes": 6,
+            "async_endpoints": 6,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "logs.py",
+            "routes": 3,
+            "async_endpoints": 3,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "users.py",
+            "routes": 3,
+            "async_endpoints": 3,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "analytics.py",
+            "routes": 5,
+            "async_endpoints": 5,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "tools.py",
+            "routes": 4,
+            "async_endpoints": 5,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "books.py",
+            "routes": 5,
+            "async_endpoints": 5,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "progress.py",
+            "routes": 5,
+            "async_endpoints": 5,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "ai_assistant.py",
+            "routes": 5,
+            "async_endpoints": 5,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "chapters.py",
+            "routes": 1,
+            "async_endpoints": 1,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "health.py",
+            "routes": 4,
+            "async_endpoints": 4,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "cases.py",
+            "routes": 1,
+            "async_endpoints": 1,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "order_stats.py",
+            "routes": 3,
+            "async_endpoints": 3,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "code.py",
+            "routes": 7,
+            "async_endpoints": 7,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "knowledge.py",
+            "routes": 8,
+            "async_endpoints": 8,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "auth.py",
+            "routes": 10,
+            "async_endpoints": 10,
+            "sync_endpoints": 0
+          },
+          {
+            "file": "points.py",
+            "routes": 3,
+            "async_endpoints": 3,
+            "sync_endpoints": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "dependencies",
+      "data": {
+        "total_packages": 59,
+        "heavy_packages": [],
+        "recommendations": []
+      }
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "code",
+      "level": "medium",
+      "message": "发现15个代码热点，建议重构优化"
+    }
+  ],
+  "optimization_plan": [
+    {
+      "priority": "中",
+      "type": "code",
+      "recommendation": "发现15个代码热点，建议重构优化"
+    }
+  ]
+}
