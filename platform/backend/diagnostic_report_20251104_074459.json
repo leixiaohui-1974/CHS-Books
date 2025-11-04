@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-11-04T07:44:59.234439",
+  "info": [
+    {
+      "title": "Python\u7248\u672c",
+      "value": "3.12.3"
+    },
+    {
+      "title": "\u78c1\u76d8\u4f7f\u7528",
+      "value": "15.1% (101.4GB \u53ef\u7528)"
+    },
+    {
+      "title": "\u5185\u5b58\u4f7f\u7528",
+      "value": "4.7% (14.9GB \u53ef\u7528)"
+    },
+    {
+      "title": "Python\u4f9d\u8d56",
+      "value": "\u6240\u6709\u6838\u5fc3\u5305\u5df2\u5b89\u88c5"
+    },
+    {
+      "title": "\u5173\u952e\u6587\u4ef6",
+      "value": "\u5b8c\u6574"
+    },
+    {
+      "title": "\u7aef\u53e3\u72b6\u6001",
+      "value": "\u6240\u6709\u5173\u952e\u7aef\u53e3\u53ef\u7528"
+    }
+  ],
+  "issues": [
+    {
+      "title": "Docker\u672a\u5b89\u88c5",
+      "description": "\u7cfb\u7edf\u4e2d\u672a\u627e\u5230Docker",
+      "solution": "\u5b89\u88c5Docker: https://docs.docker.com/get-docker/"
+    }
+  ],
+  "warnings": [
+    {
+      "title": "\u7f3a\u5c11\u914d\u7f6e\u6587\u4ef6",
+      "description": "\u672a\u627e\u5230.env\u6587\u4ef6\uff0c\u4f7f\u7528\u914d\u7f6e\u5411\u5bfc\u521b\u5efa: python3 setup_wizard.py"
+    }
+  ],
+  "summary": {
+    "issue_count": 1,
+    "warning_count": 1
+  }
+}

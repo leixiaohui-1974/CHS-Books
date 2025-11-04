@@ -1,0 +1,82 @@
+{
+  "timestamp": "2025-11-04T07:45:01.331212",
+  "duration": 0.553339,
+  "total": 12,
+  "passed": 7,
+  "failed": 5,
+  "success_rate": 58.333333333333336,
+  "results": [
+    {
+      "name": "\u4ee3\u7801\u667a\u80fd\u6a21\u5757",
+      "passed": false,
+      "error": "type object 'CodeAnalyzer' has no attribute 'analyze_code'",
+      "duration": 0.5022039413452148
+    },
+    {
+      "name": "AI\u52a9\u624b\u7ed3\u6784",
+      "passed": true,
+      "error": null,
+      "duration": 0.0001811981201171875
+    },
+    {
+      "name": "\u7ed3\u679c\u89e3\u6790\u5668\u7ed3\u6784",
+      "passed": false,
+      "error": "No module named 'pandas'",
+      "duration": 0.0001773834228515625
+    },
+    {
+      "name": "\u6267\u884c\u5f15\u64ce\u7ed3\u6784",
+      "passed": false,
+      "error": "name 'List' is not defined",
+      "duration": 0.04943108558654785
+    },
+    {
+      "name": "\u4f1a\u8bdd\u6a21\u578b",
+      "passed": false,
+      "error": "No module named 'app.db.base'",
+      "duration": 0.0003428459167480469
+    },
+    {
+      "name": "API\u7aef\u70b9\u7ed3\u6784",
+      "passed": false,
+      "error": "No module named 'app.core.auth'",
+      "duration": 0.000423431396484375
+    },
+    {
+      "name": "\u4ee3\u7801\u9a8c\u8bc1",
+      "passed": true,
+      "error": null,
+      "duration": 5.9604644775390625e-05
+    },
+    {
+      "name": "\u4ee3\u7801\u52a0\u8f7d",
+      "passed": true,
+      "error": null,
+      "duration": 8.106231689453125e-06
+    },
+    {
+      "name": "SDK\u5bfc\u5165",
+      "passed": true,
+      "error": null,
+      "duration": 0.0002474784851074219
+    },
+    {
+      "name": "\u5de5\u5177\u811a\u672c\u5b58\u5728\u6027",
+      "passed": true,
+      "error": null,
+      "duration": 8.7738037109375e-05
+    },
+    {
+      "name": "\u6587\u6863\u5b58\u5728\u6027",
+      "passed": true,
+      "error": null,
+      "duration": 5.435943603515625e-05
+    },
+    {
+      "name": "Docker\u6587\u4ef6\u5b58\u5728\u6027",
+      "passed": true,
+      "error": null,
+      "duration": 1.9550323486328125e-05
+    }
+  ]
+}

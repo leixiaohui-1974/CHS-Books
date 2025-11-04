@@ -1,0 +1,259 @@
+{
+  "info": {
+    "name": "智能知识平台 V2.2 API",
+    "description": "完整的API集合",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Sessions",
+      "item": [
+        {
+          "name": "创建学习会话",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/sessions/create",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "sessions",
+                "create"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": \"user_001\",\n  \"book_slug\": \"water-environment-simulation\",\n  \"case_slug\": \"case_01_diffusion\"\n}"
+            }
+          }
+        },
+        {
+          "name": "获取会话信息",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/sessions/{session_id}",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "sessions",
+                "{session_id}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "暂停会话",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/sessions/{session_id}/pause",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "sessions",
+                "{session_id}",
+                "pause"
+              ]
+            }
+          }
+        },
+        {
+          "name": "恢复会话",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/sessions/{session_id}/resume",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "sessions",
+                "{session_id}",
+                "resume"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Code",
+      "item": [
+        {
+          "name": "加载案例代码",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/code/load",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "code",
+                "load"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"book_slug\": \"water-environment-simulation\",\n  \"case_slug\": \"case_01_diffusion\"\n}"
+            }
+          }
+        },
+        {
+          "name": "分析代码结构",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/code/analyze",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "code",
+                "analyze"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"def test(): pass\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Execution",
+      "item": [
+        {
+          "name": "启动代码执行",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/execution/start",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "execution",
+                "start"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"session_id\": \"session_123\",\n  \"script_path\": \"main.py\",\n  \"parameters\": {}\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ai",
+      "item": [
+        {
+          "name": "AI代码讲解",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/v2/ai/explain-code",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "v2",
+                "ai",
+                "explain-code"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"def add(a, b): return a + b\",\n  \"context\": \"加法函数\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
