@@ -4,7 +4,7 @@ Models for Photovoltaic Systems
 """
 
 from .pv_cell import PVCell, SingleDiodeModel, DoubleDiodeModel
-from .pv_module import PVModule
+from .pv_module import PVModule, BypassDiode
 from .pv_array import PVArray
 
 __all__ = [
@@ -12,5 +12,6 @@ __all__ = [
     'SingleDiodeModel',
     'DoubleDiodeModel',
     'PVModule',
+    'BypassDiode',
     'PVArray',
 ]
