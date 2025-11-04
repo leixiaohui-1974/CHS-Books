@@ -37,17 +37,23 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.APP_NAME,
     description="""
-    ## 工程学习平台 API
+    ## 工程学习平台 API V2.0
     
     一个集教材、工具、AI助手三位一体的现代化工程学习平台。
+    
+    ### ✨ V2.0 新功能
+    
+    * **会话管理** - 完整的学习会话生命周期
+    * **代码执行** - Docker容器池 + WebSocket实时通信
+    * **代码智能** - AST分析、语法验证、差异对比
+    * **AI助手** - 代码讲解、错误诊断、智能问答
+    * **结果标准化** - 多格式结果解析和展示
     
     ### 核心功能
     
     * **用户系统** - 注册、登录、JWT认证
     * **课程管理** - 书籍、章节、案例三级结构
     * **学习追踪** - 完整的进度追踪系统
-    * **工具执行** - 交互式工具运行
-    * **AI助手** - 智能学习助手（开发中）
     
     ### 技术栈
     
@@ -205,11 +211,15 @@ async def system_info():
         "cors_origins": settings.CORS_ORIGINS,
         "features": {
             "user_system": "✅",
+            "session_management": "✅ V2.0",
+            "code_execution": "✅ V2.0",
+            "code_intelligence": "✅ V2.0",
+            "ai_assistant": "✅ V2.0",
+            "result_parser": "✅ V2.0",
+            "websocket_support": "✅ V2.0",
             "course_management": "✅",
             "progress_tracking": "✅",
-            "tool_execution": "✅",
-            "payment_system": "⏳",
-            "ai_assistant": "⏳"
+            "payment_system": "⏳"
         }
     }
 

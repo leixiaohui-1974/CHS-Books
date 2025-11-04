@@ -1,0 +1,97 @@
+{
+  "timestamp": "2025-11-04T07:44:59.362497",
+  "stats": {
+    "by_level": {
+      "INFO": 50,
+      "WARNING": 10,
+      "ERROR": 10
+    },
+    "by_module": {
+      "app.services.execution": 30,
+      "app.api.sessions": 20,
+      "app.main": 10,
+      "app.services.ai": 10
+    },
+    "top_errors": {
+      "API rate limit exceeded": 10
+    },
+    "time_range": {
+      "start": "2025-11-04 14:23:45",
+      "end": "2025-11-04 14:23:58"
+    },
+    "total": 70,
+    "error_rate": 14.285714285714285
+  },
+  "sample_logs": [
+    {
+      "timestamp": "2025-11-04 14:23:45",
+      "level": "INFO",
+      "location": "app.main",
+      "lineno": 45,
+      "message": "Application started"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:46",
+      "level": "INFO",
+      "location": "app.api.sessions",
+      "lineno": 120,
+      "message": "Session created: session_001"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:48",
+      "level": "INFO",
+      "location": "app.services.execution",
+      "lineno": 89,
+      "message": "Execution started: exec_001"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:50",
+      "level": "WARNING",
+      "location": "app.services.execution",
+      "lineno": 156,
+      "message": "High memory usage detected"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:52",
+      "level": "INFO",
+      "location": "app.services.execution",
+      "lineno": 234,
+      "message": "Execution completed: exec_001"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:55",
+      "level": "ERROR",
+      "location": "app.services.ai",
+      "lineno": 67,
+      "message": "API rate limit exceeded"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:58",
+      "level": "INFO",
+      "location": "app.api.sessions",
+      "lineno": 145,
+      "message": "Session terminated: session_001"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:45",
+      "level": "INFO",
+      "location": "app.main",
+      "lineno": 45,
+      "message": "Application started"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:46",
+      "level": "INFO",
+      "location": "app.api.sessions",
+      "lineno": 120,
+      "message": "Session created: session_001"
+    },
+    {
+      "timestamp": "2025-11-04 14:23:48",
+      "level": "INFO",
+      "location": "app.services.execution",
+      "lineno": 89,
+      "message": "Execution started: exec_001"
+    }
+  ]
+}

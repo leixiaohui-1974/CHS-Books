@@ -1,0 +1,542 @@
+[
+  {
+    "file": "execution.py",
+    "method": "POST",
+    "path": "/start",
+    "summary": ""
+  },
+  {
+    "file": "execution.py",
+    "method": "GET",
+    "path": "/{execution_id}/status",
+    "summary": ""
+  },
+  {
+    "file": "execution.py",
+    "method": "GET",
+    "path": "/{execution_id}/result",
+    "summary": ""
+  },
+  {
+    "file": "execution.py",
+    "method": "GET",
+    "path": "/pool/stats",
+    "summary": ""
+  },
+  {
+    "file": "membership.py",
+    "method": "GET",
+    "path": "/my-info",
+    "summary": ""
+  },
+  {
+    "file": "membership.py",
+    "method": "GET",
+    "path": "/exp-history",
+    "summary": ""
+  },
+  {
+    "file": "coupons.py",
+    "method": "POST",
+    "path": "/validate",
+    "summary": ""
+  },
+  {
+    "file": "coupons.py",
+    "method": "GET",
+    "path": "/my-coupons",
+    "summary": ""
+  },
+  {
+    "file": "coupons.py",
+    "method": "GET",
+    "path": "/available",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "POST",
+    "path": "/create",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "GET",
+    "path": "/{session_id}",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "GET",
+    "path": "/",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "PUT",
+    "path": "/{session_id}/pause",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "PUT",
+    "path": "/{session_id}/resume",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "PUT",
+    "path": "/{session_id}/extend",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "DELETE",
+    "path": "/{session_id}",
+    "summary": ""
+  },
+  {
+    "file": "sessions.py",
+    "method": "GET",
+    "path": "/{session_id}/executions",
+    "summary": ""
+  },
+  {
+    "file": "admin.py",
+    "method": "POST",
+    "path": "/scan-content",
+    "summary": ""
+  },
+  {
+    "file": "admin.py",
+    "method": "GET",
+    "path": "/stats",
+    "summary": ""
+  },
+  {
+    "file": "payments.py",
+    "method": "POST",
+    "path": "/orders",
+    "summary": ""
+  },
+  {
+    "file": "payments.py",
+    "method": "POST",
+    "path": "/pay",
+    "summary": ""
+  },
+  {
+    "file": "payments.py",
+    "method": "GET",
+    "path": "/orders",
+    "summary": ""
+  },
+  {
+    "file": "payments.py",
+    "method": "GET",
+    "path": "/orders/{order_no}",
+    "summary": ""
+  },
+  {
+    "file": "payments.py",
+    "method": "POST",
+    "path": "/orders/{order_id}/cancel",
+    "summary": ""
+  },
+  {
+    "file": "payments.py",
+    "method": "POST",
+    "path": "/refund",
+    "summary": ""
+  },
+  {
+    "file": "logs.py",
+    "method": "GET",
+    "path": "/recent",
+    "summary": ""
+  },
+  {
+    "file": "logs.py",
+    "method": "GET",
+    "path": "/errors",
+    "summary": ""
+  },
+  {
+    "file": "logs.py",
+    "method": "GET",
+    "path": "/stats",
+    "summary": ""
+  },
+  {
+    "file": "users.py",
+    "method": "GET",
+    "path": "/me",
+    "summary": ""
+  },
+  {
+    "file": "users.py",
+    "method": "PUT",
+    "path": "/me",
+    "summary": ""
+  },
+  {
+    "file": "users.py",
+    "method": "POST",
+    "path": "/change-password",
+    "summary": ""
+  },
+  {
+    "file": "analytics.py",
+    "method": "GET",
+    "path": "/my-stats",
+    "summary": ""
+  },
+  {
+    "file": "analytics.py",
+    "method": "GET",
+    "path": "/my-trend",
+    "summary": ""
+  },
+  {
+    "file": "analytics.py",
+    "method": "GET",
+    "path": "/my-ranking",
+    "summary": ""
+  },
+  {
+    "file": "analytics.py",
+    "method": "GET",
+    "path": "/my-insights",
+    "summary": ""
+  },
+  {
+    "file": "analytics.py",
+    "method": "GET",
+    "path": "/popular-courses",
+    "summary": ""
+  },
+  {
+    "file": "tools.py",
+    "method": "POST",
+    "path": "/execute",
+    "summary": ""
+  },
+  {
+    "file": "tools.py",
+    "method": "GET",
+    "path": "/result/{task_id}",
+    "summary": ""
+  },
+  {
+    "file": "tools.py",
+    "method": "GET",
+    "path": "/history",
+    "summary": ""
+  },
+  {
+    "file": "tools.py",
+    "method": "POST",
+    "path": "/{task_id}/save",
+    "summary": ""
+  },
+  {
+    "file": "books.py",
+    "method": "GET",
+    "path": "/{book_id_or_slug}",
+    "summary": ""
+  },
+  {
+    "file": "books.py",
+    "method": "GET",
+    "path": "/{book_id}/chapters",
+    "summary": ""
+  },
+  {
+    "file": "books.py",
+    "method": "POST",
+    "path": "/{book_id}/enroll",
+    "summary": ""
+  },
+  {
+    "file": "books.py",
+    "method": "POST",
+    "path": "/{book_id}/rate",
+    "summary": ""
+  },
+  {
+    "file": "progress.py",
+    "method": "POST",
+    "path": "/enroll/{book_id}",
+    "summary": ""
+  },
+  {
+    "file": "progress.py",
+    "method": "GET",
+    "path": "/my-progress",
+    "summary": ""
+  },
+  {
+    "file": "progress.py",
+    "method": "GET",
+    "path": "/books/{book_id}",
+    "summary": ""
+  },
+  {
+    "file": "progress.py",
+    "method": "POST",
+    "path": "/cases/{case_id}/update",
+    "summary": ""
+  },
+  {
+    "file": "progress.py",
+    "method": "GET",
+    "path": "/dashboard",
+    "summary": ""
+  },
+  {
+    "file": "ai_assistant.py",
+    "method": "POST",
+    "path": "/explain-code",
+    "summary": ""
+  },
+  {
+    "file": "ai_assistant.py",
+    "method": "POST",
+    "path": "/diagnose-error",
+    "summary": ""
+  },
+  {
+    "file": "ai_assistant.py",
+    "method": "POST",
+    "path": "/ask",
+    "summary": ""
+  },
+  {
+    "file": "ai_assistant.py",
+    "method": "POST",
+    "path": "/generate-insights",
+    "summary": ""
+  },
+  {
+    "file": "ai_assistant.py",
+    "method": "DELETE",
+    "path": "/conversation/{session_id}",
+    "summary": ""
+  },
+  {
+    "file": "chapters.py",
+    "method": "GET",
+    "path": "/{chapter_id}",
+    "summary": ""
+  },
+  {
+    "file": "health.py",
+    "method": "GET",
+    "path": "/health",
+    "summary": ""
+  },
+  {
+    "file": "health.py",
+    "method": "GET",
+    "path": "/ready",
+    "summary": ""
+  },
+  {
+    "file": "health.py",
+    "method": "GET",
+    "path": "/live",
+    "summary": ""
+  },
+  {
+    "file": "health.py",
+    "method": "GET",
+    "path": "/metrics",
+    "summary": ""
+  },
+  {
+    "file": "cases.py",
+    "method": "GET",
+    "path": "/{case_id}",
+    "summary": ""
+  },
+  {
+    "file": "order_stats.py",
+    "method": "GET",
+    "path": "/my-orders/stats",
+    "summary": ""
+  },
+  {
+    "file": "order_stats.py",
+    "method": "GET",
+    "path": "/my-orders/trend",
+    "summary": ""
+  },
+  {
+    "file": "order_stats.py",
+    "method": "GET",
+    "path": "/admin/orders/stats",
+    "summary": ""
+  },
+  {
+    "file": "code.py",
+    "method": "POST",
+    "path": "/load",
+    "summary": ""
+  },
+  {
+    "file": "code.py",
+    "method": "GET",
+    "path": "/{session_id}/files",
+    "summary": ""
+  },
+  {
+    "file": "code.py",
+    "method": "GET",
+    "path": "/{session_id}/file/{file_path:path}",
+    "summary": ""
+  },
+  {
+    "file": "code.py",
+    "method": "PUT",
+    "path": "/{session_id}/edit",
+    "summary": ""
+  },
+  {
+    "file": "code.py",
+    "method": "GET",
+    "path": "/{session_id}/diff/{file_path:path}",
+    "summary": ""
+  },
+  {
+    "file": "code.py",
+    "method": "POST",
+    "path": "/validate",
+    "summary": ""
+  },
+  {
+    "file": "code.py",
+    "method": "POST",
+    "path": "/format",
+    "summary": ""
+  },
+  {
+    "file": "knowledge.py",
+    "method": "POST",
+    "path": "/create",
+    "summary": ""
+  },
+  {
+    "file": "knowledge.py",
+    "method": "POST",
+    "path": "/{kb_id}/upload",
+    "summary": ""
+  },
+  {
+    "file": "knowledge.py",
+    "method": "GET",
+    "path": "/{kb_id}/search",
+    "summary": ""
+  },
+  {
+    "file": "knowledge.py",
+    "method": "POST",
+    "path": "/ask",
+    "summary": ""
+  },
+  {
+    "file": "knowledge.py",
+    "method": "GET",
+    "path": "/{kb_id}",
+    "summary": ""
+  },
+  {
+    "file": "knowledge.py",
+    "method": "DELETE",
+    "path": "/{kb_id}/documents/{doc_id}",
+    "summary": ""
+  },
+  {
+    "file": "knowledge.py",
+    "method": "GET",
+    "path": "/stats/{kb_id}",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "POST",
+    "path": "/register",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "POST",
+    "path": "/login",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "POST",
+    "path": "/refresh",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "POST",
+    "path": "/logout",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "GET",
+    "path": "/me",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "POST",
+    "path": "/forgot-password",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "POST",
+    "path": "/reset-password",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "POST",
+    "path": "/verify-email",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "GET",
+    "path": "/oauth/github",
+    "summary": ""
+  },
+  {
+    "file": "auth.py",
+    "method": "GET",
+    "path": "/oauth/wechat",
+    "summary": ""
+  },
+  {
+    "file": "points.py",
+    "method": "GET",
+    "path": "/my-account",
+    "summary": ""
+  },
+  {
+    "file": "points.py",
+    "method": "GET",
+    "path": "/transactions",
+    "summary": ""
+  },
+  {
+    "file": "points.py",
+    "method": "GET",
+    "path": "/shop",
+    "summary": ""
+  }
+]
