@@ -397,32 +397,276 @@ class SingleDiodeModel(PVCell):
         print("=" * 60)
 
 
+class DoubleDiodeModel(PVCell):
+    """
+    双二极管等效电路模型
+    Double Diode Equivalent Circuit Model
+    
+    更精确的模型,考虑扩散电流和复合电流
+    
+    模型方程:
+    I = Iph - I01*[exp((V+I*Rs)/(n1*Vt)) - 1] - I02*[exp((V+I*Rs)/(n2*Vt)) - 1] - (V+I*Rs)/Rsh
+    
+    其中:
+    - Iph: 光生电流
+    - I01: 扩散电流饱和值
+    - I02: 复合电流饱和值
+    - n1: 扩散理想因子 (≈1.0)
+    - n2: 复合理想因子 (≈2.0)
+    - Rs: 串联电阻
+    - Rsh: 并联电阻
+    """
+    
+    # 物理常数
+    k = 1.380649e-23  # 玻尔兹曼常数 (J/K)
+    q = 1.602176634e-19  # 电子电荷 (C)
+    
+    def __init__(self,
+                 Isc: float = 8.0,
+                 Voc: float = 0.6,
+                 Imp: float = 7.5,
+                 Vmp: float = 0.48,
+                 T: float = 298.15,
+                 G: float = 1000.0,
+                 n1: float = 1.0,  # 扩散理想因子
+                 n2: float = 2.0,  # 复合理想因子
+                 Rs: Optional[float] = None,
+                 Rsh: Optional[float] = None,
+                 name: str = "Double Diode Model"):
+        """
+        初始化双二极管模型
+        
+        Parameters:
+        -----------
+        Isc, Voc, Imp, Vmp : float
+            标准测试条件下的特性参数
+        T : float
+            电池温度 (K)
+        G : float
+            辐照度 (W/m²)
+        n1 : float
+            扩散理想因子 (通常≈1.0)
+        n2 : float
+            复合理想因子 (通常≈2.0)
+        Rs, Rsh : float, optional
+            串联和并联电阻
+        """
+        super().__init__(name)
+        
+        # STC参数
+        self.Isc_stc = Isc
+        self.Voc_stc = Voc
+        self.Imp_stc = Imp
+        self.Vmp_stc = Vmp
+        self.Pmp_stc = Imp * Vmp
+        
+        # 工作条件
+        self.T = T
+        self.G = G
+        self.n1 = n1  # 扩散理想因子
+        self.n2 = n2  # 复合理想因子
+        
+        # 热电压
+        self.Vt = self.k * self.T / self.q
+        
+        # 电阻
+        if Rs is None or Rsh is None:
+            self.Rs, self.Rsh = self._estimate_resistances()
+        else:
+            self.Rs = Rs
+            self.Rsh = Rsh
+            
+        # 计算电流参数
+        self.Iph = self._calculate_photocurrent()
+        self.I01, self.I02 = self._calculate_saturation_currents()
+        
+        # 更新特性参数
+        self.Isc = self.calculate_current(0.0)
+        self.Voc = self._calculate_open_circuit_voltage()
+        
+    def _estimate_resistances(self) -> Tuple[float, float]:
+        """估算电阻"""
+        Rs = 0.004  # 双二极管模型Rs稍小
+        Rsh = 1500.0  # Rsh稍大
+        return Rs, Rsh
+        
+    def _calculate_photocurrent(self) -> float:
+        """计算光生电流"""
+        G_stc = 1000.0
+        T_stc = 298.15
+        alpha = 0.0005
+        
+        Iph = self.Isc_stc * (self.G / G_stc) * (1 + alpha * (self.T - T_stc))
+        return Iph
+        
+    def _calculate_saturation_currents(self) -> Tuple[float, float]:
+        """
+        计算两个二极管的反向饱和电流
+        
+        使用经验关系:
+        I01 ≈ 0.9 * I0_total
+        I02 ≈ 0.1 * I0_total
+        
+        I0(T) = I0(T_ref) * (T/T_ref)^3 * exp(Eg/k * (1/T_ref - 1/T))
+        """
+        T_stc = 298.15
+        Vt_stc = self.k * T_stc / self.q
+        
+        # 在STC下计算I0
+        Iph_stc = self.Isc_stc
+        # 从Voc_stc反推I0_stc
+        I0_stc = (Iph_stc - self.Voc_stc / self.Rsh) / (np.exp(self.Voc_stc / (self.n1 * Vt_stc)) - 1)
+        
+        # 温度修正 - 使用更强的温度依赖
+        # 硅电池的能隙 Eg ≈ 1.12 eV
+        Eg = 1.12  # eV
+        # I0随温度强烈增加
+        temp_ratio = np.power(self.T / T_stc, 3)
+        exp_factor = np.exp(Eg * self.q / self.k * (1.0 / T_stc - 1.0 / self.T))
+        I0_total = I0_stc * temp_ratio * exp_factor
+        
+        # 分配给两个二极管
+        I01 = 0.9 * I0_total  # 扩散电流占主导
+        I02 = 0.1 * I0_total  # 复合电流较小
+        
+        return I01, I02
+        
+    def _calculate_open_circuit_voltage(self) -> float:
+        """计算开路电压"""
+        def equation(V):
+            term1 = self.I01 * (np.exp(V / (self.n1 * self.Vt)) - 1)
+            term2 = self.I02 * (np.exp(V / (self.n2 * self.Vt)) - 1)
+            term3 = V / self.Rsh
+            return self.Iph - term1 - term2 - term3
+        
+        # 初值估算 - 考虑温度和辐照度影响
+        G_stc = 1000.0
+        T_stc = 298.15
+        beta = -0.0023  # 温度系数 (V/K)
+        
+        # 基于当前条件估算初始值
+        # Voc主要受温度影响(负温度系数)和辐照度影响(对数关系)
+        irr_factor = self.n1 * self.Vt * np.log(max(self.G, 10) / G_stc)
+        temp_factor = beta * (self.T - T_stc)
+        V_initial = self.Voc_stc + irr_factor + temp_factor
+        V_initial = max(0.1, min(V_initial, self.Voc_stc * 1.2))
+        
+        try:
+            Voc = fsolve(equation, V_initial, full_output=False)[0]
+            return max(0, Voc)
+        except:
+            return max(0.1, self.Voc_stc + temp_factor)
+            
+    def calculate_current(self, voltage: float) -> float:
+        """
+        计算给定电压下的电流
+        
+        求解隐式方程:
+        I = Iph - I01*[exp((V+I*Rs)/(n1*Vt)) - 1] - I02*[exp((V+I*Rs)/(n2*Vt)) - 1] - (V+I*Rs)/Rsh
+        """
+        def equation(I):
+            Vd = voltage + I * self.Rs  # 二极管电压
+            term1 = self.I01 * (np.exp(Vd / (self.n1 * self.Vt)) - 1)
+            term2 = self.I02 * (np.exp(Vd / (self.n2 * self.Vt)) - 1)
+            term3 = Vd / self.Rsh
+            return self.Iph - term1 - term2 - term3 - I
+        
+        # 初始猜测
+        I_guess = self.Iph * 0.9
+        I_guess = max(0, I_guess)
+        
+        try:
+            I = fsolve(equation, I_guess)[0]
+            return max(0, I)
+        except:
+            return 0.0
+            
+    def update_conditions(self, T: Optional[float] = None, G: Optional[float] = None):
+        """更新工作条件"""
+        if T is not None:
+            self.T = T
+            self.Vt = self.k * self.T / self.q
+            
+        if G is not None:
+            self.G = G
+            
+        # 重新计算参数
+        self.Iph = self._calculate_photocurrent()
+        self.I01, self.I02 = self._calculate_saturation_currents()
+        self.Isc = self.calculate_current(0.0)
+        self.Voc = self._calculate_open_circuit_voltage()
+        
+    def get_parameters(self) -> dict:
+        """获取模型参数"""
+        return {
+            'name': self.name,
+            'T': self.T,
+            'G': self.G,
+            'n1': self.n1,
+            'n2': self.n2,
+            'Rs': self.Rs,
+            'Rsh': self.Rsh,
+            'Iph': self.Iph,
+            'I01': self.I01,
+            'I02': self.I02,
+            'Vt': self.Vt,
+            'Isc': self.Isc,
+            'Voc': self.Voc,
+            'Isc_stc': self.Isc_stc,
+            'Voc_stc': self.Voc_stc,
+            'Imp_stc': self.Imp_stc,
+            'Vmp_stc': self.Vmp_stc,
+            'Pmp_stc': self.Pmp_stc,
+        }
+        
+    def print_parameters(self):
+        """打印模型参数"""
+        params = self.get_parameters()
+        print(f"\n{self.name} - 模型参数")
+        print("=" * 60)
+        print(f"标准测试条件 (STC):")
+        print(f"  短路电流 Isc_stc:    {params['Isc_stc']:.3f} A")
+        print(f"  开路电压 Voc_stc:    {params['Voc_stc']:.3f} V")
+        print(f"  最大功率 Pmp:       {params['Pmp_stc']:.3f} W")
+        print(f"\n当前工作条件:")
+        print(f"  温度 T:             {params['T']:.2f} K ({params['T']-273.15:.1f}°C)")
+        print(f"  辐照度 G:           {params['G']:.1f} W/m²")
+        print(f"\n模型参数:")
+        print(f"  扩散理想因子 n1:    {params['n1']:.3f}")
+        print(f"  复合理想因子 n2:    {params['n2']:.3f}")
+        print(f"  串联电阻 Rs:        {params['Rs']:.6f} Ω")
+        print(f"  并联电阻 Rsh:       {params['Rsh']:.3f} Ω")
+        print(f"  光生电流 Iph:       {params['Iph']:.3f} A")
+        print(f"  扩散饱和电流 I01:   {params['I01']:.3e} A")
+        print(f"  复合饱和电流 I02:   {params['I02']:.3e} A")
+        print(f"  热电压 Vt:          {params['Vt']:.6f} V")
+        print(f"\n当前特性:")
+        print(f"  短路电流 Isc:       {params['Isc']:.3f} A")
+        print(f"  开路电压 Voc:       {params['Voc']:.3f} V")
+        print("=" * 60)
+
+
 if __name__ == "__main__":
     # 简单测试
-    print("光伏电池单二极管模型测试")
+    print("光伏电池模型测试")
     print("=" * 60)
     
-    # 创建标准光伏电池模型
-    pv = SingleDiodeModel(
-        Isc=8.0,
-        Voc=0.6,
-        Imp=7.5,
-        Vmp=0.48,
-        T=298.15,  # 25°C
-        G=1000.0
+    # 测试单二极管模型
+    print("\n1. 单二极管模型:")
+    pv1 = SingleDiodeModel(
+        Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48,
+        T=298.15, G=1000.0
     )
+    pv1.print_parameters()
+    vmpp1, impp1, pmpp1 = pv1.find_mpp()
+    print(f"\nMPP: Vmpp={vmpp1:.3f}V, Impp={impp1:.3f}A, Pmpp={pmpp1:.3f}W")
     
-    # 打印参数
-    pv.print_parameters()
-    
-    # 计算几个特征点
-    print(f"\n特征点计算:")
-    print(f"V=0V (短路): I={pv.calculate_current(0):.3f}A")
-    print(f"V=0.3V:      I={pv.calculate_current(0.3):.3f}A, P={pv.calculate_power(0.3):.3f}W")
-    print(f"V=0.48V:     I={pv.calculate_current(0.48):.3f}A, P={pv.calculate_power(0.48):.3f}W")
-    print(f"V=0.6V (开路): I={pv.calculate_current(0.6):.3f}A")
-    
-    # 寻找MPP
-    vmpp, impp, pmpp = pv.find_mpp()
-    print(f"\n最大功率点:")
-    print(f"Vmpp = {vmpp:.3f}V, Impp = {impp:.3f}A, Pmpp = {pmpp:.3f}W")
+    # 测试双二极管模型
+    print("\n\n2. 双二极管模型:")
+    pv2 = DoubleDiodeModel(
+        Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48,
+        T=298.15, G=1000.0
+    )
+    pv2.print_parameters()
+    vmpp2, impp2, pmpp2 = pv2.find_mpp()
+    print(f"\nMPP: Vmpp={vmpp2:.3f}V, Impp={impp2:.3f}A, Pmpp={pmpp2:.3f}W")
