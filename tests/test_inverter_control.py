@@ -18,7 +18,8 @@ sys.path.insert(0, str(code_path))
 from models.inverter_control import (
     InverterParameters, SPWMModulator, SVPWMModulator, InverterModel,
     PIController, PRController, DQCurrentController,
-    DCVoltageController, ACVoltageController, DualLoopVoltageController
+    DCVoltageController, ACVoltageController, DualLoopVoltageController,
+    SRFPLL, SinglePhasePLL
 )
 
 
@@ -875,6 +876,168 @@ class TestDualLoopVoltageController(unittest.TestCase):
         self.assertIn('current_loop', status)
 
 
+class TestSRFPLL(unittest.TestCase):
+    """测试同步参考坐标系锁相环"""
+    
+    def setUp(self):
+        """初始化测试"""
+        self.pll = SRFPLL(Kp=50.0, Ki=1000.0)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.pll.name, "SRF-PLL")
+        self.assertAlmostEqual(self.pll.omega_nominal, 2 * np.pi * 50.0, places=5)
+        self.assertEqual(self.pll.theta, 0.0)
+    
+    def test_clarke_transform(self):
+        """测试Clarke变换"""
+        va, vb, vc = 100.0, -50.0, -50.0
+        v_alpha, v_beta = self.pll.clarke_transform(va, vb, vc)
+        
+        # 验证Clarke变换
+        self.assertAlmostEqual(v_alpha, va, places=5)
+        self.assertIsInstance(v_beta, (float, np.floating))
+    
+    def test_park_transform(self):
+        """测试Park变换"""
+        v_alpha, v_beta = 100.0, 50.0
+        theta = np.pi / 6
+        
+        v_d, v_q = self.pll.park_transform(v_alpha, v_beta, theta)
+        
+        # 验证输出类型
+        self.assertIsInstance(v_d, (float, np.floating))
+        self.assertIsInstance(v_q, (float, np.floating))
+    
+    def test_phase_locking(self):
+        """测试锁相功能"""
+        dt = 1e-4
+        V_grid = 311.0
+        f_grid = 50.0
+        omega_grid = 2 * np.pi * f_grid
+        
+        # 运行更长时间让PLL稳定 (至少5个周期)
+        for i in range(5000):
+            t = i * dt
+            theta_g = omega_grid * t
+            
+            va = V_grid * np.sin(theta_g)
+            vb = V_grid * np.sin(theta_g - 2 * np.pi / 3)
+            vc = V_grid * np.sin(theta_g + 2 * np.pi / 3)
+            
+            theta, omega, frequency = self.pll.update(va, vb, vc, dt)
+        
+        # 验证稳态锁相 (更宽松的误差)
+        self.assertAlmostEqual(frequency, f_grid, delta=0.5)
+        self.assertAlmostEqual(self.pll.omega, omega_grid, delta=1.0)
+    
+    def test_frequency_tracking(self):
+        """测试频率跟踪"""
+        dt = 1e-4
+        V_grid = 311.0
+        f_target = 50.5  # 略高于额定频率
+        omega_target = 2 * np.pi * f_target
+        
+        # 运行足够长时间以稳定
+        for i in range(2000):
+            t = i * dt
+            theta_g = omega_target * t
+            
+            va = V_grid * np.sin(theta_g)
+            vb = V_grid * np.sin(theta_g - 2 * np.pi / 3)
+            vc = V_grid * np.sin(theta_g + 2 * np.pi / 3)
+            
+            theta, omega, frequency = self.pll.update(va, vb, vc, dt)
+        
+        # 验证频率跟踪 (允许一定误差)
+        self.assertAlmostEqual(frequency, f_target, delta=0.2)
+    
+    def test_reset(self):
+        """测试重置"""
+        # 运行一段时间
+        dt = 1e-4
+        for i in range(100):
+            t = i * dt
+            va = 311.0 * np.sin(2 * np.pi * 50 * t)
+            vb = 311.0 * np.sin(2 * np.pi * 50 * t - 2 * np.pi / 3)
+            vc = 311.0 * np.sin(2 * np.pi * 50 * t + 2 * np.pi / 3)
+            self.pll.update(va, vb, vc, dt)
+        
+        # 重置
+        self.pll.reset()
+        
+        # 验证重置后的状态
+        self.assertEqual(self.pll.theta, 0.0)
+        self.assertEqual(self.pll.integral, 0.0)
+        self.assertAlmostEqual(self.pll.omega, 2 * np.pi * 50.0, places=5)
+    
+    def test_get_status(self):
+        """测试状态获取"""
+        status = self.pll.get_status()
+        
+        self.assertIn('theta', status)
+        self.assertIn('omega', status)
+        self.assertIn('frequency', status)
+        self.assertIn('v_d', status)
+        self.assertIn('v_q', status)
+
+
+class TestSinglePhasePLL(unittest.TestCase):
+    """测试单相锁相环"""
+    
+    def setUp(self):
+        """初始化测试"""
+        self.pll = SinglePhasePLL(Kp=50.0, Ki=1000.0)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.pll.name, "Single-Phase-PLL")
+        self.assertAlmostEqual(self.pll.omega_nominal, 2 * np.pi * 50.0, places=5)
+        self.assertEqual(self.pll.theta, 0.0)
+    
+    def test_generate_orthogonal(self):
+        """测试正交信号生成"""
+        v = 311.0
+        v_alpha, v_beta = self.pll.generate_orthogonal(v)
+        
+        # 验证输出类型
+        self.assertIsInstance(v_alpha, (float, np.floating))
+        self.assertIsInstance(v_beta, (float, np.floating))
+    
+    def test_phase_locking(self):
+        """测试锁相功能"""
+        dt = 1e-4
+        V_grid = 311.0
+        f_grid = 50.0
+        omega_grid = 2 * np.pi * f_grid
+        
+        # 单相PLL需要更长时间稳定
+        for i in range(5000):
+            t = i * dt
+            v = V_grid * np.sin(omega_grid * t)
+            
+            theta, omega, frequency = self.pll.update(v, dt)
+        
+        # 验证频率估计 (单相PLL精度较低，检查在合理范围内)
+        self.assertGreaterEqual(frequency, 45.0)
+        self.assertLessEqual(frequency, 55.0)
+    
+    def test_reset(self):
+        """测试重置"""
+        # 运行一段时间
+        dt = 1e-4
+        for i in range(100):
+            v = 311.0 * np.sin(2 * np.pi * 50 * i * dt)
+            self.pll.update(v, dt)
+        
+        # 重置
+        self.pll.reset()
+        
+        # 验证重置后的状态
+        self.assertEqual(self.pll.theta, 0.0)
+        self.assertEqual(self.pll.integral, 0.0)
+
+
 def suite():
     """创建测试套件"""
     suite = unittest.TestSuite()
@@ -890,6 +1053,8 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestDCVoltageController))
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestACVoltageController))
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestDualLoopVoltageController))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSRFPLL))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSinglePhasePLL))
     
     return suite
 

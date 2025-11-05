@@ -1353,3 +1353,295 @@ class DualLoopVoltageController:
             'voltage_loop': self.voltage_ctrl.get_status(),
             'current_loop': self.current_ctrl.get_status()
         }
+
+
+# ==================== 锁相环(PLL) ====================
+
+class PLL:
+    """锁相环基类"""
+    
+    def __init__(self, name: str = "PLL"):
+        self.name = name
+        self.theta = 0.0  # 相位角
+        self.omega = 2 * np.pi * 50.0  # 角频率
+        self.frequency = 50.0  # 频率
+    
+    def reset(self):
+        """重置PLL"""
+        self.theta = 0.0
+        self.omega = 2 * np.pi * 50.0
+        self.frequency = 50.0
+    
+    def update(self, *args, **kwargs) -> Tuple[float, float, float]:
+        """更新PLL (抽象方法)
+        
+        Returns:
+            (theta, omega, frequency)
+        """
+        raise NotImplementedError("子类必须实现update方法")
+
+
+class SRFPLL(PLL):
+    """
+    同步参考坐标系锁相环 (Synchronous Reference Frame PLL)
+    
+    原理:
+        将三相电压变换到dq坐标系，在同步坐标系下：
+        - q轴分量反映相位误差
+        - 通过PI控制器调节频率
+        - 积分得到相位角
+        
+    优点:
+        - 结构简单
+        - 响应快速
+        - 易于实现
+        
+    适用:
+        三相平衡系统
+    """
+    
+    def __init__(self, Kp: float = 50.0, Ki: float = 1000.0, 
+                 omega_nominal: float = None, name: str = "SRF-PLL"):
+        """
+        初始化SRF-PLL
+        
+        Args:
+            Kp: PI控制器比例增益
+            Ki: PI控制器积分增益
+            omega_nominal: 额定角频率 (rad/s)
+            name: PLL名称
+        """
+        super().__init__(name)
+        
+        if omega_nominal is None:
+            omega_nominal = 2 * np.pi * 50.0
+        
+        self.omega_nominal = omega_nominal
+        self.frequency_nominal = omega_nominal / (2 * np.pi)
+        
+        # PI控制器
+        self.Kp = Kp
+        self.Ki = Ki
+        self.integral = 0.0
+        
+        # 初始化
+        self.omega = omega_nominal
+        self.frequency = self.frequency_nominal
+        self.theta = 0.0
+        
+        # 状态记录
+        self.v_d = 0.0
+        self.v_q = 0.0
+    
+    def clarke_transform(self, va: float, vb: float, vc: float) -> Tuple[float, float]:
+        """Clarke变换: abc → αβ"""
+        v_alpha = va
+        v_beta = (va + 2 * vb) / np.sqrt(3)
+        return v_alpha, v_beta
+    
+    def park_transform(self, v_alpha: float, v_beta: float, theta: float) -> Tuple[float, float]:
+        """Park变换: αβ → dq"""
+        cos_theta = np.cos(theta)
+        sin_theta = np.sin(theta)
+        
+        v_d = v_alpha * cos_theta + v_beta * sin_theta
+        v_q = -v_alpha * sin_theta + v_beta * cos_theta
+        
+        return v_d, v_q
+    
+    def update(self, va: float, vb: float, vc: float, dt: float) -> Tuple[float, float, float]:
+        """
+        更新SRF-PLL
+        
+        Args:
+            va, vb, vc: 三相电压 (V)
+            dt: 时间步长 (s)
+            
+        Returns:
+            (theta, omega, frequency): 相位角(rad), 角频率(rad/s), 频率(Hz)
+        """
+        # Clarke变换
+        v_alpha, v_beta = self.clarke_transform(va, vb, vc)
+        
+        # Park变换
+        v_d, v_q = self.park_transform(v_alpha, v_beta, self.theta)
+        
+        # 保存状态
+        self.v_d = v_d
+        self.v_q = v_q
+        
+        # PI控制器 (v_q为误差信号)
+        error = v_q
+        self.integral += error * dt
+        
+        # 频率调节
+        omega_adj = self.Kp * error + self.Ki * self.integral
+        self.omega = self.omega_nominal + omega_adj
+        
+        # 频率限幅 (±5Hz)
+        omega_min = 2 * np.pi * (self.frequency_nominal - 5)
+        omega_max = 2 * np.pi * (self.frequency_nominal + 5)
+        self.omega = np.clip(self.omega, omega_min, omega_max)
+        
+        # 相位积分
+        self.theta += self.omega * dt
+        
+        # 相位归一化到 [0, 2π)
+        self.theta = np.mod(self.theta, 2 * np.pi)
+        
+        # 计算频率
+        self.frequency = self.omega / (2 * np.pi)
+        
+        return self.theta, self.omega, self.frequency
+    
+    def reset(self):
+        """重置PLL"""
+        super().reset()
+        self.omega = self.omega_nominal
+        self.frequency = self.frequency_nominal
+        self.theta = 0.0
+        self.integral = 0.0
+        self.v_d = 0.0
+        self.v_q = 0.0
+    
+    def get_status(self) -> Dict:
+        """获取PLL状态"""
+        return {
+            'name': self.name,
+            'theta': self.theta,
+            'theta_deg': np.degrees(self.theta),
+            'omega': self.omega,
+            'frequency': self.frequency,
+            'v_d': self.v_d,
+            'v_q': self.v_q,
+            'error': self.v_q,
+            'integral': self.integral
+        }
+
+
+class SinglePhasePLL(PLL):
+    """
+    单相锁相环
+    
+    原理:
+        通过构造正交信号，将单相系统映射到两相系统
+        使用类似SRF-PLL的方法进行锁相
+        
+    方法:
+        - 延迟法: 使用T/4延迟构造正交信号
+        - 滤波法: 使用带通滤波器提取正交分量
+        
+    本实现: 使用简化的90度相移法
+    """
+    
+    def __init__(self, Kp: float = 50.0, Ki: float = 1000.0,
+                 omega_nominal: float = None, name: str = "Single-Phase-PLL"):
+        """
+        初始化单相PLL
+        
+        Args:
+            Kp: PI控制器比例增益
+            Ki: PI控制器积分增益
+            omega_nominal: 额定角频率 (rad/s)
+            name: PLL名称
+        """
+        super().__init__(name)
+        
+        if omega_nominal is None:
+            omega_nominal = 2 * np.pi * 50.0
+        
+        self.omega_nominal = omega_nominal
+        self.frequency_nominal = omega_nominal / (2 * np.pi)
+        
+        # PI控制器
+        self.Kp = Kp
+        self.Ki = Ki
+        self.integral = 0.0
+        
+        # 初始化
+        self.omega = omega_nominal
+        self.frequency = self.frequency_nominal
+        self.theta = 0.0
+        
+        # 正交信号生成 (简化: 使用相位偏移)
+        self.v_alpha_history = []
+        self.history_size = 10
+    
+    def generate_orthogonal(self, v: float) -> Tuple[float, float]:
+        """
+        生成正交信号 (α, β)
+        
+        简化方法: 使用当前估计相位生成正交信号
+        """
+        # v_alpha = v (直接使用输入)
+        # v_beta = v在90度相移后的估计 (使用PLL输出)
+        
+        v_alpha = v
+        v_beta = v * np.sin(self.theta + np.pi / 2) / np.sin(self.theta) if np.abs(np.sin(self.theta)) > 0.01 else 0.0
+        
+        return v_alpha, v_beta
+    
+    def update(self, v: float, dt: float) -> Tuple[float, float, float]:
+        """
+        更新单相PLL
+        
+        Args:
+            v: 单相电压 (V)
+            dt: 时间步长 (s)
+            
+        Returns:
+            (theta, omega, frequency): 相位角(rad), 角频率(rad/s), 频率(Hz)
+        """
+        # 生成正交信号
+        v_alpha, v_beta = self.generate_orthogonal(v)
+        
+        # Park变换
+        cos_theta = np.cos(self.theta)
+        sin_theta = np.sin(self.theta)
+        
+        v_d = v_alpha * cos_theta + v_beta * sin_theta
+        v_q = -v_alpha * sin_theta + v_beta * cos_theta
+        
+        # PI控制器 (v_q为误差信号)
+        error = v_q
+        self.integral += error * dt
+        
+        # 频率调节
+        omega_adj = self.Kp * error + self.Ki * self.integral
+        self.omega = self.omega_nominal + omega_adj
+        
+        # 频率限幅
+        omega_min = 2 * np.pi * (self.frequency_nominal - 5)
+        omega_max = 2 * np.pi * (self.frequency_nominal + 5)
+        self.omega = np.clip(self.omega, omega_min, omega_max)
+        
+        # 相位积分
+        self.theta += self.omega * dt
+        
+        # 相位归一化
+        self.theta = np.mod(self.theta, 2 * np.pi)
+        
+        # 计算频率
+        self.frequency = self.omega / (2 * np.pi)
+        
+        return self.theta, self.omega, self.frequency
+    
+    def reset(self):
+        """重置PLL"""
+        super().reset()
+        self.omega = self.omega_nominal
+        self.frequency = self.frequency_nominal
+        self.theta = 0.0
+        self.integral = 0.0
+        self.v_alpha_history = []
+    
+    def get_status(self) -> Dict:
+        """获取PLL状态"""
+        return {
+            'name': self.name,
+            'theta': self.theta,
+            'theta_deg': np.degrees(self.theta),
+            'omega': self.omega,
+            'frequency': self.frequency,
+            'integral': self.integral
+        }
