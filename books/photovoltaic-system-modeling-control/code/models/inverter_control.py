@@ -613,3 +613,429 @@ class InverterModel:
             'v_output': v_out,
             'load_resistance': load_resistance
         }
+
+
+# ==================== 电流控制器 ====================
+
+class CurrentController:
+    """电流控制器基类"""
+    
+    def __init__(self, name: str = "CurrentController"):
+        self.name = name
+        self.i_ref = 0.0
+        self.i_measured = 0.0
+        self.v_output = 0.0
+        
+        # 历史记录
+        self.history = {
+            'time': [],
+            'i_ref': [],
+            'i_measured': [],
+            'error': [],
+            'v_output': []
+        }
+    
+    def reset(self):
+        """重置控制器状态"""
+        self.i_ref = 0.0
+        self.i_measured = 0.0
+        self.v_output = 0.0
+        self.history = {
+            'time': [],
+            'i_ref': [],
+            'i_measured': [],
+            'error': [],
+            'v_output': []
+        }
+    
+    def update(self, i_ref: float, i_measured: float, dt: float, **kwargs) -> float:
+        """
+        更新控制器 (抽象方法)
+        
+        Args:
+            i_ref: 参考电流 (A)
+            i_measured: 测量电流 (A)
+            dt: 时间步长 (s)
+            **kwargs: 其他参数
+            
+        Returns:
+            控制输出电压 (V)
+        """
+        raise NotImplementedError("子类必须实现update方法")
+
+
+class PIController(CurrentController):
+    """
+    PI (比例-积分) 电流控制器
+    
+    控制律:
+        u(t) = Kp * e(t) + Ki * ∫e(t)dt
+    
+    其中:
+        e(t) = i_ref - i_measured
+    
+    特点:
+        - 简单实用
+        - 稳态误差为0
+        - 适用于直流或dq坐标系
+    """
+    
+    def __init__(self, Kp: float, Ki: float, v_limit: float = None, name: str = "PI"):
+        """
+        初始化PI控制器
+        
+        Args:
+            Kp: 比例增益
+            Ki: 积分增益
+            v_limit: 输出电压限幅 (V), 默认无限制
+            name: 控制器名称
+        """
+        super().__init__(name)
+        self.Kp = Kp
+        self.Ki = Ki
+        self.v_limit = v_limit
+        
+        # 积分器状态
+        self.integral = 0.0
+        self.integral_limit = v_limit if v_limit else 1000.0
+    
+    def reset(self):
+        """重置控制器"""
+        super().reset()
+        self.integral = 0.0
+    
+    def update(self, i_ref: float, i_measured: float, dt: float, **kwargs) -> float:
+        """
+        更新PI控制器
+        
+        Args:
+            i_ref: 参考电流 (A)
+            i_measured: 测量电流 (A)
+            dt: 时间步长 (s)
+            
+        Returns:
+            控制输出电压 (V)
+        """
+        # 计算误差
+        error = i_ref - i_measured
+        
+        # 比例项
+        p_term = self.Kp * error
+        
+        # 积分项 (带抗饱和)
+        self.integral += error * dt
+        
+        # 积分限幅 (抗积分饱和)
+        if self.integral_limit:
+            self.integral = np.clip(self.integral, 
+                                   -self.integral_limit / self.Ki,
+                                   self.integral_limit / self.Ki)
+        
+        i_term = self.Ki * self.integral
+        
+        # 控制输出
+        v_output = p_term + i_term
+        
+        # 输出限幅
+        if self.v_limit:
+            v_output = np.clip(v_output, -self.v_limit, self.v_limit)
+        
+        # 保存状态
+        self.i_ref = i_ref
+        self.i_measured = i_measured
+        self.v_output = v_output
+        
+        return v_output
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        error = self.i_ref - self.i_measured
+        return {
+            'name': self.name,
+            'Kp': self.Kp,
+            'Ki': self.Ki,
+            'error': error,
+            'integral': self.integral,
+            'p_term': self.Kp * error,
+            'i_term': self.Ki * self.integral,
+            'v_output': self.v_output
+        }
+
+
+class PRController(CurrentController):
+    """
+    PR (比例-谐振) 电流控制器
+    
+    控制律:
+        u(t) = Kp * e(t) + Kr * [s / (s² + ω₀²)] * e(t)
+    
+    离散化 (Tustin变换):
+        H_r(z) = Kr * [(2/Ts) * (z-1) / ((2/Ts)² + ω₀²) * (z+1)]
+    
+    特点:
+        - 对特定频率(ω₀)有无穷大增益
+        - 可消除该频率的稳态误差
+        - 适用于交流系统(abc坐标系)
+    """
+    
+    def __init__(self, Kp: float, Kr: float, omega_0: float, 
+                 Ts: float, v_limit: float = None, name: str = "PR"):
+        """
+        初始化PR控制器
+        
+        Args:
+            Kp: 比例增益
+            Kr: 谐振增益
+            omega_0: 谐振角频率 (rad/s), 通常为基波频率
+            Ts: 采样周期 (s)
+            v_limit: 输出电压限幅 (V)
+            name: 控制器名称
+        """
+        super().__init__(name)
+        self.Kp = Kp
+        self.Kr = Kr
+        self.omega_0 = omega_0
+        self.Ts = Ts
+        self.v_limit = v_limit
+        
+        # 谐振环节离散化系数 (Tustin变换)
+        # H_r(z) = Kr * b0 + b1*z^-1 + b2*z^-2 / (1 + a1*z^-1 + a2*z^-2)
+        omega_sq = omega_0 ** 2
+        Ts_sq = Ts ** 2
+        
+        # 分子系数
+        self.b0 = Kr * 2 / Ts
+        self.b1 = 0.0
+        self.b2 = -Kr * 2 / Ts
+        
+        # 分母系数
+        denom = 4 / Ts_sq + omega_sq
+        self.a1 = (2 * omega_sq - 8 / Ts_sq) / denom
+        self.a2 = (4 / Ts_sq - omega_sq) / denom
+        
+        # 状态变量 (谐振环节的过去值)
+        self.e_k1 = 0.0  # e(k-1)
+        self.e_k2 = 0.0  # e(k-2)
+        self.u_r_k1 = 0.0  # u_r(k-1)
+        self.u_r_k2 = 0.0  # u_r(k-2)
+    
+    def reset(self):
+        """重置控制器"""
+        super().reset()
+        self.e_k1 = 0.0
+        self.e_k2 = 0.0
+        self.u_r_k1 = 0.0
+        self.u_r_k2 = 0.0
+    
+    def update(self, i_ref: float, i_measured: float, dt: float, **kwargs) -> float:
+        """
+        更新PR控制器
+        
+        Args:
+            i_ref: 参考电流 (A)
+            i_measured: 测量电流 (A)
+            dt: 时间步长 (s) - 未使用,使用初始化时的Ts
+            
+        Returns:
+            控制输出电压 (V)
+        """
+        # 计算误差
+        error = i_ref - i_measured
+        
+        # 比例项
+        p_term = self.Kp * error
+        
+        # 谐振项 (IIR滤波器)
+        u_r = (self.b0 * error + 
+               self.b1 * self.e_k1 + 
+               self.b2 * self.e_k2 - 
+               self.a1 * self.u_r_k1 - 
+               self.a2 * self.u_r_k2)
+        
+        # 控制输出
+        v_output = p_term + u_r
+        
+        # 输出限幅
+        if self.v_limit:
+            v_output = np.clip(v_output, -self.v_limit, self.v_limit)
+        
+        # 更新状态
+        self.e_k2 = self.e_k1
+        self.e_k1 = error
+        self.u_r_k2 = self.u_r_k1
+        self.u_r_k1 = u_r
+        
+        # 保存
+        self.i_ref = i_ref
+        self.i_measured = i_measured
+        self.v_output = v_output
+        
+        return v_output
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        error = self.i_ref - self.i_measured
+        return {
+            'name': self.name,
+            'Kp': self.Kp,
+            'Kr': self.Kr,
+            'omega_0': self.omega_0,
+            'error': error,
+            'p_term': self.Kp * error,
+            'r_term': self.u_r_k1,
+            'v_output': self.v_output
+        }
+
+
+class DQCurrentController:
+    """
+    dq坐标系下的电流控制器
+    
+    原理:
+        在同步旋转坐标系(dq)下,交流量变为直流量
+        使用两个PI控制器分别控制d轴和q轴电流
+        
+    坐标变换:
+        Park变换: abc → dq
+        逆Park变换: dq → abc
+        
+    解耦控制:
+        考虑d轴和q轴的耦合项
+        v_d = v_d_PI - ω*L*i_q (前馈解耦)
+        v_q = v_q_PI + ω*L*i_d (前馈解耦)
+    """
+    
+    def __init__(self, Kp: float, Ki: float, L: float, omega: float, 
+                 v_limit: float = None, name: str = "DQ_PI"):
+        """
+        初始化dq电流控制器
+        
+        Args:
+            Kp: 比例增益
+            Ki: 积分增益
+            L: 电感值 (H)
+            omega: 电网角频率 (rad/s)
+            v_limit: 输出电压限幅 (V)
+            name: 控制器名称
+        """
+        self.name = name
+        self.L = L
+        self.omega = omega
+        self.v_limit = v_limit
+        
+        # 创建d轴和q轴PI控制器
+        self.pi_d = PIController(Kp, Ki, v_limit, name="PI_d")
+        self.pi_q = PIController(Kp, Ki, v_limit, name="PI_q")
+        
+        # 状态变量
+        self.theta = 0.0  # Park变换角度
+        
+    def park_transform(self, i_a: float, i_b: float, i_c: float, theta: float) -> Tuple[float, float]:
+        """
+        Park变换: abc → dq
+        
+        Args:
+            i_a, i_b, i_c: 三相电流
+            theta: 变换角度 (rad)
+            
+        Returns:
+            (i_d, i_q)
+        """
+        # 先进行Clarke变换
+        i_alpha = (2*i_a - i_b - i_c) / 3
+        i_beta = (i_b - i_c) / np.sqrt(3)
+        
+        # Park变换
+        cos_theta = np.cos(theta)
+        sin_theta = np.sin(theta)
+        
+        i_d = i_alpha * cos_theta + i_beta * sin_theta
+        i_q = -i_alpha * sin_theta + i_beta * cos_theta
+        
+        return i_d, i_q
+    
+    def inverse_park_transform(self, v_d: float, v_q: float, theta: float) -> Tuple[float, float, float]:
+        """
+        逆Park变换: dq → abc
+        
+        Args:
+            v_d, v_q: dq坐标系电压
+            theta: 变换角度 (rad)
+            
+        Returns:
+            (v_a, v_b, v_c)
+        """
+        # 逆Park变换到αβ
+        cos_theta = np.cos(theta)
+        sin_theta = np.sin(theta)
+        
+        v_alpha = v_d * cos_theta - v_q * sin_theta
+        v_beta = v_d * sin_theta + v_q * cos_theta
+        
+        # 逆Clarke变换到abc
+        v_a = v_alpha
+        v_b = -0.5 * v_alpha + np.sqrt(3)/2 * v_beta
+        v_c = -0.5 * v_alpha - np.sqrt(3)/2 * v_beta
+        
+        return v_a, v_b, v_c
+    
+    def update(self, i_d_ref: float, i_q_ref: float, 
+               i_a: float, i_b: float, i_c: float, 
+               theta: float, dt: float, enable_decoupling: bool = True) -> Tuple[float, float, float]:
+        """
+        更新dq电流控制器
+        
+        Args:
+            i_d_ref, i_q_ref: dq参考电流
+            i_a, i_b, i_c: 测量的三相电流
+            theta: Park变换角度 (rad)
+            dt: 时间步长 (s)
+            enable_decoupling: 是否启用解耦控制
+            
+        Returns:
+            (v_a, v_b, v_c) 三相输出电压
+        """
+        # Park变换: abc → dq
+        i_d, i_q = self.park_transform(i_a, i_b, i_c, theta)
+        
+        # PI控制
+        v_d_pi = self.pi_d.update(i_d_ref, i_d, dt)
+        v_q_pi = self.pi_q.update(i_q_ref, i_q, dt)
+        
+        # 解耦控制 (前馈补偿)
+        if enable_decoupling:
+            v_d = v_d_pi - self.omega * self.L * i_q
+            v_q = v_q_pi + self.omega * self.L * i_d
+        else:
+            v_d = v_d_pi
+            v_q = v_q_pi
+        
+        # 输出限幅
+        if self.v_limit:
+            v_mag = np.sqrt(v_d**2 + v_q**2)
+            if v_mag > self.v_limit:
+                scale = self.v_limit / v_mag
+                v_d *= scale
+                v_q *= scale
+        
+        # 逆Park变换: dq → abc
+        v_a, v_b, v_c = self.inverse_park_transform(v_d, v_q, theta)
+        
+        self.theta = theta
+        
+        return v_a, v_b, v_c
+    
+    def reset(self):
+        """重置控制器"""
+        self.pi_d.reset()
+        self.pi_q.reset()
+        self.theta = 0.0
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        return {
+            'name': self.name,
+            'theta': self.theta,
+            'pi_d': self.pi_d.get_status(),
+            'pi_q': self.pi_q.get_status()
+        }
