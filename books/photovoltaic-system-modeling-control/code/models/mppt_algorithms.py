@@ -692,6 +692,313 @@ class ImprovedCV(ConstantVoltage):
         return v_ref_compensated
 
 
+class FuzzyLogicMPPT(MPPTAlgorithm):
+    """
+    模糊逻辑MPPT
+    Fuzzy Logic MPPT
+    
+    原理:
+    ----
+    使用模糊推理系统(FIS)根据dP和dV决定电压调整
+    
+    输入:
+    - E = dP/dI (功率变化率)
+    - CE = d(E)/dt (功率变化率的变化)
+    
+    输出:
+    - ΔV (电压调整量)
+    
+    优点: 鲁棒性强、响应快、不需要精确模型
+    缺点: 规则设计复杂、计算量较大
+    """
+    
+    def __init__(self,
+                 step_size_max: float = 5.0,
+                 initial_voltage: float = None,
+                 name: str = "Fuzzy"):
+        """
+        初始化模糊逻辑MPPT
+        
+        Parameters:
+        -----------
+        step_size_max : float
+            最大步长(V)
+        initial_voltage : float
+            初始电压(V)
+        name : str
+            算法名称
+        """
+        super().__init__(name)
+        self.step_size_max = step_size_max
+        self.initial_voltage = initial_voltage
+        
+        # 内部状态
+        self.v_ref = initial_voltage
+        self.p_prev = 0.0
+        self.e_prev = 0.0  # E的前值
+        
+        # 定义模糊集合
+        self._define_fuzzy_sets()
+        
+        # 定义规则库
+        self._define_rules()
+    
+    def _define_fuzzy_sets(self):
+        """定义模糊集合的隶属度函数"""
+        # 输入变量E (功率变化率)的模糊集: NB, NS, ZE, PS, PB
+        # 输入变量CE (E的变化率)的模糊集: NB, NS, ZE, PS, PB
+        # 输出变量ΔV的模糊集: NB, NS, ZE, PS, PB
+        
+        # 使用三角形/梯形隶属度函数
+        # 参数: [left, peak_left, peak_right, right]
+        self.mf_e = {
+            'NB': [-1.0, -1.0, -0.5, 0.0],   # Negative Big
+            'NS': [-0.5, -0.25, 0.0, 0.25],  # Negative Small
+            'ZE': [-0.25, 0.0, 0.0, 0.25],   # Zero
+            'PS': [-0.25, 0.0, 0.25, 0.5],   # Positive Small
+            'PB': [0.0, 0.5, 1.0, 1.0]       # Positive Big
+        }
+        
+        self.mf_ce = {
+            'NB': [-1.0, -1.0, -0.5, 0.0],
+            'NS': [-0.5, -0.25, 0.0, 0.25],
+            'ZE': [-0.25, 0.0, 0.0, 0.25],
+            'PS': [-0.25, 0.0, 0.25, 0.5],
+            'PB': [0.0, 0.5, 1.0, 1.0]
+        }
+        
+        self.mf_dv = {
+            'NB': [-1.0, -1.0, -0.5, 0.0],
+            'NS': [-0.5, -0.25, 0.0, 0.25],
+            'ZE': [-0.25, 0.0, 0.0, 0.25],
+            'PS': [-0.25, 0.0, 0.25, 0.5],
+            'PB': [0.0, 0.5, 1.0, 1.0]
+        }
+    
+    def _define_rules(self):
+        """定义模糊规则库"""
+        # 规则格式: (E, CE) -> ΔV
+        # 25条规则 (5x5)
+        self.rules = {
+            ('NB', 'NB'): 'PB',  # E负大, CE负大 -> 大幅增加电压
+            ('NB', 'NS'): 'PB',
+            ('NB', 'ZE'): 'PS',
+            ('NB', 'PS'): 'PS',
+            ('NB', 'PB'): 'ZE',
+            
+            ('NS', 'NB'): 'PB',
+            ('NS', 'NS'): 'PS',
+            ('NS', 'ZE'): 'PS',
+            ('NS', 'PS'): 'ZE',
+            ('NS', 'PB'): 'ZE',
+            
+            ('ZE', 'NB'): 'PS',
+            ('ZE', 'NS'): 'PS',
+            ('ZE', 'ZE'): 'ZE',  # E和CE都为零 -> 不调整
+            ('ZE', 'PS'): 'NS',
+            ('ZE', 'PB'): 'NS',
+            
+            ('PS', 'NB'): 'ZE',
+            ('PS', 'NS'): 'ZE',
+            ('PS', 'ZE'): 'NS',
+            ('PS', 'PS'): 'NS',
+            ('PS', 'PB'): 'NB',
+            
+            ('PB', 'NB'): 'ZE',
+            ('PB', 'NS'): 'NS',
+            ('PB', 'ZE'): 'NS',
+            ('PB', 'PS'): 'NB',
+            ('PB', 'PB'): 'NB',
+        }
+    
+    def _membership(self, x: float, mf_params: list) -> float:
+        """
+        计算隶属度(梯形隶属函数)
+        
+        Parameters:
+        -----------
+        x : float
+            输入值
+        mf_params : list
+            [left, peak_left, peak_right, right]
+        
+        Returns:
+        --------
+        float : 隶属度 [0, 1]
+        """
+        a, b, c, d = mf_params
+        
+        if x <= a or x >= d:
+            return 0.0
+        elif b <= x <= c:
+            return 1.0
+        elif a < x < b:
+            return (x - a) / (b - a)
+        else:  # c < x < d
+            return (d - x) / (d - c)
+    
+    def _fuzzify(self, e: float, ce: float) -> dict:
+        """
+        模糊化输入
+        
+        Parameters:
+        -----------
+        e : float
+            归一化的E
+        ce : float
+            归一化的CE
+        
+        Returns:
+        --------
+        dict : 各模糊集的隶属度
+        """
+        # E的模糊化
+        e_fuzzy = {}
+        for label, params in self.mf_e.items():
+            e_fuzzy[label] = self._membership(e, params)
+        
+        # CE的模糊化
+        ce_fuzzy = {}
+        for label, params in self.mf_ce.items():
+            ce_fuzzy[label] = self._membership(ce, params)
+        
+        return {'E': e_fuzzy, 'CE': ce_fuzzy}
+    
+    def _inference(self, fuzzy_inputs: dict) -> dict:
+        """
+        模糊推理
+        
+        Parameters:
+        -----------
+        fuzzy_inputs : dict
+            模糊化的输入
+        
+        Returns:
+        --------
+        dict : 各输出模糊集的激活度
+        """
+        e_fuzzy = fuzzy_inputs['E']
+        ce_fuzzy = fuzzy_inputs['CE']
+        
+        # 输出模糊集的累积激活度
+        output_activation = {'NB': 0.0, 'NS': 0.0, 'ZE': 0.0, 'PS': 0.0, 'PB': 0.0}
+        
+        # 遍历所有规则
+        for (e_label, ce_label), dv_label in self.rules.items():
+            # 计算规则激活度 (AND操作用最小值)
+            activation = min(e_fuzzy[e_label], ce_fuzzy[ce_label])
+            
+            # 累积到输出模糊集
+            output_activation[dv_label] = max(output_activation[dv_label], activation)
+        
+        return output_activation
+    
+    def _defuzzify(self, output_activation: dict) -> float:
+        """
+        去模糊化(重心法)
+        
+        Parameters:
+        -----------
+        output_activation : dict
+            输出模糊集的激活度
+        
+        Returns:
+        --------
+        float : 清晰输出值 [-1, 1]
+        """
+        # 计算每个模糊集的中心
+        centers = {
+            'NB': -0.75,
+            'NS': -0.125,
+            'ZE': 0.0,
+            'PS': 0.125,
+            'PB': 0.75
+        }
+        
+        numerator = 0.0
+        denominator = 0.0
+        
+        for label, activation in output_activation.items():
+            numerator += activation * centers[label]
+            denominator += activation
+        
+        if denominator < 1e-10:
+            return 0.0
+        
+        return numerator / denominator
+    
+    def update(self, voltage: float, current: float, **kwargs) -> float:
+        """
+        模糊逻辑MPPT更新
+        
+        Parameters:
+        -----------
+        voltage : float
+            当前电压(V)
+        current : float
+            当前电流(A)
+        
+        Returns:
+        --------
+        float : 新的参考电压(V)
+        """
+        # 计算当前功率
+        power = voltage * current
+        
+        # 第一次调用,初始化
+        if self.v_ref is None:
+            self.v_ref = voltage
+            self.p_prev = power
+            self.e_prev = 0.0
+            return self.v_ref
+        
+        # 计算E (功率变化率)
+        dp = power - self.p_prev
+        e = dp  # 简化: 直接用dp作为E
+        
+        # 计算CE (E的变化率)
+        ce = e - self.e_prev
+        
+        # 归一化 E 和 CE 到 [-1, 1]
+        e_norm = np.tanh(e / 10.0)  # 使用tanh归一化
+        ce_norm = np.tanh(ce / 5.0)
+        
+        # 模糊推理
+        fuzzy_inputs = self._fuzzify(e_norm, ce_norm)
+        output_activation = self._inference(fuzzy_inputs)
+        dv_norm = self._defuzzify(output_activation)
+        
+        # 反归一化到实际电压调整量
+        dv = dv_norm * self.step_size_max
+        
+        # 更新参考电压
+        self.v_ref = voltage + dv
+        
+        # 记录历史
+        self.history.append({
+            'v': voltage,
+            'i': current,
+            'p': power,
+            'v_ref': self.v_ref,
+            'e': e,
+            'ce': ce,
+            'dv': dv
+        })
+        
+        # 更新状态
+        self.p_prev = power
+        self.e_prev = e
+        
+        return self.v_ref
+    
+    def reset(self):
+        """重置算法"""
+        super().reset()
+        self.v_ref = self.initial_voltage
+        self.p_prev = 0.0
+        self.e_prev = 0.0
+
+
 class MPPTController:
     """
     MPPT控制器
