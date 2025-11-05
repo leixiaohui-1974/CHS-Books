@@ -13,7 +13,7 @@ from code.models.pv_module import PVModule
 from code.models.mppt_algorithms import (PerturbAndObserve, AdaptivePO, 
                                           IncrementalConductance, ModifiedINC,
                                           ConstantVoltage, ImprovedCV,
-                                          FuzzyLogicMPPT,
+                                          FuzzyLogicMPPT, ParticleSwarmMPPT,
                                           MPPTController)
 
 
@@ -636,6 +636,191 @@ class TestFuzzyLogicMPPT(unittest.TestCase):
         self.algo.reset()
         self.assertEqual(len(self.algo.history), 0)
         self.assertEqual(self.algo.v_ref, 25.0)
+
+
+class TestParticleSwarmMPPT(unittest.TestCase):
+    """PSO MPPT测试"""
+    
+    def setUp(self):
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+        
+        self.vmpp, self.impp, self.pmpp = self.module.find_mpp()
+        
+        self.algo = ParticleSwarmMPPT(
+            n_particles=10,
+            v_min=0,
+            v_max=self.module.Voc,
+            w=0.7,
+            c1=1.5,
+            c2=1.5,
+            max_iterations=30
+        )
+        self.algo.set_pv_module(self.module)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.algo.n_particles, 10)
+        self.assertEqual(self.algo.w, 0.7)
+        self.assertEqual(self.algo.c1, 1.5)
+        self.assertEqual(self.algo.c2, 1.5)
+        self.assertEqual(self.algo.max_iterations, 30)
+        
+        # 检查粒子初始化
+        self.assertIsNotNone(self.algo.positions)
+        self.assertEqual(len(self.algo.positions), 10)
+        self.assertIsNotNone(self.algo.velocities)
+        self.assertEqual(len(self.algo.velocities), 10)
+    
+    def test_swarm_initialization(self):
+        """测试粒子群初始化"""
+        # 位置应该在搜索范围内
+        self.assertTrue(np.all(self.algo.positions >= self.algo.v_min))
+        self.assertTrue(np.all(self.algo.positions <= self.algo.v_max))
+        
+        # 个体最优应该初始化
+        self.assertEqual(len(self.algo.pbest_positions), 10)
+        self.assertEqual(len(self.algo.pbest_fitness), 10)
+        
+        # 全局最优应该初始化
+        self.assertIsNotNone(self.algo.gbest_position)
+        self.assertEqual(self.algo.gbest_fitness, -np.inf)
+    
+    def test_first_update(self):
+        """测试第一次更新"""
+        v = self.vmpp * 0.8
+        i = self.module.calculate_current(v)
+        
+        v_ref = self.algo.update(v, i)
+        
+        self.assertIsNotNone(v_ref)
+        self.assertIsInstance(v_ref, (float, np.floating))
+        
+        # 全局最优应该更新
+        self.assertGreater(self.algo.gbest_fitness, -np.inf)
+    
+    def test_convergence(self):
+        """测试收敛性"""
+        # 运行多次迭代
+        for _ in range(50):
+            v = self.algo.v_ref
+            i = self.module.calculate_current(v)
+            self.algo.update(v, i)
+            
+            if self.algo.converged:
+                break
+        
+        # 应该收敛到MPP附近
+        self.assertAlmostEqual(self.algo.gbest_position, self.vmpp, delta=self.vmpp * 0.1)
+        
+        # 功率应该接近最大值
+        self.assertGreater(self.algo.gbest_fitness, self.pmpp * 0.95)
+    
+    def test_fitness_evaluation(self):
+        """测试适应度评估"""
+        # 测试使用电流
+        v = self.vmpp
+        i = self.impp
+        fitness = self.algo._evaluate_fitness(v, i)
+        self.assertAlmostEqual(fitness, self.pmpp, delta=1.0)
+        
+        # 测试使用模型
+        fitness_model = self.algo._evaluate_fitness(v)
+        self.assertAlmostEqual(fitness_model, self.pmpp, delta=1.0)
+    
+    def test_particle_update(self):
+        """测试粒子更新"""
+        # 初始位置
+        initial_positions = self.algo.positions.copy()
+        
+        # 更新一次
+        v = self.vmpp * 0.8
+        i = self.module.calculate_current(v)
+        self.algo.update(v, i)
+        
+        # 位置应该变化
+        position_changed = np.any(self.algo.positions != initial_positions)
+        self.assertTrue(position_changed)
+    
+    def test_boundary_handling(self):
+        """测试边界处理"""
+        # 设置一些粒子到边界附近
+        self.algo.positions[0] = self.algo.v_min + 0.1
+        self.algo.velocities[0] = -1.0  # 向下的速度
+        
+        self.algo.positions[1] = self.algo.v_max - 0.1
+        self.algo.velocities[1] = 1.0  # 向上的速度
+        
+        # 更新
+        v = self.vmpp
+        i = self.module.calculate_current(v)
+        self.algo.update(v, i)
+        
+        # 粒子应该在边界内
+        self.assertTrue(np.all(self.algo.positions >= self.algo.v_min))
+        self.assertTrue(np.all(self.algo.positions <= self.algo.v_max))
+    
+    def test_get_swarm_state(self):
+        """测试获取粒子群状态"""
+        state = self.algo.get_swarm_state()
+        
+        self.assertIn('positions', state)
+        self.assertIn('velocities', state)
+        self.assertIn('pbest_positions', state)
+        self.assertIn('pbest_fitness', state)
+        self.assertIn('gbest_position', state)
+        self.assertIn('gbest_fitness', state)
+        self.assertIn('iteration', state)
+        self.assertIn('converged', state)
+    
+    def test_max_iterations(self):
+        """测试最大迭代次数"""
+        # 运行到最大迭代
+        for _ in range(self.algo.max_iterations + 5):
+            v = self.algo.v_ref
+            i = self.module.calculate_current(v)
+            self.algo.update(v, i)
+        
+        # 应该已收敛
+        self.assertTrue(self.algo.converged)
+        # PSO可能在达到max_iterations之前就收敛（通过tolerance）
+        self.assertLessEqual(self.algo.iteration, self.algo.max_iterations)
+    
+    def test_performance_vs_traditional(self):
+        """测试与传统算法性能对比"""
+        # PSO
+        controller_pso = MPPTController(self.algo, v_min=0, v_max=self.module.Voc)
+        
+        v_pso = self.vmpp * 0.7
+        for _ in range(30):
+            i_pso = self.module.calculate_current(v_pso)
+            v_ref_pso = controller_pso.step(v_pso, i_pso)
+            v_pso = v_pso + 0.5 * (v_ref_pso - v_pso)
+        
+        perf_pso = controller_pso.evaluate_performance(self.pmpp)
+        
+        # PSO应该有良好性能
+        self.assertGreater(perf_pso['efficiency'], 95.0)
+    
+    def test_reset(self):
+        """测试重置"""
+        # 运行几次迭代
+        for _ in range(5):
+            v = self.algo.v_ref
+            i = self.module.calculate_current(v)
+            self.algo.update(v, i)
+        
+        initial_gbest = self.algo.gbest_fitness
+        
+        # 重置
+        self.algo.reset()
+        
+        # 状态应该重置
+        self.assertEqual(len(self.algo.history), 0)
+        self.assertEqual(self.algo.iteration, 0)
+        self.assertFalse(self.algo.converged)
+        self.assertEqual(self.algo.gbest_fitness, -np.inf)
 
 
 def run_tests():

@@ -999,6 +999,264 @@ class FuzzyLogicMPPT(MPPTAlgorithm):
         self.e_prev = 0.0
 
 
+class ParticleSwarmMPPT(MPPTAlgorithm):
+    """
+    粒子群优化MPPT
+    Particle Swarm Optimization MPPT
+    
+    原理:
+    ----
+    模拟鸟群觅食行为,通过粒子协作搜索全局最优解
+    
+    粒子: 代表可能的工作电压
+    适应度: 当前电压下的输出功率
+    
+    更新方程:
+    v_i(k+1) = w*v_i(k) + c1*r1*(pbest_i - x_i(k)) + c2*r2*(gbest - x_i(k))
+    x_i(k+1) = x_i(k) + v_i(k+1)
+    
+    优点: 全局搜索能力强、适合多峰、收敛快
+    缺点: 计算量较大、参数敏感
+    """
+    
+    def __init__(self,
+                 n_particles: int = 10,
+                 v_min: float = 0.0,
+                 v_max: float = 40.0,
+                 w: float = 0.7,
+                 c1: float = 1.5,
+                 c2: float = 1.5,
+                 max_iterations: int = 20,
+                 tolerance: float = 0.1,
+                 name: str = "PSO"):
+        """
+        初始化PSO MPPT
+        
+        Parameters:
+        -----------
+        n_particles : int
+            粒子数量
+        v_min : float
+            电压搜索下限(V)
+        v_max : float
+            电压搜索上限(V)
+        w : float
+            惯性权重
+        c1 : float
+            个体学习因子
+        c2 : float
+            社会学习因子
+        max_iterations : int
+            最大迭代次数
+        tolerance : float
+            收敛容差(W)
+        name : str
+            算法名称
+        """
+        super().__init__(name)
+        self.n_particles = n_particles
+        self.v_min = v_min
+        self.v_max = v_max
+        self.w = w  # 惯性权重
+        self.c1 = c1  # 个体学习因子
+        self.c2 = c2  # 社会学习因子
+        self.max_iterations = max_iterations
+        self.tolerance = tolerance
+        
+        # 粒子状态
+        self.positions = None  # 粒子位置(电压)
+        self.velocities = None  # 粒子速度
+        self.pbest_positions = None  # 个体最优位置
+        self.pbest_fitness = None  # 个体最优适应度
+        self.gbest_position = None  # 全局最优位置
+        self.gbest_fitness = -np.inf  # 全局最优适应度
+        
+        # 控制变量
+        self.v_ref = (v_min + v_max) / 2.0  # 参考电压
+        self.iteration = 0
+        self.converged = False
+        self.pv_module = None  # PV组件引用(用于适应度计算)
+        
+        # 初始化粒子群
+        self._initialize_swarm()
+    
+    def _initialize_swarm(self):
+        """初始化粒子群"""
+        # 随机初始化位置
+        self.positions = np.random.uniform(
+            self.v_min, self.v_max, self.n_particles
+        )
+        
+        # 初始化速度(10%的搜索空间)
+        v_range = (self.v_max - self.v_min) * 0.1
+        self.velocities = np.random.uniform(
+            -v_range, v_range, self.n_particles
+        )
+        
+        # 初始化个体最优
+        self.pbest_positions = self.positions.copy()
+        self.pbest_fitness = np.full(self.n_particles, -np.inf)
+        
+        # 初始化全局最优
+        self.gbest_position = self.positions[0]
+        self.gbest_fitness = -np.inf
+        
+        self.iteration = 0
+        self.converged = False
+    
+    def set_pv_module(self, pv_module):
+        """
+        设置PV组件引用
+        
+        Parameters:
+        -----------
+        pv_module : PVModule
+            光伏组件对象
+        """
+        self.pv_module = pv_module
+    
+    def _evaluate_fitness(self, voltage: float, current: float = None) -> float:
+        """
+        评估适应度(功率)
+        
+        Parameters:
+        -----------
+        voltage : float
+            电压(V)
+        current : float, optional
+            电流(A), 如果提供则直接使用
+            
+        Returns:
+        --------
+        float : 适应度值(功率W)
+        """
+        if current is not None:
+            # 使用实测电流
+            return voltage * current
+        elif self.pv_module is not None:
+            # 使用模型计算
+            i = self.pv_module.calculate_current(voltage)
+            return voltage * i
+        else:
+            # 无法计算,返回0
+            return 0.0
+    
+    def update(self, voltage: float, current: float, **kwargs) -> float:
+        """
+        更新PSO算法
+        
+        Parameters:
+        -----------
+        voltage : float
+            当前电压(V) - 仅用于记录
+        current : float
+            当前电流(A) - 用于适应度计算
+            
+        Returns:
+        --------
+        float : 新的参考电压(V)
+        """
+        # 如果已收敛,直接返回全局最优
+        if self.converged:
+            return self.gbest_position
+        
+        # 评估所有粒子的适应度
+        for i in range(self.n_particles):
+            v = self.positions[i]
+            # 使用模型计算每个粒子位置的适应度（不使用current）
+            fitness = self._evaluate_fitness(v)
+            
+            # 更新个体最优
+            if fitness > self.pbest_fitness[i]:
+                self.pbest_fitness[i] = fitness
+                self.pbest_positions[i] = v
+            
+            # 更新全局最优
+            if fitness > self.gbest_fitness:
+                self.gbest_fitness = fitness
+                self.gbest_position = v
+        
+        # 更新粒子速度和位置
+        for i in range(self.n_particles):
+            # 随机因子
+            r1 = np.random.random()
+            r2 = np.random.random()
+            
+            # 速度更新
+            cognitive = self.c1 * r1 * (self.pbest_positions[i] - self.positions[i])
+            social = self.c2 * r2 * (self.gbest_position - self.positions[i])
+            self.velocities[i] = self.w * self.velocities[i] + cognitive + social
+            
+            # 速度限制(防止过大)
+            v_max_speed = (self.v_max - self.v_min) * 0.2
+            self.velocities[i] = np.clip(self.velocities[i], -v_max_speed, v_max_speed)
+            
+            # 位置更新
+            self.positions[i] = self.positions[i] + self.velocities[i]
+            
+            # 边界处理
+            if self.positions[i] < self.v_min:
+                self.positions[i] = self.v_min
+                self.velocities[i] = 0  # 碰壁后速度归零
+            elif self.positions[i] > self.v_max:
+                self.positions[i] = self.v_max
+                self.velocities[i] = 0
+        
+        # 更新迭代计数
+        self.iteration += 1
+        
+        # 检查收敛
+        if self.iteration >= self.max_iterations:
+            self.converged = True
+        else:
+            # 检查功率变化
+            fitness_std = np.std(self.pbest_fitness)
+            if fitness_std < self.tolerance:
+                self.converged = True
+        
+        # 更新参考电压为全局最优
+        self.v_ref = self.gbest_position
+        
+        # 记录历史
+        self.history.append({
+            'v': voltage,
+            'i': current,
+            'p': voltage * current,
+            'v_ref': self.v_ref,
+            'iteration': self.iteration,
+            'gbest_fitness': self.gbest_fitness,
+            'converged': self.converged
+        })
+        
+        return self.v_ref
+    
+    def get_swarm_state(self) -> dict:
+        """
+        获取粒子群当前状态
+        
+        Returns:
+        --------
+        dict : 粒子群状态信息
+        """
+        return {
+            'positions': self.positions.copy(),
+            'velocities': self.velocities.copy(),
+            'pbest_positions': self.pbest_positions.copy(),
+            'pbest_fitness': self.pbest_fitness.copy(),
+            'gbest_position': self.gbest_position,
+            'gbest_fitness': self.gbest_fitness,
+            'iteration': self.iteration,
+            'converged': self.converged
+        }
+    
+    def reset(self):
+        """重置算法"""
+        super().reset()
+        self._initialize_swarm()
+        self.v_ref = (self.v_min + self.v_max) / 2.0
+        self.gbest_fitness = -np.inf
+
+
 class MPPTController:
     """
     MPPT控制器
