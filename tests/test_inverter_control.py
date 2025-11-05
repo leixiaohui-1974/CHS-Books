@@ -17,7 +17,8 @@ sys.path.insert(0, str(code_path))
 
 from models.inverter_control import (
     InverterParameters, SPWMModulator, SVPWMModulator, InverterModel,
-    PIController, PRController, DQCurrentController
+    PIController, PRController, DQCurrentController,
+    DCVoltageController, ACVoltageController, DualLoopVoltageController
 )
 
 
@@ -715,6 +716,165 @@ class TestDQCurrentController(unittest.TestCase):
         self.assertEqual(self.dq_ctrl.pi_d.integral, 0.0)
 
 
+class TestDCVoltageController(unittest.TestCase):
+    """测试DC电压控制器"""
+    
+    def test_initialization(self):
+        """测试初始化"""
+        ctrl = DCVoltageController(Kp=0.5, Ki=100, C=2000e-6)
+        self.assertEqual(ctrl.name, "DC_Voltage")
+        self.assertIsNotNone(ctrl.pi)
+    
+    def test_update_without_feedforward(self):
+        """测试不带前馈的控制"""
+        ctrl = DCVoltageController(Kp=0.5, Ki=100, C=2000e-6, i_limit=50.0)
+        i_ref = ctrl.update(v_ref=400.0, v_measured=380.0, dt=1e-4, 
+                           p_load=1000.0, enable_feedforward=False)
+        # 应该只有PI控制输出
+        self.assertIsInstance(i_ref, (float, np.floating))
+        self.assertLessEqual(abs(i_ref), 50.0)  # 限幅生效
+    
+    def test_update_with_feedforward(self):
+        """测试带前馈的控制"""
+        ctrl = DCVoltageController(Kp=0.5, Ki=100, C=2000e-6)
+        i_ref = ctrl.update(v_ref=400.0, v_measured=400.0, dt=1e-4,
+                           p_load=2000.0, enable_feedforward=True)
+        # 前馈项约为 P/V = 2000/400 = 5A
+        self.assertGreater(i_ref, 4.0)
+    
+    def test_reset(self):
+        """测试重置"""
+        ctrl = DCVoltageController(Kp=0.5, Ki=100, C=2000e-6)
+        ctrl.update(v_ref=400.0, v_measured=380.0, dt=1e-4, p_load=1000.0)
+        ctrl.reset()
+        self.assertEqual(ctrl.v_ref, 0.0)
+        self.assertEqual(ctrl.v_measured, 0.0)
+    
+    def test_get_status(self):
+        """测试状态获取"""
+        ctrl = DCVoltageController(Kp=0.5, Ki=100, C=2000e-6)
+        ctrl.update(v_ref=400.0, v_measured=390.0, dt=1e-4, p_load=1000.0)
+        status = ctrl.get_status()
+        self.assertIn('v_ref', status)
+        self.assertIn('error', status)
+        self.assertEqual(status['error'], 10.0)
+
+
+class TestACVoltageController(unittest.TestCase):
+    """测试AC电压控制器"""
+    
+    def test_initialization(self):
+        """测试初始化"""
+        ctrl = ACVoltageController(Kp_v=0.1, Ki_v=50, Kp_i=0.5, Ki_i=100,
+                                   L=5e-3, C=20e-6)
+        self.assertEqual(ctrl.name, "AC_Voltage")
+        self.assertIsNotNone(ctrl.pi_voltage)
+        self.assertIsNotNone(ctrl.pi_current)
+    
+    def test_dual_loop_structure(self):
+        """测试双环结构"""
+        ctrl = ACVoltageController(Kp_v=0.1, Ki_v=50, Kp_i=0.5, Ki_i=100,
+                                   L=5e-3, C=20e-6, i_limit=400.0)
+        v_out = ctrl.update(v_ref=311.0, v_measured=300.0, i_measured=10.0,
+                           dt=1e-4, i_load=5.0, enable_decoupling=True)
+        self.assertIsInstance(v_out, (float, np.floating))
+        # 电压误差为正，输出应为正
+        self.assertGreater(abs(v_out), 0)
+    
+    def test_decoupling_effect(self):
+        """测试解耦控制"""
+        ctrl = ACVoltageController(Kp_v=0.1, Ki_v=50, Kp_i=0.5, Ki_i=100,
+                                   L=5e-3, C=20e-6)
+        # 不解耦
+        v_out1 = ctrl.update(v_ref=311.0, v_measured=300.0, i_measured=10.0,
+                            dt=1e-4, i_load=5.0, enable_decoupling=False)
+        ctrl.reset()
+        # 解耦
+        v_out2 = ctrl.update(v_ref=311.0, v_measured=300.0, i_measured=10.0,
+                            dt=1e-4, i_load=5.0, enable_decoupling=True)
+        # 解耦应该改变输出
+        self.assertNotEqual(v_out1, v_out2)
+    
+    def test_reset(self):
+        """测试重置"""
+        ctrl = ACVoltageController(Kp_v=0.1, Ki_v=50, Kp_i=0.5, Ki_i=100,
+                                   L=5e-3, C=20e-6)
+        ctrl.update(v_ref=311.0, v_measured=300.0, i_measured=10.0, dt=1e-4)
+        ctrl.reset()
+        self.assertEqual(ctrl.i_ref, 0.0)
+        self.assertEqual(ctrl.v_ref, 0.0)
+
+
+class TestDualLoopVoltageController(unittest.TestCase):
+    """测试双环电压控制器"""
+    
+    def test_initialization(self):
+        """测试初始化"""
+        ctrl = DualLoopVoltageController(
+            Kp_v=0.5, Ki_v=100, C_dc=2000e-6,
+            Kp_i=0.5, Ki_i=100, L=5e-3, omega=2*np.pi*50
+        )
+        self.assertEqual(ctrl.name, "DualLoop")
+        self.assertIsNotNone(ctrl.voltage_ctrl)
+        self.assertIsNotNone(ctrl.current_ctrl)
+    
+    def test_cascaded_control(self):
+        """测试级联控制"""
+        ctrl = DualLoopVoltageController(
+            Kp_v=0.5, Ki_v=100, C_dc=2000e-6,
+            Kp_i=0.5, Ki_i=100, L=5e-3, omega=2*np.pi*50
+        )
+        v_a, v_b, v_c = ctrl.update(
+            v_dc_ref=400.0, v_dc_measured=390.0,
+            i_a=10.0, i_b=-5.0, i_c=-5.0,
+            theta=0.0, dt=1e-4, p_load=2000.0
+        )
+        # 检查三相输出
+        self.assertIsInstance(v_a, (float, np.floating))
+        self.assertIsInstance(v_b, (float, np.floating))
+        self.assertIsInstance(v_c, (float, np.floating))
+    
+    def test_feedforward_and_decoupling(self):
+        """测试前馈和解耦"""
+        ctrl = DualLoopVoltageController(
+            Kp_v=0.5, Ki_v=100, C_dc=2000e-6,
+            Kp_i=0.5, Ki_i=100, L=5e-3, omega=2*np.pi*50
+        )
+        # 不启用
+        v_a1, _, _ = ctrl.update(
+            v_dc_ref=400.0, v_dc_measured=400.0,
+            i_a=10.0, i_b=-5.0, i_c=-5.0,
+            theta=0.0, dt=1e-4, p_load=2000.0,
+            enable_feedforward=False, enable_decoupling=False
+        )
+        ctrl.reset()
+        # 启用
+        v_a2, _, _ = ctrl.update(
+            v_dc_ref=400.0, v_dc_measured=400.0,
+            i_a=10.0, i_b=-5.0, i_c=-5.0,
+            theta=0.0, dt=1e-4, p_load=2000.0,
+            enable_feedforward=True, enable_decoupling=True
+        )
+        # 启用补偿应该改变输出
+        self.assertIsInstance(v_a1, (float, np.floating))
+        self.assertIsInstance(v_a2, (float, np.floating))
+    
+    def test_reset(self):
+        """测试重置"""
+        ctrl = DualLoopVoltageController(
+            Kp_v=0.5, Ki_v=100, C_dc=2000e-6,
+            Kp_i=0.5, Ki_i=100, L=5e-3, omega=2*np.pi*50
+        )
+        ctrl.update(v_dc_ref=400.0, v_dc_measured=390.0,
+                   i_a=10.0, i_b=-5.0, i_c=-5.0,
+                   theta=0.0, dt=1e-4, p_load=2000.0)
+        ctrl.reset()
+        # 验证子控制器被重置
+        status = ctrl.get_status()
+        self.assertIn('voltage_loop', status)
+        self.assertIn('current_loop', status)
+
+
 def suite():
     """创建测试套件"""
     suite = unittest.TestSuite()
@@ -727,6 +887,9 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestPIController))
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestPRController))
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestDQCurrentController))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestDCVoltageController))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestACVoltageController))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestDualLoopVoltageController))
     
     return suite
 

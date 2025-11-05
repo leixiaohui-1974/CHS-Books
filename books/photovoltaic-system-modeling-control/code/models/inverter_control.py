@@ -1039,3 +1039,317 @@ class DQCurrentController:
             'pi_d': self.pi_d.get_status(),
             'pi_q': self.pi_q.get_status()
         }
+
+
+# ==================== 电压控制器 ====================
+
+class VoltageController:
+    """电压控制器基类"""
+    
+    def __init__(self, name: str = "VoltageController"):
+        self.name = name
+        self.v_ref = 0.0
+        self.v_measured = 0.0
+        self.output = 0.0
+    
+    def reset(self):
+        """重置控制器"""
+        self.v_ref = 0.0
+        self.v_measured = 0.0
+        self.output = 0.0
+    
+    def update(self, v_ref: float, v_measured: float, dt: float, **kwargs) -> float:
+        """更新控制器 (抽象方法)"""
+        raise NotImplementedError("子类必须实现update方法")
+
+
+class DCVoltageController(VoltageController):
+    """
+    直流母线电压控制器
+    
+    用途:
+        控制直流母线电压稳定
+        输出为有功功率参考
+        
+    控制结构:
+        PI控制器 + 前馈补偿
+        
+    输出:
+        i_ref = PI(V_ref - V_dc) + I_ff
+    """
+    
+    def __init__(self, Kp: float, Ki: float, C: float, 
+                 v_nominal: float = 400.0, i_limit: float = None, name: str = "DC_Voltage"):
+        """
+        初始化直流电压控制器
+        
+        Args:
+            Kp: 比例增益
+            Ki: 积分增益
+            C: 直流侧电容 (F)
+            v_nominal: 额定直流电压 (V)
+            i_limit: 输出电流限幅 (A)
+            name: 控制器名称
+        """
+        super().__init__(name)
+        self.pi = PIController(Kp, Ki, v_limit=i_limit)
+        self.C = C
+        self.v_nominal = v_nominal
+        self.i_limit = i_limit
+    
+    def update(self, v_ref: float, v_measured: float, dt: float, 
+               p_load: float = 0.0, enable_feedforward: bool = True) -> float:
+        """
+        更新直流电压控制器
+        
+        Args:
+            v_ref: 参考电压 (V)
+            v_measured: 测量电压 (V)
+            dt: 时间步长 (s)
+            p_load: 负载功率 (W), 用于前馈
+            enable_feedforward: 是否启用前馈
+            
+        Returns:
+            参考电流 (A)
+        """
+        # PI控制
+        i_ref_pi = self.pi.update(v_ref, v_measured, dt)
+        
+        # 前馈补偿 (根据功率平衡)
+        if enable_feedforward and v_measured > 0:
+            i_ff = p_load / v_measured
+        else:
+            i_ff = 0.0
+        
+        # 总参考电流
+        i_ref = i_ref_pi + i_ff
+        
+        # 限幅
+        if self.i_limit:
+            i_ref = np.clip(i_ref, -self.i_limit, self.i_limit)
+        
+        self.v_ref = v_ref
+        self.v_measured = v_measured
+        self.output = i_ref
+        
+        return i_ref
+    
+    def reset(self):
+        """重置控制器"""
+        super().reset()
+        self.pi.reset()
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        return {
+            'name': self.name,
+            'v_ref': self.v_ref,
+            'v_measured': self.v_measured,
+            'error': self.v_ref - self.v_measured,
+            'output': self.output,
+            'pi_status': self.pi.get_status()
+        }
+
+
+class ACVoltageController(VoltageController):
+    """
+    交流电压控制器 (单相)
+    
+    用途:
+        独立运行模式下控制交流输出电压
+        
+    控制结构:
+        双环控制: 电压外环(PI) + 电流内环(PI/PR)
+        
+    特点:
+        - 电压环带宽较低 (几百Hz)
+        - 电流环带宽较高 (几kHz)
+        - 解耦控制提升性能
+    """
+    
+    def __init__(self, Kp_v: float, Ki_v: float, 
+                 Kp_i: float, Ki_i: float,
+                 L: float, C: float, omega: float = None,
+                 v_limit: float = None, i_limit: float = None,
+                 name: str = "AC_Voltage"):
+        """
+        初始化交流电压控制器
+        
+        Args:
+            Kp_v, Ki_v: 电压环PI参数
+            Kp_i, Ki_i: 电流环PI参数
+            L: 滤波电感 (H)
+            C: 滤波电容 (F)
+            omega: 基波角频率 (rad/s), 用于前馈
+            v_limit: 电压环输出限幅 (A)
+            i_limit: 电流环输出限幅 (V)
+            name: 控制器名称
+        """
+        super().__init__(name)
+        self.pi_voltage = PIController(Kp_v, Ki_v, v_limit=v_limit)
+        self.pi_current = PIController(Kp_i, Ki_i, v_limit=i_limit)
+        self.L = L
+        self.C = C
+        self.omega = omega if omega else 2 * np.pi * 50.0
+        
+        # 状态变量
+        self.i_ref = 0.0
+        self.i_measured = 0.0
+    
+    def update(self, v_ref: float, v_measured: float, i_measured: float,
+               dt: float, i_load: float = 0.0, enable_decoupling: bool = True) -> float:
+        """
+        更新交流电压控制器
+        
+        Args:
+            v_ref: 参考电压 (V)
+            v_measured: 测量电压 (V)
+            i_measured: 测量电流 (A)
+            dt: 时间步长 (s)
+            i_load: 负载电流 (A), 用于前馈
+            enable_decoupling: 是否启用解耦控制
+            
+        Returns:
+            控制输出电压 (V)
+        """
+        # 电压外环: 输出电流参考
+        i_ref = self.pi_voltage.update(v_ref, v_measured, dt)
+        
+        # 负载电流前馈
+        if enable_decoupling:
+            i_ref += i_load
+        
+        # 电流内环: 输出电压参考
+        v_out = self.pi_current.update(i_ref, i_measured, dt)
+        
+        # 电容电压前馈 (提高动态)
+        if enable_decoupling:
+            v_out += v_measured
+        
+        # 保存状态
+        self.v_ref = v_ref
+        self.v_measured = v_measured
+        self.i_ref = i_ref
+        self.i_measured = i_measured
+        self.output = v_out
+        
+        return v_out
+    
+    def reset(self):
+        """重置控制器"""
+        super().reset()
+        self.pi_voltage.reset()
+        self.pi_current.reset()
+        self.i_ref = 0.0
+        self.i_measured = 0.0
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        return {
+            'name': self.name,
+            'v_ref': self.v_ref,
+            'v_measured': self.v_measured,
+            'i_ref': self.i_ref,
+            'i_measured': self.i_measured,
+            'v_error': self.v_ref - self.v_measured,
+            'i_error': self.i_ref - self.i_measured,
+            'output': self.output,
+            'voltage_loop': self.pi_voltage.get_status(),
+            'current_loop': self.pi_current.get_status()
+        }
+
+
+class DualLoopVoltageController:
+    """
+    双环电压控制器 (三相dq坐标系)
+    
+    结构:
+        - 外环: 直流电压控制 → d轴电流参考
+        - 内环: dq电流控制 → dq电压参考
+        
+    应用:
+        三相并网/独立系统的电压控制
+        
+    特点:
+        - 电压环调节直流母线
+        - 电流环快速跟踪
+        - dq解耦提升性能
+    """
+    
+    def __init__(self, Kp_v: float, Ki_v: float, C_dc: float,
+                 Kp_i: float, Ki_i: float, L: float, omega: float,
+                 v_dc_nominal: float = 400.0, 
+                 i_limit: float = None, v_limit: float = None,
+                 name: str = "DualLoop"):
+        """
+        初始化双环控制器
+        
+        Args:
+            Kp_v, Ki_v: 电压环PI参数
+            C_dc: 直流侧电容 (F)
+            Kp_i, Ki_i: 电流环PI参数
+            L: 滤波电感 (H)
+            omega: 电网角频率 (rad/s)
+            v_dc_nominal: 额定直流电压 (V)
+            i_limit: 电流环限幅 (A)
+            v_limit: 电流控制器输出限幅 (V)
+            name: 控制器名称
+        """
+        self.name = name
+        
+        # 电压外环 (直流)
+        self.voltage_ctrl = DCVoltageController(Kp_v, Ki_v, C_dc, 
+                                                 v_dc_nominal, i_limit)
+        
+        # 电流内环 (dq)
+        self.current_ctrl = DQCurrentController(Kp_i, Ki_i, L, omega, v_limit)
+        
+        self.v_dc_nominal = v_dc_nominal
+    
+    def update(self, v_dc_ref: float, v_dc_measured: float,
+               i_a: float, i_b: float, i_c: float,
+               theta: float, dt: float,
+               p_load: float = 0.0, i_q_ref: float = 0.0,
+               enable_feedforward: bool = True,
+               enable_decoupling: bool = True) -> Tuple[float, float, float]:
+        """
+        更新双环控制器
+        
+        Args:
+            v_dc_ref: 直流电压参考 (V)
+            v_dc_measured: 测量直流电压 (V)
+            i_a, i_b, i_c: 三相电流 (A)
+            theta: Park变换角度 (rad)
+            dt: 时间步长 (s)
+            p_load: 负载功率 (W), 用于前馈
+            i_q_ref: q轴电流参考 (A), 通常为0
+            enable_feedforward: 启用电压环前馈
+            enable_decoupling: 启用电流环解耦
+            
+        Returns:
+            (v_a, v_b, v_c) 三相输出电压
+        """
+        # 电压外环: V_dc → i_d_ref
+        i_d_ref = self.voltage_ctrl.update(
+            v_dc_ref, v_dc_measured, dt, p_load, enable_feedforward
+        )
+        
+        # 电流内环: (i_d_ref, i_q_ref) + (i_a, i_b, i_c) → (v_a, v_b, v_c)
+        v_a, v_b, v_c = self.current_ctrl.update(
+            i_d_ref, i_q_ref, i_a, i_b, i_c, theta, dt, enable_decoupling
+        )
+        
+        return v_a, v_b, v_c
+    
+    def reset(self):
+        """重置控制器"""
+        self.voltage_ctrl.reset()
+        self.current_ctrl.reset()
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        return {
+            'name': self.name,
+            'voltage_loop': self.voltage_ctrl.get_status(),
+            'current_loop': self.current_ctrl.get_status()
+        }
