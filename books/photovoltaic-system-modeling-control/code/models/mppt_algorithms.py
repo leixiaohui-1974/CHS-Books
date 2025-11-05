@@ -1257,6 +1257,404 @@ class ParticleSwarmMPPT(MPPTAlgorithm):
         self.gbest_fitness = -np.inf
 
 
+class MultiPeakDetector:
+    """
+    多峰检测器
+    Multi-Peak Detector
+    
+    用于检测P-V曲线上的多个功率峰值
+    """
+    
+    def __init__(self, pv_module, n_scan_points: int = 50):
+        """
+        初始化多峰检测器
+        
+        Parameters:
+        -----------
+        pv_module : PVModule
+            光伏组件对象
+        n_scan_points : int
+            扫描点数
+        """
+        self.pv_module = pv_module
+        self.n_scan_points = n_scan_points
+    
+    def scan_pv_curve(self) -> tuple:
+        """
+        扫描P-V曲线
+        
+        Returns:
+        --------
+        tuple : (voltages, powers)
+        """
+        v_min = 0.0
+        v_max = self.pv_module.Voc
+        
+        voltages = np.linspace(v_min, v_max, self.n_scan_points)
+        powers = []
+        
+        for v in voltages:
+            i = self.pv_module.calculate_current(v)
+            powers.append(v * i)
+        
+        return voltages, np.array(powers)
+    
+    def detect_peaks(self, voltages: np.ndarray, powers: np.ndarray,
+                    min_prominence: float = 1.0) -> list:
+        """
+        检测功率峰值
+        
+        Parameters:
+        -----------
+        voltages : np.ndarray
+            电压数组
+        powers : np.ndarray
+            功率数组
+        min_prominence : float
+            最小峰值突出度(W)
+            
+        Returns:
+        --------
+        list : 峰值信息列表 [{'voltage': v, 'power': p, 'prominence': prom}, ...]
+        """
+        peaks = []
+        n = len(powers)
+        
+        # 简单的峰值检测：比左右邻居都大
+        for i in range(1, n - 1):
+            if powers[i] > powers[i-1] and powers[i] > powers[i+1]:
+                # 计算突出度（与左右最低点的差值）
+                left_min = np.min(powers[max(0, i-5):i])
+                right_min = np.min(powers[i+1:min(n, i+6)])
+                prominence = powers[i] - max(left_min, right_min)
+                
+                if prominence >= min_prominence:
+                    peaks.append({
+                        'voltage': voltages[i],
+                        'power': powers[i],
+                        'prominence': prominence,
+                        'index': i
+                    })
+        
+        # 按功率降序排序
+        peaks.sort(key=lambda x: x['power'], reverse=True)
+        
+        return peaks
+    
+    def find_global_mpp(self) -> dict:
+        """
+        找到全局MPP
+        
+        Returns:
+        --------
+        dict : {'voltage': v, 'power': p}
+        """
+        voltages, powers = self.scan_pv_curve()
+        
+        if len(powers) == 0:
+            return {'voltage': 0, 'power': 0}
+        
+        max_idx = np.argmax(powers)
+        
+        return {
+            'voltage': voltages[max_idx],
+            'power': powers[max_idx]
+        }
+
+
+class GlobalScanMPPT(MPPTAlgorithm):
+    """
+    全局扫描MPPT
+    Global Scan MPPT
+    
+    原理:
+    ----
+    定期进行全局扫描，找到全局最大功率点
+    
+    策略:
+    1. 粗扫描: 快速扫描整个电压范围
+    2. 峰值检测: 识别所有功率峰值
+    3. 精细跟踪: 在全局MPP附近用传统算法跟踪
+    4. 定期重扫: 应对环境变化
+    
+    优点: 能可靠找到全局MPP
+    缺点: 扫描期间功率损失
+    """
+    
+    def __init__(self,
+                 pv_module,
+                 scan_interval: int = 100,
+                 n_scan_points: int = 30,
+                 local_algorithm=None,
+                 name: str = "GlobalScan"):
+        """
+        初始化全局扫描MPPT
+        
+        Parameters:
+        -----------
+        pv_module : PVModule
+            光伏组件对象
+        scan_interval : int
+            扫描间隔(步数)
+        n_scan_points : int
+            扫描点数
+        local_algorithm : MPPTAlgorithm
+            局部跟踪算法（默认P&O）
+        name : str
+            算法名称
+        """
+        super().__init__(name)
+        self.pv_module = pv_module
+        self.scan_interval = scan_interval
+        self.n_scan_points = n_scan_points
+        
+        # 多峰检测器
+        self.detector = MultiPeakDetector(pv_module, n_scan_points)
+        
+        # 局部跟踪算法
+        if local_algorithm is None:
+            from code.models.mppt_algorithms import PerturbAndObserve
+            self.local_algorithm = PerturbAndObserve(step_size=1.0)
+        else:
+            self.local_algorithm = local_algorithm
+        
+        # 控制变量
+        self.v_ref = (pv_module.Voc / 2.0) if pv_module else 20.0
+        self.step_count = 0
+        self.is_scanning = False
+        self.scan_complete = False
+        self.global_mpp = None
+    
+    def _perform_scan(self):
+        """执行全局扫描"""
+        self.global_mpp = self.detector.find_global_mpp()
+        self.v_ref = self.global_mpp['voltage']
+        self.scan_complete = True
+        self.is_scanning = False
+    
+    def update(self, voltage: float, current: float, **kwargs) -> float:
+        """
+        更新算法
+        
+        Parameters:
+        -----------
+        voltage : float
+            当前电压(V)
+        current : float
+            当前电流(A)
+            
+        Returns:
+        --------
+        float : 新的参考电压(V)
+        """
+        self.step_count += 1
+        
+        # 检查是否需要扫描
+        if self.step_count % self.scan_interval == 0:
+            self.is_scanning = True
+            self._perform_scan()
+        
+        # 扫描后或正常跟踪
+        if self.scan_complete:
+            # 使用局部算法跟踪
+            self.v_ref = self.local_algorithm.update(voltage, current)
+        
+        # 记录历史
+        self.history.append({
+            'v': voltage,
+            'i': current,
+            'p': voltage * current,
+            'v_ref': self.v_ref,
+            'is_scanning': self.is_scanning,
+            'step': self.step_count
+        })
+        
+        return self.v_ref
+    
+    def reset(self):
+        """重置算法"""
+        super().reset()
+        self.step_count = 0
+        self.is_scanning = False
+        self.scan_complete = False
+        self.global_mpp = None
+        self.local_algorithm.reset()
+
+
+class HybridMPPT(MPPTAlgorithm):
+    """
+    混合MPPT算法
+    Hybrid MPPT Algorithm
+    
+    原理:
+    ----
+    结合PSO全局搜索和P&O局部跟踪的优势
+    
+    策略:
+    1. 启动阶段: PSO快速找到全局MPP区域
+    2. 跟踪阶段: P&O精细跟踪
+    3. 环境变化: 检测到功率大幅下降，重新启动PSO
+    
+    优点: 快速+精确+鲁棒
+    缺点: 实现复杂
+    """
+    
+    def __init__(self,
+                 pv_module,
+                 pso_params: dict = None,
+                 po_params: dict = None,
+                 switch_threshold: float = 0.95,
+                 reactivation_threshold: float = 0.90,
+                 name: str = "Hybrid"):
+        """
+        初始化混合MPPT
+        
+        Parameters:
+        -----------
+        pv_module : PVModule
+            光伏组件对象
+        pso_params : dict
+            PSO参数 {'n_particles': 10, 'max_iterations': 20, ...}
+        po_params : dict
+            P&O参数 {'step_size': 1.0, ...}
+        switch_threshold : float
+            切换阈值（PSO达到多少效率切换到P&O）
+        reactivation_threshold : float
+            重新激活阈值（P&O效率低于多少重启PSO）
+        name : str
+            算法名称
+        """
+        super().__init__(name)
+        self.pv_module = pv_module
+        self.switch_threshold = switch_threshold
+        self.reactivation_threshold = reactivation_threshold
+        
+        # 创建PSO算法
+        pso_defaults = {
+            'n_particles': 10,
+            'v_min': 0,
+            'v_max': pv_module.Voc if pv_module else 40.0,
+            'w': 0.7,
+            'c1': 1.5,
+            'c2': 1.5,
+            'max_iterations': 20
+        }
+        if pso_params:
+            pso_defaults.update(pso_params)
+        
+        self.pso = ParticleSwarmMPPT(**pso_defaults)
+        if pv_module:
+            self.pso.set_pv_module(pv_module)
+        
+        # 创建P&O算法
+        po_defaults = {'step_size': 1.0}
+        if po_params:
+            po_defaults.update(po_params)
+        
+        self.po = PerturbAndObserve(**po_defaults)
+        
+        # 控制变量
+        self.mode = 'PSO'  # 'PSO' or 'PO'
+        self.v_ref = pso_defaults['v_max'] / 2.0
+        self.best_power = 0.0
+        self.recent_powers = []
+        self.switch_count = 0
+    
+    def update(self, voltage: float, current: float, **kwargs) -> float:
+        """
+        更新算法
+        
+        Parameters:
+        -----------
+        voltage : float
+            当前电压(V)
+        current : float
+            当前电流(A)
+            
+        Returns:
+        --------
+        float : 新的参考电压(V)
+        """
+        power = voltage * current
+        
+        # 更新最佳功率
+        if power > self.best_power:
+            self.best_power = power
+        
+        # 记录最近功率
+        self.recent_powers.append(power)
+        if len(self.recent_powers) > 20:
+            self.recent_powers.pop(0)
+        
+        # 根据当前模式更新
+        if self.mode == 'PSO':
+            self.v_ref = self.pso.update(voltage, current)
+            
+            # 检查是否应该切换到P&O
+            if self.pso.converged:
+                # PSO收敛，切换到P&O
+                efficiency = power / self.best_power if self.best_power > 0 else 0
+                if efficiency >= self.switch_threshold or self.pso.iteration >= self.pso.max_iterations:
+                    self.mode = 'PO'
+                    self.po.v_ref = self.v_ref  # 从PSO结果开始
+                    self.switch_count += 1
+        
+        elif self.mode == 'PO':
+            self.v_ref = self.po.update(voltage, current)
+            
+            # 检查是否需要重新激活PSO
+            if len(self.recent_powers) >= 10:
+                avg_recent_power = np.mean(self.recent_powers[-10:])
+                efficiency = avg_recent_power / self.best_power if self.best_power > 0 else 0
+                
+                if efficiency < self.reactivation_threshold:
+                    # 功率大幅下降，可能是环境变化，重启PSO
+                    self.mode = 'PSO'
+                    self.pso.reset()
+                    self.switch_count += 1
+                    self.best_power = power  # 重置最佳功率
+        
+        # 记录历史
+        self.history.append({
+            'v': voltage,
+            'i': current,
+            'p': power,
+            'v_ref': self.v_ref,
+            'mode': self.mode,
+            'best_power': self.best_power,
+            'switch_count': self.switch_count
+        })
+        
+        return self.v_ref
+    
+    def get_status(self) -> dict:
+        """
+        获取当前状态
+        
+        Returns:
+        --------
+        dict : 状态信息
+        """
+        return {
+            'mode': self.mode,
+            'v_ref': self.v_ref,
+            'best_power': self.best_power,
+            'switch_count': self.switch_count,
+            'pso_converged': self.pso.converged if self.mode == 'PSO' else None,
+            'pso_iteration': self.pso.iteration if self.mode == 'PSO' else None
+        }
+    
+    def reset(self):
+        """重置算法"""
+        super().reset()
+        self.mode = 'PSO'
+        self.pso.reset()
+        self.po.reset()
+        self.best_power = 0.0
+        self.recent_powers = []
+        self.switch_count = 0
+
+
 class MPPTController:
     """
     MPPT控制器

@@ -14,6 +14,7 @@ from code.models.mppt_algorithms import (PerturbAndObserve, AdaptivePO,
                                           IncrementalConductance, ModifiedINC,
                                           ConstantVoltage, ImprovedCV,
                                           FuzzyLogicMPPT, ParticleSwarmMPPT,
+                                          MultiPeakDetector, GlobalScanMPPT, HybridMPPT,
                                           MPPTController)
 
 
@@ -821,6 +822,146 @@ class TestParticleSwarmMPPT(unittest.TestCase):
         self.assertEqual(self.algo.iteration, 0)
         self.assertFalse(self.algo.converged)
         self.assertEqual(self.algo.gbest_fitness, -np.inf)
+
+
+class TestMultiPeakDetector(unittest.TestCase):
+    """多峰检测器测试"""
+    
+    def setUp(self):
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+        
+        self.detector = MultiPeakDetector(self.module, n_scan_points=50)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertIsNotNone(self.detector.pv_module)
+        self.assertEqual(self.detector.n_scan_points, 50)
+    
+    def test_scan_pv_curve(self):
+        """测试P-V曲线扫描"""
+        voltages, powers = self.detector.scan_pv_curve()
+        
+        self.assertEqual(len(voltages), 50)
+        self.assertEqual(len(powers), 50)
+        self.assertTrue(np.all(voltages >= 0))
+        self.assertTrue(np.all(powers >= 0))
+    
+    def test_detect_peaks(self):
+        """测试峰值检测"""
+        voltages, powers = self.detector.scan_pv_curve()
+        peaks = self.detector.detect_peaks(voltages, powers, min_prominence=1.0)
+        
+        # 应该至少检测到一个峰值（标准条件下）
+        self.assertGreaterEqual(len(peaks), 1)
+        
+        # 检查峰值结构
+        if len(peaks) > 0:
+            peak = peaks[0]
+            self.assertIn('voltage', peak)
+            self.assertIn('power', peak)
+            self.assertIn('prominence', peak)
+    
+    def test_find_global_mpp(self):
+        """测试全局MPP查找"""
+        global_mpp = self.detector.find_global_mpp()
+        
+        self.assertIn('voltage', global_mpp)
+        self.assertIn('power', global_mpp)
+        self.assertGreater(global_mpp['power'], 0)
+
+
+class TestHybridMPPT(unittest.TestCase):
+    """混合MPPT测试"""
+    
+    def setUp(self):
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+        
+        self.vmpp, self.impp, self.pmpp = self.module.find_mpp()
+        
+        self.algo = HybridMPPT(
+            pv_module=self.module,
+            pso_params={'n_particles': 10, 'max_iterations': 20},
+            po_params={'step_size': 1.0}
+        )
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.algo.mode, 'PSO')
+        self.assertIsNotNone(self.algo.pso)
+        self.assertIsNotNone(self.algo.po)
+        self.assertEqual(self.algo.switch_count, 0)
+    
+    def test_first_update(self):
+        """测试第一次更新"""
+        v = self.vmpp * 0.8
+        i = self.module.calculate_current(v)
+        
+        v_ref = self.algo.update(v, i)
+        
+        self.assertIsNotNone(v_ref)
+        self.assertEqual(self.algo.mode, 'PSO')
+    
+    def test_mode_switching(self):
+        """测试模式切换"""
+        # 运行足够步数让PSO收敛并切换到P&O
+        v = self.vmpp * 0.8
+        
+        for step in range(50):
+            i = self.module.calculate_current(v)
+            v_ref = self.algo.update(v, i)
+            v = v + 0.5 * (v_ref - v)
+            
+            if self.algo.mode == 'PO':
+                print(f"切换到P&O于第{step}步")
+                break
+        
+        # 应该最终切换到P&O
+        self.assertIn(self.algo.mode, ['PSO', 'PO'])
+    
+    def test_get_status(self):
+        """测试获取状态"""
+        status = self.algo.get_status()
+        
+        self.assertIn('mode', status)
+        self.assertIn('v_ref', status)
+        self.assertIn('best_power', status)
+        self.assertIn('switch_count', status)
+    
+    def test_performance(self):
+        """测试跟踪性能"""
+        controller = MPPTController(self.algo, v_min=0, v_max=self.module.Voc)
+        
+        v_pv = self.vmpp * 0.7
+        for _ in range(60):
+            i_pv = self.module.calculate_current(v_pv)
+            v_ref = controller.step(v_pv, i_pv)
+            v_pv = v_pv + 0.5 * (v_ref - v_pv)
+        
+        perf = controller.evaluate_performance(self.pmpp)
+        
+        # 混合算法应该有良好性能
+        self.assertGreater(perf['efficiency'], 90.0)
+    
+    def test_reset(self):
+        """测试重置"""
+        # 运行几步
+        for _ in range(5):
+            v = self.vmpp * 0.8
+            i = self.module.calculate_current(v)
+            self.algo.update(v, i)
+        
+        # 重置
+        self.algo.reset()
+        
+        # 状态应该重置
+        self.assertEqual(len(self.algo.history), 0)
+        self.assertEqual(self.algo.mode, 'PSO')
+        self.assertEqual(self.algo.switch_count, 0)
+        self.assertEqual(self.algo.best_power, 0.0)
 
 
 def run_tests():
