@@ -421,3 +421,120 @@ class FeedforwardCompensator:
         
         return np.clip(d_ff, 0.05, 0.95)
 
+
+# ==================== 功率解耦控制 ====================
+
+class PowerDecouplingController:
+    """
+    功率解耦控制器
+    
+    问题: 单相系统功率脉动
+        P(t) = P0 + P2·cos(2ωt)
+        导致直流母线电压二倍频波动
+    
+    解决方案: 有源功率解耦
+        - 检测二倍频分量
+        - 补偿控制
+        - 减小储能电容
+    """
+    
+    def __init__(self, omega: float, C: float, name: str = "PowerDecoupling"):
+        """
+        初始化功率解耦控制器
+        
+        Args:
+            omega: 电网角频率 (rad/s)
+            C: 直流电容 (F)
+            name: 控制器名称
+        """
+        self.name = name
+        self.omega = omega
+        self.C = C
+        
+        # 二倍频陷波滤波器
+        self.v_2f = 0.0  # 二倍频分量
+        self.alpha = 0.9  # 滤波系数
+        
+    def extract_ripple(self, v_dc: float, dt: float) -> float:
+        """
+        提取二倍频纹波
+        
+        Args:
+            v_dc: 直流电压 (V)
+            dt: 时间步长 (s)
+            
+        Returns:
+            v_ripple: 纹波电压 (V)
+        """
+        # 简化的二倍频提取（实际应使用带通滤波器）
+        # 这里用一阶滤波器近似
+        self.v_2f = self.alpha * self.v_2f + (1 - self.alpha) * v_dc
+        v_ripple = v_dc - self.v_2f
+        
+        return v_ripple
+    
+    def compensate(self, v_ripple: float, i_ref: float) -> float:
+        """
+        功率补偿
+        
+        Args:
+            v_ripple: 纹波电压 (V)
+            i_ref: 基准电流参考 (A)
+            
+        Returns:
+            i_comp: 补偿电流参考 (A)
+        """
+        # 补偿电流 = Kp * v_ripple
+        Kp = 0.1
+        i_comp = i_ref + Kp * v_ripple
+        
+        return i_comp
+
+
+# ==================== 下垂控制 ====================
+
+class DroopController:
+    """
+    下垂控制器 (Droop Control)
+    
+    原理: 模拟同步发电机的频率/电压下垂特性
+    
+    直流微网电压下垂:
+        V = V_ref - m·I
+        
+    其中:
+        m: 下垂系数 (Ω)
+        I: 输出电流 (A)
+    """
+    
+    def __init__(self, V_ref: float, m: float, name: str = "DroopController"):
+        """
+        初始化下垂控制器
+        
+        Args:
+            V_ref: 参考电压 (V)
+            m: 下垂系数 (Ω)
+            name: 控制器名称
+        """
+        self.name = name
+        self.V_ref = V_ref
+        self.m = m
+    
+    def calculate(self, I_output: float) -> float:
+        """
+        计算下垂电压参考
+        
+        Args:
+            I_output: 输出电流 (A)
+            
+        Returns:
+            V_droop: 下垂电压参考 (V)
+        """
+        V_droop = self.V_ref - self.m * I_output
+        
+        return V_droop
+    
+    def set_droop_coefficient(self, m: float):
+        """设置下垂系数"""
+        self.m = m
+
