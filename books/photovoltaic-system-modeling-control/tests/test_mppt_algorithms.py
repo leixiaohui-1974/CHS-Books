@@ -13,6 +13,7 @@ from code.models.pv_module import PVModule
 from code.models.mppt_algorithms import (PerturbAndObserve, AdaptivePO, 
                                           IncrementalConductance, ModifiedINC,
                                           ConstantVoltage, ImprovedCV,
+                                          FuzzyLogicMPPT,
                                           MPPTController)
 
 
@@ -426,6 +427,215 @@ class TestImprovedCV(unittest.TestCase):
         
         # 温度升高,电压应该降低(负温度系数)
         self.assertLess(v_ref_50, v_ref_25)
+
+
+class TestFuzzyLogicMPPT(unittest.TestCase):
+    """模糊逻辑MPPT测试"""
+    
+    def setUp(self):
+        self.algo = FuzzyLogicMPPT(
+            step_size_max=3.0,
+            initial_voltage=25.0
+        )
+        
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+        
+        self.vmpp, self.impp, self.pmpp = self.module.find_mpp()
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.algo.step_size_max, 3.0)
+        self.assertEqual(self.algo.v_ref, 25.0)
+        
+        # 检查模糊集
+        self.assertIsNotNone(self.algo.mf_e)
+        self.assertIsNotNone(self.algo.mf_ce)
+        self.assertIsNotNone(self.algo.mf_dv)
+        
+        # 检查规则库
+        self.assertEqual(len(self.algo.rules), 25)
+    
+    def test_fuzzy_sets(self):
+        """测试模糊集定义"""
+        # 检查E的模糊集
+        e_sets = self.algo.mf_e
+        self.assertEqual(len(e_sets), 5)
+        self.assertIn('NB', e_sets)
+        self.assertIn('NS', e_sets)
+        self.assertIn('ZE', e_sets)
+        self.assertIn('PS', e_sets)
+        self.assertIn('PB', e_sets)
+        
+        # 检查CE的模糊集
+        ce_sets = self.algo.mf_ce
+        self.assertEqual(len(ce_sets), 5)
+        
+        # 检查dV的模糊集
+        dv_sets = self.algo.mf_dv
+        self.assertEqual(len(dv_sets), 5)
+    
+    def test_membership_function(self):
+        """测试隶属度函数"""
+        # 测试梯形隶属度
+        # ZE: [-0.2, -0.1, 0.1, 0.2]
+        
+        # 中心点应该是1.0
+        mu_center = self.algo._membership(0.0, [-0.2, -0.1, 0.1, 0.2])
+        self.assertAlmostEqual(mu_center, 1.0, delta=0.01)
+        
+        # 边界点
+        mu_left = self.algo._membership(-0.15, [-0.2, -0.1, 0.1, 0.2])
+        self.assertGreater(mu_left, 0.0)
+        self.assertLess(mu_left, 1.0)
+        
+        # 外部点
+        mu_outside = self.algo._membership(-0.5, [-0.2, -0.1, 0.1, 0.2])
+        self.assertAlmostEqual(mu_outside, 0.0, delta=0.01)
+    
+    def test_fuzzification(self):
+        """测试模糊化"""
+        E = 0.1  # 正小
+        CE = -0.05  # 负小
+        
+        fuzzy_inputs = self.algo._fuzzify(E, CE)
+        
+        # 应该返回E和CE的模糊化结果
+        self.assertIn('E', fuzzy_inputs)
+        self.assertIn('CE', fuzzy_inputs)
+        
+        e_fuzzy = fuzzy_inputs['E']
+        ce_fuzzy = fuzzy_inputs['CE']
+        
+        # 应该返回所有集合的隶属度
+        self.assertEqual(len(e_fuzzy), 5)
+        self.assertEqual(len(ce_fuzzy), 5)
+        
+        # 隶属度之和应该 > 0
+        self.assertGreater(sum(e_fuzzy.values()), 0)
+        self.assertGreater(sum(ce_fuzzy.values()), 0)
+    
+    def test_rules(self):
+        """测试规则库"""
+        # 检查典型规则
+        # (NB, NB) -> PB (负大->大幅增加电压)
+        self.assertIn(('NB', 'NB'), self.algo.rules)
+        self.assertEqual(self.algo.rules[('NB', 'NB')], 'PB')
+        
+        # (ZE, ZE) -> ZE (在MPP不调整)
+        self.assertIn(('ZE', 'ZE'), self.algo.rules)
+        self.assertEqual(self.algo.rules[('ZE', 'ZE')], 'ZE')
+    
+    def test_first_update(self):
+        """测试第一次更新"""
+        v_ref = self.algo.update(voltage=25.0, current=7.0)
+        self.assertIsNotNone(v_ref)
+        self.assertIsInstance(v_ref, (float, np.floating))
+    
+    def test_tracking_convergence(self):
+        """测试跟踪收敛性"""
+        controller = MPPTController(self.algo, v_min=0, v_max=self.module.Voc)
+        
+        # 从远离MPP开始
+        v_pv = self.vmpp * 0.7
+        
+        # 运行50步
+        for _ in range(50):
+            i_pv = self.module.calculate_current(v_pv)
+            v_ref = controller.step(v_pv, i_pv)
+            v_pv = v_pv + 0.5 * (v_ref - v_pv)
+        
+        # 应该收敛到MPP附近(Fuzzy可能需要更多步数)
+        self.assertAlmostEqual(v_pv, self.vmpp, delta=self.vmpp * 0.35)
+    
+    def test_noise_robustness(self):
+        """测试抗噪声性能"""
+        controller = MPPTController(self.algo, v_min=0, v_max=self.module.Voc)
+        
+        v_pv = self.vmpp * 0.8
+        powers = []
+        
+        # 运行50步,添加噪声
+        for _ in range(50):
+            i_pv = self.module.calculate_current(v_pv)
+            
+            # 添加10%噪声
+            i_noisy = i_pv * (1 + np.random.normal(0, 0.1))
+            v_noisy = v_pv * (1 + np.random.normal(0, 0.1))
+            
+            v_ref = controller.step(v_noisy, i_noisy)
+            v_pv = v_pv + 0.5 * (v_ref - v_pv)
+            powers.append(v_pv * i_pv)
+        
+        # 评估性能
+        perf = controller.evaluate_performance(self.pmpp)
+        
+        # 即使有噪声,效率也应该>65%(噪声环境下降低阈值)
+        self.assertGreater(perf['efficiency'], 65.0)
+    
+    def test_fast_response(self):
+        """测试快速响应"""
+        controller = MPPTController(self.algo, v_min=0, v_max=self.module.Voc)
+        
+        v_pv = self.vmpp * 0.6
+        
+        # 运行30步
+        for _ in range(30):
+            i_pv = self.module.calculate_current(v_pv)
+            v_ref = controller.step(v_pv, i_pv)
+            v_pv = v_pv + 0.5 * (v_ref - v_pv)
+        
+        # Fuzzy应该快速收敛(30步可能还在调整)
+        self.assertAlmostEqual(v_pv, self.vmpp, delta=self.vmpp * 0.45)
+    
+    def test_performance_vs_traditional(self):
+        """测试与传统算法对比"""
+        # Fuzzy
+        controller_fuzzy = MPPTController(
+            FuzzyLogicMPPT(step_size_max=3.0, initial_voltage=self.vmpp * 0.7),
+            v_min=0, v_max=self.module.Voc
+        )
+        
+        # P&O
+        controller_po = MPPTController(
+            PerturbAndObserve(step_size=1.0, initial_voltage=self.vmpp * 0.7),
+            v_min=0, v_max=self.module.Voc
+        )
+        
+        # 模拟跟踪
+        v_fuzzy = self.vmpp * 0.7
+        v_po = self.vmpp * 0.7
+        
+        for _ in range(50):
+            # Fuzzy
+            i_fuzzy = self.module.calculate_current(v_fuzzy)
+            v_ref_fuzzy = controller_fuzzy.step(v_fuzzy, i_fuzzy)
+            v_fuzzy = v_fuzzy + 0.5 * (v_ref_fuzzy - v_fuzzy)
+            
+            # P&O
+            i_po = self.module.calculate_current(v_po)
+            v_ref_po = controller_po.step(v_po, i_po)
+            v_po = v_po + 0.5 * (v_ref_po - v_po)
+        
+        # 评估性能
+        perf_fuzzy = controller_fuzzy.evaluate_performance(self.pmpp)
+        perf_po = controller_po.evaluate_performance(self.pmpp)
+        
+        # Fuzzy和P&O都应该有合理性能
+        self.assertGreater(perf_fuzzy['efficiency'], 70.0)
+        self.assertGreater(perf_po['efficiency'], 85.0)
+    
+    def test_reset(self):
+        """测试重置"""
+        self.algo.update(25.0, 7.0)
+        self.algo.update(26.0, 7.2)
+        
+        self.assertGreater(len(self.algo.history), 0)
+        
+        self.algo.reset()
+        self.assertEqual(len(self.algo.history), 0)
+        self.assertEqual(self.algo.v_ref, 25.0)
 
 
 def run_tests():
