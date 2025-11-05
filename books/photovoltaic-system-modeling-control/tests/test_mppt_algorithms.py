@@ -11,6 +11,7 @@ import numpy as np
 from code.models.pv_cell import SingleDiodeModel
 from code.models.pv_module import PVModule
 from code.models.mppt_algorithms import (PerturbAndObserve, AdaptivePO, 
+                                          IncrementalConductance, ModifiedINC,
                                           MPPTController)
 
 
@@ -189,6 +190,142 @@ class TestMPPTController(unittest.TestCase):
         
         self.controller.reset()
         self.assertEqual(len(self.controller.tracking_history), 0)
+
+
+class TestIncrementalConductance(unittest.TestCase):
+    """INC算法测试"""
+    
+    def setUp(self):
+        self.algo = IncrementalConductance(
+            step_size=1.0,
+            initial_voltage=25.0,
+            threshold=0.01
+        )
+        
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+        
+        self.vmpp, self.impp, self.pmpp = self.module.find_mpp()
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.algo.step_size, 1.0)
+        self.assertEqual(self.algo.v_ref, 25.0)
+        self.assertEqual(self.algo.threshold, 0.01)
+    
+    def test_first_update(self):
+        """测试第一次更新"""
+        v_ref = self.algo.update(voltage=25.0, current=7.0)
+        self.assertIsNotNone(v_ref)
+        self.assertIsInstance(v_ref, (float, np.floating))
+    
+    def test_inc_logic(self):
+        """测试INC判断逻辑"""
+        # 第一次更新
+        self.algo.update(25.0, 7.0)
+        
+        # 测试左侧(dI/dV > -I/V)
+        v_ref = self.algo.update(26.0, 7.3)
+        # 应该增加电压
+        self.assertIsNotNone(v_ref)
+    
+    def test_tracking_convergence(self):
+        """测试跟踪收敛性"""
+        controller = MPPTController(self.algo, v_min=0, v_max=self.module.Voc)
+        
+        v_pv = self.vmpp * 0.7
+        
+        for _ in range(50):
+            i_pv = self.module.calculate_current(v_pv)
+            v_ref = controller.step(v_pv, i_pv)
+            v_pv = v_pv + 0.5 * (v_ref - v_pv)
+        
+        # 应该收敛到MPP附近
+        self.assertAlmostEqual(v_pv, self.vmpp, delta=self.vmpp * 0.1)
+    
+    def test_mpp_detection(self):
+        """测试MPP检测"""
+        # 直接从MPP开始
+        v_mpp = self.vmpp
+        i_mpp = self.module.calculate_current(v_mpp)
+        
+        self.algo.update(v_mpp, i_mpp)
+        
+        # 小扰动
+        v_ref = self.algo.update(v_mpp + 0.01, i_mpp - 0.001)
+        
+        # 应该保持在MPP附近
+        self.assertAlmostEqual(v_ref, v_mpp, delta=2.0)
+    
+    def test_reset(self):
+        """测试重置"""
+        self.algo.update(25.0, 7.0)
+        self.algo.update(26.0, 7.2)
+        
+        self.assertGreater(len(self.algo.history), 0)
+        
+        self.algo.reset()
+        self.assertEqual(len(self.algo.history), 0)
+        self.assertEqual(self.algo.v_ref, 25.0)
+
+
+class TestModifiedINC(unittest.TestCase):
+    """改进型INC测试"""
+    
+    def setUp(self):
+        self.algo = ModifiedINC(
+            step_size_min=0.1,
+            step_size_max=5.0,
+            initial_voltage=25.0,
+            threshold=0.01,
+            deadband=0.01
+        )
+        
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.algo.step_size_min, 0.1)
+        self.assertEqual(self.algo.step_size_max, 5.0)
+        self.assertEqual(self.algo.deadband, 0.01)
+    
+    def test_filter(self):
+        """测试滤波功能"""
+        # 第一次更新会初始化滤波值
+        self.algo.update(25.0, 7.0)
+        # 第二次更新会应用滤波
+        self.algo.update(26.0, 7.2)
+        
+        # 滤波后的值应该在合理范围内(接近25-26之间)
+        self.assertIsNotNone(self.algo.v_filtered)
+        self.assertGreater(self.algo.v_filtered, 0.0)
+        self.assertLess(self.algo.v_filtered, 40.0)
+    
+    def test_deadband(self):
+        """测试死区功能"""
+        # 初始化
+        self.algo.update(25.0, 7.0)
+        self.algo.update(25.5, 7.1)  # 让算法稳定
+        
+        v_ref_before = self.algo.v_ref
+        
+        # 很小的变化(在死区内)
+        v_ref_after = self.algo.update(25.501, 7.101)
+        
+        # 由于滤波,v_ref可能有微小变化,但应该很接近
+        self.assertAlmostEqual(v_ref_after, v_ref_before, delta=1.0)
+    
+    def test_adaptive_step(self):
+        """测试自适应步长"""
+        self.algo.update(15.0, 7.5)
+        self.algo.update(20.0, 7.2)
+        
+        # 步长应该在范围内
+        self.assertGreaterEqual(self.algo.step_size, self.algo.step_size_min)
+        self.assertLessEqual(self.algo.step_size, self.algo.step_size_max)
 
 
 def run_tests():

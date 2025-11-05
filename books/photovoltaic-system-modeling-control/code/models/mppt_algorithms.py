@@ -240,6 +240,260 @@ class AdaptivePO(PerturbAndObserve):
         return super().update(voltage, current, **kwargs)
 
 
+class IncrementalConductance(MPPTAlgorithm):
+    """
+    增量电导法
+    Incremental Conductance Algorithm
+    
+    原理:
+    ----
+    基于 dP/dV = 0 在MPP点
+    
+    因为 P = V×I, 所以:
+    dP/dV = I + V×(dI/dV) = 0
+    
+    即: dI/dV = -I/V (MPP条件)
+    
+    判断逻辑:
+    - dI/dV > -I/V → 左侧,增加V
+    - dI/dV < -I/V → 右侧,减少V
+    - dI/dV = -I/V → MPP,保持V
+    
+    优点: 精度高、无稳态振荡、快速响应
+    缺点: 计算复杂、对噪声敏感
+    """
+    
+    def __init__(self,
+                 step_size: float = 1.0,
+                 initial_voltage: float = None,
+                 threshold: float = 0.01,
+                 name: str = "INC"):
+        """
+        初始化INC算法
+        
+        Parameters:
+        -----------
+        step_size : float
+            步长(V)
+        initial_voltage : float
+            初始电压(V)
+        threshold : float
+            判断阈值(A/V)
+        name : str
+            算法名称
+        """
+        super().__init__(name)
+        self.step_size = step_size
+        self.initial_voltage = initial_voltage
+        self.threshold = threshold
+        
+        # 内部状态
+        self.v_ref = initial_voltage
+        self.v_prev = 0.0
+        self.i_prev = 0.0
+        
+    def update(self, voltage: float, current: float, **kwargs) -> float:
+        """
+        INC算法更新
+        
+        Parameters:
+        -----------
+        voltage : float
+            当前电压(V)
+        current : float
+            当前电流(A)
+            
+        Returns:
+        --------
+        float : 新的参考电压(V)
+        """
+        # 第一次调用,初始化
+        if self.v_ref is None:
+            self.v_ref = voltage
+            self.v_prev = voltage
+            self.i_prev = current
+            return self.v_ref
+        
+        # 计算增量
+        dV = voltage - self.v_prev
+        dI = current - self.i_prev
+        
+        # INC核心逻辑
+        if abs(dV) < 1e-6:
+            # 电压无变化
+            if abs(dI) < self.threshold:
+                # 电流也无变化 → MPP
+                pass  # 保持当前电压
+            elif dI > 0:
+                # 电流增加 → 增加电压
+                self.v_ref = voltage + self.step_size
+            else:
+                # 电流减少 → 减少电压
+                self.v_ref = voltage - self.step_size
+        else:
+            # 电压有变化,计算增量电导
+            dIdV = dI / dV  # dI/dV
+            conductance = -current / voltage  # -I/V
+            
+            if abs(dIdV - conductance) < self.threshold:
+                # dI/dV ≈ -I/V → MPP
+                pass  # 保持当前电压
+            elif dIdV > conductance:
+                # dI/dV > -I/V → 左侧
+                self.v_ref = voltage + self.step_size
+            else:
+                # dI/dV < -I/V → 右侧
+                self.v_ref = voltage - self.step_size
+        
+        # 记录历史
+        self.history.append({
+            'v': voltage,
+            'i': current,
+            'p': voltage * current,
+            'v_ref': self.v_ref,
+            'dV': dV,
+            'dI': dI
+        })
+        
+        # 更新上一次值
+        self.v_prev = voltage
+        self.i_prev = current
+        
+        return self.v_ref
+    
+    def reset(self):
+        """重置算法"""
+        super().reset()
+        self.v_ref = self.initial_voltage
+        self.v_prev = 0.0
+        self.i_prev = 0.0
+
+
+class ModifiedINC(IncrementalConductance):
+    """
+    改进型增量电导法
+    Modified Incremental Conductance
+    
+    改进:
+    ----
+    - 变步长策略
+    - 死区设置
+    - 滤波处理
+    """
+    
+    def __init__(self,
+                 step_size_min: float = 0.1,
+                 step_size_max: float = 5.0,
+                 initial_voltage: float = None,
+                 threshold: float = 0.01,
+                 deadband: float = 0.005,
+                 name: str = "Modified INC"):
+        """
+        初始化改进型INC
+        
+        Parameters:
+        -----------
+        step_size_min : float
+            最小步长(V)
+        step_size_max : float
+            最大步长(V)
+        initial_voltage : float
+            初始电压(V)
+        threshold : float
+            判断阈值
+        deadband : float
+            死区范围
+        name : str
+            算法名称
+        """
+        super().__init__(
+            step_size=(step_size_min + step_size_max) / 2,
+            initial_voltage=initial_voltage,
+            threshold=threshold,
+            name=name
+        )
+        self.step_size_min = step_size_min
+        self.step_size_max = step_size_max
+        self.deadband = deadband
+        
+        # 滤波参数
+        self.alpha = 0.8
+        self.v_filtered = 0.0
+        self.i_filtered = 0.0
+    
+    def update(self, voltage: float, current: float, **kwargs) -> float:
+        """
+        改进型INC更新
+        
+        添加滤波、变步长、死区
+        """
+        # 第一次调用
+        if self.v_ref is None:
+            self.v_ref = voltage
+            self.v_prev = voltage
+            self.i_prev = current
+            self.v_filtered = voltage
+            self.i_filtered = current
+            return self.v_ref
+        
+        # 滤波
+        self.v_filtered = self.alpha * self.v_filtered + (1 - self.alpha) * voltage
+        self.i_filtered = self.alpha * self.i_filtered + (1 - self.alpha) * current
+        
+        # 计算增量
+        dV = self.v_filtered - self.v_prev
+        dI = self.i_filtered - self.i_prev
+        
+        # 死区判断
+        if abs(dV) < self.deadband and abs(dI) < self.deadband:
+            # 在死区内,保持不变
+            self.history.append({
+                'v': voltage,
+                'i': current,
+                'p': voltage * current,
+                'v_ref': self.v_ref,
+                'dV': dV,
+                'dI': dI
+            })
+            return self.v_ref
+        
+        # INC逻辑(使用滤波后的值)
+        if abs(dV) > 1e-6:
+            dIdV = dI / dV
+            conductance = -self.i_filtered / self.v_filtered
+            
+            error = abs(dIdV - conductance)
+            
+            # 变步长: 误差大时步长大
+            error_norm = min(error / 1.0, 1.0)
+            self.step_size = self.step_size_min + \
+                           (self.step_size_max - self.step_size_min) * error_norm
+            
+            if abs(error) < self.threshold:
+                pass  # MPP
+            elif dIdV > conductance:
+                self.v_ref = voltage + self.step_size
+            else:
+                self.v_ref = voltage - self.step_size
+        
+        # 记录
+        self.history.append({
+            'v': voltage,
+            'i': current,
+            'p': voltage * current,
+            'v_ref': self.v_ref,
+            'dV': dV,
+            'dI': dI,
+            'step_size': self.step_size
+        })
+        
+        # 更新
+        self.v_prev = self.v_filtered
+        self.i_prev = self.i_filtered
+        
+        return self.v_ref
+
+
 class MPPTController:
     """
     MPPT控制器
