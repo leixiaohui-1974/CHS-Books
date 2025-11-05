@@ -12,6 +12,7 @@ from code.models.pv_cell import SingleDiodeModel
 from code.models.pv_module import PVModule
 from code.models.mppt_algorithms import (PerturbAndObserve, AdaptivePO, 
                                           IncrementalConductance, ModifiedINC,
+                                          ConstantVoltage, ImprovedCV,
                                           MPPTController)
 
 
@@ -326,6 +327,105 @@ class TestModifiedINC(unittest.TestCase):
         # 步长应该在范围内
         self.assertGreaterEqual(self.algo.step_size, self.algo.step_size_min)
         self.assertLessEqual(self.algo.step_size, self.algo.step_size_max)
+
+
+class TestConstantVoltage(unittest.TestCase):
+    """恒电压法测试"""
+    
+    def setUp(self):
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+        
+        self.vmpp, self.impp, self.pmpp = self.module.find_mpp()
+        self.voc = self.module.Voc
+        
+        self.algo = ConstantVoltage(voltage_ratio=0.76, voc=self.voc)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.algo.voltage_ratio, 0.76)
+        self.assertEqual(self.algo.voc, self.voc)
+    
+    def test_voltage_calculation(self):
+        """测试电压计算"""
+        v_ref = self.algo.update(voltage=25.0, current=7.0)
+        
+        # 应该是0.76*Voc
+        expected = 0.76 * self.voc
+        self.assertAlmostEqual(v_ref, expected, delta=1.0)
+    
+    def test_constant_output(self):
+        """测试输出恒定性"""
+        v_ref1 = self.algo.update(25.0, 7.0)
+        v_ref2 = self.algo.update(26.0, 7.2)
+        v_ref3 = self.algo.update(24.0, 6.8)
+        
+        # CV应该输出恒定值
+        self.assertAlmostEqual(v_ref1, v_ref2, delta=0.1)
+        self.assertAlmostEqual(v_ref2, v_ref3, delta=0.1)
+    
+    def test_set_voc(self):
+        """测试设置Voc"""
+        new_voc = 40.0
+        self.algo.set_voc(new_voc)
+        
+        self.assertEqual(self.algo.voc, new_voc)
+        self.assertEqual(self.algo.v_ref, 0.76 * new_voc)
+    
+    def test_performance(self):
+        """测试跟踪性能"""
+        controller = MPPTController(self.algo, v_min=0, v_max=self.module.Voc)
+        
+        v_pv = self.vmpp
+        for _ in range(50):
+            i_pv = self.module.calculate_current(v_pv)
+            v_ref = controller.step(v_pv, i_pv)
+            v_pv = v_pv + 0.5 * (v_ref - v_pv)
+        
+        perf = controller.evaluate_performance(self.pmpp)
+        
+        # CV效率通常90-95%
+        self.assertGreater(perf['efficiency'], 85.0)
+        self.assertLess(perf['efficiency'], 100.0)
+    
+    def test_reset(self):
+        """测试重置"""
+        self.algo.update(25.0, 7.0)
+        
+        self.assertGreater(len(self.algo.history), 0)
+        
+        self.algo.reset()
+        self.assertEqual(len(self.algo.history), 0)
+
+
+class TestImprovedCV(unittest.TestCase):
+    """改进型CV测试"""
+    
+    def setUp(self):
+        cell = SingleDiodeModel(Isc=8.0, Voc=0.6, Imp=7.5, Vmp=0.48)
+        self.module = PVModule(cell, Ns=60, Nb=3)
+        self.module.set_uniform_conditions(T=298.15, G=1000.0)
+        
+        self.voc = self.module.Voc
+        self.algo = ImprovedCV(voltage_ratio=0.76, voc=self.voc)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.algo.voltage_ratio, 0.76)
+        self.assertTrue(self.algo.update_voc)
+    
+    def test_temperature_compensation(self):
+        """测试温度补偿"""
+        # 25°C基准
+        v_ref_25 = self.algo.update(25.0, 7.0, temperature=25.0)
+        
+        # 重置测试50°C
+        self.algo.reset()
+        v_ref_50 = self.algo.update(25.0, 7.0, temperature=50.0)
+        
+        # 温度升高,电压应该降低(负温度系数)
+        self.assertLess(v_ref_50, v_ref_25)
 
 
 def run_tests():

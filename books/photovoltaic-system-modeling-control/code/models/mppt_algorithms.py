@@ -494,6 +494,204 @@ class ModifiedINC(IncrementalConductance):
         return self.v_ref
 
 
+class ConstantVoltage(MPPTAlgorithm):
+    """
+    恒电压法
+    Constant Voltage Algorithm
+    
+    原理:
+    ----
+    基于经验法则: MPP电压通常在 0.76-0.8 × Voc
+    
+    步骤:
+    1. 测量或估算Voc
+    2. 设置Vref = k × Voc (k=0.76-0.8)
+    3. 控制工作在Vref
+    
+    优点: 极简单、快速、成本低
+    缺点: 精度低、不能跟踪变化
+    """
+    
+    def __init__(self,
+                 voltage_ratio: float = 0.76,
+                 voc: float = None,
+                 update_voc: bool = False,
+                 voc_update_interval: int = 100,
+                 name: str = "CV"):
+        """
+        初始化CV算法
+        
+        Parameters:
+        -----------
+        voltage_ratio : float
+            MPP电压比例(0.76-0.8)
+        voc : float
+            开路电压(V), None则需要测量
+        update_voc : bool
+            是否定期更新Voc
+        voc_update_interval : int
+            Voc更新间隔(步数)
+        name : str
+            算法名称
+        """
+        super().__init__(name)
+        self.voltage_ratio = voltage_ratio
+        self.voc = voc
+        self.update_voc = update_voc
+        self.voc_update_interval = voc_update_interval
+        
+        # 内部状态
+        self.v_ref = None
+        self.step_count = 0
+        self.voc_measured = False
+        
+    def update(self, voltage: float, current: float, **kwargs) -> float:
+        """
+        CV算法更新
+        
+        Parameters:
+        -----------
+        voltage : float
+            当前电压(V)
+        current : float
+            当前电流(A)
+            
+        Returns:
+        --------
+        float : 参考电压(V)
+        """
+        self.step_count += 1
+        
+        # 第一次调用或需要测量Voc
+        if self.v_ref is None or (not self.voc_measured and self.voc is None):
+            # 如果没有Voc,使用当前电压估算
+            if self.voc is None:
+                # 简化: 假设当前在50%左右,则Voc约为2倍
+                self.voc = voltage / 0.5
+                self.voc_measured = True
+            
+            self.v_ref = self.voltage_ratio * self.voc
+        
+        # 定期更新Voc(如果启用)
+        if self.update_voc and self.step_count % self.voc_update_interval == 0:
+            # 简化更新: 根据当前功率估算
+            # 实际应用中需要短暂断开负载测量真实Voc
+            if current < 0.1:  # 接近开路
+                self.voc = voltage
+            else:
+                # 根据当前工作点估算Voc
+                # Voc ≈ V + I×Rs (简化)
+                self.voc = voltage * 1.3  # 粗略估算
+            
+            self.v_ref = self.voltage_ratio * self.voc
+        
+        # 记录历史
+        self.history.append({
+            'v': voltage,
+            'i': current,
+            'p': voltage * current,
+            'v_ref': self.v_ref,
+            'voc': self.voc
+        })
+        
+        return self.v_ref
+    
+    def reset(self):
+        """重置算法"""
+        super().reset()
+        self.v_ref = None
+        self.step_count = 0
+        self.voc_measured = False
+    
+    def set_voc(self, voc: float):
+        """
+        设置Voc值
+        
+        Parameters:
+        -----------
+        voc : float
+            开路电压(V)
+        """
+        self.voc = voc
+        self.v_ref = self.voltage_ratio * voc
+        self.voc_measured = True
+
+
+class ImprovedCV(ConstantVoltage):
+    """
+    改进型恒电压法
+    Improved Constant Voltage
+    
+    改进:
+    ----
+    - 根据温度/辐照度调整k值
+    - 周期性Voc测量
+    - 与P&O结合
+    """
+    
+    def __init__(self,
+                 voltage_ratio: float = 0.76,
+                 voc: float = None,
+                 temp_coef: float = -0.003,
+                 name: str = "Improved CV"):
+        """
+        初始化改进型CV
+        
+        Parameters:
+        -----------
+        voltage_ratio : float
+            基准电压比例
+        voc : float
+            开路电压
+        temp_coef : float
+            温度系数(/°C)
+        name : str
+            算法名称
+        """
+        super().__init__(
+            voltage_ratio=voltage_ratio,
+            voc=voc,
+            update_voc=True,
+            voc_update_interval=50,
+            name=name
+        )
+        self.temp_coef = temp_coef
+        self.base_temp = 25.0  # 基准温度
+    
+    def update(self, voltage: float, current: float, 
+              temperature: float = 25.0, **kwargs) -> float:
+        """
+        改进型CV更新
+        
+        添加温度补偿
+        
+        Parameters:
+        -----------
+        voltage : float
+            当前电压
+        current : float
+            当前电流
+        temperature : float
+            温度(°C)
+        """
+        # 调用父类更新
+        v_ref_base = super().update(voltage, current, **kwargs)
+        
+        # 温度补偿
+        delta_t = temperature - self.base_temp
+        v_ref_compensated = v_ref_base * (1 + self.temp_coef * delta_t)
+        
+        # 更新参考电压
+        self.v_ref = v_ref_compensated
+        
+        # 更新历史记录
+        if self.history:
+            self.history[-1]['v_ref'] = v_ref_compensated
+            self.history[-1]['temperature'] = temperature
+        
+        return v_ref_compensated
+
+
 class MPPTController:
     """
     MPPT控制器
