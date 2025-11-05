@@ -1645,3 +1645,431 @@ class SinglePhasePLL(PLL):
             'frequency': self.frequency,
             'integral': self.integral
         }
+
+
+# ==================== 功率控制器 ====================
+
+class PowerController:
+    """
+    功率控制器 - 有功功率(P)和无功功率(Q)控制
+    
+    原理:
+        在dq坐标系下，有功和无功功率解耦：
+        P = 1.5 * (v_d * i_d + v_q * i_q)
+        Q = 1.5 * (v_q * i_d - v_d * i_q)
+        
+        当电网电压定向于d轴时(v_q = 0)：
+        P ≈ 1.5 * v_d * i_d
+        Q ≈ -1.5 * v_d * i_q
+        
+        因此：
+        - i_d控制有功功率P
+        - i_q控制无功功率Q
+        
+    功率因数:
+        PF = P / sqrt(P^2 + Q^2) = cos(φ)
+    """
+    
+    def __init__(self, V_grid: float = 311.0, name: str = "PowerController"):
+        """
+        初始化功率控制器
+        
+        Args:
+            V_grid: 电网电压幅值 (V)
+            name: 控制器名称
+        """
+        self.name = name
+        self.V_grid = V_grid
+        
+        # 状态变量
+        self.P = 0.0  # 有功功率
+        self.Q = 0.0  # 无功功率
+        self.S = 0.0  # 视在功率
+        self.PF = 1.0  # 功率因数
+    
+    def calculate_power(self, v_d: float, v_q: float, i_d: float, i_q: float) -> Tuple[float, float, float, float]:
+        """
+        计算功率
+        
+        Args:
+            v_d, v_q: dq坐标系电压 (V)
+            i_d, i_q: dq坐标系电流 (A)
+            
+        Returns:
+            (P, Q, S, PF): 有功功率(W), 无功功率(Var), 视在功率(VA), 功率因数
+        """
+        # 三相功率计算
+        P = 1.5 * (v_d * i_d + v_q * i_q)
+        Q = 1.5 * (v_q * i_d - v_d * i_q)
+        
+        # 视在功率
+        S = np.sqrt(P**2 + Q**2)
+        
+        # 功率因数
+        if S > 1e-6:
+            PF = P / S
+        else:
+            PF = 1.0
+        
+        # 保存状态
+        self.P = P
+        self.Q = Q
+        self.S = S
+        self.PF = PF
+        
+        return P, Q, S, PF
+    
+    def power_to_current(self, P_ref: float, Q_ref: float, v_d: float) -> Tuple[float, float]:
+        """
+        功率参考转换为电流参考
+        
+        Args:
+            P_ref: 有功功率参考 (W)
+            Q_ref: 无功功率参考 (Var)
+            v_d: d轴电压 (V)
+            
+        Returns:
+            (i_d_ref, i_q_ref): dq轴电流参考 (A)
+        """
+        if abs(v_d) < 1e-6:
+            return 0.0, 0.0
+        
+        # 电网电压定向于d轴时 (v_q ≈ 0)
+        i_d_ref = P_ref / (1.5 * v_d)
+        i_q_ref = -Q_ref / (1.5 * v_d)
+        
+        return i_d_ref, i_q_ref
+    
+    def pf_to_power(self, P_ref: float, PF_ref: float) -> float:
+        """
+        根据功率因数计算无功功率
+        
+        Args:
+            P_ref: 有功功率参考 (W)
+            PF_ref: 功率因数参考 (0-1)
+            
+        Returns:
+            Q_ref: 无功功率参考 (Var)
+        """
+        # PF = cos(φ), Q/P = tan(φ)
+        PF_ref = np.clip(PF_ref, 0.01, 1.0)  # 避免除零
+        
+        if abs(PF_ref - 1.0) < 1e-6:
+            # 功率因数为1，无功为0
+            Q_ref = 0.0
+        else:
+            # Q = P * tan(arccos(PF))
+            phi = np.arccos(PF_ref)
+            Q_ref = P_ref * np.tan(phi)
+        
+        return Q_ref
+    
+    def get_status(self) -> Dict:
+        """获取功率状态"""
+        return {
+            'name': self.name,
+            'P': self.P,
+            'Q': self.Q,
+            'S': self.S,
+            'PF': self.PF
+        }
+
+
+class PQController:
+    """
+    PQ解耦控制器
+    
+    结构:
+        P参考 → i_d参考 → dq电流控制 → 输出电压
+        Q参考 → i_q参考 ↗
+        
+    特点:
+        - 有功和无功独立控制
+        - 快速动态响应
+        - 功率因数可调
+    """
+    
+    def __init__(self, V_grid: float, Kp_i: float, Ki_i: float, L: float, omega: float,
+                 P_limit: float = None, Q_limit: float = None, 
+                 v_limit: float = None, name: str = "PQ_Controller"):
+        """
+        初始化PQ控制器
+        
+        Args:
+            V_grid: 电网电压幅值 (V)
+            Kp_i, Ki_i: 电流环PI参数
+            L: 滤波电感 (H)
+            omega: 电网角频率 (rad/s)
+            P_limit: 有功功率限幅 (W)
+            Q_limit: 无功功率限幅 (Var)
+            v_limit: 电流控制器输出限幅 (V)
+            name: 控制器名称
+        """
+        self.name = name
+        
+        # 功率计算器
+        self.power_calc = PowerController(V_grid)
+        
+        # 电流控制器 (dq坐标系)
+        self.current_ctrl = DQCurrentController(Kp_i, Ki_i, L, omega, v_limit)
+        
+        # 功率限幅
+        self.P_limit = P_limit if P_limit else 1e6  # 默认无限制
+        self.Q_limit = Q_limit if Q_limit else 1e6
+        
+        self.V_grid = V_grid
+    
+    def update(self, P_ref: float, Q_ref: float, 
+               v_a: float, v_b: float, v_c: float,
+               i_a: float, i_b: float, i_c: float,
+               theta: float, dt: float, 
+               enable_decoupling: bool = True) -> Tuple[float, float, float]:
+        """
+        更新PQ控制器
+        
+        Args:
+            P_ref: 有功功率参考 (W)
+            Q_ref: 无功功率参考 (Var)
+            v_a, v_b, v_c: 三相电压 (V)
+            i_a, i_b, i_c: 三相电流 (A)
+            theta: PLL角度 (rad)
+            dt: 时间步长 (s)
+            enable_decoupling: 是否启用解耦控制
+            
+        Returns:
+            (v_a, v_b, v_c): 三相输出电压
+        """
+        # 功率限幅
+        P_ref = np.clip(P_ref, -self.P_limit, self.P_limit)
+        Q_ref = np.clip(Q_ref, -self.Q_limit, self.Q_limit)
+        
+        # 电压Park变换
+        cos_theta = np.cos(theta)
+        sin_theta = np.sin(theta)
+        
+        # Clarke变换
+        v_alpha = v_a
+        v_beta = (v_a + 2 * v_b) / np.sqrt(3)
+        
+        # Park变换
+        v_d = v_alpha * cos_theta + v_beta * sin_theta
+        v_q = -v_alpha * sin_theta + v_beta * cos_theta
+        
+        # 功率到电流参考
+        i_d_ref, i_q_ref = self.power_calc.power_to_current(P_ref, Q_ref, v_d)
+        
+        # 电流控制 (dq坐标系)
+        v_a_out, v_b_out, v_c_out = self.current_ctrl.update(
+            i_d_ref, i_q_ref, i_a, i_b, i_c, theta, dt, enable_decoupling
+        )
+        
+        # 电流Park变换计算实际功率
+        i_d, i_q = self.current_ctrl.park_transform(i_a, i_b, i_c, theta)
+        P, Q, S, PF = self.power_calc.calculate_power(v_d, v_q, i_d, i_q)
+        
+        return v_a_out, v_b_out, v_c_out
+    
+    def reset(self):
+        """重置控制器"""
+        self.current_ctrl.reset()
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        return {
+            'name': self.name,
+            'power': self.power_calc.get_status(),
+            'current': self.current_ctrl.get_status()
+        }
+
+
+# ==================== 谐波抑制 ====================
+
+class HarmonicAnalyzer:
+    """
+    谐波分析器
+    
+    功能:
+        - FFT谐波分析
+        - THD计算
+        - 特定次谐波提取
+    """
+    
+    def __init__(self, f0: float = 50.0, name: str = "HarmonicAnalyzer"):
+        """
+        初始化谐波分析器
+        
+        Args:
+            f0: 基波频率 (Hz)
+            name: 分析器名称
+        """
+        self.name = name
+        self.f0 = f0
+        self.harmonics = {}
+    
+    def analyze(self, signal: np.ndarray, fs: float, n_harmonics: int = 20) -> Dict:
+        """
+        FFT谐波分析
+        
+        Args:
+            signal: 信号数组
+            fs: 采样频率 (Hz)
+            n_harmonics: 分析的谐波次数
+            
+        Returns:
+            谐波分析结果
+        """
+        N = len(signal)
+        
+        # FFT
+        fft_result = np.fft.fft(signal) / N
+        freqs = np.fft.fftfreq(N, 1/fs)
+        
+        # 提取正频率部分
+        positive_mask = freqs > 0
+        freqs_pos = freqs[positive_mask]
+        fft_pos = fft_result[positive_mask]
+        
+        # 找基波和谐波
+        harmonics = {}
+        f0_idx = np.argmin(np.abs(freqs_pos - self.f0))
+        
+        # 基波
+        harmonics[1] = {
+            'freq': freqs_pos[f0_idx],
+            'magnitude': 2 * np.abs(fft_pos[f0_idx]),
+            'phase': np.angle(fft_pos[f0_idx])
+        }
+        
+        # 各次谐波
+        for n in range(2, n_harmonics + 1):
+            fn = n * self.f0
+            fn_idx = np.argmin(np.abs(freqs_pos - fn))
+            
+            if fn_idx < len(freqs_pos):
+                harmonics[n] = {
+                    'freq': freqs_pos[fn_idx],
+                    'magnitude': 2 * np.abs(fft_pos[fn_idx]),
+                    'phase': np.angle(fft_pos[fn_idx])
+                }
+        
+        # 计算THD
+        fundamental = harmonics[1]['magnitude']
+        harmonic_sum = sum(harmonics[n]['magnitude']**2 for n in range(2, n_harmonics + 1) if n in harmonics)
+        thd = np.sqrt(harmonic_sum) / fundamental if fundamental > 0 else 0
+        
+        self.harmonics = harmonics
+        
+        return {
+            'harmonics': harmonics,
+            'thd': thd,
+            'fundamental': fundamental
+        }
+    
+    def get_status(self) -> Dict:
+        """获取分析器状态"""
+        return {
+            'name': self.name,
+            'f0': self.f0,
+            'harmonics': self.harmonics
+        }
+
+
+class MultiPRController(CurrentController):
+    """
+    多谐振PR控制器
+    
+    原理:
+        在基本PI/PR控制器基础上，增加特定次谐波的谐振控制器
+        可选择性抑制3次、5次、7次等谐波
+        
+    传递函数 (连续):
+        C(s) = Kp + sum( 2*Kr_n*s / (s^2 + (n*omega_0)^2) )
+        
+    特点:
+        - 针对性谐波抑制
+        - 多个谐振器并联
+        - 可调谐波次数
+    """
+    
+    def __init__(self, Kp: float, Kr_base: float, omega_0: float, Ts: float,
+                 harmonic_orders: list = None, v_limit: float = None, name: str = "Multi-PR"):
+        """
+        初始化多谐振PR控制器
+        
+        Args:
+            Kp: 比例增益
+            Kr_base: 谐振增益基准值
+            omega_0: 基波角频率 (rad/s)
+            Ts: 采样周期 (s)
+            harmonic_orders: 要抑制的谐波次数列表 (如[1,3,5,7])
+            v_limit: 输出限幅
+            name: 控制器名称
+        """
+        super().__init__(name)
+        
+        self.Kp = Kp
+        self.Kr_base = Kr_base
+        self.omega_0 = omega_0
+        self.Ts = Ts
+        self.v_limit = v_limit
+        
+        # 默认抑制基波和3、5、7次谐波
+        if harmonic_orders is None:
+            harmonic_orders = [1, 3, 5, 7]
+        
+        self.harmonic_orders = harmonic_orders
+        
+        # 为每个谐波创建PR控制器
+        self.pr_controllers = {}
+        for n in harmonic_orders:
+            # 高次谐波可以使用较小的Kr
+            Kr_n = Kr_base / (n if n > 1 else 1)
+            omega_n = n * omega_0
+            
+            # 使用之前的PRController，但传入特定频率
+            self.pr_controllers[n] = PRController(Kp=0, Kr=Kr_n, omega_0=omega_n, Ts=Ts, v_limit=None)
+    
+    def update(self, i_ref: float, i_measured: float, dt: float, **kwargs) -> float:
+        """
+        更新多谐振PR控制器
+        
+        Args:
+            i_ref: 参考电流
+            i_measured: 测量电流
+            dt: 时间步长
+            
+        Returns:
+            控制输出电压
+        """
+        error = i_ref - i_measured
+        
+        # 比例项
+        v_out = self.Kp * error
+        
+        # 各谐振器输出求和
+        for n, pr_ctrl in self.pr_controllers.items():
+            v_pr = pr_ctrl.update(i_ref, i_measured, dt)
+            v_out += v_pr
+        
+        # 限幅
+        if self.v_limit:
+            v_out = np.clip(v_out, -self.v_limit, self.v_limit)
+        
+        self.output = v_out
+        return v_out
+    
+    def reset(self):
+        """重置控制器"""
+        super().reset()
+        for pr_ctrl in self.pr_controllers.values():
+            pr_ctrl.reset()
+    
+    def get_status(self) -> Dict:
+        """获取控制器状态"""
+        pr_status = {n: pr_ctrl.get_status() for n, pr_ctrl in self.pr_controllers.items()}
+        return {
+            'name': self.name,
+            'harmonic_orders': self.harmonic_orders,
+            'pr_controllers': pr_status,
+            'output': self.output
+        }

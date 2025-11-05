@@ -19,7 +19,9 @@ from models.inverter_control import (
     InverterParameters, SPWMModulator, SVPWMModulator, InverterModel,
     PIController, PRController, DQCurrentController,
     DCVoltageController, ACVoltageController, DualLoopVoltageController,
-    SRFPLL, SinglePhasePLL
+    SRFPLL, SinglePhasePLL,
+    PowerController, PQController,
+    HarmonicAnalyzer, MultiPRController
 )
 
 
@@ -1038,6 +1040,247 @@ class TestSinglePhasePLL(unittest.TestCase):
         self.assertEqual(self.pll.integral, 0.0)
 
 
+class TestPowerController(unittest.TestCase):
+    """测试功率控制器"""
+    
+    def setUp(self):
+        """初始化测试"""
+        self.power_calc = PowerController(V_grid=311.0)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.power_calc.name, "PowerController")
+        self.assertEqual(self.power_calc.V_grid, 311.0)
+        self.assertEqual(self.power_calc.P, 0.0)
+        self.assertEqual(self.power_calc.Q, 0.0)
+    
+    def test_calculate_power_pure_active(self):
+        """测试纯有功功率计算"""
+        v_d, v_q = 311.0, 0.0
+        i_d, i_q = 10.0, 0.0
+        
+        P, Q, S, PF = self.power_calc.calculate_power(v_d, v_q, i_d, i_q)
+        
+        # 纯有功: P = 1.5 * v_d * i_d, Q = 0
+        self.assertAlmostEqual(P, 1.5 * 311.0 * 10.0, places=1)
+        self.assertAlmostEqual(Q, 0.0, places=1)
+        self.assertAlmostEqual(PF, 1.0, places=2)
+    
+    def test_calculate_power_pure_reactive(self):
+        """测试纯无功功率计算"""
+        v_d, v_q = 311.0, 0.0
+        i_d, i_q = 0.0, 10.0
+        
+        P, Q, S, PF = self.power_calc.calculate_power(v_d, v_q, i_d, i_q)
+        
+        # 纯无功: P = 0, Q = -1.5 * v_d * i_q
+        self.assertAlmostEqual(P, 0.0, places=1)
+        self.assertAlmostEqual(abs(Q), 1.5 * 311.0 * 10.0, places=1)
+        self.assertAlmostEqual(PF, 0.0, places=2)
+    
+    def test_power_to_current(self):
+        """测试功率到电流转换"""
+        P_ref = 2000.0
+        Q_ref = 1000.0
+        v_d = 311.0
+        
+        i_d_ref, i_q_ref = self.power_calc.power_to_current(P_ref, Q_ref, v_d)
+        
+        # 验证转换: i_d = P/(1.5*v_d), i_q = -Q/(1.5*v_d)
+        self.assertAlmostEqual(i_d_ref, P_ref / (1.5 * v_d), places=3)
+        self.assertAlmostEqual(i_q_ref, -Q_ref / (1.5 * v_d), places=3)
+    
+    def test_pf_to_power(self):
+        """测试功率因数到无功功率转换"""
+        P_ref = 2000.0
+        
+        # PF = 1, Q应为0
+        Q_ref = self.power_calc.pf_to_power(P_ref, 1.0)
+        self.assertAlmostEqual(Q_ref, 0.0, places=1)
+        
+        # PF = 0.9
+        Q_ref = self.power_calc.pf_to_power(P_ref, 0.9)
+        self.assertGreater(Q_ref, 0.0)
+        
+        # 验证: PF = P / sqrt(P^2 + Q^2)
+        S = np.sqrt(P_ref**2 + Q_ref**2)
+        PF_calc = P_ref / S
+        self.assertAlmostEqual(PF_calc, 0.9, places=2)
+
+
+class TestPQController(unittest.TestCase):
+    """测试PQ控制器"""
+    
+    def setUp(self):
+        """初始化测试"""
+        self.pq_ctrl = PQController(
+            V_grid=311.0,
+            Kp_i=0.5,
+            Ki_i=100.0,
+            L=5e-3,
+            omega=2*np.pi*50,
+            P_limit=5000.0,
+            Q_limit=2000.0
+        )
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.pq_ctrl.name, "PQ_Controller")
+        self.assertEqual(self.pq_ctrl.V_grid, 311.0)
+        self.assertIsNotNone(self.pq_ctrl.power_calc)
+        self.assertIsNotNone(self.pq_ctrl.current_ctrl)
+    
+    def test_update(self):
+        """测试控制器更新"""
+        P_ref = 1000.0
+        Q_ref = 0.0
+        
+        # 三相电压
+        theta = 0.0
+        omega = 2 * np.pi * 50
+        V_grid = 311.0
+        va = V_grid * np.sin(omega * 0.0)
+        vb = V_grid * np.sin(omega * 0.0 - 2*np.pi/3)
+        vc = V_grid * np.sin(omega * 0.0 + 2*np.pi/3)
+        
+        # 电流
+        i_a, i_b, i_c = 0.0, 0.0, 0.0
+        
+        # 更新
+        v_a_out, v_b_out, v_c_out = self.pq_ctrl.update(
+            P_ref, Q_ref, va, vb, vc, i_a, i_b, i_c, theta, 1e-4
+        )
+        
+        # 验证输出类型
+        self.assertIsInstance(v_a_out, (float, np.floating))
+        self.assertIsInstance(v_b_out, (float, np.floating))
+        self.assertIsInstance(v_c_out, (float, np.floating))
+    
+    def test_power_limit(self):
+        """测试功率限幅"""
+        # 超过限制的功率
+        P_ref = 10000.0  # 超过P_limit=5000
+        Q_ref = 5000.0   # 超过Q_limit=2000
+        
+        theta = 0.0
+        V_grid = 311.0
+        va, vb, vc = V_grid, -V_grid/2, -V_grid/2
+        i_a, i_b, i_c = 0.0, 0.0, 0.0
+        
+        # 更新 (功率应被限幅)
+        v_a_out, v_b_out, v_c_out = self.pq_ctrl.update(
+            P_ref, Q_ref, va, vb, vc, i_a, i_b, i_c, theta, 1e-4
+        )
+        
+        # 功率应该被限幅，输出应该有效
+        self.assertIsInstance(v_a_out, (float, np.floating))
+    
+    def test_reset(self):
+        """测试重置"""
+        # 运行一次
+        P_ref, Q_ref = 1000.0, 0.0
+        theta = 0.0
+        V_grid = 311.0
+        va, vb, vc = V_grid, -V_grid/2, -V_grid/2
+        i_a, i_b, i_c = 1.0, -0.5, -0.5
+        
+        self.pq_ctrl.update(P_ref, Q_ref, va, vb, vc, i_a, i_b, i_c, theta, 1e-4)
+        
+        # 重置
+        self.pq_ctrl.reset()
+        
+        # 验证电流控制器被重置
+        self.assertEqual(self.pq_ctrl.current_ctrl.theta, 0.0)
+
+
+class TestHarmonicAnalyzer(unittest.TestCase):
+    """测试谐波分析器"""
+    
+    def setUp(self):
+        """初始化测试"""
+        self.analyzer = HarmonicAnalyzer(f0=50.0)
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.analyzer.name, "HarmonicAnalyzer")
+        self.assertEqual(self.analyzer.f0, 50.0)
+    
+    def test_analyze_pure_sine(self):
+        """测试纯正弦波分析"""
+        fs = 10000
+        t = np.arange(0, 0.1, 1/fs)
+        signal = 100 * np.sin(2 * np.pi * 50 * t)
+        
+        result = self.analyzer.analyze(signal, fs)
+        
+        # 纯正弦波THD应接近0
+        self.assertLess(result['thd'], 0.05)
+        self.assertGreater(result['fundamental'], 90.0)
+    
+    def test_analyze_with_harmonics(self):
+        """测试含谐波信号分析"""
+        fs = 10000
+        t = np.arange(0, 0.1, 1/fs)
+        # 基波 + 3次谐波
+        signal = 100 * np.sin(2*np.pi*50*t) + 20 * np.sin(2*np.pi*150*t)
+        
+        result = self.analyzer.analyze(signal, fs)
+        
+        # 应检测到谐波
+        self.assertGreater(result['thd'], 0.1)
+        self.assertIn(3, result['harmonics'])
+        self.assertGreater(result['harmonics'][3]['magnitude'], 10.0)
+
+
+class TestMultiPRController(unittest.TestCase):
+    """测试多谐振PR控制器"""
+    
+    def setUp(self):
+        """初始化测试"""
+        self.ctrl = MultiPRController(
+            Kp=0.5,
+            Kr_base=100.0,
+            omega_0=2*np.pi*50,
+            Ts=1e-4,
+            harmonic_orders=[1, 3, 5],
+            v_limit=400.0
+        )
+    
+    def test_initialization(self):
+        """测试初始化"""
+        self.assertEqual(self.ctrl.name, "Multi-PR")
+        self.assertEqual(len(self.ctrl.pr_controllers), 3)
+        self.assertIn(1, self.ctrl.pr_controllers)
+        self.assertIn(3, self.ctrl.pr_controllers)
+        self.assertIn(5, self.ctrl.pr_controllers)
+    
+    def test_update(self):
+        """测试控制器更新"""
+        i_ref = 10.0
+        i_measured = 9.5
+        dt = 1e-4
+        
+        v_out = self.ctrl.update(i_ref, i_measured, dt)
+        
+        # 验证输出
+        self.assertIsInstance(v_out, (float, np.floating))
+        self.assertLessEqual(abs(v_out), 400.0)  # 限幅有效
+    
+    def test_reset(self):
+        """测试重置"""
+        # 运行几步
+        for _ in range(10):
+            self.ctrl.update(10.0, 9.0, 1e-4)
+        
+        # 重置
+        self.ctrl.reset()
+        
+        # 验证重置后第一次输出不是累积的
+        # 重置后使用新的输入
+        v_out_after = self.ctrl.update(10.0, 9.0, 1e-4)
+        self.assertIsInstance(v_out_after, (float, np.floating))
+
+
 def suite():
     """创建测试套件"""
     suite = unittest.TestSuite()
@@ -1055,6 +1298,10 @@ def suite():
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestDualLoopVoltageController))
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSRFPLL))
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestSinglePhasePLL))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestPowerController))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestPQController))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestHarmonicAnalyzer))
+    suite.addTests(unittest.TestLoader().loadTestsFromTestCase(TestMultiPRController))
     
     return suite
 
