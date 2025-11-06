@@ -417,6 +417,205 @@ class BatteryThermalModel:
         return T_history
 
 
+class BatteryPackBalancing:
+    """
+    电池组均衡控制
+    
+    串联电池组的主动/被动均衡
+    """
+    
+    def __init__(
+        self,
+        n_cells: int = 10,
+        balancing_type: str = 'passive',
+        I_balance: float = 0.1,  # A, 均衡电流
+        name: str = "PackBalancing"
+    ):
+        """
+        初始化均衡控制器
+        
+        Args:
+            n_cells: 串联单体数量
+            balancing_type: 'passive'被动 或 'active'主动
+            I_balance: 均衡电流
+        """
+        self.name = name
+        self.n_cells = n_cells
+        self.balancing_type = balancing_type
+        self.I_balance = I_balance
+        
+        # 单体SOC（初始化为不均衡状态）
+        self.cell_soc = np.linspace(0.7, 0.9, n_cells)
+    
+    def passive_balancing(self, dt: float) -> np.ndarray:
+        """
+        被动均衡（耗散式）
+        
+        对高SOC单体放电至平均值
+        
+        Args:
+            dt: 时间步长 (s)
+            
+        Returns:
+            均衡后的SOC
+        """
+        soc_mean = np.mean(self.cell_soc)
+        
+        for i in range(self.n_cells):
+            if self.cell_soc[i] > soc_mean + 0.02:  # 阈值2%
+                # 放电
+                delta_soc = self.I_balance * dt / (50.0 * 3600)  # 假设50Ah容量
+                self.cell_soc[i] -= delta_soc
+        
+        return self.cell_soc
+    
+    def active_balancing(self, dt: float) -> np.ndarray:
+        """
+        主动均衡（能量转移）
+        
+        从高SOC单体转移能量至低SOC单体
+        
+        Args:
+            dt: 时间步长 (s)
+            
+        Returns:
+            均衡后的SOC
+        """
+        soc_mean = np.mean(self.cell_soc)
+        
+        for i in range(self.n_cells):
+            if abs(self.cell_soc[i] - soc_mean) > 0.02:
+                # 均衡至平均值
+                delta_soc = 0.5 * self.I_balance * dt / (50.0 * 3600)
+                if self.cell_soc[i] > soc_mean:
+                    self.cell_soc[i] -= delta_soc
+                else:
+                    self.cell_soc[i] += delta_soc
+        
+        return self.cell_soc
+
+
+class LeadAcidBattery:
+    """
+    铅酸电池模型 (Shepherd模型)
+    
+    适用于传统铅酸电池
+    """
+    
+    def __init__(
+        self,
+        capacity: float = 100.0,  # Ah
+        V_nominal: float = 12.0,  # V
+        R_internal: float = 0.02,  # Ohm
+        name: str = "LeadAcid"
+    ):
+        """
+        初始化铅酸电池模型
+        
+        Args:
+            capacity: 额定容量 (Ah)
+            V_nominal: 额定电压 (V)
+            R_internal: 内阻 (Ohm)
+        """
+        self.name = name
+        self.capacity = capacity
+        self.V_nominal = V_nominal
+        self.R_internal = R_internal
+        
+        # 状态
+        self.soc = 0.8
+    
+    def get_voltage(self, I: float) -> float:
+        """
+        计算端电压（Shepherd模型简化）
+        
+        V = V0 - K*Q/(Q-it) - R*I + A*exp(-B*it)
+        简化为: V = V_nominal * (0.85 + 0.15*SOC) - R*I
+        
+        Args:
+            I: 电流 (A), 放电为负
+            
+        Returns:
+            端电压 (V)
+        """
+        V_ocv = self.V_nominal * (0.85 + 0.15 * self.soc)
+        V_terminal = V_ocv - I * self.R_internal
+        return V_terminal
+    
+    def update_soc(self, I: float, dt: float):
+        """更新SOC"""
+        self.soc += -I * dt / (self.capacity * 3600)
+        self.soc = np.clip(self.soc, 0, 1)
+
+
+class VanadiumRedoxFlowBattery:
+    """
+    全钒液流电池模型
+    
+    功率与容量解耦
+    """
+    
+    def __init__(
+        self,
+        power_rating: float = 100e3,  # W
+        energy_capacity: float = 400e3,  # Wh
+        efficiency: float = 0.75,
+        name: str = "VRFB"
+    ):
+        """
+        初始化液流电池模型
+        
+        Args:
+            power_rating: 额定功率 (W)
+            energy_capacity: 储能容量 (Wh)
+            efficiency: 充放电效率
+        """
+        self.name = name
+        self.P_rated = power_rating
+        self.E_capacity = energy_capacity
+        self.efficiency = efficiency
+        
+        # 状态
+        self.soc = 0.5
+    
+    def charge(self, P_charge: float, dt: float):
+        """
+        充电
+        
+        Args:
+            P_charge: 充电功率 (W)
+            dt: 时间步长 (s)
+        """
+        P_charge = min(P_charge, self.P_rated)
+        delta_E = P_charge * self.efficiency * dt / 3600  # Wh
+        self.soc += delta_E / self.E_capacity
+        self.soc = min(self.soc, 1.0)
+    
+    def discharge(self, P_discharge: float, dt: float) -> float:
+        """
+        放电
+        
+        Args:
+            P_discharge: 放电功率 (W)
+            dt: 时间步长 (s)
+            
+        Returns:
+            实际输出功率 (W)
+        """
+        P_discharge = min(P_discharge, self.P_rated)
+        P_output = P_discharge * self.efficiency
+        delta_E = P_discharge * dt / 3600  # Wh
+        
+        if self.soc * self.E_capacity >= delta_E:
+            self.soc -= delta_E / self.E_capacity
+            return P_output
+        else:
+            # SOC不足
+            available_E = self.soc * self.E_capacity
+            self.soc = 0
+            return available_E * 3600 / dt * self.efficiency
+
+
 class Supercapacitor:
     """
     超级电容模型
