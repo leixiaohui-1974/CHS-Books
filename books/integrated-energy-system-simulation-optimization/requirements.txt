@@ -1,0 +1,38 @@
+# 综合能源系统仿真与优化 - Python依赖
+
+# 基础科学计算
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.4.0
+pandas>=1.3.0
+
+# 优化建模与求解
+PuLP>=2.5.0              # 线性规划建模
+cvxpy>=1.2.0             # 凸优化
+pyomo>=6.2.0             # 优化建模框架
+
+# 控制
+control>=0.9.0           # 控制系统工具箱
+do-mpc>=4.3.0            # 模型预测控制
+
+# 预测
+prophet>=1.1             # 时间序列预测
+statsmodels>=0.13.0      # 统计模型
+
+# 并行计算
+joblib>=1.1.0
+dask>=2021.10.0
+
+# 数据处理
+openpyxl>=3.0.0          # Excel文件处理
+
+# 可视化增强
+seaborn>=0.11.0
+plotly>=5.3.0
+
+# 机器学习（可选）
+scikit-learn>=1.0.0
+
+# 深度学习（可选）
+# tensorflow>=2.6.0
+# torch>=1.10.0
