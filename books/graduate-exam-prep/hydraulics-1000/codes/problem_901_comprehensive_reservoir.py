@@ -382,6 +382,9 @@ class ReservoirSystem:
         
         suggestions = []
         
+        # 计算隧洞沿程损失
+        h_f_tunnel = self.lambda_tunnel * self.L_tunnel / self.d_tunnel * self.v_tunnel**2 / (2 * self.g)
+        
         # 1. 堰流优化
         if self.Q_weir < self.Q_tunnel:
             suggestions.append("• 堰流能力不足，建议增加堰宽或降低堰顶高程")
