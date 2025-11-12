@@ -18,6 +18,11 @@ from .learning import (
     Achievement, UserAchievement, LearningStats,
     DifficultyLevel as LearningDifficultyLevel, MasteryLevel, ActivityType, AchievementType
 )
+from .exercise import (
+    Question, QuestionSet, Exercise, Submission, WrongQuestion,
+    LearningResource, ResourceView,
+    QuestionType, QuestionDifficulty, ExerciseStatus, SubmissionStatus
+)
 from .book import Book, Chapter, Case, BookStatus, DifficultyLevel
 from .progress import UserProgress, ChapterProgress, CaseProgress, ProgressStatus
 from .payment import Order, OrderStatus, PaymentMethod, Subscription, SubscriptionStatus
