@@ -1,23 +1,22 @@
 """
-数据库配置和连接管理
-使用SQLAlchemy 2.0异步模式
+数据库连接 - 独立Textbook服务器
+使用SQLite进行开发测试
 """
 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.pool import NullPool
+from sqlalchemy.pool import StaticPool
 from typing import AsyncGenerator
-from .config import settings
+from models import Base
 
-# 创建异步数据库引擎
+# SQLite数据库URL
+DATABASE_URL = "sqlite+aiosqlite:///./textbook_test.db"
+
+# 创建异步引擎（SQLite需要StaticPool和check_same_thread=False）
 engine = create_async_engine(
-    settings.database_url,
-    echo=settings.APP_DEBUG,
-    future=True,
-    pool_pre_ping=True,
-    pool_size=20,
-    max_overflow=40,
-    pool_recycle=3600,  # 1小时回收连接
+    DATABASE_URL,
+    echo=True,  # 打印SQL语句
+    connect_args={"check_same_thread": False},
+    poolclass=StaticPool,
 )
 
 # 创建会话工厂
@@ -29,15 +28,17 @@ AsyncSessionLocal = async_sessionmaker(
     autoflush=False,
 )
 
-# 创建Base类
-Base = declarative_base()
+
+async def init_db():
+    """初始化数据库（创建所有表）"""
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
 
 
-# 依赖注入：获取数据库会话
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     """
     获取数据库会话的依赖注入函数
-    用于FastAPI路由中注入数据库连接
+    用于FastAPI路由
     """
     async with AsyncSessionLocal() as session:
         try:
