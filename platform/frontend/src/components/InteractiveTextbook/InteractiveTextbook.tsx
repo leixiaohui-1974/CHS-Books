@@ -19,6 +19,7 @@ import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import ExecutionPanel, { ExecutionResult } from '../ExecutionPanel/ExecutionPanel'
 import 'katex/dist/katex.min.css'
 import './InteractiveTextbook.css'
 
@@ -73,6 +74,10 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
   const [currentSection, setCurrentSection] = useState<string>('')
   const [splitPosition, setSplitPosition] = useState<number>(50) // 分隔符位置（百分比）
   const [isDragging, setIsDragging] = useState(false)
+
+  // 代码执行相关state
+  const [executionResult, setExecutionResult] = useState<ExecutionResult | null>(null)
+  const [isExecuting, setIsExecuting] = useState(false)
 
   // ==================== Refs ====================
 
@@ -290,6 +295,86 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
     }
   }, [onCodeExecute])
 
+  // ==================== 代码执行 ====================
+
+  const executeCode = useCallback(async () => {
+    if (!code.trim()) {
+      setExecutionResult({
+        status: 'error',
+        error: '代码为空，请先编写代码'
+      })
+      return
+    }
+
+    setIsExecuting(true)
+    setExecutionResult(null)
+
+    try {
+      // 模拟代码执行（实际应调用后端API）
+      // TODO: 集成真实的execution API
+      const response = await simulateCodeExecution(code)
+      setExecutionResult(response)
+
+      // 如果有回调，也调用它
+      if (onCodeExecute) {
+        onCodeExecute(code)
+      }
+    } catch (error) {
+      setExecutionResult({
+        status: 'error',
+        error: error instanceof Error ? error.message : '执行失败'
+      })
+    } finally {
+      setIsExecuting(false)
+    }
+  }, [code, onCodeExecute])
+
+  // 模拟代码执行（临时，等待后端API）
+  const simulateCodeExecution = async (code: string): Promise<ExecutionResult> => {
+    // 模拟执行延迟
+    await new Promise(resolve => setTimeout(resolve, 1500))
+
+    // 简单的代码分析
+    const lines = code.split('\n')
+    const hasImport = lines.some(line => line.trim().startsWith('import'))
+    const hasPrint = lines.some(line => line.includes('print('))
+    const hasPlot = lines.some(line => line.includes('plt.') || line.includes('plot('))
+
+    // 模拟输出
+    if (hasPrint) {
+      return {
+        status: 'success',
+        stdout: '执行成功！\n\n这是模拟输出。\n\n注意：当前为演示模式，请启动后端服务以获得真实执行结果。',
+        executionTime: 1500
+      }
+    }
+
+    if (hasPlot) {
+      return {
+        status: 'success',
+        stdout: '图表生成成功',
+        executionTime: 1800,
+        outputs: [
+          {
+            type: 'text',
+            data: '注意：当前为演示模式，图表功能需要后端支持。'
+          }
+        ]
+      }
+    }
+
+    return {
+      status: 'success',
+      stdout: '代码执行完成（无输出）',
+      executionTime: 1200
+    }
+  }
+
+  // 清除执行结果
+  const clearExecutionResult = useCallback(() => {
+    setExecutionResult(null)
+  }, [])
+
   // ==================== 分隔符拖拽 ====================
 
   const handleMouseDown = useCallback(() => {
@@ -478,7 +563,7 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
         <div className="split-handle">⋮</div>
       </div>
 
-      {/* 右侧：代码编辑器 */}
+      {/* 右侧：代码编辑器 + 执行结果 */}
       <div
         className="code-panel"
         style={{ width: `${100 - splitPosition}%` }}
@@ -487,37 +572,48 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
           <span>代码编辑器</span>
           <button
             className="execute-button"
-            onClick={() => onCodeExecute?.(code)}
+            onClick={executeCode}
+            disabled={isExecuting}
           >
-            ▶ 执行代码
+            {isExecuting ? '⏳ 执行中...' : '▶ 执行代码'}
           </button>
         </div>
-        <MonacoEditor
-          language="python"
-          theme="vs-dark"
-          value={code}
-          onChange={(value) => setCode(value || '')}
-          onMount={(editor) => {
-            editorRef.current = editor
 
-            // 监听代码编辑器的滚动事件（双向同步）
-            editor.onDidScrollChange(() => {
-              // 使用节流避免频繁触发
-              const timeoutId = setTimeout(() => {
-                handleCodeScroll()
-              }, 150)
+        <div className="code-editor-container">
+          <MonacoEditor
+            language="python"
+            theme="vs-dark"
+            value={code}
+            onChange={(value) => setCode(value || '')}
+            onMount={(editor) => {
+              editorRef.current = editor
 
-              // 清理函数
-              return () => clearTimeout(timeoutId)
-            })
-          }}
-          options={{
-            fontSize: 14,
-            minimap: { enabled: false },
-            scrollBeyondLastLine: false,
-            wordWrap: 'on',
-            automaticLayout: true
-          }}
+              // 监听代码编辑器的滚动事件（双向同步）
+              editor.onDidScrollChange(() => {
+                // 使用节流避免频繁触发
+                const timeoutId = setTimeout(() => {
+                  handleCodeScroll()
+                }, 150)
+
+                // 清理函数
+                return () => clearTimeout(timeoutId)
+              })
+            }}
+            options={{
+              fontSize: 14,
+              minimap: { enabled: false },
+              scrollBeyondLastLine: false,
+              wordWrap: 'on',
+              automaticLayout: true
+            }}
+          />
+        </div>
+
+        {/* 执行结果面板 */}
+        <ExecutionPanel
+          result={executionResult}
+          isExecuting={isExecuting}
+          onClear={clearExecutionResult}
         />
       </div>
     </div>

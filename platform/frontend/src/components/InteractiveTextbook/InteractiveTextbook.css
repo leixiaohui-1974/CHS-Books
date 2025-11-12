@@ -220,13 +220,26 @@
   transition: all 0.2s ease;
 }
 
-.execute-button:hover {
+.execute-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
-.execute-button:active {
+.execute-button:active:not(:disabled) {
   transform: translateY(0);
+}
+
+.execute-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #555 0%, #666 100%);
+}
+
+/* 代码编辑器容器 */
+.code-editor-container {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0; /* 关键：允许flex子元素正确收缩 */
 }
 
 /* ==================== Monaco Editor 样式增强 ==================== */

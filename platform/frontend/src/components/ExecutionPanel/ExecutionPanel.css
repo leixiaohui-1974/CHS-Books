@@ -1,0 +1,387 @@
+/**
+ * 代码执行结果面板样式
+ */
+
+/* ==================== 面板容器 ==================== */
+
+.execution-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  border-top: 1px solid #3e3e42;
+  transition: height 0.3s ease;
+}
+
+.execution-panel.expanded {
+  height: 300px;
+}
+
+.execution-panel.collapsed {
+  height: 40px;
+}
+
+/* ==================== 标题栏 ==================== */
+
+.execution-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #2d2d30;
+  border-bottom: 1px solid #3e3e42;
+  min-height: 40px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==================== 状态图标 ==================== */
+
+.status-icon {
+  font-size: 1.25rem;
+  display: inline-block;
+}
+
+.status-icon.idle {
+  opacity: 0.5;
+}
+
+.status-icon.executing {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.status-icon.success {
+  animation: bounce-in 0.5s ease-out;
+}
+
+.status-icon.error {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.status-text {
+  color: #cccccc;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* ==================== 按钮 ==================== */
+
+.clear-button,
+.collapse-button {
+  background: transparent;
+  border: none;
+  color: #cccccc;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.clear-button:hover,
+.collapse-button:hover {
+  background-color: #3e3e42;
+  color: #ffffff;
+}
+
+.clear-button:active,
+.collapse-button:active {
+  transform: scale(0.95);
+}
+
+/* ==================== 内容区域 ==================== */
+
+.execution-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #1e1e1e;
+}
+
+.execution-results {
+  padding: 1rem;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* ==================== 加载状态 ==================== */
+
+.execution-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #cccccc;
+}
+
+.loading-spinner-small {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #3e3e42;
+  border-top-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.execution-loading p {
+  font-size: 0.875rem;
+  color: #999999;
+}
+
+/* ==================== 空状态 ==================== */
+
+.execution-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #7f8c8d;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* ==================== 输出节 ==================== */
+
+.output-section {
+  margin-bottom: 1.5rem;
+}
+
+.output-section.error {
+  border-left: 4px solid #e74c3c;
+  padding-left: 1rem;
+}
+
+.output-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  color: #cccccc;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.output-icon {
+  font-size: 1rem;
+}
+
+.output-content {
+  background-color: #252526;
+  border: 1px solid #3e3e42;
+  border-radius: 4px;
+  padding: 1rem;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.output-content.stdout {
+  color: #d4d4d4;
+}
+
+.output-content.stderr {
+  color: #f39c12;
+  background-color: #2c2416;
+  border-color: #f39c12;
+}
+
+.output-content.error-message {
+  color: #e74c3c;
+  background-color: #2c1a1a;
+  border-color: #e74c3c;
+}
+
+/* ==================== 富输出 ==================== */
+
+.rich-outputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rich-output {
+  background-color: #252526;
+  border: 1px solid #3e3e42;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.rich-output.text-output pre {
+  margin: 0;
+  color: #d4d4d4;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.rich-output.image-output {
+  text-align: center;
+}
+
+.rich-output.image-output img {
+  max-width: 100%;
+  max-height: 400px;
+  border-radius: 4px;
+}
+
+.rich-output.error-output {
+  border-color: #e74c3c;
+  background-color: #2c1a1a;
+}
+
+.rich-output.error-output pre {
+  margin: 0;
+  color: #e74c3c;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.875rem;
+}
+
+/* ==================== 表格输出 ==================== */
+
+.output-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  color: #d4d4d4;
+}
+
+.output-table thead {
+  background-color: #2d2d30;
+}
+
+.output-table th {
+  padding: 0.5rem;
+  text-align: left;
+  border-bottom: 2px solid #3e3e42;
+  font-weight: 600;
+}
+
+.output-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #3e3e42;
+}
+
+.output-table tbody tr:hover {
+  background-color: #2d2d30;
+}
+
+/* ==================== 滚动条样式 ==================== */
+
+.execution-results::-webkit-scrollbar,
+.output-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.execution-results::-webkit-scrollbar-track,
+.output-content::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+.execution-results::-webkit-scrollbar-thumb,
+.output-content::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+.execution-results::-webkit-scrollbar-thumb:hover,
+.output-content::-webkit-scrollbar-thumb:hover {
+  background: #4e4e4e;
+}
+
+/* ==================== 响应式设计 ==================== */
+
+@media (max-width: 768px) {
+  .execution-panel.expanded {
+    height: 250px;
+  }
+
+  .execution-panel-header {
+    padding: 0.375rem 0.75rem;
+  }
+
+  .output-content {
+    padding: 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .status-text {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ==================== 打印样式 ==================== */
+
+@media print {
+  .execution-panel-header {
+    background-color: #ffffff;
+    border-bottom-color: #000000;
+  }
+
+  .clear-button,
+  .collapse-button {
+    display: none;
+  }
+
+  .output-content {
+    background-color: #f5f5f5;
+    border-color: #cccccc;
+    color: #000000;
+  }
+}
