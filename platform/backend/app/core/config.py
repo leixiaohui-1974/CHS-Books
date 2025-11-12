@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     APP_URL: str = "http://localhost:3000"
     API_URL: str = "http://localhost:8000"
     SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
+    JWT_SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
     
     # ========================================
     # 数据库配置
@@ -159,8 +160,9 @@ class Settings(BaseSettings):
     SMTP_PORT: int = 587
     SMTP_USER: Optional[str] = None
     SMTP_PASSWORD: Optional[str] = None
-    SMTP_FROM: str = "noreply@example.com"
+    SMTP_FROM_EMAIL: str = "noreply@example.com"
     SMTP_FROM_NAME: str = "Engineering Learning Platform"
+    SMTP_TLS: bool = True
     
     # ========================================
     # 短信配置
