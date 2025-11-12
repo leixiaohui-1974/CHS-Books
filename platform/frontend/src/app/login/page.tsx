@@ -36,8 +36,12 @@ export default function LoginPage() {
 
       // 检查是否需要2FA
       if (response.requires_2fa) {
-        // TODO: 跳转到2FA验证页面
         message.info('请输入双因素认证码');
+        // 保存临时token并跳转到2FA验证页面
+        if (response.temp_token) {
+          sessionStorage.setItem('temp_token', response.temp_token);
+          router.push('/verify-2fa');
+        }
         return;
       }
 

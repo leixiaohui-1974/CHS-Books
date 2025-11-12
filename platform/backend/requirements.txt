@@ -37,6 +37,9 @@ passlib[bcrypt]==1.7.4
 bcrypt==4.1.1
 python-multipart==0.0.6
 itsdangerous==2.1.2
+pyotp==2.9.0  # TOTP for 2FA
+qrcode[pil]==7.4.2  # QR code generation
+pillow==10.1.0  # Image processing
 
 # ----------------------------------------
 # HTTP & Async
