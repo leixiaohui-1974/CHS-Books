@@ -11,6 +11,13 @@ from .auth import (
     VerificationCode, VerificationType,
     UserProfile
 )
+from .learning import (
+    Subject, Chapter as LearningChapter, KnowledgePoint,
+    UserKnowledgeProgress, LearningActivity, StudySession,
+    LearningPath, DailyGoal,
+    Achievement, UserAchievement, LearningStats,
+    DifficultyLevel as LearningDifficultyLevel, MasteryLevel, ActivityType, AchievementType
+)
 from .book import Book, Chapter, Case, BookStatus, DifficultyLevel
 from .progress import UserProgress, ChapterProgress, CaseProgress, ProgressStatus
 from .payment import Order, OrderStatus, PaymentMethod, Subscription, SubscriptionStatus
