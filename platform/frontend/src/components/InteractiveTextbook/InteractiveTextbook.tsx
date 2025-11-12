@@ -31,19 +31,32 @@ interface InteractiveTextbookProps {
   onCodeExecute?: (code: string) => void
 }
 
-interface TextbookSection {
-  id: string
-  content: string
-  codeLines?: {
-    start: number
-    end: number
-  }
+// Backend API response types (snake_case from Python)
+interface CodeLineMapping {
+  start: number
+  end: number
 }
 
-interface TextbookData {
+interface TextbookSection {
+  id: string
   title: string
+  content: string
+  code_lines: CodeLineMapping | null
+  order: number
+}
+
+interface TextbookAPIResponse {
+  book_slug: string
+  chapter_slug: string
+  case_slug: string
+  title: string
+  description: string | null
   sections: TextbookSection[]
-  starterCode: string
+  starter_code: string
+  solution_code: string | null
+  difficulty: string
+  estimated_minutes: number
+  tags: string[]
 }
 
 // ==================== 主组件 ====================
@@ -69,13 +82,16 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
 
   // ==================== 数据获取 ====================
 
-  const { data: textbook, isLoading } = useQuery<TextbookData>(
+  const { data: textbook, isLoading, error } = useQuery<TextbookAPIResponse>(
     ['textbook', bookSlug, chapterSlug, caseSlug],
     async () => {
       const response = await fetch(
         `/api/v1/textbooks/${bookSlug}/${chapterSlug}/${caseSlug}`
       )
-      if (!response.ok) throw new Error('Failed to fetch textbook')
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.detail || 'Failed to fetch textbook')
+      }
       return response.json()
     }
   )
@@ -83,8 +99,8 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
   // ==================== 初始化代码 ====================
 
   useEffect(() => {
-    if (textbook?.starterCode) {
-      setCode(textbook.starterCode)
+    if (textbook?.starter_code) {
+      setCode(textbook.starter_code)
     }
   }, [textbook])
 
@@ -119,12 +135,12 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
     if (!editorRef.current || !textbook) return
 
     const section = textbook.sections.find(s => s.id === sectionId)
-    if (section?.codeLines) {
+    if (section?.code_lines) {
       // 滚动到对应代码行
-      editorRef.current.revealLineInCenter(section.codeLines.start)
+      editorRef.current.revealLineInCenter(section.code_lines.start)
 
       // 高亮代码行
-      highlightCodeLines(section.codeLines.start, section.codeLines.end)
+      highlightCodeLines(section.code_lines.start, section.code_lines.end)
     }
   }, [textbook])
 
@@ -342,10 +358,21 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
     )
   }
 
+  if (error) {
+    return (
+      <div className="interactive-textbook-error">
+        <p>❌ 教材加载失败</p>
+        <p style={{ fontSize: '0.875rem', marginTop: '0.5rem', color: '#999' }}>
+          {error instanceof Error ? error.message : '未知错误'}
+        </p>
+      </div>
+    )
+  }
+
   if (!textbook) {
     return (
       <div className="interactive-textbook-error">
-        <p>教材加载失败</p>
+        <p>教材数据为空</p>
       </div>
     )
   }
@@ -367,7 +394,15 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
             rehypePlugins={[rehypeKatex]}
             components={components}
           >
-            {textbook.sections.map(s => s.content).join('\n\n')}
+            {textbook.sections
+              .map(s => {
+                // If section has a title (not intro), add it as ## heading
+                if (s.id !== 'intro') {
+                  return `## ${s.title}\n\n${s.content}`
+                }
+                return s.content
+              })
+              .join('\n\n')}
           </ReactMarkdown>
         </div>
       </div>
