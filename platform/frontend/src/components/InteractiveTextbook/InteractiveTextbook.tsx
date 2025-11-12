@@ -87,11 +87,12 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
 
   // ==================== 数据获取 ====================
 
-  const { data: textbook, isLoading, error } = useQuery<TextbookAPIResponse>(
-    ['textbook', bookSlug, chapterSlug, caseSlug],
-    async () => {
+  const { data: textbook, isLoading, error } = useQuery<TextbookAPIResponse>({
+    queryKey: ['textbook', bookSlug, chapterSlug, caseSlug],
+    queryFn: async () => {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
       const response = await fetch(
-        `/api/v1/textbooks/${bookSlug}/${chapterSlug}/${caseSlug}`
+        `${apiUrl}/api/v1/textbooks/${bookSlug}/${chapterSlug}/${caseSlug}`
       )
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}))
@@ -99,7 +100,7 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
       }
       return response.json()
     }
-  )
+  })
 
   // ==================== 初始化代码 ====================
 
