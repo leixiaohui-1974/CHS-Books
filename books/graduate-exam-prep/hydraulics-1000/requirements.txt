@@ -1,0 +1,30 @@
+# 《水力学1000题详解》Python代码库依赖包
+# Hydraulics-1000 Python Code Library Requirements
+
+# 核心计算库
+numpy>=1.20.0
+scipy>=1.6.0
+
+# 可视化库
+matplotlib>=3.3.0
+
+# 可选：数据处理（如需导出数据）
+# pandas>=1.2.0
+
+# 可选：交互式可视化（如需Jupyter）
+# jupyter>=1.0.0
+# ipython>=7.20.0
+
+# 可选：进度条显示（如需批量处理）
+# tqdm>=4.60.0
+
+# 说明：
+# - numpy: 数值计算基础库
+# - scipy: 科学计算库（求解器、优化、插值）
+# - matplotlib: 绘图库（生成可视化图表）
+# 
+# 安装方法：
+#   pip install -r requirements.txt
+# 
+# 或单独安装：
+#   pip install numpy scipy matplotlib

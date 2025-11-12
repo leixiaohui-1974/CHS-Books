@@ -1,0 +1,11 @@
+{
+  "project_name": "城市高区供水调压阀站智能控制设计",
+  "design_standard": "CJJ 92-2016, GB 50015-2019",
+  "valve_config": "ZDL-300型电动调节阀（Kv=400，R=50）",
+  "intelligence_level": "L0",
+  "test_summary": {
+    "total_scenarios": 3,
+    "avg_error": 0.19801531367231473,
+    "pass": false
+  }
+}
