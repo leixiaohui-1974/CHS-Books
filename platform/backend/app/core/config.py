@@ -33,16 +33,23 @@ class Settings(BaseSettings):
     # ========================================
     # 数据库配置
     # ========================================
-    # PostgreSQL
+    # DATABASE_URL: 可以直接在.env中设置完整URL，或使用下面的分离配置
+    DATABASE_URL: Optional[str] = None
+
+    # PostgreSQL（当DATABASE_URL未设置时使用）
     POSTGRES_HOST: str = "localhost"
     POSTGRES_PORT: int = 5432
     POSTGRES_DB: str = "elp_db"
     POSTGRES_USER: str = "elp_user"
     POSTGRES_PASSWORD: str = "elp_password"
-    
+
     @property
-    def DATABASE_URL(self) -> str:
+    def database_url(self) -> str:
         """生成数据库URL"""
+        # 如果.env中直接设置了DATABASE_URL，则使用它
+        if self.DATABASE_URL:
+            return self.DATABASE_URL
+        # 否则使用PostgreSQL配置生成URL
         return (
             f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
             f"@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
