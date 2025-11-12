@@ -473,7 +473,90 @@ class CodeIntelligenceService:
             "dependencies": sorted(list(dependencies))
         }
     
-    async def analyze_code(self, file_path: str) -> Dict[str, Any]:
+    async def analyze_code(self, code: str) -> Dict[str, Any]:
+        """
+        分析代码字符串
+        
+        Args:
+            code: Python代码字符串
+            
+        Returns:
+            分析结果字典
+        """
+        try:
+            tree = ast.parse(code)
+            
+            # 提取各类节点
+            functions = []
+            classes = []
+            imports = []
+            
+            for node in ast.walk(tree):
+                if isinstance(node, ast.FunctionDef):
+                    functions.append({
+                        "name": node.name,
+                        "line": node.lineno,
+                        "args": [arg.arg for arg in node.args.args],
+                        "docstring": ast.get_docstring(node)
+                    })
+                elif isinstance(node, ast.ClassDef):
+                    classes.append({
+                        "name": node.name,
+                        "line": node.lineno,
+                        "docstring": ast.get_docstring(node)
+                    })
+                elif isinstance(node, ast.Import):
+                    for alias in node.names:
+                        imports.append(alias.name)
+                elif isinstance(node, ast.ImportFrom):
+                    module = node.module or ''
+                    for alias in node.names:
+                        imports.append(f"{module}.{alias.name}" if module else alias.name)
+            
+            # 计算复杂度
+            complexity = 1
+            for node in ast.walk(tree):
+                if isinstance(node, (ast.If, ast.While, ast.For, ast.With)):
+                    complexity += 1
+                elif isinstance(node, ast.BoolOp):
+                    complexity += len(node.values) - 1
+            
+            complexity_level = "简单" if complexity <= 5 else ("中等" if complexity <= 10 else "复杂")
+            
+            # 计算质量分数
+            quality_score = 100
+            for func in functions:
+                if not func["docstring"]:
+                    quality_score -= 5  # 缺少文档字符串扣分
+            
+            return {
+                "functions": len(functions),
+                "function_details": functions,
+                "classes": len(classes),
+                "class_details": classes,
+                "imports": len(imports),
+                "import_list": imports,
+                "lines": len(code.split('\n')),
+                "complexity": complexity,
+                "complexity_level": complexity_level,
+                "quality_score": max(0, quality_score)
+            }
+            
+        except SyntaxError as e:
+            logger.error(f"❌ 语法错误: {e}")
+            return {
+                "error": "语法错误",
+                "message": str(e),
+                "line": e.lineno
+            }
+        except Exception as e:
+            logger.error(f"❌ 代码分析失败: {e}")
+            return {
+                "error": "分析失败",
+                "message": str(e)
+            }
+    
+    async def analyze_file(self, file_path: str) -> Dict[str, Any]:
         """分析代码文件"""
         return self.analyzer.analyze_file(file_path)
     

@@ -4,7 +4,7 @@
 """
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import Field, validator
+from pydantic import Field, field_validator
 from typing import List, Optional
 import secrets
 
@@ -223,7 +223,8 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = ["http://localhost:3000"]
     CORS_ALLOW_CREDENTIALS: bool = True
     
-    @validator("CORS_ORIGINS", pre=True)
+    @field_validator("CORS_ORIGINS", mode='before')
+    @classmethod
     def parse_cors_origins(cls, v):
         """解析CORS origins"""
         if isinstance(v, str):
@@ -235,7 +236,8 @@ class Settings(BaseSettings):
     # ========================================
     ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1"]
     
-    @validator("ALLOWED_HOSTS", pre=True)
+    @field_validator("ALLOWED_HOSTS", mode='before')
+    @classmethod
     def parse_allowed_hosts(cls, v):
         """解析允许的主机"""
         if isinstance(v, str):

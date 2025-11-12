@@ -1,482 +1,602 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'next/navigation'
-import { 
-  Layout, Card, Typography, Tag, Button, Collapse, Progress, 
-  Space, Divider, Rate, Statistic, Row, Col, Tabs, Avatar,
-  message, Spin, Empty
-} from 'antd'
-import {
-  BookOutlined, PlayCircleOutlined, CheckCircleOutlined,
-  ClockCircleOutlined, TrophyOutlined, UserOutlined,
-  RocketOutlined, StarFilled, LockOutlined
-} from '@ant-design/icons'
+import { Layout, Typography, Card, Button, Tag, Space, Spin, message, Tabs, Tree, Row, Col, Image, Divider, Statistic, Alert } from 'antd'
+import { BookOutlined, PlayCircleOutlined, CheckCircleOutlined, CloseCircleOutlined, CodeOutlined, FileTextOutlined, LineChartOutlined, FolderOutlined, HomeOutlined } from '@ant-design/icons'
 import Link from 'next/link'
+import { useParams } from 'next/navigation'
+import ReactMarkdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize'
 
-const { Content } = Layout
-const { Title, Paragraph, Text } = Typography
-const { Panel } = Collapse
-
-// Mock数据 - 后续会从API获取
-const mockBookDetail = {
-  id: 1,
-  slug: 'water-system-control',
-  title: '水系统控制论',
-  subtitle: '基于水箱案例的控制理论入门',
-  description: '通过24个经典水箱案例系统讲解控制理论基础知识，从最简单的开关控制到高级的模型预测控制，循序渐进地建立完整的控制系统知识体系。本课程特别注重理论与实践结合，每个案例都配有交互式计算工具，让您在实践中深入理解控制理论的精髓。',
-  cover_color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-  authors: ['张教授', '李工程师'],
-  version: '2.0.0',
-  difficulty: '初级',
-  is_free: false,
-  price: 299,
-  original_price: 399,
-  total_chapters: 6,
-  total_cases: 24,
-  estimated_hours: 192,
-  enrollments: 1523,
-  avg_rating: 4.8,
-  rating_count: 328,
-  tags: ['控制理论', 'PID控制', '水利工程', '自动化'],
-  learning_objectives: [
-    '掌握经典控制理论的基本概念和方法',
-    '理解PID控制器的设计与调优',
-    '学会使用状态空间方法分析控制系统',
-    '掌握模型预测控制的基本原理',
-    '能够独立设计简单的自动控制系统'
-  ],
-  prerequisites: [
-    '高等数学基础',
-    '基本的物理知识',
-    '简单的编程经验（Python优先）'
-  ],
-  chapters: [
-    {
-      id: 1,
-      order: 1,
-      slug: 'chapter-1',
-      title: '第1章：控制系统基础',
-      description: '介绍控制系统的基本概念、分类和数学模型',
-      is_free: true,
-      estimated_minutes: 120,
-      completed: false,
-      progress: 0,
-      cases: [
-        {
-          id: 1,
-          order: 1,
-          slug: 'case-1',
-          title: '案例1：家庭水塔自动供水',
-          subtitle: '开关控制入门',
-          difficulty: '初级',
-          estimated_minutes: 45,
-          has_tool: true,
-          is_free: true,
-          completed: false,
-          key_concepts: ['开关控制', '滞后现象', '系统稳定性']
-        },
-        {
-          id: 2,
-          order: 2,
-          slug: 'case-2',
-          title: '案例2：水箱液位比例控制',
-          subtitle: 'P控制原理',
-          difficulty: '初级',
-          estimated_minutes: 50,
-          has_tool: true,
-          is_free: true,
-          completed: false,
-          key_concepts: ['比例控制', '稳态误差', '控制增益']
-        }
-      ]
-    },
-    {
-      id: 2,
-      order: 2,
-      slug: 'chapter-2',
-      title: '第2章：PID控制器设计',
-      description: '深入学习PID控制器的原理、参数整定和工程应用',
-      is_free: false,
-      estimated_minutes: 180,
-      completed: false,
-      progress: 0,
-      cases: [
-        {
-          id: 3,
-          order: 1,
-          slug: 'case-3',
-          title: '案例3：PI控制器设计',
-          subtitle: '消除稳态误差',
-          difficulty: '初级',
-          estimated_minutes: 60,
-          has_tool: true,
-          is_free: false,
-          completed: false,
-          key_concepts: ['积分控制', '稳态误差', 'PI控制']
-        },
-        {
-          id: 4,
-          order: 2,
-          slug: 'case-4',
-          title: '案例4：PID控制器参数整定',
-          subtitle: 'Ziegler-Nichols方法',
-          difficulty: '中级',
-          estimated_minutes: 70,
-          has_tool: true,
-          is_free: false,
-          completed: false,
-          key_concepts: ['PID控制', '参数整定', '系统响应']
-        }
-      ]
-    }
-  ],
-  instructor: {
-    name: '张教授',
-    title: '控制理论专家',
-    avatar: '/avatars/instructor1.jpg',
-    bio: '清华大学自动化系教授，从事控制理论研究20余年，主持多项国家级科研项目。'
-  },
-  reviews: [
-    {
-      id: 1,
-      user: '学员A',
-      rating: 5,
-      date: '2025-10-25',
-      comment: '非常好的课程！案例丰富，工具实用，学到了很多实际应用的知识。'
-    },
-    {
-      id: 2,
-      user: '学员B',
-      rating: 5,
-      date: '2025-10-20',
-      comment: '教学方法很新颖，理论和实践结合得很好，推荐！'
-    }
+// 配置sanitize以允许details和summary标签
+const sanitizeSchema = {
+  ...defaultSchema,
+  tagNames: [
+    ...(defaultSchema.tagNames || []),
+    'details',
+    'summary'
   ]
+}
+
+const { Header, Content, Sider } = Layout
+const { Title, Paragraph, Text } = Typography
+const { TabPane } = Tabs
+
+interface Book {
+  id: string
+  slug: string
+  title: string
+  subtitle: string
+  description: string
+  level: string
+  tags: string[]
+  stats: {
+    cases: number
+    hours: number
+    students: number
+  }
+  rating: number
+  price: {
+    original: number
+    current: number
+  }
+  cases?: any[]
+  actual_cases?: number
+}
+
+interface CaseInfo {
+  id: string
+  name: string
+  path: string
+  has_readme: boolean
+  has_main: boolean
+  title?: string
+}
+
+interface TestResult {
+  success: boolean
+  returncode?: number
+  stdout?: string
+  stderr?: string
+  case_id: string
+  images?: Array<{
+    filename: string
+    url: string
+  }>
 }
 
 export default function BookDetailPage() {
   const params = useParams()
-  const slug = params?.slug as string
-  const [book, setBook] = useState(mockBookDetail)
-  const [loading, setLoading] = useState(false)
-  const [enrolled, setEnrolled] = useState(false)
+  const bookSlug = params.slug as string
+
+  const [book, setBook] = useState<Book | null>(null)
+  const [cases, setCases] = useState<CaseInfo[]>([])
+  const [loading, setLoading] = useState(true)
+  const [selectedCase, setSelectedCase] = useState<CaseInfo | null>(null)
+  const [testing, setTesting] = useState(false)
+  const [testResults, setTestResults] = useState<Map<string, TestResult>>(new Map())
+  const [currentResult, setCurrentResult] = useState<TestResult | null>(null)
+  const [caseCode, setCaseCode] = useState<string>('')
+  const [caseReadme, setCaseReadme] = useState<string>('')
 
   useEffect(() => {
-    // TODO: 从API加载书籍详情
-    // const fetchBookDetail = async () => {
-    //   setLoading(true)
-    //   try {
-    //     const data = await booksAPI.getBook(slug)
-    //     setBook(data)
-    //   } catch (error) {
-    //     message.error('加载失败')
-    //   } finally {
-    //     setLoading(false)
-    //   }
-    // }
-    // fetchBookDetail()
-  }, [slug])
+    loadBookData()
+  }, [bookSlug])
 
-  const handleEnroll = () => {
-    // TODO: 调用注册学习API
-    message.success('注册学习成功！')
-    setEnrolled(true)
+  useEffect(() => {
+    if (selectedCase) {
+      loadCaseDetail(selectedCase.id)
+    }
+  }, [selectedCase])
+
+  const loadBookData = async () => {
+    try {
+      const bookRes = await fetch(`http://localhost:8000/api/v1/books/${bookSlug}`)
+      const bookData = await bookRes.json()
+      
+      if (bookData.success) {
+        setBook(bookData.book)
+        
+        const casesRes = await fetch(`http://localhost:8000/api/v1/books/${bookSlug}/cases`)
+        const casesData = await casesRes.json()
+        
+        if (casesData.success) {
+          const casesList = casesData.cases || []
+          setCases(casesList)
+          // 默认选中第一个案例
+          if (casesList.length > 0) {
+            setSelectedCase(casesList[0])
+          }
+        }
+      }
+    } catch (error) {
+      message.error('加载数据失败')
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const handleStartLearning = (caseSlug: string) => {
-    window.location.href = `/tools/${caseSlug}`
+  const loadCaseDetail = async (caseId: string) => {
+    try {
+      const res = await fetch(`http://localhost:8000/api/v1/books/${bookSlug}/cases/${caseId}`)
+      const data = await res.json()
+      
+      if (data.success) {
+        setCaseCode(data.case.code || '// 代码文件不存在')
+        setCaseReadme(data.case.readme || '# 暂无文档')
+      }
+    } catch (error) {
+      console.error('加载案例详情失败:', error)
+    }
   }
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case '初级': return 'green'
-      case '中级': return 'blue'
-      case '高级': return 'red'
-      default: return 'default'
+  const runCase = async () => {
+    if (!selectedCase) return
+    
+    setTesting(true)
+    setCurrentResult(null)
+    
+    try {
+      const res = await fetch(`http://localhost:8000/api/v1/books/${bookSlug}/cases/${selectedCase.id}/run`, {
+        method: 'POST'
+      })
+      const result = await res.json()
+      
+      const newResults = new Map(testResults)
+      newResults.set(selectedCase.id, result)
+      setTestResults(newResults)
+      setCurrentResult(result)
+      
+      if (result.success) {
+        message.success('执行成功！')
+      } else {
+        message.error('执行失败')
+      }
+    } catch (error) {
+      message.error('执行失败')
+    } finally {
+      setTesting(false)
+    }
+  }
+
+  // 构建树形数据
+  const buildTreeData = () => {
+    return cases.map((caseInfo, index) => {
+      const result = testResults.get(caseInfo.id)
+      const icon = result ? (
+        result.success ? <CheckCircleOutlined style={{ color: '#52c41a' }} /> : <CloseCircleOutlined style={{ color: '#ff4d4f' }} />
+      ) : <CodeOutlined style={{ color: '#999' }} />
+      
+      return {
+        title: `案例${index + 1}：${caseInfo.title || caseInfo.id}`,
+        key: caseInfo.id,
+        icon,
+        caseInfo
+      }
+    })
+  }
+
+  const onSelectCase = (selectedKeys: any[], info: any) => {
+    if (selectedKeys.length > 0 && info.node.caseInfo) {
+      setSelectedCase(info.node.caseInfo)
+      setCurrentResult(testResults.get(info.node.caseInfo.id) || null)
     }
   }
 
   if (loading) {
     return (
-      <Layout style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Spin size="large" />
+      <Layout style={{ minHeight: '100vh' }}>
+        <Content style={{ padding: '50px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Spin size="large" tip="加载中..." />
+        </Content>
       </Layout>
     )
   }
 
+  if (!book) {
+    return (
+      <Layout style={{ minHeight: '100vh' }}>
+        <Content style={{ padding: '50px' }}>
+          <Title level={2}>书籍不存在</Title>
+        </Content>
+      </Layout>
+    )
+  }
+
+  const testedCount = Array.from(testResults.values()).filter(r => r.success).length
+  const totalCount = cases.length
+
   return (
-    <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
-      {/* 顶部导航 */}
-      <Layout.Header style={{ 
+    <Layout style={{ minHeight: '100vh' }}>
+      {/* 顶部导航栏 */}
+      <Header style={{ 
         background: '#fff', 
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        padding: '0 50px',
+        padding: '0 24px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        position: 'sticky',
+        top: 0,
+        zIndex: 10
       }}>
         <Link href="/" style={{ fontSize: '20px', fontWeight: 'bold', color: '#1890ff', textDecoration: 'none' }}>
           <BookOutlined /> Engineering Learning Platform
         </Link>
         <Space>
-          <Link href="/books"><Button type="link">课程</Button></Link>
-          <Link href="/tools"><Button type="link">工具实验室</Button></Link>
-          <Link href="/login"><Button type="primary">登录</Button></Link>
+          <Link href="/"><Button type="text" icon={<HomeOutlined />}>首页</Button></Link>
+          <Link href="/books"><Button type="text" icon={<FolderOutlined />}>所有课程</Button></Link>
         </Space>
-      </Layout.Header>
+      </Header>
 
-      <Content style={{ padding: '50px' }}>
-        {/* 课程封面和基本信息 */}
-        <Card style={{ marginBottom: '24px' }}>
-          <Row gutter={24}>
-            <Col xs={24} md={8}>
-              <div style={{ 
-                height: '300px', 
-                background: book.cover_color,
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '28px',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                padding: '20px'
-              }}>
-                {book.title}
+      <Layout>
+        {/* 左侧树形导航 */}
+        <Sider 
+          width={320} 
+          style={{ 
+            background: '#fff', 
+            borderRight: '1px solid #f0f0f0',
+            height: 'calc(100vh - 64px)',
+            overflow: 'auto',
+            position: 'sticky',
+            top: 64
+          }}
+        >
+          <div style={{ padding: '16px' }}>
+            <Title level={4} style={{ marginBottom: '8px' }}>{book.title}</Title>
+            <Paragraph type="secondary" style={{ fontSize: '12px', marginBottom: '16px' }}>
+              {book.subtitle}
+            </Paragraph>
+            
+            <Space direction="vertical" style={{ width: '100%', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Text type="secondary">测试进度</Text>
+                <Text strong>{testedCount}/{totalCount}</Text>
               </div>
-            </Col>
-            <Col xs={24} md={16}>
-              <Space direction="vertical" size="middle" style={{ width: '100%' }}>
-                <div>
-                  <Title level={2} style={{ marginBottom: '8px' }}>{book.title}</Title>
-                  <Text type="secondary" style={{ fontSize: '16px' }}>{book.subtitle}</Text>
-                </div>
+              <div style={{ 
+                height: '8px', 
+                background: '#f0f0f0', 
+                borderRadius: '4px',
+                overflow: 'hidden'
+              }}>
+                <div style={{
+                  width: `${totalCount > 0 ? (testedCount / totalCount * 100) : 0}%`,
+                  height: '100%',
+                  background: '#52c41a',
+                  transition: 'width 0.3s'
+                }} />
+              </div>
+            </Space>
 
-                <div>
-                  <Tag color={getDifficultyColor(book.difficulty)}>{book.difficulty}</Tag>
-                  {book.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
-                </div>
+            <Divider style={{ margin: '12px 0' }} />
 
-                <Space split="|" style={{ color: '#666' }}>
-                  <span><BookOutlined /> {book.total_cases}个案例</span>
-                  <span><ClockCircleOutlined /> {book.estimated_hours}学时</span>
-                  <span><UserOutlined /> {book.enrollments}人学习</span>
-                </Space>
+            <Tree
+              showIcon
+              defaultExpandAll
+              selectedKeys={selectedCase ? [selectedCase.id] : []}
+              treeData={buildTreeData()}
+              onSelect={onSelectCase}
+              style={{ background: '#fff' }}
+            />
+          </div>
+        </Sider>
 
-                <div>
-                  <Rate disabled value={book.avg_rating} />
-                  <Text strong style={{ marginLeft: '8px' }}>{book.avg_rating}</Text>
-                  <Text type="secondary"> ({book.rating_count}条评价)</Text>
-                </div>
-
-                <Divider />
-
-                <Row gutter={16}>
-                  <Col>
-                    <Text delete={book.price !== book.original_price} type="secondary">
-                      ¥{book.original_price}
-                    </Text>
-                  </Col>
-                  <Col>
-                    <Text strong style={{ fontSize: '28px', color: '#f5222d' }}>
-                      ¥{book.price}
-                    </Text>
-                  </Col>
-                </Row>
-
-                {!enrolled ? (
-                  <Button 
-                    type="primary" 
-                    size="large" 
-                    icon={<RocketOutlined />}
-                    onClick={handleEnroll}
-                    style={{ width: '200px' }}
-                  >
-                    立即学习
-                  </Button>
-                ) : (
-                  <Button 
-                    type="primary" 
-                    size="large" 
-                    icon={<PlayCircleOutlined />}
-                    style={{ width: '200px' }}
-                  >
-                    继续学习
-                  </Button>
-                )}
-              </Space>
-            </Col>
-          </Row>
-        </Card>
-
-        {/* 课程详情选项卡 */}
-        <Card>
-          <Tabs
-            defaultActiveKey="chapters"
-            items={[
-              {
-                key: 'chapters',
-                label: '📚 课程章节',
-                children: (
-                  <Collapse 
-                    accordion 
-                    defaultActiveKey={['1']}
-                    style={{ background: 'transparent', border: 'none' }}
-                  >
-                    {book.chapters.map((chapter) => (
-                      <Panel
-                        header={
-                          <Space>
-                            <Text strong>{chapter.title}</Text>
-                            {chapter.is_free && <Tag color="green">免费试学</Tag>}
-                            <Text type="secondary">({chapter.estimated_minutes}分钟)</Text>
-                          </Space>
-                        }
-                        key={chapter.id}
-                      >
-                        <Paragraph type="secondary">{chapter.description}</Paragraph>
-                        
-                        <div style={{ marginTop: '16px' }}>
-                          {chapter.cases.map((case_) => (
-                            <Card 
-                              key={case_.id}
-                              size="small"
-                              style={{ marginBottom: '12px' }}
-                              hoverable
-                            >
-                              <Row align="middle" gutter={16}>
-                                <Col flex="auto">
-                                  <Space direction="vertical" size="small">
-                                    <Space>
-                                      {case_.completed ? (
-                                        <CheckCircleOutlined style={{ color: '#52c41a' }} />
-                                      ) : (
-                                        <PlayCircleOutlined style={{ color: '#1890ff' }} />
-                                      )}
-                                      <Text strong>{case_.title}</Text>
-                                      {case_.is_free && <Tag color="green">免费</Tag>}
-                                      {!case_.is_free && !enrolled && <LockOutlined style={{ color: '#999' }} />}
-                                    </Space>
-                                    <Text type="secondary" style={{ fontSize: '13px' }}>
-                                      {case_.subtitle}
-                                    </Text>
-                                    <Space size="small">
-                                      <Tag color={getDifficultyColor(case_.difficulty)} style={{ fontSize: '12px' }}>
-                                        {case_.difficulty}
-                                      </Tag>
-                                      <Text type="secondary" style={{ fontSize: '12px' }}>
-                                        <ClockCircleOutlined /> {case_.estimated_minutes}分钟
-                                      </Text>
-                                      {case_.has_tool && (
-                                        <Tag color="blue" style={{ fontSize: '12px' }}>🛠️ 交互工具</Tag>
-                                      )}
-                                    </Space>
-                                    <div style={{ fontSize: '12px', color: '#666' }}>
-                                      关键概念: {case_.key_concepts.join(' · ')}
-                                    </div>
-                                  </Space>
-                                </Col>
-                                <Col>
-                                  {(case_.is_free || enrolled) ? (
-                                    <Button 
-                                      type="primary"
-                                      onClick={() => handleStartLearning(case_.slug)}
-                                    >
-                                      开始学习
-                                    </Button>
-                                  ) : (
-                                    <Button disabled>
-                                      <LockOutlined /> 已锁定
-                                    </Button>
-                                  )}
-                                </Col>
-                              </Row>
-                            </Card>
-                          ))}
-                        </div>
-                      </Panel>
-                    ))}
-                  </Collapse>
-                )
-              },
-              {
-                key: 'overview',
-                label: '📋 课程介绍',
-                children: (
+        {/* 右侧内容区 */}
+        <Content style={{ padding: '24px', background: '#f5f5f5', minHeight: 'calc(100vh - 64px)', overflow: 'auto' }}>
+          {selectedCase ? (
+            <div>
+              {/* 案例标题和操作栏 */}
+              <Card 
+                style={{ marginBottom: '16px' }}
+                bodyStyle={{ padding: '16px 24px' }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
-                    <Title level={4}>课程简介</Title>
-                    <Paragraph>{book.description}</Paragraph>
-
-                    <Divider />
-
-                    <Title level={4}>学习目标</Title>
-                    <ul>
-                      {book.learning_objectives.map((obj, idx) => (
-                        <li key={idx}>
-                          <Paragraph>{obj}</Paragraph>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Divider />
-
-                    <Title level={4}>前置要求</Title>
-                    <ul>
-                      {book.prerequisites.map((prereq, idx) => (
-                        <li key={idx}>
-                          <Paragraph>{prereq}</Paragraph>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )
-              },
-              {
-                key: 'instructor',
-                label: '👨‍🏫 讲师介绍',
-                children: (
-                  <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                    <Space size="large">
-                      <Avatar size={80} icon={<UserOutlined />} />
-                      <div>
-                        <Title level={4} style={{ marginBottom: '4px' }}>{book.instructor.name}</Title>
-                        <Text type="secondary">{book.instructor.title}</Text>
-                      </div>
+                    <Title level={3} style={{ marginBottom: '4px' }}>
+                      {selectedCase.title || selectedCase.name}
+                    </Title>
+                    <Space size="small">
+                      <Text type="secondary" code>{selectedCase.id}</Text>
+                      {selectedCase.has_readme && <Tag color="green">有文档</Tag>}
+                      {selectedCase.has_main && <Tag color="blue">有代码</Tag>}
                     </Space>
-                    <Paragraph>{book.instructor.bio}</Paragraph>
-                  </Space>
-                )
-              },
-              {
-                key: 'reviews',
-                label: '⭐ 学员评价',
-                children: (
-                  <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                    {book.reviews.map((review) => (
-                      <Card key={review.id} size="small">
-                        <Space direction="vertical" size="small" style={{ width: '100%' }}>
-                          <Space>
-                            <Avatar icon={<UserOutlined />} />
-                            <div>
-                              <Text strong>{review.user}</Text>
-                              <br />
-                              <Text type="secondary" style={{ fontSize: '12px' }}>{review.date}</Text>
+                  </div>
+                  <Button 
+                    type="primary" 
+                    size="large"
+                    icon={<PlayCircleOutlined />}
+                    onClick={runCase}
+                    loading={testing}
+                  >
+                    {testing ? '运行中...' : '运行测试'}
+                  </Button>
+                </div>
+              </Card>
+
+              {/* 测试结果统计 */}
+              {currentResult && (
+                <Card 
+                  style={{ marginBottom: '16px' }}
+                  bodyStyle={{ padding: '16px 24px' }}
+                >
+                  <Row gutter={16}>
+                    <Col span={6}>
+                      <Statistic 
+                        title="执行状态" 
+                        value={currentResult.success ? '成功' : '失败'} 
+                        valueStyle={{ color: currentResult.success ? '#3f8600' : '#cf1322' }}
+                        prefix={currentResult.success ? <CheckCircleOutlined /> : <CloseCircleOutlined />}
+                      />
+                    </Col>
+                    <Col span={6}>
+                      <Statistic title="返回码" value={currentResult.returncode || 0} />
+                    </Col>
+                    <Col span={6}>
+                      <Statistic 
+                        title="生成图表" 
+                        value={currentResult.images?.length || 0} 
+                        suffix="张"
+                        prefix={<LineChartOutlined />}
+                      />
+                    </Col>
+                    <Col span={6}>
+                      <Statistic 
+                        title="输出行数" 
+                        value={currentResult.stdout?.split('\n').length || 0} 
+                        suffix="行"
+                      />
+                    </Col>
+                  </Row>
+                </Card>
+              )}
+
+              {/* 主要内容标签页 */}
+              <Card>
+                <Tabs defaultActiveKey="results" size="large">
+                  {/* 运行结果 */}
+                  <TabPane 
+                    tab={<span><LineChartOutlined />运行结果</span>} 
+                    key="results"
+                  >
+                    {currentResult ? (
+                      <div>
+                        {/* 生成的图表 */}
+                        {currentResult.images && currentResult.images.length > 0 && (
+                          <div style={{ marginBottom: '24px' }}>
+                            <Title level={4}>
+                              <LineChartOutlined /> 生成的图表 ({currentResult.images.length})
+                            </Title>
+                            <Row gutter={[16, 16]}>
+                              {currentResult.images.map((img, idx) => (
+                                <Col span={12} key={idx}>
+                                  <Card 
+                                    hoverable
+                                    cover={
+                                      <Image
+                                        src={`http://localhost:8000${img.url}`}
+                                        alt={img.filename}
+                                        style={{ width: '100%' }}
+                                      />
+                                    }
+                                  >
+                                    <Card.Meta 
+                                      title={img.filename}
+                                      description={`图表 ${idx + 1}`}
+                                    />
+                                  </Card>
+                                </Col>
+                              ))}
+                            </Row>
+                            <Divider />
+                          </div>
+                        )}
+
+                        {/* 控制台输出 */}
+                        <Title level={4}>
+                          <FileTextOutlined /> 控制台输出
+                        </Title>
+                        <div style={{ 
+                          background: '#0d1117', 
+                          padding: '20px', 
+                          borderRadius: '8px',
+                          maxHeight: '600px',
+                          overflow: 'auto',
+                          border: '1px solid #30363d'
+                        }}>
+                          <pre style={{ 
+                            margin: 0,
+                            background: 'transparent',
+                            color: '#c9d1d9',
+                            fontFamily: "'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace",
+                            fontSize: '14px',
+                            lineHeight: '1.8',
+                            whiteSpace: 'pre-wrap',
+                            wordBreak: 'break-word'
+                          }}>
+                            {currentResult.stdout || '无输出'}
+                          </pre>
+                        </div>
+
+                        {/* 错误信息 */}
+                        {currentResult.stderr && (
+                          <>
+                            <Divider />
+                            <Alert
+                              message="错误信息"
+                              description={
+                                <pre style={{ 
+                                  margin: 0, 
+                                  whiteSpace: 'pre-wrap', 
+                                  wordBreak: 'break-all',
+                                  fontSize: '12px'
+                                }}>
+                                  {currentResult.stderr}
+                                </pre>
+                              }
+                              type="error"
+                              showIcon
+                            />
+                          </>
+                        )}
+                      </div>
+                    ) : (
+                      <div style={{ 
+                        textAlign: 'center', 
+                        padding: '60px 20px',
+                        color: '#999'
+                      }}>
+                        <PlayCircleOutlined style={{ fontSize: '64px', marginBottom: '16px' }} />
+                        <div style={{ fontSize: '16px' }}>点击"运行测试"按钮查看结果</div>
+                      </div>
+                    )}
+                  </TabPane>
+
+                  {/* 源代码 */}
+                  <TabPane 
+                    tab={<span><CodeOutlined />源代码</span>} 
+                    key="code"
+                  >
+                    <div style={{ 
+                      maxHeight: '700px',
+                      overflow: 'auto',
+                      borderRadius: '8px',
+                      border: '1px solid #e1e4e8'
+                    }}>
+                      <SyntaxHighlighter
+                        language="python"
+                        style={vscDarkPlus}
+                        showLineNumbers={true}
+                        customStyle={{
+                          margin: 0,
+                          borderRadius: '8px',
+                          fontSize: '14px',
+                          lineHeight: '1.6'
+                        }}
+                        codeTagProps={{
+                          style: {
+                            fontFamily: "'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace"
+                          }
+                        }}
+                      >
+                        {caseCode || '// 代码文件不存在'}
+                      </SyntaxHighlighter>
+                    </div>
+                  </TabPane>
+
+                  {/* 文档说明 */}
+                  <TabPane 
+                    tab={<span><FileTextOutlined />文档说明</span>} 
+                    key="readme"
+                  >
+                    <div style={{ 
+                      background: '#fff',
+                      padding: '32px',
+                      borderRadius: '8px',
+                      minHeight: '500px',
+                      border: '1px solid #e1e4e8'
+                    }}>
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeRaw, [rehypeSanitize, sanitizeSchema]]}
+                        components={{
+                          code({ node, inline, className, children, ...props }) {
+                            const match = /language-(\w+)/.exec(className || '')
+                            return !inline && match ? (
+                              <SyntaxHighlighter
+                                style={vscDarkPlus}
+                                language={match[1]}
+                                PreTag="div"
+                                customStyle={{
+                                  borderRadius: '8px',
+                                  fontSize: '13px',
+                                  margin: '16px 0'
+                                }}
+                                {...props}
+                              >
+                                {String(children).replace(/\n$/, '')}
+                              </SyntaxHighlighter>
+                            ) : (
+                              <code className={className} style={{
+                                background: '#f6f8fa',
+                                padding: '2px 6px',
+                                borderRadius: '4px',
+                                fontFamily: "'Fira Code', 'Consolas', monospace",
+                                fontSize: '13px',
+                                color: '#24292f'
+                              }} {...props}>
+                                {children}
+                              </code>
+                            )
+                          },
+                          h1: ({ node, ...props }) => <h1 style={{ borderBottom: '2px solid #e1e4e8', paddingBottom: '8px', marginTop: '24px', color: '#24292f' }} {...props} />,
+                          h2: ({ node, ...props }) => <h2 style={{ borderBottom: '1px solid #e1e4e8', paddingBottom: '6px', marginTop: '24px', color: '#24292f' }} {...props} />,
+                          h3: ({ node, ...props }) => <h3 style={{ marginTop: '20px', color: '#24292f' }} {...props} />,
+                          table: ({ node, ...props }) => (
+                            <div style={{ overflowX: 'auto', marginBottom: '16px' }}>
+                              <table style={{ borderCollapse: 'collapse', width: '100%' }} {...props} />
                             </div>
-                          </Space>
-                          <Rate disabled value={review.rating} style={{ fontSize: '14px' }} />
-                          <Paragraph>{review.comment}</Paragraph>
-                        </Space>
-                      </Card>
-                    ))}
-                  </Space>
-                )
-              }
-            ]}
-          />
-        </Card>
-      </Content>
+                          ),
+                          th: ({ node, ...props }) => <th style={{ border: '1px solid #d0d7de', padding: '8px 12px', background: '#f6f8fa', fontWeight: 600 }} {...props} />,
+                          td: ({ node, ...props }) => <td style={{ border: '1px solid #d0d7de', padding: '8px 12px' }} {...props} />,
+                          ul: ({ node, ...props }) => <ul style={{ paddingLeft: '24px', marginBottom: '16px' }} {...props} />,
+                          ol: ({ node, ...props }) => <ol style={{ paddingLeft: '24px', marginBottom: '16px' }} {...props} />,
+                          li: ({ node, ...props }) => <li style={{ marginBottom: '4px' }} {...props} />,
+                          blockquote: ({ node, ...props }) => <blockquote style={{ borderLeft: '4px solid #d0d7de', padding: '0 16px', color: '#57606a', margin: '16px 0' }} {...props} />,
+                          p: ({ node, ...props }) => <p style={{ marginBottom: '16px', lineHeight: '1.7', color: '#24292f' }} {...props} />,
+                          a: ({ node, ...props }) => <a style={{ color: '#0969da', textDecoration: 'none' }} {...props} />,
+                          img: ({ node, src, alt, ...props }) => {
+                            // 如果是本地图片路径，转换为API URL
+                            const imageSrc = src?.endsWith('.png') && !src.startsWith('http') 
+                              ? `http://localhost:8000/api/v1/books/${bookSlug}/cases/${selectedCase?.id}/images/${src}`
+                              : src
+                            return (
+                              <div style={{ margin: '24px 0', textAlign: 'center' }}>
+                                <Image
+                                  src={imageSrc}
+                                  alt={alt}
+                                  style={{ maxWidth: '100%', borderRadius: '8px', border: '1px solid #d0d7de' }}
+                                  preview={{
+                                    mask: <div style={{ background: 'rgba(0, 0, 0, 0.5)', color: '#fff' }}>🔍 点击放大</div>
+                                  }}
+                                />
+                                {alt && (
+                                  <div style={{ 
+                                    marginTop: '8px', 
+                                    fontSize: '13px', 
+                                    color: '#57606a',
+                                    fontStyle: 'italic'
+                                  }}>
+                                    {alt}
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          },
+                        }}
+                      >
+                        {caseReadme || '# 暂无文档'}
+                      </ReactMarkdown>
+                    </div>
+                  </TabPane>
+                </Tabs>
+              </Card>
+            </div>
+          ) : (
+            <div style={{ 
+              textAlign: 'center', 
+              padding: '100px 20px',
+              color: '#999'
+            }}>
+              <FolderOutlined style={{ fontSize: '64px', marginBottom: '16px' }} />
+              <div style={{ fontSize: '16px' }}>请从左侧选择一个案例</div>
+            </div>
+          )}
+        </Content>
+      </Layout>
     </Layout>
   )
 }

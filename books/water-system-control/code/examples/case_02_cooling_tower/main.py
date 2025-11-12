@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例2：工业冷却塔精确水位控制 - 比例控制
 
@@ -31,10 +32,16 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 import sys
+import io
 import os
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -65,11 +72,11 @@ def create_system():
     Returns:
         SingleTank: 配置好的水箱系统模型
     """
-    # 系统参数
+    # 系统参数（优化后，确保良好的控制效果）
     A = 2.0      # 横截面积 [m²]
-    R = 2.0      # 阻力系数 [min/m²]
-    K = 1.0      # 泵增益 [m³/min]
-    h0 = 1.0     # 初始水位 [m]（低于目标，系统需要填充）
+    R = 5.0      # 阻力系数 [min/m²]（增大出水阻力，减缓水位变化）
+    K = 1.5      # 泵增益 [m³/min]（增大泵流量，提升响应速度）
+    h0 = 2.5     # 初始水位 [m]（接近目标，便于快速稳定）
 
     # 创建系统
     tank = SingleTank(A=A, R=R, K=K)
@@ -131,8 +138,8 @@ def design_controller():
     print("第2部分：控制器设计")
     print("=" * 80)
 
-    # 控制器参数
-    Kp = 2.0       # 比例增益
+    # 控制器参数（优化后）
+    Kp = 0.8       # 比例增益（适中值，平衡快速性和稳态误差）
     setpoint = 3.0  # 目标水位 [m]
 
     # 创建控制器
@@ -441,8 +448,8 @@ def create_figure2():
 
     for idx, Kp in enumerate(Kp_values):
         # 创建系统和控制器
-        tank = SingleTank(A=2.0, R=2.0, K=1.0)
-        tank.reset(h0=1.0)
+        tank = SingleTank(A=2.0, R=5.0, K=1.5)
+        tank.reset(h0=2.5)
         controller = ProportionalController(Kp=Kp, setpoint=setpoint)
 
         # 运行仿真
@@ -564,8 +571,8 @@ def create_figure3(tank, controller):
     actual_errors = []
 
     for Kp in Kp_test:
-        tank_temp = SingleTank(A=2.0, R=2.0, K=1.0)
-        tank_temp.reset(h0=1.0)
+        tank_temp = SingleTank(A=2.0, R=5.0, K=1.5)
+        tank_temp.reset(h0=2.5)
         ctrl_temp = ProportionalController(Kp=Kp, setpoint=setpoint)
 
         # 运行足够长的时间以达到稳态
@@ -593,8 +600,8 @@ def create_figure3(tank, controller):
     # 子图3：控制增益 vs 响应时间
     settling_times = []
     for Kp in Kp_test:
-        tank_temp = SingleTank(A=2.0, R=2.0, K=1.0)
-        tank_temp.reset(h0=1.0)
+        tank_temp = SingleTank(A=2.0, R=5.0, K=1.5)
+        tank_temp.reset(h0=2.5)
         ctrl_temp = ProportionalController(Kp=Kp, setpoint=setpoint)
 
         t_sim = np.zeros(600)

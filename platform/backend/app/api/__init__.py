@@ -9,6 +9,7 @@ from app.api.endpoints import (
     code,
     ai_assistant
 )
+from app.api.v2 import books as books_v2
 
 api_router = APIRouter()
 
@@ -17,3 +18,4 @@ api_router.include_router(sessions.router, prefix="/sessions", tags=["会话管�
 api_router.include_router(execution.router, prefix="/execution", tags=["代码执行"])
 api_router.include_router(code.router, prefix="/code", tags=["代码管理"])
 api_router.include_router(ai_assistant.router, prefix="/ai", tags=["AI助手"])
+api_router.include_router(books_v2.router, prefix="/books", tags=["书籍管理"])

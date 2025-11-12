@@ -1,0 +1,132 @@
+{
+  "book": "water-system-control",
+  "timestamp": "2025-11-09T19:32:41.148032",
+  "total_cases": 20,
+  "success": 0,
+  "failed": 20,
+  "errors": 0,
+  "success_rate": 0.0,
+  "total_duration": 51.24305748939514,
+  "results": [
+    {
+      "case": "case_01_home_water_tower",
+      "status": "failed",
+      "duration": 2.0599117279052734,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_02_cooling_tower",
+      "status": "failed",
+      "duration": 2.049356460571289,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_03_water_supply_station",
+      "status": "failed",
+      "duration": 2.080183506011963,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_04_pid_tuning",
+      "status": "failed",
+      "duration": 2.08133602142334,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_05_parameter_identification",
+      "status": "failed",
+      "duration": 2.0409936904907227,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_06_step_response",
+      "status": "failed",
+      "duration": 2.065013885498047,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_07_cascade_control",
+      "status": "failed",
+      "duration": 2.0537312030792236,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_08_feedforward_control",
+      "status": "failed",
+      "duration": 2.0536949634552,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_09_system_modeling",
+      "status": "failed",
+      "duration": 2.047811508178711,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_10_frequency_analysis",
+      "status": "failed",
+      "duration": 2.0650429725646973,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_11_state_space",
+      "status": "failed",
+      "duration": 2.0697860717773438,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_12_observer_lqr",
+      "status": "failed",
+      "duration": 2.0663304328918457,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_13_adaptive_control",
+      "status": "failed",
+      "duration": 2.044168472290039,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_14_model_predictive_control",
+      "status": "failed",
+      "duration": 2.0788846015930176,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_15_sliding_mode_control",
+      "status": "failed",
+      "duration": 2.0615932941436768,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_16_fuzzy_control",
+      "status": "failed",
+      "duration": 2.0734360218048096,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_17_neural_network_control",
+      "status": "failed",
+      "duration": 2.0567877292633057,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_18_reinforcement_learning_control",
+      "status": "failed",
+      "duration": 2.0629723072052,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_19_comprehensive_comparison",
+      "status": "failed",
+      "duration": 2.07021164894104,
+      "error": "HTTP 404"
+    },
+    {
+      "case": "case_20_practical_application",
+      "status": "failed",
+      "duration": 2.049469232559204,
+      "error": "HTTP 404"
+    }
+  ]
+}

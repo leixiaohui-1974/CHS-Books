@@ -1,0 +1,382 @@
+{
+  "summary": {
+    "total": 20,
+    "complete": 2,
+    "incomplete": 18
+  },
+  "cases": [
+    {
+      "case": "case_01_home_water_tower",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 6,
+      "png_files": [
+        "case01_control_comparison.png",
+        "case01_on_off_control.png",
+        "control_comparison.png",
+        "phase_portrait.png",
+        "water_level_control.png",
+        "water_tower_diagram.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": true,
+        "has_diagram": true,
+        "has_table_format": false,
+        "image_count": 1
+      },
+      "is_complete": true
+    },
+    {
+      "case": "case_02_cooling_tower",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 6,
+      "png_files": [
+        "case02_kp_comparison.png",
+        "case02_proportional_control.png",
+        "cooling_tower_diagram.png",
+        "kp_comparison.png",
+        "proportional_control.png",
+        "steady_state_analysis.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": true,
+        "has_diagram": true,
+        "has_table_format": true,
+        "image_count": 1
+      },
+      "is_complete": true
+    },
+    {
+      "case": "case_03_water_supply_station",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 5,
+      "png_files": [
+        "case03_pi_control.png",
+        "case03_p_vs_pi.png",
+        "ki_tuning_analysis.png",
+        "pi_control_analysis.png",
+        "p_vs_pi_comparison.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_04_pid_tuning",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 6,
+      "png_files": [
+        "case04_pid_comparison.png",
+        "case04_pid_components.png",
+        "case04_zn_tuning.png",
+        "controller_comparison.png",
+        "pid_components_analysis.png",
+        "ziegler_nichols_tuning.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_05_parameter_identification",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 3,
+      "png_files": [
+        "parameter_comparison.png",
+        "parameter_identification.png",
+        "residual_analysis.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_06_step_response",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 3,
+      "png_files": [
+        "model_validation.png",
+        "step_response_fit.png",
+        "time_constant_estimation.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_07_cascade_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 0,
+      "png_files": [],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_08_feedforward_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "feedforward_control_comparison.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_09_system_modeling",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "system_modeling_analysis.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_10_frequency_analysis",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "frequency_analysis_comprehensive.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_11_state_space",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "case11_state_space_summary.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_12_observer_lqr",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "case12_observer_lqr_summary.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_13_adaptive_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "case13_adaptive_control_summary.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_14_model_predictive_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "case14_mpc_demo.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_15_sliding_mode_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 1,
+      "png_files": [
+        "case15_sliding_mode_summary.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_16_fuzzy_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 4,
+      "png_files": [
+        "case16_control_surface.png",
+        "case16_fuzzy_pd.png",
+        "case16_fuzzy_vs_pid.png",
+        "case16_membership_functions.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_17_neural_network_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 4,
+      "png_files": [
+        "case17_direct_nn.png",
+        "case17_mrac.png",
+        "case17_nn_basics.png",
+        "case17_nn_pid.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_18_reinforcement_learning_control",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 2,
+      "png_files": [
+        "case18_qlearning.png",
+        "case18_sarsa.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_19_comprehensive_comparison",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 4,
+      "png_files": [
+        "scenario1_nominal.png",
+        "scenario2_robustness.png",
+        "scenario3_disturbance.png",
+        "综合评分雷达图.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": false,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    },
+    {
+      "case": "case_20_practical_application",
+      "has_main": true,
+      "has_readme": true,
+      "png_count": 3,
+      "png_files": [
+        "anti_windup_comparison.png",
+        "complete_control_system.png",
+        "fault_scenario_sensor_noise.png"
+      ],
+      "readme_info": {
+        "has_readme": true,
+        "has_images": false,
+        "has_diagram": true,
+        "has_table_format": false,
+        "image_count": 0
+      },
+      "is_complete": false
+    }
+  ]
+}

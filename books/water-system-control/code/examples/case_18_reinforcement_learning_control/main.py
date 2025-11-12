@@ -8,7 +8,13 @@
 4. 性能对比与分析
 """
 
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from collections import deque
@@ -511,7 +517,7 @@ def part2_sarsa():
     plt.plot(range(window-1, len(episode_rewards)), smoothed_rewards, label=f'{window}回合平均', linewidth=2)
     plt.xlabel('回合数')
     plt.ylabel('累积奖励')
-    plt.title('SARSA学习曲线')
+    # 标题已移除，保持图表简洁
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
@@ -585,7 +591,7 @@ def part3_dqn():
     plt.plot(range(window-1, len(episode_rewards)), smoothed_rewards, label=f'{window}回合平均', linewidth=2)
     plt.xlabel('回合数')
     plt.ylabel('累积奖励')
-    plt.title('DQN学习曲线')
+    # 标题已移除，保持图表简洁
     plt.legend()
     plt.grid(True, alpha=0.3)
     plt.tight_layout()

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例11：状态空间方法 - 现代控制理论入门
 
@@ -34,11 +35,17 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from scipy import signal
 from scipy import linalg
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -423,7 +430,7 @@ def visualize_and_summarize(A, B, C, D, K, A_cl, t_open, y_open, t_closed, y_clo
     ax2.axhline(0.95, color='gray', linestyle=':', alpha=0.5, label='95% settling')
     ax2.set_xlabel('Time (min)')
     ax2.set_ylabel('Water Level (m)')
-    ax2.set_title('Step Response Comparison')
+    # 标题已移除，保持图表简洁
     ax2.legend()
     ax2.grid(True, alpha=0.3)
 
@@ -434,7 +441,7 @@ def visualize_and_summarize(A, B, C, D, K, A_cl, t_open, y_open, t_closed, y_clo
     ax3.axhline(1, color='gray', linestyle='--', alpha=0.5)
     ax3.set_xlabel('Time (min)')
     ax3.set_ylabel('Water Level (m)')
-    ax3.set_title('Different Pole Placements')
+    # 标题已移除，保持图表简洁
     ax3.legend(fontsize=8)
     ax3.grid(True, alpha=0.3)
 
@@ -455,7 +462,7 @@ def visualize_and_summarize(A, B, C, D, K, A_cl, t_open, y_open, t_closed, y_clo
     ax4.axhline(0, color='k', linestyle='-', linewidth=0.5)
     ax4.set_xlabel('Real Part')
     ax4.set_ylabel('Imaginary Part')
-    ax4.set_title('Pole Locations in s-plane')
+    # 标题已移除，保持图表简洁
     ax4.legend(fontsize=8)
     ax4.grid(True, alpha=0.3)
     ax4.set_ylim(-0.2, 0.2)
@@ -473,7 +480,7 @@ def visualize_and_summarize(A, B, C, D, K, A_cl, t_open, y_open, t_closed, y_clo
 
     ax5.set_xlabel('Pole Location')
     ax5.set_ylabel('Settling Time (min)')
-    ax5.set_title('Settling Time vs Pole Location')
+    # 标题已移除，保持图表简洁
     ax5.grid(True, alpha=0.3)
     ax5.invert_xaxis()  # 更负的极点在右边
 
@@ -489,7 +496,7 @@ def visualize_and_summarize(A, B, C, D, K, A_cl, t_open, y_open, t_closed, y_clo
     ax6.axhline(0, color='k', linestyle='-', linewidth=0.5)
     ax6.set_xlabel('Pole Location')
     ax6.set_ylabel('Feedback Gain K')
-    ax6.set_title('Required Feedback Gain vs Pole')
+    # 标题已移除，保持图表简洁
     ax6.grid(True, alpha=0.3)
 
     # 图7：性能总结表格
@@ -513,7 +520,7 @@ def visualize_and_summarize(A, B, C, D, K, A_cl, t_open, y_open, t_closed, y_clo
     table.auto_set_font_size(False)
     table.set_fontsize(9)
     table.scale(1, 2)
-    ax7.set_title('Performance Summary', pad=20)
+    # 标题已移除，保持图表简洁
 
     plt.savefig('case11_state_space_summary.png', dpi=150, bbox_inches='tight')
     print("\n图表已保存：case11_state_space_summary.png")

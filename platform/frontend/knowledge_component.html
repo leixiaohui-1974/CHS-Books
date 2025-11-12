@@ -1,0 +1,172 @@
+<!-- 知识库组件 -->
+<div id="knowledge-library" class="knowledge-library" style="display: none;">
+    <div class="knowledge-header">
+        <h2>💡 知识库</h2>
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="knowledge-search-input" 
+                placeholder="搜索知识点..." 
+                onkeyup="if(event.key==='Enter') searchKnowledge()"
+            />
+            <button onclick="searchKnowledge()">搜索</button>
+        </div>
+    </div>
+    
+    <div class="knowledge-content">
+        <div class="knowledge-sidebar">
+            <h3>分类</h3>
+            <div id="knowledge-categories"></div>
+        </div>
+        
+        <div class="knowledge-main">
+            <div id="knowledge-results"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+.knowledge-library {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.knowledge-header {
+    margin-bottom: 30px;
+}
+
+.knowledge-header h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.search-box button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.knowledge-content {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+}
+
+.knowledge-sidebar {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.knowledge-main {
+    background: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 12px;
+}
+</style>
+
+<script>
+// 知识库API调用
+async function searchKnowledge() {
+    const query = document.getElementById('knowledge-search-input').value;
+    if (!query) return;
+    
+    showLoading();
+    
+    try {
+        const response = await fetch('/api/v1/knowledge/search', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                query: query,
+                top_k: 10,
+                mode: 'hybrid'
+            })
+        });
+        
+        const data = await response.json();
+        hideLoading();
+        
+        if (data.success) {
+            displayKnowledgeResults(data.results);
+        } else {
+            showError('搜索失败');
+        }
+    } catch (error) {
+        hideLoading();
+        showError('网络错误: ' + error.message);
+    }
+}
+
+function displayKnowledgeResults(results) {
+    const container = document.getElementById('knowledge-results');
+    
+    if (!results || results.length === 0) {
+        container.innerHTML = '<p>没有找到相关知识点</p>';
+        return;
+    }
+    
+    const html = results.map(item => `
+        <div class="knowledge-item">
+            <h3>${item.title}</h3>
+            <p>${item.content.substring(0, 200)}...</p>
+            <div class="knowledge-meta">
+                <span class="category">${item.category}</span>
+                <span class="level">${item.level}</span>
+            </div>
+        </div>
+    `).join('');
+    
+    container.innerHTML = html;
+}
+
+// 加载分类
+async function loadKnowledgeCategories() {
+    try {
+        const response = await fetch('/api/v1/knowledge/categories');
+        const data = await response.json();
+        
+        if (data.success) {
+            const container = document.getElementById('knowledge-categories');
+            const html = data.categories.map(cat => `
+                <div class="category-item" onclick="filterByCategory('${cat.key}')">
+                    ${cat.name} (${cat.count})
+                </div>
+            `).join('');
+            container.innerHTML = html;
+        }
+    } catch (error) {
+        console.error('加载分类失败:', error);
+    }
+}
+
+// 初始化知识库
+function initKnowledgeLibrary() {
+    loadKnowledgeCategories();
+}
+
+// 页面加载时初始化
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initKnowledgeLibrary);
+} else {
+    initKnowledgeLibrary();
+}
+</script>

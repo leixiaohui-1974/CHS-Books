@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例5：未知水箱系统参数辨识 - 最小二乘法
 
@@ -30,10 +31,16 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from scipy.optimize import least_squares, minimize
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -433,8 +440,7 @@ def create_visualizations(t_data, u_data, h_data, h_pred, errors,
 
     ax.set_xlabel('Parameter', fontsize=13, fontweight='bold')
     ax.set_ylabel('Parameter Value', fontsize=13, fontweight='bold')
-    ax.set_title('Parameter Estimation Results',
-                fontsize=15, fontweight='bold', pad=15)
+    # 标题已移除，保持图表简洁
     ax.set_xticks(x)
     ax.set_xticklabels([f'{p}\n(m² / min/m² / m³/min)'[i*15:(i+1)*15] for i, p in enumerate(params)])
     ax.legend(loc='upper right', fontsize=11, framealpha=0.9)

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例13：自适应控制 - 应对参数不确定性
 
@@ -34,11 +35,17 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from scipy import signal
 from scipy import linalg
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -457,7 +464,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax1.axhline(r_fixed, color='r', linestyle='--', alpha=0.5, label='Reference')
     ax1.set_xlabel('Time (min)')
     ax1.set_ylabel('Water Level (m)')
-    ax1.set_title('Fixed Controller (Mismatch)')
+    # 标题已移除，保持图表简洁
     ax1.legend()
     ax1.grid(True, alpha=0.3)
 
@@ -467,7 +474,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax2.plot(t2, ym_mrac, 'r--', linewidth=2, label='Reference Model ym')
     ax2.set_xlabel('Time (min)')
     ax2.set_ylabel('Output')
-    ax2.set_title('MRAC Tracking')
+    # 标题已移除，保持图表简洁
     ax2.legend()
     ax2.grid(True, alpha=0.3)
 
@@ -477,7 +484,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax3.plot(t2, theta2_mrac, 'r-', linewidth=2, label='θ2')
     ax3.set_xlabel('Time (min)')
     ax3.set_ylabel('Parameter Value')
-    ax3.set_title('MRAC Parameter Evolution')
+    # 标题已移除，保持图表简洁
     ax3.legend()
     ax3.grid(True, alpha=0.3)
 
@@ -489,7 +496,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax4.axhline(b_true, color='r', linestyle='--', alpha=0.5, label='b (true)')
     ax4.set_xlabel('Time (min)')
     ax4.set_ylabel('Parameter Value')
-    ax4.set_title('RLS Parameter Estimation')
+    # 标题已移除，保持图表简洁
     ax4.legend()
     ax4.grid(True, alpha=0.3)
 
@@ -502,7 +509,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax5.axhline(0, color='k', linestyle='--', alpha=0.3)
     ax5.set_xlabel('Time (min)')
     ax5.set_ylabel('Estimation Error')
-    ax5.set_title('RLS Convergence')
+    # 标题已移除，保持图表简洁
     ax5.legend()
     ax5.grid(True, alpha=0.3)
 
@@ -513,7 +520,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax6.axvline(25, color='orange', linestyle=':', linewidth=2, alpha=0.7, label='Parameter Change')
     ax6.set_xlabel('Time (min)')
     ax6.set_ylabel('Water Level (m)')
-    ax6.set_title('Self-Tuning Control (with Parameter Jump)')
+    # 标题已移除，保持图表简洁
     ax6.legend()
     ax6.grid(True, alpha=0.3)
 
@@ -523,7 +530,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax7.axvline(25, color='orange', linestyle=':', linewidth=2, alpha=0.7)
     ax7.set_xlabel('Time (min)')
     ax7.set_ylabel('Controller Gain K')
-    ax7.set_title('Self-Tuning Controller Gain')
+    # 标题已移除，保持图表简洁
     ax7.grid(True, alpha=0.3)
 
     # 图8：自校正参数估计
@@ -533,7 +540,7 @@ def visualize_and_summarize(fixed_data, mrac_data, rls_data, stc_data):
     ax8.axvline(25, color='orange', linestyle=':', linewidth=2, alpha=0.7)
     ax8.set_xlabel('Time (min)')
     ax8.set_ylabel('Estimated Parameters')
-    ax8.set_title('STC Parameter Tracking')
+    # 标题已移除，保持图表简洁
     ax8.legend()
     ax8.grid(True, alpha=0.3)
 

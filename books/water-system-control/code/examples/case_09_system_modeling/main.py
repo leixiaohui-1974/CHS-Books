@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例9：系统建模 - 从物理到数学
 
@@ -33,10 +34,16 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from scipy import signal
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -381,7 +388,7 @@ def visualize_and_summarize():
     ax1.text(tau, K_dc * u_step * 0.632, f'  τ = {tau} min\n  63.2%', fontsize=9)
     ax1.set_xlabel('Time (min)')
     ax1.set_ylabel('Water Level (m)')
-    ax1.set_title('Single Tank: Simulation vs Theory')
+    # 标题已移除，保持图表简洁
     ax1.legend()
     ax1.grid(True)
 
@@ -392,7 +399,7 @@ def visualize_and_summarize():
     ax2.axhline(0, color='k', linestyle='--', linewidth=0.5)
     ax2.set_xlabel('Time (min)')
     ax2.set_ylabel('Error (mm)')
-    ax2.set_title('Model Error (Simulation - Theory)')
+    # 标题已移除，保持图表简洁
     ax2.grid(True)
 
     # 子图3：双水箱响应
@@ -401,7 +408,7 @@ def visualize_and_summarize():
     ax3.plot(time_double, h2_double, 'r-', linewidth=2, label='Lower Tank h2')
     ax3.set_xlabel('Time (min)')
     ax3.set_ylabel('Water Level (m)')
-    ax3.set_title('Double Tank: Step Response')
+    # 标题已移除，保持图表简洁
     ax3.legend()
     ax3.grid(True)
 
@@ -411,7 +418,7 @@ def visualize_and_summarize():
     ax4.plot(time_double, h2_double, 'r-', linewidth=2, label='Double Tank (h2)')
     ax4.set_xlabel('Time (min)')
     ax4.set_ylabel('Water Level (m)')
-    ax4.set_title('Single Tank vs Double Tank')
+    # 标题已移除，保持图表简洁
     ax4.legend()
     ax4.grid(True)
 
@@ -422,7 +429,7 @@ def visualize_and_summarize():
     ax5.axvline(1/tau, color='r', linestyle='--', alpha=0.7)
     ax5.set_xlabel('Frequency (rad/min)')
     ax5.set_ylabel('Magnitude (dB)')
-    ax5.set_title('Bode Plot: Magnitude')
+    # 标题已移除，保持图表简洁
     ax5.legend()
     ax5.grid(True, which='both')
 
@@ -433,7 +440,7 @@ def visualize_and_summarize():
     ax6.axvline(1/tau, color='r', linestyle='--', alpha=0.7)
     ax6.set_xlabel('Frequency (rad/min)')
     ax6.set_ylabel('Phase (degrees)')
-    ax6.set_title('Bode Plot: Phase')
+    # 标题已移除，保持图表简洁
     ax6.legend()
     ax6.grid(True, which='both')
 

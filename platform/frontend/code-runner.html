@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代码在线运行 - CHS-Books</title>
+    
+    <!-- Monaco Editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/editor/editor.main.min.css">
+    
+    <!-- UI组件库 -->
+    <link rel="stylesheet" href="/static/common-ui-styles.css">
+    <link rel="stylesheet" href="/static/responsive-layout.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 顶部工具栏 */
+        .toolbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toolbar-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .toolbar-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #218838;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* 主容器 */
+        .main-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* 左侧：编辑器 */
+        .editor-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1e1e1e;
+            border-right: 1px solid #333;
+        }
+
+        .editor-header {
+            padding: 10px 15px;
+            background: #252526;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .editor-tabs {
+            display: flex;
+            gap: 5px;
+        }
+
+        .editor-tab {
+            padding: 6px 12px;
+            background: #2d2d30;
+            color: #ccc;
+            border-radius: 4px 4px 0 0;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .editor-tab.active {
+            background: #1e1e1e;
+            color: #fff;
+        }
+
+        .editor-info {
+            font-size: 12px;
+            color: #888;
+        }
+
+        #editor {
+            flex: 1;
+            width: 100%;
+        }
+
+        /* 右侧：输出和模板 */
+        .side-panel {
+            width: 400px;
+            display: flex;
+            flex-direction: column;
+            background: #252526;
+        }
+
+        .panel-tabs {
+            display: flex;
+            background: #2d2d30;
+            border-bottom: 1px solid #333;
+        }
+
+        .panel-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            color: #ccc;
+            font-size: 14px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .panel-tab.active {
+            color: #fff;
+            background: #252526;
+            border-bottom-color: #667eea;
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .panel-content.hidden {
+            display: none;
+        }
+
+        /* 输出区 */
+        .output-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .output-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .clear-btn {
+            padding: 4px 10px;
+            font-size: 12px;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .output-section {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 15px;
+            min-height: 100px;
+        }
+
+        .output-section pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .output-stdout {
+            color: #d4d4d4;
+        }
+
+        .output-stderr {
+            color: #f48771;
+        }
+
+        .output-error {
+            color: #f44747;
+        }
+
+        .output-success {
+            color: #4ec9b0;
+        }
+
+        .output-plots {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .plot-image {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background: white;
+            padding: 5px;
+        }
+
+        /* 模板列表 */
+        .template-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .template-item {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .template-item:hover {
+            border-color: #667eea;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .template-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .template-desc {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* 执行状态 */
+        .execution-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            background: #2d2d30;
+            border-top: 1px solid #333;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #6c757d;
+        }
+
+        .status-indicator.running {
+            background: #ffc107;
+            animation: pulse 1s infinite;
+        }
+
+        .status-indicator.success {
+            background: #28a745;
+        }
+
+        .status-indicator.error {
+            background: #dc3545;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-text {
+            font-size: 13px;
+            color: #ccc;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .side-panel {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            
+            .side-panel {
+                width: 100%;
+                height: 50%;
+            }
+            
+            .toolbar-buttons {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state-text {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部工具栏 -->
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <div class="toolbar-title">🚀 代码在线运行</div>
+            <select id="template-select" style="padding: 6px 10px; border-radius: 4px; background: rgba(255,255,255,0.2); color: white; border: none; cursor: pointer;">
+                <option value="">选择模板...</option>
+            </select>
+        </div>
+        <div class="toolbar-buttons">
+            <button id="run-btn" class="btn btn-primary">
+                ▶️ 运行 (Ctrl+Enter)
+            </button>
+            <button id="validate-btn" class="btn btn-secondary">
+                ✓ 验证语法
+            </button>
+            <button id="clear-btn" class="btn btn-secondary">
+                🗑️ 清空
+            </button>
+            <button id="save-btn" class="btn btn-secondary">
+                💾 保存
+            </button>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 左侧编辑器 -->
+        <div class="editor-section">
+            <div class="editor-header">
+                <div class="editor-tabs">
+                    <div class="editor-tab active">main.py</div>
+                </div>
+                <div class="editor-info">
+                    Python 3.x
+                </div>
+            </div>
+            <div id="editor"></div>
+        </div>
+
+        <!-- 右侧面板 -->
+        <div class="side-panel">
+            <div class="panel-tabs">
+                <div class="panel-tab active" data-tab="output">📊 输出</div>
+                <div class="panel-tab" data-tab="templates">📝 模板</div>
+            </div>
+            
+            <!-- 输出面板 -->
+            <div id="output-panel" class="panel-content">
+                <div class="output-header">
+                    <div class="output-title">执行结果</div>
+                    <button class="clear-btn" onclick="clearOutput()">清空</button>
+                </div>
+                
+                <div id="output-container">
+                    <div class="empty-state">
+                        <div class="empty-state-icon">💻</div>
+                        <div class="empty-state-text">点击"运行"按钮执行代码</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 模板面板 -->
+            <div id="templates-panel" class="panel-content hidden">
+                <div id="templates-container" class="template-list">
+                    <!-- 模板将动态加载 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 状态栏 -->
+    <div class="execution-status">
+        <div id="status-indicator" class="status-indicator"></div>
+        <div id="status-text" class="status-text">就绪</div>
+    </div>
+
+    <!-- Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    
+    <!-- UI工具 -->
+    <script src="/static/common-ui-utils.js"></script>
+    <script src="/static/cache-manager.js"></script>
+    
+    <script>
+        let editor = null;
+        let isExecuting = false;
+        
+        // 初始化Monaco编辑器
+        require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs' }});
+        
+        require(['vs/editor/editor.main'], function() {
+            editor = monaco.editor.create(document.getElementById('editor'), {
+                value: `# 欢迎使用CHS-Books代码在线运行环境！
+# 这是一个安全的Python代码执行环境
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 示例：绘制简单图表
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+
+plt.figure(figsize=(10, 6))
+plt.plot(x, y, 'b-', linewidth=2)
+plt.xlabel('x')
+plt.ylabel('sin(x)')
+plt.title('正弦函数')
+plt.grid(True)
+plt.show()
+
+print("执行完成！")`,
+                language: 'python',
+                theme: 'vs-dark',
+                fontSize: 14,
+                minimap: { enabled: true },
+                automaticLayout: true,
+                scrollBeyondLastLine: false,
+                wordWrap: 'on'
+            });
+            
+            // 加载模板
+            loadTemplates();
+            
+            // 尝试恢复上次代码
+            if (window.CacheManager) {
+                CacheManager.get('api', 'code_runner_last_code').then(code => {
+                    if (code) {
+                        editor.setValue(code);
+                    }
+                });
+            }
+        });
+        
+        // 面板切换
+        document.querySelectorAll('.panel-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetTab = tab.dataset.tab;
+                
+                // 更新标签样式
+                document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // 切换面板
+                document.querySelectorAll('.panel-content').forEach(p => p.classList.add('hidden'));
+                document.getElementById(`${targetTab}-panel`).classList.remove('hidden');
+            });
+        });
+        
+        // 运行代码
+        document.getElementById('run-btn').addEventListener('click', runCode);
+        
+        // 验证语法
+        document.getElementById('validate-btn').addEventListener('click', validateCode);
+        
+        // 清空编辑器
+        document.getElementById('clear-btn').addEventListener('click', () => {
+            if (editor && confirm('确定要清空代码吗？')) {
+                editor.setValue('# 请输入Python代码\n\n');
+            }
+        });
+        
+        // 保存代码
+        document.getElementById('save-btn').addEventListener('click', saveCode);
+        
+        // 模板选择
+        document.getElementById('template-select').addEventListener('change', async (e) => {
+            const templateId = e.target.value;
+            if (templateId && editor) {
+                try {
+                    const response = await fetch(`/api/code/template/${templateId}`);
+                    const data = await response.json();
+                    if (data.success) {
+                        editor.setValue(data.template.code);
+                    }
+                } catch (error) {
+                    console.error('加载模板失败:', error);
+                }
+            }
+        });
+        
+        // 键盘快捷键
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                runCode();
+            }
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                saveCode();
+            }
+        });
+        
+        // 运行代码函数
+        async function runCode() {
+            if (!editor || isExecuting) return;
+            
+            const code = editor.getValue();
+            if (!code.trim()) {
+                if (window.showWarning) {
+                    showWarning('提示', '请先输入代码');
+                } else {
+                    alert('请先输入代码');
+                }
+                return;
+            }
+            
+            isExecuting = true;
+            updateStatus('running', '执行中...');
+            
+            const runBtn = document.getElementById('run-btn');
+            runBtn.disabled = true;
+            runBtn.textContent = '⏳ 执行中...';
+            
+            try {
+                const response = await fetch('/api/code/execute', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        timeout: 30,
+                        save_plots: true
+                    })
+                });
+                
+                const result = await response.json();
+                displayOutput(result);
+                
+                if (result.success) {
+                    updateStatus('success', `执行成功 (${result.execution_time.toFixed(2)}s)`);
+                } else {
+                    updateStatus('error', '执行失败');
+                }
+            } catch (error) {
+                updateStatus('error', '请求失败');
+                displayOutput({
+                    success: false,
+                    error: `网络错误: ${error.message}`
+                });
+            } finally {
+                isExecuting = false;
+                runBtn.disabled = false;
+                runBtn.textContent = '▶️ 运行 (Ctrl+Enter)';
+            }
+        }
+        
+        // 验证语法
+        async function validateCode() {
+            if (!editor) return;
+            
+            const code = editor.getValue();
+            if (!code.trim()) return;
+            
+            try {
+                const response = await fetch('/api/code/validate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ code })
+                });
+                
+                const result = await response.json();
+                
+                if (result.valid) {
+                    if (window.showSuccess) {
+                        showSuccess('语法正确！');
+                    } else {
+                        alert('语法正确！');
+                    }
+                } else {
+                    const error = result.error;
+                    let msg = `${error.type}: ${error.message}`;
+                    if (error.line) {
+                        msg += `\n行 ${error.line}`;
+                    }
+                    if (window.showError) {
+                        showError('语法错误', msg);
+                    } else {
+                        alert(msg);
+                    }
+                }
+            } catch (error) {
+                console.error('验证失败:', error);
+            }
+        }
+        
+        // 保存代码
+        async function saveCode() {
+            if (!editor) return;
+            
+            const code = editor.getValue();
+            if (window.CacheManager) {
+                await CacheManager.set('api', 'code_runner_last_code', code);
+                if (window.showSuccess) {
+                    showSuccess('代码已保存');
+                } else {
+                    alert('代码已保存');
+                }
+            }
+        }
+        
+        // 显示输出
+        function displayOutput(result) {
+            const container = document.getElementById('output-container');
+            container.innerHTML = '';
+            
+            // 执行时间
+            if (result.execution_time) {
+                const timeDiv = document.createElement('div');
+                timeDiv.className = 'output-section';
+                timeDiv.innerHTML = `<pre class="output-success">⏱️ 执行时间: ${result.execution_time.toFixed(3)}秒</pre>`;
+                container.appendChild(timeDiv);
+            }
+            
+            // 标准输出
+            if (result.stdout) {
+                const stdoutDiv = document.createElement('div');
+                stdoutDiv.className = 'output-section';
+                stdoutDiv.innerHTML = `<div style="margin-bottom: 5px; font-weight: bold;">📄 标准输出:</div><pre class="output-stdout">${escapeHtml(result.stdout)}</pre>`;
+                container.appendChild(stdoutDiv);
+            }
+            
+            // 标准错误
+            if (result.stderr) {
+                const stderrDiv = document.createElement('div');
+                stderrDiv.className = 'output-section';
+                stderrDiv.innerHTML = `<div style="margin-bottom: 5px; font-weight: bold;">⚠️ 警告/错误:</div><pre class="output-stderr">${escapeHtml(result.stderr)}</pre>`;
+                container.appendChild(stderrDiv);
+            }
+            
+            // 错误信息
+            if (result.error) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'output-section';
+                errorDiv.innerHTML = `<div style="margin-bottom: 5px; font-weight: bold;">❌ 错误:</div><pre class="output-error">${escapeHtml(result.error)}</pre>`;
+                container.appendChild(errorDiv);
+            }
+            
+            // 图表
+            if (result.plots && result.plots.length > 0) {
+                const plotsDiv = document.createElement('div');
+                plotsDiv.className = 'output-section';
+                plotsDiv.innerHTML = '<div style="margin-bottom: 10px; font-weight: bold;">📊 生成的图表:</div>';
+                
+                const plotsGrid = document.createElement('div');
+                plotsGrid.className = 'output-plots';
+                
+                result.plots.forEach(plot => {
+                    const img = document.createElement('img');
+                    img.src = plot;
+                    img.className = 'plot-image';
+                    img.alt = '生成的图表';
+                    plotsGrid.appendChild(img);
+                });
+                
+                plotsDiv.appendChild(plotsGrid);
+                container.appendChild(plotsDiv);
+            }
+            
+            // 切换到输出面板
+            document.querySelector('.panel-tab[data-tab="output"]').click();
+        }
+        
+        // 清空输出
+        function clearOutput() {
+            const container = document.getElementById('output-container');
+            container.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon">💻</div>
+                    <div class="empty-state-text">点击"运行"按钮执行代码</div>
+                </div>
+            `;
+        }
+        
+        // 更新状态
+        function updateStatus(status, text) {
+            const indicator = document.getElementById('status-indicator');
+            const statusText = document.getElementById('status-text');
+            
+            indicator.className = `status-indicator ${status}`;
+            statusText.textContent = text;
+        }
+        
+        // 加载模板
+        async function loadTemplates() {
+            try {
+                const response = await fetch('/api/code/templates');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const select = document.getElementById('template-select');
+                    const container = document.getElementById('templates-container');
+                    
+                    Object.entries(data.templates).forEach(([id, template]) => {
+                        // 添加到下拉框
+                        const option = document.createElement('option');
+                        option.value = id;
+                        option.textContent = template.name;
+                        select.appendChild(option);
+                        
+                        // 添加到模板列表
+                        const item = document.createElement('div');
+                        item.className = 'template-item';
+                        item.innerHTML = `
+                            <div class="template-name">${template.name}</div>
+                            <div class="template-desc">${template.description}</div>
+                        `;
+                        item.onclick = () => {
+                            if (editor) {
+                                editor.setValue(template.code);
+                                document.querySelector('.panel-tab[data-tab="output"]').click();
+                            }
+                        };
+                        container.appendChild(item);
+                    });
+                }
+            } catch (error) {
+                console.error('加载模板失败:', error);
+            }
+        }
+        
+        // HTML转义
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
+

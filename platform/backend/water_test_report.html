@@ -1,0 +1,306 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Water System Control - Test Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #f5f5f5;
+            }
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                background-color: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            h1 {
+                color: #2196F3;
+                border-bottom: 3px solid #2196F3;
+                padding-bottom: 10px;
+            }
+            .summary {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+                margin: 20px 0;
+            }
+            .stat-card {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                text-align: center;
+            }
+            .stat-card.success {
+                background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            }
+            .stat-card.failed {
+                background: linear-gradient(135deg, #F44336 0%, #d32f2f 100%);
+            }
+            .stat-value {
+                font-size: 36px;
+                font-weight: bold;
+                margin: 10px 0;
+            }
+            .stat-label {
+                font-size: 14px;
+                opacity: 0.9;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+            }
+            th {
+                background-color: #2196F3;
+                color: white;
+                padding: 12px;
+                text-align: left;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+            }
+            tr:hover {
+                background-color: #f5f5f5;
+            }
+            .success-icon {
+                color: #4CAF50;
+                font-weight: bold;
+            }
+            .failed-icon {
+                color: #F44336;
+                font-weight: bold;
+            }
+            .charts {
+                margin: 30px 0;
+            }
+            .chart-image {
+                width: 100%;
+                margin: 20px 0;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🚀 Water System Control - Test Report</h1>
+            <p><strong>Test Date:</strong> 2025-11-09 20:04:06</p>
+            
+            <div class="summary">
+                <div class="stat-card">
+                    <div class="stat-label">Total Cases</div>
+                    <div class="stat-value">20</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-label">Successful</div>
+                    <div class="stat-value">17</div>
+                </div>
+                <div class="stat-card failed">
+                    <div class="stat-label">Failed</div>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-value">85.0%</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Time</div>
+                    <div class="stat-value">314.0s</div>
+                </div>
+            </div>
+            
+            <h2>📊 Test Charts</h2>
+            <div class="charts">
+                <img src="test_results_pie.png" class="chart-image" alt="Test Results">
+                <img src="execution_time_bar.png" class="chart-image" alt="Execution Time">
+                <img src="cumulative_success_rate.png" class="chart-image" alt="Success Rate">
+                <img src="statistics_summary.png" class="chart-image" alt="Statistics">
+            </div>
+            
+            <h2>📋 Detailed Results</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Case ID</th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Time (s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                    <tr>
+                        <td>1</td>
+                        <td><code>case_01_home_water_tower</code></td>
+                        <td>案例1：家庭水塔自动供水系统</td>
+                        <td class="success-icon">✅</td>
+                        <td>7.29</td>
+                    </tr>
+        
+                    <tr>
+                        <td>2</td>
+                        <td><code>case_02_cooling_tower</code></td>
+                        <td>案例2：工业冷却塔精确水位控制</td>
+                        <td class="success-icon">✅</td>
+                        <td>8.87</td>
+                    </tr>
+        
+                    <tr>
+                        <td>3</td>
+                        <td><code>case_03_water_supply_station</code></td>
+                        <td>案例3：供水泵站无静差控制</td>
+                        <td class="success-icon">✅</td>
+                        <td>9.99</td>
+                    </tr>
+        
+                    <tr>
+                        <td>4</td>
+                        <td><code>case_04_pid_tuning</code></td>
+                        <td>案例4：PID控制与参数整定</td>
+                        <td class="success-icon">✅</td>
+                        <td>9.39</td>
+                    </tr>
+        
+                    <tr>
+                        <td>5</td>
+                        <td><code>case_05_parameter_identification</code></td>
+                        <td>案例5：未知水箱系统参数辨识 - 最小二乘法</td>
+                        <td class="success-icon">✅</td>
+                        <td>7.04</td>
+                    </tr>
+        
+                    <tr>
+                        <td>6</td>
+                        <td><code>case_06_step_response</code></td>
+                        <td>案例6：阶跃响应法快速建模 - 图解法参数辨识</td>
+                        <td class="success-icon">✅</td>
+                        <td>8.74</td>
+                    </tr>
+        
+                    <tr>
+                        <td>7</td>
+                        <td><code>case_07_cascade_control</code></td>
+                        <td>案例7：串级控制 - 双水箱系统</td>
+                        <td class="failed-icon">❌</td>
+                        <td>3.22</td>
+                    </tr>
+        
+                    <tr>
+                        <td>8</td>
+                        <td><code>case_08_feedforward_control</code></td>
+                        <td>案例8：前馈控制 - 已知扰动补偿</td>
+                        <td class="success-icon">✅</td>
+                        <td>12.67</td>
+                    </tr>
+        
+                    <tr>
+                        <td>9</td>
+                        <td><code>case_09_system_modeling</code></td>
+                        <td>案例9：系统建模 - 从物理到数学</td>
+                        <td class="success-icon">✅</td>
+                        <td>12.10</td>
+                    </tr>
+        
+                    <tr>
+                        <td>10</td>
+                        <td><code>case_10_frequency_analysis</code></td>
+                        <td>案例10：频域分析 - Bode图与稳定性</td>
+                        <td class="success-icon">✅</td>
+                        <td>10.01</td>
+                    </tr>
+        
+                    <tr>
+                        <td>11</td>
+                        <td><code>case_11_state_space</code></td>
+                        <td>案例11：状态空间方法 - 现代控制理论入门</td>
+                        <td class="success-icon">✅</td>
+                        <td>9.26</td>
+                    </tr>
+        
+                    <tr>
+                        <td>12</td>
+                        <td><code>case_12_observer_lqr</code></td>
+                        <td>案例12：状态观测器与LQR最优控制</td>
+                        <td class="success-icon">✅</td>
+                        <td>9.45</td>
+                    </tr>
+        
+                    <tr>
+                        <td>13</td>
+                        <td><code>case_13_adaptive_control</code></td>
+                        <td>案例13：自适应控制 - 应对参数不确定性</td>
+                        <td class="success-icon">✅</td>
+                        <td>8.39</td>
+                    </tr>
+        
+                    <tr>
+                        <td>14</td>
+                        <td><code>case_14_model_predictive_control</code></td>
+                        <td>案例14：模型预测控制（MPC） - 优化控制与约束处理</td>
+                        <td class="failed-icon">❌</td>
+                        <td>60.07</td>
+                    </tr>
+        
+                    <tr>
+                        <td>15</td>
+                        <td><code>case_15_sliding_mode_control</code></td>
+                        <td>案例15：滑模控制 - 鲁棒非线性控制</td>
+                        <td class="success-icon">✅</td>
+                        <td>50.90</td>
+                    </tr>
+        
+                    <tr>
+                        <td>16</td>
+                        <td><code>case_16_fuzzy_control</code></td>
+                        <td>案例16：模糊控制 - 智能控制的经典方法</td>
+                        <td class="success-icon">✅</td>
+                        <td>8.61</td>
+                    </tr>
+        
+                    <tr>
+                        <td>17</td>
+                        <td><code>case_17_neural_network_control</code></td>
+                        <td>案例17：神经网络控制 - 深度学习与智能控制的结合</td>
+                        <td class="success-icon">✅</td>
+                        <td>5.80</td>
+                    </tr>
+        
+                    <tr>
+                        <td>18</td>
+                        <td><code>case_18_reinforcement_learning_control</code></td>
+                        <td>案例18：强化学习控制 - 智能体学习最优策略</td>
+                        <td class="failed-icon">❌</td>
+                        <td>60.05</td>
+                    </tr>
+        
+                    <tr>
+                        <td>19</td>
+                        <td><code>case_19_comprehensive_comparison</code></td>
+                        <td>案例19：综合对比 - 所有控制方法的性能评估</td>
+                        <td class="success-icon">✅</td>
+                        <td>6.90</td>
+                    </tr>
+        
+                    <tr>
+                        <td>20</td>
+                        <td><code>case_20_practical_application</code></td>
+                        <td>案例20：实际应用 - 控制器的工程实现</td>
+                        <td class="success-icon">✅</td>
+                        <td>5.29</td>
+                    </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    

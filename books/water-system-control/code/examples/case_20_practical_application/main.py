@@ -4,7 +4,13 @@
 本程序演示控制器的工程实现，包括模块化架构、状态机、故障处理等
 """
 
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 import time
 from enum import Enum

@@ -1,0 +1,185 @@
+{
+  "test_time": "2025-11-09T19:00:36.031162",
+  "book": "water-system-control",
+  "total_cases": 20,
+  "success_count": 2,
+  "success_rate": 0.1,
+  "results": [
+    {
+      "case_id": "case_01_home_water_tower",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 3.1716628074645996,
+      "stdout_lines": 13,
+      "stderr_lines": 9,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_02_cooling_tower",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.722478151321411,
+      "stdout_lines": 17,
+      "stderr_lines": 11,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_03_water_supply_station",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.7173714637756348,
+      "stdout_lines": 18,
+      "stderr_lines": 11,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_04_pid_tuning",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.81270694732666,
+      "stdout_lines": 17,
+      "stderr_lines": 11,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_05_parameter_identification",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.6544268131256104,
+      "stdout_lines": 10,
+      "stderr_lines": 12,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_06_step_response",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.6457817554473877,
+      "stdout_lines": 10,
+      "stderr_lines": 12,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_07_cascade_control",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.6246211528778076,
+      "stdout_lines": 14,
+      "stderr_lines": 15,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_08_feedforward_control",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.6314094066619873,
+      "stdout_lines": 14,
+      "stderr_lines": 15,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_09_system_modeling",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.7565832138061523,
+      "stdout_lines": 44,
+      "stderr_lines": 15,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_10_frequency_analysis",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.9145925045013428,
+      "stdout_lines": 14,
+      "stderr_lines": 15,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_11_state_space",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.6461055278778076,
+      "stdout_lines": 9,
+      "stderr_lines": 12,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_12_observer_lqr",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.6131656169891357,
+      "stdout_lines": 15,
+      "stderr_lines": 12,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_13_adaptive_control",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.5844647884368896,
+      "stdout_lines": 9,
+      "stderr_lines": 12,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_14_model_predictive_control",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 41.62385654449463,
+      "stdout_lines": 22,
+      "stderr_lines": 0,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_15_sliding_mode_control",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 1.2471349239349365,
+      "stdout_lines": 9,
+      "stderr_lines": 11,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_16_fuzzy_control",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 3.013610601425171,
+      "stdout_lines": 23,
+      "stderr_lines": 13,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_17_neural_network_control",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 6.020442962646484,
+      "stdout_lines": 87,
+      "stderr_lines": 21,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_18_reinforcement_learning_control",
+      "success": false,
+      "error": "执行超时"
+    },
+    {
+      "case_id": "case_19_comprehensive_comparison",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 4.993992567062378,
+      "stdout_lines": 59,
+      "stderr_lines": 10,
+      "has_readme": true
+    },
+    {
+      "case_id": "case_20_practical_application",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 5.694549798965454,
+      "stdout_lines": 71,
+      "stderr_lines": 91,
+      "has_readme": true
+    }
+  ]
+}

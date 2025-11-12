@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例7：串级控制 - 双水箱系统
 
@@ -29,9 +30,15 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -358,7 +365,7 @@ def compare_and_visualize():
     ax.axhline(setpoint, color='g', linestyle='--', linewidth=1.5, label='Setpoint')
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Lower Tank Level h2 (m)')
-    ax.set_title('Main Control Variable Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
 
@@ -369,7 +376,7 @@ def compare_and_visualize():
     ax.plot(t_cascade, sp_h1, 'g--', linewidth=1.5, label='h1 Setpoint (Cascade)')
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Upper Tank Level h1 (m)')
-    ax.set_title('Secondary Variable Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
 
@@ -379,7 +386,7 @@ def compare_and_visualize():
     ax.plot(t_cascade, u_cascade, 'r-', linewidth=2, label='Cascade')
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Control Input u')
-    ax.set_title('Control Input Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
 
@@ -390,7 +397,7 @@ def compare_and_visualize():
     ax.axhline(0, color='k', linestyle='--', linewidth=0.5)
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Error (m)')
-    ax.set_title('Control Error Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
 
@@ -401,13 +408,15 @@ def compare_and_visualize():
     metrics = ['Rise Time\n(min)', 'Overshoot\n(%)', 'Settling\n(min)']
 
     # 单回路
-    rise_single = t_single[np.where(h2_single >= 0.9 * setpoint)[0][0]]
+    rise_idx_single = np.where(h2_single >= 0.9 * setpoint)[0]
+    rise_single = t_single[rise_idx_single[0]] if len(rise_idx_single) > 0 else t_single[-1]
     over_single = (np.max(h2_single) - setpoint) / setpoint * 100 if np.max(h2_single) > setpoint else 0
     settle_single_idx = np.where(np.abs(h2_single - setpoint) > 0.02 * setpoint)[0]
     settle_single = t_single[settle_single_idx[-1]] if len(settle_single_idx) > 0 else 0
 
     # 串级
-    rise_cascade = t_cascade[np.where(h2_cascade >= 0.9 * setpoint)[0][0]]
+    rise_idx_cascade = np.where(h2_cascade >= 0.9 * setpoint)[0]
+    rise_cascade = t_cascade[rise_idx_cascade[0]] if len(rise_idx_cascade) > 0 else t_cascade[-1]
     over_cascade = (np.max(h2_cascade) - setpoint) / setpoint * 100 if np.max(h2_cascade) > setpoint else 0
     settle_cascade_idx = np.where(np.abs(h2_cascade - setpoint) > 0.02 * setpoint)[0]
     settle_cascade = t_cascade[settle_cascade_idx[-1]] if len(settle_cascade_idx) > 0 else 0
@@ -423,7 +432,7 @@ def compare_and_visualize():
     ax.set_xticks(x)
     ax.set_xticklabels(metrics)
     ax.set_ylabel('Value')
-    ax.set_title('Performance Metrics Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True, axis='y')
 
@@ -439,7 +448,7 @@ def compare_and_visualize():
     ax.barh(metrics, improvements, color=colors, alpha=0.7)
     ax.axvline(0, color='k', linestyle='--', linewidth=1)
     ax.set_xlabel('Improvement (%)')
-    ax.set_title('Cascade Control Improvement over Single Loop')
+    # 标题已移除，保持图表简洁
     ax.grid(True, axis='x')
 
     plt.tight_layout()

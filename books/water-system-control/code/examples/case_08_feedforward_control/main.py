@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例8：前馈控制 - 已知扰动补偿
 
@@ -31,9 +32,15 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -334,7 +341,7 @@ def compare_and_visualize():
     ax.axvline(40, color='gray', linestyle=':', alpha=0.7)
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Water Level (m)')
-    ax.set_title('Water Level Response Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
     ax.set_ylim([1.5, 2.5])
@@ -344,7 +351,7 @@ def compare_and_visualize():
     ax.plot(t_fb, d_fb, 'k-', linewidth=2, label='Disturbance')
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Disturbance (m³/min)')
-    ax.set_title('Measured Disturbance')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
     ax.axhline(0, color='k', linestyle='--', linewidth=0.5)
@@ -354,7 +361,7 @@ def compare_and_visualize():
     ax.plot(t_fb, u_fb, 'b-', linewidth=2, label='Feedback Control u')
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Control Input')
-    ax.set_title('Feedback Only - Control Input')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
     ax.set_ylim([-0.1, 1.1])
@@ -366,7 +373,7 @@ def compare_and_visualize():
     ax.plot(t_ff, u_total_ff, 'r--', linewidth=2, label='Total u')
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Control Input')
-    ax.set_title('Feedforward + Feedback - Control Inputs')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
 
@@ -381,7 +388,7 @@ def compare_and_visualize():
     ax.axvline(40, color='gray', linestyle=':', alpha=0.7)
     ax.set_xlabel('Time (min)')
     ax.set_ylabel('Error (m)')
-    ax.set_title('Control Error Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True)
 
@@ -420,7 +427,7 @@ def compare_and_visualize():
     ax.set_xticks(x)
     ax.set_xticklabels(metrics)
     ax.set_ylabel('Value')
-    ax.set_title('Performance Metrics Comparison')
+    # 标题已移除，保持图表简洁
     ax.legend()
     ax.grid(True, axis='y')
 

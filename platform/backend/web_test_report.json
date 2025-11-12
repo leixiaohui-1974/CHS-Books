@@ -1,0 +1,204 @@
+{
+  "test_time": "2025-11-10T07:38:13.875442",
+  "summary": {
+    "total": 20,
+    "success": 15,
+    "error": 5,
+    "timeout": 0,
+    "skip": 0,
+    "success_rate": "75.0%"
+  },
+  "results": {
+    "case_01": {
+      "status": "error",
+      "message": "    ~~~~^^\n  File \"E:\\OneDrive\\Documents\\GitHub\\Test\\CHS-Books\\books\\water-system-control\\code\\examples\\case_01_home_water_tower\\main.py\", line 64, in main\n    print(f\"  ������ A = {tank.A:.1f} m\\xb2\")\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'gbk' codec can't encode character '\\xb2' in position 16: illegal multibyte sequence",
+      "images": 0,
+      "time": 2.906726,
+      "returncode": 1
+    },
+    "case_02": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 5,
+      "diagrams": 1,
+      "time": 9.552906,
+      "key_info": [
+        "案例2演示完成！共生成3个PNG可视化文件",
+        "[生成的文件]",
+        "✓ 所有任务完成！"
+      ]
+    },
+    "case_03": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 5,
+      "diagrams": 1,
+      "time": 10.729964,
+      "key_info": [
+        "案例3演示完成！共生成3个PNG可视化文件",
+        "[生成的文件]",
+        "✓ 所有任务完成！"
+      ]
+    },
+    "case_04": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 6,
+      "diagrams": 1,
+      "time": 9.693937,
+      "key_info": [
+        "案例4演示完成！共生成3个PNG可视化文件",
+        "[生成的文件]",
+        "✓ 阶段1（基础控制方法）全部完成！"
+      ]
+    },
+    "case_05": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 3,
+      "diagrams": 1,
+      "time": 7.113298,
+      "key_info": [
+        "案例5演示完成！共生成3个PNG可视化文件",
+        "[生成的文件]",
+        "✓ 所有任务完成！"
+      ]
+    },
+    "case_06": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 3,
+      "diagrams": 1,
+      "time": 8.515385,
+      "key_info": [
+        "案例6演示完成！共生成3个PNG可视化文件",
+        "[生成的文件]",
+        "✓ 所有任务完成！"
+      ]
+    },
+    "case_07": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 1,
+      "time": 4.616357,
+      "key_info": [
+        "案例7演示完成！"
+      ]
+    },
+    "case_08": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 1,
+      "time": 4.76896,
+      "key_info": [
+        "案例8演示完成！"
+      ]
+    },
+    "case_09": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 1,
+      "time": 5.711317,
+      "key_info": [
+        "案例9演示完成！"
+      ]
+    },
+    "case_10": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 1,
+      "time": 5.81575,
+      "key_info": [
+        "案例10演示完成！"
+      ]
+    },
+    "case_11": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 1,
+      "time": 4.812315,
+      "key_info": [
+        "案例11演示完成！"
+      ]
+    },
+    "case_12": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 0,
+      "time": 5.87846,
+      "key_info": [
+        "案例12演示完成！"
+      ]
+    },
+    "case_13": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 0,
+      "time": 5.423044,
+      "key_info": [
+        "案例13演示完成！"
+      ]
+    },
+    "case_14": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 0,
+      "time": 4.721287,
+      "key_info": []
+    },
+    "case_15": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 1,
+      "diagrams": 0,
+      "time": 3.73093,
+      "key_info": [
+        "案例15演示完成！"
+      ]
+    },
+    "case_16": {
+      "status": "error",
+      "message": "    ~~~~~~~~~~~~~~~~~~^^\n  File \"E:\\OneDrive\\Documents\\GitHub\\Test\\CHS-Books\\books\\water-system-control\\code\\examples\\case_16_fuzzy_control\\main.py\", line 400, in part1_fuzzy_basics\n    print(f\"\\n  ȥģ��������������u = {du:.3f} m\\xb3/min\")\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'gbk' codec can't encode character '\\xb3' in position 25: illegal multibyte sequence",
+      "images": 0,
+      "time": 2.611373,
+      "returncode": 1
+    },
+    "case_17": {
+      "status": "error",
+      "message": "    ~~~~~~~~~~~~~^^\n  File \"E:\\OneDrive\\Documents\\GitHub\\Test\\CHS-Books\\books\\water-system-control\\code\\examples\\case_17_neural_network_control\\main.py\", line 618, in part5_summary\n    print(summary_text)\n    ~~~~~^^^^^^^^^^^^^^\nUnicodeEncodeError: 'gbk' codec can't encode character '\\u2022' in position 30: illegal multibyte sequence",
+      "images": 0,
+      "time": 5.930481,
+      "returncode": 1
+    },
+    "case_18": {
+      "status": "error",
+      "message": "    ~~~~~~~~~~~~~^^\n  File \"E:\\OneDrive\\Documents\\GitHub\\Test\\CHS-Books\\books\\water-system-control\\code\\examples\\case_18_reinforcement_learning_control\\main.py\", line 700, in part5_summary\n    print(summary_text)\n    ~~~~~^^^^^^^^^^^^^^\nUnicodeEncodeError: 'gbk' codec can't encode character '\\u2022' in position 30: illegal multibyte sequence",
+      "images": 0,
+      "time": 81.970951,
+      "returncode": 1
+    },
+    "case_19": {
+      "status": "error",
+      "message": "Traceback (most recent call last):\n  File \"E:\\OneDrive\\Documents\\GitHub\\Test\\CHS-Books\\books\\water-system-control\\code\\examples\\case_19_comprehensive_comparison\\main.py\", line 522, in <module>\n    print(\"\\n[���ԣ���t=20sʩ�ӽ�Ծ����-2.0 m\\xb3/min]\")\n    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'gbk' codec can't encode character '\\xb3' in position 24: illegal multibyte sequence",
+      "images": 0,
+      "time": 5.034128,
+      "returncode": 1
+    },
+    "case_20": {
+      "status": "success",
+      "message": "运行成功",
+      "images": 3,
+      "diagrams": 0,
+      "time": 5.854861,
+      "key_info": []
+    }
+  }
+}

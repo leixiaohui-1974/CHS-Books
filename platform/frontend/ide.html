@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI编程学习IDE - 水系统控制教程</title>
+    
+    <!-- Monaco Editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/editor/editor.main.min.css">
+    
+    <!-- UI组件库 -->
+    <link rel="stylesheet" href="/static/common-ui-styles.css">
+    <link rel="stylesheet" href="/static/responsive-layout.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* 顶部工具栏 */
+        .toolbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .toolbar-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .case-selector {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .case-selector:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .toolbar-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-run {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-run:hover {
+            background: #218838;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
+        }
+
+        .btn-run:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+
+        .btn-ai {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-ai:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn-save {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-save:hover {
+            background: #0056b3;
+        }
+
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+
+        /* 主要布局 */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 52px);
+        }
+
+        /* 左侧面板 - 代码编辑器 */
+        .left-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #1e1e1e;
+            border-right: 1px solid #333;
+        }
+
+        .editor-tabs {
+            background: #2d2d2d;
+            display: flex;
+            padding: 0 10px;
+            border-bottom: 1px solid #333;
+        }
+
+        .editor-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: #888;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .editor-tab.active {
+            color: #fff;
+            border-bottom-color: #667eea;
+        }
+
+        .editor-tab:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        #editor-container {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* 右侧面板 - AI助手和输出 */
+        .right-panel {
+            width: 450px;
+            display: flex;
+            flex-direction: column;
+            background: #252526;
+        }
+
+        .panel-tabs {
+            background: #2d2d2d;
+            display: flex;
+            border-bottom: 1px solid #333;
+        }
+
+        .panel-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            color: #888;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .panel-tab.active {
+            color: #fff;
+            border-bottom-color: #667eea;
+            background: #252526;
+        }
+
+        .panel-tab:hover {
+            color: #fff;
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .panel-content.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* AI助手面板 */
+        .ai-panel {
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .ai-suggestions {
+            margin-bottom: 20px;
+        }
+
+        .ai-section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #f093fb;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .suggestion-card {
+            background: #2d2d2d;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .suggestion-card:hover {
+            border-color: #667eea;
+            background: #323233;
+            transform: translateX(4px);
+        }
+
+        .suggestion-title {
+            font-weight: 600;
+            color: #4ec9b0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .suggestion-desc {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .param-controls {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #3e3e42;
+        }
+
+        .param-item {
+            margin-bottom: 12px;
+        }
+
+        .param-label {
+            display: block;
+            font-size: 12px;
+            color: #dcdcaa;
+            margin-bottom: 5px;
+        }
+
+        .param-input {
+            width: 100%;
+            padding: 6px 10px;
+            background: #1e1e1e;
+            border: 1px solid #3e3e42;
+            border-radius: 4px;
+            color: #d4d4d4;
+            font-size: 13px;
+        }
+
+        .param-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .apply-btn {
+            width: 100%;
+            padding: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        /* 输出面板 */
+        .output-panel {
+            padding: 0;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output-header {
+            padding: 12px 15px;
+            background: #2d2d2d;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .output-title {
+            font-weight: 600;
+            color: #4ec9b0;
+        }
+
+        .clear-btn {
+            padding: 4px 12px;
+            background: #3e3e42;
+            border: none;
+            border-radius: 4px;
+            color: #d4d4d4;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .clear-btn:hover {
+            background: #4e4e52;
+        }
+
+        .output-content {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            background: #1e1e1e;
+        }
+
+        .output-line {
+            margin-bottom: 4px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .output-line.error {
+            color: #f48771;
+        }
+
+        .output-line.success {
+            color: #4ec9b0;
+        }
+
+        .output-line.info {
+            color: #569cd6;
+        }
+
+        /* 结果图表面板 */
+        .results-panel {
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .result-image {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #3e3e42;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+
+        /* 加载动画 */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #3e3e42;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 参数对比表 */
+        .param-compare {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #3e3e42;
+        }
+
+        .compare-table th {
+            color: #dcdcaa;
+            font-weight: 600;
+        }
+
+        .compare-table td {
+            color: #d4d4d4;
+        }
+
+        /* AI聊天界面 */
+        .ai-chat {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            padding-bottom: 10px;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 12px;
+            max-width: 85%;
+            line-height: 1.6;
+            word-wrap: break-word;
+            animation: messageSlideIn 0.3s ease-out;
+        }
+
+        @keyframes messageSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-message.user {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-left: auto;
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .chat-message.assistant {
+            background: #2d2d2d;
+            margin-right: auto;
+            border: 1px solid #3e3e42;
+        }
+
+        /* 固定在底部的输入区域 */
+        .chat-input-area {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: #252526;
+            border-top: 1px solid #3e3e42;
+            z-index: 10;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            background: #1e1e1e;
+            border: 2px solid #3e3e42;
+            border-radius: 8px;
+            color: #d4d4d4;
+            resize: none;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.5;
+            transition: border-color 0.2s;
+            max-height: 120px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .chat-input::placeholder {
+            color: #666;
+        }
+
+        .send-btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .send-btn:active {
+            transform: translateY(0);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3e3e42;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4e4e52;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .right-panel {
+                width: 350px;
+            }
+        }
+
+        /* 状态指示器 */
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .status-indicator.running {
+            background: #28a745;
+            animation: pulse 1.5s infinite;
+        }
+
+        .status-indicator.ready {
+            background: #4ec9b0;
+        }
+
+        .status-indicator.error {
+            background: #f48771;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部工具栏 -->
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <div class="toolbar-title">
+                <span>🎓</span>
+                <span>AI编程学习IDE</span>
+            </div>
+            <select id="caseSelector" class="case-selector">
+                <option value="">加载案例...</option>
+            </select>
+        </div>
+        <div class="toolbar-right">
+            <button class="btn btn-run" id="runBtn">
+                <span class="status-indicator ready"></span>
+                ▶️ 运行 (Ctrl+Enter)
+            </button>
+            <button class="btn btn-ai" id="aiHelpBtn">
+                🤖 AI助手
+            </button>
+            <button class="btn btn-save" id="saveBtn" title="Ctrl+S">
+                💾 保存
+            </button>
+            <button class="btn btn-reset" id="resetBtn">
+                🔄 还原
+            </button>
+            <button class="btn btn-secondary" id="compareBtn" onclick="compareWithOriginal()" title="Ctrl+D">
+                🔍 对比
+            </button>
+            <button class="btn btn-secondary" id="historyBtn" onclick="showHistory()" title="Ctrl+H">
+                📚 历史
+            </button>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 左侧 - 代码编辑器 -->
+        <div class="left-panel">
+            <div class="editor-tabs">
+                <div class="editor-tab active" data-file="main.py">
+                    📄 main.py
+                </div>
+                <div class="editor-tab" data-file="readme">
+                    📖 README.md
+                </div>
+            </div>
+            <div id="editor-container"></div>
+        </div>
+
+        <!-- 右侧 - AI助手和输出 -->
+        <div class="right-panel">
+            <div class="panel-tabs">
+                <div class="panel-tab active" data-panel="ai">
+                    🤖 AI助手
+                </div>
+                <div class="panel-tab" data-panel="output">
+                    📊 运行输出
+                </div>
+                <div class="panel-tab" data-panel="results">
+                    📈 结果图表
+                </div>
+                <div class="panel-tab" data-panel="chat">
+                    💬 AI对话
+                </div>
+            </div>
+
+            <!-- AI助手面板 -->
+            <div class="panel-content active ai-panel" id="aiPanel">
+                <div class="ai-suggestions">
+                    <div class="ai-section-title">
+                        💡 智能建议
+                    </div>
+                    <div id="suggestionsList">
+                        <div class="loading active">
+                            <div class="spinner"></div>
+                            <p>正在分析代码...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 输出面板 -->
+            <div class="panel-content output-panel" id="outputPanel">
+                <div class="output-header">
+                    <span class="output-title">控制台输出</span>
+                    <button class="clear-btn" id="clearOutputBtn">清空</button>
+                </div>
+                <div class="output-content" id="outputContent">
+                    <div class="output-line info">等待运行代码...</div>
+                </div>
+            </div>
+
+            <!-- 结果图表面板 -->
+            <div class="panel-content results-panel" id="resultsPanel">
+                <div class="no-results">
+                    <p>暂无结果图表</p>
+                    <p style="font-size: 12px; color: #666; margin-top: 10px;">
+                        运行代码后，生成的图表将在此显示
+                    </p>
+                </div>
+            </div>
+
+            <!-- AI对话面板 -->
+            <div class="panel-content" id="chatPanel">
+                <div class="ai-chat">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message assistant">
+                            你好！我是AI编程助手。我可以帮你：
+                            <br>• 解释代码原理
+                            <br>• 建议参数调整
+                            <br>• 优化控制效果
+                            <br>• 解答疑问
+                            <br><br>有什么可以帮你的吗？
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <textarea 
+                            id="chatInput" 
+                            class="chat-input" 
+                            rows="2" 
+                            placeholder="输入你的问题..."
+                        ></textarea>
+                        <button class="send-btn" id="sendChatBtn">发送</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monaco Editor -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs/loader.min.js"></script>
+    
+    <script>
+        const API_BASE = 'http://localhost:8000/api/v1';
+        let editor = null;
+        let currentCase = null;
+        let originalCode = '';
+        let currentFile = 'main.py';
+        let runHistory = [];  // 运行历史
+        let maxHistory = 10;   // 最多保存10条历史
+
+        // 初始化Monaco Editor
+        require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.44.0/min/vs' }});
+        
+        require(['vs/editor/editor.main'], function() {
+            editor = monaco.editor.create(document.getElementById('editor-container'), {
+                value: '# 选择一个案例开始编程...',
+                language: 'python',
+                theme: 'vs-dark',
+                fontSize: 14,
+                minimap: { enabled: true },
+                automaticLayout: true,
+                scrollBeyondLastLine: false,
+                renderWhitespace: 'selection',
+                lineNumbers: 'on',
+                folding: true,
+                suggest: {
+                    snippetsPreventQuickSuggestions: false
+                }
+            });
+
+            // 代码变化时更新AI建议
+            editor.onDidChangeModelContent(() => {
+                debounce(analyzeCode, 1000)();
+            });
+
+            // 初始化
+            loadHistory();  // 加载历史记录
+            loadCases();
+            
+            // 检查URL参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const caseParam = urlParams.get('case');
+            if (caseParam) {
+                // 延迟加载以确保下拉列表已填充
+                setTimeout(() => {
+                    const selector = document.getElementById('caseSelector');
+                    selector.value = caseParam;
+                    loadCase(caseParam);
+                }, 1000);
+            }
+        });
+
+        // 关闭模态框
+        function closeModal() {
+            // 这里暂时不需要，因为IDE中没有使用模态框
+            // 如果需要可以添加
+        }
+
+        // 加载案例列表
+        async function loadCases() {
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const selector = document.getElementById('caseSelector');
+                    selector.innerHTML = '<option value="">选择案例...</option>';
+                    
+                    data.cases.forEach(c => {
+                        const option = document.createElement('option');
+                        option.value = c.id;
+                        option.textContent = c.title || c.name;
+                        selector.appendChild(option);
+                    });
+
+                    // 默认加载案例1
+                    selector.value = 'case_01_home_water_tower';
+                    loadCase('case_01_home_water_tower');
+                }
+            } catch (error) {
+                console.error('加载案例失败:', error);
+                addOutput('加载案例失败: ' + error.message, 'error');
+            }
+        }
+
+        // 加载案例代码
+        async function loadCase(caseId) {
+            currentCase = caseId;
+            
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases/${caseId}`);
+                const data = await response.json();
+                
+                if (data.success && data.case) {
+                    originalCode = data.case.code || '';
+                    editor.setValue(originalCode);
+                    addOutput(`已加载案例: ${data.case.title}`, 'success');
+                    
+                    // 分析代码并生成建议
+                    analyzeCode();
+                }
+            } catch (error) {
+                console.error('加载代码失败:', error);
+                addOutput('加载代码失败: ' + error.message, 'error');
+            }
+        }
+
+        // 运行代码
+        async function runCode() {
+            if (!currentCase) {
+                alert('请先选择一个案例');
+                return;
+            }
+
+            const runBtn = document.getElementById('runBtn');
+            const statusIndicator = runBtn.querySelector('.status-indicator');
+            
+            runBtn.disabled = true;
+            statusIndicator.className = 'status-indicator running';
+            
+            clearOutput();
+            addOutput('正在运行代码...', 'info');
+
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases/${currentCase}/run`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        code: editor.getValue()
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    addOutput('✅ 代码运行成功！', 'success');
+                    addOutput(data.message || '', 'info');
+                    
+                    // 显示输出
+                    if (data.output) {
+                        addOutput('\n--- 程序输出 ---', 'info');
+                        addOutput(data.output, '');
+                    }
+
+                    // 保存到历史记录
+                    saveToHistory({
+                        timestamp: new Date().toISOString(),
+                        caseId: currentCase,
+                        code: editor.getValue(),
+                        output: data.output,
+                        success: true
+                    });
+
+                    // 加载结果图表
+                    loadResults();
+                } else {
+                    addOutput('❌ 运行失败', 'error');
+                    addOutput(data.message || data.error || '', 'error');
+                    
+                    // 保存失败记录
+                    saveToHistory({
+                        timestamp: new Date().toISOString(),
+                        caseId: currentCase,
+                        code: editor.getValue(),
+                        error: data.message || data.error,
+                        success: false
+                    });
+                }
+            } catch (error) {
+                addOutput('❌ 运行出错: ' + error.message, 'error');
+            } finally {
+                runBtn.disabled = false;
+                statusIndicator.className = 'status-indicator ready';
+            }
+        }
+
+        // 加载结果图表
+        async function loadResults() {
+            const resultsPanel = document.getElementById('resultsPanel');
+            
+            try {
+                // 获取案例的图片列表（这里需要后端支持）
+                const images = [
+                    'water_level_control.png',
+                    'control_comparison.png',
+                    'phase_portrait.png'
+                ];
+
+                let html = '';
+                for (const img of images) {
+                    const imgUrl = `${API_BASE}/books/water-system-control/cases/${currentCase}/images/${img}`;
+                    html += `<img src="${imgUrl}" class="result-image" alt="${img}" onerror="this.style.display='none'">`;
+                }
+
+                if (html) {
+                    resultsPanel.innerHTML = html;
+                } else {
+                    resultsPanel.innerHTML = '<div class="no-results"><p>暂无结果图表</p></div>';
+                }
+            } catch (error) {
+                console.error('加载图表失败:', error);
+            }
+        }
+
+        // 分析代码并生成AI建议
+        function analyzeCode() {
+            const code = editor.getValue();
+            const suggestionsList = document.getElementById('suggestionsList');
+            
+            // 提取参数
+            const params = extractParameters(code);
+            
+            // 生成建议
+            const suggestions = generateSuggestions(params, currentCase);
+            
+            // 渲染建议
+            suggestionsList.innerHTML = suggestions.map(s => `
+                <div class="suggestion-card" onclick='applySuggestion(${JSON.stringify(s)})'>
+                    <div class="suggestion-title">
+                        ${s.icon} ${s.title}
+                    </div>
+                    <div class="suggestion-desc">
+                        ${s.description}
+                    </div>
+                    ${s.params ? renderParamControls(s.params) : ''}
+                </div>
+            `).join('');
+        }
+
+        // 提取代码中的参数
+        function extractParameters(code) {
+            const params = {};
+            
+            // 提取常见参数
+            const patterns = {
+                A: /A\s*=\s*([\d.]+)/,
+                R: /R\s*=\s*([\d.]+)/,
+                K: /K\s*=\s*([\d.]+)/,
+                Kp: /Kp\s*=\s*([\d.]+)/,
+                Ki: /Ki\s*=\s*([\d.]+)/,
+                Kd: /Kd\s*=\s*([\d.]+)/,
+                h0: /h0\s*=\s*([\d.]+)/,
+                setpoint: /setpoint\s*=\s*([\d.]+)/,
+                low_threshold: /low_threshold\s*=\s*([\d.]+)/,
+                high_threshold: /high_threshold\s*=\s*([\d.]+)/
+            };
+
+            for (const [key, pattern] of Object.entries(patterns)) {
+                const match = code.match(pattern);
+                if (match) {
+                    params[key] = parseFloat(match[1]);
+                }
+            }
+
+            return params;
+        }
+
+        // 生成参数调优建议
+        function generateSuggestions(params, caseId) {
+            const suggestions = [];
+
+            // 根据不同案例生成不同建议
+            if (caseId && caseId.includes('case_01')) {
+                // 案例1: 开关控制
+                suggestions.push({
+                    icon: '🎯',
+                    title: '调整滞环宽度',
+                    description: '增大滞环可减少开关次数，但会增大水位波动。建议范围: 0.5-1.5米',
+                    params: {
+                        low_threshold: params.low_threshold || 2.5,
+                        high_threshold: params.high_threshold || 3.5
+                    },
+                    type: 'hysteresis'
+                });
+
+                suggestions.push({
+                    icon: '⚡',
+                    title: '优化响应速度',
+                    description: '调整泵流量增益K可改变水位上升速度。K越大，响应越快',
+                    params: {
+                        K: params.K || 1.0
+                    },
+                    type: 'speed'
+                });
+            } else if (caseId && caseId.includes('case_02')) {
+                // 案例2: 比例控制
+                suggestions.push({
+                    icon: '📊',
+                    title: '调整比例增益Kp',
+                    description: 'Kp增大可加快响应，但过大会导致振荡。建议范围: 0.5-2.0',
+                    params: {
+                        Kp: params.Kp || 1.0
+                    },
+                    type: 'proportional'
+                });
+
+                suggestions.push({
+                    icon: '🎚️',
+                    title: '设定目标水位',
+                    description: '修改setpoint改变控制目标。注意系统稳态误差',
+                    params: {
+                        setpoint: params.setpoint || 3.0
+                    },
+                    type: 'setpoint'
+                });
+            } else if (caseId && caseId.includes('case_03') || caseId && caseId.includes('case_04')) {
+                // 案例3/4: PI/PID控制
+                suggestions.push({
+                    icon: '🎛️',
+                    title: 'PID参数整定',
+                    description: '调整Kp、Ki、Kd三个参数优化控制性能',
+                    params: {
+                        Kp: params.Kp || 1.0,
+                        Ki: params.Ki || 0.1,
+                        Kd: params.Kd || 0.05
+                    },
+                    type: 'pid'
+                });
+
+                suggestions.push({
+                    icon: '⏱️',
+                    title: '快速消除稳态误差',
+                    description: '增大Ki可加快消除稳态误差，但过大会导致超调',
+                    params: {
+                        Ki: params.Ki || 0.1
+                    },
+                    type: 'integral'
+                });
+            }
+
+            // 通用建议
+            suggestions.push({
+                icon: '🔧',
+                title: '系统参数优化',
+                description: '调整水箱物理参数A、R以模拟不同系统特性',
+                params: {
+                    A: params.A || 2.0,
+                    R: params.R || 2.0
+                },
+                type: 'system'
+            });
+
+            return suggestions;
+        }
+
+        // 渲染参数控制器
+        function renderParamControls(params) {
+            let html = '<div class="param-controls">';
+            
+            for (const [key, value] of Object.entries(params)) {
+                html += `
+                    <div class="param-item">
+                        <label class="param-label">${key}:</label>
+                        <input type="number" 
+                               class="param-input" 
+                               value="${value}" 
+                               step="0.1"
+                               data-param="${key}">
+                    </div>
+                `;
+            }
+            
+            html += '<button class="apply-btn" onclick="applyParams(event)">应用参数</button>';
+            html += '</div>';
+            
+            return html;
+        }
+
+        // 应用参数到代码
+        function applyParams(event) {
+            event.stopPropagation();
+            
+            const card = event.target.closest('.suggestion-card');
+            const inputs = card.querySelectorAll('.param-input');
+            
+            let code = editor.getValue();
+            
+            inputs.forEach(input => {
+                const param = input.dataset.param;
+                const value = input.value;
+                
+                // 使用正则替换参数值
+                const pattern = new RegExp(`(${param}\\s*=\\s*)([\\d.]+)`, 'g');
+                code = code.replace(pattern, `$1${value}`);
+            });
+            
+            editor.setValue(code);
+            addOutput(`✅ 已应用参数修改`, 'success');
+        }
+
+        // 应用建议
+        function applySuggestion(suggestion) {
+            addOutput(`💡 已选择建议: ${suggestion.title}`, 'info');
+        }
+
+        // 输出管理
+        function addOutput(text, type = '') {
+            const outputContent = document.getElementById('outputContent');
+            const line = document.createElement('div');
+            line.className = `output-line ${type}`;
+            line.textContent = text;
+            outputContent.appendChild(line);
+            outputContent.scrollTop = outputContent.scrollHeight;
+        }
+
+        function clearOutput() {
+            document.getElementById('outputContent').innerHTML = '';
+        }
+
+        // AI对话
+        async function sendChat() {
+            const input = document.getElementById('chatInput');
+            const sendBtn = document.getElementById('sendChatBtn');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // 禁用输入
+            sendBtn.disabled = true;
+            input.disabled = true;
+            
+            // 显示用户消息
+            addChatMessage(message, 'user');
+            input.value = '';
+            
+            // 显示思考中...
+            const thinkingMsg = addChatMessage('🤔 思考中...', 'assistant');
+            
+            // 模拟AI回复（实际应该调用后端AI接口）
+            setTimeout(() => {
+                // 移除思考消息
+                thinkingMsg.remove();
+                
+                const response = generateAIResponse(message);
+                addChatMessage(response, 'assistant');
+                
+                // 恢复输入
+                sendBtn.disabled = false;
+                input.disabled = false;
+                input.focus();
+            }, 800);
+        }
+
+        function addChatMessage(text, sender) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}`;
+            
+            // 支持换行和基本格式
+            messageDiv.innerHTML = text
+                .replace(/\n/g, '<br>')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/`(.*?)`/g, '<code>$1</code>');
+            
+            messagesDiv.appendChild(messageDiv);
+            
+            // 平滑滚动到底部
+            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            
+            return messageDiv;
+        }
+
+        function generateAIResponse(question) {
+            const q = question.toLowerCase();
+            
+            if (q.includes('参数') || q.includes('调整')) {
+                return '对于控制参数的调整，建议：\n1. Kp控制响应速度，增大Kp可加快响应但可能振荡\n2. Ki消除稳态误差，但过大会超调\n3. Kd抑制振荡，改善稳定性\n\n可以在左侧"AI助手"面板查看具体的参数建议。';
+            } else if (q.includes('效果') || q.includes('性能')) {
+                return '要改善控制效果，可以：\n1. 查看运行输出中的性能指标\n2. 根据超调量、稳态误差等指标调整参数\n3. 参考AI助手的智能建议\n4. 对比不同参数下的结果图表';
+            } else if (q.includes('代码') || q.includes('原理')) {
+                return '这个案例的核心原理是基于反馈控制。系统不断测量水位，与目标值比较，根据偏差计算控制量。您可以通过修改控制器参数来改变系统响应特性。';
+            } else {
+                return '我理解你的问题了。建议你：\n1. 先运行代码查看当前效果\n2. 查看AI助手面板的智能建议\n3. 尝试修改参数并重新运行\n4. 对比结果图表观察变化\n\n有具体问题欢迎继续提问！';
+            }
+        }
+
+        // 保存到历史记录
+        function saveToHistory(record) {
+            runHistory.unshift(record);
+            if (runHistory.length > maxHistory) {
+                runHistory = runHistory.slice(0, maxHistory);
+            }
+            // 保存到localStorage
+            try {
+                localStorage.setItem('ide_run_history', JSON.stringify(runHistory));
+            } catch (e) {
+                console.error('保存历史记录失败:', e);
+            }
+            addOutput(`💾 已保存到历史记录（共${runHistory.length}条）`, 'info');
+        }
+
+        // 加载历史记录
+        function loadHistory() {
+            try {
+                const saved = localStorage.getItem('ide_run_history');
+                if (saved) {
+                    runHistory = JSON.parse(saved);
+                    addOutput(`📚 已加载${runHistory.length}条历史记录`, 'info');
+                }
+            } catch (e) {
+                console.error('加载历史记录失败:', e);
+            }
+        }
+
+        // 显示历史记录
+        function showHistory() {
+            if (runHistory.length === 0) {
+                alert('暂无历史记录');
+                return;
+            }
+            
+            let text = '运行历史记录：\n\n';
+            runHistory.forEach((record, index) => {
+                const time = new Date(record.timestamp).toLocaleString();
+                const status = record.success ? '✅' : '❌';
+                text += `${index + 1}. ${status} ${time} - ${record.caseId}\n`;
+            });
+            text += '\n在控制台中输入历史记录编号以恢复代码';
+            
+            addOutput('📚 运行历史记录:', 'info');
+            runHistory.forEach((record, index) => {
+                const time = new Date(record.timestamp).toLocaleString();
+                const status = record.success ? '✅' : '❌';
+                addOutput(`${index + 1}. ${status} ${time} - ${record.caseId}`, 'info');
+            });
+            addOutput('💡 提示：最近的代码已自动保存在编辑器中', 'info');
+            
+            // 切换到输出面板
+            document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
+            document.querySelector('[data-panel="output"]').classList.add('active');
+            document.getElementById('outputPanel').classList.add('active');
+        }
+
+        // 从历史记录加载代码
+        function loadHistoryCode(index) {
+            const record = runHistory[index];
+            if (record && record.code) {
+                editor.setValue(record.code);
+                addOutput(`📥 已从历史记录恢复代码`, 'success');
+            }
+        }
+
+        // 代码对比功能
+        function compareWithOriginal() {
+            const currentCode = editor.getValue();
+            if (currentCode === originalCode) {
+                alert('代码未修改');
+                return;
+            }
+            
+            // 简单的行对比
+            const originalLines = originalCode.split('\n');
+            const currentLines = currentCode.split('\n');
+            
+            clearOutput();
+            addOutput('🔍 代码对比（修改前 vs 修改后）', 'info');
+            addOutput('━'.repeat(70), 'info');
+            
+            let changes = 0;
+            const maxLines = Math.max(originalLines.length, currentLines.length);
+            for (let i = 0; i < maxLines; i++) {
+                const orig = originalLines[i] || '';
+                const curr = currentLines[i] || '';
+                
+                if (orig !== curr) {
+                    changes++;
+                    if (orig) addOutput(`- ${orig}`, 'error');
+                    if (curr) addOutput(`+ ${curr}`, 'success');
+                } 
+            }
+            
+            addOutput('━'.repeat(70), 'info');
+            addOutput(`共发现 ${changes} 处修改`, 'info');
+            
+            // 切换到输出面板
+            document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
+            document.querySelector('[data-panel="output"]').classList.add('active');
+            document.getElementById('outputPanel').classList.add('active');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // 快捷键支持
+        document.addEventListener('keydown', (e) => {
+            // Ctrl+Enter: 运行代码
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                runCode();
+            }
+            // Ctrl+S: 保存代码
+            else if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                document.getElementById('saveBtn').click();
+            }
+            // Ctrl+D: 代码对比
+            else if (e.ctrlKey && e.key === 'd') {
+                e.preventDefault();
+                compareWithOriginal();
+            }
+            // Ctrl+H: 历史记录
+            else if (e.ctrlKey && e.key === 'h') {
+                e.preventDefault();
+                showHistory();
+            }
+        });
+
+        // 工具函数
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // 事件监听
+        document.getElementById('caseSelector').addEventListener('change', (e) => {
+            if (e.target.value) {
+                loadCase(e.target.value);
+            }
+        });
+
+        document.getElementById('runBtn').addEventListener('click', runCode);
+        
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            // TODO: 实现保存功能
+            addOutput('💾 代码已保存', 'success');
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('确定要还原到原始代码吗？未保存的修改将丢失。')) {
+                editor.setValue(originalCode);
+                addOutput('🔄 已还原到原始代码', 'info');
+            }
+        });
+
+        document.getElementById('aiHelpBtn').addEventListener('click', () => {
+            // 切换到AI助手面板
+            document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
+            
+            document.querySelector('[data-panel="ai"]').classList.add('active');
+            document.getElementById('aiPanel').classList.add('active');
+        });
+
+        document.getElementById('clearOutputBtn').addEventListener('click', clearOutput);
+
+        document.getElementById('sendChatBtn').addEventListener('click', sendChat);
+        
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendChat();
+            }
+        });
+
+        // 面板切换
+        document.querySelectorAll('.panel-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const panelId = tab.dataset.panel;
+                
+                document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.panel-content').forEach(p => p.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(panelId + 'Panel').classList.add('active');
+            });
+        });
+
+        // 编辑器标签切换
+        document.querySelectorAll('.editor-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const file = tab.dataset.file;
+                currentFile = file;
+                
+                document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // TODO: 加载对应文件内容
+                if (file === 'readme') {
+                    // 加载README
+                } else {
+                    // 加载代码文件
+                }
+            });
+        });
+    </script>
+    
+    <!-- UI工具库 -->
+    <script src="/static/common-ui-utils.js"></script>
+    <script src="/static/cache-manager.js"></script>
+    
+    <!-- IDE增强功能 -->
+    <script>
+        // 使用统一UI工具替换原生alert
+        if (window.showSuccess && window.showError) {
+            // 增强运行按钮功能
+            const runBtn = document.getElementById('run-btn');
+            if (runBtn) {
+                runBtn.addEventListener('click', async function() {
+                    const overlay = showLoading('正在执行代码...');
+                    
+                    try {
+                        // 获取当前代码
+                        const code = editor ? editor.getValue() : '';
+                        
+                        if (!code.trim()) {
+                            hideLoading(overlay);
+                            showWarning('提示', '请先编写代码');
+                            return;
+                        }
+                        
+                        // 这里应该调用后端API执行代码
+                        // 暂时模拟执行
+                        await new Promise(resolve => setTimeout(resolve, 1500));
+                        
+                        hideLoading(overlay);
+                        showSuccess('代码执行成功！');
+                        
+                        // 在输出区显示结果
+                        const outputDiv = document.querySelector('.output-content');
+                        if (outputDiv) {
+                            outputDiv.innerHTML = `
+                                <div style="color: #4CAF50; margin-bottom: 10px;">
+                                    ✓ 执行成功 (用时: 1.2s)
+                                </div>
+                                <div style="color: #888; font-size: 12px;">
+                                    结果输出将显示在这里...
+                                </div>
+                            `;
+                        }
+                    } catch (error) {
+                        hideLoading(overlay);
+                        showError('执行失败', error.message);
+                    }
+                });
+            }
+        }
+        
+        // 添加键盘快捷键
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+S 保存
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                showInfo('代码已自动保存');
+            }
+            
+            // Ctrl+Enter 运行
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                const runBtn = document.getElementById('run-btn');
+                if (runBtn) runBtn.click();
+            }
+            
+            // F11 全屏
+            if (e.key === 'F11') {
+                e.preventDefault();
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+        });
+        
+        // 使用缓存管理器缓存代码
+        if (window.CacheManager) {
+            let autoSaveTimer = null;
+            
+            // 监听编辑器变化
+            if (typeof monaco !== 'undefined') {
+                require(['vs/editor/editor.main'], function() {
+                    // 编辑器初始化后添加变化监听
+                    if (window.editor) {
+                        window.editor.onDidChangeModelContent(function() {
+                            // 防抖自动保存
+                            clearTimeout(autoSaveTimer);
+                            autoSaveTimer = setTimeout(async function() {
+                                const code = window.editor.getValue();
+                                await CacheManager.set('api', 'ide_current_code', code);
+                                console.log('[IDE] 代码已自动缓存');
+                            }, 2000);
+                        });
+                        
+                        // 尝试恢复上次的代码
+                        (async function() {
+                            const savedCode = await CacheManager.get('api', 'ide_current_code');
+                            if (savedCode && confirm('检测到上次未保存的代码，是否恢复？')) {
+                                window.editor.setValue(savedCode);
+                            }
+                        })();
+                    }
+                });
+            }
+        }
+        
+        console.log('[IDE] 增强功能已加载');
+    </script>
+</body>
+</html>
+

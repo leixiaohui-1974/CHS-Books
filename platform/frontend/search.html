@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>统一搜索 - CHS-Books</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            min-height: 100vh;
+        }
+        
+        .topbar {
+            height: 60px;
+            background: #252526;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+            justify-content: space-between;
+        }
+        
+        .topbar h1 {
+            font-size: 20px;
+            color: #cccccc;
+        }
+        
+        .topbar button {
+            padding: 8px 16px;
+            background: #0e639c;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .search-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .search-header h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 15px 20px;
+            background: #2d2d30;
+            border: 2px solid #3e3e42;
+            border-radius: 8px;
+            color: #d4d4d4;
+            font-size: 16px;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+        
+        .search-box button {
+            padding: 15px 30px;
+            background: #0e639c;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .search-box button:hover {
+            background: #1177bb;
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .filters label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        
+        .filters input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .results {
+            margin-top: 40px;
+        }
+        
+        .summary {
+            text-align: center;
+            padding: 20px;
+            background: #2d2d30;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .summary strong {
+            color: #007acc;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #888;
+        }
+        
+        .result-card {
+            background: #2d2d30;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .result-card:hover {
+            border-color: #007acc;
+            transform: translateX(5px);
+        }
+        
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .result-type {
+            font-size: 20px;
+        }
+        
+        .result-header h4 {
+            flex: 1;
+            font-size: 18px;
+            color: #cccccc;
+        }
+        
+        .score {
+            padding: 4px 10px;
+            background: #007acc;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        
+        .result-description {
+            color: #888;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .result-preview {
+            background: #1e1e1e;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #d4d4d4;
+            margin: 10px 0;
+            border-left: 3px solid #007acc;
+        }
+        
+        .result-meta {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .no-results h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #888;
+        }
+        
+        .no-results ul {
+            list-style: none;
+            color: #666;
+        }
+        
+        .no-results li {
+            padding: 8px 0;
+        }
+        
+        /* 加载动画 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #007acc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #d4d4d4;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* 错误提示 */
+        .error-toast {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #2d2d30;
+            border-left: 4px solid #f44336;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            z-index: 10001;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .error-toast-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #f44336;
+        }
+        
+        .error-toast-body {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .error-toast-close {
+            margin-top: 12px;
+            padding: 6px 12px;
+            background: #3e3e42;
+            border: none;
+            border-radius: 4px;
+            color: #d4d4d4;
+            cursor: pointer;
+            font-size: 13px;
+            width: 100%;
+        }
+        
+        .error-toast-close:hover {
+            background: #4e4e52;
+        }
+        
+        /* 成功提示 */
+        .success-toast {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #2d2d30;
+            border-left: 4px solid #4caf50;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            z-index: 10001;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .success-toast-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #4caf50;
+            font-weight: 600;
+        }
+        
+        /* 警告提示 */
+        .warning-toast {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #2d2d30;
+            border-left: 4px solid #ff9800;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            z-index: 10001;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .warning-toast-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            color: #ff9800;
+        }
+        
+        .warning-toast-body {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <h1>🔍 统一搜索</h1>
+        <div>
+            <button onclick="window.location.href='/textbooks.html'">📖 教材阅读器</button>
+            <button onclick="window.location.href='/unified.html'" style="margin-left: 10px;">🏠 返回主页</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="search-header">
+            <h2>搜索教材、案例和知识库</h2>
+            <p style="color: #888; margin-top: 10px;">输入关键词，快速找到你需要的内容</p>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="输入关键词搜索..." onkeyup="handleEnter(event)">
+            <button onclick="doSearch()">🔍 搜索</button>
+        </div>
+        
+        <div class="filters">
+            <label>
+                <input type="checkbox" id="filter-textbook" checked>
+                📖 教材
+            </label>
+            <label>
+                <input type="checkbox" id="filter-case" checked>
+                💻 案例
+            </label>
+            <label>
+                <input type="checkbox" id="filter-knowledge" checked>
+                🧠 知识库
+            </label>
+        </div>
+        
+        <div id="results" class="results"></div>
+    </div>
+    
+    <script>
+        async function doSearch() {
+            const query = document.getElementById('search-input').value.trim();
+            if (!query) {
+                showWarning('请输入搜索关键词', '请在搜索框中输入您要查找的内容');
+                return;
+            }
+            
+            const types = [];
+            if (document.getElementById('filter-textbook').checked) types.push('textbook');
+            if (document.getElementById('filter-case').checked) types.push('case');
+            if (document.getElementById('filter-knowledge').checked) types.push('knowledge');
+            
+            if (types.length === 0) {
+                showWarning('请选择搜索类型', '请至少选择一种内容类型进行搜索');
+                return;
+            }
+            
+            const loading = showLoading('正在搜索...');
+            try {
+                const response = await fetch(`/api/search/?query=${encodeURIComponent(query)}&types=${types.join(',')}&limit=20`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayResults(data);
+                    if (data.total_results > 0) {
+                        showSuccess(`找到 ${data.total_results} 个结果`);
+                    }
+                } else {
+                    throw new Error(data.error || '搜索失败');
+                }
+            } catch (error) {
+                console.error('搜索失败:', error);
+                showError('搜索失败', error.message || '无法连接到服务器，请稍后重试');
+                document.getElementById('results').innerHTML = '';
+            } finally {
+                hideLoading(loading);
+            }
+        }
+        
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                doSearch();
+            }
+        }
+        
+        function displayResults(data) {
+            const container = document.getElementById('results');
+            
+            if (!data.results || data.results.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>未找到相关结果</h3>
+                        <p>建议：</p>
+                        <ul>
+                            ${data.suggestions && data.suggestions.length > 0 ? data.suggestions.map(s => `<li>${s}</li>`).join('') : '<li>使用更通用的关键词</li>'}
+                        </ul>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 按类型分组
+            const byType = {
+                textbook: data.results.filter(r => r.type === 'textbook'),
+                case: data.results.filter(r => r.type === 'case'),
+                knowledge: data.results.filter(r => r.type === 'knowledge')
+            };
+            
+            let html = `
+                <div class="summary">
+                    找到 <strong>${data.total_results}</strong> 个结果
+                    ${data.results_by_type.textbook ? ` | 📖 教材: ${data.results_by_type.textbook}` : ''}
+                    ${data.results_by_type.case ? ` | 💻 案例: ${data.results_by_type.case}` : ''}
+                    ${data.results_by_type.knowledge ? ` | 🧠 知识库: ${data.results_by_type.knowledge}` : ''}
+                </div>
+            `;
+            
+            if (byType.textbook.length > 0) {
+                html += `
+                    <div class="section">
+                        <h3>📖 教材 (${byType.textbook.length})</h3>
+                        ${byType.textbook.map(r => renderResult(r)).join('')}
+                    </div>
+                `;
+            }
+            
+            if (byType.case.length > 0) {
+                html += `
+                    <div class="section">
+                        <h3>💻 案例 (${byType.case.length})</h3>
+                        ${byType.case.map(r => renderResult(r)).join('')}
+                    </div>
+                `;
+            }
+            
+            if (byType.knowledge.length > 0) {
+                html += `
+                    <div class="section">
+                        <h3>🧠 知识库 (${byType.knowledge.length})</h3>
+                        ${byType.knowledge.map(r => renderResult(r)).join('')}
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        function renderResult(result) {
+            const icons = {
+                'textbook': '📖',
+                'case': '💻',
+                'knowledge': '🧠'
+            };
+            
+            return `
+                <div class="result-card" onclick="openResult('${result.type}', '${result.id}')">
+                    <div class="result-header">
+                        <span class="result-type">${icons[result.type]}</span>
+                        <h4>${result.title}</h4>
+                        <span class="score">${(result.relevance_score * 100).toFixed(0)}%</span>
+                    </div>
+                    <p class="result-description">${result.description}</p>
+                    ${result.preview ? `<div class="result-preview">${result.preview}</div>` : ''}
+                    <div class="result-meta">来源: ${result.source}</div>
+                </div>
+            `;
+        }
+        
+        function openResult(type, id) {
+            if (type === 'textbook') {
+                window.location.href = `/textbooks.html?chapter=${id}`;
+            } else if (type === 'case') {
+                window.location.href = `/unified.html?case=${id}`;
+            } else if (type === 'knowledge') {
+                window.location.href = `/unified.html?knowledge=${id}`;
+            }
+        }
+        
+        // ============ UI 工具函数 ============
+        
+        function showLoading(message = '加载中...') {
+            const overlay = document.createElement('div');
+            overlay.className = 'loading-overlay';
+            overlay.innerHTML = `
+                <div style="text-align: center;">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            return overlay;
+        }
+        
+        function hideLoading(overlay) {
+            if (overlay && overlay.parentElement) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    if (overlay.parentElement) {
+                        overlay.remove();
+                    }
+                }, 300);
+            }
+        }
+        
+        function showError(title, message) {
+            const toast = document.createElement('div');
+            toast.className = 'error-toast';
+            toast.innerHTML = `
+                <div class="error-toast-header">
+                    <span>⚠️</span>
+                    <span>${title}</span>
+                </div>
+                <div class="error-toast-body">${message}</div>
+                <button class="error-toast-close" onclick="this.parentElement.remove()">知道了</button>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 5000);
+        }
+        
+        function showSuccess(message) {
+            const toast = document.createElement('div');
+            toast.className = 'success-toast';
+            toast.innerHTML = `
+                <div class="success-toast-header">
+                    <span>✅</span>
+                    <span>${message}</span>
+                </div>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 2000);
+        }
+        
+        function showWarning(title, message) {
+            const toast = document.createElement('div');
+            toast.className = 'warning-toast';
+            toast.innerHTML = `
+                <div class="warning-toast-header">
+                    <span>⚡</span>
+                    <span>${title}</span>
+                </div>
+                <div class="warning-toast-body">${message}</div>
+            `;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+{
+  "test_time": "2025-11-09T20:13:38.908591",
+  "results": [
+    {
+      "case_id": "case_01_home_water_tower",
+      "title": "案例1：家庭水塔自动供水系统",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 7.192295789718628,
+      "error": null
+    },
+    {
+      "case_id": "case_02_cooling_tower",
+      "title": "案例2：工业冷却塔精确水位控制",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 9.342591762542725,
+      "error": null
+    },
+    {
+      "case_id": "case_03_water_supply_station",
+      "title": "案例3：供水泵站无静差控制",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 10.791361570358276,
+      "error": null
+    },
+    {
+      "case_id": "case_04_pid_tuning",
+      "title": "案例4：PID控制与参数整定",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 10.153223991394043,
+      "error": null
+    },
+    {
+      "case_id": "case_05_parameter_identification",
+      "title": "案例5：未知水箱系统参数辨识 - 最小二乘法",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 7.392744064331055,
+      "error": null
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "success": 5,
+    "failed": 0,
+    "total_time": 44.87221717834473
+  }
+}

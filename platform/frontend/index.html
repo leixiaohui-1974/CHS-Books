@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水系统控制理论教程 - 智能学习平台 v3.1 (修复版)</title>
+    
+    <!-- Markdown渲染库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.0.0/marked.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 顶部导航栏 */
+        .top-nav {
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* 主容器 */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 60px);
+            position: relative;
+        }
+
+        /* 左侧侧边栏 */
+        .left-panel {
+            width: 300px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 100;
+        }
+
+        .left-panel.collapsed {
+            width: 0;
+            min-width: 0;
+            border-right: none;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+        }
+
+        .tree-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        /* 中间内容区 */
+        .center-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            position: relative;
+        }
+
+        /* 工具栏 */
+        .toolbar {
+            height: 50px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            gap: 10px;
+        }
+
+        .toolbar-left, .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toolbar-btn {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            color: #374151;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .toolbar-btn:hover {
+            background: #f3f4f6;
+            border-color: #d1d5db;
+        }
+
+        .toolbar-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .toolbar-btn .shortcut {
+            opacity: 0.6;
+            font-size: 11px;
+            margin-left: 5px;
+        }
+
+        .content-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        /* 右侧AI助手面板 */
+        .right-panel {
+            width: 350px;
+            background: white;
+            border-left: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 100;
+        }
+
+        .right-panel.collapsed {
+            width: 0;
+            min-width: 0;
+            border-left: none;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .panel-close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .panel-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        /* 底部终端面板 */
+        .bottom-panel {
+            height: 250px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-top: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 100;
+        }
+
+        .bottom-panel.collapsed {
+            height: 0;
+            min-height: 0;
+            border-top: none;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            padding: 10px 15px;
+            background: #252526;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .terminal-title {
+            font-size: 14px;
+            color: #cccccc;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* 欢迎页面样式（保持不变）*/
+        .welcome-page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .welcome-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-title {
+            font-size: 42px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .welcome-subtitle {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+        .quick-nav-section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .nav-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 35px;
+            border-radius: 16px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-card:hover::before {
+            opacity: 1;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-card.green {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .nav-card.green:hover {
+            box-shadow: 0 12px 35px rgba(17, 153, 142, 0.4);
+        }
+
+        .nav-card.orange {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .nav-card.orange:hover {
+            box-shadow: 0 12px 35px rgba(240, 147, 251, 0.4);
+        }
+
+        .nav-card.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .nav-card.blue:hover {
+            box-shadow: 0 12px 35px rgba(79, 172, 254, 0.4);
+        }
+
+        .nav-card-icon {
+            font-size: 52px;
+            margin-bottom: 18px;
+        }
+
+        .nav-card-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .nav-card-desc {
+            font-size: 14px;
+            opacity: 0.95;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .nav-card-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            opacity: 0.9;
+            flex-wrap: wrap;
+        }
+
+        .nav-card-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .left-panel { width: 250px; }
+            .right-panel { width: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .left-panel, .right-panel {
+                position: absolute;
+                height: 100%;
+                z-index: 200;
+            }
+            .left-panel { left: 0; }
+            .right-panel { right: 0; }
+            .bottom-panel { height: 200px; }
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .terminal-content::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+
+        .terminal-content::-webkit-scrollbar-thumb {
+            background: #4a4a4a;
+        }
+
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e5e7eb;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .error {
+            padding: 50px;
+            text-align: center;
+            color: #ef4444;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="top-nav">
+        <div class="nav-left">
+            <div class="nav-title">🎓 水系统控制理论教程 - 智能学习平台 V3.1</div>
+        </div>
+        <div class="nav-right">
+            <a href="/textbooks.html" class="nav-btn">📚 教材库</a>
+            <a href="/search.html" class="nav-btn">🔍 搜索</a>
+            <a href="/docs" class="nav-btn">📖 API文档</a>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 左侧面板 -->
+        <div class="left-panel" id="leftPanel">
+            <div class="sidebar-header">
+                <div class="sidebar-title">📁 案例浏览器</div>
+                <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索案例...">
+            </div>
+            <div class="tree-container" id="treeContainer">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <div class="loading-text">正在加载案例列表...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中间内容区 -->
+        <div class="center-area">
+            <!-- 工具栏 -->
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <button class="toolbar-btn active" id="toggleLeftBtn" title="切换文件树 (Ctrl+B)" onclick="togglePanel('left')">
+                        📁 文件树 <span class="shortcut">Ctrl+B</span>
+                    </button>
+                    <button class="toolbar-btn" id="toggleRightBtn" title="切换AI助手 (Ctrl+J)" onclick="togglePanel('right')">
+                        🤖 AI助手 <span class="shortcut">Ctrl+J</span>
+                    </button>
+                    <button class="toolbar-btn" id="toggleBottomBtn" title="切换终端 (Ctrl+`)" onclick="togglePanel('bottom')">
+                        📟 终端 <span class="shortcut">Ctrl+`</span>
+                    </button>
+                </div>
+                <div class="toolbar-right">
+                    <button class="toolbar-btn" onclick="location.href='/'">🏠 返回主页</button>
+                </div>
+            </div>
+
+            <!-- 内容主体 -->
+            <div class="content-body" id="contentBody">
+                <div class="welcome-page">
+                    <div class="welcome-header">
+                        <div class="welcome-icon">🎓</div>
+                        <div class="welcome-title">水系统控制理论教程</div>
+                        <div class="welcome-subtitle">从基础到高级，全面掌握水系统控制理论与实践</div>
+                    </div>
+                    
+                    <div class="quick-nav-section">
+                        <div class="section-title">🚀 快速导航</div>
+                        <div class="nav-cards-grid">
+                            <a href="/textbooks.html" class="nav-card green">
+                                <div class="nav-card-icon">📚</div>
+                                <div class="nav-card-title">教材库</div>
+                                <div class="nav-card-desc">系统化学习水系统控制理论，从基础到高级全面覆盖</div>
+                                <div class="nav-card-stats">
+                                    <div class="nav-card-stat">📖 18本教材</div>
+                                    <div class="nav-card-stat">📝 622章节</div>
+                                    <div class="nav-card-stat">✍️ 72万字</div>
+                                </div>
+                            </a>
+                            <a href="/search.html" class="nav-card orange">
+                                <div class="nav-card-icon">🔍</div>
+                                <div class="nav-card-title">统一搜索</div>
+                                <div class="nav-card-desc">快速查找教材、案例、知识库中的任何内容，精准定位</div>
+                                <div class="nav-card-stats">
+                                    <div class="nav-card-stat">📚 跨平台</div>
+                                    <div class="nav-card-stat">⚡ 快速检索</div>
+                                    <div class="nav-card-stat">🎯 精准定位</div>
+                                </div>
+                            </a>
+                            <a href="/code-runner.html" class="nav-card blue">
+                                <div class="nav-card-icon">💻</div>
+                                <div class="nav-card-title">代码运行器</div>
+                                <div class="nav-card-desc">在线Python开发环境，支持代码编辑、实时执行和图表生成</div>
+                                <div class="nav-card-stats">
+                                    <div class="nav-card-stat">🐍 Python 3.x</div>
+                                    <div class="nav-card-stat">📊 图表生成</div>
+                                    <div class="nav-card-stat">⚙️ 4个模板</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">20</div>
+                            <div class="stat-label">实战案例</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">18</div>
+                            <div class="stat-label">专业教材</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">72万</div>
+                            <div class="stat-label">总字数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">96.3</div>
+                            <div class="stat-label">质量评分</div>
+                        </div>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <div class="feature-title">完整案例库</div>
+                            <div class="feature-desc">从基础的开关控制到高级的强化学习，覆盖控制理论全领域</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">💻</div>
+                            <div class="feature-title">AI编程IDE</div>
+                            <div class="feature-desc">内置AI助手，提供参数调优建议，支持在线编写和运行代码</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-title">可视化结果</div>
+                            <div class="feature-desc">实时生成控制效果图表，直观展示系统响应和性能指标</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-title">案例驱动教学</div>
+                            <div class="feature-desc">每个案例都有详细说明、代码实现和结果分析，边学边练</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部终端面板 - 默认隐藏 -->
+            <div class="bottom-panel collapsed" id="bottomPanel">
+                <div class="terminal-header">
+                    <div class="terminal-title">📟 输出终端</div>
+                    <button class="panel-close-btn" onclick="togglePanel('bottom')">✕</button>
+                </div>
+                <div class="terminal-content" id="terminalContent">
+                    <div>准备就绪...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧AI助手面板 - 默认隐藏 -->
+        <div class="right-panel collapsed" id="rightPanel">
+            <div class="panel-header">
+                <div class="panel-title">🤖 AI编程助手</div>
+                <button class="panel-close-btn" onclick="togglePanel('right')">✕</button>
+            </div>
+            <div class="panel-content">
+                <p style="color: #6b7280; line-height: 1.6;">
+                    👋 你好！我是AI编程助手。我可以帮你：
+                </p>
+                <ul style="margin-top: 15px; color: #6b7280; line-height: 1.8;">
+                    <li>分析代码和参数</li>
+                    <li>提供优化建议</li>
+                    <li>解答控制理论问题</li>
+                    <li>调试程序错误</li>
+                </ul>
+                <div style="margin-top: 20px;">
+                    <input type="text" placeholder="输入问题..." style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 14px;">
+                    <button style="margin-top: 10px; width: 100%; padding: 10px; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== 全局变量 ==========
+        const API_BASE = 'http://localhost:8000/api/v1';
+
+        // ========== 面板控制 ==========
+        function togglePanel(panel) {
+            const panels = {
+                'left': document.getElementById('leftPanel'),
+                'right': document.getElementById('rightPanel'),
+                'bottom': document.getElementById('bottomPanel')
+            };
+            
+            const buttons = {
+                'left': document.getElementById('toggleLeftBtn'),
+                'right': document.getElementById('toggleRightBtn'),
+                'bottom': document.getElementById('toggleBottomBtn')
+            };
+            
+            const targetPanel = panels[panel];
+            const targetButton = buttons[panel];
+            
+            if (targetPanel) {
+                const isCollapsed = targetPanel.classList.contains('collapsed');
+                targetPanel.classList.toggle('collapsed');
+                
+                if (targetButton) {
+                    if (isCollapsed) {
+                        targetButton.classList.add('active');
+                    } else {
+                        targetButton.classList.remove('active');
+                    }
+                }
+                
+                console.log(`[UI] ${panel}面板${isCollapsed ? '已显示' : '已隐藏'}`);
+            }
+        }
+
+        // ========== 快捷键支持 ==========
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'b') {
+                e.preventDefault();
+                togglePanel('left');
+            } else if (e.ctrlKey && e.key === 'j') {
+                e.preventDefault();
+                togglePanel('right');
+            } else if (e.ctrlKey && e.key === '`') {
+                e.preventDefault();
+                togglePanel('bottom');
+            }
+        });
+
+        // ========== 向终端输出消息 ==========
+        function printToTerminal(message, type = 'info') {
+            const terminalContent = document.getElementById('terminalContent');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = {
+                'info': '#d4d4d4',
+                'success': '#4ade80',
+                'error': '#ef4444',
+                'warning': '#fbbf24'
+            }[type] || '#d4d4d4';
+            
+            const line = document.createElement('div');
+            line.style.color = color;
+            line.textContent = `[${timestamp}] ${message}`;
+            terminalContent.appendChild(line);
+            terminalContent.scrollTop = terminalContent.scrollHeight;
+        }
+
+        // ========== 初始化 ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('[UI] 页面加载完成，UI控制系统已初始化');
+            console.log('[快捷键] Ctrl+B=文件树 | Ctrl+J=AI助手 | Ctrl+`=终端');
+            
+            // 欢迎消息
+            setTimeout(() => {
+                printToTerminal('系统已启动，欢迎使用！', 'success');
+            }, 1000);
+        });
+
+        console.log('[UI] v3.1修复版 - 所有UI控制功能已加载完成');
+    </script>
+</body>
+</html>
+

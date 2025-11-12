@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水系统控制理论教程 - 智能知识平台</title>
+    
+    <!-- Markdown渲染库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.0.0/marked.min.js"></script>
+    
+    <!-- 性能优化工具 -->
+    <link rel="stylesheet" href="/static/lazy-load.css">
+    <link rel="stylesheet" href="/static/common-ui-styles.css">
+    <link rel="stylesheet" href="/static/responsive-layout.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 顶部导航栏 */
+        .top-nav {
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-title {
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-left: 10px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        /* 主容器 */
+        .main-container {
+            display: flex;
+            height: calc(100vh - 60px);
+        }
+
+        /* 左侧树状导航 */
+        .sidebar {
+            width: 320px;
+            background: white;
+            border-right: 1px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: #667eea;
+        }
+
+        .tree-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+        /* 树节点样式 */
+        .tree-node {
+            margin-bottom: 5px;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .tree-item:hover {
+            background: #f3f4f6;
+        }
+
+        .tree-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .tree-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .tree-label {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .tree-badge {
+            padding: 2px 8px;
+            background: #e5e7eb;
+            border-radius: 12px;
+            font-size: 11px;
+            color: #6b7280;
+        }
+
+        .tree-item.active .tree-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* 树分组 */
+        .tree-group {
+            margin-bottom: 10px;
+        }
+
+        .tree-group-header {
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* 右侧内容区 */
+        .content-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: #f9fafb;
+        }
+
+        .content-header {
+            padding: 20px 30px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .content-title-section {
+            flex: 1;
+        }
+
+        .content-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .content-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .content-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .action-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .action-btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 1px solid #667eea;
+        }
+
+        .action-btn-secondary:hover {
+            background: #f3f4f6;
+        }
+
+        .content-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+
+        /* 欢迎页面 */
+        .welcome-page {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .welcome-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .welcome-title {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .welcome-subtitle {
+            font-size: 18px;
+            color: #6b7280;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* 快速导航区域 */
+        .quick-nav-section {
+            margin: 40px 0;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .nav-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .nav-card:hover::before {
+            opacity: 1;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-card.green {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .nav-card.orange {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .nav-card.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .nav-card-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .nav-card-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .nav-card-desc {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .nav-card-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .nav-card-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        /* README内容样式 */
+        .readme-content {
+            max-width: 1000px;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .readme-content h1 {
+            font-size: 32px;
+            margin: 30px 0 20px 0;
+            color: #1f2937;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .readme-content h2 {
+            font-size: 26px;
+            margin: 25px 0 15px 0;
+            color: #667eea;
+        }
+
+        .readme-content h3 {
+            font-size: 20px;
+            margin: 20px 0 12px 0;
+            color: #4b5563;
+        }
+
+        .readme-content p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #374151;
+        }
+
+        .readme-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .readme-content table td {
+            padding: 15px;
+            vertical-align: top;
+            border: 1px solid #e5e7eb;
+        }
+
+        .readme-content table img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .readme-content code {
+            background: #f3f4f6;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #e83e8c;
+        }
+
+        .readme-content pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .readme-content pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        .readme-content ul, .readme-content ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        .readme-content li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        /* 加载动画 */
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e5e7eb;
+            border-top-color: #667eea;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            margin-top: 20px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="top-nav">
+        <div class="nav-left">
+            <div class="nav-title">
+                🎓 水系统控制理论教程
+                <span class="nav-subtitle">智能知识平台 V2.0</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <a href="/ide" class="nav-btn">💻 AI编程IDE</a>
+            <a href="/docs" class="nav-btn">📚 API文档</a>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 左侧树状导航 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">📖 案例目录</div>
+                <input type="text" class="search-box" id="searchBox" placeholder="🔍 搜索案例...">
+            </div>
+            <div class="tree-container" id="treeContainer">
+                <!-- 树节点将通过JavaScript动态生成 -->
+            </div>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="content-area">
+            <div class="content-header" id="contentHeader">
+                <div class="content-title-section">
+                    <div class="content-title" id="contentTitle">欢迎使用智能知识平台</div>
+                    <div class="content-meta" id="contentMeta">
+                        <span class="meta-item">📝 选择左侧案例开始学习</span>
+                    </div>
+                </div>
+                <div class="content-actions" id="contentActions">
+                    <!-- 操作按钮将动态生成 -->
+                </div>
+            </div>
+            <div class="content-body" id="contentBody">
+                <!-- 内容将动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api/v1';
+        let allCases = [];
+        let currentCase = null;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initTreeClickHandler();  // 初始化点击事件
+            loadCases();
+            showWelcomePage();
+            
+            // 搜索功能
+            document.getElementById('searchBox').addEventListener('input', (e) => {
+                filterCases(e.target.value);
+            });
+        });
+
+        // 根据案例编号自动分配分类
+        function getCategoryByIndex(index) {
+            if (index <= 4) return '基础控制';
+            if (index <= 10) return '高级控制';
+            return '智能控制';
+        }
+
+        // 加载案例列表
+        async function loadCases() {
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases`);
+                const data = await response.json();
+                
+                if (data.success && data.cases) {
+                    // 自动分配category并使用title作为显示名称
+                    allCases = data.cases.map((c, index) => ({
+                        ...c,
+                        category: c.category || getCategoryByIndex(index + 1),
+                        displayName: c.title || c.name
+                    }));
+                    renderTree(allCases);
+                }
+            } catch (error) {
+                console.error('加载案例失败:', error);
+            }
+        }
+
+        // 渲染树状结构
+        function renderTree(cases) {
+            const container = document.getElementById('treeContainer');
+            
+            // 按分类分组
+            const groups = {
+                '基础控制': cases.filter(c => c.category === '基础控制'),
+                '高级控制': cases.filter(c => c.category === '高级控制'),
+                '智能控制': cases.filter(c => c.category === '智能控制')
+            };
+            
+            let html = '';
+            
+            for (const [groupName, groupCases] of Object.entries(groups)) {
+                if (groupCases.length > 0) {
+                    html += `<div class="tree-group">`;
+                    html += `<div class="tree-group-header">${groupName}</div>`;
+                    
+                    groupCases.forEach(c => {
+                        const icon = getIconForCase(c.id);
+                        const hasExperiment = c.has_experiments || c.has_experiment;
+                        html += `
+                            <div class="tree-node">
+                                <div class="tree-item" data-case-id="${c.id}">
+                                    <span class="tree-icon">${icon}</span>
+                                    <span class="tree-label">${c.displayName}</span>
+                                    ${hasExperiment ? '<span class="tree-badge">实验</span>' : ''}
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += `</div>`;
+                }
+            }
+            
+            container.innerHTML = html;
+        }
+        
+        // 初始化树节点点击事件（只绑定一次）
+        function initTreeClickHandler() {
+            const container = document.getElementById('treeContainer');
+            container.addEventListener('click', (e) => {
+                const item = e.target.closest('.tree-item');
+                if (item) {
+                    const caseId = item.dataset.caseId;
+                    loadCaseById(caseId, item);
+                }
+            });
+        }
+
+        // 获取案例图标
+        function getIconForCase(caseId) {
+            const icons = {
+                'case_01': '💧',
+                'case_02': '🏭',
+                'case_03': '🚰',
+                'case_04': '⚙️',
+                'case_05': '🔍',
+                'case_06': '📊',
+                'case_07': '🔗',
+                'case_08': '➡️',
+                'case_09': '🎓',
+                'case_10': '📈',
+                'case_11': '🎯',
+                'case_12': '👁️',
+                'case_13': '🔄',
+                'case_14': '🎮',
+                'case_15': '🛡️',
+                'case_16': '🧠',
+                'case_17': '🤖',
+                'case_18': '🎲',
+                'case_19': '📋',
+                'case_20': '🚀'
+            };
+            return icons[caseId] || '📄';
+        }
+
+        // 搜索过滤
+        function filterCases(keyword) {
+            const filtered = keyword ? 
+                allCases.filter(c => c.name.toLowerCase().includes(keyword.toLowerCase())) :
+                allCases;
+            renderTree(filtered);
+        }
+
+        // 显示欢迎页面
+        function showWelcomePage() {
+            const contentBody = document.getElementById('contentBody');
+            contentBody.innerHTML = `
+                <div class="welcome-page">
+                    <div class="welcome-header">
+                        <div class="welcome-icon">🎓</div>
+                        <div class="welcome-title">水系统控制理论教程</div>
+                        <div class="welcome-subtitle">从基础到高级，20个实战案例带你掌握控制理论</div>
+                    </div>
+                    
+                    <div class="quick-nav-section">
+                        <div class="section-title">🚀 快速导航</div>
+                        <div class="nav-cards-grid">
+                            <a href="/textbooks.html" class="nav-card green">
+                                <div class="nav-card-icon">📚</div>
+                                <div class="nav-card-title">教材库</div>
+                                <div class="nav-card-desc">系统化学习水系统控制理论，从基础到高级</div>
+                                <div class="nav-card-stats">
+                                    <div class="nav-card-stat">📖 18本教材</div>
+                                    <div class="nav-card-stat">📝 622章节</div>
+                                    <div class="nav-card-stat">✍️ 72万字</div>
+                                </div>
+                            </a>
+                            <a href="/search.html" class="nav-card orange">
+                                <div class="nav-card-icon">🔍</div>
+                                <div class="nav-card-title">统一搜索</div>
+                                <div class="nav-card-desc">快速查找教材、案例、知识库中的任何内容</div>
+                                <div class="nav-card-stats">
+                                    <div class="nav-card-stat">📚 跨平台</div>
+                                    <div class="nav-card-stat">⚡ 快速检索</div>
+                                    <div class="nav-card-stat">🎯 精准定位</div>
+                                </div>
+                            </a>
+                            <a href="/code-runner.html" class="nav-card blue">
+                                <div class="nav-card-icon">💻</div>
+                                <div class="nav-card-title">代码运行器</div>
+                                <div class="nav-card-desc">在线Python开发环境，支持代码编辑和实时执行</div>
+                                <div class="nav-card-stats">
+                                    <div class="nav-card-stat">🐍 Python 3.x</div>
+                                    <div class="nav-card-stat">📊 图表生成</div>
+                                    <div class="nav-card-stat">⚙️ 4个模板</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">20</div>
+                            <div class="stat-label">案例总数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">18</div>
+                            <div class="stat-label">专业教材</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">72万</div>
+                            <div class="stat-label">总字数</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">96.3</div>
+                            <div class="stat-label">质量评分</div>
+                        </div>
+                    </div>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <div class="feature-title">完整案例库</div>
+                            <div class="feature-desc">从基础的开关控制到高级的强化学习，覆盖控制理论全领域</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">💻</div>
+                            <div class="feature-title">AI编程IDE</div>
+                            <div class="feature-desc">内置AI助手，提供参数调优建议，支持在线编写和运行代码</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <div class="feature-title">可视化结果</div>
+                            <div class="feature-desc">实时生成控制效果图表，直观展示系统响应和性能指标</div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <div class="feature-title">案例驱动教学</div>
+                            <div class="feature-desc">每个案例都有详细说明、代码实现和结果分析，边学边练</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 更新标题栏
+            document.getElementById('contentTitle').textContent = '欢迎使用智能知识平台';
+            document.getElementById('contentMeta').innerHTML = '<span class="meta-item">📝 选择左侧案例开始学习</span>';
+            document.getElementById('contentActions').innerHTML = '';
+        }
+
+        // 加载案例详情
+        async function loadCaseById(caseId, clickedItem) {
+            currentCase = caseId;
+            
+            // 更新树节点选中状态
+            document.querySelectorAll('.tree-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            if (clickedItem) {
+                clickedItem.classList.add('active');
+            }
+            
+            // 显示加载动画
+            const contentBody = document.getElementById('contentBody');
+            contentBody.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <div class="loading-text">正在加载案例详情...</div>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases/${caseId}`);
+                const data = await response.json();
+                
+                if (data.success && data.case) {
+                    showCaseDetail(data.case);
+                } else {
+                    contentBody.innerHTML = '<div class="error">❌ 加载失败</div>';
+                }
+            } catch (error) {
+                contentBody.innerHTML = `<div class="error">❌ 错误: ${error.message}</div>`;
+            }
+        }
+
+        // 显示案例详情
+        function showCaseDetail(caseData) {
+            // 更新标题栏
+            document.getElementById('contentTitle').textContent = caseData.title || caseData.name;
+            document.getElementById('contentMeta').innerHTML = `
+                <span class="meta-item">📂 ${caseData.category}</span>
+                <span class="meta-item">⭐ ${caseData.difficulty || '未知难度'}</span>
+                ${caseData.has_experiment ? '<span class="meta-item">🧪 包含实验</span>' : ''}
+            `;
+            
+            // 更新操作按钮
+            document.getElementById('contentActions').innerHTML = `
+                <button class="action-btn action-btn-primary" onclick="openInIDE('${currentCase}')">
+                    💻 AI编程IDE
+                </button>
+                <button class="action-btn action-btn-secondary" onclick="runCase('${currentCase}')">
+                    ▶️ 运行案例
+                </button>
+            `;
+            
+            // 渲染README内容
+            if (caseData.readme) {
+                let html = convertMarkdownToHTML(caseData.readme);
+                
+                // 替换图片路径
+                html = html.replace(/src="([^"]+\.png)"/g, (match, filename) => {
+                    return `src="${API_BASE}/books/water-system-control/cases/${currentCase}/images/${filename}"`;
+                });
+                
+                document.getElementById('contentBody').innerHTML = `
+                    <div class="readme-content">${html}</div>
+                `;
+            } else {
+                document.getElementById('contentBody').innerHTML = '<div>暂无文档内容</div>';
+            }
+        }
+
+        // 使用marked.js进行Markdown转换
+        function convertMarkdownToHTML(markdown) {
+            if (!markdown) return '';
+            
+            try {
+                if (typeof marked === 'undefined') {
+                    console.error('marked.js未加载');
+                    return markdown.replace(/\n/g, '<br>');
+                }
+                
+                return marked.parse(markdown, {
+                    breaks: true,
+                    gfm: true,
+                    headerIds: true,
+                    mangle: false,
+                    pedantic: false,
+                    sanitize: false,
+                    silent: false,
+                    smartLists: true,
+                    smartypants: false,
+                    xhtml: false
+                });
+            } catch (error) {
+                console.error('Markdown转换错误:', error);
+                return markdown.replace(/\n/g, '<br>');
+            }
+        }
+
+        // 在IDE中打开
+        function openInIDE(caseId) {
+            window.open(`/ide?case=${caseId}`, '_blank');
+        }
+
+        // 运行案例
+        async function runCase(caseId) {
+            const contentBody = document.getElementById('contentBody');
+            const originalContent = contentBody.innerHTML;
+            
+            contentBody.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <div class="loading-text">正在运行案例，请稍候...</div>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases/${caseId}/run`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('✅ 案例运行成功！\n\n结果已更新，请查看文档中的图表。');
+                    // 重新加载案例详情
+                    loadCase(caseId);
+                } else {
+                    alert('❌ 运行失败：' + (data.message || data.error));
+                    contentBody.innerHTML = originalContent;
+                }
+            } catch (error) {
+                alert('❌ 错误：' + error.message);
+                contentBody.innerHTML = originalContent;
+            }
+        }
+    </script>
+    
+    <!-- 性能优化工具 -->
+    <script src="/static/lazy-load.js"></script>
+    <script src="/static/cache-manager.js"></script>
+    <script src="/static/common-ui-utils.js"></script>
+    
+    <!-- 初始化性能优化 -->
+    <script>
+        // 页面加载完成后初始化
+        window.addEventListener('DOMContentLoaded', function() {
+            // 初始化懒加载
+            if (window.LazyLoad) {
+                LazyLoad.init('img[data-src]');
+                console.log('[Index] 图片懒加载已启用');
+            }
+            
+            // 初始化缓存管理器
+            if (window.CacheManager) {
+                console.log('[Index] 缓存管理器已启用');
+                
+                // 打印存储信息
+                setTimeout(() => {
+                    CacheManager.printStorageInfo();
+                }, 2000);
+            }
+        });
+        
+        // 使用缓存优化API调用
+        if (window.CacheManager) {
+            // 重写loadBooks函数使用缓存
+            const originalLoadBooks = window.loadBooks;
+            window.loadBooks = async function() {
+                try {
+                    const data = await CacheManager.fetch('/api/books');
+                    booksData = data.books || data || [];
+                    renderBooksList(booksData);
+                } catch (error) {
+                    console.error('加载失败:', error);
+                    // 降级到原始方法
+                    if (originalLoadBooks) {
+                        originalLoadBooks();
+                    }
+                }
+            };
+        }
+    </script>
+</body>
+</html>
+

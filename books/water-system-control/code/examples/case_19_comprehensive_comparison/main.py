@@ -4,7 +4,13 @@
 本程序对比PID、自适应、MPC、滑模、模糊、神经网络、强化学习七种控制方法
 """
 
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from scipy.linalg import solve
 from collections import deque
@@ -701,7 +707,7 @@ ax.set_xticks(angles[:-1])
 ax.set_xticklabels(categories, fontsize=12)
 ax.set_ylim(0, 10)
 ax.set_yticks([2, 4, 6, 8, 10])
-ax.set_title('综合性能雷达图', fontsize=16, fontweight='bold', pad=20)
+    # 标题已移除，保持图表简洁
 ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1), fontsize=10)
 ax.grid(True)
 

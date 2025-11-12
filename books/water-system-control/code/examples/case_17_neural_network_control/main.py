@@ -9,7 +9,13 @@
 5. 性能对比与分析
 """
 
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 
@@ -209,7 +215,7 @@ def part1_nn_basics():
     plt.plot(losses, 'b-', linewidth=2)
     plt.xlabel('训练轮数')
     plt.ylabel('平均损失')
-    plt.title('神经网络训练过程')
+    # 标题已移除，保持图表简洁
     plt.grid(True, alpha=0.3)
     plt.tight_layout()
     plt.savefig('case17_nn_basics.png', dpi=150, bbox_inches='tight')

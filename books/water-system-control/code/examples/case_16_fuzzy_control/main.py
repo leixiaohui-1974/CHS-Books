@@ -9,7 +9,13 @@
 5. 控制曲面可视化
 """
 
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 
@@ -520,7 +526,7 @@ def part3_control_surface(fuzzy):
     ax1.set_xlabel('误差 e (m)')
     ax1.set_ylabel('误差变化率 Δe (m/min)')
     ax1.set_zlabel('控制增量 Δu (m³/min)')
-    ax1.set_title('模糊控制曲面（3D）')
+    # 标题已移除，保持图表简洁
     fig.colorbar(surf, ax=ax1, shrink=0.5)
 
     # 2D等高线图
@@ -528,7 +534,7 @@ def part3_control_surface(fuzzy):
     contour = ax2.contourf(E, DE, DU, levels=20, cmap='viridis')
     ax2.set_xlabel('误差 e (m)')
     ax2.set_ylabel('误差变化率 Δe (m/min)')
-    ax2.set_title('模糊控制曲面（等高线）')
+    # 标题已移除，保持图表简洁
     fig.colorbar(contour, ax=ax2)
 
     plt.tight_layout()

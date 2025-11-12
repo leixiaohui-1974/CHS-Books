@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水系统控制理论教程 - 智能知识平台</title>
+    
+    <!-- Markdown渲染库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.0.0/marked.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .controls {
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 1;
+            max-width: 400px;
+            margin-right: 20px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .case-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+
+        .case-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .case-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .case-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .case-badges {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 500;
+        }
+
+        .badge-readme {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .badge-code {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .badge-experiment {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #e74c3c;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2em;
+            cursor: pointer;
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .readme-content {
+            line-height: 1.8;
+        }
+
+        .readme-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .readme-content pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        .readme-content code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .readme-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .readme-content table td,
+        .readme-content table th {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .readme-content table th {
+            background: #f5f5f5;
+            font-weight: 600;
+        }
+
+        /* 图片表格样式 */
+        .readme-content table td img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* 无边框表格 */
+        .readme-content table[border="0"] td {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎓 水系统控制理论教程</h1>
+            <p>智能知识平台 V2.0 - 完整案例库</p>
+        </div>
+
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number" id="totalCases">20</span>
+                <span class="stat-label">案例总数</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">文档完成率</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">44+</span>
+                <span class="stat-label">高质量图表</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">A+</span>
+                <span class="stat-label">质量评级</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 搜索案例名称或关键词...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="basic">基础控制</button>
+                <button class="filter-btn" data-filter="advanced">高级控制</button>
+                <button class="filter-btn" data-filter="intelligent">智能控制</button>
+            </div>
+        </div>
+
+        <div id="casesContainer" class="cases-grid">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>正在加载案例...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="caseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+                <h2 id="modalTitle">案例详情</h2>
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="openInIDE()">
+                    💻 AI编程IDE
+                </button>
+                <button class="btn btn-primary" onclick="runCase()">
+                    ▶️ 运行案例
+                </button>
+                <button class="btn btn-secondary" onclick="viewCode()">
+                    📄 查看代码
+                </button>
+            </div>
+            </div>
+            <div class="modal-body">
+                <div id="modalContent" class="readme-content">
+                    Loading...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api/v1';
+        let allCases = [];
+        let currentCase = null;
+
+        // 案例分类
+        const caseCategories = {
+            basic: [1, 2, 3, 4],
+            identification: [5, 6],
+            advanced: [7, 8, 9, 10],
+            modern: [11, 12],
+            adaptive: [13, 14, 15],
+            intelligent: [16, 17, 18],
+            comprehensive: [19, 20]
+        };
+
+        // 加载所有案例
+        async function loadCases() {
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    allCases = data.cases;
+                    document.getElementById('totalCases').textContent = data.total;
+                    renderCases(allCases);
+                } else {
+                    showError('加载失败');
+                }
+            } catch (error) {
+                showError('网络错误: ' + error.message);
+            }
+        }
+
+        // 渲染案例卡片
+        function renderCases(cases) {
+            const container = document.getElementById('casesContainer');
+            
+            if (cases.length === 0) {
+                container.innerHTML = '<div class="loading"><p>未找到匹配的案例</p></div>';
+                return;
+            }
+
+            container.innerHTML = cases.map(caseItem => `
+                <div class="case-card" onclick="showCaseDetail('${caseItem.id}')">
+                    <span class="case-number">${caseItem.id.match(/\d+/)[0].padStart(2, '0')}</span>
+                    <div class="case-title">${caseItem.title || caseItem.name}</div>
+                    <div class="case-badges">
+                        ${caseItem.has_readme ? '<span class="badge badge-readme">📄 文档</span>' : ''}
+                        ${caseItem.has_main ? '<span class="badge badge-code">💻 代码</span>' : ''}
+                        ${caseItem.has_experiments ? '<span class="badge badge-experiment">🧪 实验</span>' : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // 显示案例详情
+        async function showCaseDetail(caseId) {
+            currentCase = caseId;
+            const modal = document.getElementById('caseModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+            
+            modal.classList.add('active');
+            modalContent.innerHTML = '<div class="loading"><div class="spinner"></div><p>正在加载案例详情...</p></div>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases/${caseId}`);
+                const data = await response.json();
+                
+                if (data.success && data.case) {
+                    modalTitle.textContent = data.case.title || data.case.name;
+                    
+                    // 转换Markdown为HTML（简单版本）
+                    let html = convertMarkdownToHTML(data.case.readme);
+                    
+                    // 替换图片路径为API路径
+                    html = html.replace(/src="([^"]+\.png)"/g, (match, filename) => {
+                        return `src="${API_BASE}/books/water-system-control/cases/${caseId}/images/${filename}"`;
+                    });
+                    
+                    modalContent.innerHTML = html;
+                } else {
+                    modalContent.innerHTML = '<div class="error">加载失败</div>';
+                }
+            } catch (error) {
+                modalContent.innerHTML = `<div class="error">错误: ${error.message}</div>`;
+            }
+        }
+
+        // 使用marked.js进行Markdown转换
+        function convertMarkdownToHTML(markdown) {
+            if (!markdown) return '';
+            
+            try {
+                // 检查marked是否已加载
+                if (typeof marked === 'undefined') {
+                    console.error('marked.js未加载，使用简单转换');
+                    return markdown.replace(/\n/g, '<br>');
+                }
+                
+                // 使用marked库转换Markdown
+                return marked.parse(markdown, {
+                    breaks: true,           // 支持GFM换行
+                    gfm: true,              // GitHub Flavored Markdown
+                    headerIds: true,        // 标题ID
+                    mangle: false,          // 不修改邮箱
+                    pedantic: false,        // 不使用严格模式
+                    sanitize: false,        // 允许HTML标签（表格需要）
+                    silent: false,          // 显示警告
+                    smartLists: true,       // 智能列表
+                    smartypants: false,     // 不转换引号
+                    xhtml: false            // 不使用XHTML
+                });
+            } catch (error) {
+                console.error('Markdown转换错误:', error);
+                // 失败时返回原始内容（至少换行）
+                return markdown.replace(/\n/g, '<br>');
+            }
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('caseModal').classList.remove('active');
+            currentCase = null;
+        }
+
+        // 运行案例
+        async function runCase() {
+            if (!currentCase) return;
+            
+            const modalContent = document.getElementById('modalContent');
+            const originalContent = modalContent.innerHTML;
+            modalContent.innerHTML = '<div class="loading"><div class="spinner"></div><p>正在运行案例，请稍候...</p></div>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/books/water-system-control/cases/${currentCase}/run`, {
+                    method: 'POST'
+                });
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('✅ 案例运行成功！\n\n' + data.message);
+                    // 重新加载案例详情以显示新图片
+                    await showCaseDetail(currentCase);
+                } else {
+                    alert('❌ 运行失败：' + data.message);
+                    modalContent.innerHTML = originalContent;
+                }
+            } catch (error) {
+                alert('❌ 错误：' + error.message);
+                modalContent.innerHTML = originalContent;
+            }
+        }
+
+        // 在IDE中打开
+        function openInIDE() {
+            if (!currentCase) return;
+            window.open(`/ide?case=${currentCase}`, '_blank');
+        }
+
+        // 查看代码
+        function viewCode() {
+            if (!currentCase) return;
+            window.open(`${API_BASE}/books/water-system-control/cases/${currentCase}`, '_blank');
+        }
+
+        // 搜索功能
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = allCases.filter(c => 
+                (c.title || c.name).toLowerCase().includes(searchTerm) ||
+                c.id.toLowerCase().includes(searchTerm)
+            );
+            renderCases(filtered);
+        });
+
+        // 筛选功能
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                if (filter === 'all') {
+                    renderCases(allCases);
+                } else {
+                    const filtered = allCases.filter(c => {
+                        const caseNum = parseInt(c.id.match(/\d+/)[0]);
+                        if (filter === 'basic') return caseNum <= 4;
+                        if (filter === 'advanced') return caseNum >= 5 && caseNum <= 12;
+                        if (filter === 'intelligent') return caseNum >= 16 && caseNum <= 18;
+                        return true;
+                    });
+                    renderCases(filtered);
+                }
+            });
+        });
+
+        // 显示错误
+        function showError(message) {
+            document.getElementById('casesContainer').innerHTML = 
+                `<div class="error">❌ ${message}</div>`;
+        }
+
+        // 键盘快捷键
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // 页面加载时初始化
+        window.addEventListener('load', loadCases);
+    </script>
+</body>
+</html>
+

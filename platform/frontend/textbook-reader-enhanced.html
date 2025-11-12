@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教材阅读器增强版 - CHS-Books</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.0.0/marked.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* 加载动画 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #333;
+            border-top-color: #007acc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            color: #888;
+        }
+        
+        /* 新手引导 */
+        .guide-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9998;
+            display: none;
+        }
+        
+        .guide-card {
+            position: fixed;
+            background: #2d2d30;
+            border: 2px solid #007acc;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+        }
+        
+        .guide-card h3 {
+            color: #007acc;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .guide-card p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .guide-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+        
+        .guide-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .guide-btn-primary {
+            background: #0e639c;
+            color: #fff;
+        }
+        
+        .guide-btn-secondary {
+            background: #3c3c3c;
+            color: #d4d4d4;
+        }
+        
+        /* 阅读进度条 */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #007acc, #00d9ff);
+            z-index: 1000;
+            transition: width 0.1s;
+        }
+        
+        /* 快捷键提示 */
+        .shortcuts-panel {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #252526;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 15px;
+            max-width: 300px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .shortcuts-panel.show {
+            display: block;
+            animation: slideIn 0.3s;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .shortcut-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #3e3e42;
+        }
+        
+        .shortcut-item:last-child {
+            border-bottom: none;
+        }
+        
+        .shortcut-key {
+            background: #3c3c3c;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-family: monospace;
+        }
+        
+        /* 章节书签 */
+        .bookmark-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: transparent;
+            border: none;
+            color: #888;
+            font-size: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .bookmark-btn:hover {
+            color: #ffd700;
+        }
+        
+        .bookmark-btn.active {
+            color: #ffd700;
+        }
+        
+        /* 目录大纲 */
+        .toc-panel {
+            position: fixed;
+            right: 0;
+            top: 50px;
+            bottom: 0;
+            width: 250px;
+            background: #252526;
+            border-left: 1px solid #3e3e42;
+            padding: 20px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s;
+            z-index: 100;
+        }
+        
+        .toc-panel.show {
+            transform: translateX(0);
+        }
+        
+        .toc-item {
+            padding: 8px 12px;
+            margin: 4px 0;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+        
+        .toc-item:hover {
+            background: #2a2d2e;
+        }
+        
+        .toc-item.active {
+            background: #37373d;
+            color: #007acc;
+        }
+        
+        /* 复制样式（保留原有的基础样式）*/
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        .sidebar {
+            width: 300px;
+            background: #252526;
+            border-right: 1px solid #3e3e42;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid #3e3e42;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 8px 12px;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            border-radius: 4px;
+            color: #d4d4d4;
+            font-size: 13px;
+        }
+        
+        .textbooks-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        .textbook-card {
+            background: #2d2d30;
+            border: 1px solid #3e3e42;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        
+        .textbook-card:hover {
+            background: #333337;
+            border-color: #007acc;
+        }
+        
+        .textbook-card h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #cccccc;
+        }
+        
+        .textbook-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .topbar {
+            height: 50px;
+            background: #252526;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb {
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .actions button {
+            padding: 6px 12px;
+            background: #0e639c;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            margin-left: 8px;
+        }
+        
+        .actions button:hover {
+            background: #1177bb;
+        }
+        
+        .reader {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .chapter-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .chapter-content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #cccccc;
+        }
+        
+        .chapter-content h2 {
+            font-size: 24px;
+            margin: 30px 0 15px;
+            color: #cccccc;
+            scroll-margin-top: 60px;
+        }
+        
+        .chapter-content h3 {
+            font-size: 20px;
+            margin: 25px 0 12px;
+            color: #cccccc;
+            scroll-margin-top: 60px;
+        }
+        
+        .chapter-content p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #d4d4d4;
+        }
+        
+        .chapter-content pre {
+            background: #1a1f2e;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .chapter-content code {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .chapter-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 6px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">正在加载教材...</div>
+    </div>
+    
+    <!-- 阅读进度条 -->
+    <div class="reading-progress" id="readingProgress"></div>
+    
+    <!-- 新手引导 -->
+    <div class="guide-overlay" id="guideOverlay"></div>
+    <div class="guide-card" id="guideCard" style="display: none;">
+        <h3 id="guideTitle">欢迎使用教材阅读器</h3>
+        <p id="guideContent">这里是内容</p>
+        <div class="guide-buttons">
+            <button class="guide-btn guide-btn-secondary" onclick="skipGuide()">跳过</button>
+            <button class="guide-btn guide-btn-primary" onclick="nextGuideStep()">下一步</button>
+        </div>
+    </div>
+    
+    <!-- 快捷键提示 -->
+    <div class="shortcuts-panel" id="shortcutsPanel">
+        <h4 style="margin-bottom: 10px; color: #007acc;">快捷键</h4>
+        <div class="shortcut-item">
+            <span>搜索教材</span>
+            <span class="shortcut-key">Ctrl + F</span>
+        </div>
+        <div class="shortcut-item">
+            <span>目录大纲</span>
+            <span class="shortcut-key">Ctrl + O</span>
+        </div>
+        <div class="shortcut-item">
+            <span>添加书签</span>
+            <span class="shortcut-key">Ctrl + D</span>
+        </div>
+        <div class="shortcut-item">
+            <span>快捷键帮助</span>
+            <span class="shortcut-key">?</span>
+        </div>
+    </div>
+    
+    <!-- 目录大纲 -->
+    <div class="toc-panel" id="tocPanel">
+        <h4 style="margin-bottom: 15px; color: #007acc;">📋 目录大纲</h4>
+        <div id="tocContent"></div>
+    </div>
+    
+    <div class="container">
+        <!-- 左侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>📖 教材库</h2>
+                <div class="search-box">
+                    <input type="text" placeholder="搜索教材..." onkeyup="searchTextbooks(event)">
+                </div>
+            </div>
+            
+            <div id="textbooks-list" class="textbooks-list"></div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <div class="topbar">
+                <div class="breadcrumb" id="breadcrumb">选择教材开始学习</div>
+                <div class="actions">
+                    <button onclick="window.location.href='/'">🏠 主页</button>
+                    <button onclick="window.location.href='/search.html'">🔍 搜索</button>
+                    <button onclick="toggleTOC()" class="tooltip">
+                        📋 大纲
+                        <span class="tooltiptext">Ctrl+O</span>
+                    </button>
+                    <button onclick="toggleShortcuts()" class="tooltip">
+                        ⌨️ 快捷键
+                        <span class="tooltiptext">按 ?</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="reader" id="reader" onscroll="updateReadingProgress()">
+                <div id="chapter-content" class="chapter-content" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let allTextbooks = [];
+        let currentTextbookId = null;
+        let currentChapterId = null;
+        let guideStep = 0;
+        
+        const guideSteps = [
+            {
+                title: "欢迎使用教材阅读器 👋",
+                content: "这是一个智能教材学习平台，包含18本教材，622个章节。让我们快速了解主要功能。"
+            },
+            {
+                title: "浏览教材 📖",
+                content: "左侧列表显示所有可用教材。点击任意教材卡片，即可查看其章节目录和内容。"
+            },
+            {
+                title: "快速搜索 🔍",
+                content: "使用顶部搜索按钮或按 Ctrl+F，可以在所有教材中快速搜索您需要的内容。"
+            },
+            {
+                title: "目录大纲 📋",
+                content: "点击 '大纲' 按钮或按 Ctrl+O，可以查看当前章节的目录结构，快速跳转。"
+            },
+            {
+                title: "开始学习 🚀",
+                content: "一切准备就绪！选择一本教材，开始您的学习之旅吧。"
+            }
+        ];
+        
+        // 初始化
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').classList.add('hidden');
+                
+                // 检查是否首次访问
+                if (!localStorage.getItem('visited')) {
+                    showGuide();
+                    localStorage.setItem('visited', 'true');
+                }
+            }, 1000);
+            
+            loadTextbooks();
+        });
+        
+        // 新手引导
+        function showGuide() {
+            document.getElementById('guideOverlay').style.display = 'block';
+            document.getElementById('guideCard').style.display = 'block';
+            guideStep = 0;
+            updateGuideContent();
+        }
+        
+        function updateGuideContent() {
+            const step = guideSteps[guideStep];
+            document.getElementById('guideTitle').textContent = step.title;
+            document.getElementById('guideContent').textContent = step.content;
+            
+            const nextBtn = document.querySelector('.guide-btn-primary');
+            nextBtn.textContent = guideStep === guideSteps.length - 1 ? '开始' : '下一步';
+        }
+        
+        function nextGuideStep() {
+            if (guideStep < guideSteps.length - 1) {
+                guideStep++;
+                updateGuideContent();
+            } else {
+                skipGuide();
+            }
+        }
+        
+        function skipGuide() {
+            document.getElementById('guideOverlay').style.display = 'none';
+            document.getElementById('guideCard').style.display = 'none';
+        }
+        
+        // 加载教材
+        async function loadTextbooks() {
+            try {
+                const response = await fetch('/api/textbooks/');
+                const data = await response.json();
+                allTextbooks = data;
+                displayTextbooks(allTextbooks);
+            } catch (error) {
+                console.error('加载失败:', error);
+            }
+        }
+        
+        function displayTextbooks(textbooks) {
+            const list = document.getElementById('textbooks-list');
+            list.innerHTML = textbooks.map(book => `
+                <div class="textbook-card" onclick="selectTextbook('${book.id}')">
+                    <h4>${book.title}</h4>
+                    <div class="textbook-meta">
+                        <span>📖 ${book.total_chapters} 章</span>
+                        <span>📝 ${book.total_words.toLocaleString()} 字</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function searchTextbooks(event) {
+            const query = event.target.value.toLowerCase();
+            const filtered = query ? allTextbooks.filter(book => 
+                book.title.toLowerCase().includes(query)
+            ) : allTextbooks;
+            displayTextbooks(filtered);
+        }
+        
+        // 阅读进度
+        function updateReadingProgress() {
+            const reader = document.getElementById('reader');
+            const scrollTop = reader.scrollTop;
+            const scrollHeight = reader.scrollHeight - reader.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('readingProgress').style.width = progress + '%';
+        }
+        
+        // 快捷键
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'o') {
+                e.preventDefault();
+                toggleTOC();
+            } else if (e.key === '?') {
+                toggleShortcuts();
+            }
+        });
+        
+        function toggleTOC() {
+            document.getElementById('tocPanel').classList.toggle('show');
+        }
+        
+        function toggleShortcuts() {
+            document.getElementById('shortcutsPanel').classList.toggle('show');
+        }
+        
+        console.log('教材阅读器增强版已加载 ✨');
+    </script>
+</body>
+</html>
+

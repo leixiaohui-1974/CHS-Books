@@ -1,0 +1,342 @@
+{
+  "books": [
+    {
+      "id": "water-system-control",
+      "slug": "water-system-control",
+      "title": "水系统控制论",
+      "subtitle": "基于水箱案例的控制理论入门",
+      "description": "通过24个经典水箱案例系统讲解控制理论基础知识，从最简单的开关控制到高级的模型预测控制，循序渐进地建立完整的控制系统知识体系。",
+      "author": "AI Engineering Team",
+      "level": "初级",
+      "tags": ["控制理论", "水利工程", "PID控制", "智能控制"],
+      "stats": {
+        "cases": 20,
+        "hours": 192,
+        "students": 1523
+      },
+      "rating": 4.8,
+      "price": {
+        "original": 399,
+        "current": 299
+      },
+      "path": "books/water-system-control",
+      "totalCases": 20
+    },
+    {
+      "id": "open-channel-hydraulics",
+      "slug": "open-channel-hydraulics",
+      "title": "明渠水力学计算",
+      "subtitle": "基于工程案例的水力计算入门",
+      "description": "通过30个经典水力工程案例系统讲解完整的水力学计算方法，从明渠流到有压流，从恒定流到非恒定流，涵盖完整的水力学知识体系。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["水力学", "明渠流", "数值计算", "工程应用"],
+      "stats": {
+        "cases": 30,
+        "hours": 288,
+        "students": 856
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 499,
+        "current": 399
+      },
+      "path": "books/open-channel-hydraulics",
+      "totalCases": 30
+    },
+    {
+      "id": "canal-pipeline-control",
+      "slug": "canal-pipeline-control",
+      "title": "运河与管道控制",
+      "subtitle": "闸泵联合调度与智能控制",
+      "description": "结合明渠水力学和控制理论，讲解运河系统的智能控制方法，包括闸门控制、泵站调度、多目标优化等实际工程应用。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "tags": ["智能控制", "调度优化", "数字孪生", "降阶模型"],
+      "stats": {
+        "cases": 20,
+        "hours": 160,
+        "students": 423
+      },
+      "rating": 4.9,
+      "price": {
+        "original": 299,
+        "current": 299
+      },
+      "path": "books/canal-pipeline-control",
+      "totalCases": 20
+    },
+    {
+      "id": "ecohydraulics",
+      "slug": "ecohydraulics",
+      "title": "生态水力学",
+      "subtitle": "水生态系统建模与分析",
+      "description": "将水力学与生态学相结合，讲解生态水力学的基本理论和数值模拟方法，包括河流生态、湖泊生态、湿地生态等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["生态水力学", "环境模拟", "栖息地评估"],
+      "stats": {
+        "cases": 18,
+        "hours": 144,
+        "students": 312
+      },
+      "rating": 4.6,
+      "price": {
+        "original": 349,
+        "current": 299
+      },
+      "path": "books/ecohydraulics",
+      "totalCases": 18
+    },
+    {
+      "id": "distributed-hydrological-model",
+      "slug": "distributed-hydrological-model",
+      "title": "分布式水文模型",
+      "subtitle": "流域水文过程模拟",
+      "description": "讲解分布式水文模型的基本原理和数值实现方法，包括降雨径流模拟、蒸散发计算、地下水模拟等。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "tags": ["水文模型", "流域模拟", "GIS应用"],
+      "stats": {
+        "cases": 15,
+        "hours": 120,
+        "students": 256
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 399,
+        "current": 349
+      },
+      "path": "books/distributed-hydrological-model",
+      "totalCases": 15
+    },
+    {
+      "id": "water-environment-simulation",
+      "slug": "water-environment-simulation",
+      "title": "水环境模拟",
+      "subtitle": "水质模拟与污染控制",
+      "description": "讲解水环境模拟的基本理论和数值方法，包括河流水质模拟、湖泊富营养化模拟、污染物迁移转化等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["水环境", "水质模拟", "污染控制"],
+      "stats": {
+        "cases": 20,
+        "hours": 160,
+        "students": 478
+      },
+      "rating": 4.5,
+      "price": {
+        "original": 349,
+        "current": 299
+      },
+      "path": "books/water-environment-simulation",
+      "totalCases": 20
+    },
+    {
+      "id": "water-resource-planning-management",
+      "slug": "water-resource-planning-management",
+      "title": "水资源规划与管理",
+      "subtitle": "系统分析与优化决策",
+      "description": "讲解水资源系统分析、优化调度、风险管理等理论和方法，包括水库调度、水资源配置、水权交易等。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "tags": ["水资源", "系统优化", "决策支持"],
+      "stats": {
+        "cases": 22,
+        "hours": 176,
+        "students": 389
+      },
+      "rating": 4.8,
+      "price": {
+        "original": 399,
+        "current": 349
+      },
+      "path": "books/water-resource-planning-management",
+      "totalCases": 22
+    },
+    {
+      "id": "underground-water-dynamics",
+      "slug": "underground-water-dynamics",
+      "title": "地下水动力学",
+      "subtitle": "地下水流动与模拟",
+      "description": "讲解地下水流动的基本理论和数值模拟方法，包括达西定律、地下水模型、含水层参数识别等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["地下水", "渗流模拟", "参数识别"],
+      "stats": {
+        "cases": 16,
+        "hours": 128,
+        "students": 234
+      },
+      "rating": 4.6,
+      "price": {
+        "original": 329,
+        "current": 299
+      },
+      "path": "books/underground-water-dynamics",
+      "totalCases": 16
+    },
+    {
+      "id": "intelligent-water-network-design",
+      "slug": "intelligent-water-network-design",
+      "title": "智能供水管网设计",
+      "subtitle": "管网优化与智能控制",
+      "description": "讲解供水管网的设计原理、优化方法和智能控制技术，包括管网水力计算、漏损控制、智能调度等。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "tags": ["管网设计", "优化算法", "智能控制"],
+      "stats": {
+        "cases": 18,
+        "hours": 144,
+        "students": 345
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 379,
+        "current": 329
+      },
+      "path": "books/intelligent-water-network-design",
+      "totalCases": 18
+    },
+    {
+      "id": "photovoltaic-system-modeling-control",
+      "slug": "photovoltaic-system-modeling-control",
+      "title": "光伏系统建模与控制",
+      "subtitle": "新能源系统分析",
+      "description": "讲解光伏发电系统的建模方法和控制策略，包括光伏阵列建模、MPPT控制、并网逆变器控制等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["光伏发电", "MPPT", "并网控制"],
+      "stats": {
+        "cases": 16,
+        "hours": 128,
+        "students": 567
+      },
+      "rating": 4.8,
+      "price": {
+        "original": 349,
+        "current": 299
+      },
+      "path": "books/photovoltaic-system-modeling-control",
+      "totalCases": 16
+    },
+    {
+      "id": "wind-power-system-modeling-control",
+      "slug": "wind-power-system-modeling-control",
+      "title": "风电系统建模与控制",
+      "subtitle": "风力发电技术",
+      "description": "讲解风力发电系统的建模方法和控制策略，包括风机建模、变桨控制、并网控制等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["风力发电", "变桨控制", "并网技术"],
+      "stats": {
+        "cases": 14,
+        "hours": 112,
+        "students": 456
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 329,
+        "current": 299
+      },
+      "path": "books/wind-power-system-modeling-control",
+      "totalCases": 14
+    },
+    {
+      "id": "energy-storage-system-modeling-control",
+      "slug": "energy-storage-system-modeling-control",
+      "title": "储能系统建模与控制",
+      "subtitle": "储能技术应用",
+      "description": "讲解储能系统的建模方法和控制策略，包括电池建模、充放电控制、能量管理等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["储能系统", "电池管理", "能量优化"],
+      "stats": {
+        "cases": 12,
+        "hours": 96,
+        "students": 378
+      },
+      "rating": 4.6,
+      "price": {
+        "original": 299,
+        "current": 269
+      },
+      "path": "books/energy-storage-system-modeling-control",
+      "totalCases": 12
+    },
+    {
+      "id": "integrated-energy-system-simulation-optimization",
+      "slug": "integrated-energy-system-simulation-optimization",
+      "title": "综合能源系统仿真优化",
+      "subtitle": "多能互补与优化调度",
+      "description": "讲解综合能源系统的建模仿真和优化调度方法，包括多能流耦合、协同优化、经济调度等。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "tags": ["综合能源", "多能互补", "优化调度"],
+      "stats": {
+        "cases": 15,
+        "hours": 120,
+        "students": 289
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 359,
+        "current": 319
+      },
+      "path": "books/integrated-energy-system-simulation-optimization",
+      "totalCases": 15
+    },
+    {
+      "id": "hydraulics-core-100",
+      "slug": "hydraulics-core-100",
+      "title": "水力学核心100题",
+      "subtitle": "研究生考试精选",
+      "description": "精选100道水力学核心习题，涵盖研究生入学考试的所有重点知识，配套详细解析和Python代码实现。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "tags": ["考研", "水力学", "习题精讲"],
+      "stats": {
+        "cases": 100,
+        "hours": 200,
+        "students": 1234
+      },
+      "rating": 4.9,
+      "price": {
+        "original": 199,
+        "current": 169
+      },
+      "path": "books/graduate-exam-prep/hydraulics-core-100",
+      "totalCases": 100
+    },
+    {
+      "id": "hydraulics-advanced",
+      "slug": "hydraulics-advanced",
+      "title": "高等水力学",
+      "subtitle": "研究生课程",
+      "description": "研究生高等水力学课程配套教材，包括高级水力学理论、数值方法和工程应用。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "tags": ["研究生", "高等水力学", "数值方法"],
+      "stats": {
+        "cases": 50,
+        "hours": 160,
+        "students": 678
+      },
+      "rating": 4.8,
+      "price": {
+        "original": 249,
+        "current": 219
+      },
+      "path": "books/graduate-exam-prep/hydraulics-advanced",
+      "totalCases": 50
+    }
+  ],
+  "statistics": {
+    "totalBooks": 15,
+    "totalCases": 404,
+    "totalHours": 2336,
+    "totalStudents": 8094,
+    "averageRating": 4.73
+  }
+}
+

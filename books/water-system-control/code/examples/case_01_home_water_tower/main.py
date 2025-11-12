@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例1：家庭水塔自动供水系统
 
@@ -18,7 +19,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import sys
+import io
 import os
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../'))
@@ -53,10 +58,10 @@ def main():
     # 创建单水箱模型
     tank = SingleTank(
         A=2.0,    # 横截面积 2 m²
-        R=2.0,    # 阻力系数 2 min/m²
-        K=1.0     # 泵增益 1 m³/min
+        R=5.0,    # 阻力系数 5 min/m²（优化后）
+        K=1.2     # 泵增益 1.2 m³/min（优化后）
     )
-    tank.reset(h0=2.0)  # 初始水位 2米
+    tank.reset(h0=2.8)  # 初始水位 2.8米（在控制范围内）
 
     print(f"\n水箱系统参数:")
     print(f"  横截面积 A = {tank.A:.1f} m²")
@@ -115,7 +120,7 @@ def main():
 
     # 开始仿真
     print(f"\n正在运行仿真...")
-    tank.reset(h0=2.0)
+    tank.reset(h0=2.8)
     controller.reset()
 
     switch_count = 0
@@ -260,8 +265,7 @@ def create_figure1(t, h, u, controller, h_mean, duration):
                 linewidth=2, label=f'Mean Level ({h_mean:.2f}m)')
 
     ax1.set_ylabel('Water Level (m)', fontsize=13, fontweight='bold')
-    ax1.set_title('Case 1: Home Water Tower with On-Off Control',
-                 fontsize=15, fontweight='bold')
+    # 移除标题，保持图表简洁
     ax1.legend(loc='upper right', fontsize=11, framealpha=0.9)
     ax1.grid(True, alpha=0.3, linestyle='--')
     ax1.set_xlim([0, duration])
@@ -272,7 +276,7 @@ def create_figure1(t, h, u, controller, h_mean, duration):
     ax2.fill_between(t, 0, u, alpha=0.25, color='g')
     ax2.set_xlabel('Time (minutes)', fontsize=13, fontweight='bold')
     ax2.set_ylabel('Control Signal\n(0=OFF, 1=ON)', fontsize=13, fontweight='bold')
-    ax2.set_title('Pump On/Off Status', fontsize=13, fontweight='bold')
+    # 移除标题，保持图表简洁
     ax2.legend(loc='upper right', fontsize=11, framealpha=0.9)
     ax2.grid(True, alpha=0.3, linestyle='--')
     ax2.set_xlim([0, duration])
@@ -294,10 +298,10 @@ def create_figure2():
     n_steps = int(duration / dt)
 
     # 创建两个相同的水箱
-    tank1 = SingleTank(A=2.0, R=2.0, K=1.0)
-    tank2 = SingleTank(A=2.0, R=2.0, K=1.0)
-    tank1.reset(h0=2.0)
-    tank2.reset(h0=2.0)
+    tank1 = SingleTank(A=2.0, R=5.0, K=1.2)
+    tank2 = SingleTank(A=2.0, R=5.0, K=1.2)
+    tank1.reset(h0=2.8)
+    tank2.reset(h0=2.8)
 
     # 两种控制器
     onoff = OnOffController(low_threshold=2.8, high_threshold=3.2)
@@ -331,8 +335,7 @@ def create_figure2():
     ax1.axhline(3.0, color='k', linestyle='--', linewidth=1.5,
                 label='Setpoint (3.0m)', alpha=0.6)
     ax1.set_ylabel('Water Level (m)', fontsize=13, fontweight='bold')
-    ax1.set_title('Control Method Comparison: On-Off vs Proportional',
-                 fontsize=15, fontweight='bold')
+    # 标题已移除，保持图表简洁
     ax1.legend(loc='best', fontsize=11, framealpha=0.9)
     ax1.grid(True, alpha=0.3, linestyle='--')
     ax1.set_xlim([0, duration])
@@ -343,7 +346,7 @@ def create_figure2():
     ax2.plot(t, u2, 'r-', linewidth=2.5, label='Proportional Control', alpha=0.7)
     ax2.set_xlabel('Time (minutes)', fontsize=13, fontweight='bold')
     ax2.set_ylabel('Control Signal', fontsize=13, fontweight='bold')
-    ax2.set_title('Control Signal Comparison', fontsize=13, fontweight='bold')
+    # 标题已移除，保持图表简洁
     ax2.legend(loc='best', fontsize=11, framealpha=0.9)
     ax2.grid(True, alpha=0.3, linestyle='--')
     ax2.set_xlim([0, duration])
@@ -387,8 +390,7 @@ def create_figure3(h_history, dt):
 
     ax.set_xlabel('Water Level (m)', fontsize=13, fontweight='bold')
     ax.set_ylabel('Water Level Rate of Change (m/min)', fontsize=13, fontweight='bold')
-    ax.set_title('Phase Portrait: Water Level vs Rate of Change',
-                fontsize=15, fontweight='bold')
+    # 标题已移除，保持图表简洁
     ax.legend(loc='best', fontsize=11, framealpha=0.9)
     ax.grid(True, alpha=0.3, linestyle='--')
 

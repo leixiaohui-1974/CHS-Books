@@ -7,7 +7,7 @@ from enum import Enum
 from typing import Dict, List, Optional, Any
 from sqlalchemy import Column, Integer, String, DateTime, JSON, Enum as SQLEnum, ForeignKey, Boolean, Text
 from sqlalchemy.orm import relationship
-from app.db.base import Base
+from app.core.database import Base
 
 
 class SessionStatus(str, Enum):

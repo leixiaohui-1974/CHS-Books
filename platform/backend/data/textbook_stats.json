@@ -1,0 +1,155 @@
+{
+  "generated_at": "2025-11-10T19:09:36.416722",
+  "basic_stats": {
+    "total_textbooks": 18,
+    "total_chapters": 622,
+    "total_words": 721883,
+    "total_associations": 243
+  },
+  "textbooks": [
+    {
+      "id": "fd2f8b79-d136-4051-b9da-2718591d1d18",
+      "title": "运河模拟系统 - 功能索引",
+      "total_chapters": 50,
+      "total_words": 4002,
+      "author": "",
+      "version": "1.0"
+    },
+    {
+      "id": "9433d5e0-142e-4b3a-b1d5-a66835d5d4ca",
+      "title": "水系统控制论案例驱动教学体系",
+      "total_chapters": 107,
+      "total_words": 60301,
+      "author": "",
+      "version": "1.0"
+    },
+    {
+      "id": "d05c3b48-a485-4694-b46a-6a20f317c393",
+      "title": "水系统控制论教材开发方案",
+      "total_chapters": 89,
+      "total_words": 25347,
+      "author": "",
+      "version": "1.0"
+    },
+    {
+      "id": "75bcb1fb-4a9d-4f41-995b-f0d383052458",
+      "title": "立即开始指南 - 水系统控制论教材开发",
+      "total_chapters": 40,
+      "total_words": 14031,
+      "author": "",
+      "version": "1.0"
+    },
+    {
+      "id": "adc1ad6f-9442-4845-80e2-2e66f5fe2a1b",
+      "title": "水系统控制论教材开发详细方案",
+      "total_chapters": 102,
+      "total_words": 20681,
+      "author": "",
+      "version": "1.0"
+    },
+    {
+      "id": "f46ad66a-1c56-450b-8f8a-c073dd6908be",
+      "title": "水系统控制论",
+      "total_chapters": 7,
+      "total_words": 15728,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "4978a8af-4b89-4d38-8f2e-bb1c3ebc5429",
+      "title": "明渠水力学计算",
+      "total_chapters": 4,
+      "total_words": 12196,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "184795a2-57da-4aae-83a1-c43c4aa00e5b",
+      "title": "水环境模拟",
+      "total_chapters": 27,
+      "total_words": 44763,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "eb2976e4-717e-43c2-b470-423469558787",
+      "title": "生态水力学",
+      "total_chapters": 25,
+      "total_words": 41602,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "5b98d8ce-8629-4072-a225-45e104e7723d",
+      "title": "分布式水文模型",
+      "total_chapters": 27,
+      "total_words": 46255,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "ee6ce496-2b87-4bb5-8e80-b0a4be350266",
+      "title": "地下水动力学",
+      "total_chapters": 26,
+      "total_words": 56001,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "4f074cdc-65a5-478b-9b84-9d02cd58b4fe",
+      "title": "水资源规划与管理",
+      "total_chapters": 33,
+      "total_words": 58695,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "d736a414-b085-44c2-b292-8a8a38f8c52f",
+      "title": "智能水网设计",
+      "total_chapters": 45,
+      "total_words": 102367,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "de00679e-9358-4ac1-b0cd-120c1871ca1a",
+      "title": "水力学考研核心100题",
+      "total_chapters": 6,
+      "total_words": 41313,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "9320ad7a-62d9-4532-8217-6db0fb8a80f8",
+      "title": "水力学考研高分突破",
+      "total_chapters": 15,
+      "total_words": 156943,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "29227bca-0182-458a-90bc-8e6ecee7068c",
+      "title": "渠道管道控制",
+      "total_chapters": 3,
+      "total_words": 12272,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "8ecbf35f-0619-4873-966d-51b00aa426d2",
+      "title": "光伏系统建模与控制",
+      "total_chapters": 7,
+      "total_words": 8144,
+      "author": null,
+      "version": "1.0"
+    },
+    {
+      "id": "841e8afc-7ceb-45f5-bcd6-92272ab10c97",
+      "title": "风力发电系统建模与控制",
+      "total_chapters": 9,
+      "total_words": 8280,
+      "author": null,
+      "version": "1.0"
+    }
+  ]
+}

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水利水电水务知识库平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 
+                         'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .response {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .response.show {
+            display: block;
+        }
+        
+        .response h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .response-content {
+            color: #555;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+        
+        .context-docs {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+        }
+        
+        .context-doc {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .doc-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .doc-snippet {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💧 水利水电水务知识库平台</h1>
+            <p class="subtitle">专业知识 · 智能问答 · 知识管理</p>
+        </header>
+        
+        <div class="main-content">
+            <!-- 问答区域 -->
+            <div class="card">
+                <h2>🤖 智能问答</h2>
+                <div class="form-group">
+                    <label for="question">请输入您的问题：</label>
+                    <textarea id="question" placeholder="例如：什么是水工建筑物？"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="category">选择分类（可选）：</label>
+                    <select id="category">
+                        <option value="">全部分类</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="level">学术层级（可选）：</label>
+                    <select id="level">
+                        <option value="">全部层级</option>
+                        <option value="本科">本科</option>
+                        <option value="硕士">硕士</option>
+                        <option value="博士">博士</option>
+                        <option value="通用">通用</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="askQuestion()">
+                    <span id="ask-btn-text">提问</span>
+                </button>
+                
+                <div class="response" id="response">
+                    <h3>📝 回答：</h3>
+                    <div class="response-content" id="answer"></div>
+                    <div class="context-docs" id="context-docs"></div>
+                </div>
+            </div>
+            
+            <!-- 知识管理区域 -->
+            <div class="card">
+                <h2>📚 知识管理</h2>
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchTab('add')">添加知识</button>
+                    <button class="tab-btn" onclick="switchTab('search')">搜索知识</button>
+                </div>
+                
+                <!-- 添加知识标签页 -->
+                <div class="tab-content active" id="add-tab">
+                    <div class="form-group">
+                        <label for="title">标题：</label>
+                        <input type="text" id="title" placeholder="输入知识标题">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">内容：</label>
+                        <textarea id="content" placeholder="输入知识内容"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-category">分类：</label>
+                        <select id="add-category"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-level">学术层级：</label>
+                        <select id="add-level">
+                            <option value="通用">通用</option>
+                            <option value="本科">本科</option>
+                            <option value="硕士">硕士</option>
+                            <option value="博士">博士</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="addKnowledge()">
+                        <span id="add-btn-text">添加知识</span>
+                    </button>
+                </div>
+                
+                <!-- 搜索知识标签页 -->
+                <div class="tab-content" id="search-tab">
+                    <div class="form-group">
+                        <label for="search-query">搜索关键词：</label>
+                        <input type="text" id="search-query" placeholder="输入关键词搜索">
+                    </div>
+                    <button class="btn" onclick="searchKnowledge()">
+                        <span id="search-btn-text">搜索</span>
+                    </button>
+                    <div class="response" id="search-results"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 统计信息 -->
+        <div class="card">
+            <h2>📊 平台统计</h2>
+            <div class="stats-grid" id="stats"></div>
+        </div>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        
+        // 页面加载时初始化
+        window.onload = async function() {
+            await loadCategories();
+            await loadStats();
+        };
+        
+        // 加载分类列表
+        async function loadCategories() {
+            try {
+                const response = await fetch(`${API_BASE}/api/categories`);
+                const data = await response.json();
+                
+                const categorySelect = document.getElementById('category');
+                const addCategorySelect = document.getElementById('add-category');
+                
+                data.categories.forEach(cat => {
+                    if (cat.level === 0 || cat.level === 1) {
+                        const option = new Option(cat.name, cat.id);
+                        categorySelect.add(option.cloneNode(true));
+                        addCategorySelect.add(option);
+                    }
+                });
+            } catch (error) {
+                console.error('加载分类失败:', error);
+            }
+        }
+        
+        // 加载统计信息
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/api/stats`);
+                const data = await response.json();
+                
+                const statsHtml = `
+                    <div class="stat-item">
+                        <div class="stat-value">${data.knowledge_count}</div>
+                        <div class="stat-label">知识条目</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${data.category_count}</div>
+                        <div class="stat-label">分类数量</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${data.vector_count}</div>
+                        <div class="stat-label">向量文档</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">${data.query_count}</div>
+                        <div class="stat-label">查询次数</div>
+                    </div>
+                `;
+                
+                document.getElementById('stats').innerHTML = statsHtml;
+            } catch (error) {
+                console.error('加载统计失败:', error);
+            }
+        }
+        
+        // 提问
+        async function askQuestion() {
+            const question = document.getElementById('question').value.trim();
+            if (!question) {
+                alert('请输入问题！');
+                return;
+            }
+            
+            const btn = document.getElementById('ask-btn-text');
+            btn.innerHTML = '<span class="loading"></span>';
+            
+            const category_id = document.getElementById('category').value;
+            const level = document.getElementById('level').value;
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/qa/ask`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        query: question,
+                        category_id: category_id || null,
+                        level: level || null
+                    })
+                });
+                
+                const data = await response.json();
+                
+                // 显示回答
+                document.getElementById('answer').textContent = data.answer;
+                
+                // 显示上下文文档
+                const contextHtml = data.context_docs.map(doc => `
+                    <div class="context-doc">
+                        <div class="doc-title">${doc.title}</div>
+                        <div class="doc-snippet">${doc.content_snippet.substring(0, 200)}...</div>
+                    </div>
+                `).join('');
+                document.getElementById('context-docs').innerHTML = 
+                    '<h4>参考知识：</h4>' + contextHtml;
+                
+                document.getElementById('response').classList.add('show');
+                
+                // 更新统计
+                await loadStats();
+            } catch (error) {
+                alert('提问失败：' + error.message);
+            } finally {
+                btn.textContent = '提问';
+            }
+        }
+        
+        // 添加知识
+        async function addKnowledge() {
+            const title = document.getElementById('title').value.trim();
+            const content = document.getElementById('content').value.trim();
+            const category_id = document.getElementById('add-category').value;
+            const level = document.getElementById('add-level').value;
+            
+            if (!title || !content || !category_id) {
+                alert('请填写完整信息！');
+                return;
+            }
+            
+            const btn = document.getElementById('add-btn-text');
+            btn.innerHTML = '<span class="loading"></span>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/knowledge`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        title,
+                        content,
+                        category_id,
+                        level,
+                        source_type: '其他'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert('知识添加成功！');
+                    document.getElementById('title').value = '';
+                    document.getElementById('content').value = '';
+                    await loadStats();
+                } else {
+                    alert('添加失败');
+                }
+            } catch (error) {
+                alert('添加失败：' + error.message);
+            } finally {
+                btn.textContent = '添加知识';
+            }
+        }
+        
+        // 搜索知识
+        async function searchKnowledge() {
+            const query = document.getElementById('search-query').value.trim();
+            if (!query) {
+                alert('请输入搜索关键词！');
+                return;
+            }
+            
+            const btn = document.getElementById('search-btn-text');
+            btn.innerHTML = '<span class="loading"></span>';
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/search?q=${encodeURIComponent(query)}`);
+                const data = await response.json();
+                
+                const resultsHtml = data.results.map(item => `
+                    <div class="context-doc">
+                        <div class="doc-title">${item.title}</div>
+                        <div class="doc-snippet">
+                            ${item.summary || item.content_snippet.substring(0, 200)}...
+                        </div>
+                        <div style="margin-top: 5px; font-size: 0.85em; color: #888;">
+                            分类：${item.category} | 层级：${item.level}
+                        </div>
+                    </div>
+                `).join('');
+                
+                const resultsDiv = document.getElementById('search-results');
+                resultsDiv.innerHTML = `<h4>找到 ${data.results.length} 条结果：</h4>` + resultsHtml;
+                resultsDiv.classList.add('show');
+            } catch (error) {
+                alert('搜索失败：' + error.message);
+            } finally {
+                btn.textContent = '搜索';
+            }
+        }
+        
+        // 切换标签页
+        function switchTab(tab) {
+            // 切换按钮状态
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 切换内容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`${tab}-tab`).classList.add('active');
+        }
+    </script>
+</body>
+</html>

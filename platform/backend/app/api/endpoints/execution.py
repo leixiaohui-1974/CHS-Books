@@ -9,7 +9,7 @@ from pydantic import BaseModel, Field
 import asyncio
 
 from app.core.database import get_db
-from app.core.auth import get_current_user
+from app.core.security import get_current_user
 from app.models.user import User
 from app.services.session_service import SessionService, ExecutionService
 from app.services.execution_engine import enhanced_execution_engine

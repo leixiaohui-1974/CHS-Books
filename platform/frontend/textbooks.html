@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教材阅读器 - CHS-Books</title>
+    
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.0.0/marked.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* 左侧边栏 */
+        .sidebar {
+            width: 300px;
+            background: #252526;
+            border-right: 1px solid #3e3e42;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid #3e3e42;
+        }
+        
+        .sidebar-header h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 8px 12px;
+            background: #3c3c3c;
+            border: 1px solid #555;
+            border-radius: 4px;
+            color: #d4d4d4;
+            font-size: 13px;
+        }
+        
+        .textbooks-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        .textbook-card {
+            background: #2d2d30;
+            border: 1px solid #3e3e42;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .textbook-card:hover {
+            background: #333337;
+            border-color: #007acc;
+        }
+        
+        .textbook-card h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #cccccc;
+        }
+        
+        .textbook-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 12px;
+            color: #888;
+            margin-top: 8px;
+        }
+        
+        .chapter-tree {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        
+        .tree-node {
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 2px 0;
+        }
+        
+        .tree-node:hover {
+            background: #2a2d2e;
+        }
+        
+        .tree-node.active {
+            background: #37373d;
+            color: #fff;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .topbar {
+            height: 50px;
+            background: #252526;
+            border-bottom: 1px solid #3e3e42;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb {
+            font-size: 13px;
+            color: #888;
+        }
+        
+        .actions button {
+            padding: 6px 12px;
+            background: #0e639c;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 13px;
+            margin-left: 8px;
+        }
+        
+        .actions button:hover {
+            background: #1177bb;
+        }
+        
+        .reader {
+            flex: 1;
+            overflow-y: auto;
+            padding: 30px;
+        }
+        
+        .welcome {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        
+        .welcome h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background: #2d2d30;
+            padding: 20px;
+            border-radius: 8px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            font-size: 28px;
+            color: #007acc;
+            margin-bottom: 8px;
+        }
+        
+        .chapter-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .chapter-content h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #cccccc;
+        }
+        
+        .chapter-content h2 {
+            font-size: 24px;
+            margin: 30px 0 15px;
+            color: #cccccc;
+        }
+        
+        .chapter-content h3 {
+            font-size: 20px;
+            margin: 25px 0 12px;
+            color: #cccccc;
+        }
+        
+        .chapter-content p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #d4d4d4;
+        }
+        
+        .chapter-content pre {
+            background: #1a1f2e;
+            border: 1px solid #3498db;
+            border-radius: 6px;
+            padding: 16px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .chapter-content code {
+            background: rgba(52, 152, 219, 0.1);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .chapter-content pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .related-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3e3e42;
+        }
+        
+        .related-section h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #888;
+        }
+        
+        .related-item {
+            background: #2d2d30;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .related-item:hover {
+            background: #333337;
+        }
+        
+        .badge {
+            padding: 2px 8px;
+            background: #007acc;
+            border-radius: 10px;
+            font-size: 11px;
+        }
+        
+        .back-btn {
+            padding: 8px 15px;
+            background: #3c3c3c;
+            border: none;
+            border-radius: 4px;
+            color: #d4d4d4;
+            cursor: pointer;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+        
+        .back-btn:hover {
+            background: #4c4c4c;
+        }
+        
+        .search-view {
+            padding: 40px;
+        }
+        
+        .search-box-large {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-box-large input {
+            flex: 1;
+            padding: 15px 20px;
+            background: #2d2d30;
+            border: 2px solid #3e3e42;
+            border-radius: 8px;
+            color: #d4d4d4;
+            font-size: 16px;
+        }
+        
+        .search-box-large input:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+        
+        .search-box-large button {
+            padding: 15px 30px;
+            background: #0e639c;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .search-results {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .search-result-card {
+            background: #2d2d30;
+            border: 1px solid #3e3e42;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        
+        .search-result-card:hover {
+            border-color: #007acc;
+        }
+        
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .result-header h4 {
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        /* 加载动画 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(30, 30, 30, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #007acc;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #d4d4d4;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        /* 错误提示 */
+        .error-toast {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: #2d2d30;
+            border-left: 4px solid #f44336;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            z-index: 10001;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .error-toast-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #f44336;
+        }
+        
+        .error-toast-body {
+            color: #cccccc;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .error-toast-close {
+            margin-top: 12px;
+            padding: 6px 12px;
+            background: #3e3e42;
+            border: none;
+            border-radius: 4px;
+            color: #d4d4d4;
+            cursor: pointer;
+            font-size: 13px;
+            width: 100%;
+        }
+        
+        .error-toast-close:hover {
+            background: #4e4e52;
+        }
+        
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        
+        .empty-state-text {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .empty-state-hint {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>📖 教材库</h2>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="搜索教材..." onkeyup="searchTextbooks(event)">
+                </div>
+            </div>
+            
+            <!-- 教材列表 -->
+            <div id="textbooks-list" class="textbooks-list"></div>
+            
+            <!-- 章节树 -->
+            <div id="chapter-tree" class="chapter-tree" style="display: none;">
+                <button class="back-btn" onclick="backToList()">← 返回教材列表</button>
+                <div id="chapter-tree-content"></div>
+            </div>
+        </div>
+        
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <div class="topbar">
+                <div class="breadcrumb" id="breadcrumb">选择教材开始学习</div>
+                <div class="actions">
+                    <button onclick="window.location.href='/unified.html'">返回主页</button>
+                    <button onclick="window.location.href='/search.html'">🔍 搜索</button>
+                </div>
+            </div>
+            
+            <div class="reader">
+                <!-- 欢迎页 -->
+                <div id="welcome" class="welcome">
+                    <h2>📚 欢迎使用教材阅读器</h2>
+                    <p>选择左侧的教材开始学习</p>
+                    <div class="stats">
+                        <div class="stat-card">
+                            <h3 id="total-textbooks">-</h3>
+                            <p>本教材</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="total-chapters">-</h3>
+                            <p>个章节</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 id="total-words">-</h3>
+                            <p>字</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 章节内容 -->
+                <div id="chapter-content" class="chapter-content" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let allTextbooks = [];
+        let currentTextbookId = null;
+        
+        // 加载教材列表
+        async function loadTextbooks() {
+            const loading = showLoading('正在加载教材列表...');
+            try {
+                const response = await fetch('/api/textbooks/');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                
+                if (data.success) {
+                    allTextbooks = data.textbooks;
+                    displayTextbooks(allTextbooks);
+                    updateStats();
+                } else {
+                    throw new Error(data.error || '加载教材失败');
+                }
+            } catch (error) {
+                console.error('加载失败:', error);
+                showError('加载教材失败', error.message || '无法连接到服务器，请检查网络后重试');
+            } finally {
+                hideLoading(loading);
+            }
+        }
+        
+        function displayTextbooks(textbooks) {
+            const list = document.getElementById('textbooks-list');
+            if (!textbooks || textbooks.length === 0) {
+                list.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📚</div>
+                        <div class="empty-state-text">暂无教材</div>
+                        <div class="empty-state-hint">请稍后再试或联系管理员</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            list.innerHTML = textbooks.map(book => `
+                <div class="textbook-card" onclick="selectTextbook('${book.id}')">
+                    <h4>${book.title}</h4>
+                    ${book.subtitle ? `<p style="font-size: 12px; color: #888; margin-top: 4px;">${book.subtitle}</p>` : ''}
+                    <div class="textbook-meta">
+                        <span>📖 ${book.total_chapters} 章</span>
+                        <span>📝 ${book.total_words.toLocaleString()} 字</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        async function selectTextbook(textbookId) {
+            currentTextbookId = textbookId;
+            const loading = showLoading('正在加载章节列表...');
+            
+            try {
+                const response = await fetch(`/api/textbooks/${textbookId}/chapters`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayChapterTree(data.chapters);
+                    document.getElementById('textbooks-list').style.display = 'none';
+                    document.getElementById('chapter-tree').style.display = 'block';
+                } else {
+                    throw new Error(data.error || '加载章节失败');
+                }
+            } catch (error) {
+                console.error('加载章节失败:', error);
+                showError('加载章节失败', error.message || '无法获取章节信息，请重试');
+            } finally {
+                hideLoading(loading);
+            }
+        }
+        
+        function displayChapterTree(chapters) {
+            const tree = document.getElementById('chapter-tree-content');
+            tree.innerHTML = chapters.map(ch => `
+                <div class="tree-node" onclick="selectChapter('${ch.id}', event)">
+                    <span>📄</span>
+                    <span>[${ch.chapter_number}] ${ch.title}</span>
+                </div>
+            `).join('');
+        }
+        
+        async function selectChapter(chapterId, event) {
+            event.stopPropagation();
+            
+            // 高亮
+            document.querySelectorAll('.tree-node').forEach(n => n.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            const loading = showLoading('正在加载章节内容...');
+            try {
+                const response = await fetch(`/api/textbooks/chapter/${chapterId}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayChapter(data.chapter);
+                } else {
+                    throw new Error(data.error || '加载章节内容失败');
+                }
+            } catch (error) {
+                console.error('加载章节内容失败:', error);
+                showError('加载章节内容失败', error.message || '无法获取章节内容，请重试');
+            } finally {
+                hideLoading(loading);
+            }
+        }
+        
+        function displayChapter(chapter) {
+            document.getElementById('welcome').style.display = 'none';
+            const content = document.getElementById('chapter-content');
+            content.style.display = 'block';
+            
+            document.getElementById('breadcrumb').textContent = `[${chapter.chapter_number}] ${chapter.title}`;
+            
+            let html = marked.parse(chapter.content || '');
+            
+            // 添加相关内容
+            if (chapter.associated_cases && chapter.associated_cases.length > 0) {
+                html += `
+                    <div class="related-section">
+                        <h4>📋 相关案例</h4>
+                        ${chapter.associated_cases.map(c => `
+                            <div class="related-item">
+                                <span>${c.title}</span>
+                                <span class="badge">${(c.relevance_score * 100).toFixed(0)}%</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+            }
+            
+            content.innerHTML = html;
+        }
+        
+        function backToList() {
+            document.getElementById('textbooks-list').style.display = 'block';
+            document.getElementById('chapter-tree').style.display = 'none';
+            document.getElementById('welcome').style.display = 'block';
+            document.getElementById('chapter-content').style.display = 'none';
+        }
+        
+        function searchTextbooks(event) {
+            const query = event.target.value.toLowerCase();
+            if (!query) {
+                displayTextbooks(allTextbooks);
+                return;
+            }
+            
+            const filtered = allTextbooks.filter(book => 
+                book.title.toLowerCase().includes(query)
+            );
+            displayTextbooks(filtered);
+        }
+        
+        async function updateStats() {
+            try {
+                const response = await fetch('/api/search/stats');
+                const data = await response.json();
+                
+                document.getElementById('total-textbooks').textContent = data.textbooks.total;
+                document.getElementById('total-chapters').textContent = data.textbooks.chapters;
+                document.getElementById('total-words').textContent = (data.textbooks.total_words || 0).toLocaleString();
+            } catch (error) {
+                console.error('加载统计失败:', error);
+            }
+        }
+        
+        // ============ UI 工具函数 ============
+        
+        function showLoading(message = '加载中...') {
+            const overlay = document.createElement('div');
+            overlay.className = 'loading-overlay';
+            overlay.innerHTML = `
+                <div style="text-align: center;">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">${message}</div>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            return overlay;
+        }
+        
+        function hideLoading(overlay) {
+            if (overlay && overlay.parentElement) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    if (overlay.parentElement) {
+                        overlay.remove();
+                    }
+                }, 300);
+            }
+        }
+        
+        function showError(title, message) {
+            const toast = document.createElement('div');
+            toast.className = 'error-toast';
+            toast.innerHTML = `
+                <div class="error-toast-header">
+                    <span>⚠️</span>
+                    <span>${title}</span>
+                </div>
+                <div class="error-toast-body">${message}</div>
+                <button class="error-toast-close" onclick="this.parentElement.remove()">知道了</button>
+            `;
+            document.body.appendChild(toast);
+            
+            // 自动关闭
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.opacity = '0';
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 5000);
+        }
+        
+        // 初始化
+        loadTextbooks();
+    </script>
+</body>
+</html>
+

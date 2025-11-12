@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例10：频域分析 - Bode图与稳定性
 
@@ -33,10 +34,16 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from scipy import signal
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -429,7 +436,7 @@ def visualize_and_summarize():
     if w_gm > 0:
         ax1.axvline(w_gm, color='orange', linestyle=':', alpha=0.7, label=f'ω_π = {w_gm:.3f}')
     ax1.set_ylabel('Magnitude (dB)')
-    ax1.set_title('Open Loop Bode Plot: Magnitude')
+    # 标题已移除，保持图表简洁
     ax1.legend(fontsize=9)
     ax1.grid(True, which='both', alpha=0.3)
 
@@ -442,7 +449,7 @@ def visualize_and_summarize():
     ax2.plot(w_pm, phase_at_wc, 'go', markersize=8, label=f'PM = {pm:.1f}°')
     ax2.set_xlabel('Frequency (rad/min)')
     ax2.set_ylabel('Phase (degrees)')
-    ax2.set_title('Open Loop Bode Plot: Phase')
+    # 标题已移除，保持图表简洁
     ax2.legend(fontsize=9)
     ax2.grid(True, which='both', alpha=0.3)
 
@@ -453,7 +460,7 @@ def visualize_and_summarize():
     ax3.axhline(-3, color='g', linestyle=':', alpha=0.7, label='-3 dB (Bandwidth)')
     ax3.set_xlabel('Frequency (rad/min)')
     ax3.set_ylabel('Magnitude (dB)')
-    ax3.set_title('Closed Loop Frequency Response')
+    # 标题已移除，保持图表简洁
     ax3.legend()
     ax3.grid(True, which='both', alpha=0.3)
 
@@ -474,7 +481,7 @@ def visualize_and_summarize():
                     fontsize=9)
     ax4.set_xlabel('Time (min)')
     ax4.set_ylabel('Water Level (m)')
-    ax4.set_title('Time Domain Step Response')
+    # 标题已移除，保持图表简洁
     ax4.legend()
     ax4.grid(True, alpha=0.3)
 
@@ -491,7 +498,7 @@ def visualize_and_summarize():
     ax5.plot(np.cos(theta), np.sin(theta), 'k--', alpha=0.3)
     ax5.set_xlabel('Real')
     ax5.set_ylabel('Imaginary')
-    ax5.set_title('Nyquist Plot (Simplified)')
+    # 标题已移除，保持图表简洁
     ax5.legend()
     ax5.grid(True, alpha=0.3)
     ax5.axis('equal')

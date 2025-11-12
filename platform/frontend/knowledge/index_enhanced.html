@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水利水电水务知识库 - 智能问答系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .search-section {
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-btn, .ask-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover, .ask-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .search-btn:active, .ask-btn:active {
+            transform: translateY(0);
+        }
+
+        .filters {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            flex: 1;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .results {
+            margin-top: 30px;
+        }
+
+        .result-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
+        }
+
+        .result-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .result-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .result-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .meta-tag {
+            padding: 4px 10px;
+            background: #667eea;
+            color: white;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .relevance {
+            color: #666;
+        }
+
+        .relevance-bar {
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .relevance-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s;
+        }
+
+        .answer-section {
+            background: #f0f7ff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-top: 20px;
+        }
+
+        .answer-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .answer-header h3 {
+            color: #667eea;
+            font-size: 20px;
+        }
+
+        .answer-content {
+            color: #333;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .examples {
+            margin-top: 30px;
+        }
+
+        .example-group {
+            margin-bottom: 25px;
+        }
+
+        .example-group h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .example-item {
+            background: #f8f9fa;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .example-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .feedback-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff8e1;
+            border-radius: 10px;
+        }
+
+        .feedback-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .feedback-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .feedback-btn.positive {
+            background: #4caf50;
+            color: white;
+        }
+
+        .feedback-btn.negative {
+            background: #f44336;
+            color: white;
+        }
+
+        .feedback-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .timing-info {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .timing-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌊 水利水电水务知识库</h1>
+            <p>智能问答系统 - 基于RAG技术的专业知识检索</p>
+        </div>
+
+        <div class="main-content">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('qa')">💬 智能问答</button>
+                <button class="tab" onclick="switchTab('search')">🔍 知识检索</button>
+                <button class="tab" onclick="switchTab('stats')">📊 统计信息</button>
+                <button class="tab" onclick="switchTab('help')">❓ 使用帮助</button>
+            </div>
+
+            <!-- 智能问答标签页 -->
+            <div id="qa-tab" class="tab-content active">
+                <div class="search-section">
+                    <h3 style="margin-bottom: 15px;">提出您的问题</h3>
+                    <div class="search-box">
+                        <input type="text" id="question-input" class="search-input" 
+                               placeholder="例如：什么是水力学？混凝土重力坝如何设计？">
+                        <button class="ask-btn" onclick="askQuestion()">🤖 提问</button>
+                    </div>
+                </div>
+
+                <div id="qa-results" class="results"></div>
+
+                <div class="examples">
+                    <h3 style="margin-bottom: 20px;">示例问题</h3>
+                    <div class="example-group">
+                        <h4>📚 基础理论</h4>
+                        <div class="example-item" onclick="setQuestion('什么是水力学？')">
+                            什么是水力学？
+                        </div>
+                        <div class="example-item" onclick="setQuestion('明渠流动的特点有哪些？')">
+                            明渠流动的特点有哪些？
+                        </div>
+                    </div>
+
+                    <div class="example-group">
+                        <h4>🏗️ 工程设计</h4>
+                        <div class="example-item" onclick="setQuestion('混凝土重力坝如何进行稳定性分析？')">
+                            混凝土重力坝如何进行稳定性分析？
+                        </div>
+                        <div class="example-item" onclick="setQuestion('水电站由哪些主要部分组成？')">
+                            水电站由哪些主要部分组成？
+                        </div>
+                    </div>
+
+                    <div class="example-group">
+                        <h4>📋 规范标准</h4>
+                        <div class="example-item" onclick="setQuestion('SL 319规范主要规定了什么内容？')">
+                            SL 319规范主要规定了什么内容？
+                        </div>
+                    </div>
+
+                    <div class="example-group">
+                        <h4>🚀 前沿技术</h4>
+                        <div class="example-item" onclick="setQuestion('智慧水利有哪些应用？')">
+                            智慧水利有哪些应用？
+                        </div>
+                        <div class="example-item" onclick="setQuestion('BIM技术在水利工程中如何应用？')">
+                            BIM技术在水利工程中如何应用？
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 知识检索标签页 -->
+            <div id="search-tab" class="tab-content">
+                <div class="search-section">
+                    <div class="search-box">
+                        <input type="text" id="search-input" class="search-input" 
+                               placeholder="输入关键词搜索知识...">
+                        <button class="search-btn" onclick="searchKnowledge()">搜索</button>
+                    </div>
+
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>分类筛选</label>
+                            <select id="category-filter">
+                                <option value="">全部分类</option>
+                                <option value="水力学">水力学</option>
+                                <option value="工程力学">工程力学</option>
+                                <option value="土力学">土力学</option>
+                                <option value="工程测量">工程测量</option>
+                                <option value="水工建筑物">水工建筑物</option>
+                                <option value="水电工程">水电工程</option>
+                                <option value="水资源">水资源</option>
+                                <option value="施工技术">施工技术</option>
+                                <option value="规范标准">规范标准</option>
+                                <option value="工程管理">工程管理</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>层级筛选</label>
+                            <select id="level-filter">
+                                <option value="">全部层级</option>
+                                <option value="本科">本科</option>
+                                <option value="硕士">硕士</option>
+                                <option value="博士">博士</option>
+                                <option value="通用">通用</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="search-results" class="results"></div>
+            </div>
+
+            <!-- 统计信息标签页 -->
+            <div id="stats-tab" class="tab-content">
+                <h3 style="margin-bottom: 20px;">系统统计信息</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-total">78</div>
+                        <div class="stat-label">知识条目</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label">专业分类</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">学术层级</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">120ms</div>
+                        <div class="stat-label">平均检索时间</div>
+                    </div>
+                </div>
+
+                <h4 style="margin-top: 30px; margin-bottom: 15px;">知识分类分布</h4>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                    <div style="margin-bottom: 10px;">水力学：10条</div>
+                    <div style="margin-bottom: 10px;">工程管理：14条</div>
+                    <div style="margin-bottom: 10px;">施工技术：10条</div>
+                    <div style="margin-bottom: 10px;">规范标准：8条</div>
+                    <div style="margin-bottom: 10px;">水工建筑物：8条</div>
+                    <div>其他：28条</div>
+                </div>
+            </div>
+
+            <!-- 帮助标签页 -->
+            <div id="help-tab" class="tab-content">
+                <h3 style="margin-bottom: 20px;">使用帮助</h3>
+                
+                <h4 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">💬 智能问答</h4>
+                <p style="line-height: 1.8; color: #666;">
+                    在智能问答模式下，您可以用自然语言提出问题，系统会自动检索相关知识并生成专业回答。
+                    支持定义类、方法类、规范类等多种问题类型。
+                </p>
+
+                <h4 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">🔍 知识检索</h4>
+                <p style="line-height: 1.8; color: #666;">
+                    在知识检索模式下，您可以通过关键词搜索相关知识，支持按分类和层级进行过滤。
+                    系统使用语义检索技术，能够理解您的查询意图。
+                </p>
+
+                <h4 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">📊 系统特点</h4>
+                <ul style="line-height: 2; color: #666; margin-left: 20px;">
+                    <li>✅ 语义检索：智能理解用户问题</li>
+                    <li>✅ RAG技术：检索增强生成</li>
+                    <li>✅ 专业知识：水利水电水务全领域</li>
+                    <li>✅ 多层级：本科/硕士/博士/通用</li>
+                    <li>✅ 快速响应：平均120ms检索时间</li>
+                </ul>
+
+                <h4 style="color: #667eea; margin-top: 20px; margin-bottom: 10px;">🎯 应用场景</h4>
+                <ul style="line-height: 2; color: #666; margin-left: 20px;">
+                    <li>📚 学习培训：快速查找专业知识</li>
+                    <li>🏗️ 工程设计：获取设计方法和规范</li>
+                    <li>📋 规范查询：查找相关标准规范</li>
+                    <li>💡 技术咨询：获得专业建议</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+
+        function switchTab(tabName) {
+            // 隐藏所有标签页
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // 移除所有标签的active类
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 显示选中的标签页
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            // 激活对应的标签
+            event.target.classList.add('active');
+        }
+
+        function setQuestion(question) {
+            document.getElementById('question-input').value = question;
+            askQuestion();
+        }
+
+        async function askQuestion() {
+            const query = document.getElementById('question-input').value.trim();
+            if (!query) {
+                alert('请输入问题');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('qa-results');
+            resultsDiv.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>正在思考您的问题...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/ask`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        top_k: 5,
+                        include_context: true
+                    })
+                });
+
+                const data = await response.json();
+
+                let html = `
+                    <div class="answer-section">
+                        <div class="answer-header">
+                            <h3>🤖 AI专家回答</h3>
+                        </div>
+                        <div class="answer-content">${data.answer}</div>
+                        <div class="timing-info">
+                            <div class="timing-item">⏱️ 检索时间: ${data.timing.retrieval_ms}ms</div>
+                            <div class="timing-item">⚡ 生成时间: ${data.timing.generation_ms}ms</div>
+                            <div class="timing-item">📊 总耗时: ${data.timing.total_ms}ms</div>
+                        </div>
+                        <div class="feedback-section">
+                            <p style="margin-bottom: 10px; font-weight: bold;">这个回答对您有帮助吗？</p>
+                            <div class="feedback-buttons">
+                                <button class="feedback-btn positive" onclick="submitFeedback(true, '${query}')">👍 有帮助</button>
+                                <button class="feedback-btn negative" onclick="submitFeedback(false, '${query}')">👎 需要改进</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                if (data.context && data.context.length > 0) {
+                    html += '<div style="margin-top: 30px;"><h3 style="margin-bottom: 15px;">📚 参考知识来源</h3>';
+                    data.context.forEach(item => {
+                        html += `
+                            <div class="result-item">
+                                <div class="result-title">${item.title}</div>
+                                <div class="result-meta">
+                                    <span class="meta-tag">${item.category}</span>
+                                    <span class="meta-tag">${item.level}</span>
+                                    <span class="relevance">相关度: ${(item.relevance * 100).toFixed(1)}%</span>
+                                </div>
+                                <div class="relevance-bar">
+                                    <div class="relevance-fill" style="width: ${item.relevance * 100}%"></div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                }
+
+                resultsDiv.innerHTML = html;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div style="padding: 20px; text-align: center; color: #f44336;">
+                        <p>❌ 出错了: ${error.message}</p>
+                        <p style="margin-top: 10px; font-size: 14px;">请确保API服务正在运行</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function searchKnowledge() {
+            const query = document.getElementById('search-input').value.trim();
+            const category = document.getElementById('category-filter').value;
+            const level = document.getElementById('level-filter').value;
+
+            if (!query) {
+                alert('请输入搜索关键词');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('search-results');
+            resultsDiv.innerHTML = `
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>正在搜索...</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/search`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        top_k: 10,
+                        category: category || null,
+                        level: level || null
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.results.length === 0) {
+                    resultsDiv.innerHTML = `
+                        <div style="padding: 40px; text-align: center; color: #666;">
+                            <p style="font-size: 18px;">😕 未找到相关知识</p>
+                            <p style="margin-top: 10px;">试试调整搜索关键词或筛选条件</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = `<p style="margin-bottom: 20px; color: #666;">找到 ${data.total_results} 条相关知识（耗时：${data.retrieval_time_ms}ms）</p>`;
+                
+                data.results.forEach(item => {
+                    html += `
+                        <div class="result-item">
+                            <div class="result-title">${item.title}</div>
+                            <div class="result-meta">
+                                <span class="meta-tag">${item.category}</span>
+                                <span class="meta-tag">${item.level}</span>
+                                <span class="meta-tag">${item.source_type}</span>
+                                <span class="relevance">相关度: ${(item.relevance * 100).toFixed(1)}%</span>
+                            </div>
+                            <div class="relevance-bar">
+                                <div class="relevance-fill" style="width: ${item.relevance * 100}%"></div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                resultsDiv.innerHTML = html;
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div style="padding: 20px; text-align: center; color: #f44336;">
+                        <p>❌ 出错了: ${error.message}</p>
+                        <p style="margin-top: 10px; font-size: 14px;">请确保API服务正在运行</p>
+                    </div>
+                `;
+            }
+        }
+
+        async function submitFeedback(helpful, query) {
+            try {
+                const response = await fetch(`${API_BASE}/api/feedback`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        helpful: helpful,
+                        feedback: helpful ? '有帮助' : '需要改进'
+                    })
+                });
+
+                if (response.ok) {
+                    alert(helpful ? '感谢您的反馈！👍' : '感谢您的反馈，我们会持续改进！');
+                }
+            } catch (error) {
+                console.error('提交反馈失败:', error);
+            }
+        }
+
+        // 支持回车键提问
+        document.getElementById('question-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                askQuestion();
+            }
+        });
+
+        // 支持回车键搜索
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchKnowledge();
+            }
+        });
+    </script>
+</body>
+</html>

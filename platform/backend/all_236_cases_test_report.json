@@ -1,0 +1,7145 @@
+{
+  "test_time": "2025-11-10T19:58:35.150675",
+  "total_cases": 236,
+  "statistics": {
+    "total": 236,
+    "api_pass": 236,
+    "readme_pass": 193,
+    "files_pass": 236,
+    "has_images": 20,
+    "has_tables": 121,
+    "issues": [
+      {
+        "case": "Case 10 Spawning Ground",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 16 Gravel Supplement",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 17 Estuary",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 18 Restoration Assessment",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 21 Hydropower",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 29 Lake Hydrodynamics",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 30 Constructed Wetland",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 31 Riparian Buffer",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 32 Lake Stratification",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 33 Wetland Restoration",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 34 Sponge City",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 35 Urban River",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 36 Rain Garden",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 37 Flood Control",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 38 Salt Wedge",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 39 Mangrove",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 40 Revetment",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 41 Wetland Carbon",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 12 Glue Uncertainty",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 19 Climate Change",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "案例17：湖泊藻类生长动力学模拟",
+        "type": "short_readme",
+        "detail": "README过短: 470字符"
+      },
+      {
+        "case": "案例18：三维湖泊富营养化模拟",
+        "type": "short_readme",
+        "detail": "README过短: 414字符"
+      },
+      {
+        "case": "案例19：一维地下水污染柱实验",
+        "type": "short_readme",
+        "detail": "README过短: 465字符"
+      },
+      {
+        "case": "案例20：二维含水层污染羽迁移",
+        "type": "short_readme",
+        "detail": "README过短: 414字符"
+      },
+      {
+        "case": "案例21：多层含水层垂向迁移",
+        "type": "short_readme",
+        "detail": "README过短: 348字符"
+      },
+      {
+        "case": "案例22：抽出-处理修复方案优化",
+        "type": "short_readme",
+        "detail": "README过短: 392字符"
+      },
+      {
+        "case": "案例23：流域水文-水质耦合模拟",
+        "type": "short_readme",
+        "detail": "README过短: 156字符"
+      },
+      {
+        "case": "案例24：河湖水系连通与水质改善",
+        "type": "short_readme",
+        "detail": "README过短: 90字符"
+      },
+      {
+        "case": "案例25：跨流域调水水质风险评估",
+        "type": "short_readme",
+        "detail": "README过短: 92字符"
+      },
+      {
+        "case": "案例26：河流生态系统模拟",
+        "type": "short_readme",
+        "detail": "README过短: 95字符"
+      },
+      {
+        "case": "案例27：湖泊生态系统稳态转换",
+        "type": "short_readme",
+        "detail": "README过短: 96字符"
+      },
+      {
+        "case": "案例28：湿地生态系统净化功能模拟",
+        "type": "short_readme",
+        "detail": "README过短: 94字符"
+      },
+      {
+        "case": "案例29：城市黑臭水体治理方案评估",
+        "type": "short_readme",
+        "detail": "README过短: 95字符"
+      },
+      {
+        "case": "案例30：流域水环境综合管理平台",
+        "type": "short_readme",
+        "detail": "README过短: 101字符"
+      },
+      {
+        "case": "Case 01 Irrigation Gate",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 17 Smart Water",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 18 Digital Twin",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 19 Basin Coordination",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 20 Smart City Water",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 21 Inter Basin",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 22 Big Data Platform",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 23 Ai Water Management",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 24 Comprehensive",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 20 Dc Bus Control",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 03 Blade Aerodynamics",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 04 Rotor Performance",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 05 Wake Effect",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 06 Dfig Modeling",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 07 Pmsg Modeling",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 08 Grid Connection",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 09 Drivetrain",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 10 Tower Vibration",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 11 Tsr Control",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 12 Psf Control",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 13 Hcs Control",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 14 Optimal Torque",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      },
+      {
+        "case": "Case 15 Pitch Control",
+        "type": "readme",
+        "detail": {
+          "status": "fail",
+          "reason": "README为空"
+        }
+      }
+    ]
+  },
+  "results": [
+    {
+      "case_id": "case_01_home_water_tower",
+      "title": "案例1：家庭水塔自动供水系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5414,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 12,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 4
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_02_cooling_tower",
+      "title": "案例2：工业冷却塔精确水位控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9137,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 11,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 6
+        },
+        "tables": {
+          "status": "pass",
+          "count": 28
+        }
+      }
+    },
+    {
+      "case_id": "case_03_water_supply_station",
+      "title": "案例3：供水泵站无静差控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10929,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 10,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 6
+        },
+        "tables": {
+          "status": "pass",
+          "count": 42
+        }
+      }
+    },
+    {
+      "case_id": "case_04_pid_tuning",
+      "title": "案例4：PID控制与参数整定",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10065,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 11,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 7
+        },
+        "tables": {
+          "status": "pass",
+          "count": 58
+        }
+      }
+    },
+    {
+      "case_id": "case_05_parameter_identification",
+      "title": "案例5：未知水箱系统参数辨识 - 最小二乘法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5188,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 8,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 4
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06_step_response",
+      "title": "案例6：阶跃响应法快速建模 - 图解法参数辨识",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6695,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 8,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 4
+        },
+        "tables": {
+          "status": "pass",
+          "count": 22
+        }
+      }
+    },
+    {
+      "case_id": "case_07_cascade_control",
+      "title": "案例7：串级控制 - 双水箱系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5008,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 6,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 2
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_08_feedforward_control",
+      "title": "案例8：前馈控制 - 已知扰动补偿",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4460,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 6,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 2
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_09_system_modeling",
+      "title": "案例9：系统建模 - 从物理到数学",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5150,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 6,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 2
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_10_frequency_analysis",
+      "title": "案例10：频域分析 - Bode图与稳定性",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5089,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 6,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 2
+        },
+        "tables": {
+          "status": "pass",
+          "count": 7
+        }
+      }
+    },
+    {
+      "case_id": "case_11_state_space",
+      "title": "案例11：状态空间方法 - 现代控制理论入门",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7088,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 6,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 2
+        },
+        "tables": {
+          "status": "pass",
+          "count": 12
+        }
+      }
+    },
+    {
+      "case_id": "case_12_observer_lqr",
+      "title": "案例12：状态观测器与LQR最优控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3637,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 1
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_13_adaptive_control",
+      "title": "案例13：自适应控制 - 应对参数不确定性",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3918,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 1
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_14_model_predictive_control",
+      "title": "案例14：模型预测控制（MPC） - 优化控制与约束处理",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1318,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 1
+        },
+        "tables": {
+          "status": "pass",
+          "count": 3
+        }
+      }
+    },
+    {
+      "case_id": "case_15_sliding_mode_control",
+      "title": "案例15：滑模控制 - 鲁棒非线性控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3822,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 1
+        },
+        "tables": {
+          "status": "pass",
+          "count": 4
+        }
+      }
+    },
+    {
+      "case_id": "case_16_fuzzy_control",
+      "title": "案例16：模糊控制 - 智能控制的经典方法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6750,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 7,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 5
+        },
+        "tables": {
+          "status": "pass",
+          "count": 2
+        }
+      }
+    },
+    {
+      "case_id": "case_17_neural_network_control",
+      "title": "案例17：神经网络控制 - 深度学习与智能控制的结合",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6617,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 7,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 4
+        },
+        "tables": {
+          "status": "pass",
+          "count": 12
+        }
+      }
+    },
+    {
+      "case_id": "case_18_reinforcement_learning_control",
+      "title": "案例18：强化学习控制 - 智能体学习最优策略",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7319,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 6,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 4
+        },
+        "tables": {
+          "status": "pass",
+          "count": 13
+        }
+      }
+    },
+    {
+      "case_id": "case_19_comprehensive_comparison",
+      "title": "案例19：综合对比 - 所有控制方法的性能评估",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8976,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 7,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 5
+        },
+        "tables": {
+          "status": "pass",
+          "count": 21
+        }
+      }
+    },
+    {
+      "case_id": "case_20_practical_application",
+      "title": "案例20：实际应用 - 控制器的工程实现",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 13324,
+          "has_title": true,
+          "has_code": true,
+          "has_image": true
+        },
+        "files": {
+          "status": "pass",
+          "count": 6,
+          "has_main": true
+        },
+        "images": {
+          "status": "pass",
+          "count": 4
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_01_irrigation",
+      "title": "案例1：农村灌溉渠流量计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1169,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_02_drainage",
+      "title": "案例2：城市雨水排水渠设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1471,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_03_landscape",
+      "title": "案例3：景观水渠水流状态分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1819,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_04_weir",
+      "title": "案例4：灌区量水堰流量测量",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1730,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_05_gate",
+      "title": "案例5：渠道闸门出流计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2134,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06_drop",
+      "title": "案例6：跌水消能设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2418,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_07_profile",
+      "title": "案例7：渠道水面曲线计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2635,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_08_bridge",
+      "title": "案例8：桥梁壅水分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2313,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_09_roughness",
+      "title": "案例9：河道糙率率定",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2387,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_10_compound",
+      "title": "案例10：复式断面河道",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4131,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 1
+        }
+      }
+    },
+    {
+      "case_id": "case_11_transition",
+      "title": "案例11：渠道变宽与收缩",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3721,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_12_culvert",
+      "title": "案例12：涵洞过流",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4152,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_13_unsteady",
+      "title": "案例13：明渠非恒定流基础",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4323,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 2
+        }
+      }
+    },
+    {
+      "case_id": "case_14_flood_routing",
+      "title": "案例14：洪水演进计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3932,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 1
+        }
+      }
+    },
+    {
+      "case_id": "case_15_dam_break",
+      "title": "案例15：溃坝波计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5199,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_16_canal_operation",
+      "title": "案例16：渠道非恒定流调度",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4556,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_17_tidal_river",
+      "title": "案例17：潮汐河口非恒定流",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4548,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 1
+        }
+      }
+    },
+    {
+      "case_id": "case_18_wave_reflection",
+      "title": "案例18：明渠波动与反射",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4184,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 1
+        }
+      }
+    },
+    {
+      "case_id": "case_19_dynamic_scheduling",
+      "title": "案例19：多闸门渠系动态调度优化",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9537,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 4
+        }
+      }
+    },
+    {
+      "case_id": "case_20_2d_flow",
+      "title": "案例20：二维明渠水流模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8285,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 16
+        }
+      }
+    },
+    {
+      "case_id": "case_21_pipe_flow",
+      "title": "案例21：城市供水管道水力计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2571,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 9
+        }
+      }
+    },
+    {
+      "case_id": "case_22_pipe_network",
+      "title": "案例22：管网平衡计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3058,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 4
+        }
+      }
+    },
+    {
+      "case_id": "case_23_long_distance",
+      "title": "案例23：长距离输水管道设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3516,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_24_siphon",
+      "title": "案例24：虹吸与倒虹吸设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3660,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_25_water_hammer",
+      "title": "案例25：水锤基础",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4196,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_26_moc",
+      "title": "案例26：特征线法MOC",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3787,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 3
+        }
+      }
+    },
+    {
+      "case_id": "case_27_pump_transients",
+      "title": "案例27：泵站瞬变过程",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2723,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_28_surge_tank",
+      "title": "案例28：调压井",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2603,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_29_channel_pipe",
+      "title": "案例29：渠道-管道耦合系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 752,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_30_comprehensive",
+      "title": "案例30：泵站-渠道-管道综合系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 657,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_01_single_reach_pid",
+      "title": "案例1：单渠段PID水位控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6864,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 2
+        }
+      }
+    },
+    {
+      "case_id": "case_02_multipoint_pid",
+      "title": "案例2：多点反馈分布式PID控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4736,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 15
+        }
+      }
+    },
+    {
+      "case_id": "case_03_feedforward_feedback",
+      "title": "案例3：前馈-反馈复合控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8148,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 30
+        }
+      }
+    },
+    {
+      "case_id": "case_04_pod_reduction",
+      "title": "案例4：POD降阶 - 本征正交分解",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8865,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 29
+        }
+      }
+    },
+    {
+      "case_id": "case_05_dmd",
+      "title": "案例5：动态模态分解（DMD）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8609,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 33
+        }
+      }
+    },
+    {
+      "case_id": "case_06_galerkin_reduction",
+      "title": "案例6：Galerkin投影与有限元降阶",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4337,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 24
+        }
+      }
+    },
+    {
+      "case_id": "case_07_neural_network_rom",
+      "title": "案例7：神经网络降阶模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9602,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 73
+        }
+      }
+    },
+    {
+      "case_id": "case_08_n4sid_identification",
+      "title": "案例8：N4SID子空间辨识",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9510,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 41
+        }
+      }
+    },
+    {
+      "case_id": "case_09_frequency_identification",
+      "title": "案例9：频域辨识方法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7699,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 42
+        }
+      }
+    },
+    {
+      "case_id": "case_10_nonlinear_identification",
+      "title": "案例10：非线性系统辨识",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8972,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 47
+        }
+      }
+    },
+    {
+      "case_id": "case_11_sindy_identification",
+      "title": "案例11：SINDy稀疏辨识",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9088,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 44
+        }
+      }
+    },
+    {
+      "case_id": "case_12_ekf_state_estimation",
+      "title": "案例12：扩展卡尔曼滤波状态估计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9425,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 34
+        }
+      }
+    },
+    {
+      "case_id": "case_13_digital_twin",
+      "title": "案例13：数字孪生与预测性维护",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8861,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 21
+        }
+      }
+    },
+    {
+      "case_id": "case_14_mpc_control",
+      "title": "案例14：模型预测控制（MPC）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10067,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 42
+        }
+      }
+    },
+    {
+      "case_id": "case_15_adaptive_control",
+      "title": "案例15：自适应控制（Model Reference Adaptive Control, MRAC）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9197,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 30
+        }
+      }
+    },
+    {
+      "case_id": "case_16_robust_control",
+      "title": "案例16：鲁棒控制（H∞ & 滑模控制）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 11722,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 40
+        }
+      }
+    },
+    {
+      "case_id": "case_17_intelligent_control",
+      "title": "案例17：智能控制（Neural Networks & Reinforcement Learning）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 13958,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 36
+        }
+      }
+    },
+    {
+      "case_id": "case_18_pressurized_pipeline",
+      "title": "案例18：有压管道控制（水锤防护与压力控制）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 12822,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 12
+        }
+      }
+    },
+    {
+      "case_id": "case_19_coupled_system",
+      "title": "案例19：运河-管道耦合系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8623,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_20_integrated_system",
+      "title": "案例20：南水北调工程数字孪生系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 14902,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 34
+        }
+      }
+    },
+    {
+      "case_id": "case_01_ecological_flow",
+      "title": "案例1：河流生态基流计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2971,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_02_habitat_suitability",
+      "title": "案例2：鱼类栖息地适宜性评价",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4858,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 13
+        }
+      }
+    },
+    {
+      "case_id": "case_03_hydrologic_indicators",
+      "title": "案例3：河流生态水力指标体系",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6501,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 22
+        }
+      }
+    },
+    {
+      "case_id": "case_04_vegetation_hydraulics",
+      "title": "案例4：涉水植物生长水力条件分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3426,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 35
+        }
+      }
+    },
+    {
+      "case_id": "case_05_thermal_stratification",
+      "title": "案例5：水温分层与溶解氧分布模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 661,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06_benthic_habitat",
+      "title": "案例6：底栖生物栖息地水力条件评价",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 689,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_07_fish_swimming",
+      "title": "案例7：鱼类游泳能力与水流关系",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3552,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 37
+        }
+      }
+    },
+    {
+      "case_id": "case_08_fishway",
+      "title": "案例8：竖缝式鱼道水力设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3835,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 38
+        }
+      }
+    },
+    {
+      "case_id": "case_09_denil_fishway",
+      "title": "案例9：丹尼尔式鱼道设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3475,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 24
+        }
+      }
+    },
+    {
+      "case_id": "case_10_spawning_ground",
+      "title": "Case 10 Spawning Ground",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_11_feeding_ground",
+      "title": "案例11：鱼类索饵场水力-饵料关系分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2125,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 6
+        }
+      }
+    },
+    {
+      "case_id": "case_12_population",
+      "title": "案例12：洄游通道水力连通性分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2633,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_13_river_morphology",
+      "title": "案例13：河流形态多样性设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3694,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_14_ecological_revetment",
+      "title": "案例14：生态护岸水力设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3668,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_15_floodplain_wetland",
+      "title": "案例15：河流侧向连通性恢复（滩涂湿地）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3695,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 5
+        }
+      }
+    },
+    {
+      "case_id": "case_16_gravel_supplement",
+      "title": "Case 16 Gravel Supplement",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_17_estuary",
+      "title": "Case 17 Estuary",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_18_restoration_assessment",
+      "title": "Case 18 Restoration Assessment",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_21_hydropower",
+      "title": "Case 21 Hydropower",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_29_lake_hydrodynamics",
+      "title": "Case 29 Lake Hydrodynamics",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_30_constructed_wetland",
+      "title": "Case 30 Constructed Wetland",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_31_riparian_buffer",
+      "title": "Case 31 Riparian Buffer",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_32_lake_stratification",
+      "title": "Case 32 Lake Stratification",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_33_wetland_restoration",
+      "title": "Case 33 Wetland Restoration",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_34_sponge_city",
+      "title": "Case 34 Sponge City",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_35_urban_river",
+      "title": "Case 35 Urban River",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_36_rain_garden",
+      "title": "Case 36 Rain Garden",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_37_flood_control",
+      "title": "Case 37 Flood Control",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_38_salt_wedge",
+      "title": "Case 38 Salt Wedge",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_39_mangrove",
+      "title": "Case 39 Mangrove",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_40_revetment",
+      "title": "Case 40 Revetment",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_41_wetland_carbon",
+      "title": "Case 41 Wetland Carbon",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_01_dem_analysis",
+      "title": "案例1：DEM分析与河网提取",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5375,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_02_thiessen",
+      "title": "案例2：Thiessen多边形降雨插值",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2471,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_03_idw_kriging",
+      "title": "案例3：IDW与Kriging空间插值对比",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3320,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_04_xaj_model",
+      "title": "案例4：新安江模型产流计算",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1863,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_05_green_ampt",
+      "title": "案例5：Green-Ampt超渗产流模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3667,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06_distributed_runoff",
+      "title": "案例6：分布式产流网格模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 11403,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 51
+        }
+      }
+    },
+    {
+      "case_id": "case_07_slope_routing",
+      "title": "案例7：坡面运动波汇流",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4591,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 15
+        }
+      }
+    },
+    {
+      "case_id": "case_08_unit_hydrograph",
+      "title": "案例8：单元线法河道汇流",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4148,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_09_sensitivity_analysis",
+      "title": "案例9：参数敏感性分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7970,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_10_muskingum_cunge",
+      "title": "案例10：Muskingum-Cunge河道洪水演进方法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7281,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 28
+        }
+      }
+    },
+    {
+      "case_id": "case_11_sce_calibration",
+      "title": "案例11：SCE-UA参数率定算法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6196,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 18
+        }
+      }
+    },
+    {
+      "case_id": "case_12_glue_uncertainty",
+      "title": "Case 12 Glue Uncertainty",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_14_integrated_watershed",
+      "title": "案例14：完整流域分布式水文模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4637,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 8
+        }
+      }
+    },
+    {
+      "case_id": "case_15_hydro_dynamic_coupling",
+      "title": "案例15：水文-水动力耦合模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4511,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 16
+        }
+      }
+    },
+    {
+      "case_id": "case_16_human_impact",
+      "title": "案例16：人类活动对产汇流影响评估",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4762,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 18
+        }
+      }
+    },
+    {
+      "case_id": "case_17_reservoir_operation",
+      "title": "案例17：水库优化调度（基于规则）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4302,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 6
+        }
+      }
+    },
+    {
+      "case_id": "case_18_forecast_operation",
+      "title": "案例18：实时洪水预报调度系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3988,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 9
+        }
+      }
+    },
+    {
+      "case_id": "case_19_climate_change",
+      "title": "Case 19 Climate Change",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_20_cascade_reservoirs",
+      "title": "案例20：多水库梯级联合调度",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4860,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_21_realtime_correction",
+      "title": "案例21：实时校正模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6191,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 19
+        }
+      }
+    },
+    {
+      "case_id": "case_22_gis_integration",
+      "title": "案例22：GIS集成应用",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8203,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 20
+        }
+      }
+    },
+    {
+      "case_id": "case_23_full_coupling",
+      "title": "案例23：分布式水文-水动力全耦合",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2369,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_24_digital_twin",
+      "title": "案例24：流域数字孪生系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1524,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_25_intelligent_forecast",
+      "title": "案例25：智能水文预报平台",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1315,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_01_diffusion",
+      "title": "案例1：污染物在静水中的扩散",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1919,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_02_advection_diffusion",
+      "title": "案例2：示踪剂在渠道中的对流-扩散",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3029,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_03_reaction",
+      "title": "案例3：河流中的降解反应与参数率定",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2805,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_04_streeter_phelps",
+      "title": "案例4：Streeter-Phelps溶解氧模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4923,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_05_nutrients",
+      "title": "案例5：营养盐循环与富营养化评估",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5580,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06_self_purification",
+      "title": "案例6：河流自净能力与环境容量评估",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4864,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 16
+        }
+      }
+    },
+    {
+      "case_id": "case_07_multi_source",
+      "title": "案例7：多点源污染叠加模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4321,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 12
+        }
+      }
+    },
+    {
+      "case_id": "case_08_nonpoint_source",
+      "title": "案例8：非点源污染模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4915,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 28
+        }
+      }
+    },
+    {
+      "case_id": "case_09_thermal_pollution",
+      "title": "案例9：热污染扩散模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4340,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 7
+        }
+      }
+    },
+    {
+      "case_id": "case_10_lateral_mixing",
+      "title": "案例10：河流横向混合模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4714,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_11_river_bend",
+      "title": "案例11：河流弯道水质模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4067,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_12_estuary",
+      "title": "案例12：河口盐水入侵与水质模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1759,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_13_lake_cmfr",
+      "title": "案例13：小型湖泊完全混合模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5077,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 8
+        }
+      }
+    },
+    {
+      "case_id": "case_14_lake_nutrient",
+      "title": "案例14：湖泊营养盐输入响应分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1355,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_15_stratified_reservoir",
+      "title": "案例15：水库温度分层与水质模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 809,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_16_density_current",
+      "title": "案例16：水库异重流模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 550,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_17_algae_dynamics",
+      "title": "案例17：湖泊藻类生长动力学模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 470,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_18_lake_3d_eutrophication",
+      "title": "案例18：三维湖泊富营养化模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 414,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_19_groundwater_column",
+      "title": "案例19：一维地下水污染柱实验",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 465,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_20_aquifer_2d",
+      "title": "案例20：二维含水层污染羽迁移",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 414,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_21_multilayer_aquifer",
+      "title": "案例21：多层含水层垂向迁移",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 348,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_22_pump_and_treat",
+      "title": "案例22：抽出-处理修复方案优化",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 392,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_23_watershed",
+      "title": "案例23：流域水文-水质耦合模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 156,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_24_river_network",
+      "title": "案例24：河湖水系连通与水质改善",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 90,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_25_water_transfer",
+      "title": "案例25：跨流域调水水质风险评估",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 92,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_26_river_ecosystem",
+      "title": "案例26：河流生态系统模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 95,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_27_lake_regime_shift",
+      "title": "案例27：湖泊生态系统稳态转换",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 96,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_28_wetland",
+      "title": "案例28：湿地生态系统净化功能模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 94,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_29_urban_blackwater",
+      "title": "案例29：城市黑臭水体治理方案评估",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 95,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_30_watershed_platform",
+      "title": "案例30：流域水环境综合管理平台",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 101,
+          "has_title": true,
+          "has_code": false,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_01",
+      "title": "案例1：一维稳态地下水流动",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2786,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_02",
+      "title": "案例2：二维稳态地下水流动与网格剖分",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3133,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_03",
+      "title": "案例3：非均质含水层模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3354,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_04",
+      "title": "案例4：瞬态地下水流动",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3434,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_05",
+      "title": "案例5：有限元方法基础",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3915,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06",
+      "title": "案例6：参数率定基础（优化方法）",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4586,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 11
+        }
+      }
+    },
+    {
+      "case_id": "case_07",
+      "title": "案例7：PEST方法实现",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5523,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 23
+        }
+      }
+    },
+    {
+      "case_id": "case_08",
+      "title": "案例8：贝叶斯推断与MCMC",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7558,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 34
+        }
+      }
+    },
+    {
+      "case_id": "case_09",
+      "title": "案例9：敏感性分析深入",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6895,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 31
+        }
+      }
+    },
+    {
+      "case_id": "case_10",
+      "title": "案例10：不确定性量化",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 951,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 12
+        }
+      }
+    },
+    {
+      "case_id": "case_11",
+      "title": "案例11：地表地下水耦合基础",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8654,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 9
+        }
+      }
+    },
+    {
+      "case_id": "case_12",
+      "title": "案例12：MODFLOW River包实现",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9768,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 17
+        }
+      }
+    },
+    {
+      "case_id": "case_13",
+      "title": "案例13：渗漏与越流模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 11355,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_14",
+      "title": "案例14：耦合模型率定",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8943,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_15",
+      "title": "案例15：耦合系统不确定性分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10652,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_16",
+      "title": "案例16：地下水开采优化",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 12127,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 6
+        }
+      }
+    },
+    {
+      "case_id": "case_17",
+      "title": "案例17：地面沉降模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10455,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_18",
+      "title": "案例18：污染物运移模拟",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9578,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_19",
+      "title": "案例19：地下水数字孪生架构",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 12653,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 16
+        }
+      }
+    },
+    {
+      "case_id": "case_20",
+      "title": "案例20：智能决策支持系统",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10594,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 26
+        }
+      }
+    },
+    {
+      "case_id": "case_01",
+      "title": "案例1：灌区智能化升级工程设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 2786,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_01_irrigation_gate",
+      "title": "Case 01 Irrigation Gate",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": false
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_02_pump_station",
+      "title": "案例2：提水泵站智能化设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 15449,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 106
+        }
+      }
+    },
+    {
+      "case_id": "case_03_hydropower_station",
+      "title": "案例3：小型水电站智能发电设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 13360,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 103
+        }
+      }
+    },
+    {
+      "case_id": "case_04_valve_station",
+      "title": "案例4：调压阀站智能控制设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 12358,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 97
+        }
+      }
+    },
+    {
+      "case_id": "case_05_drainage_gate",
+      "title": "案例5：排涝闸站智能调度设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10408,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 102
+        }
+      }
+    },
+    {
+      "case_id": "case_06_multi_function_gate",
+      "title": "案例6：多功能水闸设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9811,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 62
+        }
+      }
+    },
+    {
+      "case_id": "case_07_cascade_canals",
+      "title": "案例7：串级渠道智能调度设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8484,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 5,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 110
+        }
+      }
+    },
+    {
+      "case_id": "case_08_multi_pump_stations",
+      "title": "案例8：多级泵站联合调度设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8872,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 105
+        }
+      }
+    },
+    {
+      "case_id": "case_09_water_network_pressure",
+      "title": "案例9：供水管网压力分区设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8199,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 103
+        }
+      }
+    },
+    {
+      "case_id": "case_10_irrigation_system",
+      "title": "案例10：灌区渠系优化配水设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7125,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 90
+        }
+      }
+    },
+    {
+      "case_id": "case_11_urban_river_network",
+      "title": "案例11：城市河湖水系联调设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5052,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 39
+        }
+      }
+    },
+    {
+      "case_id": "case_12_water_diversion",
+      "title": "案例12：调水工程水量调度设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5054,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 5,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 64
+        }
+      }
+    },
+    {
+      "case_id": "case_13_multi_source_water_supply",
+      "title": "案例13：多水源供水系统设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6953,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 77
+        }
+      }
+    },
+    {
+      "case_id": "case_14_regional_irrigation",
+      "title": "案例14：区域灌区群联调设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3857,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 5,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 33
+        }
+      }
+    },
+    {
+      "case_id": "case_15_flood_control",
+      "title": "案例15：流域防洪调度设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3821,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 35
+        }
+      }
+    },
+    {
+      "case_id": "case_16_water_resource_allocation",
+      "title": "案例16：水资源优化配置设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 1309,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 10
+        }
+      }
+    },
+    {
+      "case_id": "case_17_smart_water",
+      "title": "Case 17 Smart Water",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_18_digital_twin",
+      "title": "Case 18 Digital Twin",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_19_basin_coordination",
+      "title": "Case 19 Basin Coordination",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_20_smart_city_water",
+      "title": "Case 20 Smart City Water",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_21_inter_basin",
+      "title": "Case 21 Inter Basin",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_22_big_data_platform",
+      "title": "Case 22 Big Data Platform",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_23_ai_water_management",
+      "title": "Case 23 Ai Water Management",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_24_comprehensive",
+      "title": "Case 24 Comprehensive",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_01_pv_cell_iv_characteristics",
+      "title": "案例1: 光伏电池I-V特性建模",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6236,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 18
+        }
+      }
+    },
+    {
+      "case_id": "case_02_double_diode_model",
+      "title": "案例2: 双二极管精确模型",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 4713,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 20
+        }
+      }
+    },
+    {
+      "case_id": "case_03_pv_module_modeling",
+      "title": "案例3: 光伏组件建模",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 7723,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 4,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 16
+        }
+      }
+    },
+    {
+      "case_id": "case_04_pv_array_configuration",
+      "title": "案例4: 光伏阵列配置",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8140,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 35
+        }
+      }
+    },
+    {
+      "case_id": "case_05_shading_analysis",
+      "title": "案例5: 遮挡分析与诊断",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5352,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 32
+        }
+      }
+    },
+    {
+      "case_id": "case_06_parameter_identification",
+      "title": "案例6: 参数辨识方法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 3879,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 16
+        }
+      }
+    },
+    {
+      "case_id": "case_07_perturb_observe",
+      "title": "案例7: P&O扰动观察法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5541,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 33
+        }
+      }
+    },
+    {
+      "case_id": "case_08_incremental_conductance",
+      "title": "案例8: 增量电导法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6003,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 28
+        }
+      }
+    },
+    {
+      "case_id": "case_09_constant_voltage",
+      "title": "案例9: 恒电压法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6746,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 24
+        }
+      }
+    },
+    {
+      "case_id": "case_10_fuzzy_logic",
+      "title": "案例10: 模糊逻辑MPPT",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10080,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 32
+        }
+      }
+    },
+    {
+      "case_id": "case_11_pso_mppt",
+      "title": "案例11: 粒子群优化MPPT",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 9220,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 26
+        }
+      }
+    },
+    {
+      "case_id": "case_12_multi_peak_mppt",
+      "title": "案例12: 多峰MPPT算法",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 8287,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 46
+        }
+      }
+    },
+    {
+      "case_id": "case_13_pwm_modulation",
+      "title": "案例13: PWM调制技术",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 10622,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 20
+        }
+      }
+    },
+    {
+      "case_id": "case_14_current_control",
+      "title": "案例14: 电流控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5854,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 13
+        }
+      }
+    },
+    {
+      "case_id": "case_15_voltage_control",
+      "title": "案例15: 电压控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6323,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 28
+        }
+      }
+    },
+    {
+      "case_id": "case_16_grid_synchronization",
+      "title": "案例16: 并网同步控制 - 锁相环(PLL)设计",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6050,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 21
+        }
+      }
+    },
+    {
+      "case_id": "case_17_power_factor_control",
+      "title": "案例17: 功率因数控制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6374,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 39
+        }
+      }
+    },
+    {
+      "case_id": "case_18_harmonic_suppression",
+      "title": "案例18: 谐波抑制",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5693,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 23
+        }
+      }
+    },
+    {
+      "case_id": "case_19_dcdc_converter",
+      "title": "案例19: DC/DC变换器建模",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6124,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 3,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 43
+        }
+      }
+    },
+    {
+      "case_id": "case_20_dc_bus_control",
+      "title": "Case 20 Dc Bus Control",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_01_wind_statistics",
+      "title": "案例1: 风速统计分析",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 5478,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 12
+        }
+      }
+    },
+    {
+      "case_id": "case_02_wind_shear",
+      "title": "案例2: 风切变与湍流",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "pass",
+          "length": 6959,
+          "has_title": true,
+          "has_code": true,
+          "has_image": false
+        },
+        "files": {
+          "status": "pass",
+          "count": 2,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "pass",
+          "count": 23
+        }
+      }
+    },
+    {
+      "case_id": "case_03_blade_aerodynamics",
+      "title": "Case 03 Blade Aerodynamics",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_04_rotor_performance",
+      "title": "Case 04 Rotor Performance",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_05_wake_effect",
+      "title": "Case 05 Wake Effect",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06_dfig_modeling",
+      "title": "Case 06 Dfig Modeling",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_07_pmsg_modeling",
+      "title": "Case 07 Pmsg Modeling",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_08_grid_connection",
+      "title": "Case 08 Grid Connection",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_09_drivetrain",
+      "title": "Case 09 Drivetrain",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_10_tower_vibration",
+      "title": "Case 10 Tower Vibration",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_11_tsr_control",
+      "title": "Case 11 Tsr Control",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_12_psf_control",
+      "title": "Case 12 Psf Control",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_13_hcs_control",
+      "title": "Case 13 Hcs Control",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_14_optimal_torque",
+      "title": "Case 14 Optimal Torque",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_15_pitch_control",
+      "title": "Case 15 Pitch Control",
+      "checks": {
+        "api_access": {
+          "status": "pass"
+        },
+        "readme": {
+          "status": "fail",
+          "reason": "README为空"
+        },
+        "files": {
+          "status": "pass",
+          "count": 1,
+          "has_main": true
+        },
+        "images": {
+          "status": "warn",
+          "count": 0
+        },
+        "tables": {
+          "status": "warn",
+          "count": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>测试案例文档弹窗</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.0.0/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .test-btn {
+            padding: 12px 24px;
+            font-size: 16px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        .test-btn:hover {
+            background: #45a049;
+        }
+        
+        /* 文档模态框样式 */
+        .doc-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .doc-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(4px);
+        }
+        
+        .doc-modal-content {
+            position: relative;
+            background: #1e1e1e;
+            border-radius: 8px;
+            max-width: 90vw;
+            max-height: 90vh;
+            width: 1200px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .doc-modal-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #252526;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .doc-modal-header h2 {
+            margin: 0;
+            color: #e0e0e0;
+            font-size: 20px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 32px;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .close-btn:hover {
+            background: #3c3c3c;
+            color: #fff;
+        }
+        
+        .doc-modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+            color: #d4d4d4;
+            background: #1e1e1e;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .markdown-content {
+            line-height: 1.8;
+        }
+        
+        .markdown-content h1 {
+            color: #4fc3f7;
+            border-bottom: 2px solid #333;
+            padding-bottom: 8px;
+        }
+        
+        .markdown-content h2 {
+            color: #81c784;
+            margin-top: 24px;
+        }
+        
+        .markdown-content code {
+            background: #2d2d2d;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #f48fb1;
+        }
+        
+        .markdown-content pre {
+            background: #2d2d2d;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        
+        .markdown-content table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 16px 0;
+        }
+        
+        .markdown-content th,
+        .markdown-content td {
+            border: 1px solid #444;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        
+        .markdown-content th {
+            background: #2d2d2d;
+            color: #4fc3f7;
+        }
+    </style>
+</head>
+<body>
+    <h1>案例文档弹窗功能测试</h1>
+    
+    <p>点击按钮测试案例文档查看功能:</p>
+    
+    <button class="test-btn" onclick="testCase1()">📖 测试案例1: 家用水塔</button>
+    <button class="test-btn" onclick="testCase2()">📖 测试案例2: 冷却塔</button>
+    <button class="test-btn" onclick="testCase3()">📖 测试案例3: 供水站</button>
+    
+    <div id="status" style="margin-top: 20px; padding: 10px; background: white; border-radius: 4px;">
+        <strong>状态:</strong> 就绪
+    </div>
+    
+    <script>
+        function updateStatus(msg, isError = false) {
+            const status = document.getElementById('status');
+            status.innerHTML = `<strong>状态:</strong> ${msg}`;
+            status.style.background = isError ? '#ffebee' : '#e8f5e9';
+            console.log('[STATUS]', msg);
+        }
+        
+        async function viewCase(caseId, caseName) {
+            try {
+                updateStatus(`正在加载 ${caseName}...`);
+                console.log('[DEBUG] viewCase called with:', caseId);
+                
+                const response = await fetch(`/api/cases/${caseId}/readme`);
+                console.log('[DEBUG] Response status:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('[DEBUG] Response data:', data);
+                
+                if (data.success) {
+                    console.log('[DEBUG] Calling showModal');
+                    showModal(data.title, data.content);
+                    updateStatus(`✅ ${caseName} 加载成功!`);
+                } else {
+                    throw new Error('API返回success=false');
+                }
+            } catch (error) {
+                console.error('[ERROR] 加载案例文档失败:', error);
+                updateStatus(`❌ 加载失败: ${error.message}`, true);
+                alert('文档加载失败: ' + error.message);
+            }
+        }
+        
+        function showModal(title, markdownContent) {
+            try {
+                console.log('[DEBUG] showModal called, title:', title, 'content length:', markdownContent.length);
+                
+                // 检查marked是否加载
+                if (typeof marked === 'undefined') {
+                    console.error('[ERROR] marked.js not loaded');
+                    alert('Markdown渲染库未加载,请刷新页面');
+                    return;
+                }
+                
+                const modal = document.createElement('div');
+                modal.className = 'doc-modal';
+                
+                // 渲染Markdown
+                const htmlContent = marked.parse(markdownContent);
+                console.log('[DEBUG] Markdown rendered, HTML length:', htmlContent.length);
+                
+                modal.innerHTML = `
+                    <div class="doc-modal-overlay" onclick="this.parentElement.remove()"></div>
+                    <div class="doc-modal-content">
+                        <div class="doc-modal-header">
+                            <h2>📖 ${title}</h2>
+                            <button class="close-btn" onclick="this.closest('.doc-modal').remove()">×</button>
+                        </div>
+                        <div class="doc-modal-body markdown-content">
+                            ${htmlContent}
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                console.log('[DEBUG] Modal added to body');
+            } catch (error) {
+                console.error('[ERROR] showModal failed:', error);
+                alert('显示文档失败: ' + error.message);
+            }
+        }
+        
+        function testCase1() {
+            viewCase('case_01_home_water_tower', '案例1: 家用水塔');
+        }
+        
+        function testCase2() {
+            viewCase('case_02_cooling_tower', '案例2: 冷却塔');
+        }
+        
+        function testCase3() {
+            viewCase('case_03_water_supply_station', '案例3: 供水站');
+        }
+        
+        // 页面加载时检查
+        window.addEventListener('load', function() {
+            if (typeof marked !== 'undefined') {
+                console.log('[OK] marked.js loaded successfully');
+                updateStatus('✅ 所有依赖加载完成,可以开始测试');
+            } else {
+                console.error('[ERROR] marked.js not loaded');
+                updateStatus('❌ marked.js未加载', true);
+            }
+        });
+    </script>
+</body>
+</html>
+

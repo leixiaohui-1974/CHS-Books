@@ -1,0 +1,138 @@
+{
+  "timestamp": "2025-11-11T08:28:51.130644",
+  "base_url": "http://localhost:8000",
+  "file_availability": {
+    "total": 6,
+    "success": 6,
+    "failed": 0,
+    "files": {
+      "/static/lazy-load.js": {
+        "status": "success",
+        "size_kb": 10.22,
+        "time_s": 2.203
+      },
+      "/static/lazy-load.css": {
+        "status": "success",
+        "size_kb": 7.29,
+        "time_s": 2.061
+      },
+      "/static/cache-manager.js": {
+        "status": "success",
+        "size_kb": 19.57,
+        "time_s": 2.079
+      },
+      "/static/common-ui-utils.js": {
+        "status": "success",
+        "size_kb": 5.66,
+        "time_s": 2.085
+      },
+      "/static/common-ui-styles.css": {
+        "status": "success",
+        "size_kb": 6.46,
+        "time_s": 2.066
+      },
+      "/static/responsive-layout.css": {
+        "status": "success",
+        "size_kb": 9.45,
+        "time_s": 2.017
+      }
+    }
+  },
+  "page_integration": {
+    "total": 4,
+    "success": 0,
+    "failed": 4,
+    "pages": {
+      "index.html": {
+        "status": "success",
+        "integration_rate": 0.0,
+        "details": {
+          "图片懒加载": false,
+          "缓存管理器": false,
+          "UI工具库": false,
+          "响应式布局": false
+        }
+      },
+      "ide.html": {
+        "status": "failed",
+        "code": 404
+      },
+      "textbooks.html": {
+        "status": "success",
+        "integration_rate": 0.0,
+        "details": {
+          "图片懒加载": false,
+          "缓存管理器": false,
+          "UI工具库": false,
+          "响应式布局": false
+        }
+      },
+      "search.html": {
+        "status": "success",
+        "integration_rate": 0.0,
+        "details": {
+          "图片懒加载": false,
+          "缓存管理器": false,
+          "UI工具库": false,
+          "响应式布局": false
+        }
+      }
+    }
+  },
+  "api_performance": {
+    "endpoints": {
+      "/api/textbooks": {
+        "average_ms": 2066.63,
+        "min_ms": 2053.11,
+        "max_ms": 2083.3,
+        "samples": 5
+      },
+      "/api/search/stats": {
+        "average_ms": 2072.15,
+        "min_ms": 2067.73,
+        "max_ms": 2083.93,
+        "samples": 5
+      }
+    }
+  },
+  "concurrent_test": {
+    "levels": {
+      "5": {
+        "total_time_s": 2.05,
+        "success_count": 0,
+        "total_count": 5,
+        "success_rate": 0.0,
+        "avg_response_ms": 0.0
+      },
+      "10": {
+        "total_time_s": 2.08,
+        "success_count": 0,
+        "total_count": 10,
+        "success_rate": 0.0,
+        "avg_response_ms": 0.0
+      },
+      "20": {
+        "total_time_s": 2.09,
+        "success_count": 0,
+        "total_count": 20,
+        "success_rate": 0.0,
+        "avg_response_ms": 0.0
+      }
+    }
+  },
+  "large_payload": {
+    "status": "success",
+    "total_textbooks": 18,
+    "total_chapters": 0,
+    "payload_size_kb": 4.31,
+    "load_time_s": 2.05,
+    "throughput_kbps": 2.1
+  },
+  "summary": {
+    "file_success_rate": 100.0,
+    "page_success_rate": 0.0,
+    "avg_api_time_ms": 2069.39,
+    "concurrent_success_rate": 0.0,
+    "total_score": -53.5
+  }
+}

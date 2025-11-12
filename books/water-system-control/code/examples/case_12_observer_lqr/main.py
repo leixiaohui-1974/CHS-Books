@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例12：状态观测器与LQR最优控制
 
@@ -34,11 +35,17 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 from scipy import signal
 from scipy import linalg
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -403,7 +410,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax1.plot(t_obs, x_est, 'r--', linewidth=2, label='Estimated x̂')
     ax1.set_xlabel('Time (min)')
     ax1.set_ylabel('Water Level (m)')
-    ax1.set_title('Observer Performance')
+    # 标题已移除，保持图表简洁
     ax1.legend()
     ax1.grid(True, alpha=0.3)
 
@@ -413,7 +420,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax2.axhline(0, color='r', linestyle='--', alpha=0.5)
     ax1.set_xlabel('Time (min)')
     ax2.set_ylabel('Estimation Error (m)')
-    ax2.set_title('Observer Error Convergence')
+    # 标题已移除，保持图表简洁
     ax2.grid(True, alpha=0.3)
 
     # 图3：LQR vs开环
@@ -423,7 +430,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax3.axhline(r, color='r', linestyle='--', alpha=0.5, label='Reference')
     ax3.set_xlabel('Time (min)')
     ax3.set_ylabel('Water Level (m)')
-    ax3.set_title('LQR vs Open Loop')
+    # 标题已移除，保持图表简洁
     ax3.legend()
     ax3.grid(True, alpha=0.3)
 
@@ -434,7 +441,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax4.axhline(r, color='gray', linestyle='--', alpha=0.5)
     ax4.set_xlabel('Time (min)')
     ax4.set_ylabel('Water Level (m)')
-    ax4.set_title('State Feedback vs Observer-based')
+    # 标题已移除，保持图表简洁
     ax4.legend()
     ax4.grid(True, alpha=0.3)
 
@@ -445,7 +452,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax5.axhline(r, color='gray', linestyle='--', alpha=0.5)
     ax5.set_xlabel('Time (min)')
     ax5.set_ylabel('Water Level (m)')
-    ax5.set_title('State Estimation in Closed Loop')
+    # 标题已移除，保持图表简洁
     ax5.legend()
     ax5.grid(True, alpha=0.3)
 
@@ -455,7 +462,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax6.plot(t, u2, 'r--', linewidth=2, label='Observer-based')
     ax6.set_xlabel('Time (min)')
     ax6.set_ylabel('Control Input u')
-    ax6.set_title('Control Signals')
+    # 标题已移除，保持图表简洁
     ax6.legend()
     ax6.grid(True, alpha=0.3)
 
@@ -466,7 +473,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax7.axhline(r, color='gray', linestyle='--', alpha=0.5)
     ax7.set_xlabel('Time (min)')
     ax7.set_ylabel('Water Level (m)')
-    ax7.set_title('Q/R Ratio Trade-off')
+    # 标题已移除，保持图表简洁
     ax7.legend()
     ax7.grid(True, alpha=0.3)
 
@@ -484,7 +491,7 @@ def visualize_and_summarize(obs_data, lqr_data, combined_data, tradeoff_data, L)
     ax8.set_ylabel('Settling Time (min)', color='b')
     ax8_twin.set_ylabel('Control Energy', color='r')
     ax8.set_xscale('log')
-    ax8.set_title('Performance vs Control Effort')
+    # 标题已移除，保持图表简洁
     ax8.grid(True, alpha=0.3)
 
     lns = ln1 + ln2

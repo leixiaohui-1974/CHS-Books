@@ -1,0 +1,2189 @@
+{
+  "total_books": 15,
+  "total_cases": 236,
+  "books": [
+    {
+      "slug": "water-system-control",
+      "path": "books\\water-system-control",
+      "cases_count": 20,
+      "cases": [
+        {
+          "id": "case_01_home_water_tower",
+          "name": "Case 01 Home Water Tower",
+          "path": "books\\water-system-control\\code\\examples\\case_01_home_water_tower",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例1：家庭水塔自动供水系统"
+        },
+        {
+          "id": "case_02_cooling_tower",
+          "name": "Case 02 Cooling Tower",
+          "path": "books\\water-system-control\\code\\examples\\case_02_cooling_tower",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例2：工业冷却塔精确水位控制"
+        },
+        {
+          "id": "case_03_water_supply_station",
+          "name": "Case 03 Water Supply Station",
+          "path": "books\\water-system-control\\code\\examples\\case_03_water_supply_station",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例3：供水泵站无静差控制"
+        },
+        {
+          "id": "case_04_pid_tuning",
+          "name": "Case 04 Pid Tuning",
+          "path": "books\\water-system-control\\code\\examples\\case_04_pid_tuning",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例4：PID控制与参数整定"
+        },
+        {
+          "id": "case_05_parameter_identification",
+          "name": "Case 05 Parameter Identification",
+          "path": "books\\water-system-control\\code\\examples\\case_05_parameter_identification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例5：未知水箱系统参数辨识 - 最小二乘法"
+        },
+        {
+          "id": "case_06_step_response",
+          "name": "Case 06 Step Response",
+          "path": "books\\water-system-control\\code\\examples\\case_06_step_response",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例6：阶跃响应法快速建模 - 图解法参数辨识"
+        },
+        {
+          "id": "case_07_cascade_control",
+          "name": "Case 07 Cascade Control",
+          "path": "books\\water-system-control\\code\\examples\\case_07_cascade_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例7：串级控制 - 双水箱系统"
+        },
+        {
+          "id": "case_08_feedforward_control",
+          "name": "Case 08 Feedforward Control",
+          "path": "books\\water-system-control\\code\\examples\\case_08_feedforward_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例8：前馈控制 - 已知扰动补偿"
+        },
+        {
+          "id": "case_09_system_modeling",
+          "name": "Case 09 System Modeling",
+          "path": "books\\water-system-control\\code\\examples\\case_09_system_modeling",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例9：系统建模 - 从物理到数学"
+        },
+        {
+          "id": "case_10_frequency_analysis",
+          "name": "Case 10 Frequency Analysis",
+          "path": "books\\water-system-control\\code\\examples\\case_10_frequency_analysis",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例10：频域分析 - Bode图与稳定性"
+        },
+        {
+          "id": "case_11_state_space",
+          "name": "Case 11 State Space",
+          "path": "books\\water-system-control\\code\\examples\\case_11_state_space",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例11：状态空间方法 - 现代控制理论入门"
+        },
+        {
+          "id": "case_12_observer_lqr",
+          "name": "Case 12 Observer Lqr",
+          "path": "books\\water-system-control\\code\\examples\\case_12_observer_lqr",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例12：状态观测器与LQR最优控制"
+        },
+        {
+          "id": "case_13_adaptive_control",
+          "name": "Case 13 Adaptive Control",
+          "path": "books\\water-system-control\\code\\examples\\case_13_adaptive_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例13：自适应控制 - 应对参数不确定性"
+        },
+        {
+          "id": "case_14_model_predictive_control",
+          "name": "Case 14 Model Predictive Control",
+          "path": "books\\water-system-control\\code\\examples\\case_14_model_predictive_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例14：模型预测控制（MPC） - 优化控制与约束处理"
+        },
+        {
+          "id": "case_15_sliding_mode_control",
+          "name": "Case 15 Sliding Mode Control",
+          "path": "books\\water-system-control\\code\\examples\\case_15_sliding_mode_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例15：滑模控制 - 鲁棒非线性控制"
+        },
+        {
+          "id": "case_16_fuzzy_control",
+          "name": "Case 16 Fuzzy Control",
+          "path": "books\\water-system-control\\code\\examples\\case_16_fuzzy_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例16：模糊控制 - 智能控制的经典方法"
+        },
+        {
+          "id": "case_17_neural_network_control",
+          "name": "Case 17 Neural Network Control",
+          "path": "books\\water-system-control\\code\\examples\\case_17_neural_network_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例17：神经网络控制 - 深度学习与智能控制的结合"
+        },
+        {
+          "id": "case_18_reinforcement_learning_control",
+          "name": "Case 18 Reinforcement Learning Control",
+          "path": "books\\water-system-control\\code\\examples\\case_18_reinforcement_learning_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例18：强化学习控制 - 智能体学习最优策略"
+        },
+        {
+          "id": "case_19_comprehensive_comparison",
+          "name": "Case 19 Comprehensive Comparison",
+          "path": "books\\water-system-control\\code\\examples\\case_19_comprehensive_comparison",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例19：综合对比 - 所有控制方法的性能评估"
+        },
+        {
+          "id": "case_20_practical_application",
+          "name": "Case 20 Practical Application",
+          "path": "books\\water-system-control\\code\\examples\\case_20_practical_application",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例20：实际应用 - 控制器的工程实现"
+        }
+      ]
+    },
+    {
+      "slug": "open-channel-hydraulics",
+      "path": "books\\open-channel-hydraulics",
+      "cases_count": 30,
+      "cases": [
+        {
+          "id": "case_01_irrigation",
+          "name": "Case 01 Irrigation",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_01_irrigation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例1：农村灌溉渠流量计算"
+        },
+        {
+          "id": "case_02_drainage",
+          "name": "Case 02 Drainage",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_02_drainage",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例2：城市雨水排水渠设计"
+        },
+        {
+          "id": "case_03_landscape",
+          "name": "Case 03 Landscape",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_03_landscape",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例3：景观水渠水流状态分析"
+        },
+        {
+          "id": "case_04_weir",
+          "name": "Case 04 Weir",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_04_weir",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例4：灌区量水堰流量测量"
+        },
+        {
+          "id": "case_05_gate",
+          "name": "Case 05 Gate",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_05_gate",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例5：渠道闸门出流计算"
+        },
+        {
+          "id": "case_06_drop",
+          "name": "Case 06 Drop",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_06_drop",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例6：跌水消能设计"
+        },
+        {
+          "id": "case_07_profile",
+          "name": "Case 07 Profile",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_07_profile",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例7：渠道水面曲线计算"
+        },
+        {
+          "id": "case_08_bridge",
+          "name": "Case 08 Bridge",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_08_bridge",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例8：桥梁壅水分析"
+        },
+        {
+          "id": "case_09_roughness",
+          "name": "Case 09 Roughness",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_09_roughness",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例9：河道糙率率定"
+        },
+        {
+          "id": "case_10_compound",
+          "name": "Case 10 Compound",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_10_compound",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例10：复式断面河道"
+        },
+        {
+          "id": "case_11_transition",
+          "name": "Case 11 Transition",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_11_transition",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例11：渠道变宽与收缩"
+        },
+        {
+          "id": "case_12_culvert",
+          "name": "Case 12 Culvert",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_12_culvert",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例12：涵洞过流"
+        },
+        {
+          "id": "case_13_unsteady",
+          "name": "Case 13 Unsteady",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_13_unsteady",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例13：明渠非恒定流基础"
+        },
+        {
+          "id": "case_14_flood_routing",
+          "name": "Case 14 Flood Routing",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_14_flood_routing",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例14：洪水演进计算"
+        },
+        {
+          "id": "case_15_dam_break",
+          "name": "Case 15 Dam Break",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_15_dam_break",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例15：溃坝波计算"
+        },
+        {
+          "id": "case_16_canal_operation",
+          "name": "Case 16 Canal Operation",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_16_canal_operation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例16：渠道非恒定流调度"
+        },
+        {
+          "id": "case_17_tidal_river",
+          "name": "Case 17 Tidal River",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_17_tidal_river",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例17：潮汐河口非恒定流"
+        },
+        {
+          "id": "case_18_wave_reflection",
+          "name": "Case 18 Wave Reflection",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_18_wave_reflection",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例18：明渠波动与反射"
+        },
+        {
+          "id": "case_19_dynamic_scheduling",
+          "name": "Case 19 Dynamic Scheduling",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_19_dynamic_scheduling",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例19：多闸门渠系动态调度优化"
+        },
+        {
+          "id": "case_20_2d_flow",
+          "name": "Case 20 2D Flow",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_20_2d_flow",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例20：二维明渠水流模拟"
+        },
+        {
+          "id": "case_21_pipe_flow",
+          "name": "Case 21 Pipe Flow",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_21_pipe_flow",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例21：城市供水管道水力计算"
+        },
+        {
+          "id": "case_22_pipe_network",
+          "name": "Case 22 Pipe Network",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_22_pipe_network",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例22：管网平衡计算"
+        },
+        {
+          "id": "case_23_long_distance",
+          "name": "Case 23 Long Distance",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_23_long_distance",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例23：长距离输水管道设计"
+        },
+        {
+          "id": "case_24_siphon",
+          "name": "Case 24 Siphon",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_24_siphon",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例24：虹吸与倒虹吸设计"
+        },
+        {
+          "id": "case_25_water_hammer",
+          "name": "Case 25 Water Hammer",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_25_water_hammer",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例25：水锤基础"
+        },
+        {
+          "id": "case_26_moc",
+          "name": "Case 26 Moc",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_26_moc",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例26：特征线法MOC"
+        },
+        {
+          "id": "case_27_pump_transients",
+          "name": "Case 27 Pump Transients",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_27_pump_transients",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例27：泵站瞬变过程"
+        },
+        {
+          "id": "case_28_surge_tank",
+          "name": "Case 28 Surge Tank",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_28_surge_tank",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例28：调压井"
+        },
+        {
+          "id": "case_29_channel_pipe",
+          "name": "Case 29 Channel Pipe",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_29_channel_pipe",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例29：渠道-管道耦合系统"
+        },
+        {
+          "id": "case_30_comprehensive",
+          "name": "Case 30 Comprehensive",
+          "path": "books\\open-channel-hydraulics\\code\\examples\\case_30_comprehensive",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例30：泵站-渠道-管道综合系统"
+        }
+      ]
+    },
+    {
+      "slug": "canal-pipeline-control",
+      "path": "books\\canal-pipeline-control",
+      "cases_count": 20,
+      "cases": [
+        {
+          "id": "case_01_single_reach_pid",
+          "name": "Case 01 Single Reach Pid",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_01_single_reach_pid",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例1：单渠段PID水位控制"
+        },
+        {
+          "id": "case_02_multipoint_pid",
+          "name": "Case 02 Multipoint Pid",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_02_multipoint_pid",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例2：多点反馈分布式PID控制"
+        },
+        {
+          "id": "case_03_feedforward_feedback",
+          "name": "Case 03 Feedforward Feedback",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_03_feedforward_feedback",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例3：前馈-反馈复合控制"
+        },
+        {
+          "id": "case_04_pod_reduction",
+          "name": "Case 04 Pod Reduction",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_04_pod_reduction",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例4：POD降阶 - 本征正交分解"
+        },
+        {
+          "id": "case_05_dmd",
+          "name": "Case 05 Dmd",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_05_dmd",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例5：动态模态分解（DMD）"
+        },
+        {
+          "id": "case_06_galerkin_reduction",
+          "name": "Case 06 Galerkin Reduction",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_06_galerkin_reduction",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例6：Galerkin投影与有限元降阶"
+        },
+        {
+          "id": "case_07_neural_network_rom",
+          "name": "Case 07 Neural Network Rom",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_07_neural_network_rom",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例7：神经网络降阶模型"
+        },
+        {
+          "id": "case_08_n4sid_identification",
+          "name": "Case 08 N4Sid Identification",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_08_n4sid_identification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例8：N4SID子空间辨识"
+        },
+        {
+          "id": "case_09_frequency_identification",
+          "name": "Case 09 Frequency Identification",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_09_frequency_identification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例9：频域辨识方法"
+        },
+        {
+          "id": "case_10_nonlinear_identification",
+          "name": "Case 10 Nonlinear Identification",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_10_nonlinear_identification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例10：非线性系统辨识"
+        },
+        {
+          "id": "case_11_sindy_identification",
+          "name": "Case 11 Sindy Identification",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_11_sindy_identification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例11：SINDy稀疏辨识"
+        },
+        {
+          "id": "case_12_ekf_state_estimation",
+          "name": "Case 12 Ekf State Estimation",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_12_ekf_state_estimation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例12：扩展卡尔曼滤波状态估计"
+        },
+        {
+          "id": "case_13_digital_twin",
+          "name": "Case 13 Digital Twin",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_13_digital_twin",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例13：数字孪生与预测性维护"
+        },
+        {
+          "id": "case_14_mpc_control",
+          "name": "Case 14 Mpc Control",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_14_mpc_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例14：模型预测控制（MPC）"
+        },
+        {
+          "id": "case_15_adaptive_control",
+          "name": "Case 15 Adaptive Control",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_15_adaptive_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例15：自适应控制（Model Reference Adaptive Control, MRAC）"
+        },
+        {
+          "id": "case_16_robust_control",
+          "name": "Case 16 Robust Control",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_16_robust_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例16：鲁棒控制（H∞ & 滑模控制）"
+        },
+        {
+          "id": "case_17_intelligent_control",
+          "name": "Case 17 Intelligent Control",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_17_intelligent_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例17：智能控制（Neural Networks & Reinforcement Learning）"
+        },
+        {
+          "id": "case_18_pressurized_pipeline",
+          "name": "Case 18 Pressurized Pipeline",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_18_pressurized_pipeline",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例18：有压管道控制（水锤防护与压力控制）"
+        },
+        {
+          "id": "case_19_coupled_system",
+          "name": "Case 19 Coupled System",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_19_coupled_system",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例19：运河-管道耦合系统"
+        },
+        {
+          "id": "case_20_integrated_system",
+          "name": "Case 20 Integrated System",
+          "path": "books\\canal-pipeline-control\\code\\examples\\case_20_integrated_system",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例20：南水北调工程数字孪生系统"
+        }
+      ]
+    },
+    {
+      "slug": "ecohydraulics",
+      "path": "books\\ecohydraulics",
+      "cases_count": 32,
+      "cases": [
+        {
+          "id": "case_01_ecological_flow",
+          "name": "Case 01 Ecological Flow",
+          "path": "books\\ecohydraulics\\code\\examples\\case_01_ecological_flow",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例1：河流生态基流计算"
+        },
+        {
+          "id": "case_02_habitat_suitability",
+          "name": "Case 02 Habitat Suitability",
+          "path": "books\\ecohydraulics\\code\\examples\\case_02_habitat_suitability",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例2：鱼类栖息地适宜性评价"
+        },
+        {
+          "id": "case_03_hydrologic_indicators",
+          "name": "Case 03 Hydrologic Indicators",
+          "path": "books\\ecohydraulics\\code\\examples\\case_03_hydrologic_indicators",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例3：河流生态水力指标体系"
+        },
+        {
+          "id": "case_04_vegetation_hydraulics",
+          "name": "Case 04 Vegetation Hydraulics",
+          "path": "books\\ecohydraulics\\code\\examples\\case_04_vegetation_hydraulics",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例4：涉水植物生长水力条件分析"
+        },
+        {
+          "id": "case_05_thermal_stratification",
+          "name": "Case 05 Thermal Stratification",
+          "path": "books\\ecohydraulics\\code\\examples\\case_05_thermal_stratification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例5：水温分层与溶解氧分布模拟"
+        },
+        {
+          "id": "case_06_benthic_habitat",
+          "name": "Case 06 Benthic Habitat",
+          "path": "books\\ecohydraulics\\code\\examples\\case_06_benthic_habitat",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例6：底栖生物栖息地水力条件评价"
+        },
+        {
+          "id": "case_07_fish_swimming",
+          "name": "Case 07 Fish Swimming",
+          "path": "books\\ecohydraulics\\code\\examples\\case_07_fish_swimming",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例7：鱼类游泳能力与水流关系"
+        },
+        {
+          "id": "case_08_fishway",
+          "name": "Case 08 Fishway",
+          "path": "books\\ecohydraulics\\code\\examples\\case_08_fishway",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例8：竖缝式鱼道水力设计"
+        },
+        {
+          "id": "case_09_denil_fishway",
+          "name": "Case 09 Denil Fishway",
+          "path": "books\\ecohydraulics\\code\\examples\\case_09_denil_fishway",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例9：丹尼尔式鱼道设计"
+        },
+        {
+          "id": "case_10_spawning_ground",
+          "name": "Case 10 Spawning Ground",
+          "path": "books\\ecohydraulics\\code\\examples\\case_10_spawning_ground",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_11_feeding_ground",
+          "name": "Case 11 Feeding Ground",
+          "path": "books\\ecohydraulics\\code\\examples\\case_11_feeding_ground",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例11：鱼类索饵场水力-饵料关系分析"
+        },
+        {
+          "id": "case_12_population",
+          "name": "Case 12 Population",
+          "path": "books\\ecohydraulics\\code\\examples\\case_12_population",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例12：洄游通道水力连通性分析"
+        },
+        {
+          "id": "case_13_river_morphology",
+          "name": "Case 13 River Morphology",
+          "path": "books\\ecohydraulics\\code\\examples\\case_13_river_morphology",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例13：河流形态多样性设计"
+        },
+        {
+          "id": "case_14_ecological_revetment",
+          "name": "Case 14 Ecological Revetment",
+          "path": "books\\ecohydraulics\\code\\examples\\case_14_ecological_revetment",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例14：生态护岸水力设计"
+        },
+        {
+          "id": "case_15_floodplain_wetland",
+          "name": "Case 15 Floodplain Wetland",
+          "path": "books\\ecohydraulics\\code\\examples\\case_15_floodplain_wetland",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例15：河流侧向连通性恢复（滩涂湿地）"
+        },
+        {
+          "id": "case_16_gravel_supplement",
+          "name": "Case 16 Gravel Supplement",
+          "path": "books\\ecohydraulics\\code\\examples\\case_16_gravel_supplement",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_17_estuary",
+          "name": "Case 17 Estuary",
+          "path": "books\\ecohydraulics\\code\\examples\\case_17_estuary",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_18_restoration_assessment",
+          "name": "Case 18 Restoration Assessment",
+          "path": "books\\ecohydraulics\\code\\examples\\case_18_restoration_assessment",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_21_hydropower",
+          "name": "Case 21 Hydropower",
+          "path": "books\\ecohydraulics\\code\\examples\\case_21_hydropower",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_29_lake_hydrodynamics",
+          "name": "Case 29 Lake Hydrodynamics",
+          "path": "books\\ecohydraulics\\code\\examples\\case_29_lake_hydrodynamics",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_30_constructed_wetland",
+          "name": "Case 30 Constructed Wetland",
+          "path": "books\\ecohydraulics\\code\\examples\\case_30_constructed_wetland",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_31_riparian_buffer",
+          "name": "Case 31 Riparian Buffer",
+          "path": "books\\ecohydraulics\\code\\examples\\case_31_riparian_buffer",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_32_lake_stratification",
+          "name": "Case 32 Lake Stratification",
+          "path": "books\\ecohydraulics\\code\\examples\\case_32_lake_stratification",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_33_wetland_restoration",
+          "name": "Case 33 Wetland Restoration",
+          "path": "books\\ecohydraulics\\code\\examples\\case_33_wetland_restoration",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_34_sponge_city",
+          "name": "Case 34 Sponge City",
+          "path": "books\\ecohydraulics\\code\\examples\\case_34_sponge_city",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_35_urban_river",
+          "name": "Case 35 Urban River",
+          "path": "books\\ecohydraulics\\code\\examples\\case_35_urban_river",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_36_rain_garden",
+          "name": "Case 36 Rain Garden",
+          "path": "books\\ecohydraulics\\code\\examples\\case_36_rain_garden",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_37_flood_control",
+          "name": "Case 37 Flood Control",
+          "path": "books\\ecohydraulics\\code\\examples\\case_37_flood_control",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_38_salt_wedge",
+          "name": "Case 38 Salt Wedge",
+          "path": "books\\ecohydraulics\\code\\examples\\case_38_salt_wedge",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_39_mangrove",
+          "name": "Case 39 Mangrove",
+          "path": "books\\ecohydraulics\\code\\examples\\case_39_mangrove",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_40_revetment",
+          "name": "Case 40 Revetment",
+          "path": "books\\ecohydraulics\\code\\examples\\case_40_revetment",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_41_wetland_carbon",
+          "name": "Case 41 Wetland Carbon",
+          "path": "books\\ecohydraulics\\code\\examples\\case_41_wetland_carbon",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        }
+      ]
+    },
+    {
+      "slug": "distributed-hydrological-model",
+      "path": "books\\distributed-hydrological-model",
+      "cases_count": 24,
+      "cases": [
+        {
+          "id": "case_01_dem_analysis",
+          "name": "Case 01 Dem Analysis",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_01_dem_analysis",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例1：DEM分析与河网提取"
+        },
+        {
+          "id": "case_02_thiessen",
+          "name": "Case 02 Thiessen",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_02_thiessen",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例2：Thiessen多边形降雨插值"
+        },
+        {
+          "id": "case_03_idw_kriging",
+          "name": "Case 03 Idw Kriging",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_03_idw_kriging",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例3：IDW与Kriging空间插值对比"
+        },
+        {
+          "id": "case_04_xaj_model",
+          "name": "Case 04 Xaj Model",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_04_xaj_model",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例4：新安江模型产流计算"
+        },
+        {
+          "id": "case_05_green_ampt",
+          "name": "Case 05 Green Ampt",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_05_green_ampt",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例5：Green-Ampt超渗产流模型"
+        },
+        {
+          "id": "case_06_distributed_runoff",
+          "name": "Case 06 Distributed Runoff",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_06_distributed_runoff",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例6：分布式产流网格模型"
+        },
+        {
+          "id": "case_07_slope_routing",
+          "name": "Case 07 Slope Routing",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_07_slope_routing",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例7：坡面运动波汇流"
+        },
+        {
+          "id": "case_08_unit_hydrograph",
+          "name": "Case 08 Unit Hydrograph",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_08_unit_hydrograph",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例8：单元线法河道汇流"
+        },
+        {
+          "id": "case_09_sensitivity_analysis",
+          "name": "Case 09 Sensitivity Analysis",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_09_sensitivity_analysis",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例9：参数敏感性分析"
+        },
+        {
+          "id": "case_10_muskingum_cunge",
+          "name": "Case 10 Muskingum Cunge",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_10_muskingum_cunge",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例10：Muskingum-Cunge河道洪水演进方法"
+        },
+        {
+          "id": "case_11_sce_calibration",
+          "name": "Case 11 Sce Calibration",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_11_sce_calibration",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例11：SCE-UA参数率定算法"
+        },
+        {
+          "id": "case_12_glue_uncertainty",
+          "name": "Case 12 Glue Uncertainty",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_12_glue_uncertainty",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_14_integrated_watershed",
+          "name": "Case 14 Integrated Watershed",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_14_integrated_watershed",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例14：完整流域分布式水文模型"
+        },
+        {
+          "id": "case_15_hydro_dynamic_coupling",
+          "name": "Case 15 Hydro Dynamic Coupling",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_15_hydro_dynamic_coupling",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例15：水文-水动力耦合模拟"
+        },
+        {
+          "id": "case_16_human_impact",
+          "name": "Case 16 Human Impact",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_16_human_impact",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例16：人类活动对产汇流影响评估"
+        },
+        {
+          "id": "case_17_reservoir_operation",
+          "name": "Case 17 Reservoir Operation",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_17_reservoir_operation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例17：水库优化调度（基于规则）"
+        },
+        {
+          "id": "case_18_forecast_operation",
+          "name": "Case 18 Forecast Operation",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_18_forecast_operation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例18：实时洪水预报调度系统"
+        },
+        {
+          "id": "case_19_climate_change",
+          "name": "Case 19 Climate Change",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_19_climate_change",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_20_cascade_reservoirs",
+          "name": "Case 20 Cascade Reservoirs",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_20_cascade_reservoirs",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例20：多水库梯级联合调度"
+        },
+        {
+          "id": "case_21_realtime_correction",
+          "name": "Case 21 Realtime Correction",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_21_realtime_correction",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例21：实时校正模型"
+        },
+        {
+          "id": "case_22_gis_integration",
+          "name": "Case 22 Gis Integration",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_22_gis_integration",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例22：GIS集成应用"
+        },
+        {
+          "id": "case_23_full_coupling",
+          "name": "Case 23 Full Coupling",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_23_full_coupling",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例23：分布式水文-水动力全耦合"
+        },
+        {
+          "id": "case_24_digital_twin",
+          "name": "Case 24 Digital Twin",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_24_digital_twin",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例24：流域数字孪生系统"
+        },
+        {
+          "id": "case_25_intelligent_forecast",
+          "name": "Case 25 Intelligent Forecast",
+          "path": "books\\distributed-hydrological-model\\code\\examples\\case_25_intelligent_forecast",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例25：智能水文预报平台"
+        }
+      ]
+    },
+    {
+      "slug": "water-environment-simulation",
+      "path": "books\\water-environment-simulation",
+      "cases_count": 30,
+      "cases": [
+        {
+          "id": "case_01_diffusion",
+          "name": "Case 01 Diffusion",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_01_diffusion",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例1：污染物在静水中的扩散"
+        },
+        {
+          "id": "case_02_advection_diffusion",
+          "name": "Case 02 Advection Diffusion",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_02_advection_diffusion",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例2：示踪剂在渠道中的对流-扩散"
+        },
+        {
+          "id": "case_03_reaction",
+          "name": "Case 03 Reaction",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_03_reaction",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例3：河流中的降解反应与参数率定"
+        },
+        {
+          "id": "case_04_streeter_phelps",
+          "name": "Case 04 Streeter Phelps",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_04_streeter_phelps",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例4：Streeter-Phelps溶解氧模型"
+        },
+        {
+          "id": "case_05_nutrients",
+          "name": "Case 05 Nutrients",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_05_nutrients",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例5：营养盐循环与富营养化评估"
+        },
+        {
+          "id": "case_06_self_purification",
+          "name": "Case 06 Self Purification",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_06_self_purification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例6：河流自净能力与环境容量评估"
+        },
+        {
+          "id": "case_07_multi_source",
+          "name": "Case 07 Multi Source",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_07_multi_source",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例7：多点源污染叠加模拟"
+        },
+        {
+          "id": "case_08_nonpoint_source",
+          "name": "Case 08 Nonpoint Source",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_08_nonpoint_source",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例8：非点源污染模拟"
+        },
+        {
+          "id": "case_09_thermal_pollution",
+          "name": "Case 09 Thermal Pollution",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_09_thermal_pollution",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例9：热污染扩散模拟"
+        },
+        {
+          "id": "case_10_lateral_mixing",
+          "name": "Case 10 Lateral Mixing",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_10_lateral_mixing",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例10：河流横向混合模拟"
+        },
+        {
+          "id": "case_11_river_bend",
+          "name": "Case 11 River Bend",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_11_river_bend",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例11：河流弯道水质模拟"
+        },
+        {
+          "id": "case_12_estuary",
+          "name": "Case 12 Estuary",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_12_estuary",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例12：河口盐水入侵与水质模拟"
+        },
+        {
+          "id": "case_13_lake_cmfr",
+          "name": "Case 13 Lake Cmfr",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_13_lake_cmfr",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例13：小型湖泊完全混合模型"
+        },
+        {
+          "id": "case_14_lake_nutrient",
+          "name": "Case 14 Lake Nutrient",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_14_lake_nutrient",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例14：湖泊营养盐输入响应分析"
+        },
+        {
+          "id": "case_15_stratified_reservoir",
+          "name": "Case 15 Stratified Reservoir",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_15_stratified_reservoir",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例15：水库温度分层与水质模拟"
+        },
+        {
+          "id": "case_16_density_current",
+          "name": "Case 16 Density Current",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_16_density_current",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例16：水库异重流模拟"
+        },
+        {
+          "id": "case_17_algae_dynamics",
+          "name": "Case 17 Algae Dynamics",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_17_algae_dynamics",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例17：湖泊藻类生长动力学模拟"
+        },
+        {
+          "id": "case_18_lake_3d_eutrophication",
+          "name": "Case 18 Lake 3D Eutrophication",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_18_lake_3d_eutrophication",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例18：三维湖泊富营养化模拟"
+        },
+        {
+          "id": "case_19_groundwater_column",
+          "name": "Case 19 Groundwater Column",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_19_groundwater_column",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例19：一维地下水污染柱实验"
+        },
+        {
+          "id": "case_20_aquifer_2d",
+          "name": "Case 20 Aquifer 2D",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_20_aquifer_2d",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例20：二维含水层污染羽迁移"
+        },
+        {
+          "id": "case_21_multilayer_aquifer",
+          "name": "Case 21 Multilayer Aquifer",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_21_multilayer_aquifer",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例21：多层含水层垂向迁移"
+        },
+        {
+          "id": "case_22_pump_and_treat",
+          "name": "Case 22 Pump And Treat",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_22_pump_and_treat",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例22：抽出-处理修复方案优化"
+        },
+        {
+          "id": "case_23_watershed",
+          "name": "Case 23 Watershed",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_23_watershed",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例23：流域水文-水质耦合模拟"
+        },
+        {
+          "id": "case_24_river_network",
+          "name": "Case 24 River Network",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_24_river_network",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例24：河湖水系连通与水质改善"
+        },
+        {
+          "id": "case_25_water_transfer",
+          "name": "Case 25 Water Transfer",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_25_water_transfer",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例25：跨流域调水水质风险评估"
+        },
+        {
+          "id": "case_26_river_ecosystem",
+          "name": "Case 26 River Ecosystem",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_26_river_ecosystem",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例26：河流生态系统模拟"
+        },
+        {
+          "id": "case_27_lake_regime_shift",
+          "name": "Case 27 Lake Regime Shift",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_27_lake_regime_shift",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例27：湖泊生态系统稳态转换"
+        },
+        {
+          "id": "case_28_wetland",
+          "name": "Case 28 Wetland",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_28_wetland",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例28：湿地生态系统净化功能模拟"
+        },
+        {
+          "id": "case_29_urban_blackwater",
+          "name": "Case 29 Urban Blackwater",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_29_urban_blackwater",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例29：城市黑臭水体治理方案评估"
+        },
+        {
+          "id": "case_30_watershed_platform",
+          "name": "Case 30 Watershed Platform",
+          "path": "books\\water-environment-simulation\\code\\examples\\case_30_watershed_platform",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例30：流域水环境综合管理平台"
+        }
+      ]
+    },
+    {
+      "slug": "water-resource-planning-management",
+      "path": "books\\water-resource-planning-management",
+      "cases_count": 0,
+      "cases": []
+    },
+    {
+      "slug": "underground-water-dynamics",
+      "path": "books\\underground-water-dynamics",
+      "cases_count": 20,
+      "cases": [
+        {
+          "id": "case_01",
+          "name": "Case 01",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_01",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例1：一维稳态地下水流动"
+        },
+        {
+          "id": "case_02",
+          "name": "Case 02",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_02",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例2：二维稳态地下水流动与网格剖分"
+        },
+        {
+          "id": "case_03",
+          "name": "Case 03",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_03",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例3：非均质含水层模拟"
+        },
+        {
+          "id": "case_04",
+          "name": "Case 04",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_04",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例4：瞬态地下水流动"
+        },
+        {
+          "id": "case_05",
+          "name": "Case 05",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_05",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例5：有限元方法基础"
+        },
+        {
+          "id": "case_06",
+          "name": "Case 06",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_06",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例6：参数率定基础（优化方法）"
+        },
+        {
+          "id": "case_07",
+          "name": "Case 07",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_07",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例7：PEST方法实现"
+        },
+        {
+          "id": "case_08",
+          "name": "Case 08",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_08",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例8：贝叶斯推断与MCMC"
+        },
+        {
+          "id": "case_09",
+          "name": "Case 09",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_09",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例9：敏感性分析深入"
+        },
+        {
+          "id": "case_10",
+          "name": "Case 10",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_10",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例10：不确定性量化"
+        },
+        {
+          "id": "case_11",
+          "name": "Case 11",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_11",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例11：地表地下水耦合基础"
+        },
+        {
+          "id": "case_12",
+          "name": "Case 12",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_12",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例12：MODFLOW River包实现"
+        },
+        {
+          "id": "case_13",
+          "name": "Case 13",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_13",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例13：渗漏与越流模拟"
+        },
+        {
+          "id": "case_14",
+          "name": "Case 14",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_14",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例14：耦合模型率定"
+        },
+        {
+          "id": "case_15",
+          "name": "Case 15",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_15",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例15：耦合系统不确定性分析"
+        },
+        {
+          "id": "case_16",
+          "name": "Case 16",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_16",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例16：地下水开采优化"
+        },
+        {
+          "id": "case_17",
+          "name": "Case 17",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_17",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例17：地面沉降模拟"
+        },
+        {
+          "id": "case_18",
+          "name": "Case 18",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_18",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例18：污染物运移模拟"
+        },
+        {
+          "id": "case_19",
+          "name": "Case 19",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_19",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例19：地下水数字孪生架构"
+        },
+        {
+          "id": "case_20",
+          "name": "Case 20",
+          "path": "books\\underground-water-dynamics\\code\\examples\\case_20",
+          "has_readme": true,
+          "has_main": false,
+          "has_experiments": false,
+          "title": "案例20：智能决策支持系统"
+        }
+      ]
+    },
+    {
+      "slug": "intelligent-water-network-design",
+      "path": "books\\intelligent-water-network-design",
+      "cases_count": 25,
+      "cases": [
+        {
+          "id": "case_01",
+          "name": "Case 01",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_01",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例1：灌区智能化升级工程设计"
+        },
+        {
+          "id": "case_01_irrigation_gate",
+          "name": "Case 01 Irrigation Gate",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_01_irrigation_gate",
+          "has_readme": false,
+          "has_main": false,
+          "has_experiments": false
+        },
+        {
+          "id": "case_02_pump_station",
+          "name": "Case 02 Pump Station",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_02_pump_station",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例2：提水泵站智能化设计"
+        },
+        {
+          "id": "case_03_hydropower_station",
+          "name": "Case 03 Hydropower Station",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_03_hydropower_station",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例3：小型水电站智能发电设计"
+        },
+        {
+          "id": "case_04_valve_station",
+          "name": "Case 04 Valve Station",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_04_valve_station",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例4：调压阀站智能控制设计"
+        },
+        {
+          "id": "case_05_drainage_gate",
+          "name": "Case 05 Drainage Gate",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_05_drainage_gate",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例5：排涝闸站智能调度设计"
+        },
+        {
+          "id": "case_06_multi_function_gate",
+          "name": "Case 06 Multi Function Gate",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_06_multi_function_gate",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例6：多功能水闸设计"
+        },
+        {
+          "id": "case_07_cascade_canals",
+          "name": "Case 07 Cascade Canals",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_07_cascade_canals",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例7：串级渠道智能调度设计"
+        },
+        {
+          "id": "case_08_multi_pump_stations",
+          "name": "Case 08 Multi Pump Stations",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_08_multi_pump_stations",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例8：多级泵站联合调度设计"
+        },
+        {
+          "id": "case_09_water_network_pressure",
+          "name": "Case 09 Water Network Pressure",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_09_water_network_pressure",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例9：供水管网压力分区设计"
+        },
+        {
+          "id": "case_10_irrigation_system",
+          "name": "Case 10 Irrigation System",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_10_irrigation_system",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例10：灌区渠系优化配水设计"
+        },
+        {
+          "id": "case_11_urban_river_network",
+          "name": "Case 11 Urban River Network",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_11_urban_river_network",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例11：城市河湖水系联调设计"
+        },
+        {
+          "id": "case_12_water_diversion",
+          "name": "Case 12 Water Diversion",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_12_water_diversion",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例12：调水工程水量调度设计"
+        },
+        {
+          "id": "case_13_multi_source_water_supply",
+          "name": "Case 13 Multi Source Water Supply",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_13_multi_source_water_supply",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例13：多水源供水系统设计"
+        },
+        {
+          "id": "case_14_regional_irrigation",
+          "name": "Case 14 Regional Irrigation",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_14_regional_irrigation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例14：区域灌区群联调设计"
+        },
+        {
+          "id": "case_15_flood_control",
+          "name": "Case 15 Flood Control",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_15_flood_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例15：流域防洪调度设计"
+        },
+        {
+          "id": "case_16_water_resource_allocation",
+          "name": "Case 16 Water Resource Allocation",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_16_water_resource_allocation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例16：水资源优化配置设计"
+        },
+        {
+          "id": "case_17_smart_water",
+          "name": "Case 17 Smart Water",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_17_smart_water",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_18_digital_twin",
+          "name": "Case 18 Digital Twin",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_18_digital_twin",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_19_basin_coordination",
+          "name": "Case 19 Basin Coordination",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_19_basin_coordination",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_20_smart_city_water",
+          "name": "Case 20 Smart City Water",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_20_smart_city_water",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_21_inter_basin",
+          "name": "Case 21 Inter Basin",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_21_inter_basin",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_22_big_data_platform",
+          "name": "Case 22 Big Data Platform",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_22_big_data_platform",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_23_ai_water_management",
+          "name": "Case 23 Ai Water Management",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_23_ai_water_management",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_24_comprehensive",
+          "name": "Case 24 Comprehensive",
+          "path": "books\\intelligent-water-network-design\\code\\examples\\case_24_comprehensive",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        }
+      ]
+    },
+    {
+      "slug": "photovoltaic-system-modeling-control",
+      "path": "books\\photovoltaic-system-modeling-control",
+      "cases_count": 20,
+      "cases": [
+        {
+          "id": "case_01_pv_cell_iv_characteristics",
+          "name": "Case 01 Pv Cell Iv Characteristics",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_01_pv_cell_iv_characteristics",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例1: 光伏电池I-V特性建模"
+        },
+        {
+          "id": "case_02_double_diode_model",
+          "name": "Case 02 Double Diode Model",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_02_double_diode_model",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例2: 双二极管精确模型"
+        },
+        {
+          "id": "case_03_pv_module_modeling",
+          "name": "Case 03 Pv Module Modeling",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_03_pv_module_modeling",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": true,
+          "title": "案例3: 光伏组件建模"
+        },
+        {
+          "id": "case_04_pv_array_configuration",
+          "name": "Case 04 Pv Array Configuration",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_04_pv_array_configuration",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例4: 光伏阵列配置"
+        },
+        {
+          "id": "case_05_shading_analysis",
+          "name": "Case 05 Shading Analysis",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_05_shading_analysis",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例5: 遮挡分析与诊断"
+        },
+        {
+          "id": "case_06_parameter_identification",
+          "name": "Case 06 Parameter Identification",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_06_parameter_identification",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例6: 参数辨识方法"
+        },
+        {
+          "id": "case_07_perturb_observe",
+          "name": "Case 07 Perturb Observe",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_07_perturb_observe",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例7: P&O扰动观察法"
+        },
+        {
+          "id": "case_08_incremental_conductance",
+          "name": "Case 08 Incremental Conductance",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_08_incremental_conductance",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例8: 增量电导法"
+        },
+        {
+          "id": "case_09_constant_voltage",
+          "name": "Case 09 Constant Voltage",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_09_constant_voltage",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例9: 恒电压法"
+        },
+        {
+          "id": "case_10_fuzzy_logic",
+          "name": "Case 10 Fuzzy Logic",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_10_fuzzy_logic",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例10: 模糊逻辑MPPT"
+        },
+        {
+          "id": "case_11_pso_mppt",
+          "name": "Case 11 Pso Mppt",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_11_pso_mppt",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例11: 粒子群优化MPPT"
+        },
+        {
+          "id": "case_12_multi_peak_mppt",
+          "name": "Case 12 Multi Peak Mppt",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_12_multi_peak_mppt",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例12: 多峰MPPT算法"
+        },
+        {
+          "id": "case_13_pwm_modulation",
+          "name": "Case 13 Pwm Modulation",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_13_pwm_modulation",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例13: PWM调制技术"
+        },
+        {
+          "id": "case_14_current_control",
+          "name": "Case 14 Current Control",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_14_current_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例14: 电流控制"
+        },
+        {
+          "id": "case_15_voltage_control",
+          "name": "Case 15 Voltage Control",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_15_voltage_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例15: 电压控制"
+        },
+        {
+          "id": "case_16_grid_synchronization",
+          "name": "Case 16 Grid Synchronization",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_16_grid_synchronization",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例16: 并网同步控制 - 锁相环(PLL)设计"
+        },
+        {
+          "id": "case_17_power_factor_control",
+          "name": "Case 17 Power Factor Control",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_17_power_factor_control",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例17: 功率因数控制"
+        },
+        {
+          "id": "case_18_harmonic_suppression",
+          "name": "Case 18 Harmonic Suppression",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_18_harmonic_suppression",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例18: 谐波抑制"
+        },
+        {
+          "id": "case_19_dcdc_converter",
+          "name": "Case 19 Dcdc Converter",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_19_dcdc_converter",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例19: DC/DC变换器建模"
+        },
+        {
+          "id": "case_20_dc_bus_control",
+          "name": "Case 20 Dc Bus Control",
+          "path": "books\\photovoltaic-system-modeling-control\\code\\examples\\case_20_dc_bus_control",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        }
+      ]
+    },
+    {
+      "slug": "wind-power-system-modeling-control",
+      "path": "books\\wind-power-system-modeling-control",
+      "cases_count": 15,
+      "cases": [
+        {
+          "id": "case_01_wind_statistics",
+          "name": "Case 01 Wind Statistics",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_01_wind_statistics",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例1: 风速统计分析"
+        },
+        {
+          "id": "case_02_wind_shear",
+          "name": "Case 02 Wind Shear",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_02_wind_shear",
+          "has_readme": true,
+          "has_main": true,
+          "has_experiments": false,
+          "title": "案例2: 风切变与湍流"
+        },
+        {
+          "id": "case_03_blade_aerodynamics",
+          "name": "Case 03 Blade Aerodynamics",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_03_blade_aerodynamics",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_04_rotor_performance",
+          "name": "Case 04 Rotor Performance",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_04_rotor_performance",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_05_wake_effect",
+          "name": "Case 05 Wake Effect",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_05_wake_effect",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_06_dfig_modeling",
+          "name": "Case 06 Dfig Modeling",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_06_dfig_modeling",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_07_pmsg_modeling",
+          "name": "Case 07 Pmsg Modeling",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_07_pmsg_modeling",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_08_grid_connection",
+          "name": "Case 08 Grid Connection",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_08_grid_connection",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_09_drivetrain",
+          "name": "Case 09 Drivetrain",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_09_drivetrain",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_10_tower_vibration",
+          "name": "Case 10 Tower Vibration",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_10_tower_vibration",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_11_tsr_control",
+          "name": "Case 11 Tsr Control",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_11_tsr_control",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_12_psf_control",
+          "name": "Case 12 Psf Control",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_12_psf_control",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_13_hcs_control",
+          "name": "Case 13 Hcs Control",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_13_hcs_control",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_14_optimal_torque",
+          "name": "Case 14 Optimal Torque",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_14_optimal_torque",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        },
+        {
+          "id": "case_15_pitch_control",
+          "name": "Case 15 Pitch Control",
+          "path": "books\\wind-power-system-modeling-control\\code\\examples\\case_15_pitch_control",
+          "has_readme": false,
+          "has_main": true,
+          "has_experiments": false
+        }
+      ]
+    },
+    {
+      "slug": "energy-storage-system-modeling-control",
+      "path": "books\\energy-storage-system-modeling-control",
+      "cases_count": 0,
+      "cases": []
+    },
+    {
+      "slug": "integrated-energy-system-simulation-optimization",
+      "path": "books\\integrated-energy-system-simulation-optimization",
+      "cases_count": 0,
+      "cases": []
+    },
+    {
+      "slug": "hydraulics-core-100",
+      "path": "books\\graduate-exam-prep\\hydraulics-core-100",
+      "chapters_count": 0,
+      "cases_count": 0,
+      "chapters": []
+    },
+    {
+      "slug": "hydraulics-advanced",
+      "path": "books\\graduate-exam-prep\\hydraulics-advanced",
+      "chapters_count": 0,
+      "cases_count": 0,
+      "chapters": []
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "file_check_results": [
+    {
+      "case_id": "case_01_home_water_tower",
+      "title": "案例1：家庭水塔自动供水系统",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_02_cooling_tower",
+      "title": "案例2：工业冷却塔精确水位控制",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_03_water_supply_station",
+      "title": "案例3：供水泵站无静差控制",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_04_pid_tuning",
+      "title": "案例4：PID控制与参数整定",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_05_parameter_identification",
+      "title": "案例5：未知水箱系统参数辨识 - 最小二乘法",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_06_step_response",
+      "title": "案例6：阶跃响应法快速建模 - 图解法参数辨识",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_07_cascade_control",
+      "title": "案例7：串级控制 - 双水箱系统",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_08_feedforward_control",
+      "title": "案例8：前馈控制 - 已知扰动补偿",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_09_system_modeling",
+      "title": "案例9：系统建模 - 从物理到数学",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_10_frequency_analysis",
+      "title": "案例10：频域分析 - Bode图与稳定性",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_11_state_space",
+      "title": "案例11：状态空间方法 - 现代控制理论入门",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_12_observer_lqr",
+      "title": "案例12：状态观测器与LQR最优控制",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_13_adaptive_control",
+      "title": "案例13：自适应控制 - 应对参数不确定性",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_14_model_predictive_control",
+      "title": "案例14：模型预测控制（MPC） - 优化控制与约束处理",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_15_sliding_mode_control",
+      "title": "案例15：滑模控制 - 鲁棒非线性控制",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_16_fuzzy_control",
+      "title": "案例16：模糊控制 - 智能控制的经典方法",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_17_neural_network_control",
+      "title": "案例17：神经网络控制 - 深度学习与智能控制的结合",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_18_reinforcement_learning_control",
+      "title": "案例18：强化学习控制 - 智能体学习最优策略",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_19_comprehensive_comparison",
+      "title": "案例19：综合对比 - 所有控制方法的性能评估",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    },
+    {
+      "case_id": "case_20_practical_application",
+      "title": "案例20：实际应用 - 控制器的工程实现",
+      "files": {
+        "exists": true,
+        "files": {
+          "readme": true,
+          "main": true,
+          "diagram": false,
+          "results": 0
+        }
+      }
+    }
+  ],
+  "execution_results": [
+    {
+      "case_id": "case_01_home_water_tower",
+      "title": "案例1：家庭水塔自动供水系统",
+      "result": {
+        "status": "timeout",
+        "reason": "执行超时(>5秒)"
+      }
+    },
+    {
+      "case_id": "case_02_cooling_tower",
+      "title": "案例2：工业冷却塔精确水位控制",
+      "result": {
+        "status": "timeout",
+        "reason": "执行超时(>5秒)"
+      }
+    },
+    {
+      "case_id": "case_03_water_supply_station",
+      "title": "案例3：供水泵站无静差控制",
+      "result": {
+        "status": "timeout",
+        "reason": "执行超时(>5秒)"
+      }
+    },
+    {
+      "case_id": "case_04_pid_tuning",
+      "title": "案例4：PID控制与参数整定",
+      "result": {
+        "status": "timeout",
+        "reason": "执行超时(>5秒)"
+      }
+    },
+    {
+      "case_id": "case_05_parameter_identification",
+      "title": "案例5：未知水箱系统参数辨识 - 最小二乘法",
+      "result": {
+        "status": "timeout",
+        "reason": "执行超时(>5秒)"
+      }
+    }
+  ],
+  "statistics": {
+    "total_cases": 236,
+    "file_completeness": 100.0,
+    "execution_success_rate": 0.0
+  }
+}

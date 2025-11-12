@@ -1,0 +1,210 @@
+{
+  "test_time": "2025-11-09T20:36:03.102207",
+  "book": "water-system-control",
+  "book_title": "Water System Control",
+  "total_cases": 20,
+  "success_count": 18,
+  "failed_count": 2,
+  "success_rate": 0.9,
+  "total_time": 257.0912480354309,
+  "average_time": 12.854562401771545,
+  "results": [
+    {
+      "case_id": "case_01_home_water_tower",
+      "title": "案例1：家庭水塔自动供水系统",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 7.126308441162109,
+      "stdout_lines": 115,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_02_cooling_tower",
+      "title": "案例2：工业冷却塔精确水位控制",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 9.172121047973633,
+      "stdout_lines": 224,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_03_water_supply_station",
+      "title": "案例3：供水泵站无静差控制",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 10.437131643295288,
+      "stdout_lines": 275,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_04_pid_tuning",
+      "title": "案例4：PID控制与参数整定",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 9.43924617767334,
+      "stdout_lines": 271,
+      "stderr_lines": 169,
+      "error": null
+    },
+    {
+      "case_id": "case_05_parameter_identification",
+      "title": "案例5：未知水箱系统参数辨识 - 最小二乘法",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 7.475154876708984,
+      "stdout_lines": 135,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_06_step_response",
+      "title": "案例6：阶跃响应法快速建模 - 图解法参数辨识",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 7.966734409332275,
+      "stdout_lines": 163,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_07_cascade_control",
+      "title": "案例7：串级控制 - 双水箱系统",
+      "success": false,
+      "returncode": 1,
+      "execution_time": 2.965771198272705,
+      "stdout_lines": 77,
+      "stderr_lines": 12,
+      "error": "stem-control\\code\\examples\\case_07_cascade_control\\main.py\", line 485, in main\n    compare_and_visualize()\n    ~~~~~~~~~~~~~~~~~~~~~^^\n  File \"E:\\OneDrive\\Documents\\GitHub\\Test\\CHS-Books\\books\\water-system-control\\code\\examples\\case_07_cascade_control\\main.py\", line 404, in compare_and_visualize\n    rise_single = t_single[np.where(h2_single >= 0.9 * setpoint)[0][0]]\n                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^\nIndexError: index 0 is out of bounds for axis 0 with size 0\n"
+    },
+    {
+      "case_id": "case_08_feedforward_control",
+      "title": "案例8：前馈控制 - 已知扰动补偿",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 9.891328573226929,
+      "stdout_lines": 113,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_09_system_modeling",
+      "title": "案例9：系统建模 - 从物理到数学",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 11.814798355102539,
+      "stdout_lines": 204,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_10_frequency_analysis",
+      "title": "案例10：频域分析 - Bode图与稳定性",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 31.936061143875122,
+      "stdout_lines": 133,
+      "stderr_lines": 221,
+      "error": null
+    },
+    {
+      "case_id": "case_11_state_space",
+      "title": "案例11：状态空间方法 - 现代控制理论入门",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 8.197182655334473,
+      "stdout_lines": 194,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_12_observer_lqr",
+      "title": "案例12：状态观测器与LQR最优控制",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 7.98017430305481,
+      "stdout_lines": 164,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_13_adaptive_control",
+      "title": "案例13：自适应控制 - 应对参数不确定性",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 25.51089882850647,
+      "stdout_lines": 142,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_14_model_predictive_control",
+      "title": "案例14：模型预测控制（MPC） - 优化控制与约束处理",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 11.612805843353271,
+      "stdout_lines": 22,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_15_sliding_mode_control",
+      "title": "案例15：滑模控制 - 鲁棒非线性控制",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 6.869587659835815,
+      "stdout_lines": 122,
+      "stderr_lines": 0,
+      "error": null
+    },
+    {
+      "case_id": "case_16_fuzzy_control",
+      "title": "案例16：模糊控制 - 智能控制的经典方法",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 9.320002794265747,
+      "stdout_lines": 120,
+      "stderr_lines": 15,
+      "error": null
+    },
+    {
+      "case_id": "case_17_neural_network_control",
+      "title": "案例17：神经网络控制 - 深度学习与智能控制的结合",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 6.2582786083221436,
+      "stdout_lines": 144,
+      "stderr_lines": 13,
+      "error": null
+    },
+    {
+      "case_id": "case_18_reinforcement_learning_control",
+      "title": "案例18：强化学习控制 - 智能体学习最优策略",
+      "success": false,
+      "error": "Timeout",
+      "execution_time": 60.04498243331909
+    },
+    {
+      "case_id": "case_19_comprehensive_comparison",
+      "title": "案例19：综合对比 - 所有控制方法的性能评估",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 7.099007844924927,
+      "stdout_lines": 104,
+      "stderr_lines": 9,
+      "error": null
+    },
+    {
+      "case_id": "case_20_practical_application",
+      "title": "案例20：实际应用 - 控制器的工程实现",
+      "success": true,
+      "returncode": 0,
+      "execution_time": 5.973671197891235,
+      "stdout_lines": 71,
+      "stderr_lines": 91,
+      "error": null
+    }
+  ]
+}

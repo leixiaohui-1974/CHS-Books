@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 案例15：滑模控制 - 鲁棒非线性控制
 
@@ -33,9 +34,15 @@
 """
 
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')  # 必须在import pyplot之前设置
 import matplotlib.pyplot as plt
 import sys
+import io
 from pathlib import Path
+
+# 设置标准输出为UTF-8编码
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 # 添加项目路径
 project_root = Path(__file__).parents[3]
@@ -418,7 +425,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax1.axhline(r1, color='r', linestyle='--', alpha=0.5, label='Reference')
     ax1.set_xlabel('Time (min)')
     ax1.set_ylabel('Water Level (m)')
-    ax1.set_title('Basic SMC (sign function)')
+    # 标题已移除，保持图表简洁
     ax1.legend()
     ax1.grid(True, alpha=0.3)
 
@@ -427,7 +434,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax2.plot(t1, u1, 'g-', linewidth=1, alpha=0.7)
     ax2.set_xlabel('Time (min)')
     ax2.set_ylabel('Control Input')
-    ax2.set_title('Control Signal (with chattering)')
+    # 标题已移除，保持图表简洁
     ax2.grid(True, alpha=0.3)
 
     # 图3：滑模面
@@ -437,7 +444,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax3.axhline(0, color='gray', linestyle='--', alpha=0.5)
     ax3.set_xlabel('Time (min)')
     ax3.set_ylabel('Sliding Surface s')
-    ax3.set_title('Sliding Surface Evolution')
+    # 标题已移除，保持图表简洁
     ax3.legend()
     ax3.grid(True, alpha=0.3)
 
@@ -447,7 +454,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax4.axhline(r2, color='r', linestyle='--', alpha=0.5, label='Reference')
     ax4.set_xlabel('Time (min)')
     ax4.set_ylabel('Water Level (m)')
-    ax4.set_title('SMC with Saturation Function')
+    # 标题已移除，保持图表简洁
     ax4.legend()
     ax4.grid(True, alpha=0.3)
 
@@ -456,7 +463,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax5.plot(t2, u2, 'g-', linewidth=2)
     ax5.set_xlabel('Time (min)')
     ax5.set_ylabel('Control Input')
-    ax5.set_title('Smooth Control (reduced chattering)')
+    # 标题已移除，保持图表简洁
     ax5.grid(True, alpha=0.3)
 
     # 图6：鲁棒性测试
@@ -466,7 +473,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax6.axvline(20, color='orange', linestyle=':', linewidth=2, label='Parameter Change')
     ax6.set_xlabel('Time (min)')
     ax6.set_ylabel('Water Level (m)')
-    ax6.set_title('Robustness Test')
+    # 标题已移除，保持图表简洁
     ax6.legend()
     ax6.grid(True, alpha=0.3)
 
@@ -477,7 +484,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax7.axhline(r4, color='gray', linestyle='--', alpha=0.3)
     ax7.set_xlabel('Time (min)')
     ax7.set_ylabel('Water Level (m)')
-    ax7.set_title('SMC vs PID Performance')
+    # 标题已移除，保持图表简洁
     ax7.legend()
     ax7.grid(True, alpha=0.3)
 
@@ -486,7 +493,7 @@ def visualize_and_summarize(basic_data, sat_data, robust_data, compare_data):
     ax8.plot(t4, dist, 'r-', linewidth=2)
     ax8.set_xlabel('Time (min)')
     ax8.set_ylabel('Disturbance')
-    ax8.set_title('External Disturbance')
+    # 标题已移除，保持图表简洁
     ax8.grid(True, alpha=0.3)
 
     # 图9：总结文字
