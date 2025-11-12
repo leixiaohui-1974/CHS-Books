@@ -18,11 +18,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-  
-  // 实验性特性
-  experimental: {
-    serverActions: true,
-  },
 }
 
 module.exports = nextConfig
