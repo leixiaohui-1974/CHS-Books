@@ -184,6 +184,69 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
     }, 2000)
   }, [])
 
+  // ==================== 滚动同步：代码 → 教材 ====================
+
+  // 根据代码行号找到对应的section
+  const findSectionByCodeLine = useCallback((lineNumber: number): string | null => {
+    if (!textbook) return null
+
+    // 遍历所有sections，找到包含此行号的section
+    for (const section of textbook.sections) {
+      if (section.code_lines) {
+        const { start, end } = section.code_lines
+        if (lineNumber >= start && lineNumber <= end) {
+          return section.id
+        }
+      }
+    }
+
+    return null
+  }, [textbook])
+
+  // 滚动教材到指定section
+  const scrollToTextbookSection = useCallback((sectionId: string) => {
+    if (!textbookRef.current) return
+
+    const sectionElement = textbookRef.current.querySelector(
+      `[data-section-id="${sectionId}"]`
+    ) as HTMLElement
+
+    if (sectionElement) {
+      // 平滑滚动到section
+      sectionElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+
+      // 添加临时高亮效果
+      sectionElement.classList.add('highlighted-section')
+      setTimeout(() => {
+        sectionElement.classList.remove('highlighted-section')
+      }, 2000)
+    }
+  }, [])
+
+  // 监听代码编辑器滚动
+  const handleCodeScroll = useCallback(() => {
+    if (!editorRef.current || !textbook) return
+
+    const monaco = editorRef.current
+
+    // 获取当前可见区域的第一行
+    const visibleRanges = monaco.getVisibleRanges()
+    if (visibleRanges.length === 0) return
+
+    const firstVisibleLine = visibleRanges[0].startLineNumber
+
+    // 找到对应的section
+    const sectionId = findSectionByCodeLine(firstVisibleLine)
+
+    if (sectionId && sectionId !== currentSection) {
+      setCurrentSection(sectionId)
+      scrollToTextbookSection(sectionId)
+    }
+  }, [textbook, currentSection, findSectionByCodeLine, scrollToTextbookSection])
+
   // 添加滚动监听
   useEffect(() => {
     const textbookEl = textbookRef.current
@@ -436,6 +499,17 @@ export const InteractiveTextbook: React.FC<InteractiveTextbookProps> = ({
           onChange={(value) => setCode(value || '')}
           onMount={(editor) => {
             editorRef.current = editor
+
+            // 监听代码编辑器的滚动事件（双向同步）
+            editor.onDidScrollChange(() => {
+              // 使用节流避免频繁触发
+              const timeoutId = setTimeout(() => {
+                handleCodeScroll()
+              }, 150)
+
+              // 清理函数
+              return () => clearTimeout(timeoutId)
+            })
           }}
           options={{
             fontSize: 14,

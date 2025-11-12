@@ -247,6 +247,53 @@
   }
 }
 
+/* ==================== 教材Section高亮（双向同步） ==================== */
+
+/* 当代码滚动触发时，高亮对应的教材section */
+.highlighted-section {
+  background-color: rgba(52, 152, 219, 0.08);
+  border-left: 4px solid #3498db;
+  padding-left: 1rem;
+  margin-left: -1rem;
+  transition: all 0.3s ease;
+  animation: section-highlight-fade 2s ease-out;
+}
+
+@keyframes section-highlight-fade {
+  0% {
+    background-color: rgba(52, 152, 219, 0.15);
+    border-left-color: #2980b9;
+  }
+  100% {
+    background-color: rgba(52, 152, 219, 0.08);
+    border-left-color: #3498db;
+  }
+}
+
+/* Section标题样式增强（便于识别） */
+.textbook-content h2[data-section-id] {
+  position: relative;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.textbook-content h2[data-section-id]:hover {
+  color: #2980b9;
+}
+
+.textbook-content h2[data-section-id]::before {
+  content: '§';
+  position: absolute;
+  left: -1.5rem;
+  color: #bdc3c7;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.textbook-content h2[data-section-id]:hover::before {
+  opacity: 1;
+}
+
 /* ==================== 加载和错误状态 ==================== */
 
 .interactive-textbook-loading,
