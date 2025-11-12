@@ -5,21 +5,12 @@
  *
  * 演示新的左文右码布局功能
  * URL: /textbook-demo
+ *
+ * 注意：QueryClientProvider已在layout.tsx中配置，这里无需重复包装
  */
 
 import React from 'react'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import InteractiveTextbook from '@/components/InteractiveTextbook/InteractiveTextbook'
-
-// 创建 React Query 客户端
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-      retry: 1,
-    },
-  },
-})
 
 export default function TextbookDemoPage() {
   const handleCodeExecute = async (code: string) => {
@@ -36,15 +27,13 @@ export default function TextbookDemoPage() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <div style={{ width: '100vw', height: '100vh' }}>
-        <InteractiveTextbook
-          bookSlug="water-system-intro"
-          chapterSlug="chapter-01"
-          caseSlug="case-water-tank"
-          onCodeExecute={handleCodeExecute}
-        />
-      </div>
-    </QueryClientProvider>
+    <div style={{ width: '100vw', height: '100vh' }}>
+      <InteractiveTextbook
+        bookSlug="water-system-intro"
+        chapterSlug="chapter-01"
+        caseSlug="case-water-tank"
+        onCodeExecute={handleCodeExecute}
+      />
+    </div>
   )
 }
