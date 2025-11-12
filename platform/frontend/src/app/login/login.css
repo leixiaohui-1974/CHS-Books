@@ -1,0 +1,118 @@
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot-link {
+  color: #667eea;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  color: #764ba2;
+}
+
+.oauth-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.oauth-btn {
+  height: 40px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.oauth-btn.wechat {
+  background: #07c160;
+  border-color: #07c160;
+  color: white;
+}
+
+.oauth-btn.wechat:hover {
+  background: #06ad56;
+  border-color: #06ad56;
+  color: white;
+}
+
+.oauth-btn.github {
+  background: #24292e;
+  border-color: #24292e;
+  color: white;
+}
+
+.oauth-btn.github:hover {
+  background: #1b1f23;
+  border-color: #1b1f23;
+  color: white;
+}
+
+.login-footer {
+  text-align: center;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
+}
+
+.login-footer a {
+  color: #667eea;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  color: #764ba2;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 24px;
+  }
+
+  .login-header h1 {
+    font-size: 24px;
+  }
+
+  .oauth-buttons {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,261 +1,279 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import { Layout, Card, Form, Input, Button, Checkbox, Divider, Typography, message, Tabs } from 'antd'
-import { UserOutlined, LockOutlined, MailOutlined, GithubOutlined, WechatOutlined } from '@ant-design/icons'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import React, { useState } from 'react';
+import { Form, Input, Button, Checkbox, Tabs, message, Divider } from 'antd';
+import { UserOutlined, LockOutlined, PhoneOutlined, SafetyOutlined, GithubOutlined, WechatOutlined } from '@ant-design/icons';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { authService, LoginData, SMSLoginData, SendCodeData } from '@/services/authService';
+import './login.css';
 
-const { Content } = Layout
-const { Title, Text, Paragraph } = Typography
+const { TabPane } = Tabs;
 
 export default function LoginPage() {
-  const router = useRouter()
-  const [loading, setLoading] = useState(false)
+  const router = useRouter();
+  const [passwordForm] = Form.useForm();
+  const [smsForm] = Form.useForm();
+  const [loading, setLoading] = useState(false);
+  const [sendingCode, setSendingCode] = useState(false);
+  const [countdown, setCountdown] = useState(0);
+  const [activeTab, setActiveTab] = useState('password');
 
-  const onLoginFinish = async (values: any) => {
-    setLoading(true)
+  // 密码登录
+  const handlePasswordLogin = async (values: any) => {
     try {
-      // TODO: 调用登录API
-      console.log('登录:', values)
-      
-      // 模拟API请求
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      message.success('登录成功！')
-      router.push('/books')
-    } catch (error) {
-      message.error('登录失败，请检查用户名和密码')
-    } finally {
-      setLoading(false)
-    }
-  }
+      setLoading(true);
 
-  const onRegisterFinish = async (values: any) => {
-    setLoading(true)
+      const data: LoginData = {
+        identifier: values.identifier,
+        password: values.password,
+        remember_me: values.remember,
+        device_name: navigator.userAgent
+      };
+
+      const response = await authService.login(data);
+
+      // 检查是否需要2FA
+      if (response.requires_2fa) {
+        // TODO: 跳转到2FA验证页面
+        message.info('请输入双因素认证码');
+        return;
+      }
+
+      message.success('登录成功！');
+
+      // 跳转到首页或用户中心
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 500);
+
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || '登录失败，请检查用户名和密码');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 短信登录
+  const handleSMSLogin = async (values: any) => {
     try {
-      // TODO: 调用注册API
-      console.log('注册:', values)
-      
-      // 模拟API请求
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      message.success('注册成功！请登录')
-    } catch (error) {
-      message.error('注册失败，请稍后重试')
-    } finally {
-      setLoading(false)
-    }
-  }
+      setLoading(true);
 
-  const handleSocialLogin = (provider: string) => {
-    message.info(`${provider} 登录功能开发中`)
-  }
+      const data: SMSLoginData = {
+        phone: values.phone,
+        code: values.code,
+        device_name: navigator.userAgent
+      };
+
+      const response = await authService.smsLogin(data);
+
+      message.success('登录成功！');
+
+      setTimeout(() => {
+        router.push('/dashboard');
+      }, 500);
+
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || '登录失败，请检查手机号和验证码');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // 发送验证码
+  const handleSendCode = async () => {
+    try {
+      const phone = smsForm.getFieldValue('phone');
+
+      if (!phone) {
+        message.error('请输入手机号');
+        return;
+      }
+
+      if (!/^1[3-9]\d{9}$/.test(phone)) {
+        message.error('请输入有效的手机号');
+        return;
+      }
+
+      setSendingCode(true);
+
+      const data: SendCodeData = {
+        type: 'login',
+        recipient: phone,
+        method: 'sms'
+      };
+
+      await authService.sendCode(data);
+      message.success('验证码已发送');
+
+      // 开始倒计时
+      setCountdown(60);
+      const timer = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(timer);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || '发送验证码失败');
+    } finally {
+      setSendingCode(false);
+    }
+  };
+
+  // OAuth登录 (暂未实现)
+  const handleOAuthLogin = (provider: string) => {
+    message.info(`${provider}登录功能即将上线`);
+    // TODO: 实现OAuth登录
+  };
 
   return (
-    <Layout style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' }}>
-      <Content style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center',
-        padding: '50px 20px'
-      }}>
-        <Card style={{ width: '100%', maxWidth: '500px', borderRadius: '8px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-          {/* Logo和标题 */}
-          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <Title level={2} style={{ marginBottom: '8px' }}>
-              Engineering Learning Platform
-            </Title>
-            <Paragraph type="secondary">
-              智能工程教学平台
-            </Paragraph>
-          </div>
+    <div className="login-container">
+      <div className="login-card">
+        <div className="login-header">
+          <h1>欢迎回来</h1>
+          <p>登录您的账号继续学习</p>
+        </div>
 
-          {/* 登录/注册选项卡 */}
-          <Tabs
-            defaultActiveKey="login"
-            centered
-            items={[
-              {
-                key: 'login',
-                label: '登录',
-                children: (
-                  <Form
-                    name="login"
-                    initialValues={{ remember: true }}
-                    onFinish={onLoginFinish}
-                    size="large"
-                  >
-                    <Form.Item
-                      name="username"
-                      rules={[{ required: true, message: '请输入用户名或邮箱' }]}
+        <Tabs activeKey={activeTab} onChange={setActiveTab} centered>
+          <TabPane tab="账号登录" key="password">
+            <Form
+              form={passwordForm}
+              onFinish={handlePasswordLogin}
+              layout="vertical"
+              size="large"
+            >
+              <Form.Item
+                name="identifier"
+                rules={[{ required: true, message: '请输入用户名/邮箱/手机号' }]}
+              >
+                <Input
+                  prefix={<UserOutlined />}
+                  placeholder="用户名 / 邮箱 / 手机号"
+                />
+              </Form.Item>
+
+              <Form.Item
+                name="password"
+                rules={[{ required: true, message: '请输入密码' }]}
+              >
+                <Input.Password
+                  prefix={<LockOutlined />}
+                  placeholder="密码"
+                />
+              </Form.Item>
+
+              <Form.Item>
+                <div className="login-options">
+                  <Form.Item name="remember" valuePropName="checked" noStyle>
+                    <Checkbox>记住我 (7天)</Checkbox>
+                  </Form.Item>
+                  <Link href="/forgot-password" className="forgot-link">
+                    忘记密码？
+                  </Link>
+                </div>
+              </Form.Item>
+
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={loading}
+                  block
+                  size="large"
+                >
+                  登录
+                </Button>
+              </Form.Item>
+            </Form>
+          </TabPane>
+
+          <TabPane tab="短信登录" key="sms">
+            <Form
+              form={smsForm}
+              onFinish={handleSMSLogin}
+              layout="vertical"
+              size="large"
+            >
+              <Form.Item
+                name="phone"
+                rules={[
+                  { required: true, message: '请输入手机号' },
+                  { pattern: /^1[3-9]\d{9}$/, message: '请输入有效的手机号' }
+                ]}
+              >
+                <Input
+                  prefix={<PhoneOutlined />}
+                  placeholder="手机号"
+                />
+              </Form.Item>
+
+              <Form.Item
+                name="code"
+                rules={[
+                  { required: true, message: '请输入验证码' },
+                  { len: 6, message: '验证码为6位数字' }
+                ]}
+              >
+                <Input
+                  prefix={<SafetyOutlined />}
+                  placeholder="6位验证码"
+                  suffix={
+                    <Button
+                      type="link"
+                      onClick={handleSendCode}
+                      loading={sendingCode}
+                      disabled={countdown > 0}
                     >
-                      <Input 
-                        prefix={<UserOutlined />} 
-                        placeholder="用户名或邮箱" 
-                      />
-                    </Form.Item>
+                      {countdown > 0 ? `${countdown}秒后重发` : '获取验证码'}
+                    </Button>
+                  }
+                />
+              </Form.Item>
 
-                    <Form.Item
-                      name="password"
-                      rules={[{ required: true, message: '请输入密码' }]}
-                    >
-                      <Input.Password
-                        prefix={<LockOutlined />}
-                        placeholder="密码"
-                      />
-                    </Form.Item>
+              <Form.Item>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  loading={loading}
+                  block
+                  size="large"
+                >
+                  登录
+                </Button>
+              </Form.Item>
+            </Form>
+          </TabPane>
+        </Tabs>
 
-                    <Form.Item>
-                      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <Form.Item name="remember" valuePropName="checked" noStyle>
-                          <Checkbox>记住我</Checkbox>
-                        </Form.Item>
-                        <Link href="/forgot-password">
-                          <Text type="secondary">忘记密码？</Text>
-                        </Link>
-                      </div>
-                    </Form.Item>
+        <Divider>或使用以下方式登录</Divider>
 
-                    <Form.Item>
-                      <Button type="primary" htmlType="submit" block loading={loading}>
-                        登录
-                      </Button>
-                    </Form.Item>
-
-                    {/* 社交登录 */}
-                    <Divider>其他登录方式</Divider>
-                    <Space style={{ width: '100%', justifyContent: 'center' }}>
-                      <Button 
-                        icon={<GithubOutlined />} 
-                        onClick={() => handleSocialLogin('GitHub')}
-                      >
-                        GitHub
-                      </Button>
-                      <Button 
-                        icon={<WechatOutlined />} 
-                        type="primary"
-                        style={{ background: '#07c160', borderColor: '#07c160' }}
-                        onClick={() => handleSocialLogin('微信')}
-                      >
-                        微信
-                      </Button>
-                    </Space>
-                  </Form>
-                )
-              },
-              {
-                key: 'register',
-                label: '注册',
-                children: (
-                  <Form
-                    name="register"
-                    onFinish={onRegisterFinish}
-                    size="large"
-                  >
-                    <Form.Item
-                      name="email"
-                      rules={[
-                        { required: true, message: '请输入邮箱' },
-                        { type: 'email', message: '请输入有效的邮箱地址' }
-                      ]}
-                    >
-                      <Input 
-                        prefix={<MailOutlined />} 
-                        placeholder="邮箱地址" 
-                      />
-                    </Form.Item>
-
-                    <Form.Item
-                      name="username"
-                      rules={[
-                        { required: true, message: '请输入用户名' },
-                        { min: 3, message: '用户名至少3个字符' }
-                      ]}
-                    >
-                      <Input 
-                        prefix={<UserOutlined />} 
-                        placeholder="用户名" 
-                      />
-                    </Form.Item>
-
-                    <Form.Item
-                      name="password"
-                      rules={[
-                        { required: true, message: '请输入密码' },
-                        { min: 8, message: '密码至少8个字符' }
-                      ]}
-                    >
-                      <Input.Password
-                        prefix={<LockOutlined />}
-                        placeholder="密码（至少8位）"
-                      />
-                    </Form.Item>
-
-                    <Form.Item
-                      name="confirm"
-                      dependencies={['password']}
-                      rules={[
-                        { required: true, message: '请确认密码' },
-                        ({ getFieldValue }) => ({
-                          validator(_, value) {
-                            if (!value || getFieldValue('password') === value) {
-                              return Promise.resolve()
-                            }
-                            return Promise.reject(new Error('两次密码输入不一致'))
-                          },
-                        }),
-                      ]}
-                    >
-                      <Input.Password
-                        prefix={<LockOutlined />}
-                        placeholder="确认密码"
-                      />
-                    </Form.Item>
-
-                    <Form.Item
-                      name="agreement"
-                      valuePropName="checked"
-                      rules={[
-                        {
-                          validator: (_, value) =>
-                            value ? Promise.resolve() : Promise.reject(new Error('请阅读并同意用户协议')),
-                        },
-                      ]}
-                    >
-                      <Checkbox>
-                        我已阅读并同意 <Link href="/terms">用户协议</Link> 和 <Link href="/privacy">隐私政策</Link>
-                      </Checkbox>
-                    </Form.Item>
-
-                    <Form.Item>
-                      <Button type="primary" htmlType="submit" block loading={loading}>
-                        注册
-                      </Button>
-                    </Form.Item>
-                  </Form>
-                )
-              }
-            ]}
-          />
-
-          {/* 测试账号提示 */}
-          <Card 
-            size="small" 
-            style={{ 
-              marginTop: '16px', 
-              background: '#f0f2f5',
-              borderRadius: '4px'
-            }}
+        <div className="oauth-buttons">
+          <Button
+            icon={<WechatOutlined />}
+            onClick={() => handleOAuthLogin('微信')}
+            className="oauth-btn wechat"
           >
-            <Text type="secondary" style={{ fontSize: '12px' }}>
-              <strong>测试账号:</strong><br />
-              管理员: admin@example.com / admin123<br />
-              用户: student@example.com / password123
-            </Text>
-          </Card>
-        </Card>
-      </Content>
-    </Layout>
-  )
+            微信
+          </Button>
+          <Button
+            icon={<GithubOutlined />}
+            onClick={() => handleOAuthLogin('GitHub')}
+            className="oauth-btn github"
+          >
+            GitHub
+          </Button>
+        </div>
+
+        <div className="login-footer">
+          <span>还没有账号？</span>
+          <Link href="/register">立即注册</Link>
+        </div>
+      </div>
+    </div>
+  );
 }
