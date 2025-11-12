@@ -1,0 +1,203 @@
+.question-sets-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.question-sets-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.header-card {
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-left {
+  flex: 1;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #262626;
+  display: flex;
+  align-items: center;
+}
+
+.page-description {
+  font-size: 16px;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-bar {
+  padding: 16px 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+.sets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.question-set-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+  border: 1px solid #f0f0f0;
+}
+
+.question-set-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: #1890ff;
+}
+
+.question-set-card .ant-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.question-set-card .ant-card-actions {
+  border-top: 1px solid #f0f0f0;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.type-tag {
+  font-size: 13px;
+  padding: 2px 12px;
+  border-radius: 12px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  min-height: 56px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #8c8c8c;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-stats {
+  margin: 16px 0;
+}
+
+.card-stats .ant-statistic {
+  text-align: center;
+}
+
+.card-stats .ant-statistic-title {
+  font-size: 13px;
+  color: #8c8c8c;
+}
+
+.card-performance {
+  padding: 12px;
+  background: #fafafa;
+  border-radius: 4px;
+}
+
+.performance-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.performance-label {
+  font-size: 14px;
+  color: #595959;
+}
+
+.performance-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #262626;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+  .sets-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .question-sets-container {
+    padding: 16px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .header-right {
+    width: 100%;
+  }
+
+  .header-right .ant-btn {
+    width: 100%;
+  }
+
+  .sets-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    min-height: auto;
+  }
+
+  .filter-bar {
+    overflow-x: auto;
+  }
+}

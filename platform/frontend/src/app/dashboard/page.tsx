@@ -395,21 +395,27 @@ export default function DashboardPage() {
             <List>
               <List.Item
                 className="quick-action-item"
-                onClick={() => router.push('/learning/subjects')}
+                onClick={() => router.push('/practice')}
               >
-                <RocketOutlined /> 开始学习
+                <RocketOutlined /> 开始练习
+              </List.Item>
+              <List.Item
+                className="quick-action-item"
+                onClick={() => router.push('/question-sets')}
+              >
+                <BookOutlined /> 题集练习
+              </List.Item>
+              <List.Item
+                className="quick-action-item"
+                onClick={() => router.push('/wrong-questions')}
+              >
+                <FireOutlined /> 我的错题本
               </List.Item>
               <List.Item
                 className="quick-action-item"
                 onClick={() => router.push('/learning/review')}
               >
                 <ClockCircleOutlined /> 复习知识点
-              </List.Item>
-              <List.Item
-                className="quick-action-item"
-                onClick={() => router.push('/learning/paths')}
-              >
-                <BookOutlined /> 学习路径
               </List.Item>
               <List.Item
                 className="quick-action-item"
