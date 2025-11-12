@@ -10,13 +10,14 @@ from app.api.endpoints import (
     ai_assistant,
     textbooks
 )
-from app.api.v1.endpoints import auth as auth_v1
+from app.api.v1.endpoints import auth as auth_v1, oauth as oauth_v1
 from app.api.v2 import books as books_v2
 
 api_router = APIRouter()
 
 # V1 API端点
 api_router.include_router(auth_v1.router, prefix="/v1/auth", tags=["认证"])
+api_router.include_router(oauth_v1.router, prefix="/v1/oauth", tags=["OAuth"])
 
 # 其他端点
 api_router.include_router(sessions.router, prefix="/sessions", tags=["会话管理"])

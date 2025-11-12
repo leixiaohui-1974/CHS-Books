@@ -97,10 +97,20 @@ class Settings(BaseSettings):
     # ========================================
     # OAuth配置
     # ========================================
+    # 微信
     WECHAT_APP_ID: Optional[str] = None
     WECHAT_APP_SECRET: Optional[str] = None
+    WECHAT_REDIRECT_URI: str = "http://localhost:3000/oauth/callback/wechat"
+    
+    # GitHub
     GITHUB_CLIENT_ID: Optional[str] = None
     GITHUB_CLIENT_SECRET: Optional[str] = None
+    GITHUB_REDIRECT_URI: str = "http://localhost:3000/oauth/callback/github"
+    
+    # Google
+    GOOGLE_CLIENT_ID: Optional[str] = None
+    GOOGLE_CLIENT_SECRET: Optional[str] = None
+    GOOGLE_REDIRECT_URI: str = "http://localhost:3000/oauth/callback/google"
     
     # ========================================
     # 支付配置

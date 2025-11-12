@@ -6,6 +6,7 @@ import { UserOutlined, LockOutlined, PhoneOutlined, SafetyOutlined, GithubOutlin
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { authService, LoginData, SMSLoginData, SendCodeData } from '@/services/authService';
+import { oauthService } from '@/services/oauthService';
 import './login.css';
 
 const { TabPane } = Tabs;
@@ -125,10 +126,13 @@ export default function LoginPage() {
     }
   };
 
-  // OAuth登录 (暂未实现)
-  const handleOAuthLogin = (provider: string) => {
-    message.info(`${provider}登录功能即将上线`);
-    // TODO: 实现OAuth登录
+  // OAuth登录
+  const handleOAuthLogin = async (provider: 'github' | 'google' | 'wechat') => {
+    try {
+      await oauthService.startOAuthLogin(provider);
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || `${provider}登录失败`);
+    }
   };
 
   return (
@@ -255,14 +259,14 @@ export default function LoginPage() {
         <div className="oauth-buttons">
           <Button
             icon={<WechatOutlined />}
-            onClick={() => handleOAuthLogin('微信')}
+            onClick={() => handleOAuthLogin('wechat')}
             className="oauth-btn wechat"
           >
             微信
           </Button>
           <Button
             icon={<GithubOutlined />}
-            onClick={() => handleOAuthLogin('GitHub')}
+            onClick={() => handleOAuthLogin('github')}
             className="oauth-btn github"
           >
             GitHub

@@ -30,10 +30,13 @@ import {
   TrophyOutlined,
   ClockCircleOutlined,
   BookOutlined,
-  UploadOutlined
+  UploadOutlined,
+  GithubOutlined,
+  WechatOutlined
 } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 import { authService, UserInfo, UpdateUserInfoData, ChangePasswordData } from '@/services/authService';
+import { oauthService, OAuthAccountInfo, OAuthProvider } from '@/services/oauthService';
 import './profile.css';
 
 const { TabPane } = Tabs;
@@ -44,6 +47,7 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true);
   const [editModalVisible, setEditModalVisible] = useState(false);
   const [passwordModalVisible, setPasswordModalVisible] = useState(false);
+  const [oauthAccounts, setOauthAccounts] = useState<OAuthAccountInfo[]>([]);
   const [editForm] = Form.useForm();
   const [passwordForm] = Form.useForm();
 
@@ -63,6 +67,14 @@ export default function ProfilePage() {
         full_name: data.full_name,
         bio: data.bio
       });
+
+      // 加载OAuth账号
+      try {
+        const accounts = await oauthService.getOAuthAccounts();
+        setOauthAccounts(accounts);
+      } catch (err) {
+        console.error('加载OAuth账号失败:', err);
+      }
     } catch (error: any) {
       message.error('加载用户信息失败');
       if (error.response?.status === 401) {
@@ -142,6 +154,41 @@ export default function ProfilePage() {
   const formatDate = (dateString?: string) => {
     if (!dateString) return '未知';
     return new Date(dateString).toLocaleString('zh-CN');
+  };
+
+  // 处理OAuth绑定
+  const handleBindOAuth = async (provider: OAuthProvider) => {
+    try {
+      await oauthService.startOAuthLogin(provider);
+    } catch (error: any) {
+      message.error(error.response?.data?.detail || `绑定${provider}失败`);
+    }
+  };
+
+  // 处理OAuth解绑
+  const handleUnbindOAuth = async (provider: OAuthProvider) => {
+    Modal.confirm({
+      title: `确认解绑${provider}账号？`,
+      content: '解绑后将无法使用该账号登录',
+      okText: '确定',
+      cancelText: '取消',
+      onOk: async () => {
+        try {
+          await oauthService.unbindAccount(provider);
+          message.success(`已解绑${provider}账号`);
+          // 重新加载OAuth账号列表
+          const accounts = await oauthService.getOAuthAccounts();
+          setOauthAccounts(accounts);
+        } catch (error: any) {
+          message.error(error.response?.data?.detail || `解绑${provider}失败`);
+        }
+      }
+    });
+  };
+
+  // 检查是否已绑定某个OAuth账号
+  const isOAuthBound = (provider: string): boolean => {
+    return oauthAccounts.some(account => account.provider === provider);
   };
 
   if (loading || !userInfo) {
@@ -303,6 +350,95 @@ export default function ProfilePage() {
               avatar={<PhoneOutlined style={{ fontSize: 24 }} />}
               title="手机绑定"
               description={userInfo.phone ? `已绑定: ${userInfo.phone}` : '未绑定手机号'}
+            />
+          </List.Item>
+        </List>
+      </Card>
+
+      <Card title="第三方账号" style={{ marginTop: 16 }}>
+        <List>
+          <List.Item
+            actions={[
+              isOAuthBound('github') ? (
+                <Button 
+                  key="unbind" 
+                  type="link" 
+                  danger
+                  onClick={() => handleUnbindOAuth('github')}
+                >
+                  解绑
+                </Button>
+              ) : (
+                <Button 
+                  key="bind" 
+                  type="link"
+                  onClick={() => handleBindOAuth('github')}
+                >
+                  绑定
+                </Button>
+              )
+            ]}
+          >
+            <List.Item.Meta
+              avatar={<GithubOutlined style={{ fontSize: 24 }} />}
+              title="GitHub"
+              description={isOAuthBound('github') ? '已绑定GitHub账号' : '绑定GitHub账号快速登录'}
+            />
+          </List.Item>
+          <List.Item
+            actions={[
+              isOAuthBound('google') ? (
+                <Button 
+                  key="unbind" 
+                  type="link" 
+                  danger
+                  onClick={() => handleUnbindOAuth('google')}
+                >
+                  解绑
+                </Button>
+              ) : (
+                <Button 
+                  key="bind" 
+                  type="link"
+                  onClick={() => handleBindOAuth('google')}
+                >
+                  绑定
+                </Button>
+              )
+            ]}
+          >
+            <List.Item.Meta
+              avatar={<span style={{ fontSize: 24 }}>🔗</span>}
+              title="Google"
+              description={isOAuthBound('google') ? '已绑定Google账号' : '绑定Google账号快速登录'}
+            />
+          </List.Item>
+          <List.Item
+            actions={[
+              isOAuthBound('wechat') ? (
+                <Button 
+                  key="unbind" 
+                  type="link" 
+                  danger
+                  onClick={() => handleUnbindOAuth('wechat')}
+                >
+                  解绑
+                </Button>
+              ) : (
+                <Button 
+                  key="bind" 
+                  type="link"
+                  onClick={() => handleBindOAuth('wechat')}
+                >
+                  绑定
+                </Button>
+              )
+            ]}
+          >
+            <List.Item.Meta
+              avatar={<WechatOutlined style={{ fontSize: 24, color: '#07c160' }} />}
+              title="微信"
+              description={isOAuthBound('wechat') ? '已绑定微信账号' : '绑定微信账号快速登录'}
             />
           </List.Item>
         </List>
