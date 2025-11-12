@@ -131,9 +131,11 @@ mkdocs-material==9.5.2
 stripe==7.8.0  # Stripe
 
 # ----------------------------------------
-# Email
+# Email & SMS
 # ----------------------------------------
 fastapi-mail==1.4.1
+aliyun-python-sdk-core==2.15.0  # 阿里云SDK核心
+aliyun-python-sdk-dysmsapi==2.1.2  # 阿里云短信服务
 
 # ----------------------------------------
 # Docker & Orchestration
