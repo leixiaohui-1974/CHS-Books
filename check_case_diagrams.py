@@ -21,21 +21,33 @@ def check_readme_for_diagrams(readme_path):
         with open(readme_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # 查找图片引用
-        image_pattern = r'!\[([^\]]*)\]\(([^\)]+)\)'
-        images = re.findall(image_pattern, content)
+        # 查找图片引用 (Markdown格式和HTML格式)
+        md_image_pattern = r'!\[([^\]]*)\]\(([^\)]+)\)'
+        html_image_pattern = r'<img[^>]+src=["\']([^"\']+)["\']'
+
+        md_images = re.findall(md_image_pattern, content)
+        html_images = re.findall(html_image_pattern, content)
+
+        # 合并两种格式（统一为(alt, src)格式）
+        images = [(alt, src) for alt, src in md_images]
+        images.extend([('', src) for src in html_images])
 
         # 查找"示意图"关键词
         has_diagram_keyword = bool(re.search(r'(示意图|系统图|架构图|原理图|流程图)', content))
 
-        # 检查是否在文档开头部分（前500字符）有图片
-        has_early_image = bool(re.search(image_pattern, content[:1000]))
+        # 检查是否在文档开头部分（前1000字符）有图片
+        has_early_image = bool(
+            re.search(md_image_pattern, content[:1000]) or
+            re.search(html_image_pattern, content[:1000])
+        )
 
         case_dir = readme_path.parent
 
         # 检查图片文件是否存在
         existing_images = []
-        for alt, img_path in images:
+        for item in images:
+            # 处理不同格式：(alt, src) 或 ('', src)
+            img_path = item[1] if len(item) > 1 else item[0]
             if not img_path.startswith(('http://', 'https://')):
                 full_path = case_dir / img_path
                 if full_path.exists():
