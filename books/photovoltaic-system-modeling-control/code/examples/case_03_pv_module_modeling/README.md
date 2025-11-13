@@ -18,7 +18,7 @@
 ### 串联特性
 
 **电气关系**:
-```
+```python
 I_module = I_cell          (电流相同)
 V_module = Σ V_cell        (电压相加)
 P_module = Σ P_cell        (功率相加)
@@ -41,7 +41,7 @@ P_module = Σ P_cell        (功率相加)
 4. 保护组件安全
 
 **工作原理**:
-```
+```python
 正常情况: 二极管截止,电流通过所有电池
 部分遮挡: 被遮挡组产生负压,二极管导通旁路
 ```
@@ -86,7 +86,7 @@ module = PVModule(
 
 # 打印参数
 module.print_parameters()
-```
+```python
 
 输出:
 ```
@@ -104,7 +104,7 @@ module.print_parameters()
   最大功率点电流 Imp:    7.500 A
   最大功率 Pmp:          216.00 W
 ============================================================
-```
+```python
 
 ### 2. 计算I-V和P-V曲线
 
@@ -134,7 +134,7 @@ ax2.grid(True)
 
 plt.tight_layout()
 plt.show()
-```
+```python
 
 ### 3. 寻找最大功率点
 
@@ -150,7 +150,7 @@ print(f"  Pmpp = {pmpp:.2f} W")
 # 计算填充因子
 FF = pmpp / (module.Voc * module.Isc)
 print(f"  FF   = {FF:.4f} ({FF*100:.2f}%)")
-```
+```python
 
 ### 4. 分析不同配置
 
@@ -166,14 +166,14 @@ for Ns, Nb, name in configs:
     mod = PVModule(cell_model=cell, Ns=Ns, Nb=Nb, name=name)
     v, i, p = mod.find_mpp()
     print(f"{name}: Voc={mod.Voc:.1f}V, Pmpp={p:.1f}W")
-```
+```python
 
 输出:
 ```
 36片传统组件: Voc=21.6V, Pmpp=129.6W
 60片标准组件: Voc=36.0V, Pmpp=216.0W
 72片大功率组件: Voc=43.2V, Pmpp=259.2W
-```
+```python
 
 ### 5. 模拟部分遮挡
 
@@ -189,7 +189,7 @@ vmpp_shaded, impp_shaded, pmpp_shaded = module.find_mpp()
 print(f"部分遮挡条件:")
 print(f"  Pmpp = {pmpp_shaded:.2f} W")
 print(f"  功率损失 = {pmpp - pmpp_shaded:.2f} W")
-```
+```python
 
 ---
 
@@ -209,7 +209,7 @@ print(f"  功率损失 = {pmpp - pmpp_shaded:.2f} W")
 ```bash
 cd code/examples/case_03_pv_module_modeling
 python3 experiments.py  # 选择实验1
-```
+```matlab
 
 **关键发现**:
 - 电压与片数成正比: Voc = Ns × Voc_cell
@@ -259,7 +259,7 @@ python3 experiments.py  # 选择实验1
 ```
 Voc(Ns) = slope × Ns + intercept
 Pmpp(Ns) = slope × Ns + intercept
-```
+```matlab
 
 ---
 
@@ -329,7 +329,7 @@ Ns_min = V_mppt_min / Vmpp_module  # 4.9 → 5片
 Ns_max = V_mppt_max / Vmpp_module  # 20.7 → 20片
 
 print(f"串联数量范围: {int(Ns_min)}-{int(Ns_max)} 片")
-```
+```python
 
 ### 3. 遮挡影响评估
 
@@ -366,7 +366,7 @@ def evaluate_shading_loss(Ns, Nb, shaded_cells, shade_level):
 # 示例
 loss = evaluate_shading_loss(60, 3, 20, 0.8)
 print(f"预计功率损失: {loss:.1f}%")
-```
+```python
 
 ### 4. 热斑检测
 

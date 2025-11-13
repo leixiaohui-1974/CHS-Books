@@ -25,7 +25,7 @@
 
 二维稳态渗流方程（均质含水层）：
 
-```
+```python
 ∂²h/∂x² + ∂²h/∂y² = 0
 ```
 
@@ -54,7 +54,7 @@
 
 对内部节点(i, j)，五点差分格式：
 
-```
+```python
 K[(h[i,j+1] - 2h[i,j] + h[i,j-1])/dx² + 
   (h[i+1,j] - 2h[i,j] + h[i-1,j])/dy²] = 0
 ```
@@ -62,12 +62,12 @@ K[(h[i,j+1] - 2h[i,j] + h[i,j-1])/dx² +
 ### Neumann边界条件处理
 
 对下边界（i=0），使用单侧差分：
-```
+```python
 (h[i+1,j] - h[i,j])/dy = 0
 ```
 
 或者使用虚拟节点法：
-```
+```python
 h[-1,j] = h[1,j]
 ```
 
@@ -76,7 +76,7 @@ h[-1,j] = h[1,j]
 ```bash
 cd code/examples/case_02
 python3 case_02_2d_steady.py
-```
+```python
 
 ## 输出结果
 
@@ -121,7 +121,7 @@ boundary_conditions = {
     'bottom': {'type': 'dirichlet', 'value': 15.0},
     'top': {'type': 'dirichlet', 'value': 15.0}
 }
-```
+```python
 
 **观察**：水头分布会变为二维变化。
 
@@ -137,7 +137,7 @@ boundary_conditions = {
     'bottom': {'type': 'neumann', 'value': 0.0},
     'top': {'type': 'neumann', 'value': 0.0}
 }
-```
+```python
 
 **观察**：流线会出现弯曲。
 
@@ -147,7 +147,7 @@ boundary_conditions = {
 
 ```python
 nx, ny = 101, 21  # x方向网格更密
-```
+```python
 
 **观察**：对精度的影响。
 
@@ -161,7 +161,7 @@ source = np.zeros((ny, nx))
 source[ny//3, nx//3] = -50.0 / (dx * dy)
 # 井2
 source[2*ny//3, 2*nx//3] = -50.0 / (dx * dy)
-```
+```python
 
 **观察**：降落漏斗的叠加效应。
 
@@ -175,7 +175,7 @@ source = np.zeros((ny, nx))
 source[:, :nx//4] = 0.001  # 均匀补给
 # 右侧抽水井
 source[ny//2, 3*nx//4] = -100.0 / (dx * dy)
-```
+```python
 
 ## 常见问题
 
@@ -214,24 +214,24 @@ source[ny//2, 3*nx//4] = -100.0 / (dx * dy)
 达西定律：
 ```
 v = -K∇h
-```
+```python
 
 连续性方程（质量守恒）：
 ```
 ∇·v = Q
-```
+```python
 
 代入达西定律：
 ```
 ∇·(-K∇h) = Q
 -∇·(K∇h) = Q
-```
+```python
 
 对于均质介质（K为常数）：
 ```
 -K∇²h = Q
 ∇²h = -Q/K
-```
+```python
 
 稳态无源汇：
 ```

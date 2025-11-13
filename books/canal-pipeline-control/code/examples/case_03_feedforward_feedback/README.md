@@ -10,7 +10,7 @@
 - 前馈控制快速补偿已知扰动
 - 反馈控制消除残余误差和未知扰动影响
 
-```
+```python
 渠道系统示意图：
 
 上游          中段(扰动点)              下游
@@ -212,7 +212,7 @@ class FeedforwardFeedbackController:
         self.error_prev = error
 
         return u_total, u_ff, u_fb
-```
+```python
 
 ## 实验设计
 
@@ -365,7 +365,7 @@ u_total = saturate(u_total, 0.1, 1.0);
 
 // 输出
 write_gate_opening(u_total);
-```
+```matlab
 
 ## 参数说明
 
@@ -425,7 +425,7 @@ write_gate_opening(u_total);
 ```python
 # 基于误差的在线调整
 K_ff_new = K_ff_old + α * e(t) * q_d(t)
-```
+```bash
 
 ### 2. 多扰动情况
 

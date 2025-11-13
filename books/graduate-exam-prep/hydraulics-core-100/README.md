@@ -37,7 +37,7 @@
 
 ### 难度分布
 
-```
+```python
 📘 基础题（40题）：目标60-80分
   - 基本概念、标准公式、常规计算
   - 适合：基础薄弱学生、第一轮复习
@@ -66,7 +66,7 @@
 ### 代码分布（按章节）
 
 **第一章：静水力学**（5个文件）
-```
+```python
 ✅ pressure_distribution_basic.py      静水压强分布
 ✅ pressure_center_calculation.py      压力中心计算
 ✅ gate_total_pressure.py              闸门总压力
@@ -75,7 +75,7 @@
 ```
 
 **第二章：流体动力学基础**（6个文件）
-```
+```python
 ✅ bernoulli_basic.py                  伯努利方程基础
 ✅ bernoulli_comprehensive.py          伯努利方程综合应用
 ✅ continuity_equation.py              连续性方程
@@ -85,7 +85,7 @@
 ```
 
 **第三章：管道流动**（6个文件）
-```
+```python
 ✅ pipe_friction_loss.py               管道沿程损失
 ✅ colebrook_iteration.py              Colebrook公式迭代
 ✅ short_pipe_design.py                短管设计
@@ -95,7 +95,7 @@
 ```
 
 **第四章：明渠流动**（11个文件）⭐ 核心章节
-```
+```python
 ✅ uniform_flow_rectangular.py         矩形断面均匀流
 ✅ uniform_flow_trapezoidal.py         梯形断面均匀流
 ✅ uniform_flow_circular.py            圆形断面非满流
@@ -110,7 +110,7 @@
 ```
 
 **第五章：水工建筑物**（7个文件）
-```
+```python
 ✅ weir_sharp_crested.py               薄壁堰流量计算
 ✅ weir_broad_crested.py               宽顶堰计算
 ✅ sluice_gate_flow.py                 闸孔出流
@@ -121,7 +121,7 @@
 ```
 
 **第六章：非恒定流基础**（4个文件）
-```
+```python
 ✅ water_hammer_analysis.py            水锤分析
 ✅ dam_break_simplified.py             溃坝波简化计算
 ✅ flood_routing_simple.py             洪水演进
@@ -161,7 +161,7 @@
 ## 📚 学习路径
 
 ### 路径A：基础薄弱型（60-80分目标）
-```
+```python
 4周计划：
 Week 1: 第一章（15题）+ 第二章前10题
 Week 2: 第二章后15题 + 第三章前10题
@@ -172,7 +172,7 @@ Week 4: 第四章后10题 + 第五章 + 复习
 ```
 
 ### 路径B：中等水平型（80-110分目标）
-```
+```python
 3周计划：
 Week 1: 第一章 + 第二章（全部40题）
 Week 2: 第三章 + 第四章（全部45题）
@@ -182,7 +182,7 @@ Week 3: 第五章 + 第六章 + 错题回顾
 ```
 
 ### 路径C：冲刺高分型（110-140分目标）
-```
+```python
 2周计划：
 Week 1: 直接做强化题（40题）+ 综合题（20题）
 Week 2: 错题反复练 + 第六章非恒定流
@@ -195,14 +195,14 @@ Week 2: 错题反复练 + 第六章非恒定流
 ## 🏆 核心价值
 
 ### 知识点覆盖率
-```
+```matlab
 ✅ 考研大纲覆盖：100%
 ✅ 名校真题覆盖：>85%
 ✅ 工程实践覆盖：>70%
 ```
 
 ### 创新亮点
-```
+```python
 🔬 理论创新：
   - 水力最优断面统一性证明（R=h/2）
   - 圆形管道最大输水能力分析
@@ -223,7 +223,7 @@ Week 2: 错题反复练 + 第六章非恒定流
 
 ## 📁 文件结构
 
-```
+```python
 hydraulics-core-100/
 ├── README.md                        （本文件）
 ├── PROJECT_COMPLETION_REPORT.md     （完整项目报告）🎉
@@ -261,7 +261,7 @@ hydraulics-core-100/
 ```bash
 cd hydraulics-core-100/code
 pip install -r requirements.txt
-```
+```python
 
 ### 运行示例代码
 
@@ -275,7 +275,7 @@ python3 uniform_flow_optimal_design.py
 
 # 示例3：水跃共轭水深与消能
 python3 hydraulic_jump.py
-```
+```python
 
 ### 阅读文档
 

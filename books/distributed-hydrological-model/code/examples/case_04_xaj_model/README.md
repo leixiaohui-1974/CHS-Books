@@ -35,13 +35,13 @@
 
 新安江模型采用蓄满产流机制：
 
-```
+```python
 当土壤含水量达到田间持水量时才产流
 产流量 = 降雨量 - 蓄水容量亏缺
 ```
 
 **蓄水容量曲线**（抛物线分布）:
-```
+```python
 f = WM * (1 - (1 - A/Am)^β)
 ```
 
@@ -69,7 +69,7 @@ f = WM * (1 - (1 - A/Am)^β)
 
 ```bash
 python main.py
-```
+```python
 
 ### 查看结果
 
@@ -79,7 +79,7 @@ ls outputs/
 # water_sources.png - 三水源分量图
 # soil_moisture.png - 土壤含水量变化
 # sensitivity_analysis.png - 参数敏感性分析
-```
+```matlab
 
 ## 📈 实验内容
 

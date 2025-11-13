@@ -35,12 +35,12 @@ PSO由Kennedy和Eberhart于1995年提出，模拟鸟群觅食行为：
 #### 2.1.2 更新方程
 
 **速度更新**:
-```
+```python
 v_i(k+1) = w·v_i(k) + c1·r1·[pbest_i - x_i(k)] + c2·r2·[gbest - x_i(k)]
 ```
 
 **位置更新**:
-```
+```python
 x_i(k+1) = x_i(k) + v_i(k+1)
 ```
 
@@ -54,7 +54,7 @@ x_i(k+1) = x_i(k) + v_i(k+1)
 
 #### 2.2.1 问题建模
 **优化目标**:
-```
+```python
 maximize: P(V) = V × I(V)
 subject to: V_min ≤ V ≤ V_max
 ```
@@ -64,7 +64,7 @@ subject to: V_min ≤ V ≤ V_max
 - 适应度 = 输出功率 (W)
 
 #### 2.2.2 算法流程
-```
+```python
 1. 初始化
    - 随机生成N个粒子位置（电压）
    - 初始化速度、pbest、gbest
@@ -153,7 +153,7 @@ class ParticleSwarmMPPT(MPPTAlgorithm):
             self.converged = True
         
         return self.gbest_position
-```
+```python
 
 ### 3.2 使用示例
 
@@ -190,7 +190,7 @@ for step in range(30):
         break
 
 print(f"找到MPP: V={pso.gbest_position:.2f}V, P={pso.gbest_fitness:.2f}W")
-```
+```python
 
 ## 4. 实验与分析
 
@@ -205,7 +205,7 @@ print(f"找到MPP: V={pso.gbest_position:.2f}V, P={pso.gbest_fitness:.2f}W")
 ```bash
 cd code/examples/case_11_pso_mppt
 python main.py
-```
+```matlab
 
 **预期结果**:
 - 初始: 粒子随机分布
@@ -231,7 +231,7 @@ python main.py
 PSO       99.5     15步      0.10
 P&O       98.2     25步      0.35
 Fuzzy     98.5     18步      0.15
-```
+```python
 
 **分析**:
 - PSO效率最高（全局搜索）
@@ -254,7 +254,7 @@ pso_multi = ParticleSwarmMPPT(
     n_particles=15,  # 增加粒子数
     max_iterations=40
 )
-```
+```python
 
 **预期结果**:
 - PSO找到全局MPP
@@ -273,7 +273,7 @@ pso_multi = ParticleSwarmMPPT(
 ```python
 单峰: 5-10个
 多峰: 15-20个
-```
+```python
 
 ### 5.2 惯性权重 (w)
 
@@ -287,7 +287,7 @@ w = 0.4  # 后期（局部搜索）
 
 # 线性递减
 w(k) = w_max - (w_max - w_min) * k / max_iter
-```
+```python
 
 **典型值**: `w = 0.7` (平衡型)
 
@@ -311,7 +311,7 @@ c1 = 1.0, c2 = 2.0  # 重社会
 
 # 充分探索
 c1 = 2.0, c2 = 1.0  # 重个体
-```
+```python
 
 ### 5.4 收敛判据
 
@@ -319,19 +319,19 @@ c1 = 2.0, c2 = 1.0  # 重个体
 ```python
 if iteration >= max_iterations:
     converged = True
-```
+```python
 
 **方法2: 功率变化率**
 ```python
 if |P(k) - P(k-1)| < ε:
     converged = True
-```
+```python
 
 **方法3: 粒子分散度**
 ```python
 if std(pbest_fitness) < tolerance:
     converged = True
-```
+```python
 
 **建议**: 组合使用
 
@@ -366,7 +366,7 @@ if std(pbest_fitness) < tolerance:
 评估适应度: N个粒子 × 功率计算
 更新速度:   N个粒子 × 4次浮点运算
 更新位置:   N个粒子 × 1次加法
-```
+```python
 
 **总计**: 约 `N × 10` 次浮点运算/步
 
@@ -380,7 +380,7 @@ if std(pbest_fitness) < tolerance:
 个体最优适应度: N个float
 -------------------------------------------
 总计:         4N个float ≈ 160 bytes (N=10)
-```
+```python
 
 #### 6.2.3 实时性
 - **采样周期**: 需要评估N个电压点
@@ -397,7 +397,7 @@ w(k) = w_max - (w_max - w_min) * (k / max_iter)
 # 自适应学习因子
 c1(k) = c1_start + (c1_end - c1_start) * (k / max_iter)
 c2(k) = c2_start - (c2_start - c2_end) * (k / max_iter)
-```
+```python
 
 #### 6.3.2 分级搜索
 ```python
@@ -406,14 +406,14 @@ pso_coarse = PSO(n_particles=5, v_range=wide)
 
 # 第二阶段: 精搜索（小范围，多粒子）
 pso_fine = PSO(n_particles=15, v_range=narrow)
-```
+```python
 
 #### 6.3.3 混合算法
 ```python
 # PSO + P&O
 1. PSO快速定位MPP区域
 2. P&O精细跟踪
-```
+```python
 
 ## 7. 性能评估
 
@@ -422,22 +422,22 @@ pso_fine = PSO(n_particles=15, v_range=narrow)
 **跟踪效率**:
 ```
 η = P_avg / P_mpp × 100%
-```
+```python
 
 **收敛速度**:
 ```
 t_s = 到达95% P_mpp的时间
-```
+```python
 
 **稳态振荡**:
 ```
 σ = std(P_last_N)
-```
+```python
 
 **全局搜索能力**:
 ```
 多峰条件下找到全局MPP的概率
-```
+```matlab
 
 ### 7.2 测试结果总结
 

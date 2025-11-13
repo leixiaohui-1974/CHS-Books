@@ -23,14 +23,14 @@
 ### 1. 系统能量方程
 
 **总扬程：**
-```
+```python
 H_total = (H_t - H_r) + h_f_suction + h_f_channel + h_f_pipe + h_f_local
 ```
 
 ### 2. 泵站计算
 
 **功率：**
-```
+```python
 P = ρ * g * Q * H_pump / η
 ```
 

@@ -2,7 +2,7 @@
 
 ## 目录结构
 
-```
+```python
 chapter11/
 ├── ch11_problem01_gravity_dam_stability.py    # 题1：重力坝稳定分析
 ├── ch11_problem02_arch_dam_stress.py          # 题2：拱坝应力分析
@@ -21,7 +21,7 @@ chapter11/
 混凝土重力坝，坝高H = 50m，坝顶宽b = 6m，上游坡比m₁ = 0.1，下游坡比m₂ = 0.8，上游水深h₁ = 45m，下游水深h₂ = 5m，混凝土重度γc = 24 kN/m³，扬压力折减系数α = 0.3。
 
 **核心公式：**
-```
+```python
 1. 抗滑稳定：Kc = f·ΣV/ΣH ≥ 1.05
 2. 抗倾覆：K₀ = ΣM稳/ΣM倾 ≥ 1.5
 3. 坝底应力：σ = ΣV/B ± 6ΣM/B²
@@ -50,7 +50,7 @@ chapter11/
 双曲拱坝，坝顶高程300m，河床高程200m，拱冠梁顶部厚度dt = 6m，底部厚度db = 40m，拱冠梁顶部半径Rt = 150m，底部半径Rb = 100m，上游水位285m，混凝土弹性模量E = 25GPa。
 
 **核心公式：**
-```
+```python
 1. 水压力：p = γw·h
 2. 拱向应力：σθ = p·R/d
 3. 梁向应力：σz = M/(d²/6)
@@ -79,7 +79,7 @@ chapter11/
 某水库需设计溢洪道，设计流量Q = 2000 m³/s，堰顶高程P = 80m，上游水位H = 85m，溢流堰采用WES型实用堰，堰顶宽b = 50m，下游消能采用挑流方式。
 
 **核心公式：**
-```
+```python
 1. 溢流堰流量：Q = m·b·H^(3/2)·√(2g)
 2. WES堰流量系数：m = 0.502
 3. 溢流面曲线：y = -0.5·(x/H)^1.85·H
@@ -109,7 +109,7 @@ chapter11/
 某水闸控制渠道流量，闸门净宽b = 10m，闸门数n = 3孔，上游设计水位H₁ = 8m，下游水位H₂ = 5m，闸门启闭规则：e = 0.5H₁。
 
 **核心公式：**
-```
+```python
 1. 自由出流：Q = μ₀·b·e·√(2g·H₁)
 2. 淹没出流：Q = μs·b·e·√(2g·(H₁-H₂))
 3. 判别：hc < H₂（淹没），hc ≥ H₂（自由）
@@ -138,7 +138,7 @@ chapter11/
 某土石坝最大坝高H = 60m，坝顶宽度b = 10m，上游坡比m₁ = 3.0，下游坡比m₂ = 2.5，正常蓄水位h₁ = 55m，设计洪水位hd = 58m，土料干密度ρd = 1.8 t/m³，饱和密度ρsat = 2.0 t/m³。
 
 **核心公式：**
-```
+```python
 1. 坝底宽度：B = b + m₁·H + m₂·H
 2. 边坡稳定：Fs = (c·L + W·cos(α)·tan(φ))/(W·sin(α))
 3. 浸润线：y² = h₁² - (h₁²/L)·x
@@ -167,7 +167,7 @@ chapter11/
 某综合水利枢纽工程，包含大坝、溢洪道、电站、船闸等建筑物，水库总库容V = 5亿m³，正常蓄水位h_norm = 150m，死水位h_dead = 130m，防洪限制水位h_flood = 145m，装机容量P = 300MW，设计水头Hd = 50m。
 
 **核心公式：**
-```
+```python
 1. 有效库容：V_eff = V_norm - V_dead
 2. 防洪库容：V_flood = V_design - V_flood_limit
 3. 水电出力：P = 9.81·Q·H·η
@@ -242,7 +242,7 @@ python3 ch11_problem04_spillway_design.py
 python3 ch11_problem07_sluice_operation.py
 python3 ch11_problem10_earth_dam_design.py
 python3 ch11_problem13_comprehensive.py
-```
+```python
 
 ### 2. 修改参数进行计算：
 在每个程序的 `main()` 函数中修改参数值，例如：

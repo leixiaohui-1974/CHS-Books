@@ -71,7 +71,7 @@ from case_01_irrigation_gate import TrapezoidalChannel, SimplePIDController
 from case_07_cascade_canals import CascadeController
 
 # 扩展：1条干渠+5条支渠（树形拓扑）
-```
+```matlab
 
 **复用率**：85%（案例1 70% + 案例7 15%）
 
@@ -111,7 +111,7 @@ class WaterDemandForecast:
     - 根据天气预报调整
     """
     pass
-```
+```python
 
 ---
 
@@ -141,7 +141,7 @@ Day 2: 支渠2灌溉，其他关闭
 Day 3: 支渠3灌溉，其他关闭
 Day 4: 支渠4灌溉，其他关闭
 Day 5: 支渠5灌溉，其他关闭
-```
+```python
 
 #### 1.2 灌区参数
 
@@ -196,7 +196,7 @@ class RotationScheduler:
         status = [0] * 5
         status[active] = 1
         return status
-```
+```python
 
 ---
 
@@ -291,7 +291,7 @@ class IrrigationSystemCoordinator:
         # （简化：在实际中会调整轮灌计划）
         
         return opening_main, openings_branch
-```
+```matlab
 
 ---
 

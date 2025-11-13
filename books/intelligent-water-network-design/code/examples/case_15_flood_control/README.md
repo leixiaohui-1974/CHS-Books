@@ -68,7 +68,7 @@ from case_11_urban_river_network import RiverNetworkCoordinator
 from case_14_regional_irrigation import ReservoirGroupOptimizer
 
 # 扩展：5水库梯级防洪+洪水预报
-```
+```matlab
 
 **复用率**：70%（案例11 30% + 案例14 40%）
 
@@ -104,7 +104,7 @@ class CascadeFloodControlOptimizer:
     max 发电效益
     """
     pass
-```
+```python
 
 ---
 
@@ -127,7 +127,7 @@ class CascadeFloodControlOptimizer:
 ├─ 城市A：100万人（100年一遇）
 ├─ 城市B：120万人（100年一遇）
 └─ 城市C：80万人（50年一遇）
-```
+```python
 
 #### 1.2 水库参数
 
@@ -200,7 +200,7 @@ class FloodControlCoordinator:
         )
         
         return optimal_outflows
-```
+```python
 
 ---
 

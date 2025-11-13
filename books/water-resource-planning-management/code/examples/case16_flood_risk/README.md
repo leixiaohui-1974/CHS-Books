@@ -33,7 +33,7 @@
 
 ### 2. 风险评估流程
 
-```
+```python
 洪水频率分析
   ├─ 历史洪水资料
   ├─ 频率曲线拟合
@@ -57,7 +57,7 @@
 
 ## 技术路线
 
-```
+```python
 历史洪水数据
   ├─ 年最大洪峰
   ├─ 频率分析
@@ -95,12 +95,12 @@
 ### 1. Pearson-III频率分析
 
 **概率密度函数**：
-```
+```python
 f(x) = (β^α / Γ(α)) * (x - a0)^(α-1) * exp(-β(x - a0))
 ```
 
 **参数估计**：
-```
+```python
 均值 μ = E[X]
 标准差 σ = sqrt(Var[X])
 偏态系数 Cs = E[(X-μ)³] / σ³
@@ -108,7 +108,7 @@ f(x) = (β^α / Γ(α)) * (x - a0)^(α-1) * exp(-β(x - a0))
 
 ### 2. 蒙特卡洛风险模拟
 
-```
+```python
 for i = 1 to N:
     Q_i = sample_from_P3_distribution()
     if Q_i > Q_design:
@@ -123,12 +123,12 @@ P_failure = count(Q_i > Q_design) / N
 ### 3. VaR和CVaR
 
 **VaR** (Value at Risk):
-```
+```python
 VaR_α = inf{l : P(Loss ≤ l) ≥ α}
 ```
 
 **CVaR** (Conditional VaR):
-```
+```python
 CVaR_α = E[Loss | Loss ≥ VaR_α]
 ```
 

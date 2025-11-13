@@ -16,33 +16,33 @@
 ### 1. 明渠段计算
 
 **Manning公式：**
-```
+```python
 Q = (1/n) * A * R^(2/3) * S_0^(1/2)
 ```
 
 ### 2. 管道段计算
 
 **Darcy-Weisbach公式：**
-```
+```python
 h_f = λ * (L/D) * (v²/2g)
 ```
 
 ### 3. 过渡段
 
 **进水池水位：**
-```
+```python
 H_pool = h_channel + h_entrance + h_pipe + H_downstream
 ```
 
 **进口损失：**
-```
+```python
 h_entrance = ζ_e * v²/(2g)
 ```
 
 ### 4. 能量平衡
 
 **总能量线：**
-```
+```python
 E_upstream = E_downstream + h_f_channel + h_f_entrance + h_f_pipe
 ```
 

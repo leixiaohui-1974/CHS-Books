@@ -36,7 +36,7 @@
 ### 1. 一维河流水质方程
 
 **稳态对流-扩散-反应方程**:
-```
+```python
 u * ∂C/∂x = D * ∂²C/∂x² - k * C
 ```
 
@@ -56,19 +56,19 @@ u * ∂C/∂x = D * ∂²C/∂x² - k * C
 #### 质量守恒
 
 **混合后浓度**:
-```
+```python
 C_mixed = (Q_river * C_river + Q_waste * C_waste) / (Q_river + Q_waste)
 ```
 
 **混合后流量**:
-```
+```python
 Q_mixed = Q_river + Q_waste
 ```
 
 #### 混合过程
 
 **完全混合长度**（经验公式）:
-```
+```python
 L_mix = 0.13 * B * u
 ```
 
@@ -77,7 +77,7 @@ L_mix = 0.13 * B * u
 - u: 流速 (m/s)
 
 **混合时间**:
-```
+```python
 t_mix = L_mix / u
 ```
 
@@ -87,7 +87,7 @@ t_mix = L_mix / u
 
 对于对流占主导的情况：
 
-```
+```python
 C(x) = C0 * exp(-k * (x - x0) / u)
 ```
 
@@ -104,7 +104,7 @@ C(x) = C0 * exp(-k * (x - x0) / u)
 
 **假设条件**: 污染物无相互作用
 
-```
+```python
 C_total(x) = C_background(x) + Σ C_source_i(x)
 ```
 
@@ -122,7 +122,7 @@ C_total(x) = C_background(x) + Σ C_source_i(x)
 从排污口到水质达标的距离。
 
 **计算方法**:
-```
+```python
 找到 x 使得 C(x) ≤ C_standard
 ```
 
@@ -155,7 +155,7 @@ C_total(x) = C_background(x) + Σ C_source_i(x)
 **目标**: 控制排放浓度
 
 **方法**:
-```
+```python
 C_waste_max = (C_standard * Q_total - C_upstream * Q_river) / Q_waste
 ```
 
@@ -214,7 +214,7 @@ C_waste_max = (C_standard * Q_total - C_upstream * Q_river) / Q_waste
 ```bash
 # 运行主程序
 python main.py
-```
+```python
 
 ## 文件说明
 
@@ -249,7 +249,7 @@ python main.py
 排污口2下游: 3.2 km
 排污口3下游: 2.8 km
 污水厂下游: 5.0 km
-```
+```matlab
 
 ### 排放优化
 
@@ -366,7 +366,7 @@ python main.py
 **考虑横向扩散**:
 ```
 u * ∂C/∂x = Dx * ∂²C/∂x² + Dy * ∂²C/∂y² - k * C
-```
+```python
 
 **适用场景**:
 - 宽浅河流
@@ -378,7 +378,7 @@ u * ∂C/∂x = Dx * ∂²C/∂x² + Dy * ∂²C/∂y² - k * C
 **非稳态方程**:
 ```
 ∂C/∂t + u * ∂C/∂x = D * ∂²C/∂x² - k * C
-```
+```python
 
 **适用场景**:
 - 流量变化

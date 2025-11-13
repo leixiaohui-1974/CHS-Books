@@ -33,7 +33,7 @@
 
 最常用的风切变模型：
 
-```
+```python
 v(h) = v_ref * (h / h_ref)^α
 ```
 
@@ -55,7 +55,7 @@ v(h) = v_ref * (h / h_ref)^α
 
 如果已知两个高度的风速，可反算α：
 
-```
+```python
 α = ln(v2/v1) / ln(h2/h1)
 ```
 
@@ -63,7 +63,7 @@ v(h) = v_ref * (h / h_ref)^α
 
 基于空气动力学边界层理论：
 
-```
+```python
 v(h) = v_ref * ln(h/z0) / ln(h_ref/z0)
 ```
 
@@ -99,7 +99,7 @@ v(h) = v_ref * ln(h/z0) / ln(h_ref/z0)
 
 湍流强度（Turbulence Intensity, TI）定义为：
 
-```
+```python
 TI = σ_v / v_mean
 ```
 
@@ -121,7 +121,7 @@ IEC标准定义了三个湍流等级：
 
 标准湍流模型：
 
-```
+```python
 TI = I_ref * (0.75 * v_mean + 5.6) / (v_mean + 5.6)
 ```
 
@@ -149,7 +149,7 @@ TI = I_ref * (0.75 * v_mean + 5.6) / (v_mean + 5.6)
 
 描述湍流能量在频率域的分布：
 
-```
+```python
 S(f) = 4 * σ_v² * L / v_mean / (1 + 6*f*L/v_mean)^(5/3)
 ```
 
@@ -185,7 +185,7 @@ class WindShear:
     @staticmethod
     def estimate_alpha(v1, h1, v2, h2):
         """估算风切变指数"""
-```
+```python
 
 #### 2. `TurbulenceIntensity` - 湍流模型
 
@@ -205,7 +205,7 @@ class TurbulenceIntensity:
     
     def classify_terrain(self, TI):
         """根据TI估计地形类型"""
-```
+```python
 
 #### 3. `WindProfile` - 风廓线模型
 
@@ -222,7 +222,7 @@ class WindProfile:
     
     def rotor_equivalent_wind(self, h_hub, rotor_diameter, **kwargs):
         """计算风轮等效风速（考虑风切变）"""
-```
+```python
 
 ---
 
@@ -231,13 +231,13 @@ class WindProfile:
 ### 安装依赖
 ```bash
 pip install numpy scipy matplotlib
-```
+```python
 
 ### 运行
 ```bash
 cd code/examples/case_02_wind_shear
 python main.py
-```
+```python
 
 ### 输出
 
@@ -282,7 +282,7 @@ python main.py
 城市 (α=0.30):
   80m:  13.70 m/s (+71.3%)
   120m: 16.85 m/s (+110.6%)
-```
+```matlab
 
 **关键发现**：
 - 从10m到120m，平坦地形风速增加52.5%
@@ -303,7 +303,7 @@ IEC标准湍流强度 (v=10 m/s):
   实际TI: 0.148
   平均值: 10.02 m/s
   标准差: 1.48 m/s
-```
+```python
 
 ---
 
@@ -335,7 +335,7 @@ v_80m_samples = shear.power_law(v_10m_samples, 10, 80, alpha=0.14)
 # 对比平均风速
 print(f"10m平均: {np.mean(v_10m_samples):.2f} m/s")
 print(f"80m平均: {np.mean(v_80m_samples):.2f} m/s")
-```
+```python
 
 ### 实验2：湍流对控制系统的影响
 
@@ -349,7 +349,7 @@ v_turb = turb.generate_turbulent_wind(v_mean=10, TI=0.15,
 
 # 分析功率波动（需要风轮功率曲线，后续案例）
 # P = 0.5 * rho * A * Cp * v^3
-```
+```python
 
 ### 实验3：风廓线实测数据拟合
 
@@ -368,7 +368,7 @@ def power_law_fit(h, alpha):
 
 alpha_fit, _ = curve_fit(power_law_fit, heights, wind_speeds)
 print(f"拟合的α: {alpha_fit[0]:.3f}")
-```
+```matlab
 
 ---
 

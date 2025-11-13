@@ -33,7 +33,7 @@
 
 #### 前馈神经网络（FNN）
 
-```
+```python
 输入层 → 隐藏层 → 输出层
 
 y = f(W₂·σ(W₁·x + b₁) + b₂)
@@ -66,7 +66,7 @@ y = f(W₂·σ(W₁·x + b₁) + b₂)
 σ(x) = 1/(1 + e^(-x))
 # 优点：输出范围[0, 1]，概率解释
 # 缺点：非零中心，梯度消失
-```
+```python
 
 ### 2.2 神经网络控制架构
 
@@ -79,7 +79,7 @@ y = f(W₂·σ(W₁·x + b₁) + b₂)
 训练数据：
     给定 (x, u) → y
     学习 (y_desired, x) → u
-```
+```python
 
 #### (2) 内模控制
 
@@ -91,7 +91,7 @@ y = f(W₂·σ(W₁·x + b₁) + b₂)
 优点：
     - 模型辨识独立于控制
     - 可以使用任何控制算法
-```
+```python
 
 #### (3) 自适应神经网络控制
 
@@ -106,7 +106,7 @@ y = f(W₂·σ(W₁·x + b₁) + b₂)
     L: 损失函数（如跟踪误差）
 
 结合Lyapunov稳定性理论保证收敛
-```
+```python
 
 ### 2.3 神经网络训练
 
@@ -131,7 +131,7 @@ W2 -= η * (δ2 @ a1.T)
 b2 -= η * δ2
 W1 -= η * (δ1 @ x.T)
 b1 -= η * δ1
-```
+```python
 
 #### 优化算法
 
@@ -145,7 +145,7 @@ v = β2*v + (1-β2)*(∇_θ L)^2
 θ -= η * m / (sqrt(v) + ε)
 
 # 推荐Adam，收敛快且稳定
-```
+```python
 
 ---
 
@@ -168,7 +168,7 @@ v = β2*v + (1-β2)*(∇_θ L)^2
 
 目标：最大化累积奖励
     J = E[Σ_{t=0}^∞ γ^t R_t | π]
-```
+```python
 
 #### 值函数
 
@@ -184,7 +184,7 @@ Q^π(s,a) = E[Σ_{t=0}^∞ γ^t R_t | s_0=s, a_0=a, π]
 # Bellman方程
 Q^π(s,a) = E[R(s,a) + γ·V^π(s')]
 V^π(s) = Σ_a π(a|s)·Q^π(s,a)
-```
+```python
 
 ### 3.2 Q-Learning（值迭代）
 
@@ -220,7 +220,7 @@ for episode in episodes:
         Q(s,a) += α·[r + γ·max_a' Q(s',a') - Q(s,a)]
 
         s = s'
-```
+```python
 
 #### 探索-利用权衡
 
@@ -235,7 +235,7 @@ for episode in episodes:
 ε_start = 1.0   # 初期完全探索
 ε_end = 0.01    # 最终保留1%探索
 decay_rate = 0.995
-```
+```python
 
 ### 3.3 Deep Q-Network (DQN)
 
@@ -260,7 +260,7 @@ L(θ) = E[(y - Q(s,a;θ))^2]
    - 使用独立的目标网络 Q(s,a;θ⁻)
    - 每隔N步更新 θ⁻ ← θ
    - 稳定训练过程
-```
+```python
 
 ### 3.4 Actor-Critic算法
 
@@ -280,7 +280,7 @@ Critic: 最小化 TD误差
 
 Actor: 策略梯度
     θ_π ← θ_π + α_π·δ·∇_θ_π log π(a|s)
-```
+```python
 
 ### 3.5 DDPG（连续控制）
 
@@ -301,7 +301,7 @@ L = E[(r + γ·Q'(s', μ'(s')) - Q(s,a))^2]
 
 # 软更新目标网络
 θ' ← τ·θ + (1-τ)·θ'   (τ << 1, 如0.001)
-```
+```python
 
 ---
 
@@ -321,7 +321,7 @@ s = [h₁, h₂, ..., h_n,        # 各渠段水位
 
 # 归一化（重要！）
 s_norm = (s - s_min) / (s_max - s_min)
-```
+```python
 
 #### 动作空间
 
@@ -334,7 +334,7 @@ A = {0, 1, 2, ..., 10}  # 10个离散流量等级
 # 连续动作（DDPG/SAC）
 a ∈ [u_min, u_max]  # 连续入流量
 a_norm ∈ [-1, 1]    # 归一化后
-```
+```python
 
 ### 4.2 奖励函数设计
 
@@ -361,7 +361,7 @@ if h < h_min or h > h_max:
 # 稀疏奖励（可选）
 if |h - h_ref| < tolerance:
     r += bonus  # 达到目标给予额外奖励
-```
+```python
 
 ### 4.3 神经网络架构选择
 
@@ -385,7 +385,7 @@ class ControllerNetwork(nn.Module):
 # 层数：2-3层足够（运河系统不太复杂）
 # 神经元：32-128个/层
 # 激活函数：ReLU（隐藏层），tanh（输出层）
-```
+```python
 
 #### Q网络（Critic）
 
@@ -403,7 +403,7 @@ class QNetwork(nn.Module):
         x = torch.relu(self.fc2(x))
         q_value = self.fc3(x)
         return q_value
-```
+```python
 
 ### 4.4 训练策略
 
@@ -415,7 +415,7 @@ Phase 1: 固定参考水位（阶跃响应）
 Phase 2: 正弦参考轨迹
 Phase 3: 随机扰动
 Phase 4: 复杂工况（多扰动 + 参数不确定性）
-```
+```python
 
 #### 预训练（可选）
 
@@ -428,7 +428,7 @@ pretrain_actor(dataset)
 - 加速学习
 - 减少探索风险
 - 提供性能下界
-```
+```python
 
 #### 安全探索
 
@@ -442,7 +442,7 @@ if safety_violation(state):
 
 # 使用模拟器训练
 在真实系统部署前，在仿真环境中充分训练
-```
+```python
 
 ---
 
@@ -493,7 +493,7 @@ class NeuralController:
         self.optimizer.step()
 
         return loss.item()
-```
+```python
 
 ### 5.2 DQN实现
 
@@ -575,7 +575,7 @@ class DQNAgent:
     def update_target_network(self):
         """更新目标网络"""
         self.target_network.load_state_dict(self.q_network.state_dict())
-```
+```python
 
 ### 5.3 超参数选择指南
 
@@ -603,7 +603,7 @@ update_frequency = 100 - 1000 步
 
 # 训练周期
 num_episodes = 500 - 2000
-```
+```python
 
 ---
 

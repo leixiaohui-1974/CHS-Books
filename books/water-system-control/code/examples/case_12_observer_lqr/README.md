@@ -60,7 +60,7 @@
 **问题**：状态反馈需要所有状态x，但实际中只能测量输出y
 **解决方案**：设计观测器估计状态
 **观测器方程**：
-```
+```python
 d x̂/dt = Ax̂ + Bu + L(y - ŷ)
 ŷ = Cx̂
 ```
@@ -70,7 +70,7 @@ d x̂/dt = Ax̂ + Bu + L(y - ŷ)
 - **L**: 观测器增益矩阵（设计参数）
 - **y - ŷ**: 输出误差（创新项）
 **误差动态**：
-```
+```python
 e = x - x̂（估计误差）
 de/dt = (A - LC)e
 ```
@@ -80,7 +80,7 @@ de/dt = (A - LC)e
 ### 2. LQR最优控制
 **问题**：如何选择最优的状态反馈增益K？
 **性能指标**：
-```
+```python
 J = ∫₀^∞ (x^T Q x + u^T R u) dt
 ```
 
@@ -90,13 +90,13 @@ J = ∫₀^∞ (x^T Q x + u^T R u) dt
 - Q大：重视状态偏差小
 - R大：重视控制能量小
 **最优解**：
-```
+```python
 u = -Kx
 K = R⁻¹ B^T P
 ```
 
 其中P是代数Riccati方程（ARE）的解：
-```
+```python
 A^T P + PA - PBR⁻¹B^T P + Q = 0
 ```
 
@@ -106,7 +106,7 @@ A^T P + PA - PBR⁻¹B^T P + Q = 0
 - 再设计观测器增益L（估计不可测状态）
 - 将两者结合：**u = -Kx̂**（用估计值代替真实值）
 **闭环系统**：
-```
+```json
 [dx/dt]   [A-BK    BK  ] [x]
 [de/dt] = [ 0    A-LC  ] [e]
 ```
@@ -149,7 +149,7 @@ A^T P + PA - PBR⁻¹B^T P + Q = 0
 cd books/water-system-control/code/examples/case_12_observer_lqr
 python main.py
 python experiments.py
-```
+```python
 
 ## 预期结果
 1. **观测器性能**：
@@ -191,12 +191,12 @@ python experiments.py
 ```
 A^T P + PA - PBR⁻¹B^T P + Q = 0
 K = R⁻¹B^T P
-```
+```python
 
 ### 观测器误差动态
 ```
 de/dt = (A - LC)e
-```
+```python
 
 ### 闭环系统（观测器+LQR）
 ```

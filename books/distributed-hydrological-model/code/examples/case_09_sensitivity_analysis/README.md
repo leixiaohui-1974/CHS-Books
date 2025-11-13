@@ -53,7 +53,7 @@
 **原理**：固定其他参数，逐个改变目标参数，观察输出变化。
 
 **敏感性指标**：
-```
+```python
 相对敏感性系数 S = (ΔY/Y₀) / (ΔX/X₀)
 ```
 
@@ -133,7 +133,7 @@ def one_at_a_time_sensitivity(model_func, base_params, param_ranges,
         }
     
     return results
-```
+```python
 
 ### 2. Morris筛选法
 
@@ -176,7 +176,7 @@ def morris_screening(model_func, param_ranges, rainfall,
         }
     
     return results
-```
+```python
 
 ### 3. 相关系数法
 
@@ -216,7 +216,7 @@ def correlation_based_sensitivity(model_func, param_ranges, rainfall, n_samples=
         }
     
     return results
-```
+```matlab
 
 ---
 

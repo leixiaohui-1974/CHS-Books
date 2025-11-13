@@ -33,7 +33,7 @@
 
 ### 1.2 多点反馈方案
 
-```
+```python
 上游水源
    ↓
 ┌──┴──┐
@@ -54,7 +54,7 @@
 ```
 
 **多点反馈控制律**：
-```
+```python
 e_weighted = Σ w_i × e_i
 u = PID(e_weighted)
 ```
@@ -72,7 +72,7 @@ u = PID(e_weighted)
 
 最简单的策略：所有传感器权重相等
 
-```
+```python
 w_1 = w_2 = w_3 = w_4 = 0.25
 ```
 
@@ -83,7 +83,7 @@ w_1 = w_2 = w_3 = w_4 = 0.25
 
 根据传感器到下游的距离分配权重
 
-```
+```python
 w_i = d_i / Σd_i
 ```
 
@@ -99,7 +99,7 @@ w_i = d_i / Σd_i
 
 ### 2.3 指数加权（Exponential Weighting）
 
-```
+```python
 w_i = exp(-α × (L - x_i)) / Z
 ```
 
@@ -112,7 +112,7 @@ w_i = exp(-α × (L - x_i)) / Z
 
 根据误差动态调整权重：
 
-```
+```python
 w_i(t) = |e_i(t)| / Σ|e_j(t)|
 ```
 
@@ -127,18 +127,18 @@ w_i(t) = |e_i(t)| / Σ|e_j(t)|
 对于渠道系统，不同位置传感器提供的信息量不同。
 
 **可观测性矩阵**（线性化后）：
-```
+```python
 O = [C; CA; CA²; ...]
 ```
 
 **优化目标**：
-```
+```python
 max rank(O)  # 最大化可观测性
 ```
 
 ### 3.2 信息熵最大化
 
-```
+```python
 H = -Σ p_i log p_i
 ```
 
@@ -182,7 +182,7 @@ class DistributedPIDController:
         u = self.pid.compute_single(e_weighted)
 
         return u
-```
+```python
 
 ### 4.2 权重计算
 
@@ -200,7 +200,7 @@ def compute_weights(self, errors):
         abs_errors = [abs(e) for e in errors]
         total = sum(abs_errors) + 1e-6
         return [e/total for e in abs_errors]
-```
+```matlab
 
 ---
 
@@ -287,7 +287,7 @@ def compute_weights(self, errors):
 
 性能提升：调节时间减少30%
 投资回报：节约用水 + 提高供水可靠性
-```
+```python
 
 ### 7.2 数据融合
 
@@ -298,7 +298,7 @@ x_est = KF.update(measurements)
 
 # 融合多传感器数据
 h_fused = C @ x_est
-```
+```python
 
 **异常值剔除**：
 - 3σ准则
@@ -314,7 +314,7 @@ residual = h_measured - h_predicted
 if abs(residual) > threshold:
     # 传感器可能故障
     exclude_sensor(i)
-```
+```python
 
 **冗余容错**：
 - N=4传感器，允许1-2个失效
@@ -341,22 +341,22 @@ if abs(residual) > threshold:
 **加权误差**：
 ```
 e_weighted = Σ w_i × (h_target - h_i)
-```
+```python
 
 **均匀权重**：
 ```
 w_i = 1/N
-```
+```python
 
 **距离权重**：
 ```
 w_i = (L - x_i) / Σ(L - x_j)
-```
+```python
 
 **自适应权重**：
 ```
 w_i(t) = |e_i(t)| / Σ|e_j(t)|
-```
+```python
 
 **性能指标**：
 ```

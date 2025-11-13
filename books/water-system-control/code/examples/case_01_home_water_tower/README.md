@@ -91,7 +91,7 @@
 4. **滞环（Hysteresis）**
 
 ### 数学模型
-```
+```python
 dh/dt = (Q_in - Q_out) / A
 其中：
 - h: 水位（米）
@@ -101,7 +101,7 @@ dh/dt = (Q_in - Q_out) / A
 ```
 
 ### 控制策略
-```
+```python
 if 水位 < 2.5米:
     开泵（全速）
 elif 水位 > 3.5米:
@@ -118,7 +118,7 @@ else:
 ```bash
 cd books/water-system-control/code/examples/case_01_home_water_tower
 python main.py
-```
+```python
 
 ### 核心代码
 ```python

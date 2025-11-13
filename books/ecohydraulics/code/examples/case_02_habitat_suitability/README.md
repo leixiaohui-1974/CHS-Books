@@ -44,7 +44,7 @@
 - 水温（Temperature）
 
 **适宜性曲线**:
-```
+```python
 SI = f(环境因子值)
 ```
 
@@ -53,7 +53,7 @@ SI = f(环境因子值)
 综合多个因子的适宜性。
 
 **公式**:
-```
+```python
 CSI = HSI_depth × HSI_velocity × HSI_substrate × ...
 ```
 
@@ -64,7 +64,7 @@ CSI = HSI_depth × HSI_velocity × HSI_substrate × ...
 WUA是栖息地质量的定量指标。
 
 **公式**:
-```
+```python
 WUA = Σ(CSI_i × A_i)
 ```
 
@@ -104,7 +104,7 @@ PHABSIM（Physical Habitat Simulation）是美国地质调查局开发的栖息�
 ```bash
 cd /workspace/books/ecohydraulics/code/examples/case_02_habitat_suitability
 python main.py
-```
+```matlab
 
 ### 预期输出
 
@@ -243,7 +243,7 @@ case_02_habitat_suitability/
     ├── wua_vs_flow.png
     ├── habitat_distribution.png
     └── habitat_summary.png
-```
+```python
 
 ## 核心代码说明
 
@@ -260,7 +260,7 @@ depth_curve = SuitabilityCurve(
         (3.0, 0.6)
     ]
 )
-```
+```python
 
 ### WUA计算
 
@@ -271,7 +271,7 @@ result = model.calculate_wua(
     n_cells=50   # 横向网格数
 )
 print(f"WUA = {result['wua']:.0f} m²")
-```
+```python
 
 ### 最优流量查找
 

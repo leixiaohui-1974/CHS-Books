@@ -37,7 +37,7 @@
 数字高程模型（Digital Elevation Model）是地表高程的数字化表示，通常为规则网格格式。
 
 **DEM数据结构**：
-```
+```python
 高程矩阵(m):
   100  95  90  85  80
    98  93  88  83  78
@@ -56,12 +56,12 @@
 ### 2. 地形分析
 
 **坡度（Slope）**：
-```
+```python
 坡度 = arctan(√(dz/dx)² + (dz/dy)²) × 180/π
 ```
 
 **坡向（Aspect）**：
-```
+```matlab
 坡向 = (90 - arctan2(-dy, dx) × 180/π) % 360
 ```
 - 0° = 北
@@ -74,7 +74,7 @@
 **原理**：水流向8个邻近网格中坡降最大的方向。
 
 **8个方向编码**：
-```
+```python
 32  64  128
 16  *   1
 8   4   2
@@ -93,7 +93,7 @@
 **计算方法（递归）**：
 ```python
 汇流累积[i,j] = 1 + Σ(所有流向[i,j]的上游网格的汇流累积)
-```
+```python
 
 **物理意义**：
 - 反映汇水面积
@@ -105,7 +105,7 @@
 **方法**：设定汇流累积阈值
 ```python
 河网 = 汇流累积 >= 阈值
-```
+```python
 
 **阈值选择**：
 - 太小：河网过密
@@ -136,7 +136,7 @@ def generate_synthetic_dem(nx=50, ny=50):
     
     dem = trend + ridges + noise
     return np.maximum(dem, 0)
-```
+```python
 
 ### 2. D8流向
 
@@ -174,7 +174,7 @@ def d8_flow_direction(dem):
             flow_dir[i,j] = max_dir if max_slope > 0 else 0
     
     return flow_dir
-```
+```python
 
 ### 3. 汇流累积（递归）
 
@@ -207,7 +207,7 @@ def flow_accumulation(flow_dir):
             accumulate(i, j)
     
     return flow_acc
-```
+```matlab
 
 ---
 

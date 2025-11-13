@@ -115,7 +115,7 @@ class PIController:
             v_out = np.clip(v_out, -self.v_limit, self.v_limit)
         
         return v_out
-```
+```python
 
 ### 2. PR控制器
 
@@ -165,7 +165,7 @@ class PRController:
         self.u_r_k1 = u_r
         
         return p_term + u_r
-```
+```python
 
 ### 3. dq控制器
 
@@ -209,7 +209,7 @@ class DQCurrentController:
         v_a, v_b, v_c = self.inverse_park_transform(v_d, v_q, theta)
         
         return v_a, v_b, v_c
-```
+```matlab
 
 ---
 
@@ -296,14 +296,14 @@ tau = L / R
 Kp = alpha / tau
 Ki = alpha / (tau * tau)
 # alpha: 1-5 (调节系数)
-```
+```python
 
 **PR参数**:
 ```python
 Kp = 5-10      # 基础增益
 Kr = 500-2000  # 谐振增益
 omega_0 = 2 * pi * 50  # 基波
-```
+```python
 
 ### 2. 抗饱和措施
 
@@ -311,7 +311,7 @@ omega_0 = 2 * pi * 50  # 基波
 ```python
 if integral > integral_max:
     integral = integral_max
-```
+```python
 
 **条件积分**:
 ```python

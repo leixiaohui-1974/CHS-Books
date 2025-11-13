@@ -16,7 +16,7 @@ POD与DMD的区别：
 | 预测能力 | 较弱 | 强（短期预测） |
 | 适用场景 | 快照压缩、静态降阶 | 动力学分析、预测、控制 |
 
-```
+```python
 DMD应用示意图：
 
 数据采集
@@ -254,7 +254,7 @@ $$\mathbf{x}(t_0 + n\Delta t) = \boldsymbol{\Phi} \boldsymbol{\Lambda}^n \mathbf
 # 确保采样频率足够（Nyquist定理）
 fs = 0.1  # 采样频率 [Hz]，每10秒一个快照
 T_total = 1800  # 总时长30分钟
-```
+```python
 
 **步骤2：构建DMD模型**
 ```python
@@ -265,7 +265,7 @@ dmd.fit(X, Y)
 Phi = dmd.modes         # DMD模态
 Lambda = dmd.eigenvalues  # 特征值
 b = dmd.amplitudes      # 初始系数
-```
+```python
 
 **步骤3：分析频率和增长率**
 ```python
@@ -274,7 +274,7 @@ sigma = np.log(np.abs(Lambda)) / dt  # 增长率 [1/s]
 
 # 识别主导模态
 dominant_modes = np.argsort(np.abs(sigma))[:5]
-```
+```python
 
 **步骤4：预测**
 ```python
@@ -285,7 +285,7 @@ def dmd_predict(x0, n_steps):
         x_pred = np.real(Phi @ (Lambda**n * b))
         predictions.append(x_pred)
     return predictions
-```
+```bash
 
 ### 3. DMD参数选择
 
@@ -397,7 +397,7 @@ def update_dmd(dmd_old, x_new):
     X_new = np.column_stack([X_old[:, 1:], x_new])
     dmd_new = DMD().fit(X_new[:-1], X_new[1:])
     return dmd_new
-```
+```python
 
 ### 3. DMD用于异常检测
 
@@ -413,7 +413,7 @@ lambda_current = dmd_current.eigenvalues
 deviation = np.linalg.norm(lambda_current - lambda_healthy)
 if deviation > threshold:
     raise_alarm("System anomaly detected")
-```
+```python
 
 ### 4. 多分辨率DMD
 

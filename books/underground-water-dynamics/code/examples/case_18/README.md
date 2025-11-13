@@ -41,7 +41,7 @@
 ### 运移过程
 
 **三大机制**：
-```
+```python
 1. 对流（Advection）：
    随地下水流动迁移
    
@@ -53,7 +53,7 @@
 ```
 
 **综合过程**：
-```
+```python
 污染源 → 对流输送 → 弥散扩散 → 吸附/衰减 → 污染羽
 ```
 
@@ -64,7 +64,7 @@
 ### 1. 对流-弥散方程（ADE）
 
 **完整形式**：
-```
+```python
 ∂C/∂t = Dx∂²C/∂x² + Dy∂²C/∂y² + Dz∂²C/∂z²
         - vx∂C/∂x - vy∂C/∂y - vz∂C/∂z
         - λC + S/R
@@ -78,7 +78,7 @@ R: 阻滞因子 [-]
 ```
 
 **一维简化**：
-```
+```python
 ∂C/∂t = D∂²C/∂x² - v∂C/∂x - λC
 ```
 
@@ -90,7 +90,7 @@ R: 阻滞因子 [-]
 ### 2. 弥散系数
 
 **组成**：
-```
+```python
 D = D_mech + D_mol
 
 D_mech: 机械弥散（主要）
@@ -98,7 +98,7 @@ D_mol: 分子扩散（次要）
 ```
 
 **机械弥散**：
-```
+```python
 Dx = αL * vx + αT * vy  （纵向）
 Dy = αT * vx + αL * vy  （横向）
 
@@ -114,7 +114,7 @@ Dy = αT * vx + αL * vy  （横向）
 ### 3. 吸附与阻滞
 
 **线性吸附**：
-```
+```python
 S = Kd * C
 
 S: 固相浓度 [kg/kg]
@@ -122,7 +122,7 @@ Kd: 分配系数 [m³/kg]
 ```
 
 **阻滞因子**：
-```
+```python
 R = 1 + (ρb/n) * Kd
 
 ρb: 土壤干密度 [kg/m³]
@@ -130,7 +130,7 @@ n: 孔隙度 [-]
 ```
 
 **效果**：
-```
+```python
 v_eff = v / R  （有效速度降低）
 D_eff = D / R  （有效弥散降低）
 ```
@@ -138,13 +138,13 @@ D_eff = D / R  （有效弥散降低）
 **非线性吸附**：
 
 1. **Freundlich**：
-   ```
+   ```python
    S = Kf * C^n
    n < 1: 吸附随浓度降低
    ```
 
 2. **Langmuir**：
-   ```
+   ```python
    S = (Qmax * b * C) / (1 + b * C)
    Qmax: 最大吸附量
    ```
@@ -152,14 +152,14 @@ D_eff = D / R  （有效弥散降低）
 ### 4. 衰减动力学
 
 **一级动力学**：
-```
+```python
 dC/dt = -λC
 
 C(t) = C0 * exp(-λt)
 ```
 
 **半衰期**：
-```
+```python
 t1/2 = ln(2) / λ
 ```
 
@@ -171,13 +171,13 @@ t1/2 = ln(2) / λ
 ### 5. 解析解
 
 **Ogata-Banks**（一维，连续源）：
-```
+```python
 C(x,t) = (C0/2) * [erfc((x-vt/R)/(2√(Dt/R))) + 
                    exp(vx/D) * erfc((x+vt/R)/(2√(Dt/R)))]
 ```
 
 **二维瞬时点源**：
-```
+```python
 C(x,y,t) = (M / (4πt√(Dx*Dy))) * 
            exp(-((x-vx*t)²/(4Dx*t) + (y-vy*t)²/(4Dy*t)))
 ```
@@ -185,7 +185,7 @@ C(x,y,t) = (M / (4πt√(Dx*Dy))) *
 ### 6. Peclet数
 
 **定义**：
-```
+```python
 Pe = vL / D
 
 L: 特征长度
@@ -217,7 +217,7 @@ def ogata_banks_solution(x, t, C0, v, D, R=1.0):
     
     C = (C0 / 2) * (term1 + term2)
     return C
-```
+```python
 
 ### 吸附
 
@@ -235,7 +235,7 @@ Kd = 0.005  # m³/kg
 R = retardation_factor(rho_b, n, Kd)
 print(f"阻滞因子: {R:.2f}")  # 26
 print(f"速度降低为原来的: {1/R:.3f}")  # 0.038
-```
+```python
 
 ### 数值求解
 
@@ -258,7 +258,7 @@ def solve_ade_1d_implicit(C0, dx, dt, n_steps, v, D):
     # 求解线性方程组...
     
     return C_history
-```
+```python
 
 ---
 
@@ -269,7 +269,7 @@ def solve_ade_1d_implicit(C0, dx, dt, n_steps, v, D):
 ```bash
 cd code/examples/case_18
 python3 case_18_contaminant_transport.py
-```
+```python
 
 ### 预期输出（节选）
 
@@ -392,7 +392,7 @@ Kd (m³/kg)      阻滞因子R        速度(m/day)
 ✅ 案例18执行完成！
 
 🎉🎉🎉 第四篇全部完成！🎉🎉🎉
-```
+```matlab
 
 ### 生成图片
 
@@ -451,7 +451,7 @@ Kd (m³/kg)      阻滞因子R        速度(m/day)
 宽度 W ∝ 4√(Dy*t)
 
 长宽比 L/W = √(Dx/Dy) ≈ 3
-```
+```python
 
 **演化规律**：
 - 尺度 ∝ √t（扩散）
@@ -498,7 +498,7 @@ for Pe in Pe_values:
     D = v * L / Pe
     C = ogata_banks_solution(x, t, C0, v, D)
     # 分析形态
-```
+```python
 
 **预期**：
 - Pe小：宽缓，弥散主导
@@ -516,7 +516,7 @@ S_freundlich = Kf * C**n
 S_langmuir = (Qmax * b * C) / (1 + b * C)
 
 # 对比阻滞效应
-```
+```python
 
 **预期**：
 - 高浓度：非线性饱和
@@ -533,7 +533,7 @@ sources = [
 ]
 
 C_total = sum(analytical_2d(xi, yi, Mi) for xi, yi, Mi in sources)
-```
+```python
 
 **预期**：
 - 污染羽合并
@@ -549,7 +549,7 @@ C_total = sum(analytical_2d(xi, yi, Mi) for xi, yi, Mi in sources)
 W_capture = Q / (n * b * v)
 
 # 需要：W_capture > 污染羽宽度
-```
+```python
 
 ---
 
@@ -571,7 +571,7 @@ W_capture = Q / (n * b * v)
        = nC + ρb*Kd*C
        = nC(1 + ρb*Kd/n)
        = nRC
-```
+```python
 
 ### Q2: 如何选择弥散度？
 
@@ -587,7 +587,7 @@ W_capture = Q / (n * b * v)
 αL ≈ 0.1 * L_scale
 
 αT ≈ 0.1 * αL
-```
+```python
 
 **确定方法**：
 - 示踪试验

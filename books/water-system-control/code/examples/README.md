@@ -70,7 +70,7 @@ python experiments.py
 
 # 查看生成的图表
 ls *.png
-```
+```python
 
 ## 📋 环境要求
 

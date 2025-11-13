@@ -17,7 +17,7 @@ class MultiModelEnsemble:
         # 各模型独立预报
         # 加权集成
         # 简单平均
-```
+```python
 
 **集成方法**：
 - 加权集成：根据历史表现分配权重
@@ -29,7 +29,7 @@ class MultiModelEnsemble:
 线性回归校正：
 ```
 y_corrected = intercept + coef × y_forecast
-```
+```matlab
 
 **训练**：
 - 特征：原始预报
@@ -50,7 +50,7 @@ y_corrected = intercept + coef × y_forecast
 综合评分：
 ```
 score = (RMSE_norm + NSE_norm) / 2 × 100
-```
+```python
 
 ## 运行结果
 
@@ -60,7 +60,7 @@ score = (RMSE_norm + NSE_norm) / 2 × 100
   MAE:  0.13 m³/s
   NSE:  -0.07
   综合评分: 100/100
-```
+```python
 
 ### 多模型对比
 

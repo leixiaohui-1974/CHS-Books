@@ -6,7 +6,7 @@
 
 近年来，**深度学习**在科学计算中异军突起，为降阶建模提供了全新的非线性工具。神经网络降阶模型（Neural Network ROM）可以捕捉复杂的非线性动力学，适应性更强。
 
-```
+```python
 降阶方法演进：
 
 经典方法（线性）           现代方法（非线性）
@@ -43,7 +43,7 @@
 
 **Autoencoder架构**：
 
-```
+```python
 高维状态空间 (N维)        低维潜空间 (r维)         高维状态空间 (N维)
     h ∈ R^N      →  Encoder  →  z ∈ R^r  →  Decoder  →  h̃ ∈ R^N
                      φ_enc              φ_dec
@@ -148,7 +148,7 @@ $$v_t = \sigma(W v + \mathcal{F}^{-1}(R \cdot \mathcal{F}(v)))$$
 
 **DeepONet架构**：
 
-```
+```python
 分支网络 (Branch Net)        干网络 (Trunk Net)
 输入函数 u(y)        →       输入位置 x          →
     ↓                            ↓
@@ -196,14 +196,14 @@ $$\mathcal{G}(u)(x) = \sum_{i=1}^{p} b_i(u) \cdot t_i(x) + b_0$$
 **网络架构选择**：
 
 1. **Autoencoder**：
-   ```
+   ```python
    Encoder: [N, 128, 64, 32, r]
    Decoder: [r, 32, 64, 128, N]
    激活函数: ReLU (中间层), Linear (输出层)
    ```
 
 2. **PINN**：
-   ```
+   ```python
    结构: [2, 64, 64, 64, 64, 1]
    输入: (x, t)
    输出: h(x, t)
@@ -211,7 +211,7 @@ $$\mathcal{G}(u)(x) = \sum_{i=1}^{p} b_i(u) \cdot t_i(x) + b_0$$
    ```
 
 3. **FNO**：
-   ```
+   ```python
    模式数: 16-32
    层数: 4-6
    通道数: 32-64

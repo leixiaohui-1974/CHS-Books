@@ -30,7 +30,7 @@
 
 ### 地下水数字孪生组成
 
-```
+```python
 ┌─────────────────────────────────────────────────────────┐
 │         地下水数字孪生系统 (GW Digital Twin)            │
 ├─────────────────────────────────────────────────────────┤
@@ -71,12 +71,12 @@
 #### 系统模型
 
 **状态方程**：
-```
+```python
 x(k+1) = F·x(k) + B·u(k) + w(k)
 ```
 
 **观测方程**：
-```
+```python
 z(k) = H·x(k) + v(k)
 ```
 
@@ -91,13 +91,13 @@ z(k) = H·x(k) + v(k)
 #### 卡尔曼滤波算法
 
 **预测步**（Prediction）：
-```
+```python
 x̂⁻(k) = F·x̂(k-1) + B·u(k)        # 状态预测
 P⁻(k) = F·P(k-1)·F^T + Q          # 协方差预测
 ```
 
 **更新步**（Update）：
-```
+```python
 K(k) = P⁻(k)·H^T·[H·P⁻(k)·H^T + R]^(-1)  # 卡尔曼增益
 x̂(k) = x̂⁻(k) + K(k)·[z(k) - H·x̂⁻(k)]    # 状态更新
 P(k) = [I - K(k)·H]·P⁻(k)                 # 协方差更新
@@ -111,7 +111,7 @@ P(k) = [I - K(k)·H]·P⁻(k)                 # 协方差更新
    - `K → H^(-1)`: 更信任观测
 
 2. **创新**（Innovation）：
-   ```
+   ```python
    ν(k) = z(k) - H·x̂⁻(k)
    ```
    表示观测与预测的差异
@@ -128,7 +128,7 @@ EnKF由Geir Evensen于1994年提出，用于**高维非线性系统**。
 
 使用**蒙特卡洛样本**（集合）来估计状态和协方差：
 
-```
+```python
 集合: X = [x₁, x₂, ..., xₙ]
 均值: x̄ = (1/N)·Σ xᵢ
 协方差: P = (1/(N-1))·A·A^T
@@ -138,18 +138,18 @@ EnKF由Geir Evensen于1994年提出，用于**高维非线性系统**。
 #### EnKF算法
 
 1. **预测**：为每个集合成员运行模型
-   ```
+   ```python
    xᵢ⁻(k) = f(xᵢ(k-1)) + wᵢ(k),  i = 1,...,N
    ```
 
 2. **同化**：更新每个成员
-   ```
+   ```python
    xᵢ(k) = xᵢ⁻(k) + K·[zᵢ(k) - H·xᵢ⁻(k)]
    ```
    其中 `zᵢ(k) = z(k) + εᵢ`, `εᵢ ~ N(0, R)` （扰动观测）
 
 3. **卡尔曼增益**：
-   ```
+   ```python
    K = P_xy·[P_yy + R]^(-1)
    ```
    - `P_xy`: 状态-观测协方差（从集合估计）
@@ -201,7 +201,7 @@ EnKF由Geir Evensen于1994年提出，用于**高维非线性系统**。
 #### 状态向量
 
 地下水头场（展平为向量）：
-```
+```python
 x = [h₁, h₂, ..., hₙ]^T
 ```
 维度：`n = nx × ny` （可达10³-10⁴）
@@ -209,7 +209,7 @@ x = [h₁, h₂, ..., hₙ]^T
 #### 观测
 
 监测井水位：
-```
+```python
 z = [h_well1, h_well2, ..., h_wellm]^T
 ```
 通常 `m << n` （稀疏观测）
@@ -217,7 +217,7 @@ z = [h_well1, h_well2, ..., h_wellm]^T
 #### 观测矩阵
 
 H是稀疏矩阵，将状态映射到观测：
-```
+```python
 H(i, j) = 1, 如果第i口井在第j个网格
         = 0, 否则
 ```
@@ -235,7 +235,7 @@ H(i, j) = 1, 如果第i口井在第j个网格
 
 ### 模块结构
 
-```
+```python
 gwflow/digital_twin/
 ├── __init__.py                 # 模块入口
 ├── kalman_filter.py            # 卡尔曼滤波器
@@ -271,7 +271,7 @@ result = kf.filter_step(x, P, z)
 #   - P_update: 更新协方差
 #   - K: 卡尔曼增益
 #   - innovation: 创新
-```
+```python
 
 #### 2. EnsembleKalmanFilter类
 
@@ -292,7 +292,7 @@ ensemble_updated = enkf.assimilate(ensemble, observations)
 
 # 提取均值和协方差
 mean, cov = enkf.get_mean_and_cov(ensemble_updated)
-```
+```python
 
 #### 3. ObservationSystem类
 
@@ -313,7 +313,7 @@ observations = obs_sys.generate_observations(true_state, add_noise=True)
 # 获取观测矩阵和噪声协方差
 H = obs_sys.get_observation_matrix()
 R = obs_sys.get_observation_covariance()
-```
+```python
 
 #### 4. GroundwaterDigitalTwin类
 
@@ -354,7 +354,7 @@ lower, upper = dt.get_uncertainty_bounds(n_std=2.0)
 
 # 打印摘要
 print(dt.summary())
-```
+```matlab
 
 ### 案例代码结构
 
@@ -482,7 +482,7 @@ def optimize_well_network(n_wells_range):
         # ... 运行同化 ...
         results[n_wells] = final_rmse
     return results
-```
+```python
 
 ### 实验B：不同过程噪声水平
 
@@ -536,7 +536,7 @@ dt_enkf = GroundwaterDigitalTwin(
     use_enkf=True,
     n_ensemble=100
 )
-```
+```python
 
 ### 实验E：实时预警系统
 
@@ -566,7 +566,7 @@ class GroundwaterWarningSystem:
         if np.any(forecasts < self.threshold):
             return True, "预警：水位将低于阈值"
         return False, "正常"
-```
+```python
 
 ---
 
@@ -626,7 +626,7 @@ class GroundwaterWarningSystem:
 **解决**：协方差膨胀
 ```python
 P_inflated = α² · P,  α > 1 (如1.05)
-```
+```python
 
 ### Q5: 数字孪生与传统数值模拟有何区别？
 

@@ -83,7 +83,7 @@ from case_05_drainage_gate import (
 
 # ✅ 复用案例3（优先级管理思想）
 # 多目标协调控制方法
-```
+```python
 
 **复用率**：约60%（整合两个案例）
 
@@ -109,7 +109,7 @@ navigation_hours = 300 * 24 = 7200 h  # 82%
 
 # 生态补水（全年）
 ecology_hours = 365 * 24 = 8760 h  # 100%
-```
+```python
 
 **优先级排序**：
 ```
@@ -117,7 +117,7 @@ ecology_hours = 365 * 24 = 8760 h  # 100%
 2. 生态流量（法定要求）
 3. 灌溉供水（生产需求）
 4. 航运通航（经济需求）
-```
+```python
 
 #### 1.2 冲突协调策略
 
@@ -129,7 +129,7 @@ ecology_hours = 365 * 24 = 8760 h  # 100%
 - 暴雨期：全力排涝，暂停通航
 - 平水期：保证生态，适当灌溉
 - 水位恢复后：恢复通航
-```
+```python
 
 **灌溉期（4-5月，9月）**：
 ```
@@ -139,7 +139,7 @@ ecology_hours = 365 * 24 = 8760 h  # 100%
 - 保证下游生态流量>0.8 m³/s
 - 满足灌溉需水
 - 维持通航水位稳定
-```
+```python
 
 **枯水期（11-3月）**：
 ```
@@ -148,7 +148,7 @@ ecology_hours = 365 * 24 = 8760 h  # 100%
 决策：
 - 最小开度保证生态流量
 - 尽量维持通航水位
-```
+```python
 
 ---
 
@@ -178,7 +178,7 @@ ecology_hours = 365 * 24 = 8760 h  # 100%
 │  - 闸门启闭机                           │
 │  - 传感器                               │
 └─────────────────────────────────────────┘
-```
+```python
 
 #### 2.2 多目标控制器设计
 
@@ -313,7 +313,7 @@ class MultiFunctionGateController:
             opening = max(opening, 1.0)  # 强制加大
         
         return opening, mode
-```
+```python
 
 #### 2.3 通航控制器（新增）
 
@@ -339,7 +339,7 @@ class NavigationController:
         """通航水位控制"""
         opening = self.pid.update(h_upstream, dt)
         return opening
-```
+```python
 
 #### 2.4 生态流量控制器（新增）
 
@@ -364,7 +364,7 @@ class EcologyController:
             return opening_adjustment
         else:
             return 0
-```
+```python
 
 ---
 
@@ -390,7 +390,7 @@ class EcologyController:
    NO
    │
 正常模式（最小开度保证生态）
-```
+```python
 
 #### 3.2 功能切换平滑过渡
 
@@ -422,7 +422,7 @@ def smooth_transition(opening_current, opening_target, max_rate=0.1):
         return opening_target
     else:
         return opening_current + np.sign(delta) * max_rate
-```
+```python
 
 ---
 

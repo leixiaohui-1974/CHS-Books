@@ -66,7 +66,7 @@
 ### 2. 质量平衡方程
 
 **控制方程**：
-```
+```python
 V * dC/dt = Q_in * C_in - Q_out * C - k*V*C + S
 ```
 
@@ -80,14 +80,14 @@ V * dC/dt = Q_in * C_in - Q_out * C - k*V*C + S
 - `S`：内源产生/去除速率（mg/d）
 
 **物理意义**：
-```
+```python
 累积 = 流入 - 流出 - 反应 + 内源
 ```
 
 ### 3. 水力停留时间（HRT）
 
 **定义**：
-```
+```python
 HRT = V / Q_out
 ```
 
@@ -106,24 +106,24 @@ HRT = V / Q_out
 **稳态条件**：`dC/dt = 0`
 
 **稳态浓度**：
-```
+```python
 C_ss = (Q_in * C_in + S) / (Q_out + k*V)
 ```
 
 **无量纲形式**：
-```
+```python
 C_ss / C_in = 1 / (1 + k*HRT)    （无内源时）
 ```
 
 ### 5. 响应时间
 
 **响应时间常数**：
-```
+```python
 τ = V / (Q_out + k*V) = HRT / (1 + k*HRT)
 ```
 
 **达到95%稳态**：
-```
+```python
 t_95 = 3*τ
 ```
 
@@ -134,17 +134,17 @@ t_95 = 3*τ
 ### 6. 去除效率
 
 **总去除效率**：
-```
+```python
 E = (C_in - C_ss) / C_in = k*HRT / (1 + k*HRT)
 ```
 
 **冲刷去除**：
-```
+```python
 E_flush = 1 / (1 + HRT/HRT_in)
 ```
 
 **反应去除**：
-```
+```python
 E_reaction = k*HRT / (1 + k*HRT)
 ```
 
@@ -212,7 +212,7 @@ E_reaction = k*HRT / (1 + k*HRT)
 from models.lake_cmfr import LakeCMFR, calculate_critical_load
 import numpy as np
 import matplotlib.pyplot as plt
-```
+```python
 
 ### 2. 初始化模型
 
@@ -227,7 +227,7 @@ C0 = 10    # 初始浓度
 
 # 创建模型
 lake = LakeCMFR(A, H, Q_in, Q_out=Q_in, k=k, C_in=C_in, C0=C0)
-```
+```python
 
 ### 3. 计算水力参数
 
@@ -240,7 +240,7 @@ r = lake.calculate_flushing_rate()
 
 # 响应时间
 tau, t_95 = lake.calculate_response_time()
-```
+```python
 
 ### 4. 计算稳态浓度
 
@@ -251,7 +251,7 @@ C_ss = lake.calculate_steady_state()
 # 有内源（底泥释放）
 lake.set_internal_source(S=1000)  # mg/d
 C_ss_with_source = lake.calculate_steady_state()
-```
+```python
 
 ### 5. 模拟瞬态响应
 
@@ -266,7 +266,7 @@ t, C = lake.solve_transient(t)
 plt.plot(t, C)
 plt.xlabel('Time (d)')
 plt.ylabel('Concentration (mg/L)')
-```
+```python
 
 ### 6. 评估改善措施
 
@@ -276,7 +276,7 @@ C_old, C_new, improvement = lake.evaluate_water_exchange(Q_new=10000)
 
 # 曝气措施
 C_old, C_new, improvement = lake.evaluate_aeration(k_aeration=0.2)
-```
+```python
 
 ### 7. 计算临界负荷
 

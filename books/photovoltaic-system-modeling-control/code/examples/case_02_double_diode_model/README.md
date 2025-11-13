@@ -22,7 +22,7 @@
 
 ### 双二极管等效电路
 
-```
+```python
        ┌──Rs──┬─────────┬─────────┐
        │      │   D1    │   D2    │
 Iph   ⚡     │  ─┬─   │  ─┬─   │  Rsh
@@ -36,7 +36,7 @@ Iph   ⚡     │  ─┬─   │  ─┬─   │  Rsh
 
 ### 核心方程
 
-```
+```python
 I = Iph - I01*[exp((V+I*Rs)/(n1*Vt)) - 1] - I02*[exp((V+I*Rs)/(n2*Vt)) - 1] - (V+I*Rs)/Rsh
 ```
 
@@ -53,7 +53,7 @@ I = Iph - I01*[exp((V+I*Rs)/(n1*Vt)) - 1] - I02*[exp((V+I*Rs)/(n2*Vt)) - 1] - (V
    - 主导: 低电压和低辐照度区
 
 3. **参数关系**:
-   ```
+   ```matlab
    I01 >> I02 (扩散电流主导)
    I01 ≈ 90% I_total
    I02 ≈ 10% I_total
@@ -93,7 +93,7 @@ I = Iph - I01*[exp((V+I*Rs)/(n1*Vt)) - 1] - I02*[exp((V+I*Rs)/(n2*Vt)) - 1] - (V
 **运行**:
 ```bash
 python main.py
-```
+```matlab
 
 **关键结果**:
 - I-V曲线高度重合
@@ -109,7 +109,7 @@ python main.py
 **运行**:
 ```bash
 python experiments.py
-```
+```matlab
 
 **关键发现**:
 - 辐照度越低,模型差异越大
@@ -157,7 +157,7 @@ pv = DoubleDiodeModel(
 
 # 查看参数
 pv.print_parameters()
-```
+```python
 
 ### 与单二极管对比
 
@@ -175,7 +175,7 @@ vmpp2, impp2, pmpp2 = pv_double.find_mpp()
 print(f"单二极管 Pmpp: {pmpp1:.4f} W")
 print(f"双二极管 Pmpp: {pmpp2:.4f} W")
 print(f"差异: {abs(pmpp2-pmpp1):.4f} W ({abs(pmpp2-pmpp1)/pmpp1*100:.2f}%)")
-```
+```python
 
 ### 低辐照度分析
 

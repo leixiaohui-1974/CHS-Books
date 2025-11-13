@@ -54,7 +54,7 @@
 
 **定义**：
 对Jacobian矩阵J进行SVD分解：
-```
+```python
 J = U Σ V^T
 ```
 
@@ -64,7 +64,7 @@ J = U Σ V^T
 - V: 右奇异向量矩阵 (n × n)
 
 **参数更新**：
-```
+```python
 Δp = V Σ^{-1} U^T W^{1/2} r
 ```
 
@@ -82,7 +82,7 @@ J = U Σ V^T
 4. 舍弃小奇异值，使用截断SVD
 
 **效果**：
-```
+```python
 条件数: κ_trunc = σ_1 / σ_k << κ_full = σ_1 / σ_n
 ```
 
@@ -91,7 +91,7 @@ J = U Σ V^T
 ### Tikhonov正则化
 
 **正则化目标函数**：
-```
+```python
 Φ_reg(p) = ||W^{1/2}(h_obs - h_sim)||² + α²||p - p_prior||²
 ```
 
@@ -101,7 +101,7 @@ J = U Σ V^T
 - α: 正则化参数（权衡两项）
 
 **正规方程**：
-```
+```python
 (J^T W J + α²I) Δp = J^T W r
 ```
 
@@ -113,7 +113,7 @@ J = U Σ V^T
 ### 条件数
 
 **定义**：
-```
+```python
 κ(A) = ||A|| · ||A^{-1}|| = σ_max / σ_min
 ```
 
@@ -139,7 +139,7 @@ J = U Σ V^T
 3. 对K的相对变化更关心
 
 **变换**：
-```
+```python
 p_transform = log(K)
 K = exp(p_transform)
 ```
@@ -154,7 +154,7 @@ K = exp(p_transform)
 ```bash
 cd code/examples/case_07
 python3 case_07_pest.py
-```
+```matlab
 
 ## 输出结果
 
@@ -200,7 +200,7 @@ python3 case_07_pest.py
 # K1和K2设为相近值
 K1_true = 10.0
 K2_true = 9.5  # 很接近K1
-```
+```python
 
 **观察**：
 - 奇异值变化
@@ -214,7 +214,7 @@ K2_true = 9.5  # 很接近K1
 regularization_alpha = 0.01  # 弱正则化
 regularization_alpha = 0.1   # 中等
 regularization_alpha = 1.0   # 强正则化
-```
+```python
 
 **观察**：
 - α过小：可能不稳定
@@ -227,7 +227,7 @@ regularization_alpha = 1.0   # 强正则化
 ```python
 # 减少观测点
 obs_x = np.array([10, 25, 40])  # 仅3个点
-```
+```python
 
 **观察**：
 - 观测少：参数不可识别增多
@@ -242,7 +242,7 @@ obs_x = np.array([10, 25, 40])  # 仅3个点
 K_group = ParameterGroup(
     transform='none'  # 改为无变换
 )
-```
+```python
 
 **观察**：
 - 对数变换通常更好
@@ -254,7 +254,7 @@ K_group = ParameterGroup(
 ```python
 # 在正则化中使用先验值
 prior_params = np.array([8.0, 4.0, 24.0, 16.0])
-```
+```python
 
 **观察**：
 - 先验信息引导参数估计
@@ -283,12 +283,12 @@ prior_params = np.array([8.0, 4.0, 24.0, 16.0])
 **方法1**：阈值法
 ```
 σ_i > ε * σ_1,  ε = 10^{-6}
-```
+```python
 
 **方法2**：累积方差
 ```
 保留成分使得累积方差 > 95%
-```
+```python
 
 **方法3**：L曲线
 - 绘制 ||残差|| vs ||参数||
@@ -361,7 +361,7 @@ prior_params = np.array([8.0, 4.0, 24.0, 16.0])
 **参数空间分解**：
 ```
 参数空间 = 可识别子空间 ⊕ 不可识别子空间
-```
+```python
 
 **可识别子空间**：
 - 由大奇异值对应的右奇异向量张成
@@ -377,7 +377,7 @@ Tikhonov正则化等价于：
 ```
 后验 ∝ 似然 × 先验
 Φ_reg = -log(后验)
-```
+```python
 
 其中：
 - 数据拟合项 = -log(似然)

@@ -28,7 +28,7 @@
 
 ### 2. 锁相环(PLL)基本原理
 
-```
+```python
 电网电压 → [相位检测] → [环路滤波器] → 频率/相位 → [积分器] → 输出相位
                 ↑                ↓                              ↓
                 └──────────────── 反馈 ──────────────────────────┘
@@ -145,7 +145,7 @@ for i in range(N):
     # theta: 检测到的相位角 (rad)
     # omega: 检测到的角频率 (rad/s)
     # frequency: 检测到的频率 (Hz)
-```
+```python
 
 ### 2. 单相PLL实现
 
@@ -157,7 +157,7 @@ pll = SinglePhasePLL(Kp=50.0, Ki=1000.0)
 
 # 更新
 theta, omega, frequency = pll.update(v, dt)
-```
+```python
 
 ### 3. 状态监控
 
@@ -167,7 +167,7 @@ status = pll.get_status()
 print(f"相位: {status['theta_deg']:.2f}°")
 print(f"频率: {status['frequency']:.3f} Hz")
 print(f"v_q误差: {status['v_q']:.2f} V")
-```
+```matlab
 
 ---
 
@@ -273,7 +273,7 @@ omega_c = 2 * np.pi * 30  # 188.5 rad/s
 zeta = 0.707
 Kp = 2 * zeta * omega_c  # ≈ 266
 Ki = omega_c ** 2         # ≈ 35530
-```
+```python
 
 **步骤3: 仿真验证**
 - 频率阶跃响应
@@ -287,7 +287,7 @@ Ki = omega_c ** 2         # ≈ 35530
 omega_min = 2 * np.pi * 45  # 45Hz
 omega_max = 2 * np.pi * 55  # 55Hz
 omega = np.clip(omega, omega_min, omega_max)
-```
+```python
 
 ### 3. 初始化策略
 
@@ -297,7 +297,7 @@ omega = np.clip(omega, omega_min, omega_max)
 v_alpha, v_beta = clarke_transform(va, vb, vc)
 theta_init = np.arctan2(v_beta, v_alpha)
 pll.theta = theta_init
-```
+```python
 
 **方法2: 预同步**
 ```python
@@ -305,7 +305,7 @@ pll.theta = theta_init
 for _ in range(5000):  # 0.5秒 @ dt=1e-4
     pll.update(va, vb, vc, dt)
 # 此时PLL已稳定
-```
+```python
 
 ### 4. 抗干扰措施
 
@@ -315,7 +315,7 @@ for _ in range(5000):  # 0.5秒 @ dt=1e-4
 fc = 500  # 截止频率500Hz
 alpha = dt * 2 * np.pi * fc / (1 + dt * 2 * np.pi * fc)
 va_filtered = alpha * va + (1 - alpha) * va_filtered_prev
-```
+```python
 
 **积分器抗饱和**:
 ```python

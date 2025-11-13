@@ -28,7 +28,7 @@
 
 正弦脉宽调制(SPWM)通过将正弦调制波与三角载波进行比较，产生PWM信号：
 
-```
+```python
 if 调制波 > 载波:
     开关信号 = 1 (导通)
 else:
@@ -189,7 +189,7 @@ class InverterParameters:
     f_sw: float = 10000.0        # 开关频率 (Hz)
     L_filter: float = 5e-3       # 滤波电感 (H)
     C_filter: float = 10e-6      # 滤波电容 (F)
-```
+```python
 
 ### 2. SPWM调制器
 
@@ -225,7 +225,7 @@ class SPWMModulator(PWMModulator):
             'carrier_wave': c_wave,
             'output_voltage': v_out
         }
-```
+```python
 
 ### 3. SVPWM调制器
 
@@ -262,7 +262,7 @@ class SVPWMModulator:
         T0 = 1 - T1 - T2
         
         return sector, max(0, T1), max(0, T2), max(0, T0)
-```
+```python
 
 ### 4. THD计算
 
@@ -294,7 +294,7 @@ def calculate_thd(signal, fs, f0, n_harmonics=50):
     thd = np.sqrt(harmonic_sum_sq) / fundamental * 100
     
     return thd, fundamental
-```
+```python
 
 ---
 
@@ -323,7 +323,7 @@ result = spwm.simulate(duration=0.02)  # 一个周期
 plt.plot(result['time'], result['modulation_wave'], label='调制波')
 plt.plot(result['time'], result['carrier_wave'], label='载波')
 plt.plot(result['time'], result['switching_signal'], label='开关信号')
-```
+```matlab
 
 ### 实验2: 调制比对输出的影响
 
@@ -381,7 +381,7 @@ plt.plot(result['time'], result['switching_signal'], label='开关信号')
 开关信号: 0/1脉冲序列
 输出电压: ±400V PWM波形
 滤波后: 220V RMS 正弦波
-```
+```matlab
 
 ### 2. 调制比影响
 
@@ -399,7 +399,7 @@ plt.plot(result['time'], result['switching_signal'], label='开关信号')
 扇区切换: 每周期6次
 矢量轨迹: 圆形,半径311V
 直流电压利用率: 约90%
-```
+```matlab
 
 ### 4. 谐波分析
 
@@ -469,7 +469,7 @@ elif P < 50kW:
     f_sw = 8-15 kHz   # 小型三相
 else:
     f_sw = 5-10 kHz   # 大型三相
-```
+```python
 
 **滤波器设计**:
 ```python
@@ -479,7 +479,7 @@ f_c ≈ f_sw / 10  # 经验值
 
 L = 5-10 mH  # 典型值
 C = 10-50 μF  # 典型值
-```
+```math
 
 ### 2. 死区时间
 
@@ -504,13 +504,13 @@ V_{comp} = \frac{2 \cdot t_{dead}}{T_s} \cdot V_{dc}
 **方案1**: 限幅
 ```python
 ma = min(ma, 1.0)
-```
+```python
 
 **方案2**: 六步波
 ```python
 if ma > 1.0:
     使用六步方波模式
-```
+```matlab
 
 ### 4. 并网标准
 

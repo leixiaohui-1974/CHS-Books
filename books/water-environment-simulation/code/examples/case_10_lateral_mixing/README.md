@@ -46,7 +46,7 @@
 
 #### 二维对流-扩散方程
 
-```
+```python
 ∂C/∂t + u*∂C/∂x + v*∂C/∂y = Ex*∂²C/∂x² + Ey*∂²C/∂y²
 ```
 
@@ -58,12 +58,12 @@
 #### 稳态简化
 
 对于稳定排放：
-```
+```python
 u*∂C/∂x = Ex*∂²C/∂x² + Ey*∂²C/∂y²
 ```
 
 进一步简化（Ex << u*dx）：
-```
+```python
 u*∂C/∂x ≈ Ey*∂²C/∂y²
 ```
 
@@ -72,17 +72,17 @@ u*∂C/∂x ≈ Ey*∂²C/∂y²
 #### 经验公式
 
 **Elder公式（1959）**:
-```
+```python
 Ey = 0.23 * H * u*
 ```
 
 **Fischer公式（1979）**:
-```
+```python
 Ey = 0.15 * H * u*
 ```
 
 其中，u* 为摩阻流速：
-```
+```python
 u* = √(g*H*I)
 ```
 
@@ -108,28 +108,28 @@ u* = √(g*H*I)
 #### 经验公式
 
 **Fischer公式（1979）**:
-```
+```python
 L_mix ≈ 0.4 * u * B² / Ey
 ```
 
 **简化估算**:
-```
+```python
 L_mix ≈ (50-100) * B
 ```
 
 对于B=100m的河流：
-```
+```python
 L_mix ≈ 5-10 km
 ```
 
 #### 混合时间
 
-```
+```python
 T_mix = B² / (6 * Ey)
 ```
 
 对于Ey=0.5 m²/s, B=100m：
-```
+```python
 T_mix ≈ 3333 s ≈ 0.93 hour
 ```
 
@@ -138,7 +138,7 @@ T_mix ≈ 3333 s ≈ 0.93 hour
 #### 近区（未完全混合）
 
 **高斯分布模型**:
-```
+```python
 C(x,y) = (M / (4*π*Ey*x/u)^0.5) * exp(-u*y² / (4*Ey*x))
 ```
 
@@ -152,12 +152,12 @@ C(x,y) = (M / (4*π*Ey*x/u)^0.5) * exp(-u*y² / (4*Ey*x))
 #### 远区（完全混合）
 
 **均匀分布**:
-```
+```python
 C_mix = Q_discharge * C_discharge / Q_river
 ```
 
 对于本案例：
-```
+```python
 C_mix = 2 * 100 / 150 = 1.33 mg/L
 ```
 
@@ -166,14 +166,14 @@ C_mix = 2 * 100 / 150 = 1.33 mg/L
 #### 岸边浓度
 
 **解析解**:
-```
+```python
 C(x, y=B) = C0 * exp(-π²*Ey*x / (u*B²))
 ```
 
 **影响距离**:
 
 当 C(x,B) = 0.1*C_mix 时的距离：
-```
+```python
 x_impact = u*B² / (π²*Ey) * ln(10*C0/C_mix)
 ```
 
@@ -230,7 +230,7 @@ x_impact = u*B² / (π²*Ey) * ln(10*C0/C_mix)
 ```bash
 # 运行主程序
 python main.py
-```
+```matlab
 
 ## 文件说明
 

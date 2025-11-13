@@ -24,13 +24,13 @@
 
 一维稳态渗流方程（承压含水层）：
 
-```
+```python
 d/dx(K * dh/dx) = 0
 ```
 
 对于均质含水层（K为常数）：
 
-```
+```python
 d²h/dx² = 0
 ```
 
@@ -38,7 +38,7 @@ d²h/dx² = 0
 
 线性分布：
 
-```
+```python
 h(x) = h₀ + (hₗ - h₀) * x / L
 ```
 
@@ -46,13 +46,13 @@ h(x) = h₀ + (hₗ - h₀) * x / L
 
 流速（达西速度）：
 
-```
+```python
 v = -K * dh/dx
 ```
 
 对于此问题：
 
-```
+```python
 v = -K * (hₗ - h₀) / L = -10 * (10 - 20) / 1000 = 0.1 m/day
 ```
 
@@ -62,13 +62,13 @@ v = -K * (hₗ - h₀) / L = -10 * (10 - 20) / 1000 = 0.1 m/day
 
 将区域划分为 nx 个节点，网格间距：
 
-```
+```python
 dx = L / (nx - 1)
 ```
 
 对内部节点 i，使用中心差分：
 
-```
+```python
 K * (h[i+1] - 2*h[i] + h[i-1]) / dx² = 0
 ```
 
@@ -78,13 +78,13 @@ K * (h[i+1] - 2*h[i] + h[i-1]) / dx² = 0
 
 ### 矩阵形式
 
-```
+```python
 A * h = b
 ```
 
 其中 A 是三对角矩阵：
 
-```
+```json
 [1    0    0   ...  0  ] [h₀]   [h₀]
 [K  -2K    K   ...  0  ] [h₁]   [0 ]
 [0    K  -2K   ...  0  ] [h₂] = [0 ]
@@ -98,14 +98,14 @@ A * h = b
 
 ```bash
 pip install numpy scipy matplotlib
-```
+```python
 
 ### 运行
 
 ```bash
 cd code/examples/case_01
 python case_01_1d_steady.py
-```
+```python
 
 ### 输出
 
@@ -144,7 +144,7 @@ python case_01_1d_steady.py
 
 ```python
 K = 5.0   # 试试其他值：1.0, 20.0, 100.0
-```
+```python
 
 **预期**：流速与K成正比，但水头分布形状（线性）不变。
 
@@ -155,7 +155,7 @@ K = 5.0   # 试试其他值：1.0, 20.0, 100.0
 ```python
 h0 = 25.0
 hL = 5.0
-```
+```python
 
 **预期**：水头梯度增大，流速增加。
 
@@ -167,7 +167,7 @@ hL = 5.0
 R = 0.001  # m/day 补给率
 source = R * np.ones(nx)
 h = solve_1d_steady_gw(K, L, h0, hL, nx, source=source)
-```
+```python
 
 **预期**：水头分布变为抛物线形。
 
@@ -177,7 +177,7 @@ h = solve_1d_steady_gw(K, L, h0, hL, nx, source=source)
 
 ```python
 K_field = np.linspace(5.0, 15.0, nx)  # K从5到15线性变化
-```
+```python
 
 **注意**：需要修改求解器支持变化的K（案例3将详细讲解）。
 
@@ -194,7 +194,7 @@ h(500) = 20 + (10 - 20) * 500 / 1000
        = 20 - 10 * 0.5
        = 20 - 5
        = 15 m
-```
+```python
 
 ### 求解流速
 

@@ -27,7 +27,7 @@
 - Chezy公式对比
 
 **核心公式**：
-```
+```python
 v = (1/n)R^(2/3)·i^(1/2)  (Manning)
 Fr = v/√(g·hm)            (Froude数)
 Q = A·v                    (流量)
@@ -52,7 +52,7 @@ Q = A·v                    (流量)
 - 土方量和造价分析
 
 **核心公式**：
-```
+```python
 最优条件: b = 2h(√(1+m²)-m)
 R = A/χ → 最大
 χ = b + 2h√(1+m²) → 最小（A固定）
@@ -77,7 +77,7 @@ R = A/χ → 最大
 - 壅水高度分析
 
 **核心公式**：
-```
+```python
 dh/dx = (i - J)/(1 - Fr²)
 临界水深: A³/B = Q²/g
 水面曲线分类: 基于h₀与hc比较
@@ -102,7 +102,7 @@ dh/dx = (i - J)/(1 - Fr²)
 - 综合评价（雷达图）
 
 **核心公式**：
-```
+```python
 v_min = 0.6 m/s  （不淤流速）
 v_max = 2.5 m/s  （不冲流速，土渠）
 土方量 = 断面积×长度
@@ -128,7 +128,7 @@ v_max = 2.5 m/s  （不冲流速，土渠）
 - Fr-h关系分析
 
 **核心公式**：
-```
+```python
 临界条件: Fr = 1
 临界水深: A³/B = Q²/g
 临界坡度: h₀(ic) = hc
@@ -197,7 +197,7 @@ from ch09_problem01_uniform_flow import UniformFlow
 uf = UniformFlow(b=5, h=2, i=0.001, n=0.025)
 uf.print_results()
 uf.plot_analysis()
-```
+```python
 
 ## 依赖库
 

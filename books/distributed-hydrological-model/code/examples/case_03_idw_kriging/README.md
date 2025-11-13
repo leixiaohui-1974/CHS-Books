@@ -30,7 +30,7 @@
 ### 1. 反距离权重法（IDW）
 
 **基本公式**:
-```
+```python
 Z(x) = Σ[wi × Zi] / Σwi
 wi = 1 / di^p
 ```
@@ -55,7 +55,7 @@ wi = 1 / di^p
 - 提供不确定性估计
 
 **变异函数**:
-```
+```python
 γ(h) = 0.5 × E[(Z(x) - Z(x+h))²]
 ```
 
@@ -81,7 +81,7 @@ wi = 1 / di^p
 
 ```bash
 python main.py
-```
+```python
 
 ### 查看结果
 
@@ -93,7 +93,7 @@ ls outputs/
 # variogram.png - 变异函数图
 # cross_validation.png - 交叉验证结果
 # uncertainty.png - 不确定性分析
-```
+```python
 
 ## 📈 实验内容
 

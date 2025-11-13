@@ -61,7 +61,7 @@
 ### 1. 不确定性分类
 
 **参数不确定性**：
-```
+```python
 θ ~ P(θ)  (参数分布)
   ↓
 y = f(θ)  (模型)
@@ -70,26 +70,26 @@ y ~ P(y)  (预测分布)
 ```
 
 **观测不确定性**：
-```
+```python
 y_obs = y_true + ε
 ε ~ N(0, σ²)
 ```
 
 **模型不确定性**：
-```
+```python
 y_true = f(θ) + δ
 δ: 模型误差
 ```
 
 **总不确定性**：
-```
+```python
 Var(y) = Var_param(y) + Var_obs + Var_model
 ```
 
 ### 2. Monte Carlo方法
 
 **基本原理**：
-```
+```python
 1. 定义参数分布：θ ~ P(θ)
 2. 采样：θ₁, θ₂, ..., θₙ
 3. 运行模型：yᵢ = f(θᵢ), i=1,...,n
@@ -112,7 +112,7 @@ Var(y) = Var_param(y) + Var_obs + Var_model
 并非所有参数组合都"可接受"，只有那些能合理拟合观测数据的参数集才是"行为的"。
 
 **算法**：
-```
+```python
 1. Monte Carlo采样：θ₁, ..., θₙ
 2. 计算似然：L(θᵢ) = f(y_obs, y_sim(θᵢ))
 3. 定义阈值：L_threshold
@@ -121,7 +121,7 @@ Var(y) = Var_param(y) + Var_obs + Var_model
 ```
 
 **似然函数示例**：
-```
+```python
 L(θ) = exp(-0.5 * Σ((y_obs - y_sim(θ))/σ)²)
 ```
 
@@ -143,12 +143,12 @@ L(θ) = exp(-0.5 * Σ((y_obs - y_sim(θ))/σ)²)
 **估计方法**：
 
 1. **百分位数法**：
-   ```
+   ```python
    95%预测区间 = [P₂.₅, P₉₇.₅]
    ```
 
 2. **正态近似**（如果适用）：
-   ```
+   ```python
    95%PI = ȳ ± 1.96 * σ_y
    ```
 
@@ -163,12 +163,12 @@ L(θ) = exp(-0.5 * Σ((y_obs - y_sim(θ))/σ)²)
 **目标**：识别主要不确定性来源
 
 **方差分解**：
-```
+```python
 Var(y) = Var_θ₁(E[y|θ₂,...]) + Var_θ₂(E[y|θ₁,...]) + ...
 ```
 
 **简化方法**（本案例）：
-```
+```python
 1. 仅变化K → Var_K
 2. 仅变化C → Var_C
 3. 总方差 = Var_total
@@ -213,7 +213,7 @@ mean = np.mean(predictions)
 std = np.std(predictions)
 ci_95 = [np.percentile(predictions, 2.5),
          np.percentile(predictions, 97.5)]
-```
+```python
 
 ### GLUE实现
 
@@ -242,7 +242,7 @@ glue_ci_95 = [
     np.percentile(predictions_behavioral, 5),
     np.percentile(predictions_behavioral, 95)
 ]
-```
+```python
 
 ### 不确定性分解
 
@@ -272,7 +272,7 @@ var_interaction = var_total - var_K - var_C
 # 5. 贡献率
 contribution_K = var_K / var_total * 100
 contribution_C = var_C / var_total * 100
-```
+```python
 
 ---
 
@@ -283,7 +283,7 @@ contribution_C = var_C / var_total * 100
 ```bash
 cd code/examples/case_15
 python3 case_15_coupled_uncertainty.py
-```
+```python
 
 ### 预期输出
 
@@ -383,7 +383,7 @@ GLUE预测区间（河流通量）：
 ✅ 案例15执行完成！
 
 🎉🎉🎉 第三篇全部完成！🎉🎉🎉
-```
+```matlab
 
 ### 生成图片
 
@@ -510,7 +510,7 @@ for n in sample_sizes:
     ci_95 = np.percentile(predictions, [2.5, 97.5])
     
     # 对比收敛性
-```
+```python
 
 **预期**：
 - n小（<500）：统计量不稳定
@@ -531,7 +531,7 @@ distributions = {
 for dist_name, dist in distributions.items():
     K_samples = dist.rvs(1000)
     # 分析差异
-```
+```python
 
 **预期**：
 - 正态：对称，常用
@@ -550,7 +550,7 @@ for p in percentiles:
     behavioral = likelihoods >= threshold
     
     # 分析行为集数量和预测区间
-```
+```python
 
 **预期**：
 - 阈值高（p大）→ 行为集小 → 区间窄

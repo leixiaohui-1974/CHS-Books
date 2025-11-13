@@ -92,7 +92,7 @@ pip install -r requirements.txt
 
 # 验证安装
 python -c "import numpy, scipy, matplotlib; print('安装成功！')"
-```
+```python
 
 ### 2. 运行第一个案例
 
@@ -103,14 +103,14 @@ python main.py
 
 # 查看结果
 ls outputs/
-```
+```python
 
 ### 3. 交互式学习
 
 ```bash
 # 启动Jupyter Notebook
 jupyter notebook code/examples/case_01_dem_watershed/notebook.ipynb
-```
+```python
 
 ---
 

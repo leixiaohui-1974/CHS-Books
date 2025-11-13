@@ -158,7 +158,7 @@ Python >= 3.8
 numpy >= 1.20.0
 matplotlib >= 3.3.0
 scipy >= 1.6.0
-```
+```python
 
 ### 运行示例
 ```bash

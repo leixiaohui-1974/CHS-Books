@@ -8,7 +8,7 @@
 
 **SINDy（Sparse Identification of Nonlinear Dynamics）**正是为此而生的革命性方法！
 
-```
+```python
 传统辨识 vs SINDy：
 
 传统方法：                    SINDy：
@@ -122,7 +122,7 @@ def STLS(Theta, Xdot, lambda):
             Xi[big_inds, i] = lstsq(Theta[:, big_inds], Xdot[:, i])
 
     return Xi
-```
+```bash
 
 **阈值$\lambda$的选择**：
 - 太小：保留太多项，不够稀疏

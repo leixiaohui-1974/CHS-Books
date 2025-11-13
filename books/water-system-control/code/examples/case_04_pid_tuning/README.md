@@ -30,7 +30,7 @@
 5. **管路系统**：进水管和出水管构成闭环控制回路
 
 **PID控制律：**
-```
+```python
 u(t) = Kp·e(t) + Ki·∫e dt + Kd·de/dt
 ```
 
@@ -99,20 +99,20 @@ u(t) = Kp·e(t) + Ki·∫e dt + Kd·de/dt
 
 ### PID控制律
 **标准形式：**
-```
+```python
 u(t) = Kp × e(t) + Ki × ∫₀ᵗ e(τ) dτ + Kd × de/dt
 离散形式：
 u[k] = Kp × e[k] + Ki × Σe[i]×dt + Kd × (e[k]-e[k-1])/dt
 ```
 
 **并行形式：**
-```
+```python
 u = P项 + I项 + D项
   = Kp×e + Ki×∫e dt + Kd×de/dt
 ```
 
 **串联形式：**
-```
+```python
 u = Kp × [e + (1/Ti)×∫e dt + Td×de/dt]
 其中：
 - Ti = Kp/Ki （积分时间常数）
@@ -125,7 +125,7 @@ u = Kp × [e + (1/Ti)×∫e dt + Td×de/dt]
 - 正微分：误差在增大 → 加强控制
 - 负微分：误差在减小 → 减弱控制（提前制动）
 **减小超调的机制：**
-```
+```python
 接近目标时：
 - 误差e减小 → de/dt < 0 （负微分）
 - D项产生负控制量
@@ -199,7 +199,7 @@ u = Kp × [e + (1/Ti)×∫e dt + Td×de/dt]
 ```bash
 cd books/water-system-control/code/examples/case_04_pid_tuning
 python main.py
-```
+```python
 
 ### 核心代码
 ```python
@@ -228,7 +228,7 @@ dt = 0.1
 for step in range(600):
     u = controller.control(tank.h, dt=dt)
     tank.step(u, dt=dt)
-```
+```python
 
 ### Ziegler-Nichols自动整定
 ```python
@@ -243,7 +243,7 @@ params = ziegler_nichols_first_method(
 print(f"Kp = {params['Kp']:.3f}")
 print(f"Ki = {params['Ki']:.3f}")
 print(f"Kd = {params['Kd']:.3f}")
-```
+```matlab
 
 ---
 

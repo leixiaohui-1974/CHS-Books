@@ -45,7 +45,7 @@
 ### 2. 参数物理计算
 
 **传播时间常数K**:
-```
+```python
 K = Δx / c
 
 其中：
@@ -55,7 +55,7 @@ K = Δx / c
 ```
 
 **蓄量比重系数X**:
-```
+```python
 X = 0.5 × (1 - v/c)
 
 其中：
@@ -67,7 +67,7 @@ X = 0.5 × (1 - v/c)
 ### 3. 流速和波速计算
 
 **曼宁流速公式**:
-```
+```python
 v = (1/n) × R^(2/3) × S0^(1/2)
 
 简化（矩形断面）：
@@ -81,7 +81,7 @@ v ≈ (Q×√S0 / (B×n))^0.6
 ```
 
 **动力波波速**:
-```
+```python
 c = dQ/dA ≈ (5/3) × v
 
 物理意义：
@@ -93,7 +93,7 @@ c = dQ/dA ≈ (5/3) × v
 ### 4. 演算系数
 
 与经典Muskingum相同：
-```
+```python
 C0 = (-K×X + 0.5×Δt) / D
 C1 = (K×X + 0.5×Δt) / D
 C2 = (K - K×X - 0.5×Δt) / D
@@ -106,7 +106,7 @@ C0 + C1 + C2 = 1
 
 ### 5. 演算公式
 
-```
+```python
 Q(t+Δt) = C0×I(t+Δt) + C1×I(t) + C2×Q(t)
 
 每个时段动态更新K和X
@@ -133,7 +133,7 @@ def compute_wave_celerity(Q, B, n, S0):
     v = manning_velocity(Q, B, n, S0)
     c = (5.0 / 3.0) * v
     return max(c, 0.5)
-```
+```python
 
 ### 2. 参数动态计算
 
@@ -158,7 +158,7 @@ def compute_muskingum_cunge_params(Q, B, n, S0, dx, dt):
     C2 = (K - K * X - 0.5 * dt) / denominator
     
     return {'K': K, 'X': X, 'C0': C0, 'C1': C1, 'C2': C2}
-```
+```python
 
 ### 3. 河道演进
 
@@ -189,7 +189,7 @@ def muskingum_cunge_routing(inflow, B, n, S0, dx, dt):
         Q_prev = Q_new
     
     return outflow
-```
+```python
 
 ### 4. 多河段串联
 
@@ -212,7 +212,7 @@ def cascade_routing(inflow, reach_params, dt):
         current_inflow = result.copy()
     
     return outflows
-```
+```matlab
 
 ---
 
@@ -423,7 +423,7 @@ def cascade_routing(inflow, reach_params, dt):
 建议：
 ```
 dx ≈ c × dt × (10-20)
-```
+```python
 
 ### Q3: 参数动态计算是否必要？
 

@@ -88,13 +88,13 @@
 Python 3.7+
 numpy
 matplotlib
-```
+```python
 
 ### 安装依赖
 
 ```bash
 pip install numpy matplotlib
-```
+```python
 
 ### 运行案例
 
@@ -109,7 +109,7 @@ python main.py
 # 运行案例14: 电流控制
 cd ../case_14_current_control
 python main.py
-```
+```python
 
 ### 运行测试
 
@@ -118,7 +118,7 @@ python main.py
 cd /workspace
 python tests/test_inverter_control.py
 python tests/test_dcdc_converter.py
-```
+```python
 
 ---
 

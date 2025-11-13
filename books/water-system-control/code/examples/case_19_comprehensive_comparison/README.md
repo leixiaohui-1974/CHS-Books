@@ -61,7 +61,7 @@
 
 ### 1. PID控制（案例1-9）
 **原理**：
-```
+```python
 u(t) = Kp·e(t) + Ki·∫e(τ)dτ + Kd·de(t)/dt
 ```
 
@@ -80,7 +80,7 @@ u(t) = Kp·e(t) + Ki·∫e(τ)dτ + Kd·de(t)/dt
 
 ### 2. 自适应控制（案例13）
 **原理**：
-```
+```python
 参数估计：θ̂(t) = θ̂(t-1) + γ·e(t)·φ(t)
 控制律：u(t) = f(θ̂(t), y(t), r(t))
 ```
@@ -100,7 +100,7 @@ u(t) = Kp·e(t) + Ki·∫e(τ)dτ + Kd·de(t)/dt
 
 ### 3. 模型预测控制（MPC）（案例14）
 **原理**：
-```
+```python
 min  Σ[||y(k+i) - r(k+i)||² + λ·||u(k+i)||²]
 u    i=0
 s.t. y_min ≤ y(k+i) ≤ y_max
@@ -123,7 +123,7 @@ s.t. y_min ≤ y(k+i) ≤ y_max
 
 ### 4. 滑模控制（案例15）
 **原理**：
-```
+```python
 滑模面：s = e + λ∫e
 控制律：u = u_eq + k·sign(s)  或  u = u_eq + k·sat(s/φ)
 ```
@@ -143,7 +143,7 @@ s.t. y_min ≤ y(k+i) ≤ y_max
 
 ### 5. 模糊控制（案例16）
 **原理**：
-```
+```python
 模糊化：x → μ(x)
 推理：IF e is NB AND de is ZE THEN du is NM
 去模糊：μ(u) → u
@@ -165,7 +165,7 @@ s.t. y_min ≤ y(k+i) ≤ y_max
 
 ### 6. 神经网络控制（案例17）
 **原理**：
-```
+```python
 前向：y = NN(x; θ)
 反向：θ ← θ - α·∇_θ L(y, r)
 ```
@@ -187,7 +187,7 @@ s.t. y_min ≤ y(k+i) ≤ y_max
 
 ### 7. 强化学习控制（案例18）
 **原理**：
-```
+```python
 Q-learning：Q(s,a) ← Q(s,a) + α[r + γ·max Q(s',a') - Q(s,a)]
 策略：a = argmax Q(s, a')  (with ε-greedy)
 ```
@@ -262,61 +262,61 @@ Q-learning：Q(s,a) ← Q(s,a) + α[r + γ·max Q(s',a') - Q(s,a)]
 
 ### 1. 时域性能指标
 **上升时间（Rise Time）**：
-```
+```python
 t_r = 从0%到90%设定值的时间
 ```
 
 **超调量（Overshoot）**：
-```
+```matlab
 σ% = (y_max - y_ss) / y_ss × 100%
 ```
 
 **调节时间（Settling Time）**：
-```
+```python
 t_s = 进入并保持在±2%误差带的时间
 ```
 
 **稳态误差（Steady-State Error）**：
-```
+```python
 e_ss = lim (r - y(t))
        t→∞
 ```
 
 ### 2. 积分性能指标
 **IAE（Integral of Absolute Error）**：
-```
+```python
 IAE = ∫|e(t)|dt
 ```
 
 **ISE（Integral of Squared Error）**：
-```
+```python
 ISE = ∫e²(t)dt
 ```
 
 **ITAE（Integral of Time-weighted Absolute Error）**：
-```
+```python
 ITAE = ∫t·|e(t)|dt
 ```
 
 ### 3. 控制能量指标
 **控制能量**：
-```
+```python
 E_u = ∫u²(t)dt
 ```
 
 **控制变化率**：
-```
+```python
 E_Δu = ∫(du/dt)²dt
 ```
 
 ### 4. 鲁棒性指标
 **参数灵敏度**：
-```
+```python
 S_θ = |Δy/y| / |Δθ/θ|
 ```
 
 **干扰抑制比**：
-```
+```python
 DRR = |Δd| / |Δy|
 ```
 
@@ -333,7 +333,7 @@ DRR = |Δd| / |Δy|
 8. **可扩展性**：MIMO、复杂系统
 
 ### 加权总分
-```
+```python
 总分 = Σ w_i × score_i
       i
 ```
@@ -343,7 +343,7 @@ DRR = |Δd| / |Δy|
 ## 方法选择指南
 
 ### 决策树
-```
+```python
 开始
  ↓
 是否需要显式处理约束？
@@ -378,7 +378,7 @@ DRR = |Δd| / |Δy|
 | 无模型系统 | 强化学习 | 神经网络 |
 
 ### 性能-复杂度权衡
-```
+```python
 高性能
   │
   │  MPC (高计算)
@@ -400,7 +400,7 @@ DRR = |Δd| / |Δy|
 cd books/water-system-control/code/examples/case_19_comprehensive_comparison
 python main.py
 python experiments.py
-```
+```python
 
 ## 预期结果
 
@@ -443,7 +443,7 @@ python experiments.py
 需求分析 → 方法选择 → 参数设计 → 仿真测试 → 性能评估 → 实际部署
     ↑                                                          ↓
     └─────────────────── 迭代优化 ←───────────────────────────┘
-```
+```python
 
 **步骤详解**：
 1. **需求分析**：明确性能指标、约束条件、资源限制
@@ -479,7 +479,7 @@ ELSE IF 参数大幅变化 THEN
 ELSE
     使用MPC
 END IF
-```
+```python
 
 ## 关键公式汇总
 
@@ -488,36 +488,36 @@ END IF
 ```
 IAE = ∫_0^T |e(t)| dt ≈ Σ |e[k]|·Δt
                         k=0
-```
+```python
 
 **ISE（积分平方误差）**：
 ```
 ISE = ∫_0^T e²(t) dt ≈ Σ e²[k]·Δt
                        k=0
-```
+```python
 
 **ITAE（时间加权积分绝对误差）**：
 ```
 ITAE = ∫_0^T t·|e(t)| dt ≈ Σ k·Δt·|e[k]|·Δt
                            k=0
-```
+```python
 
 **控制能量**：
 ```
 E_u = ∫_0^T u²(t) dt ≈ Σ u²[k]·Δt
                        k=0
-```
+```python
 
 ### 归一化评分
 **单项评分归一化**：
 ```
 score_i = 10 × (1 - (value_i - value_min) / (value_max - value_min))
-```
+```python
 
 对于"越小越好"的指标（如IAE、超调量）：
 ```
 score = 10 × (1 - (value - best) / (worst - best))
-```
+```python
 
 对于"越大越好"的指标（如DRR）：
 ```

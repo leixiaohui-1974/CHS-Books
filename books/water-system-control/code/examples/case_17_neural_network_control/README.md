@@ -58,13 +58,13 @@
 
 ### 1. 神经网络基础
 **基本结构**：
-```
+```python
 输入层 → 隐藏层 → 输出层
 x → [W1, b1] → h → [W2, b2] → y
 ```
 
 **前向传播**：
-```
+```python
 h = σ(W1·x + b1)    # 隐藏层
 y = W2·h + b2        # 输出层
 ```
@@ -82,7 +82,7 @@ y = W2·h + b2        # 输出层
 
 #### 类型1：神经网络PID控制器
 **结构**：
-```
+```python
 输入：[e, Δe, ∫e] → 神经网络 → 输出：[Kp, Ki, Kd]
 u = Kp·e + Ki·∫e + Kd·Δe
 ```
@@ -94,7 +94,7 @@ u = Kp·e + Ki·∫e + Kd·Δe
 
 #### 类型2：直接神经网络控制器
 **结构**：
-```
+```python
 输入：[r, y, e, ...] → 神经网络 → 输出：u
 ```
 
@@ -105,7 +105,7 @@ u = Kp·e + Ki·∫e + Kd·Δe
 
 #### 类型3：模型参考自适应神经网络控制（MRAC）
 **结构**：
-```
+```python
 参考模型：ym = f_ref(r)
 神经网络：u = NN(e, x)
 目标：使 y → ym
@@ -221,7 +221,7 @@ u = Kp·e + Ki·∫e + Kd·Δe
 cd books/water-system-control/code/examples/case_17_neural_network_control
 python main.py
 python experiments.py
-```
+```python
 
 ## 预期结果
 1. **神经网络PID**：
@@ -298,13 +298,13 @@ python experiments.py
 ```
 z1 = W1·x + b1
 h = σ(z1)
-```
+```python
 
 **输出层**：
 ```
 z2 = W2·h + b2
 y = z2  (或 y = σ(z2))
-```
+```python
 
 ### 反向传播
 **输出层梯度**：
@@ -312,61 +312,61 @@ y = z2  (或 y = σ(z2))
 δ2 = (y - y_target) * σ'(z2)
 ∂E/∂W2 = δ2 · h^T
 ∂E/∂b2 = δ2
-```
+```python
 
 **隐藏层梯度**：
 ```
 δ1 = (W2^T · δ2) ⊙ σ'(z1)
 ∂E/∂W1 = δ1 · x^T
 ∂E/∂b1 = δ1
-```
+```python
 
 **权重更新**：
 ```
 W = W - η · ∂E/∂W
 b = b - η · ∂E/∂b
-```
+```python
 
 ### 激活函数及其导数
 **Sigmoid**：
 ```
 σ(x) = 1/(1 + e^(-x))
 σ'(x) = σ(x) * (1 - σ(x))
-```
+```python
 
 **Tanh**：
 ```
 tanh(x) = (e^x - e^(-x))/(e^x + e^(-x))
 tanh'(x) = 1 - tanh²(x)
-```
+```python
 
 **ReLU**：
 ```
 relu(x) = max(0, x)
 relu'(x) = 1 if x > 0 else 0
-```
+```python
 
 ### 神经网络PID
 **参数输出**：
 ```
 [Kp, Ki, Kd] = NN([e, Δe, ∫e])
-```
+```python
 
 **控制律**：
 ```
 u(t) = Kp·e(t) + Ki·∫e(τ)dτ + Kd·de/dt
-```
+```python
 
 ### 模型参考自适应控制
 **参考模型**：
 ```
 ym(t) = f_ref(r(t))
-```
+```python
 
 **跟踪误差**：
 ```
 e(t) = ym(t) - y(t)
-```
+```python
 
 **权重更新（梯度下降）**：
 ```

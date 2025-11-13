@@ -269,7 +269,7 @@ cd docs/年份真题/2024年真题
 # 4. 运行代码验证
 cd codes/chapter1_hydrostatics
 python problem_001_清华2024_静压强.py
-```
+```python
 
 ---
 

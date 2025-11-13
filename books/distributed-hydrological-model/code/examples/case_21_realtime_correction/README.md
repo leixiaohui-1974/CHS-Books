@@ -27,7 +27,7 @@
 
 ### 2. 实时校正原理
 
-```
+```python
 实时校正 = 模型预报 + 误差预测
 ```
 
@@ -64,7 +64,7 @@
 
 #### 1.1 AR模型原理
 
-```
+```python
 E(t) = φ₁·E(t-1) + φ₂·E(t-2) + ... + φₚ·E(t-p) + ε(t)
 ```
 
@@ -110,7 +110,7 @@ class ARErrorCorrection:
         error_pred = self.predict(recent_errors)
         corrected = forecast + error_pred
         return np.maximum(corrected, 0.0)
-```
+```python
 
 **使用方法**：
 1. 收集历史预报误差
@@ -140,7 +140,7 @@ class ARErrorCorrection:
 ```
 x(t) = F·x(t-1) + w(t)  # 状态转移
 z(t) = H·x(t) + v(t)    # 观测方程
-```
+```python
 
 **递推过程**：
 
@@ -148,14 +148,14 @@ z(t) = H·x(t) + v(t)    # 观测方程
 ```
 x̂⁻(t) = F·x̂(t-1)       # 状态预测
 P⁻(t) = F·P(t-1)·Fᵀ + Q  # 误差协方差预测
-```
+```python
 
 **更新步**：
 ```
 K(t) = P⁻(t)·Hᵀ / (H·P⁻(t)·Hᵀ + R)  # 卡尔曼增益
 x̂(t) = x̂⁻(t) + K·(z(t) - H·x̂⁻(t))  # 状态更新
 P(t) = (I - K·H)·P⁻(t)              # 误差协方差更新
-```
+```python
 
 #### 2.2 实现代码
 
@@ -187,7 +187,7 @@ class KalmanFilterCorrection:
         """校正预报值"""
         corrected = forecast + self.x
         return np.maximum(corrected, 0.0)
-```
+```python
 
 **关键参数**：
 - `Q` (过程噪声方差): 反映模型不确定性，值越大表示模型越不可靠
@@ -223,7 +223,7 @@ class AdaptiveParameterUpdater:
         """梯度下降更新参数"""
         new_value = current_value - self.learning_rate * gradient
         return new_value
-```
+```python
 
 **应用场景**：
 - 长期预报中参数漂移
@@ -246,7 +246,7 @@ WM:  120.0   vs   110.0  (偏低 8.3%)
 B:   0.40    vs   0.35   (偏低 12.5%)
 KG:  0.45    vs   0.40   (偏低 11.1%)
 C:   0.18    vs   0.15   (偏低 16.7%)
-```
+```matlab
 
 ### 2. 校正效果统计
 

@@ -64,7 +64,7 @@
 
 **目标函数**：
 
-```
+```python
 minimize J(θ) = Σ w_i (h_obs,i - h_sim,i)² + w_r (Q_obs - Q_sim)²
 ```
 
@@ -113,7 +113,7 @@ minimize J(θ) = Σ w_i (h_obs,i - h_sim,i)² + w_r (Q_obs - Q_sim)²
 **原则**：
 
 1. **单位一致性**：
-   ```
+   ```python
    w_i ∝ 1 / (观测误差标准差)²
    ```
 
@@ -134,7 +134,7 @@ w_head = 1 / 0.1**2 = 100
 w_flux = 1 / 50**2 = 0.0004
 
 # 单位不同，需要归一化
-```
+```python
 
 ### 4. 敏感性分析
 
@@ -142,7 +142,7 @@ w_flux = 1 / 50**2 = 0.0004
 
 ```
 J_ij = ∂y_i / ∂θ_j
-```
+```python
 
 **物理意义**：
 - `J_ij`大：参数`θ_j`对观测`y_i`影响显著
@@ -160,7 +160,7 @@ J_ij = ∂y_i / ∂θ_j
 参数协方差矩阵：
 ```
 Cov(θ) = σ² (J^T W J)^(-1)
-```
+```python
 
 其中：
 - `σ²`: 观测误差方差
@@ -170,7 +170,7 @@ Cov(θ) = σ² (J^T W J)^(-1)
 **置信区间**（95%）：
 ```
 θ ± 1.96 * sqrt(diag(Cov(θ)))
-```
+```python
 
 **限制**：
 - 假设线性
@@ -197,7 +197,7 @@ h_obs = [h_true[row, col] for row, col in obs_points]
 
 # 添加噪声
 h_obs += np.random.normal(0, 0.1, len(h_obs))
-```
+```python
 
 **2. 定义前向模型**：
 
@@ -218,7 +218,7 @@ def forward_model(parameters, params, riv, observations):
     Q_sim = riv.get_total_flux(h)
     
     return np.array(h_sim + [Q_sim])
-```
+```python
 
 **3. 定义目标函数**：
 
@@ -227,7 +227,7 @@ def objective(parameters):
     simulated = forward_model(parameters, ...)
     residuals = observed - simulated
     return np.sum((weights * residuals)**2)
-```
+```python
 
 **4. 优化**：
 
@@ -242,7 +242,7 @@ result = minimize(
 )
 
 optimized_params = result.x
-```
+```python
 
 **5. 敏感性分析**：
 
@@ -253,7 +253,7 @@ J = compute_jacobian(forward_model, optimized_params)
 
 # 平均敏感性
 sensitivity = np.mean(np.abs(J), axis=0)
-```
+```python
 
 **6. 不确定性分析**：
 
@@ -267,7 +267,7 @@ param_std = np.sqrt(np.diag(param_cov))
 
 # 95%置信区间
 ci_95 = 1.96 * param_std
-```
+```python
 
 ---
 
@@ -278,7 +278,7 @@ ci_95 = 1.96 * param_std
 ```bash
 cd code/examples/case_14
 python3 case_14_coupled_calibration.py
-```
+```python
 
 ### 预期输出
 
@@ -365,7 +365,7 @@ K与河流传导度相关性: -0.234
   河流传导度: [1106.54, 1283.92] m²/day
 
 ✅ 案例14执行完成！
-```
+```matlab
 
 ### 生成图片
 
@@ -465,7 +465,7 @@ for n_obs in n_obs_cases:
     result = calibrate_model(obs_points)
     
     # 分析精度
-```
+```python
 
 **预期**：
 - 观测点越多，率定精度越高
@@ -482,7 +482,7 @@ layouts = ['uniform', 'river_focused', 'boundary_focused']
 for layout in layouts:
     obs_points = generate_layout(layout)
     # 率定并比较
-```
+```python
 
 **预期**：
 - 河流附近观测更有助于识别河流参数
@@ -502,7 +502,7 @@ weight_schemes = {
 
 for scheme in weight_schemes:
     result = calibrate_with_weights(scheme)
-```
+```python
 
 **预期**：
 - 合理权重提高率定质量
@@ -522,7 +522,7 @@ initial_values = [
 
 for init in initial_values:
     result = calibrate(initial_params=init)
-```
+```python
 
 **预期**：
 - 好的初值加速收敛

@@ -31,7 +31,7 @@
 
 风速通常服从**Weibull分布**：
 
-```
+```python
 f(v) = (k/c) * (v/c)^(k-1) * exp(-(v/c)^k)
 ```
 
@@ -44,7 +44,7 @@ f(v) = (k/c) * (v/c)^(k-1) * exp(-(v/c)^k)
 - `c` (尺度参数): 接近平均风速，单位m/s
 
 **统计量**：
-```
+```python
 平均风速: v_mean = c * Γ(1 + 1/k)
 方差: σ² = c² * [Γ(1 + 2/k) - Γ²(1 + 1/k)]
 ```
@@ -53,7 +53,7 @@ f(v) = (k/c) * (v/c)^(k-1) * exp(-(v/c)^k)
 
 风的功率密度（W/m²）：
 
-```
+```python
 P/A = 0.5 * ρ * v³
 ```
 
@@ -67,13 +67,13 @@ P/A = 0.5 * ρ * v³
 
 **平均功率密度**（从Weibull分布）：
 
-```
+```python
 P_avg = 0.5 * ρ * c³ * Γ(1 + 3/k)
 ```
 
 ### 3. 能量模式因子 (EPF)
 
-```
+```python
 EPF = P_avg / (0.5 * ρ * v_mean³)
 ```
 
@@ -82,7 +82,7 @@ EPF = P_avg / (0.5 * ρ * v_mean³)
 - EPF < 1: 理论值（实际不存在）
 
 对于Rayleigh分布（k=2）：
-```
+```python
 EPF = Γ(1 + 3/k) / Γ³(1 + 1/k) ≈ 1.91
 ```
 
@@ -127,7 +127,7 @@ class WeibullDistribution:
     @staticmethod
     def fit_from_data(wind_speeds):
         """从数据拟合参数"""
-```
+```python
 
 #### 2. `WindPowerDensity`
 ```python
@@ -143,7 +143,7 @@ class WindPowerDensity:
     
     def energy_pattern_factor(self, weibull):
         """计算EPF"""
-```
+```python
 
 #### 3. `WindStatistics`
 ```python
@@ -159,7 +159,7 @@ class WindStatistics:
     
     def get_report(self):
         """生成统计报告"""
-```
+```python
 
 ---
 
@@ -168,13 +168,13 @@ class WindStatistics:
 ### 安装依赖
 ```bash
 pip install numpy scipy matplotlib
-```
+```python
 
 ### 运行
 ```bash
 cd code/examples/case_01_wind_statistics
 python main.py
-```
+```python
 
 ### 输出
 
@@ -216,7 +216,7 @@ k=2.5, c=8:
   平均风速: 7.09 m/s
   标准差: 2.93 m/s
   最可能风速: 6.45 m/s
-```
+```python
 
 ```
 演示2: 风功率密度计算
@@ -235,7 +235,7 @@ Weibull参数: k=2.0, c=8.0
   v = 11 m/s → P/A =  815.6 W/m²
   v = 13 m/s → P/A = 1347.0 W/m²
   v = 15 m/s → P/A = 2067.2 W/m²
-```
+```python
 
 **关键发现**：
 - 风速从5 m/s增加到15 m/s，功率密度增加了**27倍**
@@ -257,7 +257,7 @@ distributions = [
     WeibullDistribution(k=2.5, c=7.0),
     WeibullDistribution(k=3.0, c=7.0),
 ]
-```
+```python
 
 **问题**：
 1. k值如何影响EPF？
@@ -277,7 +277,7 @@ T = 15  # °C
 for h in elevations:
     rho = WindPowerDensity.air_density(T=T, P=None, elevation=h)
     print(f"海拔 {h:4d} m: ρ = {rho:.3f} kg/m³")
-```
+```python
 
 **问题**：
 1. 海拔3000m处的空气密度比海平面低多少？
@@ -297,7 +297,7 @@ wind_speeds = data['wind_speed'].values
 # 分析
 stats = WindStatistics(wind_speeds)
 report = stats.get_report()
-```
+```matlab
 
 ---
 

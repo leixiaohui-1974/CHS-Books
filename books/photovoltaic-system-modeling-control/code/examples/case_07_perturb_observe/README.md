@@ -23,7 +23,7 @@ P&O(Perturb and Observe)是工业界应用最广的MPPT算法:
 
 **核心思想**: 扰动电压 → 观察功率 → 决定方向
 
-```
+```python
 伪代码:
 ────────────────────────────────
 IF P(k) > P(k-1):
@@ -41,7 +41,7 @@ ELSE:
 ### 工作过程
 
 **P-V曲线视角**:
-```
+```python
 功率
   ^
   |    MPP点
@@ -94,7 +94,7 @@ for step in range(100):
     
     # 电压跟踪(简化)
     v_pv = v_pv + 0.5 * (v_ref - v_pv)
-```
+```python
 
 ### 2. 自适应P&O
 
@@ -110,7 +110,7 @@ mppt_adaptive = AdaptivePO(
 
 # 使用方法相同
 controller = MPPTController(mppt_adaptive, v_min=0, v_max=40.0)
-```
+```python
 
 ### 3. 性能评估
 
@@ -129,7 +129,7 @@ print(f"跟踪效率: {performance['efficiency']:.2f}%")
 print(f"平均功率: {performance['p_avg']:.2f} W")
 print(f"稳态振荡: {performance['oscillation']:.3f} W")
 print(f"建立时间: {performance['settling_time']} 步")
-```
+```matlab
 
 ---
 
@@ -219,7 +219,7 @@ print(f"建立时间: {performance['settling_time']} 步")
 **动态步长**:
 ```
 ΔV = ΔV_min + (ΔV_max - ΔV_min) × |dP/dV|
-```
+```python
 - 远离MPP → 大步长
 - 接近MPP → 小步长
 
@@ -237,7 +237,7 @@ v_init = 0.8 × Voc  # MPP通常在80% Voc附近
 v_scan = np.linspace(0, Voc, 20)
 p_scan = [v * module.calculate_current(v) for v in v_scan]
 v_init = v_scan[np.argmax(p_scan)]
-```
+```python
 
 ### 2. 滤波处理
 
@@ -245,7 +245,7 @@ v_init = v_scan[np.argmax(p_scan)]
 # 功率滤波(抑制噪声)
 alpha = 0.8
 p_filtered = alpha * p_prev + (1-alpha) * p_current
-```
+```python
 
 ### 3. 边界保护
 
@@ -257,7 +257,7 @@ v_ref = np.clip(v_ref, v_min, v_max)
 if power < 0.1 * p_rated:
     # 可能夜间或故障,停止MPPT
     pass
-```
+```python
 
 ### 4. 死区设置
 

@@ -69,12 +69,12 @@ Python >= 3.8
 numpy >= 1.21.0
 matplotlib >= 3.4.0
 scipy >= 1.7.0
-```
+```python
 
 ### 安装依赖
 ```bash
 pip install numpy matplotlib scipy
-```
+```python
 
 ### 运行示例
 
@@ -82,13 +82,13 @@ pip install numpy matplotlib scipy
 ```bash
 cd day01_static_pressure
 python3 static_pressure_sprint.py
-```
+```python
 
 **Day 4：伯努利方程**
 ```bash
 cd day04_bernoulli
 python3 bernoulli_sprint.py
-```
+```matlab
 
 ---
 
@@ -226,14 +226,14 @@ python3 bernoulli_sprint.py
 python --version  # 需要>=3.8
 pip list | grep numpy
 pip list | grep matplotlib
-```
+```python
 
 ### Q2：图表中文显示方框？
 **A**：安装中文字体：
 ```bash
 # Mac
 # Linux: sudo apt install fonts-wqy-microhei
-```
+```python
 
 ### Q3：如何修改例题参数？
 **A**：直接修改Python文件中的参数值，重新运行即可

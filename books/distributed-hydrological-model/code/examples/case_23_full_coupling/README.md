@@ -8,7 +8,7 @@
 
 ### 1. 完全耦合模型
 
-```
+```python
 降雨 → 网格产流 → 坡面汇流 → 河道水动力 → 出口流量
        (XAJ)     (线性水库)   (Saint-Venant)
 ```
@@ -28,7 +28,7 @@ class GridCell:
     is_channel: bool     # 是否河道
     runoff: float        # 产流量
     discharge: float     # 出流
-```
+```python
 
 **关键算法**：
 - D8流向：最陡下坡方向
@@ -42,7 +42,7 @@ class GridCell:
 for each grid_cell:
     model = XinAnJiangModel(params)
     runoff[i,j,:] = model.run(rainfall[i,j,:], evap[i,j,:])
-```
+```python
 
 ### 4. 坡面汇流
 
@@ -50,7 +50,7 @@ for each grid_cell:
 ```
 dS/dt = I(t) - Q(t)
 Q(t) = S(t) / K
-```
+```python
 
 其中K为调蓄系数。
 
@@ -60,7 +60,7 @@ Saint-Venant方程（简化Muskingum-Cunge）：
 ```
 ∂A/∂t + ∂Q/∂x = q_lateral
 ∂Q/∂t + ∂(Q²/A)/∂x + gA∂h/∂x = -gASf
-```
+```python
 
 ### 6. 耦合接口
 
@@ -71,7 +71,7 @@ lateral_inflow = aggregate_slope_runoff()
 # 河道演进
 for t in time_steps:
     h_new, Q_new = channel.solve_step(Q_upstream, lateral_inflow)
-```
+```python
 
 ## 案例实现
 
@@ -87,7 +87,7 @@ DistributedHydroModel:  # 分布式水文模型
 FullyCoupledModel:  # 耦合模型
   - setup_channel_model()  # 设置河道
   - run_coupled_simulation()  # 耦合模拟
-```
+```python
 
 ### 2. 模拟场景
 
@@ -123,7 +123,7 @@ FullyCoupledModel:  # 耦合模型
 【河道水深】
   最大水深: 0.50 m
   平均水深: 0.16 m
-```
+```python
 
 ### 4. 技术要点
 

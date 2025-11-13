@@ -81,7 +81,7 @@ from case_02_pump_station import MultiPumpController
 from case_02_pump_station import SimplePIDController
 
 # 4. 数字孪生框架（扩展为3站）
-```
+```python
 
 **复用率**：80%（仅增加多站协调逻辑）
 
@@ -116,7 +116,7 @@ class StartStopCoordinator:
     规则：从下游到上游启动，从上游到下游停止
     """
     pass
-```
+```python
 
 ---
 
@@ -132,7 +132,7 @@ H=0m      扬程50m           H=50m         扬程50m           H=100m        �
          Q1=0~21m³/s                     Q2=0~21m³/s                     Q3=0~21m³/s
 
 目标：Q1 ≈ Q2 ≈ Q3 ≈ Q_target (20 m³/s)
-```
+```python
 
 **控制目标**：
 - 中间池1水位：h1 = 3.0 m（避免溢出或干涸）
@@ -178,7 +178,7 @@ station3.update(h_target)  # 只看目标流量
 # - 流量不匹配：Q1=21, Q2=14, Q3=21 → 中间池1溢出
 # - 能耗高：未全局优化
 # - 启停无序：水锤风险
-```
+```python
 
 **协调控制（本案例）**：
 ```python
@@ -189,7 +189,7 @@ Q1, Q2, Q3 = MultiStationCoordinator.update(h1, h2, Q_demand)
 # - 流量连续性约束
 # - 全局能耗最优
 # - 启停顺序协调
-```
+```python
 
 #### 2.2 多站协调控制器设计
 
@@ -314,7 +314,7 @@ class StartStopCoordinator:
         self.last_status3 = status3.copy()
         
         return status1, status2, status3
-```
+```python
 
 #### 2.3 流量连续性约束
 
@@ -330,7 +330,7 @@ class StartStopCoordinator:
 
 解决：流量连续性约束
 Q1 ≈ Q2 ≈ Q3 ± 1 m³/s
-```
+```matlab
 
 ---
 

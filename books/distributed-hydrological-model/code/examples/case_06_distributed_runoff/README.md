@@ -55,7 +55,7 @@
 
 #### 分布式建模流程
 
-```
+```python
 1. 流域网格化
    └─> 划分规则网格（本案例）或不规则网格
 
@@ -94,7 +94,7 @@
 - 经验值：50m - 500m
 
 **网格编号**：
-```
+```python
 (0,0)  (0,1)  (0,2) ... (0,nx-1)
 (1,0)  (1,1)  (1,2) ... (1,nx-1)
 ...
@@ -107,7 +107,7 @@
 ```python
 basin_mask[i, j] = True   # 网格在流域内
 basin_mask[i, j] = False  # 网格在流域外
-```
+```bash
 
 ### 2. 降雨空间插值
 
@@ -142,7 +142,7 @@ $d_i$ 是站点到网格中心的距离。
 ```python
 # 蒸散发随高程减小
 ET_param = base_value * (1 - 0.1 * elevation / max_elevation)
-```
+```python
 
 **方法2：基于土壤**
 ```python
@@ -151,7 +151,7 @@ if soil_type == 'clay':
     WM = 150
 elif soil_type == 'loam':
     WM = 120
-```
+```python
 
 **方法3：基于土地利用**
 ```python
@@ -160,13 +160,13 @@ if land_use == 'forest':
     IMP = 0.01  # 不透水面积比例
 elif land_use == 'urban':
     IMP = 0.6
-```
+```python
 
 **方法4：随机场（本案例）**
 ```python
 # 添加空间趋势 + 随机扰动
 param = base_value * trend_factor * random_factor
-```
+```python
 
 ### 4. 网格化产流计算
 
@@ -180,7 +180,7 @@ for each grid (i, j):
         P_grid = interpolated_rainfall[i, j]
         params_grid = parameter_field[i, j]
         R_grid = runoff_model(P_grid, params_grid)
-```
+```bash
 
 #### 流域总产流
 
@@ -219,7 +219,7 @@ def create_basin_grid(nx=20, ny=20, dx=100, dy=100):
     y = np.arange(0, ny * dy, dy) + dy / 2
     grid_x, grid_y = np.meshgrid(x, y)
     return grid_x, grid_y
-```
+```python
 
 **说明**：
 - 网格中心坐标，便于插值
@@ -233,7 +233,7 @@ def create_circular_basin(grid_x, grid_y, center_x, center_y, radius):
     distance = np.sqrt((grid_x - center_x)**2 + (grid_y - center_y)**2)
     mask = distance <= radius
     return mask
-```
+```python
 
 **说明**：
 - 简化实例，实际应用可用DEM提取流域边界
@@ -274,7 +274,7 @@ def interpolate_rainfall_to_grid(grid_x, grid_y, basin_mask,
                 idx += 1
     
     return grid_rainfall
-```
+```python
 
 **关键点**：
 1. 只对流域内网格插值（节省计算）
@@ -307,7 +307,7 @@ def create_parameter_field(grid_x, grid_y, basin_mask, param_name='WM',
                 param_field[i, j] = base_value * random_factor * trend_factor
     
     return param_field
-```
+```python
 
 **说明**：
 - 组合确定性趋势和随机变异
@@ -356,7 +356,7 @@ def run_distributed_runoff_model(grid_x, grid_y, basin_mask,
         total_runoff[t] = np.nanmean(runoff_grid[t, basin_mask])
     
     return runoff_grid, total_runoff
-```
+```matlab
 
 **关键设计**：
 1. 每个网格独立的模型实例（保持状态）
@@ -570,7 +570,7 @@ def run_distributed_runoff_model(grid_x, grid_y, basin_mask,
 # 基于DEM的不规则三角网
 from scipy.spatial import Delaunay
 tri = Delaunay(points)
-```
+```python
 
 ### 2. 汇流计算
 
@@ -580,7 +580,7 @@ for each grid:
     flow_direction = calculate_flow_dir(DEM)
     travel_time = calculate_travel_time(distance, slope)
     routed_flow = route_runoff(runoff, travel_time)
-```
+```python
 
 ### 3. 多分辨率网格
 
@@ -590,7 +590,7 @@ if is_critical_area(x, y):
     dx = 50  # 细网格
 else:
     dx = 200  # 粗网格
-```
+```python
 
 ### 4. 实际数据应用
 

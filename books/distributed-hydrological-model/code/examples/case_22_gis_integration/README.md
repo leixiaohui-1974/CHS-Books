@@ -38,7 +38,7 @@ class SpatialData:
     crs: str             # 坐标参考系统
     shape: tuple         # 数组形状 (rows, cols)
     dx, dy: float        # 栅格分辨率
-```
+```python
 
 **特点**：
 - 规则网格
@@ -56,7 +56,7 @@ class SubBasin:
     area: float         # 面积
     centroid: np.ndarray # 质心
     attributes: dict    # 属性字典
-```
+```python
 
 **特点**：
 - 精确边界
@@ -69,7 +69,7 @@ class SubBasin:
 
 ```
 DEM → 填洼 → 流向 → 流量累积 → 河网提取 → 子流域划分
-```
+```python
 
 **关键步骤**：
 1. **DEM预处理**：填平洼地
@@ -97,7 +97,7 @@ def create_subbasins(n_basins=5):
     for boundary in boundaries:
         basin = SubBasin(id, boundary)
         basins.append(basin)
-```
+```python
 
 ### 4. 空间属性提取
 
@@ -113,7 +113,7 @@ def contains_point(self, x, y):
         if 射线与边相交:
             inside = not inside
     return inside
-```
+```python
 
 #### 4.2 统计量提取
 
@@ -130,7 +130,7 @@ def extract_basin_statistics(layer_name):
         basin.std = np.std(values)
         basin.min = np.min(values)
         basin.max = np.max(values)
-```
+```python
 
 ### 5. 空间插值应用
 
@@ -139,7 +139,7 @@ def extract_basin_statistics(layer_name):
 ```python
 Z(x,y) = Σ wᵢ·zᵢ / Σ wᵢ
 wᵢ = 1 / dᵢᵖ
-```
+```python
 
 **特点**：
 - 光滑过渡
@@ -150,7 +150,7 @@ wᵢ = 1 / dᵢᵖ
 
 ```python
 Z(x,y) = zₙₑₐᵣₑₛₜ
-```
+```python
 
 **特点**：
 - 分区均匀
@@ -185,7 +185,7 @@ class SpatialData:
         col = int((x - xmin) / dx)
         row = int((ymax - y) / dy)
         return data[row, col]
-```
+```python
 
 #### 1.2 SubBasin类
 
@@ -208,7 +208,7 @@ class SubBasin:
     def contains_point(self, x, y):
         """射线法判断点是否在内"""
         # ... (射线法实现)
-```
+```python
 
 #### 1.3 WatershedGIS类
 
@@ -235,7 +235,7 @@ class WatershedGIS:
     def spatial_interpolation(self, stations, values, method):
         """空间插值"""
         # ... (IDW或Thiessen)
-```
+```python
 
 ### 2. 模拟数据生成
 
@@ -246,7 +246,7 @@ class WatershedGIS:
 X, Y = np.meshgrid(x, y)
 Z = 500 + 300*(X/100) + 400*(Y/100) + 
     50*sin(2πX/50)*cos(2πY/50)
-```
+```python
 
 **特点**：
 - 高程范围：500-1200m
@@ -262,7 +262,7 @@ landuse[30 < Y <= 60, X < 50] = 2   # 中游草地
 landuse[30 < Y <= 60, X >= 50] = 3  # 中游农田
 landuse[Y <= 30] = 3    # 下游农田
 landuse[Y <= 30, X > 60] = 4  # 下游城市
-```
+```python
 
 **分区逻辑**：
 - 上游（高程高）→ 林地
@@ -278,7 +278,7 @@ stations = np.random.uniform([10,10], [90,90], (8,2))
 # 降雨量随高程增加
 rainfall = 500 + (elevation - elev_min) / (elev_max - elev_min) * 300
 rainfall += np.random.normal(0, 20, 8)  # 添加随机噪声
-```
+```python
 
 **特点**：
 - 站点随机分布
@@ -296,7 +296,7 @@ rainfall += np.random.normal(0, 20, 8)  # 添加随机噪声
 6. 空间插值 (IDW & Thiessen)
 7. 提取子流域统计
 8. 生成专题图 (9幅)
-```
+```python
 
 ## 运行结果
 
@@ -308,7 +308,7 @@ DEM尺寸: 100×100
 土地利用: 林地(1), 草地(2), 农田(3), 城市(4)
 雨量站数量: 8个
 降雨范围: 489 - 782 mm
-```
+```python
 
 ### 2. 子流域属性
 
@@ -330,7 +330,7 @@ DEM尺寸: 100×100
 拟合线性关系：
 ```
 y = 0.22x + 440
-```
+```python
 
 **解读**：
 - 正相关但不显著
@@ -448,7 +448,7 @@ def watershed_delineation(dem):
     streams = extract_streams(flow_acc, threshold)
     basins = delineate_watersheds(flow_dir, streams)
     return basins
-```
+```python
 
 ### 2. 三维可视化
 
@@ -458,7 +458,7 @@ from mpl_toolkits.mplot3d import Axes3D
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.plot_surface(X, Y, Z, cmap='terrain')
-```
+```python
 
 ### 3. 交互式GIS
 
@@ -468,7 +468,7 @@ import plotly.graph_objects as go
 
 fig = go.Figure(data=[go.Surface(z=Z, x=X, y=Y)])
 fig.show()
-```
+```python
 
 ### 4. 与专业GIS软件集成
 
@@ -483,7 +483,7 @@ dem_array = dataset.ReadAsArray()
 # 矢量
 vector = ogr.Open('basins.shp')
 layer = vector.GetLayer()
-```
+```python
 
 ## 运行方式
 

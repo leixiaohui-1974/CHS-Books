@@ -6,7 +6,7 @@
 ## 核心理论
 
 **藻类生长方程**：
-```
+```python
 dChl/dt = (μ - r - m) * Chl
 μ = μ_max * f_N * f_P * f_I * f_T
 ```

@@ -40,7 +40,7 @@
 - 最小流量: 10% MAF
 
 **公式**:
-```
+```python
 Q_eco = α × Q_MAF
 ```
 
@@ -69,7 +69,7 @@ Q_eco = α × Q_MAF
 - 保证底栖生物的栖息空间
 
 **公式**:
-```
+```python
 h_target = 0.25 × h_max
 Q_eco = Q(h_target)
 ```
@@ -91,7 +91,7 @@ Q_eco = Q(h_target)
 ```bash
 cd /workspace/books/ecohydraulics/code/examples/case_01_ecological_flow
 python main.py
-```
+```matlab
 
 ### 预期输出
 

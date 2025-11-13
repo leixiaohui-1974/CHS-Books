@@ -37,7 +37,7 @@
 通过观测数据，寻找使模型模拟结果与观测最接近的参数值。
 
 **数学表达**:
-```
+```python
 min  f(θ) = ||Y_obs - Y_sim(θ)||
  θ
 
@@ -60,13 +60,13 @@ s.t. θ_min ≤ θ ≤ θ_max
 **核心步骤**:
 
 1. **初始化种群**（拉丁超立方采样）
-```
+```python
 P = {θ₁, θ₂, ..., θₙ}
 n = m × p  (m个复合体，每个p个点)
 ```
 
 2. **划分复合体**（按序号分配）
-```
+```python
 C₁ = {θ₁, θ_{m+1}, θ_{2m+1}, ...}
 C₂ = {θ₂, θ_{m+2}, θ_{2m+2}, ...}
 ...
@@ -102,13 +102,13 @@ C₂ = {θ₂, θ_{m+2}, θ_{2m+2}, ...}
 
 **Simplex操作**:
 1. **反射**：质心对称
-```
+```python
 θ_r = θ_c + α(θ_c - θ_worst)
 α = 1
 ```
 
 2. **收缩**：向质心靠拢
-```
+```python
 θ_s = θ_c + β(θ_worst - θ_c)
 β = 0.5
 ```
@@ -118,7 +118,7 @@ C₂ = {θ₂, θ_{m+2}, θ_{2m+2}, ...}
 **常用指标**:
 
 1. **NSE（Nash-Sutcliffe Efficiency）**:
-```
+```python
 NSE = 1 - Σ(Q_obs - Q_sim)² / Σ(Q_obs - Q̄_obs)²
 ```
 - 最大化
@@ -126,13 +126,13 @@ NSE = 1 - Σ(Q_obs - Q_sim)² / Σ(Q_obs - Q̄_obs)²
 - 1为完美
 
 2. **RMSE（均方根误差）**:
-```
+```python
 RMSE = √(Σ(Q_obs - Q_sim)² / n)
 ```
 - 最小化
 
 3. **多目标函数**:
-```
+```python
 F = w₁×NSE + w₂×(1-RMSE_norm) + w₃×PBias
 ```
 
@@ -162,7 +162,7 @@ def create_calibration_objective(rainfall, EM, observed,
         return nse  # 最大化
     
     return objective
-```
+```python
 
 ### 2. SCE-UA优化
 
@@ -179,7 +179,7 @@ result = optimizer.optimize(
     tolerance=1e-4,
     verbose=True
 )
-```
+```python
 
 ### 3. 结果分析
 
@@ -188,7 +188,7 @@ best_params = result['best_params']
 best_score = result['best_score']  # NSE
 n_iterations = result['n_iterations']
 converged = result['converged']
-```
+```matlab
 
 ---
 
@@ -276,7 +276,7 @@ converged = result['converged']
 **组合目标函数**:
 ```python
 F = 0.5×NSE + 0.3×(1-PBIAS/100) + 0.2×LogNSE
-```
+```python
 
 **权重选择**:
 - 洪峰精度：增大NSE权重

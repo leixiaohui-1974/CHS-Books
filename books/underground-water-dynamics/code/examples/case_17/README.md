@@ -24,7 +24,7 @@
 ### 为什么发生地面沉降？
 
 **物理过程**：
-```
+```python
 地下水开采 → 水位下降 → 孔隙水压力降低
          ↓
 有效应力增加 → 土骨架压缩 → 地面沉降
@@ -52,7 +52,7 @@
 **基本原理**（1923）：
 
 土体受到的总应力由两部分承担：
-```
+```python
 σ = σ' + u
 
 σ: 总应力（土粒+水承担）
@@ -73,19 +73,19 @@ u: 孔隙水压力（水承担）
 **排水条件**（地下水位下降）：
 
 水位下降 Δh → 孔压降低 Δu：
-```
+```python
 Δu = γw * Δh
 
 γw: 水的重度 ≈ 9.81 kN/m³
 ```
 
 总应力不变（土柱重量不变）：
-```
+```python
 Δσ = 0
 ```
 
 有效应力增加：
-```
+```python
 Δσ' = Δσ - Δu = 0 - Δu = -Δu
 
 Δσ' = γw * |Δh|  （水位下降时）
@@ -102,7 +102,7 @@ u: 孔隙水压力（水承担）
 **适用**：小应力增量
 
 **公式**：
-```
+```python
 ΔH = av * Δσ' * H
 
 av: 压缩系数 [1/kPa]
@@ -120,7 +120,7 @@ H: 土层厚度 [m]
 **适用**：大应力范围
 
 **e-logσ'直线关系**：
-```
+```python
 e = e0 - Cc * log10(σ' / σ'0)
 
 e: 孔隙比
@@ -128,7 +128,7 @@ Cc: 压缩指数
 ```
 
 **压缩量**：
-```
+```python
 ΔH/H = Δε = Cc / (1+e0) * log10(σ'f / σ'0)
 ```
 
@@ -155,7 +155,7 @@ Cc: 压缩指数
    - 压缩性小
 
 **压缩行为**：
-```
+```python
 σ'0 → σ'c: 再压缩（Cs, 小压缩）
 σ'c → σ'f: 正常压缩（Cc, 大压缩）
 
@@ -165,7 +165,7 @@ Cs: 回弹指数 ≈ Cc/5
 ### 5. 固结时间过程
 
 **Terzaghi一维固结方程**：
-```
+```python
 ∂u/∂t = Cv * ∂²u/∂z²
 
 u: 超孔隙水压力
@@ -173,7 +173,7 @@ Cv: 固结系数 [m²/day]
 ```
 
 **固结系数**：
-```
+```python
 Cv = k / (γw * mv)
 
 k: 渗透系数
@@ -181,7 +181,7 @@ mv: 体积压缩系数
 ```
 
 **平均固结度U(t)**：
-```
+```python
 U(Tv) = 1 - Σ (2/M²) * exp(-M²Tv)
 
 Tv = Cv*t / H²  (时间因子)
@@ -197,7 +197,7 @@ H: 排水距离
 - U = 90%: Tv = 0.848
 
 **固结沉降**：
-```
+```python
 S(t) = U(t) * S_ultimate
 ```
 
@@ -219,7 +219,7 @@ def compute_effective_stress_change(head_change, gamma_water=9.81):
 dh = -30  # 水位下降30m
 delta_sigma = compute_effective_stress_change(dh)
 print(f"有效应力增加: {delta_sigma:.1f} kPa")  # 294.3 kPa
-```
+```python
 
 ### 土层类
 
@@ -243,7 +243,7 @@ class SoilLayer:
         """对数压缩"""
         strain = self.Cc / (1 + self.e0) * np.log10(sigma_f / sigma_0)
         return strain * self.thickness
-```
+```python
 
 ### 沉降模型
 
@@ -265,7 +265,7 @@ class SubsidenceModel:
             comp = layer.compute_compression_linear(ds)
             total += comp
         return total
-```
+```python
 
 ### 固结度计算
 
@@ -284,7 +284,7 @@ Cv, H, t = 1.0, 5.0, 100  # m²/day, m, day
 Tv = Cv * t / H**2
 U = consolidation_degree(Tv)
 print(f"固结度: {U*100:.1f}%")
-```
+```python
 
 ---
 
@@ -295,7 +295,7 @@ print(f"固结度: {U*100:.1f}%")
 ```bash
 cd code/examples/case_17
 python3 case_17_subsidence.py
-```
+```python
 
 ### 预期输出（节选）
 
@@ -401,7 +401,7 @@ python3 case_17_subsidence.py
   总沉降是各层叠加
 
 ✅ 案例17执行完成！
-```
+```matlab
 
 ### 生成图片
 
@@ -516,7 +516,7 @@ for name, params in soil_types.items():
     layer = SoilLayer(name, 0, -10, av=params['av'])
     comp = layer.compute_compression_linear(294.3)  # 30m降深
     print(f"{name}: {comp*100:.1f} cm")
-```
+```python
 
 **预期**：
 - 砂土：~5cm
@@ -533,7 +533,7 @@ Cv_range = [0.1, 0.5, 1.0, 5.0, 10.0]  # m²/day
 for Cv in Cv_range:
     t50 = 0.197 * H**2 / Cv
     print(f"Cv={Cv}: t50={t50:.1f} day")
-```
+```python
 
 **预期**：
 - Cv↑10倍 → t↓10倍
@@ -552,7 +552,7 @@ H_single = layer_thickness
 
 # 时间比
 time_ratio = (H_single / H_double)**2  # = 4
-```
+```python
 
 **预期**：
 - 单面排水时间是双面的4倍

@@ -20,12 +20,12 @@
 
 #### 2.1 水力联系
 
-```
+```python
 上游出流 → (传播延迟) → 下游入流
 ```
 
 水量平衡关系：
-```
+```python
 下游入流 = 上游出流(t-τ) + 区间入流
 ```
 
@@ -56,7 +56,7 @@
 
 ```python
 削峰率 = (入流峰值 - 出流峰值) / 入流峰值 × 100%
-```
+```python
 
 **梯级削峰效果**：
 - 逐级削减洪峰
@@ -92,7 +92,7 @@ class CascadeReservoirSystem:
             'downstream': downstream_idx,
             'travel_time': travel_time
         })
-```
+```python
 
 #### 1.2 三级水库系统
 
@@ -118,7 +118,7 @@ for conn in self.connections:
     if t >= delay:
         upstream_outflow = results[upstream]['outflow'][t - delay]
         total_inflows[down_idx] += upstream_outflow
-```
+```python
 
 #### 2.2 逐库调度
 
@@ -143,7 +143,7 @@ for i, res_info in enumerate(self.reservoirs):
     delta_storage = (current_inflow - outflow) * dt / 1e4
     new_storage = current_storage + delta_storage
     new_level = reservoir._storage_to_level(new_storage)
-```
+```python
 
 ### 3. 洪水场景设计
 
@@ -157,7 +157,7 @@ for day in flood_days:
     for i in range(15):
         if day + i < n_days:
             inflow[day + i] += peak_magnitude * exp(-((i - 7.5) / 3)²)
-```
+```python
 
 #### 3.2 区间入流差异
 
@@ -199,7 +199,7 @@ for day in flood_days:
   区间平均入流总和: 252.1 m³/s
   系统平均出流: 234.0 m³/s
   系统最大出流: 400.0 m³/s
-```
+```python
 
 ### 2. 关键发现
 
@@ -214,7 +214,7 @@ for day in flood_days:
 系统最大入流: 701.8 m³/s
 系统最大出流: 400.0 m³/s
 系统削峰率: 43.0%
-```
+```python
 
 #### 2.2 补偿调节
 
@@ -232,7 +232,7 @@ for day in flood_days:
 下游最大入流 = 中游最大出流 + 下游区间入流
              = 600.0 + 117.0
              = 717.0 m³/s  (实际701.8，考虑传播延迟)
-```
+```python
 
 ## 可视化
 
@@ -281,12 +281,12 @@ for day in flood_days:
 每个水库独立计算水量平衡：
 ```
 ΔS = (I - Q) × Δt
-```
+```python
 
 系统水量守恒：
 ```
 ∑区间入流 = 系统出流 + ΔS总
-```
+```python
 
 ### 3. 调度规则
 

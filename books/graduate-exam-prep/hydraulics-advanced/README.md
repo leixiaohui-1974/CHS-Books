@@ -331,7 +331,7 @@
 ```bash
 git clone [repository-url]
 cd hydraulics-advanced
-```
+```python
 
 ### 2. 查看章节目录
 ```bash

@@ -44,7 +44,7 @@ from case_14_regional_irrigation import ReservoirGroupOptimizer
 from case_15_flood_control import FloodControlCoordinator
 
 # 扩展：多目标优化配置
-```
+```matlab
 
 **复用率**：75%
 
@@ -66,7 +66,7 @@ class MultiObjectiveOptimizer:
     创新：多目标协同优化，综合效益提升25%
     """
     pass
-```
+```python
 
 ---
 

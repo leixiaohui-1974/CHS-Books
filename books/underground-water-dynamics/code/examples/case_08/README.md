@@ -25,12 +25,12 @@
 ### 贝叶斯定理
 
 **核心公式**：
-```
+```python
 p(θ|D) = p(D|θ) p(θ) / p(D)
 ```
 
 或写成比例形式：
-```
+```python
 p(θ|D) ∝ p(D|θ) p(θ)
 后验 ∝ 似然 × 先验
 ```
@@ -76,7 +76,7 @@ p(θ|D) ∝ p(D|θ) p(θ)
 
 **问题**：后验分布通常无法解析计算
 
-```
+```python
 p(θ|D) = p(D|θ)p(θ) / ∫p(D|θ)p(θ)dθ
                       ↑
               积分通常无法计算
@@ -88,7 +88,7 @@ p(θ|D) = p(D|θ)p(θ) / ∫p(D|θ)p(θ)dθ
 
 **算法流程**：
 
-```
+```python
 1. 初始化：选择初始参数θ₀
 2. For t = 1, 2, ..., T:
    a) 从提议分布生成候选：θ* ~ q(·|θₜ)
@@ -113,12 +113,12 @@ p(θ|D) = p(D|θ)p(θ) / ∫p(D|θ)p(θ)dθ
 ### 对称提议分布
 
 当使用对称提议分布（如正态分布）时：
-```
+```python
 q(θ*|θₜ) = q(θₜ|θ*)
 ```
 
 接受概率简化为：
-```
+```python
 α = min(1, p(θ*|D) / p(θₜ|D))
 ```
 
@@ -129,17 +129,17 @@ q(θ*|θₜ) = q(θₜ|θ*)
 ### 正态似然
 
 假设观测误差为独立正态分布：
-```
+```python
 h_obs,i ~ N(h_sim,i(θ), σ²)
 ```
 
 似然函数：
-```
+```python
 p(D|θ) = Π N(h_obs,i | h_sim,i(θ), σ²)
 ```
 
 对数似然：
-```
+```python
 log p(D|θ) = -n/2 log(2πσ²) - Σ(h_obs - h_sim)² / (2σ²)
 ```
 
@@ -148,7 +148,7 @@ log p(D|θ) = -n/2 log(2πσ²) - Σ(h_obs - h_sim)² / (2σ²)
 **已知σ²**：作为给定常数
 
 **未知σ²**：作为额外参数推断
-```
+```python
 θ_augmented = [θ, σ²]
 ```
 
@@ -156,7 +156,7 @@ log p(D|θ) = -n/2 log(2πσ²) - Σ(h_obs - h_sim)² / (2σ²)
 
 ### 无信息先验（均匀分布）
 
-```
+```python
 p(θ) = 1/(b-a)    if a ≤ θ ≤ b
      = 0          otherwise
 ```
@@ -168,7 +168,7 @@ p(θ) = 1/(b-a)    if a ≤ θ ≤ b
 
 ### 信息性先验（正态分布）
 
-```
+```python
 p(θ) ~ N(μ_prior, σ_prior²)
 ```
 
@@ -188,29 +188,29 @@ p(θ) ~ N(μ_prior, σ_prior²)
 ### 点估计
 
 **后验均值**（最常用）：
-```
+```python
 E[θ|D] = ∫ θ p(θ|D) dθ
 ```
 
 **后验中位数**：
-```
+```python
 Median[θ|D]
 ```
 
 **后验众数（MAP）**：
-```
+```python
 arg max p(θ|D)
 ```
 
 ### 区间估计
 
 **95% 可信区间**：
-```
+```python
 P(θ_lower ≤ θ ≤ θ_upper | D) = 0.95
 ```
 
 通常使用百分位数：
-```
+```python
 θ_lower = 2.5th percentile
 θ_upper = 97.5th percentile
 ```
@@ -218,7 +218,7 @@ P(θ_lower ≤ θ ≤ θ_upper | D) = 0.95
 ### 预测分布
 
 对于新数据点y_new：
-```
+```python
 p(y_new|D) = ∫ p(y_new|θ) p(θ|D) dθ
 ```
 
@@ -263,7 +263,7 @@ p(y_new|D) = ∫ p(y_new|θ) p(θ|D) dθ
 ### 有效样本数
 
 考虑自相关后的有效独立样本数：
-```
+```python
 n_eff = n_samples / (1 + 2Σρₖ)
 ```
 
@@ -273,7 +273,7 @@ n_eff = n_samples / (1 + 2Σρₖ)
 
 ### DIC（偏差信息准则）
 
-```
+```python
 DIC = D̄ + p_D
 ```
 
@@ -295,7 +295,7 @@ DIC = D̄ + p_D
 ```bash
 cd code/examples/case_08
 python3 case_08_bayesian.py
-```
+```matlab
 
 **注意**：MCMC采样需要较长时间（几分钟）。
 
@@ -342,7 +342,7 @@ prior_params = {
     'mean': np.array([12.0, 20.0, 10.0]),
     'std': np.array([1.0, 0.5, 0.5])
 }
-```
+```python
 
 **观察**：
 - 强先验拉后验向先验
@@ -361,7 +361,7 @@ proposal_std = np.array([5.0, 2.0, 2.0])    # 接受率低，探索不充分
 
 # 适中
 proposal_std = np.array([0.5, 0.2, 0.2])    # 最优
-```
+```python
 
 **观察**：
 - 提议标准差影响接受率
@@ -375,7 +375,7 @@ proposal_std = np.array([0.5, 0.2, 0.2])    # 最优
 burn_in = 1000   # 短：可能未充分收敛
 burn_in = 5000   # 中等：通常足够
 burn_in = 10000  # 长：保守但浪费
-```
+```python
 
 **观察**：
 - 通过链迹图判断
@@ -394,7 +394,7 @@ for i in range(3):
     chains.append(result['chain_burned'])
 
 R_hat = gelman_rubin_diagnostic(chains)
-```
+```python
 
 **观察**：
 - R-hat接近1表示收敛
@@ -406,7 +406,7 @@ R_hat = gelman_rubin_diagnostic(chains)
 ```python
 sigma_obs = 0.01  # 小噪声：后验尖锐
 sigma_obs = 0.5   # 大噪声：后验宽泛
-```
+```python
 
 **观察**：
 - 噪声越大，不确定性越大
@@ -467,7 +467,7 @@ sigma_obs = 0.5   # 大噪声：后验宽泛
 **最大似然（MLE）**：
 ```
 θ_MLE = arg max p(D|θ)
-```
+```python
 - 点估计
 - 频率学派
 - 快速计算
@@ -475,7 +475,7 @@ sigma_obs = 0.5   # 大噪声：后验宽泛
 **最大后验（MAP）**：
 ```
 θ_MAP = arg max p(θ|D) = arg max [p(D|θ)p(θ)]
-```
+```python
 - 点估计
 - 包含先验
 - 当先验均匀时，MAP = MLE
@@ -483,7 +483,7 @@ sigma_obs = 0.5   # 大噪声：后验宽泛
 **全贝叶斯**：
 ```
 完整后验分布 p(θ|D)
-```
+```python
 - 分布估计
 - 完整不确定性
 - MCMC采样
@@ -511,20 +511,20 @@ sigma_obs = 0.5   # 大噪声：后验宽泛
 **从贝叶斯定理**：
 ```
 p(θ|D) = p(D|θ)p(θ) / p(D)
-```
+```python
 
 **对数后验**：
 ```
 log p(θ|D) = log p(D|θ) + log p(θ) - log p(D)
              ↑             ↑           ↑
            似然          先验        常数
-```
+```python
 
 **MCMC只需相对概率**：
 ```
 p(θ*|D) / p(θₜ|D) = exp[log p(D|θ*) + log p(θ*) - 
                          log p(D|θₜ) - log p(θₜ)]
-```
+```python
 
 不需要p(D)！
 
@@ -534,18 +534,18 @@ p(θ*|D) / p(θₜ|D) = exp[log p(D|θ*) + log p(θ*) -
 ```
 h_obs,i = h_sim,i(θ) + εᵢ
 εᵢ ~ N(0, σ²) i.i.d.
-```
+```python
 
 **联合概率**：
 ```
 p(D|θ) = Π (1/√(2πσ²)) exp[-(h_obs,i - h_sim,i)²/(2σ²)]
-```
+```python
 
 **对数似然**：
 ```
 log p(D|θ) = -n/2 log(2πσ²) - Σ(h_obs - h_sim)²/(2σ²)
            = const - RSS/(2σ²)
-```
+```python
 
 其中RSS是残差平方和。
 

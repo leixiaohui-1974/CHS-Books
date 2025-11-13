@@ -23,7 +23,7 @@
 ### 串并联特性
 
 **串联特性** (提升电压):
-```
+```python
 配置: Ns个组件串联
 电压: V_array = Ns × V_module  (电压相加)
 电流: I_array = I_module        (电流不变)
@@ -31,7 +31,7 @@
 ```
 
 **并联特性** (提升电流):
-```
+```python
 配置: Np串并联
 电压: V_array = V_module        (电压不变)
 电流: I_array = Np × I_module   (电流相加)
@@ -39,7 +39,7 @@
 ```
 
 **组合配置** (NsxNp):
-```
+```python
 结构: Np串, 每串Ns个组件
 总组件数: Ntotal = Ns × Np
 电压: V_array = Ns × V_module
@@ -58,7 +58,7 @@
 ### 逆变器匹配
 
 **MPPT电压范围**:
-```
+```python
 典型逆变器: 200-850V
 组件Vmpp: ~30-40V
 
@@ -93,7 +93,7 @@ array_10s = PVArray(
 )
 
 array_10s.print_parameters()
-```
+```python
 
 输出:
 ```
@@ -114,7 +114,7 @@ array_10s.print_parameters()
   最大功率 Pmpp:         2160.00 W (2.16 kW)
   填充因子 FF:           0.7500 (75.00%)
 ======================================================================
-```
+```python
 
 ### 2. 不同配置对比
 
@@ -133,7 +133,7 @@ for array in [array_s, array_p, array_sp]:
     print(f"{array.name}:")
     print(f"  配置: {array.Np}P{array.Ns}S")
     print(f"  Vmpp={v:.1f}V, Impp={i:.1f}A, Pmpp={p/1000:.1f}kW\n")
-```
+```python
 
 输出:
 ```
@@ -148,7 +148,7 @@ for array in [array_s, array_p, array_sp]:
 串并联:
   配置: 10P20S
   Vmpp=576.0V, Impp=75.0A, Pmpp=43.2kW
-```
+```python
 
 ### 3. 设计1MW电站
 
@@ -181,7 +181,7 @@ print(f"\n系统规模:")
 print(f"  占地面积: {size_info['total_area']:.0f} m²")
 print(f"  实际功率: {size_info['power_MW']:.3f} MW")
 print(f"  系统效率: {size_info['efficiency']:.2f} %")
-```
+```python
 
 输出:
 ```
@@ -210,7 +210,7 @@ print(f"  系统效率: {size_info['efficiency']:.2f} %")
   占地面积: 8000 m²
   实际功率: 1.080 MW
   系统效率: 13.50 %
-```
+```python
 
 ### 4. 优化配置设计
 
@@ -270,7 +270,7 @@ def optimize_array_configuration(module, target_power_kW,
 
 # 示例: 100kW系统
 optimize_array_configuration(module, target_power_kW=100)
-```
+```python
 
 输出:
 ```
@@ -284,7 +284,7 @@ optimize_array_configuration(module, target_power_kW=100)
 77P6S      462      172.8      52.5       100.1     
 23P20S     460      576.0      150.0      100.4     
 15P29S     435      835.2      112.5      93.9      
-```
+```python
 
 ### 5. 汇流箱设计
 
@@ -301,7 +301,7 @@ print(f"  接入串数: {specs['num_strings']}")
 print(f"  熔断器: {'有' if specs['fuses'] else '无'}")
 print(f"  防雷器: {'有' if specs['surge_protector'] else '无'}")
 print(f"  断路器: {'有' if specs['breaker'] else '无'}")
-```
+```python
 
 ---
 
@@ -359,14 +359,14 @@ print(f"  断路器: {'有' if specs['breaker'] else '无'}")
 步骤6: 验证设计
   → 电压/电流/功率校核
   → 逆变器容配比
-```
+```python
 
 ### 2. 容配比设计
 
 **定义**: 
 ```
 容配比 = 组件总功率 / 逆变器额定功率
-```
+```python
 
 **推荐值**:
 - 固定支架: 1.0-1.2

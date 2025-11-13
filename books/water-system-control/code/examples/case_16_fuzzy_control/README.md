@@ -73,14 +73,14 @@
 传统集合：元素属于或不属于（0或1）
 模糊集合：元素以某个程度属于（0~1之间）
 常用隶属函数：
-```
+```python
 三角形：trimf(x, [a, b, c])
 梯形：trapmf(x, [a, b, c, d])
 高斯：gaussmf(x, mean, sigma)
 ```
 
 示例：定义"误差为负大（NB）"
-```
+```python
 NB的隶属函数：trimf(e, [-2, -2, -1])
 当e=-2时，μ_NB(e)=1（完全属于NB）
 当e=-1.5时，μ_NB(e)=0.5（部分属于NB）
@@ -98,7 +98,7 @@ NB的隶属函数：trimf(e, [-2, -2, -1])
 - **PB（Positive Big）**：正大
 
 ### 3. 模糊控制器结构
-```
+```python
 输入 → [模糊化] → [模糊推理] → [去模糊化] → 输出
           ↑           ↑
       隶属函数     规则库
@@ -124,7 +124,7 @@ NB的隶属函数：trimf(e, [-2, -2, -1])
 - 输入2：误差变化率 Δe = de/dt
 - 输出：控制增量 Δu
 **典型规则表**（7×7规则）：
-```
+```python
        Δe
     NB  NM  NS  ZE  PS  PM  PB
 e NB| PB  PB  PM  PM  PS  ZE  ZE
@@ -149,7 +149,7 @@ e NB| PB  PB  PM  PM  PS  ZE  ZE
 
 ### 5. 模糊PID控制器
 **增量式模糊PID**：
-```
+```python
 传统增量式PID：
 Δu(k) = Kp*[e(k) - e(k-1)] + Ki*e(k) + Kd*[e(k) - 2e(k-1) + e(k-2)]
 模糊PID：
@@ -202,7 +202,7 @@ u(k) = u(k-1) + Δu(k)
 cd books/water-system-control/code/examples/case_16_fuzzy_control
 python main.py
 python experiments.py
-```
+```python
 
 ## 预期结果
 1. **模糊控制器性能**：
@@ -270,17 +270,17 @@ python experiments.py
 **三角形隶属函数**：
 ```
 trimf(x; a,b,c) = max(min((x-a)/(b-a), (c-x)/(c-b)), 0)
-```
+```python
 
 **梯形隶属函数**：
 ```
 trapmf(x; a,b,c,d) = max(min((x-a)/(b-a), 1, (d-x)/(d-c)), 0)
-```
+```python
 
 **高斯隶属函数**：
 ```
 gaussmf(x; μ,σ) = exp(-(x-μ)²/(2σ²))
-```
+```python
 
 ### 模糊推理
 **Mamdani推理**：
@@ -289,7 +289,7 @@ gaussmf(x; μ,σ) = exp(-(x-μ)²/(2σ²))
 激活度：αi = min(μ_A1i(x1), μ_A2i(x2))
 输出模糊集：B'i = min(αi, μ_Bi(y))
 聚合：B' = max(B'1, B'2, ..., B'n)
-```
+```python
 
 ### 去模糊化
 **重心法（COG）**：
@@ -297,7 +297,7 @@ gaussmf(x; μ,σ) = exp(-(x-μ)²/(2σ²))
 y* = ∫ y·μ_B'(y) dy / ∫ μ_B'(y) dy
 离散形式：
 y* = Σ yi·μ_B'(yi) / Σ μ_B'(yi)
-```
+```python
 
 ### 模糊PID
 **增量式**：

@@ -57,7 +57,7 @@
 
 ## 技术路线
 
-```
+```python
 不确定性建模
   ├─ 径流不确定性（正态分布）
   ├─ 需水不确定性（情景）
@@ -121,7 +121,7 @@
 ```bash
 cd code/examples/case06_uncertainty_optimization
 python main.py
-```
+```python
 
 ## 核心算法
 
@@ -132,7 +132,7 @@ python main.py
 min E[c₁ᵀx + E_ξ[Q(x, ξ)]]
 s.t. A₁x ≥ b₁
      x ≥ 0
-```
+```python
 
 其中：
 - x: 第一阶段决策（配置容量）
@@ -161,7 +161,7 @@ def expected_objective(x):
     return total
 
 optimize(expected_objective)
-```
+```python
 
 ### 2. 鲁棒优化
 
@@ -171,7 +171,7 @@ min  max  cᵀx
  x  ξ∈U
 s.t. A(ξ)x ≥ b(ξ), ∀ξ ∈ U
      x ≥ 0
-```
+```python
 
 其中：
 - U: 不确定集合（区间、椭球）
@@ -193,14 +193,14 @@ for ξ in uncertainty_set:
         worst_scenario = ξ
 
 minimize(worst_cost)
-```
+```python
 
 ### 3. CVaR风险度量
 
 **条件风险价值**：
 ```
 CVaR_α(X) = E[X | X ≥ VaR_α(X)]
-```
+```python
 
 其中：
 - VaR: 在险价值（分位数）

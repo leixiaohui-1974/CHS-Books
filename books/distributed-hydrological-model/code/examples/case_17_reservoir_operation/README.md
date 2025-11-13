@@ -29,7 +29,7 @@
 
 ### 1. 水库分区
 
-```
+```python
 ┌─────────────────┐ 校核洪水位
 │  超蓄库容       │
 ├─────────────────┤ 设计洪水位
@@ -46,7 +46,7 @@
 ### 2. 调度规则
 
 **防洪调度**:
-```
+```python
 IF 水位 > 设计洪水位 THEN
     出流 = min(入流 × 1.2, 最大泄流)
 ELSE IF 水位 > 防洪限制水位 THEN
@@ -56,7 +56,7 @@ ELSE
 ```
 
 **兴利调度**:
-```
+```python
 IF 水位 < 死水位 + 2m THEN
     出流 = 最小出流
 ELSE IF 水位 > 正常蓄水位 THEN
@@ -67,7 +67,7 @@ ELSE
 
 ### 3. 水量平衡
 
-```
+```python
 ΔS = (Q_in - Q_out) × Δt
 ```
 
@@ -112,7 +112,7 @@ class ReservoirRules:
             new_level = self._storage_to_level(new_storage)
         
         return results
-```
+```python
 
 #### 2. 调度规则
 
@@ -131,7 +131,7 @@ class FloodControlRule(OperationRule):
             return inflow * (0.8 + 0.4 * ratio)
         else:
             return min(inflow * 0.6, self.max_outflow * 0.5)
-```
+```python
 
 ---
 
@@ -161,7 +161,7 @@ class FloodControlRule(OperationRule):
   兴利库容: 67 天 (37.2%)
   限制水位: 113 天 (62.8%)
   防洪库容: 0 天 (0.0%)
-```
+```python
 
 ### 关键发现
 

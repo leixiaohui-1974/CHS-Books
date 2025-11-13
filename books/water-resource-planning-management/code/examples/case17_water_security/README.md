@@ -49,7 +49,7 @@
 
 ## 技术路线
 
-```
+```python
 供水系统
   ├─ 水源（水库）
   ├─ 水厂
@@ -82,7 +82,7 @@
 
 ### 1. 水量平衡模拟
 
-```
+```python
 V(t+1) = V(t) + Inflow(t) - Supply(t)
 Supply(t) = min(Demand(t), Available(t))
 Shortage(t) = Demand(t) - Supply(t)
@@ -90,7 +90,7 @@ Shortage(t) = Demand(t) - Supply(t)
 
 ### 2. 情景概率
 
-```
+```python
 P(正常) = 0.60
 P(干旱) = 0.25
 P(故障) = 0.10
@@ -100,12 +100,12 @@ P(复合) = 0.05
 ### 3. 风险指标
 
 **供水保证率**：
-```
+```python
 R = (T - T_shortage) / T
 ```
 
 **缺水风险**：
-```
+```python
 Risk = Σ P_s * Shortage_s
 ```
 

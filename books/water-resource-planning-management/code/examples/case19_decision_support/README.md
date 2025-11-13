@@ -15,7 +15,7 @@
 
 ### 1. 决策支持系统架构
 
-```
+```python
 数据层
   ├─ 水文数据
   ├─ 需水数据
@@ -62,7 +62,7 @@
 
 ## 技术路线
 
-```
+```python
 问题定义
   ├─ 目标设定
   ├─ 约束识别
@@ -106,7 +106,7 @@ solution2 = optimize_robust()
 
 # 多目标优化
 solution3 = optimize_multiobjective()
-```
+```python
 
 ### 2. 方案评估
 
@@ -124,7 +124,7 @@ solution3 = optimize_multiobjective()
 2. 构造决策矩阵
 3. TOPSIS计算接近度
 4. 方案排序
-```
+```python
 
 ## 运行方法
 

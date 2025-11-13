@@ -32,14 +32,14 @@
 - 串联组件的非线性叠加
 
 **示例**:
-```
+```python
 光照分布: [1000, 1000, 500, 500, 500] W/m²
      ↓
   多个峰值: 全局MPP + 局部MPP1 + 局部MPP2
 ```
 
 #### 2.1.2 P-V曲线特征
-```
+```python
     P (W)
      │    
  200 │     ╭──╮  (全局MPP)
@@ -61,13 +61,13 @@
 - 无法跳出局部最优
 
 **示例**:
-```
+```python
 起点A(10V) → 局部MPP1(15V, 150W)  ❌ 陷入
 起点B(35V) → 全局MPP(25V, 200W)   ✅ 正确
 ```
 
 #### 2.2.2 效率损失
-```
+```matlab
 实际功率 / 全局MPP功率 = 150W / 200W = 75% ❌
 ```
 
@@ -76,7 +76,7 @@
 #### 2.3.1 全局扫描法
 **原理**: 定期扫描整个电压范围
 
-```
+```python
 1. 粗扫描 (V: 0→Voc, 30-50个采样点)
 2. 识别所有峰值
 3. 选择全局最大值
@@ -94,7 +94,7 @@
 #### 2.3.2 粒子群优化(PSO)
 **原理**: 多粒子协同搜索
 
-```
+```python
 10个粒子 → 随机初始位置
    ↓
 并行评估适应度
@@ -116,7 +116,7 @@
 #### 2.3.3 混合策略
 **原理**: PSO全局 + P&O局部
 
-```
+```python
 启动阶段: PSO快速找到全局MPP区域
     ↓
 切换到P&O: 精细跟踪
@@ -165,7 +165,7 @@ class MultiPeakDetector:
                                  'power': powers[i],
                                  'prominence': prominence})
         return sorted(peaks, key=lambda x: x['power'], reverse=True)
-```
+```python
 
 ### 3.2 全局扫描MPPT
 
@@ -192,7 +192,7 @@ class GlobalScanMPPT(MPPTAlgorithm):
             self.v_ref = self.local_algorithm.update(voltage, current)
         
         return self.v_ref
-```
+```python
 
 ### 3.3 混合MPPT
 
@@ -228,7 +228,7 @@ class HybridMPPT(MPPTAlgorithm):
         
         self.best_power = max(self.best_power, power)
         return self.v_ref
-```
+```python
 
 ## 4. 实验与分析
 
@@ -243,7 +243,7 @@ class HybridMPPT(MPPTAlgorithm):
 ```bash
 cd code/examples/case_12_multi_peak_mppt
 python main.py
-```
+```python
 
 **预期结果**:
 ```
@@ -251,7 +251,7 @@ python main.py
   峰1: V=25.0V, P=200W (全局MPP)
   峰2: V=15.0V, P=150W (局部MPP)
   峰3: V=35.0V, P=100W (局部MPP)
-```
+```python
 
 ### 4.2 实验2: P&O陷入局部最优
 
@@ -266,7 +266,7 @@ python main.py
 10V  →  局部MPP(15V)   75%  ❌
 20V  →  全局MPP(25V)  100%  ✅
 35V  →  局部MPP(35V)   50%  ❌
-```
+```matlab
 
 **分析**:
 - P&O对初始点敏感
@@ -288,7 +288,7 @@ python main.py
   ↓
 找到全局MPP: V=25V, P=200W
 跟踪效率: 99%  ✅
-```
+```python
 
 ### 4.4 实验4: 混合MPPT
 
@@ -302,7 +302,7 @@ python main.py
 20步: PSO收敛，切换到P&O
 21-100步: P&O模式 (跟踪)
 跟踪效率: 99.5%  ✅
-```
+```matlab
 
 ## 5. 性能对比
 
@@ -347,7 +347,7 @@ P&O:        10-50ms  ✅
 PSO:        100-500ms (需评估N个电压)
 GlobalScan: 1-3s (扫描期间)
 Hybrid:     50-200ms (取决于模式)
-```
+```python
 
 **建议**:
 - PSO用于启动/重新搜索
@@ -368,7 +368,7 @@ vs
 效率损失: 25-30%
 
 结论: 扫描值得！
-```
+```python
 
 ### 6.3 参数调优
 
@@ -378,19 +378,19 @@ vs
 n_particles = 15  # 增加粒子数
 w = 0.8           # 提高惯性
 max_iterations = 30
-```
+```python
 
 **扫描参数**:
 ```python
 n_scan_points = 30  # 平衡速度与精度
 scan_interval = 100  # 10秒扫描一次(假设100ms/步)
-```
+```python
 
 **切换阈值**:
 ```python
 switch_threshold = 0.95  # PSO达到95%效率切换
 reactivation_threshold = 0.90  # P&O低于90%重启PSO
-```
+```python
 
 ## 7. 扩展方向
 
@@ -424,7 +424,7 @@ reactivation_threshold = 0.90  # P&O低于90%重启PSO
 案例11: PSO   → 全局优化，多峰利器
    ↓
 案例12: Multi → 综合应用，工程实践 ⭐
-```
+```python
 
 ### 8.2 算法选择指南
 

@@ -47,7 +47,7 @@
 
 **方差分解**：
 
-```
+```python
 V(Y) = Σ V_i + Σ V_ij + ... + V_12...n
 ```
 
@@ -59,7 +59,7 @@ V(Y) = Σ V_i + Σ V_ij + ... + V_12...n
 ### Sobol指数
 
 **一阶指数 S_i**：
-```
+```python
 S_i = V_i / V(Y)
 ```
 
@@ -69,7 +69,7 @@ S_i = V_i / V(Y)
 - 范围：[0, 1]
 
 **总效应指数 ST_i**：
-```
+```python
 ST_i = (V(Y) - V_{~i}) / V(Y)
 ```
 
@@ -81,7 +81,7 @@ ST_i = (V(Y) - V_{~i}) / V(Y)
 - ST_i ≥ S_i
 
 **交互效应指数**：
-```
+```python
 I_i = ST_i - S_i
 ```
 
@@ -90,7 +90,7 @@ I_i = ST_i - S_i
 - I_i > 0: 有交互作用
 
 **二阶指数 S_ij**：
-```
+```python
 S_ij = V_ij / V(Y)
 ```
 
@@ -101,13 +101,13 @@ S_ij = V_ij / V(Y)
 **Saltelli采样方案**：
 
 需要两个独立的采样矩阵A和B：
-```
+```python
 A = [a_1, a_2, ..., a_n]  (N × n)
 B = [b_1, b_2, ..., b_n]  (N × n)
 ```
 
 构造C_i矩阵（第i列从B取，其余从A取）：
-```
+```python
 C_i = [a_1, ..., a_{i-1}, b_i, a_{i+1}, ..., a_n]
 ```
 
@@ -138,7 +138,7 @@ C_i = [a_1, ..., a_{i-1}, b_i, a_{i+1}, ..., a_n]
 ### 基本效应
 
 对于参数i：
-```
+```python
 EE_i = [f(x + Δe_i) - f(x)] / Δ
 ```
 
@@ -151,21 +151,21 @@ EE_i = [f(x + Δe_i) - f(x)] / Δ
 从r条轨迹得到r个基本效应，计算：
 
 **μ (均值)**：
-```
+```python
 μ_i = (1/r) Σ EE_i
 ```
 - 主效应的度量
 - 可正可负
 
 **μ* (绝对均值)**：
-```
+```python
 μ*_i = (1/r) Σ |EE_i|
 ```
 - 总效应的度量
 - 总是正值
 
 **σ (标准差)**：
-```
+```python
 σ_i = sqrt[(1/r) Σ (EE_i - μ_i)²]
 ```
 - 非线性/交互的度量
@@ -201,7 +201,7 @@ EE_i = [f(x + Δe_i) - f(x)] / Δ
 ### 定义
 
 两个参数有交互作用，如果：
-```
+```python
 f(x_i, x_j) ≠ f(x_i, x̄_j) + f(x̄_i, x_j) - f(x̄_i, x̄_j)
 ```
 
@@ -210,12 +210,12 @@ f(x_i, x_j) ≠ f(x_i, x̄_j) + f(x̄_i, x_j) - f(x̄_i, x̄_j)
 ### 量化方法
 
 **Sobol二阶指数**：
-```
+```python
 S_ij = V_ij / V(Y)
 ```
 
 **交互强度**：
-```
+```python
 I(i,j) = f(1,1) + f(0,0) - f(1,0) - f(0,1)
 ```
 
@@ -232,7 +232,7 @@ I(i,j) = f(1,1) + f(0,0) - f(1,0) - f(0,1)
 ```bash
 cd code/examples/case_09
 python3 case_09_global_sensitivity.py
-```
+```python
 
 **注意**：Sobol分析需要较长时间（2-5分钟）。
 
@@ -273,7 +273,7 @@ python3 case_09_global_sensitivity.py
 三种方法得到一致的参数排序：
 ```
 h_left ≈ h_right > K
-```
+```python
 
 ## 实验探索
 
@@ -285,7 +285,7 @@ def nonlinear_model(params):
     K, h_left, h_right = params
     # 非线性关系
     return K**2 * (h_left - h_right) / 1000
-```
+```python
 
 **观察**：
 - Morris的σ增大
@@ -298,7 +298,7 @@ def interactive_model(params):
     K, h_left, h_right = params
     # K与边界有强交互
     return K * h_left * h_right / 1000
-```
+```python
 
 **观察**：
 - ST_i - S_i显著增大
@@ -316,7 +316,7 @@ bounds = [
     (0, 10),    # 补给
     (0.1, 0.3)  # 储水系数
 ]
-```
+```python
 
 **观察**：
 - Sobol计算时间急剧增加
@@ -330,7 +330,7 @@ bounds = [
 n_samples = 100   # 少：结果不稳定
 n_samples = 500   # 中等：通常足够
 n_samples = 1000  # 多：结果稳定但慢
-```
+```python
 
 **观察**：
 - 采样越多，结果越稳定
@@ -342,7 +342,7 @@ n_samples = 1000  # 多：结果稳定但慢
 n_trajectories = 5    # 少：粗略估计
 n_trajectories = 20   # 中等：一般足够
 n_trajectories = 50   # 多：精确但成本高
-```
+```python
 
 **观察**：
 - 轨迹越多，μ*和σ越稳定
@@ -394,17 +394,17 @@ n_trajectories = 50   # 多：精确但成本高
 1. **Sobol指数**：
    ```
    I_i = ST_i - S_i > 0.05  (5%阈值)
-   ```
+   ```python
 
 2. **二阶指数**：
    ```
    S_ij > 0.01  (1%阈值)
-   ```
+   ```python
 
 3. **Morris图**：
    ```
    σ > σ中位数
-   ```
+   ```python
 
 **注意**：
 - 阈值可根据问题调整
@@ -426,7 +426,7 @@ n_trajectories = 50   # 多：精确但成本高
 from scipy.stats import qmc
 sampler = qmc.Sobol(d=n_params)
 samples = sampler.random(n_samples)
-```
+```python
 
 ### Q5: 敏感性结果如何应用？
 
@@ -457,51 +457,51 @@ samples = sampler.random(n_samples)
 **ANOVA分解**：
 ```
 f(x) = f_0 + Σ f_i(x_i) + Σ f_ij(x_i, x_j) + ... + f_12...n(x_1,...,x_n)
-```
+```python
 
 **方差分解**：
 ```
 V = Σ V_i + Σ V_ij + ... + V_12...n
-```
+```python
 
 **正交性**：
 ```
 ∫ f_i(x_i) dx_i = 0
 ∫ f_ij(x_i, x_j) dx_j = 0
-```
+```python
 
 ### 一阶Sobol指数推导
 
 **定义**：
 ```
 V_i = V[E(Y|X_i)]
-```
+```python
 
 **展开**：
 ```
 S_i = V_i / V(Y)
     = V[E(Y|X_i)] / V(Y)
     = [E(E(Y|X_i)²) - E(Y)²] / V(Y)
-```
+```python
 
 **估计**（使用A, B, C_i矩阵）：
 ```
 S_i ≈ [1/N Σ f_B(x^j) · (f_C_i(x^j) - f_A(x^j))] / V
-```
+```python
 
 ### 总效应指数推导
 
 **定义**：
 ```
 V_{~i} = V[E(Y|X_{~i})]
-```
+```python
 
 **总效应**：
 ```
 ST_i = 1 - V_{~i} / V(Y)
      = [V(Y) - V[E(Y|X_{~i})]] / V(Y)
      = E[V(Y|X_{~i})] / V(Y)
-```
+```python
 
 ## 代码结构
 

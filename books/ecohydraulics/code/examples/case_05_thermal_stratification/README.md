@@ -21,7 +21,7 @@
 
 ### 2. DO动力学
 
-```
+```python
 dDO/dt = K_a(DO_sat - DO) - R
 ```
 

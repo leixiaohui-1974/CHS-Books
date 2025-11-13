@@ -31,7 +31,7 @@
 - **模糊规则**: IF-THEN形式的专家经验
 
 #### 2.1.2 模糊推理系统(FIS)
-```
+```python
 输入 → 模糊化 → 推理 → 去模糊化 → 输出
 ```
 
@@ -53,14 +53,14 @@
 
 #### 2.2.1 输入变量
 **功率误差 E**:
-```
+```python
 E = P(k) - P(k-1)
 ```
 - 含义: 功率变化量
 - 物理意义: 是否接近MPP
 
 **功率误差变化率 CE**:
-```
+```python
 CE = E(k) - E(k-1)
 ```
 - 含义: 功率变化趋势
@@ -68,7 +68,7 @@ CE = E(k) - E(k-1)
 
 #### 2.2.2 输出变量
 **电压调整量 ΔV**:
-```
+```python
 V_ref(k) = V_ref(k-1) + ΔV
 ```
 - 含义: 参考电压增量
@@ -86,7 +86,7 @@ V_ref(k) = V_ref(k-1) + ΔV
 采用梯形函数,定义为 `[left, peak_left, peak_right, right]`
 
 示例(ZE集):
-```
+```python
        μ
        1 ┤     ┌───────┐
          │    /         \
@@ -117,7 +117,7 @@ V_ref(k) = V_ref(k-1) + ΔV
 ```python
 E_norm = E / E_max
 CE_norm = CE / CE_max
-```
+```python
 
 #### 2.3.2 隶属度计算
 梯形函数 `μ(x; a,b,c,d)`:
@@ -127,14 +127,14 @@ CE_norm = CE / CE_max
 μ(x) =   ⎨ 1                  if b < x ≤ c
          ⎪ (d-x)/(d-c)        if c < x ≤ d
          ⎩ 0                  if x > d
-```
+```python
 
 #### 2.3.3 推理
 最小-最大法:
 ```
 μ_output(y) = max [min(μ_E(E), μ_CE(CE), μ_rule)]
               所有规则
-```
+```python
 
 #### 2.3.4 去模糊化
 重心法:
@@ -142,7 +142,7 @@ CE_norm = CE / CE_max
        Σ (y_i × μ(y_i))
 y* = ─────────────────
           Σ μ(y_i)
-```
+```python
 
 ## 3. 代码实现
 
@@ -192,7 +192,7 @@ class FuzzyLogicMPPT(MPPTAlgorithm):
         self.v_ref += dv
         
         return self.v_ref
-```
+```python
 
 ### 3.2 关键方法
 
@@ -208,7 +208,7 @@ def _define_fuzzy_sets(self):
         'PB': [0.0, 0.5, 1.0, 1.0]
     }
     # mf_ce和mf_dv类似
-```
+```python
 
 #### 3.2.2 规则库
 ```python
@@ -220,7 +220,7 @@ def _define_rules(self):
         # ... 25条规则
         ('PB', 'PB'): 'NB',
     }
-```
+```python
 
 #### 3.2.3 隶属度函数
 ```python
@@ -235,7 +235,7 @@ def _membership(self, x, mf_params):
         return 1.0
     else:
         return (d - x) / (d - c)
-```
+```python
 
 #### 3.2.4 模糊化
 ```python
@@ -250,7 +250,7 @@ def _fuzzify(self, e, ce):
         ce_fuzzy[label] = self._membership(ce, params)
     
     return {'E': e_fuzzy, 'CE': ce_fuzzy}
-```
+```python
 
 #### 3.2.5 推理
 ```python
@@ -279,7 +279,7 @@ def _inference(self, fuzzy_inputs):
             )
     
     return output_activation
-```
+```python
 
 #### 3.2.6 去模糊化
 ```python
@@ -300,7 +300,7 @@ def _defuzzify(self, output_activation):
         return 0.0
     
     return numerator / denominator
-```
+```matlab
 
 ## 4. 实验与分析
 
@@ -324,13 +324,13 @@ def _defuzzify(self, output_activation):
 Fuzzy    98.5    0.15    12
 P&O      98.2    0.35    18
 INC      98.8    0.20    15
-```
+```python
 
 **运行**:
 ```bash
 cd code/examples/case_10_fuzzy_logic
 python main.py
-```
+```python
 
 ### 4.2 实验2: 噪声环境测试
 
@@ -345,7 +345,7 @@ i_noisy = i_pv * (1 + np.random.normal(0, 0.1))
 v_noisy = v_pv * (1 + np.random.normal(0, 0.1))
 
 v_ref = controller.step(v_noisy, i_noisy)
-```
+```matlab
 
 **预期结果**:
 - Fuzzy: 效率下降 < 2%
@@ -369,7 +369,7 @@ v_ref = controller.step(v_noisy, i_noisy)
 # 50步后突变
 if step == 50:
     module.set_uniform_conditions(T=298.15, G=500.0)
-```
+```python
 
 **预期结果**:
 - Fuzzy: 8-10步到达新MPP
@@ -389,7 +389,7 @@ if step == 50:
 E_range: [-1.0, 1.0]  # 归一化后
 CE_range: [-1.0, 1.0]
 dV_range: [-1.0, 1.0]
-```
+```python
 
 #### 5.1.2 模糊集数量
 - 3个: 太粗糙
@@ -421,21 +421,21 @@ dV_range: [-1.0, 1.0]
 # 示例冲突
 (PB, PS) → NS  # 规则1
 (PB, PS) → ZE  # 规则2 (冲突!)
-```
+```python
 
 #### 5.2.3 规则对称性
 利用P-V曲线对称性:
 ```
 (NB, NB) → PB  ⟺  (PB, PB) → NB
 (NS, NS) → PS  ⟺  (PS, PS) → NS
-```
+```python
 
 ### 5.3 步长调整
 
 **最大步长**:
 ```python
 step_size_max = 0.1 × Vmpp  # 约3-5V
-```
+```python
 
 **影响**:
 - 太大: 振荡
@@ -470,7 +470,7 @@ step_size_max = 0.1 × Vmpp  # 约3-5V
 去模糊化:   5次求和
 ----------------------------
 总计:       ~50次浮点运算/步
-```
+```python
 
 **优化方法**:
 - 查表法代替计算
@@ -482,7 +482,7 @@ step_size_max = 0.1 × Vmpp  # 约3-5V
 模糊集: 3变量 × 5集合 × 4参数 = 60个float
 规则库: 25条规则
 代码:   约1KB
-```
+```python
 
 #### 6.2.3 嵌入式实现
 **MCU要求**:
@@ -498,14 +498,14 @@ typedef int16_t fixed_t;
 
 // 查表法计算隶属度
 const fixed_t membership_table[256];
-```
+```python
 
 ### 6.3 与其他控制器集成
 
 #### 6.3.1 DC-DC变换器控制
 ```
 Fuzzy MPPT → Vref → PI控制器 → PWM → DC-DC
-```
+```python
 
 #### 6.3.2 监控系统
 ```python
@@ -516,7 +516,7 @@ monitor_data = {
     'dV': dv_norm,
     'rule_activation': rule_strengths
 }
-```
+```python
 
 ## 7. 性能对比总结
 
@@ -604,7 +604,7 @@ monitor_data = {
 # 绘制规则激活热图
 import seaborn as sns
 sns.heatmap(rule_activation_matrix)
-```
+```python
 
 ### B.2 隶属度函数可视化
 ```python
@@ -613,7 +613,7 @@ x = np.linspace(-1, 1, 200)
 for label, params in mf_e.items():
     y = [_membership(xi, params) for xi in x]
     plt.plot(x, y, label=label)
-```
+```python
 
 ### B.3 性能分析
 ```python

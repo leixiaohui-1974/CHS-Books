@@ -14,7 +14,7 @@
 
 ### 1. 系统分层
 
-```
+```python
 ┌─────────────────────────────────────────────────────────┐
 │              决策层（Optimization Layer）                │
 │    - 调度优化（水资源分配、泵站节能）                      │
@@ -76,7 +76,7 @@
 ### 1. 降阶模型（ROM - Reduced Order Model）
 
 **POD降阶**：
-```
+```python
 原始模型（高维）: dx/dt = f(x), x ∈ R^N (N = 10000+)
 降阶模型（低维）: dy/dt = g(y), y ∈ R^r (r = 20-50)
 
@@ -85,12 +85,12 @@
 
 **快照集合**：
 从高保真仿真或历史数据采集快照：
-```
+```python
 X = [x₁, x₂, ..., x_M] ∈ R^(N×M)
 ```
 
 **SVD分解**：
-```
+```python
 X = UΣV^T
 
 U: 左奇异向量（空间模态）
@@ -100,14 +100,14 @@ V: 右奇异向量（时间系数）
 
 **基函数选择**：
 保留前r个模态，使得累积能量 > 99.9%：
-```
+```python
 Σᵢ₌₁ʳ σᵢ² / Σᵢ₌₁ᴺ σᵢ² > 0.999
 
 基函数矩阵：Φ = [u₁, u₂, ..., uᵣ] ∈ R^(N×r)
 ```
 
 **Galerkin投影**：
-```
+```python
 原始方程: M dx/dt = f(x)
 投影: Φ^T M Φ dy/dt = Φ^T f(Φy)
 简化: M_r dy/dt = f_r(y)
@@ -126,17 +126,17 @@ V: 右奇异向量（时间系数）
 从测量数据 {X(t), dX/dt} 发现控制方程。
 
 **候选函数库**：
-```
+```python
 Θ(X) = [1, X, X², sin(X), cos(X), XY, ...]
 ```
 
 对于水力系统，候选库包含：
-```
+```python
 Θ(h, Q) = [1, h, Q, h², Q², hQ, √h, Q|Q|, ...]
 ```
 
 **稀疏回归**：
-```
+```python
 dX/dt = Θ(X)Ξ
 
 目标：min ||dX/dt - Θ(X)Ξ||₂² + λ||Ξ||₁
@@ -149,7 +149,7 @@ dX/dt = Θ(X)Ξ
 
 **应用示例**：
 从运行数据辨识Manning摩阻系数：
-```
+```python
 测量数据: h(t), Q(t)
 辨识结果: n = 0.025 ± 0.002
 ```
@@ -157,7 +157,7 @@ dX/dt = Θ(X)Ξ
 ### 3. 扩展卡尔曼滤波（EKF）
 
 **状态空间模型**：
-```
+```python
 状态方程: xₖ = f(xₖ₋₁, uₖ₋₁) + wₖ₋₁
 测量方程: zₖ = h(xₖ) + vₖ
 
@@ -166,7 +166,7 @@ vₖ ~ N(0, R): 测量噪声
 ```
 
 **预测步（Prediction）**：
-```
+```python
 x̂ₖ⁻ = f(x̂ₖ₋₁⁺, uₖ₋₁)  (状态预测)
 Pₖ⁻ = FₖPₖ₋₁⁺Fₖᵀ + Q  (协方差预测)
 
@@ -174,7 +174,7 @@ Fₖ = ∂f/∂x |ₓ₌ₓ̂ₖ₋₁⁺  (雅可比矩阵)
 ```
 
 **更新步（Update）**：
-```
+```python
 Kₖ = Pₖ⁻Hₖᵀ(HₖPₖ⁻Hₖᵀ + R)⁻¹  (卡尔曼增益)
 x̂ₖ⁺ = x̂ₖ⁻ + Kₖ(zₖ - h(x̂ₖ⁻))  (状态更新)
 Pₖ⁺ = (I - KₖHₖ)Pₖ⁻  (协方差更新)
@@ -191,7 +191,7 @@ Hₖ = ∂h/∂x |ₓ₌ₓ̂ₖ⁻  (测量雅可比)
 ### 4. 预测性维护（Predictive Maintenance）
 
 **设备退化模型**（指数模型）：
-```
+```python
 θ(t) = θ₀ e^(λt)
 
 θ(t): 时刻t的健康指标（如振动幅值）
@@ -200,7 +200,7 @@ Hₖ = ∂h/∂x |ₓ₌ₓ̂ₖ⁻  (测量雅可比)
 ```
 
 **剩余使用寿命（RUL）**：
-```
+```python
 RUL = (ln(θ_fail) - ln(θ_current)) / λ
 
 θ_fail: 失效阈值
@@ -209,7 +209,7 @@ RUL = (ln(θ_fail) - ln(θ_current)) / λ
 
 **贝叶斯参数更新**：
 随着新数据到来，更新退化速率λ的后验分布：
-```
+```python
 p(λ|D) ∝ p(D|λ) p(λ)
 
 D: 历史测量数据
@@ -219,7 +219,7 @@ p(λ|D): 后验分布
 ```
 
 **维护决策**：
-```
+```python
 if RUL < 安全阈值:
     触发预防性维护
 elif RUL < 计划阈值:
@@ -231,7 +231,7 @@ else:
 ### 5. 多层MPC协调控制
 
 **优化问题**：
-```
+```python
 min  J = Σₖ₌₀ᴺ⁻¹ [||yₖ - yref||²Q + ||Δuₖ||²R] + ||yₙ - yref||²P
 u
 
@@ -257,7 +257,7 @@ u
 
 ### 1. 项目结构
 
-```
+```python
 case_20_integrated_system/
 ├── README.md                    # 本文档
 ├── main.py                      # 主程序（4个演示案例）
@@ -323,7 +323,7 @@ class PODReducedOrderModel:
             trajectory.append(x_reduced.copy())
 
         return np.array(trajectory)
-```
+```python
 
 #### (2) SINDy辨识类
 
@@ -366,7 +366,7 @@ class SINDyIdentifier:
         for i, coef in enumerate(self.coefficients):
             if abs(coef) > 1e-6:
                 print(f"  {self.library[i].__name__}: {coef:.6f}")
-```
+```python
 
 #### (3) 数字孪生核心类
 
@@ -417,7 +417,7 @@ class DigitalTwinCore:
         is_anomaly = np.any(np.abs(normalized_residual) > threshold)
 
         return is_anomaly, normalized_residual
-```
+```python
 
 #### (4) 预测性维护类
 

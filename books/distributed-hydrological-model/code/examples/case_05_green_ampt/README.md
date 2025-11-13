@@ -44,7 +44,7 @@ Green-Ampt模型是经典的物理性产流模型，基于达西定律描述降�
 ### 2. 入渗率公式
 
 **Green-Ampt方程**:
-```
+```python
 f(t) = K × [1 + (ψ × Δθ) / F(t)]
 ```
 
@@ -58,7 +58,7 @@ f(t) = K × [1 + (ψ × Δθ) / F(t)]
 ### 3. 累积入渗量
 
 **隐式方程**:
-```
+```python
 F(t) = K×t + ψ×Δθ×ln[1 + F(t)/(ψ×Δθ)]
 ```
 
@@ -67,12 +67,12 @@ F(t) = K×t + ψ×Δθ×ln[1 + F(t)/(ψ×Δθ)]
 ### 4. 积水条件
 
 **积水发生条件**:
-```
+```python
 i(t) ≥ f(t)
 ```
 
 **积水时刻累积入渗量**:
-```
+```python
 Fp = (K × ψ × Δθ) / (i - K)
 ```
 
@@ -87,7 +87,7 @@ Fp = (K × ψ × Δθ) / (i - K)
 
 ```bash
 python main.py
-```
+```python
 
 ### 查看结果
 
@@ -98,7 +98,7 @@ ls outputs/
 # rainfall_scenarios.png - 不同降雨情景
 # parameter_sensitivity.png - 参数敏感性
 # ponding_analysis.png - 积水分析
-```
+```matlab
 
 ## 📈 实验内容
 

@@ -31,12 +31,12 @@ Python >= 3.8
 numpy >= 1.20
 matplotlib >= 3.3
 scipy >= 1.6
-```
+```python
 
 ### 安装依赖
 ```bash
 pip install numpy matplotlib scipy
-```
+```python
 
 ### 运行示例
 ```bash
@@ -48,7 +48,7 @@ python3 problem_001_hydrostatic_pressure.py
 
 # 批量测试所有代码
 bash run_all_tests.sh
-```
+```python
 
 ### 第一个程序
 ```python
@@ -69,7 +69,7 @@ print(f"压强: {solver.p:.2f} Pa")
 
 # 可视化
 fig = solver.visualize()
-```
+```python
 
 ---
 
@@ -105,7 +105,7 @@ hydraulics-1000/
 ├── Python代码索引.md              # 代码快速定位
 ├── 项目使用指南.md                # 项目整体说明
 └── README.md                      # 项目总说明（本文件）
-```
+```python
 
 ---
 
@@ -236,7 +236,7 @@ class ProblemSolver:
     def visualize(self):
         """6张图表可视化"""
         pass
-```
+```python
 
 ### 2. 丰富的可视化
 每个代码生成6张高质量图表：
@@ -264,7 +264,7 @@ def test_problem_xxx():
     assert solver.result > 0, "结果应大于0"
     
     print("✓ 所有测试通过！")
-```
+```python
 
 ---
 
@@ -281,7 +281,7 @@ Week 5: 综合冲刺（codes/problem_901-904）
 
 # 考前冲刺
 参考：考前冲刺手册.md
-```
+```python
 
 ### 课程教学
 ```python
@@ -293,7 +293,7 @@ python3 problem_126_bernoulli_pipe.py  # Bernoulli方程
 
 # 课后作业
 让学生运行代码，分析结果，撰写报告
-```
+```python
 
 ### 工程设计
 ```python
@@ -305,7 +305,7 @@ system = PumpStationSystem()
 system.Q_design = 0.20  # 修改设计流量
 system.calculate_head_losses()
 system.calculate_power()
-```
+```python
 
 ---
 
@@ -318,7 +318,7 @@ P = ρghcA
 yp = yc + Ic/(ycA)
 F浮 = ρgV排
 GM = I₀/V - BG
-```
+```python
 
 ### 水动力学
 ```
@@ -326,7 +326,7 @@ Q = Av = constant
 z + p/(ρg) + v²/(2g) = H
 ΣF = ρQ(v₂ - v₁)
 Q = μA√(2gH)
-```
+```python
 
 ### 管流
 ```
@@ -335,7 +335,7 @@ Re = vd/ν
 h_f = λ(L/d)(v²/2g)
 c = √(K/ρ)/√(1+Kd/Eδ)
 ΔH = cv/g
-```
+```python
 
 ### 明渠流
 ```
@@ -343,7 +343,7 @@ Fr = v/√(gh)
 h_c = (Q²/(gb²))^(1/3)
 Q = (1/n)AR^(2/3)i^(1/2)
 dh/dx = (i-J)/(1-Fr²)
-```
+```python
 
 ### 渗流
 ```
@@ -351,7 +351,7 @@ v = ki
 Q = kiA
 H(r) = H₀ + Q/(2πkM)ln(r/R)
 h²(r) = h₀² + Q/(πk)ln(r/R)
-```
+```python
 
 ### 水泵
 ```
@@ -359,7 +359,7 @@ H = H₀ - aQ²
 η = bQ - cQ²
 H_pump = H_pipe
 n'/n = Q'/Q
-```
+```python
 
 详见：[公式速查卡.md](./公式速查卡.md)
 
@@ -374,7 +374,7 @@ n'/n = Q'/Q
 3. 按章节顺序学习（1→7）
 4. 每章完成后运行综合题
 5. 最后挑战problem_904
-```
+```python
 
 ### 考研强化路径
 ```
@@ -383,7 +383,7 @@ n'/n = Q'/Q
 3. 难点突破：problem_536, 471, 561
 4. 综合训练：problem_901-904
 5. 模拟考试：自选10题限时完成
-```
+```python
 
 ### 工程应用路径
 ```
@@ -392,7 +392,7 @@ n'/n = Q'/Q
 3. 修改参数适配实际工程
 4. 运行计算并分析结果
 5. 参考优化建议
-```
+```python
 
 ---
 
@@ -405,7 +405,7 @@ n'/n = Q'/Q
 solver = HydrostaticPressure()
 solver.h = 20  # 修改水深为20m
 solver.calculate_pressure()
-```
+```python
 
 ### Q2: 如何保存计算结果？
 **A**: 可以在代码中添加数据导出功能。
@@ -420,7 +420,7 @@ results = {
 
 with open('results.json', 'w') as f:
     json.dump(results, f)
-```
+```python
 
 ### Q3: 如何批量运行代码？
 **A**: 使用提供的批量测试脚本。
@@ -428,7 +428,7 @@ with open('results.json', 'w') as f:
 ```bash
 cd codes
 bash run_all_tests.sh
-```
+```python
 
 ### Q4: 图片中文显示乱码怎么办？
 **A**: 代码已自动配置中文字体（Arial Unicode MS + SimHei），Mac和Linux系统通常无问题。
@@ -499,7 +499,7 @@ bash run_all_tests.sh
 知识点覆盖: 100%
 章节完成度: 7/7 (100%)
 测试通过率: 100%
-```
+```python
 
 ---
 

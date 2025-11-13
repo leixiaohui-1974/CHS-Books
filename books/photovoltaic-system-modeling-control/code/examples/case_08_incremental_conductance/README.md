@@ -24,7 +24,7 @@ INC(Incremental Conductance)是精度更高的MPPT算法:
 **MPP条件**: dP/dV = 0
 
 推导过程:
-```
+```python
 P = V × I
 
 dP/dV = d(V×I)/dV
@@ -44,7 +44,7 @@ dP/dV = d(V×I)/dV
 
 ### P-V曲线解释
 
-```
+```python
 功率
   ^
   |       MPP
@@ -94,7 +94,7 @@ for step in range(100):
     
     # 电压跟踪
     v_pv = v_pv + 0.5 * (v_ref - v_pv)
-```
+```python
 
 ### 2. 改进型INC
 
@@ -112,7 +112,7 @@ inc_modified = ModifiedINC(
 
 # 使用方法相同
 controller = MPPTController(inc_modified, v_min=0, v_max=40.0)
-```
+```python
 
 ### 3. INC vs P&O 对比
 
@@ -133,7 +133,7 @@ perf_inc = controller_inc.evaluate_performance(pmpp)
 
 print(f"P&O:  效率={perf_po['efficiency']:.2f}%")
 print(f"INC:  效率={perf_inc['efficiency']:.2f}%")
-```
+```matlab
 
 ---
 
@@ -198,7 +198,7 @@ print(f"INC:  效率={perf_inc['efficiency']:.2f}%")
 **threshold** (判断阈值):
 ```
 |dI/dV - (-I/V)| < threshold → MPP
-```
+```python
 
 - **小阈值** (0.001-0.01):
   - ✅ 精度高
@@ -217,7 +217,7 @@ print(f"INC:  效率={perf_inc['efficiency']:.2f}%")
 **deadband** (改进型INC):
 ```
 |dV| < deadband && |dI| < deadband → 不扰动
-```
+```python
 
 作用:
 - 减少不必要扰动
@@ -231,7 +231,7 @@ print(f"INC:  效率={perf_inc['efficiency']:.2f}%")
 **一阶低通滤波**:
 ```python
 V_filtered = α × V_prev + (1-α) × V_measured
-```
+```python
 
 - **α=0.9**: 重滤波,响应慢
 - **α=0.7**: 轻滤波,响应快
@@ -256,7 +256,7 @@ if abs(dV) < 1e-6:
     else:
         # 根据dI判断
         pass
-```
+```python
 
 ### 2. 滤波处理
 
@@ -268,7 +268,7 @@ I_filtered = alpha * I_prev + (1-alpha) * I_measured
 # 使用滤波后的值计算
 dV = V_filtered - V_prev
 dI = I_filtered - I_prev
-```
+```python
 
 ### 3. 死区设置
 
@@ -277,7 +277,7 @@ dI = I_filtered - I_prev
 if abs(dV) < deadband and abs(dI) < deadband:
     # 在死区内,保持不变
     return v_ref_prev
-```
+```python
 
 ### 4. 变步长策略
 
@@ -289,7 +289,7 @@ step_size = step_min + (step_max - step_min) * error
 # 或根据距离MPP调整
 distance = abs(v_current - v_mpp_est)
 step_size = step_min + (step_max - step_min) * (distance / v_mpp_est)
-```
+```matlab
 
 ---
 
@@ -313,7 +313,7 @@ step_size = step_min + (step_max - step_min) * (distance / v_mpp_est)
 跟踪效率:   98.5%
 稳态振荡:   0.3 W
 建立时间:   1.5 s
-```
+```python
 
 **改进INC** (变步长+滤波):
 ```
@@ -321,7 +321,7 @@ step_size = step_min + (step_max - step_min) * (distance / v_mpp_est)
 稳态振荡:   0.2 W
 建立时间:   1.2 s
 噪声环境:   良好
-```
+```python
 
 ---
 

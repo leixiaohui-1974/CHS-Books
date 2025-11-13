@@ -125,7 +125,7 @@
 
 ### 数学模型
 **PI控制律：**
-```
+```python
 u(t) = Kp × e(t) + Ki × ∫₀ᵗ e(τ) dτ
 离散形式：
 u[k] = Kp × e[k] + Ki × Σe[i] × dt
@@ -137,14 +137,14 @@ u[k] = Kp × e[k] + Ki × Σe[i] × dt
 ```
 
 **闭环传递函数：**
-```
+```python
 G(s) = (Kp + Ki/s) / (τs + 1)
 零点：-Ki/Kp
 极点：由闭环特征方程确定
 ```
 
 **稳态分析：**
-```
+```python
 稳态时，s → 0：
 lim(s→0) e(s) = lim(s→0) 1 / [1 + G(s)H(s)] × r(s)
 由于G(s)包含1/s项（积分），当s→0时G(s)→∞
@@ -175,7 +175,7 @@ lim(s→0) e(s) = lim(s→0) 1 / [1 + G(s)H(s)] × r(s)
 ```bash
 cd books/water-system-control/code/examples/case_03_water_supply_station
 python main.py
-```
+```python
 
 ### 核心代码
 ```python
@@ -211,7 +211,7 @@ for step in range(N_steps):
 
     # 记录数据
     print(f"t={tank.t:.1f}, h={tank.h:.3f}, u={u:.2f}")
-```
+```python
 
 ### 抗积分饱和实现
 ```python
@@ -238,7 +238,7 @@ class PIController:
         u = np.clip(u, self.u_min, self.u_max)
         self.u_last = u
         return u
-```
+```matlab
 
 ---
 
@@ -541,7 +541,7 @@ PI控制抗扰动能力强且能完全恢复！
 所以：u_ss = Ki × ∫e dt （比例项为0因为e_ss=0）
 由于u_ss必须维持系统，所以积分项自动调整到合适值
 结论：e_ss = 0
-```
+```python
 </details>
 **Q2: 什么情况下会发生积分饱和？如何避免？**
 <details>
@@ -558,19 +558,19 @@ PI控制抗扰动能力强且能完全恢复！
 if u_min < u_last < u_max:  # 未饱和
     integral += error * dt
 # 否则不累积
-```
+```python
 
 **方法2：积分限幅**
 ```python
 integral = np.clip(integral, i_min, i_max)
-```
+```python
 
 **方法3：反馈控制**
 ```python
 # 根据饱和程度减小积分
 if u_saturated:
     integral -= Kb * (u_desired - u_actual) * dt
-```
+```python
 
 **推荐：** 条件积分（简单有效）
 </details>

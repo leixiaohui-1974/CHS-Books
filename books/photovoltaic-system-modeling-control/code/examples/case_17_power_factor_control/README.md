@@ -65,7 +65,7 @@ PF = \frac{P}{S} = \frac{P}{\sqrt{P^2 + Q^2}} = \cos\varphi
 ### 3. PQ解耦控制
 
 #### 控制结构
-```
+```python
 P参考 ──→ [功率计算] ──→ i_d参考 ──┐
                                   ├──→ [dq电流控制] ──→ 三相电压输出
 Q参考 ──→ [功率计算] ──→ i_q参考 ──┘
@@ -103,7 +103,7 @@ print(f"有功功率: {P:.0f} W")
 print(f"无功功率: {Q:.0f} Var")
 print(f"视在功率: {S:.0f} VA")
 print(f"功率因数: {PF:.3f}")
-```
+```python
 
 ### 2. 功率到电流转换
 
@@ -117,7 +117,7 @@ i_d_ref, i_q_ref = power_calc.power_to_current(P_ref, Q_ref, v_d=311.0)
 
 print(f"i_d参考: {i_d_ref:.2f} A")
 print(f"i_q参考: {i_q_ref:.2f} A")
-```
+```python
 
 ### 3. 功率因数到无功功率
 
@@ -128,7 +128,7 @@ PF_ref = 0.95  # 功率因数0.95
 
 Q_ref = power_calc.pf_to_power(P_ref, PF_ref)
 print(f"所需无功功率: {Q_ref:.0f} Var")
-```
+```python
 
 ### 4. PQ控制器
 
@@ -168,7 +168,7 @@ for _ in range(N):
     P_actual = status['power']['P']
     Q_actual = status['power']['Q']
     PF_actual = status['power']['PF']
-```
+```matlab
 
 ---
 
@@ -260,13 +260,13 @@ for _ in range(N):
 ```python
 P_ref = P_mppt  # 从MPPT获取
 Q_ref = 0       # 功率因数=1
-```
+```python
 
 **恒无功功率模式**:
 ```python
 P_ref = P_mppt
 Q_ref = Q_grid  # 电网要求的无功功率
-```
+```python
 
 **电压支撑模式**:
 ```python
@@ -278,7 +278,7 @@ elif V_grid_measure > V_nominal * 1.05:
     Q_ref = -Q_max  # 吸收无功，降低电压
 else:
     Q_ref = 0
-```
+```python
 
 ### 2. 功率限幅策略
 
@@ -292,7 +292,7 @@ if np.sqrt(P_ref**2 + Q_ref**2) > S_rated:
     ratio = S_rated / np.sqrt(P_ref**2 + Q_ref**2)
     P_ref *= ratio
     Q_ref *= ratio
-```
+```python
 
 **优先级策略**:
 ```python
@@ -300,7 +300,7 @@ if np.sqrt(P_ref**2 + Q_ref**2) > S_rated:
 P_ref = min(P_ref, P_limit)
 Q_max_available = np.sqrt(S_rated**2 - P_ref**2)
 Q_ref = np.clip(Q_ref, -Q_max_available, Q_max_available)
-```
+```python
 
 ### 3. 低电压穿越(LVRT)
 

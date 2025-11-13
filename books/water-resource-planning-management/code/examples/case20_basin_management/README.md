@@ -28,7 +28,7 @@
 
 ## 技术架构
 
-```
+```python
 第一层：数据与评价
 ├─ 水文数据分析（core.hydrology）
 ├─ 频率分析
@@ -77,7 +77,7 @@ frequency_analysis()
 # 水资源评价
 water_balance()
 carrying_capacity()
-```
+```python
 
 ### 阶段2：需求预测
 ```python
@@ -87,7 +87,7 @@ inflow_forecast()
 
 # 不确定性
 uncertainty_analysis()
-```
+```python
 
 ### 阶段3：优化配置
 ```python
@@ -96,7 +96,7 @@ allocation = multiobjective_optimization()
 
 # 梯级调度
 schedule = cascade_dispatch()
-```
+```python
 
 ### 阶段4：实时控制
 ```python
@@ -105,14 +105,14 @@ mpc_controller()
 
 # 数字孪生
 digital_twin_update()
-```
+```python
 
 ### 阶段5：风险评估
 ```python
 # 风险分析
 risk_assessment()
 var_cvar_calculation()
-```
+```python
 
 ### 阶段6：综合决策
 ```python
@@ -121,7 +121,7 @@ ahp_topsis()
 
 # 决策建议
 recommendation()
-```
+```matlab
 
 ## 核心指标
 
@@ -150,7 +150,7 @@ recommendation()
 ```bash
 cd code/examples/case20_basin_management
 python main.py
-```
+```python
 
 ## 预期结果
 
@@ -161,7 +161,7 @@ python main.py
   - 工业用水: 300万m³ (25%)
   - 农业灌溉: 400万m³ (33%)
   - 生态用水: 100万m³ (8%)
-```
+```python
 
 ### 综合评价
 ```
@@ -169,7 +169,7 @@ python main.py
 环境效益: 优（85分）
 社会效益: 良（80分）
 综合评分: 0.85
-```
+```python
 
 ### 风险评估
 ```

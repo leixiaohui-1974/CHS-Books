@@ -54,7 +54,7 @@
 ### 2. 自净系数
 
 **自净系数** (f):
-```
+```python
 f = ka / kd
 ```
 
@@ -82,7 +82,7 @@ f = ka / kd
 #### 稀释容量（Dilution Capacity）
 
 **仅考虑稀释作用**:
-```
+```python
 W = Q × (C_standard - C_background)
 ```
 
@@ -93,7 +93,7 @@ W = Q × (C_standard - C_background)
 #### 降解容量（Degradation Capacity）
 
 **考虑降解作用**:
-```
+```python
 W = W_dilution + W_degradation
 
 W_degradation = Q × kd × C_standard × t
@@ -111,7 +111,7 @@ W_degradation = Q × kd × C_standard × t
 
 在保证DO达标的前提下，能够接纳的最大BOD量。
 
-```
+```python
 临界条件: DOc ≥ DO_standard
 反推: L0_max
 同化容量: W = Q × L0_max
@@ -121,7 +121,7 @@ W_degradation = Q × kd × C_standard × t
 
 #### 单因子指数法
 
-```
+```python
 P_i = C_i / S_i
 
 P_i < 1: 达标 ✓
@@ -132,7 +132,7 @@ P_i ≥ 1: 超标 ⚠️
 
 #### 综合污染指数法
 
-```
+```python
 P = Σ(w_i × P_i) / Σw_i
 ```
 
@@ -145,7 +145,7 @@ P = Σ(w_i × P_i) / Σw_i
 
 #### 水质标识指数法（WQII）
 
-```
+```python
 WQII = X1.X2X3
 
 X1: 水质类别（1-5）
@@ -241,7 +241,7 @@ X2X3: 污染分指数（01-99）
 ```bash
 # 运行主程序
 python main.py
-```
+```matlab
 
 ## 文件说明
 

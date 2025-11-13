@@ -22,7 +22,7 @@
 - 策略（Policy）：状态到动作的映射
 
 **学习过程**：
-```
+```python
 Agent → Action → Environment
    ↑                  ↓
    ← Reward + State' ←
@@ -40,7 +40,7 @@ Agent → Action → Environment
 - 离散化为N个动作
 
 **奖励函数**：
-```
+```python
 R = 发电效益 - 弃水惩罚 - 违约惩罚
 ```
 
@@ -55,7 +55,7 @@ R = 发电效益 - 弃水惩罚 - 违约惩罚
 
 ## 技术路线
 
-```
+```python
 环境建模
   ├─ 水库模型
   ├─ 状态定义
@@ -88,7 +88,7 @@ R = 发电效益 - 弃水惩罚 - 违约惩罚
 ### 1. Q-Learning算法
 
 **Q值更新**：
-```
+```python
 Q(s,a) ← Q(s,a) + α[r + γ·max Q(s',a') - Q(s,a)]
 ```
 
@@ -104,19 +104,19 @@ if random() < ε:
     action = random_choice()  # 探索
 else:
     action = argmax Q(s,a)    # 利用
-```
+```python
 
 ### 3. 水库水量平衡
 
 ```
 V_{t+1} = V_t + (I_t - Q_t) * Δt
-```
+```python
 
 ### 4. 发电功率
 
 ```
 P = 9.81 * Q * H * η / 1000  (MW)
-```
+```python
 
 ## 运行方法
 

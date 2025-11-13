@@ -36,7 +36,7 @@
 
 ## 技术路线
 
-```
+```python
 渠道建模
   ├─ Saint-Venant方程
   ├─ 参数设置
@@ -69,12 +69,12 @@
 ### 1. PID控制
 
 **控制律**：
-```
+```python
 u(t) = Kp*e(t) + Ki*∫e(τ)dτ + Kd*de(t)/dt
 ```
 
 **整定方法**：Ziegler-Nichols
-```
+```python
 Kp = 0.6*Ku
 Ki = 2*Kp/Tu  
 Kd = Kp*Tu/8
@@ -83,7 +83,7 @@ Kd = Kp*Tu/8
 ### 2. MPC控制
 
 **优化问题**：
-```
+```python
 min Σ(||h-href||²_Q + ||Δu||²_R)
 s.t. h_min ≤ h ≤ h_max
      u_min ≤ u ≤ u_max
@@ -93,12 +93,12 @@ s.t. h_min ≤ h ≤ h_max
 ### 3. Saint-Venant方程
 
 **连续方程**：
-```
+```python
 ∂A/∂t + ∂Q/∂x = 0
 ```
 
 **动量方程**：
-```
+```python
 ∂Q/∂t + ∂(Q²/A)/∂x + gA(∂h/∂x + Sf - S0) = 0
 ```
 

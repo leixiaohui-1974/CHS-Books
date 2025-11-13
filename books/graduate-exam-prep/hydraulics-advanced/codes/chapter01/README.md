@@ -81,7 +81,7 @@
 
 #### 题1：静压强分布
 **核心公式**：
-```
+```python
 p = p₀ + ρgh
 ```
 
@@ -94,7 +94,7 @@ p = p₀ + ρgh
 
 #### 题2：平面闸门压力
 **核心公式**：
-```
+```python
 P = ρgh_c·A
 y_D = y_c + I_c/(A·y_c)
 ```
@@ -124,7 +124,7 @@ y_D = y_c + I_c/(A·y_c)
 
 #### 题5：浮力计算
 **阿基米德原理**：
-```
+```python
 F_b = ρ_液·g·V_排
 ```
 
@@ -152,7 +152,7 @@ F_b = ρ_液·g·V_排
 
 #### 题7：液压千斤顶
 **帕斯卡原理**：
-```
+```python
 p₁ = p₂
 F₂/A₂ = F₁/A₁
 ```
@@ -181,7 +181,7 @@ F₂/A₂ = F₁/A₁
 
 #### 题10：多层流体
 **压强叠加**：
-```
+```python
 p = p₀ + ρ₁gh₁ + ρ₂gh₂ + ...
 ```
 
@@ -258,12 +258,12 @@ p = p₀ + ρ₁gh₁ + ρ₂gh₂ + ...
 Python 3.8+
 numpy
 matplotlib
-```
+```python
 
 ### 2. 安装依赖
 ```bash
 pip install numpy matplotlib
-```
+```python
 
 ### 3. 运行示例
 ```bash
@@ -275,7 +275,7 @@ python ch01_problem13_sluice_gate_design.py
 
 # 运行题15：浮标系统设计
 python ch01_problem15_buoy_system_design.py
-```
+```python
 
 ### 4. 修改参数
 每个程序的`main()`函数中都可以修改输入参数：

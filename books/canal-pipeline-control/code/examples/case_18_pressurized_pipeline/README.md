@@ -16,7 +16,7 @@
 
 **水锤**是有压管道中最危险的瞬态流动现象：
 
-```
+```python
 定义：
 当管道中流体的流速突然改变时，由于流体惯性和管道弹性，
 会产生压力波动并沿管道传播，形成"锤击"效应。
@@ -47,7 +47,7 @@
 
 最简单的水锤压力计算公式：
 
-```
+```python
 ΔP = ρ·a·ΔV
 
 其中：
@@ -80,7 +80,7 @@ a = 1200  # m/s
 ΔP = ρ * a * ΔV = 1000 * 1200 * 2 = 2,400,000 Pa = 2.4 MPa = 24 bar
 
 # 这相当于增加了约240米的水头！
-```
+```python
 
 ### 2.2 水锤相长（Phase Duration）
 
@@ -98,7 +98,7 @@ a = 1200  # m/s
 
 设计准则：
     阀门关闭时间应大于 3-5 倍相长
-```
+```python
 
 ### 2.3 弹性水锤方程组
 
@@ -124,7 +124,7 @@ a = 1200  # m/s
 边界条件：
     上游：H = H_reservoir（水库水头）或 Q = Q_pump（泵流量）
     下游：V = 0（阀门关闭）或 Q = Q_load（负荷流量）
-```
+```python
 
 ### 2.4 特征线法（Method of Characteristics, MOC）
 
@@ -154,7 +154,7 @@ C_minus: H_P = C_m - B·Q_P
 联立 C+ 和 C- 方程：
     H_P = (C_p + C_m) / 2
     Q_P = (C_p - C_m) / (2B)
-```
+```python
 
 ---
 
@@ -182,7 +182,7 @@ C_minus: H_P = C_m - B·Q_P
 缺点：
     ❌ 占地大，投资高
     ❌ 仅适用于低水头系统（<200m）
-```
+```python
 
 ### 3.2 安全阀（Relief Valve）
 
@@ -212,7 +212,7 @@ else:
 缺点：
     ❌ 只能防止超压，无法防止负压
     ❌ 频繁动作可能影响寿命
-```
+```python
 
 ### 3.3 缓闭阀（Slow-Closing Valve）
 
@@ -240,7 +240,7 @@ Stage 2: 缓慢关闭至 0% 开度（时间 > 3-5 倍相长）
 缺点：
     ❌ 需要精确控制阀门动作
     ❌ 关闭时间长，不适用于紧急停机
-```
+```python
 
 ### 3.4 空气罐（Air Vessel）
 
@@ -262,7 +262,7 @@ Stage 2: 缓慢关闭至 0% 开度（时间 > 3-5 倍相长）
 缺点：
     ❌ 结构复杂，成本高
     ❌ 需要定期维护（补气）
-```
+```python
 
 ### 3.5 飞轮（Flywheel）
 
@@ -288,7 +288,7 @@ Stage 2: 缓慢关闭至 0% 开度（时间 > 3-5 倍相长）
 缺点：
     ❌ 增加泵组重量和成本
     ❌ 仅对停机有效，对阀门关闭无效
-```
+```python
 
 ---
 
@@ -344,7 +344,7 @@ class OptimalValveControl:
             dtheta_dt = dtheta_dt_nominal
 
         return dtheta_dt
-```
+```python
 
 ### 4.2 泵站协调控制
 
@@ -372,7 +372,7 @@ def optimal_pump_shutdown_sequence(pumps, priority='pressure'):
         shutdown_schedule.append((pump, t_shutdown))
 
     return shutdown_schedule
-```
+```python
 
 ### 4.3 MPC在水锤控制中的应用
 
@@ -408,7 +408,7 @@ class WaterHammerMPC:
         u_optimal = self.solve_qp(P_predicted, reference)
 
         return u_optimal[0]  # 返回第一个控制动作
-```
+```python
 
 ---
 
@@ -504,7 +504,7 @@ class MOCSimulator:
         self.Q = Q_new
 
         return self.H.copy(), self.Q.copy()
-```
+```python
 
 ### 5.2 简化刚性水柱模型
 
@@ -557,7 +557,7 @@ class RigidColumnModel:
         H_pipe = self.H_res - h_f - K_v * self.V**2 / (2 * self.g)
 
         return self.V, H_pipe
-```
+```python
 
 ---
 
@@ -620,7 +620,7 @@ Step 6: 选择防护措施
 
 Step 7: 详细数值仿真
     使用MOC或CFD验证设计
-```
+```python
 
 ### 7.2 防护措施选择准则
 
@@ -647,7 +647,7 @@ P_rating ≥ P_design
 
 # 阀门动作时间
 T_closure ≥ 3 * T_phase  （推荐5倍）
-```
+```python
 
 ---
 
@@ -670,7 +670,7 @@ T_closure ≥ 3 * T_phase  （推荐5倍）
 效果：
 - 无一起水锤事故
 - 安全运行10年+
-```
+```python
 
 ### 8.2 某水电站引水管道
 

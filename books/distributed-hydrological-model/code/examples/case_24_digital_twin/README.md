@@ -18,7 +18,7 @@
 
 ### 2. 系统架构
 
-```
+```python
 物理流域 → 传感器网络 → 数据接入 → 数字孪生模型 → 可视化监控
     ↑                                    ↓
     └──────── 决策执行 ←──── 智能决策 ←────┘
@@ -32,7 +32,7 @@
 class RealTimeDataSource:
     def get_rainfall(time_step):  # 雨量站数据
     def get_discharge(time_step): # 流量观测
-```
+```python
 
 #### 3.2 数字孪生模型
 
@@ -45,19 +45,19 @@ class DigitalTwinModel:
         # 数据同化
         # 状态更新
         # 预警判断
-```
+```python
 
 #### 3.3 EnKF数据同化
 
 卡尔曼增益：
 ```
 K = Pf / (Pf + R)
-```
+```python
 
 集合更新：
 ```
 x_i^a = x_i^f + K(y - x_i^f + ε_i)
-```
+```python
 
 ### 4. 工作流程
 
@@ -81,7 +81,7 @@ x_i^a = x_i^f + K(y - x_i^f + ε_i)
 
 【预报阶段 (60-120h)】
   （模型持续运行）
-```
+```python
 
 ### 关键特性
 

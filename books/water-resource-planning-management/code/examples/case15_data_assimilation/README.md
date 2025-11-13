@@ -21,7 +21,7 @@
 - 最优融合（Best Estimate）
 
 **权衡**：
-```
+```python
 x_best = w_model * x_model + w_obs * x_obs
 ```
 
@@ -46,7 +46,7 @@ x_best = w_model * x_model + w_obs * x_obs
 
 ## 技术路线
 
-```
+```python
 物理模型预测
   ├─ 径流模型
   ├─ 水位预测
@@ -84,17 +84,17 @@ x_best = w_model * x_model + w_obs * x_obs
 ### 1. 数据同化基本方程
 
 **背景误差**：
-```
+```python
 P_b = E[(x - x_b)(x - x_b)^T]
 ```
 
 **观测误差**：
-```
+```python
 P_o = E[(y - y_o)(y - y_o)^T]
 ```
 
 **最优分析**：
-```
+```python
 x_a = x_b + K(y_o - H*x_b)
 K = P_b*H^T*(H*P_b*H^T + P_o)^{-1}
 ```
@@ -102,13 +102,13 @@ K = P_b*H^T*(H*P_b*H^T + P_o)^{-1}
 ### 2. 卡尔曼滤波同化
 
 **预测**（模型）：
-```
+```python
 x_f = M(x_a^{t-1})  # 模型预测
 P_f = M*P_a*M^T + Q  # 预测误差
 ```
 
 **同化**（观测）：
-```
+```python
 K = P_f*H^T*(H*P_f*H^T + R)^{-1}
 x_a = x_f + K(y - H*x_f)
 P_a = (I - K*H)*P_f
@@ -116,7 +116,7 @@ P_a = (I - K*H)*P_f
 
 ### 3. 预测-校正循环
 
-```
+```python
 t=0: 初始化
   ↓
 t=t+1:

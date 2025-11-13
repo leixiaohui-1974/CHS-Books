@@ -15,14 +15,14 @@
 ```bash
 cd /workspace/books/water-environment-simulation
 pip install -r requirements.txt
-```
+```python
 
 ### 运行第一个案例
 
 ```bash
 # 案例1：污染物在静水中的扩散
 python code/examples/case_01_diffusion/main.py
-```
+```python
 
 ---
 
@@ -273,7 +273,7 @@ water-environment-simulation/
 ├── docs/                        # 文档
 ├── tests/                       # 测试代码
 └── data/                        # 数据文件
-```
+```python
 
 ---
 
