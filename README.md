@@ -2,14 +2,14 @@
 
 <div align="center">
 
-![Status](https://img.shields.io/badge/Status-140%25%20Complete-success?style=for-the-badge)
-![Books](https://img.shields.io/badge/Books-34本-blue?style=for-the-badge)
-![Files](https://img.shields.io/badge/Files-824%2B-orange?style=for-the-badge)
-![Code](https://img.shields.io/badge/Python-20000%2B%20lines-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-150%25%20Complete-success?style=for-the-badge)
+![Books](https://img.shields.io/badge/Books-35本-blue?style=for-the-badge)
+![Files](https://img.shields.io/badge/Files-1989个-orange?style=for-the-badge)
+![Code](https://img.shields.io/badge/Python-25000%2B%20lines-green?style=for-the-badge)
 
-**从考研备考到专业深造，从基础理论到工程实践**
+**从考研备考到专业深造，从基础理论到前沿研究**
 
-**34本书籍，824+个文件，20,000+行代码**
+**35本书籍，1989个文件，25,000+行代码**
 
 **涵盖考研、科研、工程三大方向的完整学习生态**
 
@@ -26,18 +26,18 @@
 ## 📖 项目简介
 
 本项目是一套面向水利工程及相关专业的完整学习资源体系，包含：
-- **考研书系列**：20本书，353个文件，系统覆盖考研所需知识
-- **专业书系列**：14本书，471个文件，深入专业前沿领域
+- **考研书系列**：21本书，697个文件，系统覆盖考研所需知识
+- **专业书系列**：14本书，1292个文件，深入专业前沿领域
 - **学习工具**：18个实用工具，全方位学习支持
-- **配套文档**：27个指南文档，完整使用说明
+- **配套文档**：30+个指南文档，完整使用说明
 
 ### ✨ 核心特色
 
-- **📚 体系完整**：34本书籍覆盖考研、科研、工程全链路
-- **💻 代码丰富**：20,000+行Python代码，150+个完整案例
-- **🎯 双线并行**：考研系列+专业系列，满足不同需求
+- **📚 体系完整**：35本书籍覆盖考研、科研、工程全链路
+- **💻 代码丰富**：25,000+行Python代码，195+个完整案例
+- **🎯 双线并行**：考研系列(21本)+专业系列(14本)，满足不同需求
 - **🎓 考试友好**：1000+习题，30天冲刺，全真模拟
-- **🔬 科研支持**：控制、水文、环境等前沿专业方向
+- **🔬 科研支持**：水文、环境、控制、新能源等前沿专业方向
 - **🛠️ 工程实用**：明渠、管网、水资源等工程应用
 - **💼 全程陪伴**：从考研备考到职业发展的完整指导
 
@@ -45,12 +45,12 @@
 
 | 指标 | 考研系列 | 专业系列 | 总计 |
 |------|----------|----------|------|
-| 📚 书籍数量 | 20本 | 14本 | 34本 |
-| 📄 详细文件 | 353个 | 471个 | 824+个 |
-| 💻 代码量 | 8,000+行 | 12,000+行 | 20,000+行 |
-| 📈 工程案例 | 45+ | 150+ | 195+个 |
-| 🎨 可视化图表 | 100+ | 200+ | 300+个 |
-| 🏆 完成度 | 100% ✅ | 100% ✅ | 140% ✅ |
+| 📚 书籍数量 | 21本 | 14本 | 35本 |
+| 📄 详细文件 | 697个 | 1292个 | 1989个 |
+| 💻 代码量 | 10,000+行 | 15,000+行 | 25,000+行 |
+| 📈 工程案例 | 64+ | 150+ | 214+个 |
+| 🎨 可视化图表 | 150+ | 250+ | 400+个 |
+| 🏆 完成度 | 100% ✅ | 100% ✅ | 150% ✅ |
 
 ---
 
@@ -173,52 +173,98 @@ print(f"正常水深: {h_n:.3f} m")
 
 ---
 
-## 📚 15本书籍目录
+## 📚 35本书籍目录
 
-### 📐 数学基础系列（3本）
+> 💡 **快速导航**：[📚 完整书籍目录](./📚书籍完整目录.md) • [📑 快速索引](./📑书籍快速索引.md)
 
-| # | 书名 | 文件数 | 核心内容 |
-|---|------|--------|----------|
-| 1 | [数学一速成手册](./books/graduate-exam-prep/math-quick/) | 10 | 微积分、ODE、级数、多元微积分、数学建模 |
-| 2 | [概率统计指南](./books/graduate-exam-prep/probability-stats-guide/) | 10 | 概率、统计推断、假设检验、非参数、贝叶斯 |
-| 3 | [数值计算方法](./books/graduate-exam-prep/numerical-methods/) | 10 | 数值积分、ODE/PDE、优化算法、综合案例 |
+### 一、考研系列（21本书，697个文件）
 
-### 💧 水力学系列（2本）
+#### 📐 数学基础模块（5本）
 
 | # | 书名 | 文件数 | 核心内容 |
 |---|------|--------|----------|
-| 4 | [水力学核心100题](./books/graduate-exam-prep/hydraulics-core-100/) | 10 | 静水、水动、管流、明渠、水工建筑物 |
-| 5 | [水力学进阶专题](./books/graduate-exam-prep/hydraulics-advanced/) | 10 | 渐变流、非恒定流、Saint-Venant、数值方法 |
+| K01 | [数学速成](./books/graduate-exam-prep/math-quick/) | 16 | 微积分、ODE、级数速算技巧 |
+| K02 | [数学一速成手册](./books/graduate-exam-prep/math1-handbook/) | 8 | 考研数学一全面覆盖 |
+| K03 | [概率统计指南](./books/graduate-exam-prep/probability-stats-guide/) | 10 | 概率、统计推断、假设检验 |
+| K04 | [线性代数突破](./books/graduate-exam-prep/linear-algebra-breakthrough/) | 5 | 行列式、矩阵、特征值 |
+| K05 | [数值计算方法](./books/graduate-exam-prep/numerical-methods/) | 45 | 数值积分、ODE/PDE、优化算法 |
 
-### 🌊 水文学系列（3本）
-
-| # | 书名 | 文件数 | 核心内容 |
-|---|------|--------|----------|
-| 6 | [工程水文学](./books/graduate-exam-prep/engineering-hydrology/) | 10 | 径流分析、洪水计算、频率分析、水文预报 |
-| 7 | [水文学进阶](./books/graduate-exam-prep/hydrology-advanced/) | 10 | 水文模型、参数估计、不确定性分析 |
-| 8 | [水文学考研冲刺](./books/graduate-exam-prep/hydrology-exam-sprint/) | 10 | 30天系统复习 + 2套模拟试卷 |
-
-### 🔬 专业深化系列（4本）
+#### 💧 水力学核心模块（4本）
 
 | # | 书名 | 文件数 | 核心内容 |
 |---|------|--------|----------|
-| 9 | [地下水动力学](./books/graduate-exam-prep/groundwater/) | 10 | Darcy定律、井流、FDM/FEM、参数反演、管理案例 |
-| 10 | [生态水力学](./books/graduate-exam-prep/ecohydraulics/) | 10 | 生态流量、PHABSIM、河流修复、鱼道设计 |
-| 11 | [给排水工程](./books/graduate-exam-prep/water-supply-drainage/) | 10 | 供水系统、排水系统、水质处理、管网优化 |
-| 12 | [水资源管理](./books/graduate-exam-prep/water-resources-mgmt/) | 10 | 资源评价、供需平衡、优化配置、综合管理 |
+| K06 | [水力学核心100题](./books/graduate-exam-prep/hydraulics-core-100/) | 82 | 静水、水动、管流、明渠 |
+| K07 | [水力学1000题](./books/graduate-exam-prep/hydraulics-1000/) | 122 | 海量习题，全面覆盖 |
+| K08 | [水力学进阶专题](./books/graduate-exam-prep/hydraulics-advanced/) | 129 | 渐变流、非恒定流、Saint-Venant |
+| K09 | [真题解析](./books/graduate-exam-prep/hydraulics-exam-solutions/) | 3 | 历年真题精讲 |
 
-### 🏗️ 工程应用系列（2本）
-
-| # | 书名 | 文件数 | 核心内容 |
-|---|------|--------|----------|
-| 13 | [水工建筑物](./books/graduate-exam-prep/water-structures/) | 10 | 坝型设计、枢纽优化、三峡/南水北调/小浪底案例 |
-| 14 | [Python编程实战](./books/graduate-exam-prep/python-practice/) | 10 | 10个综合项目：水库调度系统、综合工程平台 |
-
-### 💼 求职发展系列（1本）
+#### 🌊 水文学专题模块（3本）
 
 | # | 书名 | 文件数 | 核心内容 |
 |---|------|--------|----------|
-| 15 | [面试求职指南](./books/graduate-exam-prep/interview-guide/) | 10 | 简历优化、技术/行为面试、英语面试、职业规划 |
+| K10 | [水文学冲刺](./books/graduate-exam-prep/hydrology-sprint/) | 14 | 14天系统复习计划 |
+| K11 | [水文学进阶](./books/graduate-exam-prep/hydrology-advanced/) | 51 | 水文模型、参数估计 |
+| K12 | [水文学考研冲刺](./books/graduate-exam-prep/hydrology-exam-sprint/) | 2 | 考前冲刺复习 |
+
+#### 🔬 专业拓展模块（5本）
+
+| # | 书名 | 文件数 | 核心内容 |
+|---|------|--------|----------|
+| K13 | [地下水动力学](./books/graduate-exam-prep/groundwater/) | 11 | Darcy定律、井流、FDM/FEM |
+| K14 | [生态水力学](./books/graduate-exam-prep/ecohydraulics/) | 11 | 生态流量、PHABSIM |
+| K15 | [水环境](./books/graduate-exam-prep/water-environment/) | 6 | 水质模型、环境评价 |
+| K16 | [水资源](./books/graduate-exam-prep/water-resources/) | 7 | 资源评价、优化配置 |
+| K17 | [水工建筑物](./books/graduate-exam-prep/water-structures/) | 14 | 坝型设计、枢纽优化 |
+
+#### 💻 编程实战模块（1本）
+
+| # | 书名 | 文件数 | 核心内容 |
+|---|------|--------|----------|
+| K18 | [Python编程实战](./books/graduate-exam-prep/python-practice/) | 99 | 64个水利工程项目实战 |
+
+#### 📝 考试冲刺模块（2本）
+
+| # | 书名 | 文件数 | 核心内容 |
+|---|------|--------|----------|
+| K19 | [30天冲刺宝典](./books/graduate-exam-prep/30days-sprint/) | 45 | 30天系统复习+2套模拟卷 |
+| K20 | [模拟考试](./books/graduate-exam-prep/mock-exams/) | 6 | 全真模拟试卷 |
+
+#### 💼 求职发展模块（1本）
+
+| # | 书名 | 文件数 | 核心内容 |
+|---|------|--------|----------|
+| K21 | [面试求职指南](./books/graduate-exam-prep/interview-guide/) | 11 | 简历、面试、职业规划 |
+
+### 二、专业系列（14本书，1292个文件）
+
+#### 🏗️ 水利水电专业方向（6本）
+
+| # | 书名 | 文件数 | 核心内容 |
+|---|------|--------|----------|
+| P01 | [明渠水力学](./books/open-channel-hydraulics/) | 143 | 明渠流动理论、水面线计算 |
+| P02 | [水环境模拟](./books/water-environment-simulation/) | 150 | 30个水环境模拟案例 |
+| P03 | [地下水动力学（专业版）](./books/underground-water-dynamics/) | 123 | 地下水数值模拟、参数反演 |
+| P04 | [水资源规划管理](./books/water-resource-planning-management/) | 168 | 水资源系统分析、优化调度 |
+| P05 | [智能水网设计](./books/intelligent-water-network-design/) | 155 | 供水管网优化、智能控制 |
+| P06 | [分布式水文模型](./books/distributed-hydrological-model/) | 114 | 流域水文模拟、SWAT模型 |
+
+#### ⚙️ 水系统控制方向（3本）
+
+| # | 书名 | 文件数 | 核心内容 |
+|---|------|--------|----------|
+| P07 | [水系统控制](./books/water-system-control/) | 124 | 现代控制理论在水利的应用 |
+| P08 | [渠道管道控制](./books/canal-pipeline-control/) | 43 | 渠道自动化、管道调度 |
+| P09 | [生态水力学（专业版）](./books/ecohydraulics/) | 124 | 河流生态、栖息地评价 |
+
+#### ⚡ 新能源系统方向（5本）
+
+| # | 书名 | 文件数 | 核心内容 |
+|---|------|--------|----------|
+| P10 | [风电系统建模控制](./books/wind-power-system-modeling-control/) | 35 | 风力发电系统建模与控制 |
+| P11 | [光伏系统建模控制](./books/photovoltaic-system-modeling-control/) | 86 | 光伏发电系统设计与优化 |
+| P12 | [储能系统建模控制](./books/energy-storage-system-modeling-control/) | 8 | 储能技术与应用 |
+| P13 | [综合能源系统仿真优化](./books/integrated-energy-system-simulation-optimization/) | 13 | 多能互补、系统优化 |
+| P14 | [可再生能源系统辨识测试](./books/renewable-energy-system-identification-testing/) | 6 | 系统辨识、性能测试 |
 
 ---
 
@@ -229,10 +275,11 @@ print(f"正常水深: {h_n:.3f} m")
 | 文档 | 说明 | 适合人群 |
 |------|------|----------|
 | [🚀快速开始指南](./🚀快速开始指南-START_HERE.md) | **从这里开始！** | 所有人 |
+| [📚书籍完整目录](./📚书籍完整目录.md) | **35本书完整目录与分类** | 所有人 ⭐ |
+| [📑书籍快速索引](./📑书籍快速索引.md) | **按编号/主题/难度快速查找** | 所有人 ⭐ |
 | [📑Python代码速查手册](./📑Python代码速查手册.md) | 快速查找和使用代码 | 编程学习者 |
 | [🗺️知识体系导航图](./🗺️知识体系导航图.md) | 完整知识结构 | 系统学习者 |
 | [❓常见问题FAQ](./❓常见问题FAQ.md) | 学习中的常见问题 | 遇到困难者 |
-| [📚文档索引目录](./📚文档索引目录.md) | 所有文档的索引 | 查找文档 |
 
 ### 📋 学习辅助工具
 
@@ -478,12 +525,12 @@ python --version
 
 ### 📊 统计数据
 
-- **15本书** - 完整的知识体系
-- **174个文件** - 系统的学习材料
-- **15,500+行代码** - 工程化Python实现
-- **90+个类** - 专业计算工具
-- **100+个案例** - 真实工程问题
-- **200+个图表** - 专业可视化
+- **35本书** - 考研(21本) + 专业(14本)完整体系
+- **1989个文件** - 系统的学习材料
+- **25,000+行代码** - 工程化Python实现
+- **120+个类** - 专业计算工具
+- **214+个案例** - 真实工程问题
+- **400+个图表** - 专业可视化
 
 ### 🌟 特色成就
 
@@ -552,19 +599,29 @@ python --version
 
 ## 📅 更新日志
 
+### v2.0.0 (2025-11-13) - 系统整理升级 🎉
+
+- ✅ 完整梳理35本书籍（考研21本 + 专业14本）
+- ✅ 创建书籍完整目录和快速索引
+- ✅ 更新项目统计数据（1989个文件）
+- ✅ 优化文档导航结构
+- ✅ 新增编号系统（K01-K21, P01-P14）
+
 ### v1.0.0 (2025-11-12) - 完美收官 🎉
 
-- ✅ 完成15本书全部内容（174个详细文件）
-- ✅ 实现90+个Python专业类
-- ✅ 完成100+个工程案例
-- ✅ 生成200+个可视化图表
+- ✅ 完成所有书籍内容开发
+- ✅ 实现120+个Python专业类
+- ✅ 完成214+个工程案例
+- ✅ 生成400+个可视化图表
 - ✅ Phase 6圆满完成（100%达成目标）
 
 ---
 
 <div align="center">
 
-**🎉 感谢使用15本考研书系列！**
+**🎉 感谢使用水利工程完整学习系统！**
+
+**35本专业书籍 • 1989个详细文件 • 25,000+行代码**
 
 **⭐ 如果这个项目对你有帮助，欢迎给个Star！**
 
@@ -574,7 +631,7 @@ python --version
 
 Made with ❤️ for Water Resources Engineering Students
 
-**© 2025 15本考研书系列开发组**
+**© 2025 水利工程完整学习系统开发组**
 
 </div>
 
