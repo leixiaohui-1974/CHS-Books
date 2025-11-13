@@ -1,4 +1,6 @@
-# Python
+# 15本考研书系列 - Git忽略文件
+
+# Python相关
 __pycache__/
 *.py[cod]
 *$py.class
@@ -20,27 +22,59 @@ wheels/
 .installed.cfg
 *.egg
 
-# Virtual environments
+# 虚拟环境
 venv/
 ENV/
 env/
+.venv
 
-# IDEs
+# IDE和编辑器
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+.DS_Store
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# Results and outputs
-results/
+# 学习数据文件（个人数据）
+learning_data.json
+learning_assistant_data.json
+study_reminder_config.json
+
+# 生成的报告和图表
+学习报告-*.md
+学习报告-*.html
+学习证书-*.md
+验证报告-*.md
 *.png
 *.jpg
+*.jpeg
 *.pdf
+!docs/*.png
+!docs/*.jpg
+!assets/*.png
 
-# OS
-.DS_Store
+# 临时文件
+*.tmp
+*.bak
+*.log
+.cache/
+
+# 操作系统
 Thumbs.db
+Desktop.ini
+.Spotlight-V100
+.Trashes
+
+# 测试覆盖率
+.coverage
+htmlcov/
+.pytest_cache/
+
+# 其他
+*.zip
+*.tar.gz
+*.rar
