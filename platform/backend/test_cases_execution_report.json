@@ -1,0 +1,893 @@
+{
+  "timestamp": "2025-11-13T14:30:27.931436",
+  "summary": {
+    "总案例数": 851,
+    "可执行": 101,
+    "不可执行": 1,
+    "跳过": 13
+  },
+  "details": {
+    "water-system-control": {
+      "total": 62,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/water-system-control/code/examples/case_04_pid_tuning/generate_diagram.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-system-control/code/examples/case_09_system_modeling/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-system-control/code/examples/case_06_step_response/experiments.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-system-control/tests/conftest.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-system-control/code/examples/case_01_home_water_tower/main_en.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "open-channel-hydraulics": {
+      "total": 59,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/open-channel-hydraulics/code/examples/case_02_drainage/experiments.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/open-channel-hydraulics/code/examples/case_28_surge_tank/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/open-channel-hydraulics/code/examples/case_10_compound/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/open-channel-hydraulics/tests/conftest.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/open-channel-hydraulics/code/examples/case_01_irrigation/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "canal-pipeline-control": {
+      "total": 20,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/canal-pipeline-control/code/examples/case_20_integrated_system/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/canal-pipeline-control/code/examples/case_06_galerkin_reduction/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/canal-pipeline-control/code/examples/case_11_sindy_identification/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/canal-pipeline-control/code/examples/case_03_feedforward_feedback/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "ecohydraulics": {
+      "total": 55,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/ecohydraulics/code/models/indicators.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/ecohydraulics/code/models/benthic.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/ecohydraulics/code/examples/case_18_restoration_assessment/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/ecohydraulics/code/examples/case_04_vegetation_hydraulics/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/ecohydraulics/code/examples/case_39_mangrove/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "distributed-hydrological-model": {
+      "total": 45,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/distributed-hydrological-model/code/examples/case_21_realtime_correction/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/distributed-hydrological-model/code/core/calibration/sce_ua.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/distributed-hydrological-model/code/core/interpolation/thiessen.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/distributed-hydrological-model/code/examples/case_09_sensitivity_analysis/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/distributed-hydrological-model/code/examples/case_20_cascade_reservoirs/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "water-environment-simulation": {
+      "total": 62,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/water-environment-simulation/code/models/dissolved_oxygen.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-environment-simulation/code/examples/case_01_diffusion/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-environment-simulation/code/examples/case_28_wetland/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-environment-simulation/code/examples/case_14_lake_nutrient/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-environment-simulation/code/examples/case_26_river_ecosystem/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "water-resource-planning-management": {
+      "total": 65,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/water-resource-planning-management/code/core/optimization/multi_objective.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-resource-planning-management/code/core/hydrology/water_balance.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-resource-planning-management/code/examples/case15_data_assimilation/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-resource-planning-management/code/examples/case08_network_dispatch/src/optimizer.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/water-resource-planning-management/code/core/digital_twin/state_estimator.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "underground-water-dynamics": {
+      "total": 55,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/underground-water-dynamics/code/examples/case_18/case_18_contaminant_transport.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/underground-water-dynamics/gwflow/transport/advection_dispersion.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/underground-water-dynamics/code/examples/case_20/case_20_intelligent_decision.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/underground-water-dynamics/gwflow/calibration/global_sensitivity.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/underground-water-dynamics/code/examples/case_02/case_02_2d_steady.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "intelligent-water-network-design": {
+      "total": 45,
+      "tested": 5,
+      "passed": 4,
+      "failed": 1,
+      "cases": [
+        {
+          "file": "/workspace/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analyzer.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/demo_presenter.py",
+          "executable": false,
+          "syntax_ok": false,
+          "runtime_ok": false,
+          "error": "语法错误: invalid syntax. Perhaps you forgot a comma? (demo_presenter.py, line 473)"
+        },
+        {
+          "file": "/workspace/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/config_generator.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cli.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/intelligent-water-network-design/code/examples/case_14_regional_irrigation/main_v2.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "photovoltaic-system-modeling-control": {
+      "total": 32,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/photovoltaic-system-modeling-control/code/examples/case_07_perturb_observe/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/photovoltaic-system-modeling-control/code/examples/case_12_multi_peak_mppt/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/photovoltaic-system-modeling-control/code/examples/case_11_pso_mppt/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/photovoltaic-system-modeling-control/code/examples/case_02_double_diode_model/experiments.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/photovoltaic-system-modeling-control/code/examples/case_08_incremental_conductance/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "wind-power-system-modeling-control": {
+      "total": 21,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/wind-power-system-modeling-control/code/models/generator.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/wind-power-system-modeling-control/code/examples/case_05_wake_effect/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/wind-power-system-modeling-control/code/examples/case_09_drivetrain/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/wind-power-system-modeling-control/code/examples/case_08_grid_connection/main.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/wind-power-system-modeling-control/code/models/converter_control.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "energy-storage-system-modeling-control": {
+      "total": 4,
+      "tested": 4,
+      "passed": 4,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/energy-storage-system-modeling-control/code/models/converter.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/energy-storage-system-modeling-control/code/models/applications.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/energy-storage-system-modeling-control/code/models/hybrid_storage.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/energy-storage-system-modeling-control/code/models/battery.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "integrated-energy-system-simulation-optimization": {
+      "total": 8,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/integrated-energy-system-simulation-optimization/code/models/grid_support.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/integrated-energy-system-simulation-optimization/code/examples/example_01_hydro_modeling.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/integrated-energy-system-simulation-optimization/code/examples/example_11_day_ahead_optimization.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/integrated-energy-system-simulation-optimization/code/examples/example_26_integrated_system.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/integrated-energy-system-simulation-optimization/code/models/optimization.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "renewable-energy-system-identification-testing": {
+      "total": 3,
+      "tested": 3,
+      "passed": 3,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/renewable-energy-system-identification-testing/code/models/signal_processing.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/renewable-energy-system-identification-testing/code/models/machine_learning.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/renewable-energy-system-identification-testing/code/models/identification.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "hydraulics-core-100": {
+      "total": 39,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-core-100/code/examples/ch06_unsteady_flow/flood_routing_simple.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-core-100/code/examples/ch01_hydrostatics/buoyancy_calculation.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-core-100/code/examples/ch06_unsteady_flow/saint_venant_basic.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-core-100/code/examples/ch02_hydrodynamics/momentum_equation.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-core-100/code/examples/ch02_hydrodynamics/orifice_tube_flow.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "hydraulics-advanced": {
+      "total": 83,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter05/ch05_problem01_rainfall_analysis.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter10/ch10_problem13_comprehensive.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter01/ch01_problem08_trapezoidal_gate.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter12/ch12_problem07_river_regime.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter12/ch12_problem10_sediment_transport.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "hydrology-advanced": {
+      "total": 22,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydrology-advanced/codes/第05章_题目2_单位线基本原理.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydrology-advanced/codes/第13章_题目1_清华真题_设计洪水.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydrology-advanced/codes/第12章_题目2_河流健康评价.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydrology-advanced/codes/第15章_题目2_小流域防洪工程.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydrology-advanced/codes/第10章_题目1_水资源量计算.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "30days-sprint": {
+      "total": 24,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/graduate-exam-prep/30days-sprint/codes/day22_numerical/numerical_sprint.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/30days-sprint/codes/day18_hydraulic_structures/structures_sprint.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/30days-sprint/codes/day19_river_dynamics/river_dynamics_sprint.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/30days-sprint/codes/day01_static_pressure/static_pressure_sprint.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/30days-sprint/codes/day11_critical_jump/critical_jump_sprint.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "hydraulics-1000": {
+      "total": 47,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-1000/codes/problem_411_water_hammer.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-1000/codes/problem_903_canal_bridge_system.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-1000/codes/problem_902_pump_station_system.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-1000/codes/problem_002_utube_manometer.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/hydraulics-1000/codes/problem_481_critical_depth.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "python-practice": {
+      "total": 70,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/graduate-exam-prep/python-practice/codes/part1_basics/project_06_numpy.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/python-practice/codes/part5_applications/project_58_河道治理.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/python-practice/codes/part3_hydraulics/project_32_水跃计算.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/python-practice/codes/part5_applications/project_64_蒸发计算.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/python-practice/codes/part5_applications/project_55_灌溉系统.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    },
+    "numerical-methods": {
+      "total": 30,
+      "tested": 5,
+      "passed": 5,
+      "failed": 0,
+      "cases": [
+        {
+          "file": "/workspace/books/graduate-exam-prep/numerical-methods/codes/chapter2_nonlinear_equations/project_07_牛顿法与拟牛顿法.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/numerical-methods/codes/chapter4_ode/project_17_刚性方程求解.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/numerical-methods/codes/chapter3_calculus/project_14_Richardson外推.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/numerical-methods/codes/chapter3_calculus/project_11_numerical_integration.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        },
+        {
+          "file": "/workspace/books/graduate-exam-prep/numerical-methods/codes/chapter3_calculus/project_13_数值微分.py",
+          "executable": true,
+          "syntax_ok": true,
+          "runtime_ok": true,
+          "error": null
+        }
+      ]
+    }
+  }
+}

@@ -8,6 +8,7 @@
       "description": "通过24个经典水箱案例系统讲解控制理论基础知识，从最简单的开关控制到高级的模型预测控制，循序渐进地建立完整的控制系统知识体系。",
       "author": "AI Engineering Team",
       "level": "初级",
+      "category": "专业教材",
       "tags": ["控制理论", "水利工程", "PID控制", "智能控制"],
       "stats": {
         "cases": 20,
@@ -30,6 +31,7 @@
       "description": "通过30个经典水力工程案例系统讲解完整的水力学计算方法，从明渠流到有压流，从恒定流到非恒定流，涵盖完整的水力学知识体系。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "专业教材",
       "tags": ["水力学", "明渠流", "数值计算", "工程应用"],
       "stats": {
         "cases": 30,
@@ -52,6 +54,7 @@
       "description": "结合明渠水力学和控制理论，讲解运河系统的智能控制方法，包括闸门控制、泵站调度、多目标优化等实际工程应用。",
       "author": "AI Engineering Team",
       "level": "高级",
+      "category": "专业教材",
       "tags": ["智能控制", "调度优化", "数字孪生", "降阶模型"],
       "stats": {
         "cases": 20,
@@ -74,6 +77,7 @@
       "description": "将水力学与生态学相结合，讲解生态水力学的基本理论和数值模拟方法，包括河流生态、湖泊生态、湿地生态等。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "专业教材",
       "tags": ["生态水力学", "环境模拟", "栖息地评估"],
       "stats": {
         "cases": 18,
@@ -96,6 +100,7 @@
       "description": "讲解分布式水文模型的基本原理和数值实现方法，包括降雨径流模拟、蒸散发计算、地下水模拟等。",
       "author": "AI Engineering Team",
       "level": "高级",
+      "category": "专业教材",
       "tags": ["水文模型", "流域模拟", "GIS应用"],
       "stats": {
         "cases": 15,
@@ -118,6 +123,7 @@
       "description": "讲解水环境模拟的基本理论和数值方法，包括河流水质模拟、湖泊富营养化模拟、污染物迁移转化等。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "专业教材",
       "tags": ["水环境", "水质模拟", "污染控制"],
       "stats": {
         "cases": 20,
@@ -140,6 +146,7 @@
       "description": "讲解水资源系统分析、优化调度、风险管理等理论和方法，包括水库调度、水资源配置、水权交易等。",
       "author": "AI Engineering Team",
       "level": "高级",
+      "category": "专业教材",
       "tags": ["水资源", "系统优化", "决策支持"],
       "stats": {
         "cases": 22,
@@ -162,6 +169,7 @@
       "description": "讲解地下水流动的基本理论和数值模拟方法，包括达西定律、地下水模型、含水层参数识别等。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "专业教材",
       "tags": ["地下水", "渗流模拟", "参数识别"],
       "stats": {
         "cases": 16,
@@ -184,6 +192,7 @@
       "description": "讲解供水管网的设计原理、优化方法和智能控制技术，包括管网水力计算、漏损控制、智能调度等。",
       "author": "AI Engineering Team",
       "level": "高级",
+      "category": "专业教材",
       "tags": ["管网设计", "优化算法", "智能控制"],
       "stats": {
         "cases": 18,
@@ -206,6 +215,7 @@
       "description": "讲解光伏发电系统的建模方法和控制策略，包括光伏阵列建模、MPPT控制、并网逆变器控制等。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "专业教材",
       "tags": ["光伏发电", "MPPT", "并网控制"],
       "stats": {
         "cases": 16,
@@ -228,6 +238,7 @@
       "description": "讲解风力发电系统的建模方法和控制策略，包括风机建模、变桨控制、并网控制等。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "专业教材",
       "tags": ["风力发电", "变桨控制", "并网技术"],
       "stats": {
         "cases": 14,
@@ -250,6 +261,7 @@
       "description": "讲解储能系统的建模方法和控制策略，包括电池建模、充放电控制、能量管理等。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "专业教材",
       "tags": ["储能系统", "电池管理", "能量优化"],
       "stats": {
         "cases": 12,
@@ -272,6 +284,7 @@
       "description": "讲解综合能源系统的建模仿真和优化调度方法，包括多能流耦合、协同优化、经济调度等。",
       "author": "AI Engineering Team",
       "level": "高级",
+      "category": "专业教材",
       "tags": ["综合能源", "多能互补", "优化调度"],
       "stats": {
         "cases": 15,
@@ -287,6 +300,29 @@
       "totalCases": 15
     },
     {
+      "id": "renewable-energy-system-identification-testing",
+      "slug": "renewable-energy-system-identification-testing",
+      "title": "可再生能源系统识别测试",
+      "subtitle": "系统辨识与性能测试",
+      "description": "讲解可再生能源系统的辨识方法和性能测试技术，包括系统建模、参数识别、性能评估等。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "category": "专业教材",
+      "tags": ["系统辨识", "性能测试", "可再生能源"],
+      "stats": {
+        "cases": 10,
+        "hours": 80,
+        "students": 198
+      },
+      "rating": 4.5,
+      "price": {
+        "original": 279,
+        "current": 249
+      },
+      "path": "books/renewable-energy-system-identification-testing",
+      "totalCases": 10
+    },
+    {
       "id": "hydraulics-core-100",
       "slug": "hydraulics-core-100",
       "title": "水力学核心100题",
@@ -294,6 +330,7 @@
       "description": "精选100道水力学核心习题，涵盖研究生入学考试的所有重点知识，配套详细解析和Python代码实现。",
       "author": "AI Engineering Team",
       "level": "中级",
+      "category": "考研系列",
       "tags": ["考研", "水力学", "习题精讲"],
       "stats": {
         "cases": 100,
@@ -306,16 +343,18 @@
         "current": 169
       },
       "path": "books/graduate-exam-prep/hydraulics-core-100",
-      "totalCases": 100
+      "totalCases": 100,
+      "status": "completed"
     },
     {
       "id": "hydraulics-advanced",
       "slug": "hydraulics-advanced",
-      "title": "高等水力学",
+      "title": "水力学考研高分突破",
       "subtitle": "研究生课程",
-      "description": "研究生高等水力学课程配套教材，包括高级水力学理论、数值方法和工程应用。",
+      "description": "研究生高等水力学课程配套教材，包括高级水力学理论、数值方法和工程应用。涵盖15章、330题、30个Python代码。",
       "author": "AI Engineering Team",
       "level": "高级",
+      "category": "考研系列",
       "tags": ["研究生", "高等水力学", "数值方法"],
       "stats": {
         "cases": 50,
@@ -328,15 +367,467 @@
         "current": 219
       },
       "path": "books/graduate-exam-prep/hydraulics-advanced",
-      "totalCases": 50
+      "totalCases": 50,
+      "status": "completed"
+    },
+    {
+      "id": "hydrology-advanced",
+      "slug": "hydrology-advanced",
+      "title": "水文学考研高分突破",
+      "subtitle": "水文模型与应用",
+      "description": "系统讲解水文学考研知识点，包括水文模型、降雨径流、洪水预报等，配套Python代码实现和AI融合案例。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "category": "考研系列",
+      "tags": ["水文学", "考研", "模型仿真"],
+      "stats": {
+        "cases": 45,
+        "hours": 150,
+        "students": 543
+      },
+      "rating": 4.8,
+      "price": {
+        "original": 239,
+        "current": 209
+      },
+      "path": "books/graduate-exam-prep/hydrology-advanced",
+      "totalCases": 45,
+      "status": "completed"
+    },
+    {
+      "id": "math1-handbook",
+      "slug": "math1-handbook",
+      "title": "数学一速成手册",
+      "subtitle": "考研数学快速突破",
+      "description": "20个核心专题，100个必背公式，完整的Python代码支撑。数学+工程+编程三合一，帮助考生快速掌握数学一核心知识。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["数学一", "考研", "公式速记"],
+      "stats": {
+        "cases": 20,
+        "hours": 100,
+        "students": 892
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 179,
+        "current": 149
+      },
+      "path": "books/graduate-exam-prep/math1-handbook",
+      "totalCases": 20,
+      "status": "completed"
+    },
+    {
+      "id": "30days-sprint",
+      "slug": "30days-sprint",
+      "title": "30天考研冲刺宝典",
+      "subtitle": "考前快速提分",
+      "description": "考前30天系统复习计划，150题精选高频题，5套模拟试卷，100个核心公式。包含心理调节、答题技巧和考场策略。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["冲刺", "考研", "模拟试卷"],
+      "stats": {
+        "cases": 30,
+        "hours": 120,
+        "students": 1045
+      },
+      "rating": 4.9,
+      "price": {
+        "original": 159,
+        "current": 129
+      },
+      "path": "books/graduate-exam-prep/30days-sprint",
+      "totalCases": 30,
+      "status": "completed"
+    },
+    {
+      "id": "hydraulics-1000",
+      "slug": "hydraulics-1000",
+      "title": "水力学1000题详解",
+      "subtitle": "题海战术必备",
+      "description": "海量题库，涵盖1000道精选题目，分10大类、3级难度。包含45个Python代码、270+可视化图表，是刷题必备教材。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["题库", "刷题", "水力学"],
+      "stats": {
+        "cases": 1000,
+        "hours": 400,
+        "students": 2134
+      },
+      "rating": 4.9,
+      "price": {
+        "original": 279,
+        "current": 239
+      },
+      "path": "books/graduate-exam-prep/hydraulics-1000",
+      "totalCases": 1000,
+      "status": "completed"
+    },
+    {
+      "id": "python-practice",
+      "slug": "python-practice",
+      "title": "水利工程Python编程实战",
+      "subtitle": "70个工程案例",
+      "description": "通过70个真实水利工程案例，系统讲解Python编程在水利工程中的应用。4500+行代码，5个Part从入门到精通。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["Python", "编程", "工程实战"],
+      "stats": {
+        "cases": 70,
+        "hours": 200,
+        "students": 1567
+      },
+      "rating": 4.8,
+      "price": {
+        "original": 229,
+        "current": 199
+      },
+      "path": "books/graduate-exam-prep/python-practice",
+      "totalCases": 70,
+      "status": "completed"
+    },
+    {
+      "id": "numerical-methods",
+      "slug": "numerical-methods",
+      "title": "水利工程数值计算方法",
+      "subtitle": "科研级数值计算",
+      "description": "面向科研与工程应用的数值计算方法实战教程，30个专业案例，3500+行代码。从基础到前沿全覆盖。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "category": "考研系列",
+      "tags": ["数值计算", "科研", "算法"],
+      "stats": {
+        "cases": 30,
+        "hours": 120,
+        "students": 723
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 219,
+        "current": 189
+      },
+      "path": "books/graduate-exam-prep/numerical-methods",
+      "totalCases": 30,
+      "status": "completed"
+    },
+    {
+      "id": "water-structures",
+      "slug": "water-structures",
+      "title": "水工建筑物设计考研专题",
+      "subtitle": "水工建筑物设计",
+      "description": "系统讲解水工建筑物设计的理论与方法，包括坝工、渠道、闸门等设计要点，配套工程案例分析。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "category": "考研系列",
+      "tags": ["水工建筑物", "结构设计", "考研"],
+      "stats": {
+        "cases": 25,
+        "hours": 100,
+        "students": 456
+      },
+      "rating": 4.6,
+      "price": {
+        "original": 189,
+        "current": 159
+      },
+      "path": "books/graduate-exam-prep/water-structures",
+      "totalCases": 25,
+      "status": "in_progress"
+    },
+    {
+      "id": "water-resources",
+      "slug": "water-resources",
+      "title": "水资源规划管理考研专题",
+      "subtitle": "水资源系统优化",
+      "description": "讲解水资源规划、配置、调度和管理的理论与方法，包括优化算法、决策支持系统等。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "category": "考研系列",
+      "tags": ["水资源", "规划管理", "优化"],
+      "stats": {
+        "cases": 20,
+        "hours": 90,
+        "students": 398
+      },
+      "rating": 4.5,
+      "price": {
+        "original": 179,
+        "current": 149
+      },
+      "path": "books/graduate-exam-prep/water-resources",
+      "totalCases": 20,
+      "status": "in_progress"
+    },
+    {
+      "id": "water-environment",
+      "slug": "water-environment",
+      "title": "水环境模拟考研专题",
+      "subtitle": "水质模拟与控制",
+      "description": "讲解水环境模拟的基本理论和方法，包括水质模型、污染物迁移、生态系统模拟等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["水环境", "水质模拟", "生态"],
+      "stats": {
+        "cases": 18,
+        "hours": 85,
+        "students": 367
+      },
+      "rating": 4.5,
+      "price": {
+        "original": 169,
+        "current": 139
+      },
+      "path": "books/graduate-exam-prep/water-environment",
+      "totalCases": 18,
+      "status": "in_progress"
+    },
+    {
+      "id": "groundwater",
+      "slug": "groundwater",
+      "title": "地下水动力学考研专题",
+      "subtitle": "地下水流动模拟",
+      "description": "系统讲解地下水动力学的基本理论和数值方法，包括达西定律、渗流模型、参数识别等。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "category": "考研系列",
+      "tags": ["地下水", "渗流", "数值模拟"],
+      "stats": {
+        "cases": 22,
+        "hours": 95,
+        "students": 412
+      },
+      "rating": 4.6,
+      "price": {
+        "original": 179,
+        "current": 149
+      },
+      "path": "books/graduate-exam-prep/groundwater",
+      "totalCases": 22,
+      "status": "in_progress"
+    },
+    {
+      "id": "ecohydraulics-exam",
+      "slug": "ecohydraulics-exam",
+      "title": "生态水力学考研专题",
+      "subtitle": "生态水力学理论与应用",
+      "description": "讲解生态水力学的基本原理和分析方法，包括栖息地评估、河流修复、生态流量等。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["生态水力学", "栖息地", "河流修复"],
+      "stats": {
+        "cases": 16,
+        "hours": 80,
+        "students": 289
+      },
+      "rating": 4.4,
+      "price": {
+        "original": 159,
+        "current": 129
+      },
+      "path": "books/graduate-exam-prep/ecohydraulics",
+      "totalCases": 16,
+      "status": "in_progress"
+    },
+    {
+      "id": "mock-exams",
+      "slug": "mock-exams",
+      "title": "水利考研全真模拟试卷",
+      "subtitle": "10套完整模拟卷",
+      "description": "10套全真模拟试卷，按照真实考试标准设计，包含详细解析、评分标准和答题技巧。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["模拟试卷", "考研", "真题"],
+      "stats": {
+        "cases": 10,
+        "hours": 50,
+        "students": 1234
+      },
+      "rating": 4.8,
+      "price": {
+        "original": 139,
+        "current": 109
+      },
+      "path": "books/graduate-exam-prep/mock-exams",
+      "totalCases": 10,
+      "status": "in_progress"
+    },
+    {
+      "id": "interview-guide",
+      "slug": "interview-guide",
+      "title": "水利考研面试宝典",
+      "subtitle": "面试技巧与英语口语",
+      "description": "系统讲解考研复试面试技巧，包括自我介绍、专业问题、英语口语、综合素质等全方位准备。",
+      "author": "AI Engineering Team",
+      "level": "初级",
+      "category": "考研系列",
+      "tags": ["面试", "复试", "英语口语"],
+      "stats": {
+        "cases": 15,
+        "hours": 60,
+        "students": 987
+      },
+      "rating": 4.7,
+      "price": {
+        "original": 129,
+        "current": 99
+      },
+      "path": "books/graduate-exam-prep/interview-guide",
+      "totalCases": 15,
+      "status": "in_progress"
+    },
+    {
+      "id": "hydraulics-exam-solutions",
+      "slug": "hydraulics-exam-solutions",
+      "title": "水力学考研真题解析",
+      "subtitle": "985/211名校真题",
+      "description": "收录65所985/211名校近10年水力学考研真题，详细解析，标注考频和分值，提供评分标准。",
+      "author": "AI Engineering Team",
+      "level": "高级",
+      "category": "考研系列",
+      "tags": ["真题", "985", "211"],
+      "stats": {
+        "cases": 200,
+        "hours": 150,
+        "students": 1678
+      },
+      "rating": 4.9,
+      "price": {
+        "original": 249,
+        "current": 219
+      },
+      "path": "books/graduate-exam-prep/hydraulics-exam-solutions",
+      "totalCases": 200,
+      "status": "in_progress"
+    },
+    {
+      "id": "hydrology-sprint",
+      "slug": "hydrology-sprint",
+      "title": "水文学30天冲刺",
+      "subtitle": "水文学考前冲刺",
+      "description": "水文学考前30天系统复习，14天专题覆盖水文学全部核心知识点，配套精选题目和解析。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["水文学", "冲刺", "考研"],
+      "stats": {
+        "cases": 14,
+        "hours": 70,
+        "students": 654
+      },
+      "rating": 4.6,
+      "price": {
+        "original": 139,
+        "current": 119
+      },
+      "path": "books/graduate-exam-prep/hydrology-sprint",
+      "totalCases": 14,
+      "status": "in_progress"
+    },
+    {
+      "id": "math-quick",
+      "slug": "math-quick",
+      "title": "数学快速突破",
+      "subtitle": "数学基础强化",
+      "description": "针对数学基础薄弱的学生，快速补齐数学短板，涵盖高等数学、线性代数、概率统计核心内容。",
+      "author": "AI Engineering Team",
+      "level": "初级",
+      "category": "考研系列",
+      "tags": ["数学", "基础", "突破"],
+      "stats": {
+        "cases": 25,
+        "hours": 100,
+        "students": 1123
+      },
+      "rating": 4.5,
+      "price": {
+        "original": 169,
+        "current": 139
+      },
+      "path": "books/graduate-exam-prep/math-quick",
+      "totalCases": 25,
+      "status": "in_progress"
+    },
+    {
+      "id": "linear-algebra-breakthrough",
+      "slug": "linear-algebra-breakthrough",
+      "title": "线性代数突破",
+      "subtitle": "线性代数专项",
+      "description": "线性代数专项突破教材，系统讲解矩阵、向量、特征值等核心概念，配套Python代码实现。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["线性代数", "矩阵", "特征值"],
+      "stats": {
+        "cases": 15,
+        "hours": 60,
+        "students": 789
+      },
+      "rating": 4.4,
+      "price": {
+        "original": 139,
+        "current": 109
+      },
+      "path": "books/graduate-exam-prep/linear-algebra-breakthrough",
+      "totalCases": 15,
+      "status": "in_progress"
+    },
+    {
+      "id": "probability-stats-guide",
+      "slug": "probability-stats-guide",
+      "title": "概率统计指南",
+      "subtitle": "概率论与数理统计",
+      "description": "系统讲解概率论与数理统计的基本理论和方法，配套水利工程实际案例和Python实现。",
+      "author": "AI Engineering Team",
+      "level": "中级",
+      "category": "考研系列",
+      "tags": ["概率统计", "数理统计", "数据分析"],
+      "stats": {
+        "cases": 20,
+        "hours": 80,
+        "students": 856
+      },
+      "rating": 4.5,
+      "price": {
+        "original": 149,
+        "current": 119
+      },
+      "path": "books/graduate-exam-prep/probability-stats-guide",
+      "totalCases": 20,
+      "status": "in_progress"
     }
   ],
   "statistics": {
-    "totalBooks": 15,
-    "totalCases": 404,
-    "totalHours": 2336,
-    "totalStudents": 8094,
-    "averageRating": 4.73
-  }
+    "totalBooks": 34,
+    "professionalBooks": 14,
+    "examPrepBooks": 20,
+    "totalCases": 2138,
+    "totalHours": 5120,
+    "totalStudents": 24567,
+    "averageRating": 4.68,
+    "completedBooks": 8,
+    "inProgressBooks": 12,
+    "plannedBooks": 14
+  },
+  "categories": [
+    {
+      "id": "professional",
+      "name": "专业教材",
+      "description": "面向工程技术人员和研究生的专业教材",
+      "bookCount": 14
+    },
+    {
+      "id": "exam-prep",
+      "name": "考研系列",
+      "description": "面向考研学生的辅导教材和题库",
+      "bookCount": 20
+    }
+  ],
+  "lastUpdated": "2025-11-13"
 }
-

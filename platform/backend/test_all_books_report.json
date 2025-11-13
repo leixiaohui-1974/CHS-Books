@@ -1,0 +1,760 @@
+{
+  "timestamp": "2025-11-13T14:27:52.009718",
+  "summary": {
+    "总测试数": 171,
+    "通过": 131,
+    "失败": 0,
+    "警告": 40,
+    "成功率": "76.6%"
+  },
+  "details": {
+    "water-system-control": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 62,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 6669,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "open-channel-hydraulics": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 59,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 11145,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "canal-pipeline-control": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 20,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "ecohydraulics": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 55,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 6295,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "distributed-hydrological-model": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 45,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 4397,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "water-environment-simulation": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 62,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 8647,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "water-resource-planning-management": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 65,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 7479,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "underground-water-dynamics": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 55,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 5444,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "intelligent-water-network-design": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 45,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 19993,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "photovoltaic-system-modeling-control": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 32,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 3924,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "wind-power-system-modeling-control": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 21,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 3729,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "energy-storage-system-modeling-control": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 4,
+        "runnable": 4,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 3315,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "integrated-energy-system-simulation-optimization": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 8,
+        "runnable": 8,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 2736,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "renewable-energy-system-identification-testing": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 3,
+        "runnable": 3,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 3739,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "hydraulics-core-100": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 11,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 39,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 6699,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "hydraulics-advanced": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 11,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 83,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 7914,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "hydrology-advanced": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 9,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 22,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 1135,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "math1-handbook": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 8,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "30days-sprint": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 9,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 24,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 8159,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "hydraulics-1000": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 47,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 8146,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "python-practice": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 10,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 70,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 5363,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "numerical-methods": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 10,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 30,
+        "runnable": 10,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 3732,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "water-structures": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 9,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 971,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "water-resources": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 6,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 912,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "water-environment": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 5,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "groundwater": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 10,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "ecohydraulics-exam": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 10,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "mock-exams": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "interview-guide": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 10,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "hydraulics-exam-solutions": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 0,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 5372,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "hydrology-sprint": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 14,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "math-quick": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 11,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": true,
+        "content_length": 4948,
+        "has_sections": true,
+        "has_code_blocks": true,
+        "issues": []
+      }
+    },
+    "linear-algebra-breakthrough": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 5,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    },
+    "probability-stats-guide": {
+      "metadata": true,
+      "path": true,
+      "chapters": {
+        "total": 10,
+        "with_readme": 0,
+        "with_code": 0,
+        "issues": []
+      },
+      "codes": {
+        "total": 0,
+        "runnable": 0,
+        "issues": []
+      },
+      "documentation": {
+        "has_readme": false,
+        "content_length": 0,
+        "has_sections": false,
+        "has_code_blocks": false,
+        "issues": []
+      }
+    }
+  }
+}
