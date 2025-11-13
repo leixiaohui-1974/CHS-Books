@@ -1,0 +1,4378 @@
+{
+  "timestamp": "2025-11-13T14:30:36.283842",
+  "summary": {
+    "总文档数": 833,
+    "格式良好": 294,
+    "需要改进": 0,
+    "问题统计": {
+      "标题层级问题": 0,
+      "代码块不完整": 0,
+      "图片链接失效": 0,
+      "表格格式问题": 0,
+      "数学公式问题": 0
+    }
+  },
+  "details": {
+    "water-system-control": {
+      "total_docs": 38,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/water-system-control/完整章节报告.md",
+          "score": 90,
+          "issues": [
+            "图片不存在: code/examples/case_01_home_water_tower/case01_on_off_control.png",
+            "图片不存在: code/examples/case_01_home_water_tower/case01_control_comparison.png"
+          ],
+          "stats": {
+            "headings": 145,
+            "code_blocks": 51,
+            "images": 9,
+            "tables": 62,
+            "math_formulas": 0,
+            "lists": 242,
+            "links": 14
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/EXPANSION_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 66,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 22,
+            "math_formulas": 0,
+            "lists": 55,
+            "links": 2
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/PRODUCT_README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 37,
+            "code_blocks": 13,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 38,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/START_HERE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 9,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 0,
+            "lists": 35,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/EXPANSION_ROADMAP.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 72,
+            "code_blocks": 19,
+            "images": 0,
+            "tables": 32,
+            "math_formulas": 0,
+            "lists": 160,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/README_教材开发.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 38,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 40,
+            "math_formulas": 0,
+            "lists": 58,
+            "links": 6
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 44,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 36,
+            "links": 10
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/水系统控制论-实际完成统计-2025-11-07.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 41,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 44,
+            "math_formulas": 0,
+            "lists": 116,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/code/examples/案例目录.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 11,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 2,
+            "lists": 56,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-system-control/code/examples/完整教程报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 54,
+            "code_blocks": 19,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 0,
+            "lists": 165,
+            "links": 1
+          }
+        }
+      ]
+    },
+    "open-channel-hydraulics": {
+      "total_docs": 41,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/open-channel-hydraulics/完整章节报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 89,
+            "code_blocks": 21,
+            "images": 0,
+            "tables": 80,
+            "math_formulas": 0,
+            "lists": 201,
+            "links": 7
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/START_HERE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 50,
+            "code_blocks": 6,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 97,
+            "links": 3
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/开发总结报告-2025-10-29-最终版.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 79,
+            "code_blocks": 15,
+            "images": 0,
+            "tables": 81,
+            "math_formulas": 0,
+            "lists": 54,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 72,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 96,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/案例19-PSO优化深度改进报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 52,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 12,
+            "math_formulas": 0,
+            "lists": 18,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/code/examples/EXAMPLES_INDEX.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 40,
+            "code_blocks": 29,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 175,
+            "links": 4
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/code/examples/case_15_dam_break/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 27,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 0,
+            "lists": 40,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/code/examples/case_17_tidal_river/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 36,
+            "images": 0,
+            "tables": 2,
+            "math_formulas": 0,
+            "lists": 15,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/code/examples/case_08_bridge/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 21,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 28,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/open-channel-hydraulics/code/examples/case_12_culvert/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 13,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 39,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "canal-pipeline-control": {
+      "total_docs": 23,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/canal-pipeline-control/教程提纲-v3.0-完整版.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 108,
+            "code_blocks": 27,
+            "images": 0,
+            "tables": 2,
+            "math_formulas": 0,
+            "lists": 68,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/教程提纲.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 90,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 18,
+            "math_formulas": 0,
+            "lists": 340,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/教程提纲-精简版.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 108,
+            "code_blocks": 28,
+            "images": 0,
+            "tables": 29,
+            "math_formulas": 0,
+            "lists": 165,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/code/examples/case_18_pressurized_pipeline/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 58,
+            "code_blocks": 20,
+            "images": 0,
+            "tables": 11,
+            "math_formulas": 0,
+            "lists": 74,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/code/examples/case_11_sindy_identification/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 33,
+            "math_formulas": 70,
+            "lists": 90,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/code/examples/case_06_galerkin_reduction/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 19,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 18,
+            "math_formulas": 58,
+            "lists": 29,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/code/examples/case_05_dmd/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 46,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 25,
+            "math_formulas": 73,
+            "lists": 84,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 29,
+            "math_formulas": 107,
+            "lists": 91,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 7,
+            "images": 0,
+            "tables": 37,
+            "math_formulas": 88,
+            "lists": 72,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/canal-pipeline-control/code/examples/case_13_digital_twin/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 40,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 13,
+            "math_formulas": 86,
+            "lists": 59,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "ecohydraulics": {
+      "total_docs": 40,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/ecohydraulics/PROJECT_COMPLETION_FINAL.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 53,
+            "code_blocks": 7,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 79,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/URBAN_ECO_MODULE_COMPLETE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 58,
+            "code_blocks": 13,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 0,
+            "lists": 115,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/PROJECT_INDEX.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 2,
+            "math_formulas": 0,
+            "lists": 23,
+            "links": 13
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/PROGRESS_SUMMARY_v1.0.8.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 10,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 9,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/PROGRESS_v1.7.0.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 7,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 0,
+            "lists": 44,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/PROJECT_STATISTICS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 13,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 16,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/PART3_COMPLETION.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 59,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 93,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/DEVELOPMENT_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 55,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 0,
+            "lists": 76,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/DELIVERY_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 63,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 36,
+            "math_formulas": 0,
+            "lists": 121,
+            "links": 6
+          }
+        },
+        {
+          "path": "/workspace/books/ecohydraulics/QUICK_START_EXPANSION.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 54,
+            "code_blocks": 13,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 34,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "distributed-hydrological-model": {
+      "total_docs": 51,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/distributed-hydrological-model/V0.5.0_COMPLETION_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 37,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 23,
+            "math_formulas": 0,
+            "lists": 66,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION3_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 54,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 0,
+            "lists": 149,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/DEVELOPMENT_STATUS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 0,
+            "lists": 133,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION7_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 46,
+            "code_blocks": 7,
+            "images": 0,
+            "tables": 26,
+            "math_formulas": 0,
+            "lists": 97,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION14_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 36,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 0,
+            "lists": 79,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION13_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 0,
+            "lists": 71,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION15_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 36,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 25,
+            "math_formulas": 0,
+            "lists": 63,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION4_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 57,
+            "code_blocks": 11,
+            "images": 0,
+            "tables": 23,
+            "math_formulas": 0,
+            "lists": 127,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION5_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 56,
+            "code_blocks": 11,
+            "images": 0,
+            "tables": 15,
+            "math_formulas": 0,
+            "lists": 147,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/distributed-hydrological-model/SESSION2_DELIVERY_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 61,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 0,
+            "lists": 142,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "water-environment-simulation": {
+      "total_docs": 58,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/water-environment-simulation/2025-11-02-案例9开发总结.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 42,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 115,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/2025-11-02-FINAL-PROJECT-COMPLETE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 44,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 0,
+            "lists": 89,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/案例12-开发完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 6,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 143,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/PROJECT_100_PERCENT_COMPLETE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 48,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 49,
+            "math_formulas": 0,
+            "lists": 64,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/2025-11-02-开发完成总结.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 55,
+            "code_blocks": 13,
+            "images": 0,
+            "tables": 34,
+            "math_formulas": 0,
+            "lists": 151,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/案例13-开发完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 7,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 140,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/DEVELOPMENT_STATUS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 47,
+            "code_blocks": 9,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 0,
+            "lists": 120,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/2025-11-02-Phase2-圆满完成.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 56,
+            "code_blocks": 16,
+            "images": 0,
+            "tables": 31,
+            "math_formulas": 0,
+            "lists": 154,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/2025-11-02-Phase4-5完成总结.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 26,
+            "math_formulas": 0,
+            "lists": 65,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-environment-simulation/测试通过报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 4,
+            "math_formulas": 0,
+            "lists": 34,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "water-resource-planning-management": {
+      "total_docs": 56,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/water-resource-planning-management/项目100%完成-最终报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 48,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 47,
+            "math_formulas": 0,
+            "lists": 167,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/重大里程碑-前三章完成.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 66,
+            "code_blocks": 6,
+            "images": 0,
+            "tables": 48,
+            "math_formulas": 0,
+            "lists": 138,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/项目进度-90%完成.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 54,
+            "math_formulas": 0,
+            "lists": 20,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/PROJECT_INDEX.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 55,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 10,
+            "math_formulas": 0,
+            "lists": 107,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/CONTRIBUTING.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 59,
+            "code_blocks": 14,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 69,
+            "links": 7
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/OUTLINE_COMPLETION_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 68,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 19,
+            "math_formulas": 0,
+            "lists": 155,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/CASES_OVERVIEW.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 46,
+            "code_blocks": 20,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 0,
+            "lists": 273,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/DEVELOPMENT_PROGRESS_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 49,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 29,
+            "math_formulas": 0,
+            "lists": 97,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/项目重大进展报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 61,
+            "code_blocks": 11,
+            "images": 0,
+            "tables": 57,
+            "math_formulas": 0,
+            "lists": 97,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/water-resource-planning-management/CITATION.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 15,
+            "code_blocks": 9,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 9,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "underground-water-dynamics": {
+      "total_docs": 48,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/underground-water-dynamics/PROJECT_INDEX.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 56,
+            "code_blocks": 10,
+            "images": 0,
+            "tables": 64,
+            "math_formulas": 0,
+            "lists": 78,
+            "links": 25
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/项目进度总结-v0.9.0.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 38,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 23,
+            "math_formulas": 0,
+            "lists": 84,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/参数率定篇阶段性总结.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 15,
+            "math_formulas": 0,
+            "lists": 146,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/第五篇-智能化篇设计方案.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 47,
+            "code_blocks": 14,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 0,
+            "lists": 131,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/DEVELOPMENT_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 59,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 27,
+            "math_formulas": 0,
+            "lists": 164,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/教程提纲-完整版.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 86,
+            "code_blocks": 23,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 231,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/参数率定篇完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 40,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 37,
+            "math_formulas": 0,
+            "lists": 146,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/项目总结.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 54,
+            "code_blocks": 7,
+            "images": 0,
+            "tables": 29,
+            "math_formulas": 0,
+            "lists": 89,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/项目阶段性总结-v0.4.0.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 0,
+            "lists": 141,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/underground-water-dynamics/第一阶段完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 46,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 40,
+            "math_formulas": 0,
+            "lists": 83,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "intelligent-water-network-design": {
+      "total_docs": 68,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/intelligent-water-network-design/静态设计与动态设计工作量对比.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 38,
+            "code_blocks": 9,
+            "images": 0,
+            "tables": 183,
+            "math_formulas": 0,
+            "lists": 24,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/PROJECT_INDEX.md",
+          "score": 80,
+          "issues": [
+            "代码块未闭合"
+          ],
+          "stats": {
+            "headings": 2,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/VERSION_4.0_CASE7_MPC_ANALYSIS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 27,
+            "math_formulas": 0,
+            "lists": 31,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/OPTIMIZATION_RECOMMENDATIONS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 56,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 79,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/FINAL_VERSION_SUMMARY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 35,
+            "math_formulas": 0,
+            "lists": 56,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/【第七轮完成】功能全面增强-2025-11-04.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 92,
+            "code_blocks": 11,
+            "images": 0,
+            "tables": 17,
+            "math_formulas": 0,
+            "lists": 209,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/FINAL_PROJECT_COMPLETION.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 40,
+            "code_blocks": 16,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 28,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/PROJECT_STATISTICS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 4,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/QUICK_START_GUIDE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 75,
+            "code_blocks": 18,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 29,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/intelligent-water-network-design/DESIGN_GUIDE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 47,
+            "code_blocks": 9,
+            "images": 0,
+            "tables": 28,
+            "math_formulas": 0,
+            "lists": 71,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "photovoltaic-system-modeling-control": {
+      "total_docs": 27,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/CASE02_COMPLETION_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 42,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 0,
+            "lists": 78,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/QUICKSTART.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 64,
+            "code_blocks": 14,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 43,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/DEVELOPMENT_STATUS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 37,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 13,
+            "math_formulas": 0,
+            "lists": 46,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/案例索引.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 40,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 42,
+            "math_formulas": 0,
+            "lists": 64,
+            "links": 3
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/PROGRESS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 34,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 129,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/教学大纲.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 44,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 28,
+            "math_formulas": 0,
+            "lists": 108,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 43,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 62,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/PHASE1_COMPLETE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 0,
+            "lists": 40,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/code/examples/case_07_perturb_observe/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 50,
+            "code_blocks": 10,
+            "images": 0,
+            "tables": 19,
+            "math_formulas": 0,
+            "lists": 34,
+            "links": 1
+          }
+        },
+        {
+          "path": "/workspace/books/photovoltaic-system-modeling-control/code/examples/case_17_power_factor_control/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 51,
+            "code_blocks": 11,
+            "images": 0,
+            "tables": 26,
+            "math_formulas": 0,
+            "lists": 36,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "wind-power-system-modeling-control": {
+      "total_docs": 12,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/Phase4完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 18,
+            "math_formulas": 0,
+            "lists": 79,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/第2本书完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 43,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 61,
+            "math_formulas": 0,
+            "lists": 79,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/第2本书阶段总结-Phase1进展.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 0,
+            "lists": 65,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/Phase1完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 0,
+            "lists": 79,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/PROGRESS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 13,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 51,
+            "math_formulas": 0,
+            "lists": 27,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/案例1完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 13,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 34,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/案例2完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 22,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 0,
+            "lists": 53,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/Phase2完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 0,
+            "lists": 84,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 4,
+            "images": 3,
+            "tables": 36,
+            "math_formulas": 0,
+            "lists": 22,
+            "links": 4
+          }
+        },
+        {
+          "path": "/workspace/books/wind-power-system-modeling-control/Phase3完成报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 27,
+            "math_formulas": 0,
+            "lists": 95,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "energy-storage-system-modeling-control": {
+      "total_docs": 3,
+      "good": 3,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/energy-storage-system-modeling-control/PROGRESS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 13,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 46,
+            "math_formulas": 0,
+            "lists": 16,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/energy-storage-system-modeling-control/第3本书启动报告.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 95,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/energy-storage-system-modeling-control/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 48,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 99,
+            "links": 1
+          }
+        }
+      ]
+    },
+    "integrated-energy-system-simulation-optimization": {
+      "total_docs": 4,
+      "good": 4,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/integrated-energy-system-simulation-optimization/案例索引.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 63,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 19,
+            "math_formulas": 0,
+            "lists": 174,
+            "links": 10
+          }
+        },
+        {
+          "path": "/workspace/books/integrated-energy-system-simulation-optimization/PROGRESS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 21,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 54,
+            "math_formulas": 0,
+            "lists": 34,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/integrated-energy-system-simulation-optimization/教学大纲.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 52,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 51,
+            "math_formulas": 0,
+            "lists": 145,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/integrated-energy-system-simulation-optimization/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 50,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 91,
+            "links": 1
+          }
+        }
+      ]
+    },
+    "renewable-energy-system-identification-testing": {
+      "total_docs": 2,
+      "good": 2,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/renewable-energy-system-identification-testing/PROGRESS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 14,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 54,
+            "math_formulas": 0,
+            "lists": 14,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/renewable-energy-system-identification-testing/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 55,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 106,
+            "links": 1
+          }
+        }
+      ]
+    },
+    "hydraulics-core-100": {
+      "total_docs": 41,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/PROJECT_100_COMPLETE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 37,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 0,
+            "lists": 60,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/FINAL_PROJECT_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 71,
+            "code_blocks": 24,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 2,
+            "lists": 98,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/PROJECT_COMPLETION_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 65,
+            "code_blocks": 53,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 0,
+            "lists": 181,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/PUBLISHING_PLAN.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 53,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 28,
+            "math_formulas": 0,
+            "lists": 99,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/CODE_DEVELOPMENT_COMPLETE_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 99,
+            "code_blocks": 22,
+            "images": 0,
+            "tables": 32,
+            "math_formulas": 0,
+            "lists": 176,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/DAY4_FINAL_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 44,
+            "code_blocks": 40,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 178,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/PROJECT_STATUS_LATEST.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 18,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 0,
+            "lists": 22,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/DAY4_PROGRESS_REPORT.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 51,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 0,
+            "lists": 97,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/PUBLISHING_MATERIALS.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 52,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 29,
+            "math_formulas": 0,
+            "lists": 150,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-core-100/SESSION_COMPLETION_FINAL.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 51,
+            "code_blocks": 22,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 0,
+            "lists": 34,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "hydraulics-advanced": {
+      "total_docs": 45,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 51,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 41,
+            "math_formulas": 0,
+            "lists": 152,
+            "links": 1
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter09/01_非恒定流数值方法_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 243,
+            "lists": 36,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter05/01_非恒定流_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 109,
+            "lists": 25,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter07/01_堰流与闸孔出流_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 105,
+            "lists": 21,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter08/01_水力相似与模型试验_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 73,
+            "lists": 24,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter03/01_水跃理论_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 46,
+            "lists": 7,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter10/01_水力学综合应用案例_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 11,
+            "math_formulas": 216,
+            "lists": 43,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter06/01_明渠非均匀流_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 79,
+            "lists": 52,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter04/01_渐变流水面曲线_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 109,
+            "lists": 36,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-advanced/chapter02/01_边界层理论_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 20,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 36,
+            "lists": 10,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "hydrology-advanced": {
+      "total_docs": 29,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/项目导航-完整指南.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 51,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 0,
+            "lists": 197,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 10,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 14,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter05/01_气候变化影响_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 3,
+            "math_formulas": 73,
+            "lists": 34,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter07/01_水文预报方法_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 82,
+            "lists": 25,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter08/01_水文统计分析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 119,
+            "lists": 11,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter03/01_水文频率分析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 46,
+            "lists": 9,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter06/01_设计洪水计算_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 81,
+            "lists": 28,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter04/01_水文预报_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 30,
+            "lists": 16,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter02/01_水文统计理论_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 30,
+            "lists": 7,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-advanced/chapter02/01_随机水文学_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 63,
+            "lists": 15,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "math1-handbook": {
+      "total_docs": 8,
+      "good": 8,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter05/01_无穷级数与傅里叶_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 71,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter07/01_曲线曲面积分_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 60,
+            "lists": 4,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter08/01_场论初步_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 59,
+            "lists": 9,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter03/01_概率统计核心定理_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 19,
+            "math_formulas": 91,
+            "lists": 3,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter06/01_多元函数微积分_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 79,
+            "lists": 9,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter04/01_常微分方程速解_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 4,
+            "math_formulas": 52,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter02/01_线性代数核心定理_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 32,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math1-handbook/chapter01/01_高等数学核心定理_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 21,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 40,
+            "math_formulas": 127,
+            "lists": 5,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "30days-sprint": {
+      "total_docs": 21,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/考前救命公式卡.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 103,
+            "code_blocks": 102,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 0,
+            "lists": 57,
+            "links": 5
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 71,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 32,
+            "math_formulas": 0,
+            "lists": 263,
+            "links": 1
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/day03/01_能量方程应用_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 50,
+            "lists": 5,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/codes/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 39,
+            "code_blocks": 7,
+            "images": 0,
+            "tables": 70,
+            "math_formulas": 0,
+            "lists": 46,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/days/Day09至14_简化版.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 20,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 0,
+            "lists": 16,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/days/Day07_第一周总结与测试.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 23,
+            "math_formulas": 0,
+            "lists": 52,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/days/Day01_静水压强与总压力.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 36,
+            "code_blocks": 26,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 99,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/days/Day15至30_完整版.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 21,
+            "code_blocks": 6,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 72,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/days/Day03_闸门启闭力.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 19,
+            "code_blocks": 20,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/30days-sprint/days/Day05_连续性与动量方程.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 16,
+            "code_blocks": 15,
+            "images": 0,
+            "tables": 5,
+            "math_formulas": 0,
+            "lists": 3,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "hydraulics-1000": {
+      "total_docs": 73,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/📋项目发布清单.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 48,
+            "code_blocks": 6,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 0,
+            "lists": 138,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/公式速查卡.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 80,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 36,
+            "math_formulas": 252,
+            "lists": 52,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/使用案例集.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 89,
+            "code_blocks": 36,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 2,
+            "lists": 51,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/题目速查索引.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 71,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 209,
+            "math_formulas": 2,
+            "lists": 27,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/📄一页纸项目总结.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 20,
+            "code_blocks": 9,
+            "images": 0,
+            "tables": 18,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/项目使用指南.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 80,
+            "links": 3
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/🚀快速开始指南.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 89,
+            "code_blocks": 32,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 32,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/常见问题FAQ.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 91,
+            "code_blocks": 64,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 1,
+            "lists": 61,
+            "links": 7
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/考前冲刺手册.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 47,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 11,
+            "lists": 129,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-1000/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 81,
+            "code_blocks": 24,
+            "images": 4,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 128,
+            "links": 6
+          }
+        }
+      ]
+    },
+    "python-practice": {
+      "total_docs": 18,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/PROJECT_OUTLINE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 43,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 0,
+            "lists": 401,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/CODE_INVENTORY.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 36,
+            "code_blocks": 18,
+            "images": 0,
+            "tables": 30,
+            "math_formulas": 0,
+            "lists": 62,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/QUICK_START.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 56,
+            "code_blocks": 13,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 6,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 42,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 30,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/LEARNING_GUIDE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 58,
+            "code_blocks": 6,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 80,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/INSTALLATION.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 52,
+            "code_blocks": 15,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 15,
+            "links": 2
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/project02/01_明渠流计算与可视化_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 15,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 8,
+            "lists": 12,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/project06/01_GIS水文分析系统_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 8,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/project08/01_实时洪水预警系统_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 21,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 0,
+            "lists": 4,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/python-practice/project05/01_水文统计分析系统_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "numerical-methods": {
+      "total_docs": 13,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/README_完整开发.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 9,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 34,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 15,
+            "math_formulas": 2,
+            "lists": 20,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/chapter09/01_优化方法进阶_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 19,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 163,
+            "lists": 34,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/chapter05/01_偏微分方程数值解_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 22,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 104,
+            "lists": 7,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/chapter07/01_非线性方程组_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 119,
+            "lists": 14,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/chapter08/01_优化方法_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 17,
+            "math_formulas": 116,
+            "lists": 23,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/chapter03/01_常微分方程数值解_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 54,
+            "lists": 4,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/chapter10/01_数值计算综合案例_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 41,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 17,
+            "lists": 7,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/docs/第1章-线性方程组求解.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 21,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 30,
+            "lists": 48,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/numerical-methods/chapter06/01_特征值问题_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 12,
+            "math_formulas": 101,
+            "lists": 21,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "water-structures": {
+      "total_docs": 14,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 16,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 38,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter09/01_水利枢纽优化设计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 40,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 15,
+            "math_formulas": 24,
+            "lists": 45,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter05/01_溢洪道设计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 102,
+            "lists": 29,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter07/01_水电站建筑物_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 35,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 5,
+            "math_formulas": 82,
+            "lists": 68,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter08/01_综合设计与优化_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 5,
+            "images": 0,
+            "tables": 21,
+            "math_formulas": 88,
+            "lists": 51,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter03/01_重力坝设计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 27,
+            "lists": 15,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter10/01_综合水利工程案例_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 34,
+            "code_blocks": 3,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 28,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter06/01_水闸设计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 4,
+            "math_formulas": 122,
+            "lists": 71,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapter04/01_土石坝设计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 5,
+            "math_formulas": 28,
+            "lists": 21,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-structures/chapters/chapter02-07_完整框架.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 76,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "water-resources": {
+      "total_docs": 7,
+      "good": 7,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-resources/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 16,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 42,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-resources/chapter05/01_流域生态补偿机制_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 37,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 54,
+            "lists": 55,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-resources/chapter03/01_水资源承载力评价_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 27,
+            "lists": 7,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-resources/chapter04/01_灌溉排水工程_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 31,
+            "lists": 32,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-resources/chapter02/01_水库优化调度_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 22,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 42,
+            "lists": 18,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-resources/chapter01/01_水资源系统工程_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 22,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 44,
+            "lists": 11,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-resources/chapters/全部章节框架.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 10,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "water-environment": {
+      "total_docs": 6,
+      "good": 6,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-environment/README_完整框架.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 2,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-environment/chapter05/01_河流水质模型_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 123,
+            "lists": 36,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-environment/chapter03/01_水体富营养化_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 11,
+            "lists": 23,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-environment/chapter04/01_水环境容量_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 42,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-environment/chapter02/01_污水处理技术_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 22,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 41,
+            "lists": 22,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/water-environment/chapter01/01_水环境化学_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 27,
+            "lists": 19,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "groundwater": {
+      "total_docs": 11,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/README_完整框架.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 2,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter09/01_地下水数值模拟高级专题_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 185,
+            "lists": 20,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter05/01_地下水资源评价_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 94,
+            "lists": 43,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter07/01_地下水数值模拟_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 3,
+            "math_formulas": 100,
+            "lists": 13,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter08/01_地下水管理与保护_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 69,
+            "lists": 51,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter03/01_地下水污染与防治_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 20,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 43,
+            "lists": 30,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter10/01_地下水管理综合案例_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 23,
+            "math_formulas": 212,
+            "lists": 47,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter06/01_地下水污染与防治_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 83,
+            "lists": 46,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter04/01_井流计算_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 114,
+            "lists": 26,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/groundwater/chapter02/01_非稳定流理论_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 4,
+            "math_formulas": 38,
+            "lists": 6,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "ecohydraulics-exam": {
+      "total_docs": 11,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/README_完整框架.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 11,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter09/01_生态流量计算与保障_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 26,
+            "math_formulas": 89,
+            "lists": 26,
+            "links": 3
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter05/01_生态流量计算_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 32,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 59,
+            "lists": 27,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter07/01_水生生境模拟_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 59,
+            "lists": 36,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter08/01_生态修复技术_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 61,
+            "lists": 54,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter03/01_鱼道设计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 24,
+            "lists": 24,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter10/01_河流生态修复综合案例_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 30,
+            "math_formulas": 133,
+            "lists": 78,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter06/01_河流生态流量_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 45,
+            "lists": 37,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter04/01_河流连通性恢复_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 19,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 36,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/ecohydraulics/chapter02/01_河流生态修复_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 20,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 11,
+            "lists": 22,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "mock-exams": {
+      "total_docs": 6,
+      "good": 6,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/mock-exams/README_完整开发.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 11,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 16,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/mock-exams/exam03/01_模拟试卷三_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 72,
+            "lists": 23,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/mock-exams/exam05/01_模拟试卷五_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 11,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 13,
+            "math_formulas": 120,
+            "lists": 34,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/mock-exams/exam04/01_模拟试卷四_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 40,
+            "lists": 33,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/mock-exams/exam01/01_模拟试卷一_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 14,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 10,
+            "math_formulas": 61,
+            "lists": 29,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/mock-exams/exam02/01_模拟试卷二_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 13,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 11,
+            "math_formulas": 37,
+            "lists": 30,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "interview-guide": {
+      "total_docs": 11,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/README_完整开发.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 10,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 27,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter09/01_英语面试与跨文化沟通_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 12,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 0,
+            "lists": 45,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter05/01_软技能与综合素质_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 40,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter07/01_典型面试题解析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 15,
+            "code_blocks": 22,
+            "images": 0,
+            "tables": 2,
+            "math_formulas": 28,
+            "lists": 47,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter08/01_综合面试案例_详细.md",
+          "score": 80,
+          "issues": [
+            "代码块未闭合"
+          ],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 20,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 0,
+            "lists": 51,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter03/01_项目经历描述技巧_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 8,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 35,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter10/01_职业发展与长期规划_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 6,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 0,
+            "lists": 54,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter06/01_面试技巧与策略_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 16,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 83,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter04/01_技术问题深度解析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 22,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 17,
+            "math_formulas": 49,
+            "lists": 81,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/interview-guide/chapter02/01_专业深度问题_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 24,
+            "lists": 86,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "hydraulics-exam-solutions": {
+      "total_docs": 3,
+      "good": 3,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-exam-solutions/PROJECT_OUTLINE.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 71,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 5,
+            "math_formulas": 2,
+            "lists": 136,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-exam-solutions/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 50,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 38,
+            "math_formulas": 2,
+            "lists": 104,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydraulics-exam-solutions/docs/真题资源规划.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 40,
+            "code_blocks": 0,
+            "images": 0,
+            "tables": 86,
+            "math_formulas": 0,
+            "lists": 92,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "hydrology-sprint": {
+      "total_docs": 14,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day03/01_降水分析与统计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 34,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 18,
+            "math_formulas": 48,
+            "lists": 6,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day11/01_水资源系统分析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 27,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 5,
+            "math_formulas": 28,
+            "lists": 22,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day06/01_洪水计算与频率分析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 45,
+            "lists": 8,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day09/01_水环境与水质评价_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 40,
+            "lists": 25,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day07/01_水文预报方法_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 18,
+            "lists": 5,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day13/01_水库兴利调节_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 26,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 12,
+            "math_formulas": 12,
+            "lists": 19,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day12/01_防洪规划与风险分析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 42,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day05/01_径流形成与计算_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 24,
+            "lists": 9,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day10/01_地下水污染与防治_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 24,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 6,
+            "math_formulas": 25,
+            "lists": 17,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/hydrology-sprint/day14/01_水电站调节运行_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 34,
+            "lists": 9,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "math-quick": {
+      "total_docs": 16,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/Python函数速查表.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 62,
+            "code_blocks": 24,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 0,
+            "lists": 0,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/数学公式速查卡.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 80,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 0,
+            "lists": 13,
+            "links": 3
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/README.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 59,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 7,
+            "math_formulas": 0,
+            "lists": 180,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/chapter09/01_常微分方程进阶_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 19,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 5,
+            "math_formulas": 135,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/chapter05/01_级数速算_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 113,
+            "lists": 14,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/chapter07/01_重积分计算_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 23,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 186,
+            "lists": 6,
+            "links": 8
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/chapter08/01_曲线曲面积分_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 18,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 182,
+            "lists": 6,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/chapter03/01_积分速算技巧_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 11,
+            "math_formulas": 87,
+            "lists": 13,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/chapter10/01_数学建模与综合应用_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 17,
+            "code_blocks": 4,
+            "images": 0,
+            "tables": 12,
+            "math_formulas": 47,
+            "lists": 41,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/math-quick/chapter06/01_多元函数微分学_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 180,
+            "lists": 10,
+            "links": 0
+          }
+        }
+      ]
+    },
+    "linear-algebra-breakthrough": {
+      "total_docs": 5,
+      "good": 5,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/linear-algebra-breakthrough/chapter05/01_向量空间与线性变换_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 34,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 2,
+            "math_formulas": 74,
+            "lists": 4,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/linear-algebra-breakthrough/chapter03/01_特征值与特征向量_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 36,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 23,
+            "math_formulas": 101,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/linear-algebra-breakthrough/chapter04/01_二次型与正定性_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 2,
+            "images": 0,
+            "tables": 11,
+            "math_formulas": 79,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/linear-algebra-breakthrough/chapter02/01_矩阵运算与秩_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 17,
+            "math_formulas": 88,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/linear-algebra-breakthrough/chapter01/01_行列式计算技巧_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 28,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 16,
+            "math_formulas": 71,
+            "lists": 3,
+            "links": 2
+          }
+        }
+      ]
+    },
+    "probability-stats-guide": {
+      "total_docs": 10,
+      "good": 10,
+      "needs_improvement": 0,
+      "docs": [
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter09/01_非参数统计_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 20,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 23,
+            "math_formulas": 99,
+            "lists": 23,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter05/01_大数定律与中心极限定理_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 25,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 9,
+            "math_formulas": 98,
+            "lists": 4,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter07/01_方差分析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 19,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 14,
+            "math_formulas": 135,
+            "lists": 19,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter08/01_回归分析_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 4,
+            "math_formulas": 110,
+            "lists": 14,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter03/01_多维随机变量_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 30,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 1,
+            "math_formulas": 77,
+            "lists": 6,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter10/01_贝叶斯统计与综合应用_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 33,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 33,
+            "math_formulas": 129,
+            "lists": 36,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter06/01_假设检验_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 22,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 3,
+            "math_formulas": 91,
+            "lists": 10,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter04/01_数字特征_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 29,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 20,
+            "math_formulas": 77,
+            "lists": 11,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter02/01_随机变量及其分布_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 0,
+            "math_formulas": 82,
+            "lists": 6,
+            "links": 0
+          }
+        },
+        {
+          "path": "/workspace/books/graduate-exam-prep/probability-stats-guide/chapter01/01_概率基本概念_详细.md",
+          "score": 100,
+          "issues": [],
+          "stats": {
+            "headings": 31,
+            "code_blocks": 1,
+            "images": 0,
+            "tables": 8,
+            "math_formulas": 50,
+            "lists": 13,
+            "links": 0
+          }
+        }
+      ]
+    }
+  }
+}
