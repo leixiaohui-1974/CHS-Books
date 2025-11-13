@@ -1,0 +1,11 @@
+{
+  "testName": "Platform E2E测试 - Windows + 中文环境",
+  "timestamp": "",
+  "environment": {
+    "platform": "Windows 10 模拟",
+    "locale": "zh-CN",
+    "timezone": "Asia/Shanghai"
+  },
+  "summary": {},
+  "tests": []
+}
