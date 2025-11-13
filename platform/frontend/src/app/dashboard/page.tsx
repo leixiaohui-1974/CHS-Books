@@ -1,355 +1,432 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import { 
-  Layout, Card, Typography, Progress, Button, List, 
-  Space, Statistic, Row, Col, Tag, Avatar, Empty, Tabs
-} from 'antd'
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import {
-  BookOutlined, TrophyOutlined, ClockCircleOutlined,
-  RocketOutlined, StarFilled, CheckCircleOutlined,
-  UserOutlined, FireOutlined, CalendarOutlined
-} from '@ant-design/icons'
-import Link from 'next/link'
+  Card, Row, Col, Statistic, Progress, List, Tag, Badge, Tabs,
+  Timeline, Empty, Spin, message
+} from 'antd';
+import {
+  TrophyOutlined, FireOutlined, BookOutlined, ClockCircleOutlined,
+  CheckCircleOutlined, RocketOutlined, LineChartOutlined, StarOutlined
+} from '@ant-design/icons';
+import { learningService, SummaryStats, DailyGoal, Achievement } from '@/services/learningService';
+import { useAuth } from '@/contexts/AuthContext';
+import './dashboard.css';
 
-const { Content } = Layout
-const { Title, Text, Paragraph } = Typography
-
-// Mock用户数据
-const mockUserData = {
-  user: {
-    name: '张同学',
-    email: 'student@example.com',
-    avatar: null,
-    join_date: '2025-09-01',
-    level: 5,
-    points: 2350,
-    next_level_points: 3000
-  },
-  stats: {
-    enrolled_courses: 3,
-    completed_courses: 1,
-    total_learning_hours: 87,
-    current_streak: 7,
-    total_cases_completed: 15,
-    avg_score: 92
-  },
-  enrolled_books: [
-    {
-      id: 1,
-      slug: 'water-system-control',
-      title: '水系统控制论',
-      cover_color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      progress: 45,
-      total_chapters: 6,
-      completed_chapters: 2,
-      last_study: '2025-10-31',
-      next_chapter: '第3章：状态空间分析'
-    },
-    {
-      id: 2,
-      slug: 'open-channel-hydraulics',
-      title: '明渠水力学计算',
-      cover_color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-      progress: 20,
-      total_chapters: 5,
-      completed_chapters: 1,
-      last_study: '2025-10-29',
-      next_chapter: '第2章：能量方程'
-    }
-  ],
-  recent_activities: [
-    {
-      id: 1,
-      type: 'complete',
-      title: '完成案例4：PID控制器设计',
-      book: '水系统控制论',
-      date: '2025-10-31 14:30',
-      score: 95
-    },
-    {
-      id: 2,
-      type: 'start',
-      title: '开始学习第3章',
-      book: '水系统控制论',
-      date: '2025-10-31 10:00'
-    },
-    {
-      id: 3,
-      type: 'achievement',
-      title: '获得成就：连续学习7天',
-      date: '2025-10-31 08:00'
-    }
-  ],
-  achievements: [
-    { id: 1, name: '初学者', description: '完成第一个案例', icon: '🎯', unlocked: true },
-    { id: 2, name: '勤奋好学', description: '连续学习7天', icon: '🔥', unlocked: true },
-    { id: 3, name: '理论专家', description: '完成一门课程', icon: '🎓', unlocked: true },
-    { id: 4, name: '实践大师', description: '运行100次工具', icon: '🛠️', unlocked: false },
-    { id: 5, name: '全能选手', description: '完成所有课程', icon: '🏆', unlocked: false }
-  ]
-}
+const { TabPane } = Tabs;
 
 export default function DashboardPage() {
-  const [userData] = useState(mockUserData)
+  const router = useRouter();
+  const { user, loading: authLoading } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState<SummaryStats | null>(null);
+  const [dailyGoal, setDailyGoal] = useState<DailyGoal | null>(null);
+  const [achievements, setAchievements] = useState<Achievement[]>([]);
+  const [recentAchievements, setRecentAchievements] = useState<Achievement[]>([]);
 
-  const getActivityIcon = (type: string) => {
-    switch (type) {
-      case 'complete': return <CheckCircleOutlined style={{ color: '#52c41a' }} />
-      case 'start': return <RocketOutlined style={{ color: '#1890ff' }} />
-      case 'achievement': return <TrophyOutlined style={{ color: '#faad14' }} />
-      default: return <BookOutlined />
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/login?redirect=/dashboard');
+      return;
     }
+
+    if (user) {
+      loadDashboardData();
+    }
+  }, [user, authLoading, router]);
+
+  const loadDashboardData = async () => {
+    try {
+      setLoading(true);
+
+      // 并行加载数据
+      const [statsData, goalData, achievementsData] = await Promise.all([
+        learningService.getSummaryStats(),
+        learningService.getDailyGoal(),
+        learningService.getAchievements(),
+      ]);
+
+      setStats(statsData);
+      setDailyGoal(goalData);
+      setAchievements(achievementsData);
+
+      // 获取最近解锁的成就
+      const recent = achievementsData
+        .filter((a) => a.is_unlocked)
+        .sort((a, b) => {
+          const dateA = a.unlocked_at ? new Date(a.unlocked_at).getTime() : 0;
+          const dateB = b.unlocked_at ? new Date(b.unlocked_at).getTime() : 0;
+          return dateB - dateA;
+        })
+        .slice(0, 5);
+      setRecentAchievements(recent);
+    } catch (error: any) {
+      console.error('Failed to load dashboard data:', error);
+      message.error('加载数据失败');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatTime = (seconds: number): string => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    return `${hours}小时${minutes}分钟`;
+  };
+
+  const getMasteryLevelColor = (level: string): string => {
+    const colors: { [key: string]: string } = {
+      not_started: 'default',
+      learning: 'blue',
+      practicing: 'orange',
+      mastered: 'green',
+      expert: 'purple',
+    };
+    return colors[level] || 'default';
+  };
+
+  const getMasteryLevelText = (level: string): string => {
+    const texts: { [key: string]: string } = {
+      not_started: '未开始',
+      learning: '学习中',
+      practicing: '练习中',
+      mastered: '已掌握',
+      expert: '精通',
+    };
+    return texts[level] || level;
+  };
+
+  const getRarityColor = (rarity: string): string => {
+    const colors: { [key: string]: string } = {
+      common: '#95de64',
+      rare: '#69c0ff',
+      epic: '#b37feb',
+      legendary: '#ffd666',
+    };
+    return colors[rarity] || '#95de64';
+  };
+
+  if (authLoading || loading) {
+    return (
+      <div className="dashboard-loading">
+        <Spin size="large" tip="加载中..." />
+      </div>
+    );
   }
 
   return (
-    <Layout style={{ minHeight: '100vh', background: '#f0f2f5' }}>
-      {/* 顶部导航 */}
-      <Layout.Header style={{ 
-        background: '#fff', 
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        padding: '0 50px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
-        <Link href="/" style={{ fontSize: '20px', fontWeight: 'bold', color: '#1890ff', textDecoration: 'none' }}>
-          <BookOutlined /> Engineering Learning Platform
-        </Link>
-        <Space>
-          <Link href="/books"><Button type="link">课程</Button></Link>
-          <Link href="/tools"><Button type="link">工具实验室</Button></Link>
-          <Link href="/dashboard"><Button type="link">我的学习</Button></Link>
-          <Avatar icon={<UserOutlined />} />
-        </Space>
-      </Layout.Header>
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1>学习仪表盘</h1>
+        <p>欢迎回来，{user?.username}！</p>
+      </div>
 
-      <Content style={{ padding: '50px' }}>
-        {/* 用户信息卡片 */}
-        <Card style={{ marginBottom: '24px' }}>
-          <Row gutter={24} align="middle">
-            <Col>
-              <Avatar size={80} icon={<UserOutlined />} />
+      {/* 每日目标 */}
+      {dailyGoal && (
+        <Card className="daily-goal-card" bordered={false}>
+          <h2>
+            <FireOutlined /> 今日目标
+          </h2>
+          <Row gutter={16}>
+            <Col span={8}>
+              <div className="goal-item">
+                <div className="goal-label">学习时长</div>
+                <Progress
+                  type="circle"
+                  percent={Math.round(
+                    (dailyGoal.actual_study_time / dailyGoal.target_study_time) * 100
+                  )}
+                  format={() => formatTime(dailyGoal.actual_study_time)}
+                  width={100}
+                />
+                <div className="goal-target">目标: {formatTime(dailyGoal.target_study_time)}</div>
+              </div>
             </Col>
-            <Col flex="auto">
-              <Space direction="vertical" size="small">
-                <Title level={3} style={{ marginBottom: 0 }}>
-                  {userData.user.name}
-                  <Tag color="blue" style={{ marginLeft: '12px' }}>Lv.{userData.user.level}</Tag>
-                </Title>
-                <Text type="secondary">{userData.user.email}</Text>
-                <Space>
-                  <Text type="secondary">
-                    <CalendarOutlined /> 加入时间: {userData.user.join_date}
-                  </Text>
-                  <Text type="secondary">
-                    <FireOutlined /> 当前连续学习: {userData.stats.current_streak} 天
-                  </Text>
-                </Space>
-              </Space>
+            <Col span={8}>
+              <div className="goal-item">
+                <div className="goal-label">练习题数</div>
+                <Progress
+                  type="circle"
+                  percent={Math.round(
+                    (dailyGoal.actual_exercises / dailyGoal.target_exercises) * 100
+                  )}
+                  format={() => `${dailyGoal.actual_exercises}题`}
+                  width={100}
+                  strokeColor="#52c41a"
+                />
+                <div className="goal-target">目标: {dailyGoal.target_exercises}题</div>
+              </div>
             </Col>
-            <Col>
-              <Card size="small">
-                <Space direction="vertical" align="center">
-                  <Text type="secondary">经验值</Text>
-                  <Text strong style={{ fontSize: '24px' }}>
-                    {userData.user.points} / {userData.user.next_level_points}
-                  </Text>
-                  <Progress 
-                    percent={(userData.user.points / userData.user.next_level_points) * 100} 
-                    strokeColor="#1890ff"
-                    showInfo={false}
-                  />
-                </Space>
-              </Card>
+            <Col span={8}>
+              <div className="goal-item">
+                <div className="goal-label">知识点数</div>
+                <Progress
+                  type="circle"
+                  percent={Math.round(
+                    (dailyGoal.actual_knowledge_points / dailyGoal.target_knowledge_points) * 100
+                  )}
+                  format={() => `${dailyGoal.actual_knowledge_points}个`}
+                  width={100}
+                  strokeColor="#1890ff"
+                />
+                <div className="goal-target">目标: {dailyGoal.target_knowledge_points}个</div>
+              </div>
             </Col>
           </Row>
+          <div className="overall-progress">
+            <span>总体完成度：</span>
+            <Progress
+              percent={Math.round(dailyGoal.completion_percentage)}
+              status={dailyGoal.is_completed ? 'success' : 'active'}
+            />
+          </div>
         </Card>
+      )}
 
-        {/* 统计卡片 */}
-        <Row gutter={16} style={{ marginBottom: '24px' }}>
-          <Col xs={12} sm={8} md={4}>
-            <Card>
-              <Statistic 
-                title="已注册课程" 
-                value={userData.stats.enrolled_courses} 
-                prefix={<BookOutlined />}
-                suffix="门"
-              />
-            </Card>
-          </Col>
-          <Col xs={12} sm={8} md={4}>
-            <Card>
-              <Statistic 
-                title="完成课程" 
-                value={userData.stats.completed_courses} 
-                prefix={<CheckCircleOutlined />}
-                suffix="门"
-                valueStyle={{ color: '#52c41a' }}
-              />
-            </Card>
-          </Col>
-          <Col xs={12} sm={8} md={4}>
-            <Card>
-              <Statistic 
-                title="学习时长" 
-                value={userData.stats.total_learning_hours} 
-                prefix={<ClockCircleOutlined />}
+      {/* 统计卡片 */}
+      {stats && (
+        <Row gutter={16} className="stats-cards">
+          <Col xs={24} sm={12} lg={6}>
+            <Card bordered={false}>
+              <Statistic
+                title="总学习时长"
+                value={Math.round(stats.total_study_time / 3600)}
                 suffix="小时"
+                prefix={<ClockCircleOutlined />}
+                valueStyle={{ color: '#3f8600' }}
               />
             </Card>
           </Col>
-          <Col xs={12} sm={8} md={4}>
-            <Card>
-              <Statistic 
-                title="连续学习" 
-                value={userData.stats.current_streak} 
-                prefix={<FireOutlined />}
+          <Col xs={24} sm={12} lg={6}>
+            <Card bordered={false}>
+              <Statistic
+                title="知识点掌握"
+                value={stats.mastery_distribution.mastered + stats.mastery_distribution.expert}
+                suffix={`/ ${stats.total_knowledge_points}`}
+                prefix={<BookOutlined />}
+                valueStyle={{ color: '#1890ff' }}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} lg={6}>
+            <Card bordered={false}>
+              <Statistic
+                title="练习正确率"
+                value={stats.accuracy}
+                precision={1}
+                suffix="%"
+                prefix={<CheckCircleOutlined />}
+                valueStyle={{ color: '#cf1322' }}
+              />
+            </Card>
+          </Col>
+          <Col xs={24} sm={12} lg={6}>
+            <Card bordered={false}>
+              <Statistic
+                title="连续学习"
+                value={stats.streak_days}
                 suffix="天"
+                prefix={<FireOutlined />}
                 valueStyle={{ color: '#faad14' }}
               />
             </Card>
           </Col>
-          <Col xs={12} sm={8} md={4}>
-            <Card>
-              <Statistic 
-                title="完成案例" 
-                value={userData.stats.total_cases_completed} 
-                prefix={<RocketOutlined />}
-                suffix="个"
-              />
-            </Card>
-          </Col>
-          <Col xs={12} sm={8} md={4}>
-            <Card>
-              <Statistic 
-                title="平均得分" 
-                value={userData.stats.avg_score} 
-                prefix={<StarFilled />}
-                suffix="分"
-                valueStyle={{ color: '#722ed1' }}
-              />
-            </Card>
-          </Col>
         </Row>
+      )}
 
-        <Row gutter={24}>
-          {/* 我的课程 */}
-          <Col xs={24} lg={12}>
-            <Card 
-              title="📚 我的课程"
-              extra={<Link href="/books">浏览更多</Link>}
-              style={{ marginBottom: '24px' }}
-            >
-              <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                {userData.enrolled_books.map(book => (
-                  <Card key={book.id} size="small" hoverable>
-                    <Space direction="vertical" style={{ width: '100%' }}>
-                      <Space>
-                        <div style={{
-                          width: '60px',
-                          height: '60px',
-                          background: book.cover_color,
-                          borderRadius: '4px'
-                        }} />
-                        <div style={{ flex: 1 }}>
-                          <Link href={`/books/${book.slug}`}>
-                            <Text strong>{book.title}</Text>
-                          </Link>
-                          <br />
-                          <Text type="secondary" style={{ fontSize: '12px' }}>
-                            上次学习: {book.last_study}
-                          </Text>
-                        </div>
-                      </Space>
-                      
-                      <div>
-                        <Space style={{ width: '100%', justifyContent: 'space-between' }}>
-                          <Text type="secondary">
-                            进度: {book.completed_chapters}/{book.total_chapters} 章节
-                          </Text>
-                          <Text strong>{book.progress}%</Text>
-                        </Space>
-                        <Progress percent={book.progress} strokeColor="#1890ff" />
-                      </div>
-
-                      <Button 
-                        type="primary" 
-                        block
-                        icon={<RocketOutlined />}
-                      >
-                        继续学习：{book.next_chapter}
-                      </Button>
-                    </Space>
-                  </Card>
-                ))}
-              </Space>
-            </Card>
-          </Col>
-
-          {/* 右侧栏 */}
-          <Col xs={24} lg={12}>
-            {/* 最近动态 */}
-            <Card 
-              title="🕐 最近动态"
-              style={{ marginBottom: '24px' }}
-            >
-              <List
-                dataSource={userData.recent_activities}
-                renderItem={item => (
-                  <List.Item>
-                    <List.Item.Meta
-                      avatar={getActivityIcon(item.type)}
-                      title={item.title}
-                      description={
-                        <Space size="small">
-                          {item.book && <Tag>{item.book}</Tag>}
-                          <Text type="secondary">{item.date}</Text>
-                          {item.score && <Tag color="green">得分: {item.score}</Tag>}
-                        </Space>
+      <Row gutter={16} className="content-section">
+        {/* 左侧内容 */}
+        <Col xs={24} lg={16}>
+          {/* 掌握度分布 */}
+          {stats && (
+            <Card title="知识点掌握度分布" className="mastery-card" bordered={false}>
+              <div className="mastery-distribution">
+                {Object.entries(stats.mastery_distribution).map(([level, count]) => (
+                  <div key={level} className="mastery-item">
+                    <Tag color={getMasteryLevelColor(level)}>
+                      {getMasteryLevelText(level)}
+                    </Tag>
+                    <span className="mastery-count">{count}个</span>
+                    <Progress
+                      percent={
+                        stats.total_knowledge_points > 0
+                          ? Math.round((count / stats.total_knowledge_points) * 100)
+                          : 0
                       }
+                      showInfo={false}
+                      strokeColor={getMasteryLevelColor(level)}
                     />
-                  </List.Item>
-                )}
-              />
-            </Card>
-
-            {/* 成就系统 */}
-            <Card title="🏆 我的成就">
-              <Row gutter={[16, 16]}>
-                {userData.achievements.map(achievement => (
-                  <Col key={achievement.id} span={8}>
-                    <Card 
-                      size="small"
-                      style={{ 
-                        textAlign: 'center',
-                        opacity: achievement.unlocked ? 1 : 0.4,
-                        background: achievement.unlocked ? '#f6ffed' : '#f0f0f0'
-                      }}
-                    >
-                      <div style={{ fontSize: '32px', marginBottom: '8px' }}>
-                        {achievement.icon}
-                      </div>
-                      <Text strong style={{ fontSize: '12px' }}>
-                        {achievement.name}
-                      </Text>
-                      <br />
-                      <Text type="secondary" style={{ fontSize: '11px' }}>
-                        {achievement.description}
-                      </Text>
-                      {achievement.unlocked && (
-                        <div style={{ marginTop: '4px' }}>
-                          <CheckCircleOutlined style={{ color: '#52c41a' }} />
-                        </div>
-                      )}
-                    </Card>
-                  </Col>
+                  </div>
                 ))}
-              </Row>
+              </div>
             </Card>
-          </Col>
-        </Row>
-      </Content>
-    </Layout>
-  )
+          )}
+
+          {/* 最近7天学习情况 */}
+          {stats && stats.recent_7_days && stats.recent_7_days.length > 0 && (
+            <Card
+              title={
+                <>
+                  <LineChartOutlined /> 最近7天学习情况
+                </>
+              }
+              className="recent-stats-card"
+              bordered={false}
+            >
+              <Timeline mode="left">
+                {stats.recent_7_days.map((day, index) => (
+                  <Timeline.Item
+                    key={index}
+                    label={day.date}
+                    color={day.study_time > 0 ? 'green' : 'gray'}
+                  >
+                    <div className="timeline-content">
+                      <p>
+                        学习 <strong>{formatTime(day.study_time)}</strong>
+                      </p>
+                      <p>
+                        完成 <strong>{day.exercises}</strong> 道练习
+                      </p>
+                      {day.average_score > 0 && (
+                        <p>
+                          平均分 <strong>{day.average_score.toFixed(1)}</strong>
+                        </p>
+                      )}
+                    </div>
+                  </Timeline.Item>
+                ))}
+              </Timeline>
+            </Card>
+          )}
+        </Col>
+
+        {/* 右侧内容 */}
+        <Col xs={24} lg={8}>
+          {/* 成就系统 */}
+          <Card
+            title={
+              <>
+                <TrophyOutlined /> 成就系统
+              </>
+            }
+            className="achievements-card"
+            bordered={false}
+          >
+            <Tabs defaultActiveKey="recent">
+              <TabPane tab="最近获得" key="recent">
+                {recentAchievements.length > 0 ? (
+                  <List
+                    dataSource={recentAchievements}
+                    renderItem={(achievement) => (
+                      <List.Item>
+                        <List.Item.Meta
+                          avatar={
+                            <div
+                              className="achievement-icon"
+                              style={{ backgroundColor: getRarityColor(achievement.rarity) }}
+                            >
+                              {achievement.icon || <StarOutlined />}
+                            </div>
+                          }
+                          title={
+                            <div>
+                              {achievement.title}
+                              <Tag
+                                color={getRarityColor(achievement.rarity)}
+                                style={{ marginLeft: 8 }}
+                              >
+                                {achievement.rarity}
+                              </Tag>
+                            </div>
+                          }
+                          description={achievement.description}
+                        />
+                        <div className="achievement-points">+{achievement.points}</div>
+                      </List.Item>
+                    )}
+                  />
+                ) : (
+                  <Empty description="暂无成就" />
+                )}
+              </TabPane>
+              <TabPane
+                tab={
+                  <Badge count={achievements.filter((a) => !a.is_unlocked).length} offset={[10, 0]}>
+                    <span>进行中</span>
+                  </Badge>
+                }
+                key="progress"
+              >
+                <List
+                  dataSource={achievements.filter((a) => !a.is_unlocked).slice(0, 5)}
+                  renderItem={(achievement) => (
+                    <List.Item>
+                      <List.Item.Meta
+                        avatar={
+                          <div className="achievement-icon-gray">
+                            {achievement.icon || <StarOutlined />}
+                          </div>
+                        }
+                        title={achievement.title}
+                        description={
+                          <>
+                            <div>{achievement.description}</div>
+                            <Progress
+                              percent={Math.round(achievement.progress_percentage)}
+                              size="small"
+                              status="active"
+                            />
+                            <div className="achievement-progress-text">
+                              {achievement.progress_value} / {achievement.requirement_value}
+                            </div>
+                          </>
+                        }
+                      />
+                    </List.Item>
+                  )}
+                />
+              </TabPane>
+            </Tabs>
+          </Card>
+
+          {/* 快速操作 */}
+          <Card title="快速开始" className="quick-actions-card" bordered={false}>
+            <List>
+              <List.Item
+                className="quick-action-item"
+                onClick={() => router.push('/practice')}
+              >
+                <RocketOutlined /> 开始练习
+              </List.Item>
+              <List.Item
+                className="quick-action-item"
+                onClick={() => router.push('/question-sets')}
+              >
+                <BookOutlined /> 题集练习
+              </List.Item>
+              <List.Item
+                className="quick-action-item"
+                onClick={() => router.push('/wrong-questions')}
+              >
+                <FireOutlined /> 我的错题本
+              </List.Item>
+              <List.Item
+                className="quick-action-item"
+                onClick={() => router.push('/learning/review')}
+              >
+                <ClockCircleOutlined /> 复习知识点
+              </List.Item>
+              <List.Item
+                className="quick-action-item"
+                onClick={() => router.push('/achievements')}
+              >
+                <TrophyOutlined /> 查看成就
+              </List.Item>
+            </List>
+          </Card>
+        </Col>
+      </Row>
+    </div>
+  );
 }

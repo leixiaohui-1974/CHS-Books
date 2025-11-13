@@ -1,211 +1,191 @@
 """
-安全相关功能：密码哈希、JWT令牌生成和验证
+安全相关工具和依赖项
 """
 
-from datetime import datetime, timedelta, timezone
-from typing import Optional, Union, Any
-from jose import JWTError, jwt
-from passlib.context import CryptContext
-from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
+from typing import Optional
+from datetime import datetime
+from fastapi import Depends, HTTPException, status, Request
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from .config import settings
-from .database import get_db
-from loguru import logger
+from app.core.database import get_db
+from app.models import User
+from app.services.auth_service import AuthService
 
 
-# 密码上下文
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+# HTTP Bearer认证
+security = HTTPBearer()
 
-# OAuth2 scheme
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
-
-
-# ========================================
-# 密码哈希
-# ========================================
-
-def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """验证密码"""
-    return pwd_context.verify(plain_password, hashed_password)
-
-
-def get_password_hash(password: str) -> str:
-    """生成密码哈希"""
-    return pwd_context.hash(password)
-
-
-# ========================================
-# JWT令牌
-# ========================================
-
-def create_access_token(
-    data: dict,
-    expires_delta: Optional[timedelta] = None
-) -> str:
-    """
-    创建访问令牌
-    
-    Args:
-        data: 要编码的数据
-        expires_delta: 过期时间增量
-    
-    Returns:
-        JWT令牌字符串
-    """
-    to_encode = data.copy()
-    
-    if expires_delta:
-        expire = datetime.now(timezone.utc) + expires_delta
-    else:
-        expire = datetime.now(timezone.utc) + timedelta(
-            minutes=settings.JWT_ACCESS_TOKEN_EXPIRE_MINUTES
-        )
-    
-    to_encode.update({"exp": expire, "type": "access"})
-    encoded_jwt = jwt.encode(
-        to_encode,
-        settings.JWT_SECRET_KEY,
-        algorithm=settings.JWT_ALGORITHM
-    )
-    return encoded_jwt
-
-
-def create_refresh_token(data: dict) -> str:
-    """
-    创建刷新令牌
-    
-    Args:
-        data: 要编码的数据
-    
-    Returns:
-        JWT令牌字符串
-    """
-    to_encode = data.copy()
-    expire = datetime.now(timezone.utc) + timedelta(days=settings.JWT_REFRESH_TOKEN_EXPIRE_DAYS)
-    to_encode.update({"exp": expire, "type": "refresh"})
-    encoded_jwt = jwt.encode(
-        to_encode,
-        settings.JWT_SECRET_KEY,
-        algorithm=settings.JWT_ALGORITHM
-    )
-    return encoded_jwt
-
-
-def decode_token(token: str) -> Optional[dict]:
-    """
-    解码JWT令牌
-    
-    Args:
-        token: JWT令牌字符串
-    
-    Returns:
-        解码后的数据或None
-    """
-    try:
-        payload = jwt.decode(
-            token,
-            settings.JWT_SECRET_KEY,
-            algorithms=[settings.JWT_ALGORITHM]
-        )
-        return payload
-    except JWTError as e:
-        logger.error(f"JWT解码错误: {e}")
-        return None
-
-
-# ========================================
-# 依赖注入：获取当前用户
-# ========================================
 
 async def get_current_user(
-    token: str = Depends(oauth2_scheme),
+    request: Request,
+    credentials: HTTPAuthorizationCredentials = Depends(security),
     db: AsyncSession = Depends(get_db)
-):
+) -> User:
     """
-    从JWT令牌获取当前用户
-    用于需要认证的路由
+    获取当前登录用户
+    依赖项：用于需要认证的API端点
     """
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="无法验证身份凭证",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+    token = credentials.credentials
     
-    payload = decode_token(token)
-    if payload is None:
-        raise credentials_exception
+    # 创建认证服务
+    auth_service = AuthService(db)
     
-    user_id: str = payload.get("sub")
-    if user_id is None:
-        raise credentials_exception
+    # 检查Token是否被撤销
+    if await auth_service.is_token_revoked(token):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Token has been revoked",
+            headers={"WWW-Authenticate": "Bearer"}
+        )
     
-    # 从数据库获取用户
-    from app.models.user import User
-    from sqlalchemy import select
-    result = await db.execute(select(User).where(User.id == int(user_id)))
-    user = result.scalar_one_or_none()
+    # 验证Token
+    user_id = auth_service.verify_token(token, token_type="access")
+    if not user_id:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid or expired token",
+            headers={"WWW-Authenticate": "Bearer"}
+        )
     
-    if user is None:
-        raise credentials_exception
+    # 获取用户信息
+    user = await auth_service.get_user_by_id(user_id)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User not found"
+        )
+    
+    # 检查用户状态
+    if user.status != "active":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail=f"User account is {user.status}"
+        )
+    
+    if not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="User account is inactive"
+        )
     
     return user
 
 
 async def get_current_active_user(
-    current_user = Depends(get_current_user)
-):
+    current_user: User = Depends(get_current_user)
+) -> User:
     """
-    获取当前活跃用户
+    获取当前活跃用户（已验证邮箱）
     """
-    if not current_user.is_active:
-        raise HTTPException(status_code=400, detail="用户已被禁用")
+    if not current_user.is_verified:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Email not verified. Please verify your email first."
+        )
     return current_user
 
 
 async def get_current_admin_user(
-    current_user: dict = Depends(get_current_user)
-):
+    current_user: User = Depends(get_current_user)
+) -> User:
     """
     获取当前管理员用户
-    仅管理员可访问的路由使用此依赖
     """
-    # TODO: 检查用户是否为管理员
-    # if not current_user.is_admin:
-    #     raise HTTPException(
-    #         status_code=403,
-    #         detail="需要管理员权限"
-    #     )
+    if not current_user.is_admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required"
+        )
     return current_user
 
 
-# ========================================
-# API密钥验证（用于服务间通信）
-# ========================================
-
-async def verify_api_key(api_key: str) -> bool:
+async def get_optional_current_user(
+    request: Request,
+    credentials: Optional[HTTPAuthorizationCredentials] = Depends(HTTPBearer(auto_error=False)),
+    db: AsyncSession = Depends(get_db)
+) -> Optional[User]:
     """
-    验证API密钥
-    用于服务间通信认证
+    获取当前用户（可选）
+    用于可选认证的API端点
     """
-    # TODO: 实现API密钥验证逻辑
-    # 可以存储在数据库或环境变量中
-    return api_key == settings.SECRET_KEY
+    if not credentials:
+        return None
+    
+    try:
+        token = credentials.credentials
+        auth_service = AuthService(db)
+        
+        if await auth_service.is_token_revoked(token):
+            return None
+        
+        user_id = auth_service.verify_token(token, token_type="access")
+        if not user_id:
+            return None
+        
+        user = await auth_service.get_user_by_id(user_id)
+        if not user or user.status != "active" or not user.is_active:
+            return None
+        
+        return user
+    except:
+        return None
 
 
-# ========================================
-# 生成随机令牌
-# ========================================
+def require_permission(permission: str):
+    """
+    权限验证装饰器工厂
+    
+    使用方式:
+    @router.get("/admin/users")
+    async def list_users(
+        current_user: User = Depends(require_permission("admin.users.list"))
+    ):
+        ...
+    """
+    async def permission_checker(
+        current_user: User = Depends(get_current_user)
+    ) -> User:
+        # TODO: 实现基于角色的权限检查
+        # 这里简化为检查是否是管理员
+        if permission.startswith("admin.") and not current_user.is_admin:
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Permission denied: {permission}"
+            )
+        return current_user
+    
+    return permission_checker
 
-import secrets
+
+def get_client_ip(request: Request) -> str:
+    """获取客户端IP地址"""
+    # 优先从X-Forwarded-For头获取（适用于反向代理）
+    forwarded = request.headers.get("X-Forwarded-For")
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    
+    # 从X-Real-IP头获取
+    real_ip = request.headers.get("X-Real-IP")
+    if real_ip:
+        return real_ip
+    
+    # 直接从客户端获取
+    return request.client.host if request.client else "unknown"
 
 
-def generate_random_token(length: int = 32) -> str:
-    """生成随机令牌（用于验证码、重置密码等）"""
-    return secrets.token_urlsafe(length)
-
-
-def generate_verification_code(length: int = 6) -> str:
-    """生成数字验证码"""
-    return ''.join([str(secrets.randbelow(10)) for _ in range(length)])
+def get_request_info(request: Request) -> dict:
+    """获取请求信息"""
+    user_agent = request.headers.get("User-Agent", "")
+    
+    # 解析User-Agent
+    auth_service = AuthService(None)  # 不需要db
+    parsed = auth_service.parse_user_agent(user_agent)
+    
+    return {
+        "ip_address": get_client_ip(request),
+        "user_agent": user_agent,
+        "device_type": parsed["device_type"],
+        "browser": parsed["browser"],
+        "os": parsed["os"]
+    }

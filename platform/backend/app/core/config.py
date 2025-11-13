@@ -29,6 +29,7 @@ class Settings(BaseSettings):
     APP_URL: str = "http://localhost:3000"
     API_URL: str = "http://localhost:8000"
     SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
+    JWT_SECRET_KEY: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
     
     # ========================================
     # 数据库配置
@@ -96,10 +97,20 @@ class Settings(BaseSettings):
     # ========================================
     # OAuth配置
     # ========================================
+    # 微信
     WECHAT_APP_ID: Optional[str] = None
     WECHAT_APP_SECRET: Optional[str] = None
+    WECHAT_REDIRECT_URI: str = "http://localhost:3000/oauth/callback/wechat"
+    
+    # GitHub
     GITHUB_CLIENT_ID: Optional[str] = None
     GITHUB_CLIENT_SECRET: Optional[str] = None
+    GITHUB_REDIRECT_URI: str = "http://localhost:3000/oauth/callback/github"
+    
+    # Google
+    GOOGLE_CLIENT_ID: Optional[str] = None
+    GOOGLE_CLIENT_SECRET: Optional[str] = None
+    GOOGLE_REDIRECT_URI: str = "http://localhost:3000/oauth/callback/google"
     
     # ========================================
     # 支付配置
@@ -159,8 +170,9 @@ class Settings(BaseSettings):
     SMTP_PORT: int = 587
     SMTP_USER: Optional[str] = None
     SMTP_PASSWORD: Optional[str] = None
-    SMTP_FROM: str = "noreply@example.com"
+    SMTP_FROM_EMAIL: str = "noreply@example.com"
     SMTP_FROM_NAME: str = "Engineering Learning Platform"
+    SMTP_TLS: bool = True
     
     # ========================================
     # 短信配置

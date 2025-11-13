@@ -1,0 +1,126 @@
+{
+  "timestamp": "2025-11-12T11:02:44.646Z",
+  "summary": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "successRate": "100.0%"
+  },
+  "results": [
+    {
+      "name": "主页",
+      "url": "http://localhost:8080/",
+      "success": true,
+      "checks": [
+        {
+          "type": "title",
+          "value": "水系统控制理论教程",
+          "passed": true,
+          "actual": "水系统控制理论教程 - 智能学习平台 v3.1 (修复版)"
+        },
+        {
+          "type": "text",
+          "value": "智能学习平台",
+          "passed": true
+        },
+        {
+          "type": "element",
+          "selector": ".nav-card",
+          "passed": true
+        }
+      ],
+      "error": null,
+      "screenshot": "index.png"
+    },
+    {
+      "name": "教材库",
+      "url": "http://localhost:8080/textbooks.html",
+      "success": true,
+      "checks": [
+        {
+          "type": "title",
+          "value": "教材",
+          "passed": true,
+          "actual": "教材阅读器 - CHS-Books"
+        },
+        {
+          "type": "element",
+          "selector": ".book-card",
+          "passed": false
+        }
+      ],
+      "error": null,
+      "screenshot": "textbooks.png"
+    },
+    {
+      "name": "搜索页面",
+      "url": "http://localhost:8080/search.html",
+      "success": true,
+      "checks": [
+        {
+          "type": "title",
+          "value": "搜索",
+          "passed": true,
+          "actual": "统一搜索 - CHS-Books"
+        },
+        {
+          "type": "element",
+          "selector": "input[type=\"search\"], input.search",
+          "passed": false
+        }
+      ],
+      "error": null,
+      "screenshot": "search.png"
+    },
+    {
+      "name": "代码运行器",
+      "url": "http://localhost:8080/code-runner.html",
+      "success": true,
+      "checks": [
+        {
+          "type": "title",
+          "value": "代码",
+          "passed": true,
+          "actual": "代码在线运行 - CHS-Books"
+        },
+        {
+          "type": "element",
+          "selector": "textarea, .code-editor",
+          "passed": true
+        }
+      ],
+      "error": null,
+      "screenshot": "code-runner.png"
+    },
+    {
+      "name": "IDE",
+      "url": "http://localhost:8080/ide.html",
+      "success": true,
+      "checks": [
+        {
+          "type": "title",
+          "value": "IDE",
+          "passed": true,
+          "actual": "AI编程学习IDE - 水系统控制教程"
+        }
+      ],
+      "error": null,
+      "screenshot": "ide.png"
+    },
+    {
+      "name": "知识库",
+      "url": "http://localhost:8080/knowledge/index.html",
+      "success": true,
+      "checks": [
+        {
+          "type": "title",
+          "value": "知识",
+          "passed": true,
+          "actual": "水利水电水务知识库平台"
+        }
+      ],
+      "error": null,
+      "screenshot": "knowledge.png"
+    }
+  ]
+}

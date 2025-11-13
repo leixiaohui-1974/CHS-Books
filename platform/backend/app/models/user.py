@@ -19,6 +19,14 @@ class UserRole(str, enum.Enum):
     SUPER_ADMIN = "super_admin"  # 超级管理员
 
 
+class UserStatus(str, enum.Enum):
+    """用户状态枚举"""
+    ACTIVE = "active"          # 正常
+    SUSPENDED = "suspended"    # 暂停
+    BANNED = "banned"          # 封禁
+    DELETED = "deleted"        # 已删除
+
+
 class User(Base):
     """用户模型"""
     
@@ -26,10 +34,10 @@ class User(Base):
     
     # 基本信息
     id = Column(Integer, primary_key=True, index=True)
-    email = Column(String(255), unique=True, index=True, nullable=False)
+    email = Column(String(255), unique=True, index=True, nullable=True)
     phone = Column(String(20), unique=True, index=True, nullable=True)
     username = Column(String(50), unique=True, index=True, nullable=False)
-    hashed_password = Column(String(255), nullable=False)
+    hashed_password = Column(String(255), nullable=True)  # OAuth用户可以没有密码
     
     # 个人信息
     full_name = Column(String(100), nullable=True)
@@ -38,16 +46,17 @@ class User(Base):
     
     # 角色和权限
     role = Column(SQLEnum(UserRole), default=UserRole.USER, nullable=False)
+    status = Column(String(20), default="active", nullable=False, index=True)  # active, suspended, banned, deleted
     is_active = Column(Boolean, default=True, nullable=False)
     is_verified = Column(Boolean, default=False, nullable=False)
+    
+    # 邮箱和手机验证
+    email_verified = Column(Boolean, default=False, nullable=False)
+    phone_verified = Column(Boolean, default=False, nullable=False)
     
     # 会员信息
     is_premium = Column(Boolean, default=False, nullable=False)
     premium_expires_at = Column(DateTime(timezone=True), nullable=True)
-    
-    # OAuth登录信息
-    github_id = Column(String(100), unique=True, nullable=True)
-    wechat_openid = Column(String(100), unique=True, nullable=True)
     
     # 统计信息
     total_learning_time = Column(Integer, default=0, nullable=False)  # 总学习时长（秒）
@@ -61,6 +70,13 @@ class User(Base):
     deleted_at = Column(DateTime(timezone=True), nullable=True)
     
     # 关系
+    profile = relationship("UserProfile", back_populates="user", uselist=False, cascade="all, delete-orphan")
+    oauth_accounts = relationship("OAuthAccount", back_populates="user", cascade="all, delete-orphan")
+    two_factor_auth = relationship("TwoFactorAuth", back_populates="user", uselist=False, cascade="all, delete-orphan")
+    tokens = relationship("UserToken", back_populates="user", cascade="all, delete-orphan")
+    login_history = relationship("LoginHistory", back_populates="user", cascade="all, delete-orphan")
+    verification_codes = relationship("VerificationCode", back_populates="user", cascade="all, delete-orphan")
+    
     progress = relationship("UserProgress", back_populates="user", cascade="all, delete-orphan")
     orders = relationship("Order", back_populates="user", cascade="all, delete-orphan")
     subscriptions = relationship("Subscription", back_populates="user", cascade="all, delete-orphan")

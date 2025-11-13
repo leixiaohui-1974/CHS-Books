@@ -1,0 +1,76 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 600px;
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.register-header h1 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.register-header p {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.steps-content {
+  min-height: 260px;
+  margin-bottom: 24px;
+}
+
+.steps-action {
+  text-align: right;
+}
+
+.register-footer {
+  text-align: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  color: #6b7280;
+}
+
+.register-footer a {
+  color: #667eea;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.register-footer a:hover {
+  color: #764ba2;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .register-card {
+    padding: 24px;
+  }
+
+  .register-header h1 {
+    font-size: 24px;
+  }
+
+  .steps-content {
+    min-height: 200px;
+  }
+}

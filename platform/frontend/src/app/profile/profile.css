@@ -1,0 +1,78 @@
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.profile-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.profile-header {
+  margin-bottom: 24px;
+}
+
+.profile-header-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.profile-info .full-name {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.profile-meta {
+  margin-bottom: 12px;
+}
+
+.profile-info .bio {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 16px;
+  }
+
+  .profile-header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .profile-actions button {
+    width: 100%;
+  }
+}
