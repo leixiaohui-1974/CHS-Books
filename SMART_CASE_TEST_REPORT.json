@@ -1,13 +1,13 @@
 {
-  "timestamp": "2025-11-14T05:57:57.547115",
+  "timestamp": "2025-11-14T07:04:51.028482",
   "summary": {
     "total_books": 8,
     "total_cases_tested": 197,
-    "total_cases_passed": 145,
-    "total_cases_failed": 52,
-    "overall_pass_rate": "73.6%",
-    "overall_avg_score": "72.7",
-    "overall_grade": "B 合格"
+    "total_cases_passed": 195,
+    "total_cases_failed": 2,
+    "overall_pass_rate": "99.0%",
+    "overall_avg_score": "83.1",
+    "overall_grade": "A 良好"
   },
   "books": [
     {
@@ -15,8 +15,8 @@
       "book_name": "生态水力学",
       "total_cases": 32,
       "tested_cases": 32,
-      "passed_cases": 14,
-      "failed_cases": 18,
+      "passed_cases": 32,
+      "failed_cases": 0,
       "case_results": [
         {
           "case_name": "case_01_ecological_flow",
@@ -541,9 +541,19 @@
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_10_spawning_ground",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_10_spawning_ground/README.md",
+            "size": 4978,
+            "checks": {
+              "length": 2783,
+              "lines": 137,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -576,11 +586,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_11_feeding_ground",
@@ -902,9 +912,19 @@
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_16_gravel_supplement",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_16_gravel_supplement/README.md",
+            "size": 4458,
+            "checks": {
+              "length": 2623,
+              "lines": 114,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -944,20 +964,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_17_estuary",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_17_estuary",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_17_estuary/README.md",
+            "size": 4272,
+            "checks": {
+              "length": 2424,
+              "lines": 124,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -997,20 +1027,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_18_restoration_assessment",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_18_restoration_assessment",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_18_restoration_assessment/README.md",
+            "size": 4442,
+            "checks": {
+              "length": 2734,
+              "lines": 141,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1050,20 +1090,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_21_hydropower",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_21_hydropower",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_21_hydropower/README.md",
+            "size": 4385,
+            "checks": {
+              "length": 2458,
+              "lines": 134,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1103,20 +1153,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_29_lake_hydrodynamics",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_29_lake_hydrodynamics",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_29_lake_hydrodynamics/README.md",
+            "size": 5037,
+            "checks": {
+              "length": 2947,
+              "lines": 163,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1156,20 +1216,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_30_constructed_wetland",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_30_constructed_wetland",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_30_constructed_wetland/README.md",
+            "size": 4974,
+            "checks": {
+              "length": 3082,
+              "lines": 172,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1209,20 +1279,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_31_riparian_buffer",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_31_riparian_buffer",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_31_riparian_buffer/README.md",
+            "size": 5558,
+            "checks": {
+              "length": 3433,
+              "lines": 183,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1262,20 +1342,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_32_lake_stratification",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_32_lake_stratification",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_32_lake_stratification/README.md",
+            "size": 5946,
+            "checks": {
+              "length": 3379,
+              "lines": 188,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1315,20 +1405,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_33_wetland_restoration",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_33_wetland_restoration",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_33_wetland_restoration/README.md",
+            "size": 5810,
+            "checks": {
+              "length": 3311,
+              "lines": 183,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1368,20 +1468,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_34_sponge_city",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_34_sponge_city",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_34_sponge_city/README.md",
+            "size": 6306,
+            "checks": {
+              "length": 3667,
+              "lines": 195,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1421,20 +1531,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_35_urban_river",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_35_urban_river",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_35_urban_river/README.md",
+            "size": 6514,
+            "checks": {
+              "length": 3844,
+              "lines": 207,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1474,20 +1594,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_36_rain_garden",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_36_rain_garden",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_36_rain_garden/README.md",
+            "size": 7218,
+            "checks": {
+              "length": 4273,
+              "lines": 223,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1527,20 +1657,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_37_flood_control",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_37_flood_control",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_37_flood_control/README.md",
+            "size": 7377,
+            "checks": {
+              "length": 4289,
+              "lines": 230,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1580,20 +1720,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_38_salt_wedge",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_38_salt_wedge",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_38_salt_wedge/README.md",
+            "size": 6899,
+            "checks": {
+              "length": 4022,
+              "lines": 234,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1633,20 +1783,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_39_mangrove",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_39_mangrove",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_39_mangrove/README.md",
+            "size": 7362,
+            "checks": {
+              "length": 4439,
+              "lines": 248,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1686,20 +1846,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_40_revetment",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_40_revetment",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_40_revetment/README.md",
+            "size": 8259,
+            "checks": {
+              "length": 4849,
+              "lines": 255,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1739,20 +1909,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_41_wetland_carbon",
           "case_dir": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_41_wetland_carbon",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_41_wetland_carbon/README.md",
+            "size": 8761,
+            "checks": {
+              "length": 5526,
+              "lines": 291,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -1792,23 +1972,23 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": true,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         }
       ],
-      "total_score": 2075,
-      "average_score": 64.84375
+      "total_score": 2795,
+      "average_score": 87.34375
     },
     {
       "book_id": "water-environment-simulation",
       "book_name": "水环境数值模拟",
       "total_cases": 30,
       "tested_cases": 30,
-      "passed_cases": 22,
-      "failed_cases": 8,
+      "passed_cases": 30,
+      "failed_cases": 0,
       "case_results": [
         {
           "case_name": "case_01_diffusion",
@@ -1848,9 +2028,9 @@
             "count": 7,
             "images": [
               {
-                "filename": "diffusion_scheme_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_scheme_comparison.png",
-                "size": 164151,
+                "filename": "diffusion_validation.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_validation.png",
+                "size": 95802,
                 "extension": ".png"
               },
               {
@@ -1860,9 +2040,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "intrusion_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intrusion_comparison.png",
-                "size": 24632,
+                "filename": "diffusion_scheme_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_scheme_comparison.png",
+                "size": 164151,
+                "extension": ".png"
+              },
+              {
+                "filename": "intake_risk.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intake_risk.png",
+                "size": 37175,
                 "extension": ".png"
               },
               {
@@ -1872,21 +2058,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "diffusion_validation.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_validation.png",
-                "size": 95802,
+                "filename": "intrusion_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intrusion_comparison.png",
+                "size": 24632,
                 "extension": ".png"
               },
               {
                 "filename": "salinity_scenarios.png",
                 "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/salinity_scenarios.png",
                 "size": 93026,
-                "extension": ".png"
-              },
-              {
-                "filename": "intake_risk.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intake_risk.png",
-                "size": 37175,
                 "extension": ".png"
               }
             ],
@@ -3092,17 +3272,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_23_watershed/README.md",
-            "size": 334,
+            "size": 4160,
             "checks": {
-              "length": 156,
-              "lines": 18,
+              "length": 2342,
+              "lines": 110,
               "has_title": true,
               "has_description": true,
-              "has_code_block": false,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3135,11 +3315,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_24_river_network",
@@ -3148,17 +3328,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_24_river_network/README.md",
-            "size": 196,
+            "size": 4597,
             "checks": {
-              "length": 90,
-              "lines": 12,
+              "length": 2496,
+              "lines": 123,
               "has_title": true,
-              "has_description": false,
-              "has_code_block": false,
+              "has_description": true,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3191,11 +3371,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_25_water_transfer",
@@ -3204,17 +3384,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_25_water_transfer/README.md",
-            "size": 202,
+            "size": 4982,
             "checks": {
-              "length": 92,
-              "lines": 12,
+              "length": 2724,
+              "lines": 126,
               "has_title": true,
-              "has_description": false,
-              "has_code_block": false,
+              "has_description": true,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3247,11 +3427,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_26_river_ecosystem",
@@ -3260,17 +3440,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_26_river_ecosystem/README.md",
-            "size": 207,
+            "size": 4744,
             "checks": {
-              "length": 95,
-              "lines": 12,
+              "length": 2577,
+              "lines": 125,
               "has_title": true,
-              "has_description": false,
-              "has_code_block": false,
+              "has_description": true,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3303,11 +3483,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_27_lake_regime_shift",
@@ -3316,17 +3496,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_27_lake_regime_shift/README.md",
-            "size": 192,
+            "size": 4928,
             "checks": {
-              "length": 96,
-              "lines": 12,
+              "length": 2630,
+              "lines": 125,
               "has_title": true,
-              "has_description": false,
-              "has_code_block": false,
+              "has_description": true,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3359,11 +3539,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_28_wetland",
@@ -3372,17 +3552,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_28_wetland/README.md",
-            "size": 208,
+            "size": 4969,
             "checks": {
-              "length": 94,
-              "lines": 12,
+              "length": 2826,
+              "lines": 133,
               "has_title": true,
-              "has_description": false,
-              "has_code_block": false,
+              "has_description": true,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3415,11 +3595,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_29_urban_blackwater",
@@ -3428,17 +3608,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_29_urban_blackwater/README.md",
-            "size": 211,
+            "size": 5229,
             "checks": {
-              "length": 95,
-              "lines": 12,
+              "length": 2866,
+              "lines": 133,
               "has_title": true,
-              "has_description": false,
-              "has_code_block": false,
+              "has_description": true,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3471,11 +3651,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_30_watershed_platform",
@@ -3484,17 +3664,17 @@
           "readme": {
             "exists": true,
             "file_path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_30_watershed_platform/README.md",
-            "size": 223,
+            "size": 5749,
             "checks": {
-              "length": 101,
-              "lines": 13,
+              "length": 3238,
+              "lines": 144,
               "has_title": true,
               "has_description": true,
-              "has_code_block": false,
+              "has_code_block": true,
               "has_chinese": true
             },
-            "success": false,
-            "quality": "基本"
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -3527,15 +3707,15 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         }
       ],
-      "total_score": 2090,
-      "average_score": 69.66666666666667
+      "total_score": 2410,
+      "average_score": 80.33333333333333
     },
     {
       "book_id": "open-channel-hydraulics",
@@ -5374,8 +5554,8 @@
       "book_name": "智能水网设计",
       "total_cases": 26,
       "tested_cases": 26,
-      "passed_cases": 16,
-      "failed_cases": 10,
+      "passed_cases": 24,
+      "failed_cases": 2,
       "case_results": [
         {
           "case_name": "case_01",
@@ -5438,9 +5618,19 @@
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_01_irrigation_gate",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_01_irrigation_gate/README.md",
+            "size": 7985,
+            "checks": {
+              "length": 4263,
+              "lines": 187,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": false,
@@ -5466,7 +5656,7 @@
           "critical_success": false,
           "has_images": false,
           "success": false,
-          "score": 0,
+          "score": 40,
           "grade": "C 待改进"
         },
         {
@@ -6301,15 +6491,15 @@
             "count": 2,
             "files": [
               {
-                "filename": "regional_irrigation_report.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_14_regional_irrigation/regional_irrigation_report.json",
-                "size": 507,
-                "extension": ".json"
-              },
-              {
                 "filename": "case_14_v2_report.json",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_14_regional_irrigation/case_14_v2_report.json",
                 "size": 520,
+                "extension": ".json"
+              },
+              {
+                "filename": "regional_irrigation_report.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_14_regional_irrigation/regional_irrigation_report.json",
+                "size": 507,
                 "extension": ".json"
               }
             ],
@@ -6464,9 +6654,19 @@
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_17_smart_water",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_17_smart_water/README.md",
+            "size": 10676,
+            "checks": {
+              "length": 5612,
+              "lines": 236,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6499,20 +6699,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_18_digital_twin",
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_18_digital_twin",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_18_digital_twin/README.md",
+            "size": 13870,
+            "checks": {
+              "length": 7455,
+              "lines": 300,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6545,20 +6755,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_19_basin_coordination",
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_19_basin_coordination",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_19_basin_coordination/README.md",
+            "size": 13193,
+            "checks": {
+              "length": 6663,
+              "lines": 263,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6591,20 +6811,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_20_smart_city_water",
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_20_smart_city_water",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_20_smart_city_water/README.md",
+            "size": 13235,
+            "checks": {
+              "length": 6892,
+              "lines": 272,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6637,20 +6867,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_21_inter_basin",
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_21_inter_basin",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_21_inter_basin/README.md",
+            "size": 13591,
+            "checks": {
+              "length": 7037,
+              "lines": 296,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6683,20 +6923,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_22_big_data_platform",
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_22_big_data_platform",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_22_big_data_platform/README.md",
+            "size": 15067,
+            "checks": {
+              "length": 8107,
+              "lines": 324,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6729,20 +6979,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_23_ai_water_management",
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_23_ai_water_management",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_23_ai_water_management/README.md",
+            "size": 17323,
+            "checks": {
+              "length": 8963,
+              "lines": 349,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6775,20 +7035,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_24_comprehensive",
           "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_24_comprehensive",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_24_comprehensive/README.md",
+            "size": 18880,
+            "checks": {
+              "length": 9955,
+              "lines": 423,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -6828,11 +7098,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 45,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 85,
+          "grade": "A 良好"
         },
         {
           "case_name": "comparison_static_vs_dynamic",
@@ -6868,46 +7138,16 @@
             "count": 11,
             "files": [
               {
-                "filename": "cost_benefit_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cost_benefit_report.txt",
-                "size": 3229,
-                "extension": ".txt"
+                "filename": "medium_gate_config.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_config.json",
+                "size": 1338,
+                "extension": ".json"
               },
               {
                 "filename": "intelligence_evaluation_L2.txt",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/intelligence_evaluation_L2.txt",
                 "size": 2079,
                 "extension": ".txt"
-              },
-              {
-                "filename": "batch_test_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_test_report.txt",
-                "size": 1275,
-                "extension": ".txt"
-              },
-              {
-                "filename": "sensitivity_analysis_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analysis_report.txt",
-                "size": 1537,
-                "extension": ".txt"
-              },
-              {
-                "filename": "static_design_operation_manual.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design_operation_manual.txt",
-                "size": 1222,
-                "extension": ".txt"
-              },
-              {
-                "filename": "requirements.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/requirements.txt",
-                "size": 32,
-                "extension": ".txt"
-              },
-              {
-                "filename": "medium_gate_config.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_config.json",
-                "size": 1338,
-                "extension": ".json"
               },
               {
                 "filename": "pid_tuning_results.txt",
@@ -6922,6 +7162,12 @@
                 "extension": ".txt"
               },
               {
+                "filename": "requirements.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/requirements.txt",
+                "size": 32,
+                "extension": ".txt"
+              },
+              {
                 "filename": "intelligence_evaluation_L3.txt",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/intelligence_evaluation_L3.txt",
                 "size": 2086,
@@ -6932,6 +7178,30 @@
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/default_config.json",
                 "size": 1329,
                 "extension": ".json"
+              },
+              {
+                "filename": "batch_test_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_test_report.txt",
+                "size": 1275,
+                "extension": ".txt"
+              },
+              {
+                "filename": "static_design_operation_manual.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design_operation_manual.txt",
+                "size": 1222,
+                "extension": ".txt"
+              },
+              {
+                "filename": "sensitivity_analysis_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analysis_report.txt",
+                "size": 1537,
+                "extension": ".txt"
+              },
+              {
+                "filename": "cost_benefit_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cost_benefit_report.txt",
+                "size": 3229,
+                "extension": ".txt"
               }
             ],
             "has_data": true
@@ -7051,16 +7321,16 @@
           "grade": "C 待改进"
         }
       ],
-      "total_score": 1745,
-      "average_score": 67.11538461538461
+      "total_score": 2105,
+      "average_score": 80.96153846153847
     },
     {
       "book_id": "photovoltaic-system-modeling-control",
       "book_name": "光伏系统建模与控制",
       "total_cases": 20,
       "tested_cases": 20,
-      "passed_cases": 19,
-      "failed_cases": 1,
+      "passed_cases": 20,
+      "failed_cases": 0,
       "case_results": [
         {
           "case_name": "case_01_pv_cell_iv_characteristics",
@@ -8345,9 +8615,19 @@
           "case_dir": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_20_dc_bus_control",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_20_dc_bus_control/README.md",
+            "size": 3682,
+            "checks": {
+              "length": 2238,
+              "lines": 131,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8387,23 +8667,23 @@
             ],
             "has_modules": true
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 45,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 85,
+          "grade": "A 良好"
         }
       ],
-      "total_score": 1765,
-      "average_score": 88.25
+      "total_score": 1805,
+      "average_score": 90.25
     },
     {
       "book_id": "wind-power-system-modeling-control",
       "book_name": "风电系统建模与控制",
       "total_cases": 15,
       "tested_cases": 15,
-      "passed_cases": 2,
-      "failed_cases": 13,
+      "passed_cases": 15,
+      "failed_cases": 0,
       "case_results": [
         {
           "case_name": "case_01_wind_statistics",
@@ -8522,9 +8802,19 @@
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_03_blade_aerodynamics",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_03_blade_aerodynamics/README.md",
+            "size": 4027,
+            "checks": {
+              "length": 2385,
+              "lines": 105,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8557,20 +8847,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_04_rotor_performance",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_04_rotor_performance",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_04_rotor_performance/README.md",
+            "size": 3995,
+            "checks": {
+              "length": 2314,
+              "lines": 107,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8603,20 +8903,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_05_wake_effect",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_05_wake_effect",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_05_wake_effect/README.md",
+            "size": 4269,
+            "checks": {
+              "length": 2432,
+              "lines": 117,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8649,20 +8959,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_06_dfig_modeling",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_06_dfig_modeling",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_06_dfig_modeling/README.md",
+            "size": 4591,
+            "checks": {
+              "length": 2818,
+              "lines": 127,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8695,20 +9015,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_07_pmsg_modeling",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_07_pmsg_modeling",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_07_pmsg_modeling/README.md",
+            "size": 4946,
+            "checks": {
+              "length": 3155,
+              "lines": 130,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8741,20 +9071,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_08_grid_connection",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_08_grid_connection",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_08_grid_connection/README.md",
+            "size": 4678,
+            "checks": {
+              "length": 2661,
+              "lines": 126,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8787,20 +9127,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_09_drivetrain",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_09_drivetrain",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_09_drivetrain/README.md",
+            "size": 4738,
+            "checks": {
+              "length": 2804,
+              "lines": 140,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8833,20 +9183,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_10_tower_vibration",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_10_tower_vibration",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_10_tower_vibration/README.md",
+            "size": 5079,
+            "checks": {
+              "length": 3022,
+              "lines": 163,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8879,20 +9239,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_11_tsr_control",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_11_tsr_control",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_11_tsr_control/README.md",
+            "size": 5204,
+            "checks": {
+              "length": 3187,
+              "lines": 163,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8925,20 +9295,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_12_psf_control",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_12_psf_control",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_12_psf_control/README.md",
+            "size": 5712,
+            "checks": {
+              "length": 3633,
+              "lines": 175,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -8971,20 +9351,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_13_hcs_control",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_13_hcs_control",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_13_hcs_control/README.md",
+            "size": 6108,
+            "checks": {
+              "length": 3794,
+              "lines": 196,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -9017,20 +9407,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_14_optimal_torque",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_14_optimal_torque",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_14_optimal_torque/README.md",
+            "size": 6113,
+            "checks": {
+              "length": 3851,
+              "lines": 204,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -9063,20 +9463,30 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_15_pitch_control",
           "case_dir": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_15_pitch_control",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_15_pitch_control/README.md",
+            "size": 6504,
+            "checks": {
+              "length": 4100,
+              "lines": 214,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -9109,23 +9519,23 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         }
       ],
-      "total_score": 680,
-      "average_score": 45.333333333333336
+      "total_score": 1200,
+      "average_score": 80.0
     },
     {
       "book_id": "distributed-hydrological-model",
       "book_name": "分布式水文模型",
       "total_cases": 24,
       "tested_cases": 24,
-      "passed_cases": 22,
-      "failed_cases": 2,
+      "passed_cases": 24,
+      "failed_cases": 0,
       "case_results": [
         {
           "case_name": "case_01_dem_analysis",
@@ -9748,9 +10158,19 @@
           "case_dir": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_12_glue_uncertainty",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_12_glue_uncertainty/README.md",
+            "size": 4413,
+            "checks": {
+              "length": 2712,
+              "lines": 132,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -9783,11 +10203,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_14_integrated_watershed",
@@ -10074,9 +10494,19 @@
           "case_dir": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_19_climate_change",
           "exists": true,
           "readme": {
-            "exists": false,
-            "error": "README.md不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_19_climate_change/README.md",
+            "size": 4938,
+            "checks": {
+              "length": 3019,
+              "lines": 149,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "main_py": {
             "exists": true,
@@ -10109,11 +10539,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_20_cascade_reservoirs",
@@ -10452,8 +10882,8 @@
           "grade": "A 良好"
         }
       ],
-      "total_score": 1840,
-      "average_score": 76.66666666666667
+      "total_score": 1920,
+      "average_score": 80.0
     },
     {
       "book_id": "canal-pipeline-control",
@@ -10501,15 +10931,15 @@
             "count": 4,
             "images": [
               {
-                "filename": "part3_pid_parameters.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part3_pid_parameters.png",
-                "size": 269605,
-                "extension": ".png"
-              },
-              {
                 "filename": "part1_step_response.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part1_step_response.png",
                 "size": 247124,
+                "extension": ".png"
+              },
+              {
+                "filename": "part3_pid_parameters.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part3_pid_parameters.png",
+                "size": 269605,
                 "extension": ".png"
               },
               {
@@ -10918,15 +11348,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "part1_n4sid_validation.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part1_n4sid_validation.png",
-                "size": 277161,
-                "extension": ".png"
-              },
-              {
-                "filename": "part2_order_selection.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part2_order_selection.png",
-                "size": 83621,
+                "filename": "part3_canal_identification.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part3_canal_identification.png",
+                "size": 474270,
                 "extension": ".png"
               },
               {
@@ -10936,9 +11360,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "part3_canal_identification.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part3_canal_identification.png",
-                "size": 474270,
+                "filename": "part2_order_selection.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part2_order_selection.png",
+                "size": 83621,
+                "extension": ".png"
+              },
+              {
+                "filename": "part1_n4sid_validation.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part1_n4sid_validation.png",
+                "size": 277161,
                 "extension": ".png"
               }
             ],
@@ -11055,12 +11485,6 @@
             "count": 4,
             "images": [
               {
-                "filename": "part2_narx_model.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part2_narx_model.png",
-                "size": 244040,
-                "extension": ".png"
-              },
-              {
                 "filename": "part3_canal_nonlinear.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part3_canal_nonlinear.png",
                 "size": 400575,
@@ -11076,6 +11500,12 @@
                 "filename": "part4_method_comparison.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part4_method_comparison.png",
                 "size": 224670,
+                "extension": ".png"
+              },
+              {
+                "filename": "part2_narx_model.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part2_narx_model.png",
+                "size": 244040,
                 "extension": ".png"
               }
             ],
@@ -11705,117 +12135,9 @@
       "case_name": "case_08_fishway"
     },
     {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_10_spawning_ground",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "ecohydraulics",
       "case_name": "case_10_spawning_ground"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_16_gravel_supplement",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_17_estuary",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_18_restoration_assessment",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_21_hydropower",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_29_lake_hydrodynamics",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_30_constructed_wetland",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_31_riparian_buffer",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_32_lake_stratification",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_33_wetland_restoration",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_34_sponge_city",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_35_urban_river",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_36_rain_garden",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_37_flood_control",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_38_salt_wedge",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_39_mangrove",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_40_revetment",
-      "detail": "README.md不存在"
-    },
-    {
-      "type": "README问题",
-      "book_id": "ecohydraulics",
-      "case_name": "case_41_wetland_carbon",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -11923,21 +12245,9 @@
       "case_name": "case_22_pump_and_treat"
     },
     {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_23_watershed",
-      "detail": "质量不足"
-    },
-    {
       "type": "缺少图片",
       "book_id": "water-environment-simulation",
       "case_name": "case_23_watershed"
-    },
-    {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_24_river_network",
-      "detail": "质量不足"
     },
     {
       "type": "缺少图片",
@@ -11945,21 +12255,9 @@
       "case_name": "case_24_river_network"
     },
     {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_25_water_transfer",
-      "detail": "质量不足"
-    },
-    {
       "type": "缺少图片",
       "book_id": "water-environment-simulation",
       "case_name": "case_25_water_transfer"
-    },
-    {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_26_river_ecosystem",
-      "detail": "质量不足"
     },
     {
       "type": "缺少图片",
@@ -11967,21 +12265,9 @@
       "case_name": "case_26_river_ecosystem"
     },
     {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_27_lake_regime_shift",
-      "detail": "质量不足"
-    },
-    {
       "type": "缺少图片",
       "book_id": "water-environment-simulation",
       "case_name": "case_27_lake_regime_shift"
-    },
-    {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_28_wetland",
-      "detail": "质量不足"
     },
     {
       "type": "缺少图片",
@@ -11989,21 +12275,9 @@
       "case_name": "case_28_wetland"
     },
     {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_29_urban_blackwater",
-      "detail": "质量不足"
-    },
-    {
       "type": "缺少图片",
       "book_id": "water-environment-simulation",
       "case_name": "case_29_urban_blackwater"
-    },
-    {
-      "type": "README问题",
-      "book_id": "water-environment-simulation",
-      "case_name": "case_30_watershed_platform",
-      "detail": "质量不足"
     },
     {
       "type": "缺少图片",
@@ -12166,12 +12440,6 @@
       "case_name": "case_01"
     },
     {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_01_irrigation_gate",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "main.py问题",
       "book_id": "intelligent-water-network-design",
       "case_name": "case_01_irrigation_gate",
@@ -12258,21 +12526,9 @@
       "case_name": "case_16_water_resource_allocation"
     },
     {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_17_smart_water",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "intelligent-water-network-design",
       "case_name": "case_17_smart_water"
-    },
-    {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_18_digital_twin",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12280,21 +12536,9 @@
       "case_name": "case_18_digital_twin"
     },
     {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_19_basin_coordination",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "intelligent-water-network-design",
       "case_name": "case_19_basin_coordination"
-    },
-    {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_20_smart_city_water",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12302,21 +12546,9 @@
       "case_name": "case_20_smart_city_water"
     },
     {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_21_inter_basin",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "intelligent-water-network-design",
       "case_name": "case_21_inter_basin"
-    },
-    {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_22_big_data_platform",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12324,21 +12556,9 @@
       "case_name": "case_22_big_data_platform"
     },
     {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_23_ai_water_management",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "intelligent-water-network-design",
       "case_name": "case_23_ai_water_management"
-    },
-    {
-      "type": "README问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_24_comprehensive",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12392,12 +12612,6 @@
       "case_name": "case_19_dcdc_converter"
     },
     {
-      "type": "README问题",
-      "book_id": "photovoltaic-system-modeling-control",
-      "case_name": "case_20_dc_bus_control",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "photovoltaic-system-modeling-control",
       "case_name": "case_20_dc_bus_control"
@@ -12413,21 +12627,9 @@
       "case_name": "case_02_wind_shear"
     },
     {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_03_blade_aerodynamics",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "wind-power-system-modeling-control",
       "case_name": "case_03_blade_aerodynamics"
-    },
-    {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_04_rotor_performance",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12435,21 +12637,9 @@
       "case_name": "case_04_rotor_performance"
     },
     {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_05_wake_effect",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "wind-power-system-modeling-control",
       "case_name": "case_05_wake_effect"
-    },
-    {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_06_dfig_modeling",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12457,21 +12647,9 @@
       "case_name": "case_06_dfig_modeling"
     },
     {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_07_pmsg_modeling",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "wind-power-system-modeling-control",
       "case_name": "case_07_pmsg_modeling"
-    },
-    {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_08_grid_connection",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12479,21 +12657,9 @@
       "case_name": "case_08_grid_connection"
     },
     {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_09_drivetrain",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "wind-power-system-modeling-control",
       "case_name": "case_09_drivetrain"
-    },
-    {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_10_tower_vibration",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12501,21 +12667,9 @@
       "case_name": "case_10_tower_vibration"
     },
     {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_11_tsr_control",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "wind-power-system-modeling-control",
       "case_name": "case_11_tsr_control"
-    },
-    {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_12_psf_control",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12523,32 +12677,14 @@
       "case_name": "case_12_psf_control"
     },
     {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_13_hcs_control",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "wind-power-system-modeling-control",
       "case_name": "case_13_hcs_control"
     },
     {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_14_optimal_torque",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "wind-power-system-modeling-control",
       "case_name": "case_14_optimal_torque"
-    },
-    {
-      "type": "README问题",
-      "book_id": "wind-power-system-modeling-control",
-      "case_name": "case_15_pitch_control",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
@@ -12611,12 +12747,6 @@
       "case_name": "case_11_sce_calibration"
     },
     {
-      "type": "README问题",
-      "book_id": "distributed-hydrological-model",
-      "case_name": "case_12_glue_uncertainty",
-      "detail": "README.md不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "distributed-hydrological-model",
       "case_name": "case_12_glue_uncertainty"
@@ -12645,12 +12775,6 @@
       "type": "缺少图片",
       "book_id": "distributed-hydrological-model",
       "case_name": "case_18_forecast_operation"
-    },
-    {
-      "type": "README问题",
-      "book_id": "distributed-hydrological-model",
-      "case_name": "case_19_climate_change",
-      "detail": "README.md不存在"
     },
     {
       "type": "缺少图片",
