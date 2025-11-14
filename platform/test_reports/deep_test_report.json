@@ -1,0 +1,194 @@
+{
+  "summary": {
+    "total": 20,
+    "passed": 20,
+    "has_issues": 0,
+    "failed": 0
+  },
+  "results": [
+    {
+      "case": "case_01_home_water_tower",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 4,
+      "output_lines": 119
+    },
+    {
+      "case": "case_02_cooling_tower",
+      "status": "pass",
+      "metrics": {
+        "稳态误差": 0.0968
+      },
+      "issues": [],
+      "images": 6,
+      "output_lines": 224
+    },
+    {
+      "case": "case_03_water_supply_station",
+      "status": "pass",
+      "metrics": {
+        "稳态误差": 1.5e-05,
+        "超调量": 0.0,
+        "调节时间": 16.3
+      },
+      "issues": [],
+      "images": 6,
+      "output_lines": 278
+    },
+    {
+      "case": "case_04_pid_tuning",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 7,
+      "output_lines": 271
+    },
+    {
+      "case": "case_05_parameter_identification",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 4,
+      "output_lines": 135
+    },
+    {
+      "case": "case_06_step_response",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 4,
+      "output_lines": 163
+    },
+    {
+      "case": "case_07_cascade_control",
+      "status": "pass",
+      "metrics": {
+        "稳态误差": 0.0,
+        "超调量": 3.2,
+        "上升时间": 5.5,
+        "调节时间": 13.0
+      },
+      "issues": [],
+      "images": 2,
+      "output_lines": 113
+    },
+    {
+      "case": "case_08_feedforward_control",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 2,
+      "output_lines": 113
+    },
+    {
+      "case": "case_09_system_modeling",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 2,
+      "output_lines": 204
+    },
+    {
+      "case": "case_10_frequency_analysis",
+      "status": "pass",
+      "metrics": {
+        "超调量": 0.0,
+        "上升时间": 10.9,
+        "调节时间": 20.2
+      },
+      "issues": [],
+      "images": 2,
+      "output_lines": 133
+    },
+    {
+      "case": "case_11_state_space",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 2,
+      "output_lines": 194
+    },
+    {
+      "case": "case_12_observer_lqr",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 1,
+      "output_lines": 164
+    },
+    {
+      "case": "case_13_adaptive_control",
+      "status": "pass",
+      "metrics": {
+        "稳态误差": 0.0036,
+        "超调量": 0.0
+      },
+      "issues": [],
+      "images": 1,
+      "output_lines": 142
+    },
+    {
+      "case": "case_14_model_predictive_control",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 1,
+      "output_lines": 22
+    },
+    {
+      "case": "case_15_sliding_mode_control",
+      "status": "pass",
+      "metrics": {
+        "稳态误差": 0.0168
+      },
+      "issues": [],
+      "images": 1,
+      "output_lines": 122
+    },
+    {
+      "case": "case_16_fuzzy_control",
+      "status": "pass",
+      "metrics": {
+        "稳态误差": 0.0
+      },
+      "issues": [],
+      "images": 4,
+      "output_lines": 120
+    },
+    {
+      "case": "case_17_neural_network_control",
+      "status": "pass",
+      "metrics": {
+        "稳态误差": 0.0052
+      },
+      "issues": [],
+      "images": 4,
+      "output_lines": 151
+    },
+    {
+      "case": "case_18_reinforcement_learning_control",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 3,
+      "output_lines": 141
+    },
+    {
+      "case": "case_19_comprehensive_comparison",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 4,
+      "output_lines": 104
+    },
+    {
+      "case": "case_20_practical_application",
+      "status": "pass",
+      "metrics": {},
+      "issues": [],
+      "images": 3,
+      "output_lines": 71
+    }
+  ]
+}

@@ -76,7 +76,7 @@ def create_system():
     # 系统参数
     A = 2.0      # 横截面积 [m²]
     R = 2.0      # 阻力系数 [min/m²]
-    K = 1.0      # 泵增益 [m³/min]
+    K = 1.8      # 泵增益 [m³/min]（增大以确保能达到3.0m目标，最大水位=K*R=3.6m）
     h0 = 1.5     # 初始水位 [m]（低于目标）
 
     # 创建系统
@@ -539,7 +539,7 @@ def create_figure2():
     n_steps = int(duration / dt)
 
     # P控制仿真
-    tank_p = SingleTank(A=2.0, R=2.0, K=1.0)
+    tank_p = SingleTank(A=2.0, R=2.0, K=1.8)
     tank_p.reset(h0=1.5)
     controller_p = ProportionalController(Kp=1.5, setpoint=setpoint)
 
@@ -556,7 +556,7 @@ def create_figure2():
         tank_p.step(u_p[i], dt)
 
     # PI控制仿真
-    tank_pi = SingleTank(A=2.0, R=2.0, K=1.0)
+    tank_pi = SingleTank(A=2.0, R=2.0, K=1.8)
     tank_pi.reset(h0=1.5)
     controller_pi = PIController(Kp=1.5, Ki=0.3, setpoint=setpoint, dt=dt)
 
@@ -677,7 +677,7 @@ def create_figure3():
 
     # 子图1：水位响应对比
     for idx, Ki in enumerate(Ki_values):
-        tank = SingleTank(A=2.0, R=2.0, K=1.0)
+        tank = SingleTank(A=2.0, R=2.0, K=1.8)
         tank.reset(h0=1.5)
         controller = PIController(Kp=Kp, Ki=Ki, setpoint=setpoint, dt=dt)
 

@@ -167,15 +167,16 @@ class FuzzyController:
         规则格式：IF e is X AND de is Y THEN du is Z
         """
         # 规则表：行为e，列为de
+        # 修正后的规则：e>0时(actual<target)应增大控制，e<0时(actual>target)应减小控制
         self.rule_base = [
             # de: NB    NM    NS    ZE    PS    PM    PB
-            ['PB', 'PB', 'PM', 'PM', 'PS', 'ZE', 'ZE'],  # e = NB
-            ['PB', 'PM', 'PM', 'PS', 'PS', 'ZE', 'NS'],  # e = NM
-            ['PM', 'PM', 'PS', 'PS', 'ZE', 'NS', 'NM'],  # e = NS
-            ['PM', 'PS', 'PS', 'ZE', 'NS', 'NS', 'NM'],  # e = ZE
-            ['PS', 'PS', 'ZE', 'NS', 'NS', 'NM', 'NM'],  # e = PS
-            ['PS', 'ZE', 'NS', 'NM', 'NM', 'NM', 'NB'],  # e = PM
-            ['ZE', 'ZE', 'NM', 'NM', 'NM', 'NB', 'NB']   # e = PB
+            ['NB', 'NB', 'NM', 'NM', 'NS', 'ZE', 'ZE'],  # e = NB (actual > target, 应减小u)
+            ['NB', 'NM', 'NM', 'NS', 'NS', 'ZE', 'PS'],  # e = NM
+            ['NM', 'NM', 'NS', 'NS', 'ZE', 'PS', 'PM'],  # e = NS
+            ['NM', 'NS', 'NS', 'ZE', 'PS', 'PS', 'PM'],  # e = ZE
+            ['NS', 'NS', 'ZE', 'PS', 'PS', 'PM', 'PM'],  # e = PS
+            ['NS', 'ZE', 'PS', 'PM', 'PM', 'PM', 'PB'],  # e = PM
+            ['ZE', 'ZE', 'PM', 'PM', 'PM', 'PB', 'PB']   # e = PB (actual < target, 应增大u)
         ]
 
     def fuzzify(self, value, mf_dict):

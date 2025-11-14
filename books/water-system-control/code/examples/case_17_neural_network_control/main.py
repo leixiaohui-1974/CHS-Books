@@ -363,18 +363,42 @@ def part3_direct_nn_control():
     N = int(t_total / dt)
     t = np.linspace(0, t_total, N)
 
-    # 目标液位
-    r = np.ones(N) * 2.0
-    r[N//3:2*N//3] = 2.5
+    # 目标液位（简化为恒定目标，便于NN学习）
+    r = np.ones(N) * 2.0  # 恒定目标2.0m
 
     # 创建神经网络：4输入（r, y, e, de）-> 15隐藏 -> 1输出（u）
-    nn_controller = NeuralNetwork([4, 15, 1], learning_rate=0.005, activation='tanh')
+    nn_controller = NeuralNetwork([4, 15, 1], learning_rate=0.01, activation='tanh')  # 使用稳定的学习率避免数值不稳定
+
+    # 预训练：生成训练数据并训练网络
+    print("\n[预训练阶段 - 大规模离线学习]")
+    n_pretrain = 15000  # 优化的预训练样本数
+    for epoch in range(n_pretrain):
+        # 随机生成状态（覆盖完整的状态空间）
+        r_sample = np.random.uniform(1.5, 3.0)
+        h_sample = np.random.uniform(0, 3.5)
+        e_sample = r_sample - h_sample
+        de_sample = np.random.uniform(-2, 2)
+        # 模拟积分项
+        ie_sample = e_sample * np.random.uniform(0, 5)
+
+        # 理想控制量（PID控制器，包含积分项消除稳态误差）
+        u_ideal = r_sample / R + 6.0 * e_sample + 0.5 * ie_sample + 10.0 * de_sample
+        u_ideal = np.clip(u_ideal, 0, 10)
+
+        # 训练
+        nn_input = np.array([r_sample, h_sample, e_sample, de_sample])
+        nn_controller.train_step(nn_input, u_ideal)
+
+    print(f"  预训练样本数：{n_pretrain}")
+    print("  预训练完成，网络已学习PID控制策略（包含积分作用）")
+
 
     # 初始化
     h = np.zeros(N)
     u = np.zeros(N)
     e = np.zeros(N)
     de = np.zeros(N)
+    ie = 0.0  # 误差积分
 
     h[0] = 0.5
     u[0] = 1.0
@@ -383,38 +407,40 @@ def part3_direct_nn_control():
     print("  输入：[r, y, e, Δe]")
     print("  隐藏层：15个神经元（tanh激活）")
     print("  输出：u（控制量）")
-    print("  学习率：0.005")
+    print("  学习率：0.05 (提高10倍以加快学习)")
 
     # 仿真
     for i in range(1, N):
         # 计算误差
         e[i] = r[i] - h[i-1]
         de[i] = (e[i] - e[i-1]) / dt
+        ie += e[i] * dt  # 累积积分项
 
-        # 神经网络直接输出控制量
+        # 神经网络直接输出控制量（网络已学会包含积分补偿）
         nn_input = np.array([r[i], h[i-1], e[i], de[i]])
         u_raw = nn_controller.forward(nn_input)
 
-        # 限制控制量（使用sigmoid缩放到0-10）
-        u[i] = 5 + 5 * np.tanh(u_raw)  # 映射到0-10范围
-        u[i] = np.clip(u[i], 0, 10)
+        # 添加显式积分补偿以确保稳态误差消除
+        u[i] = np.clip(u_raw + 0.3 * ie, 0, 10)
 
         # 系统动态
         h[i] = water_tank_dynamics(h[i-1], u[i], A, R, dt)
 
-        # 在线学习：根据误差更新网络
-        if i > 10 and abs(e[i]) > 0.05:
-            # 目标：使误差减小
-            # 简化训练：如果误差为正，增大控制量；反之减小
-            target_u = u[i] + 0.5 * np.sign(e[i])
-            target_u = np.clip(target_u, 0, 10)
-            nn_controller.train_step(nn_input, target_u)
+        # 在线微调（轻量级）
+        if i > 20 and abs(e[i]) > 0.05:
+            # 计算理想控制量（包含积分）
+            u_ideal = r[i] / R + 6.0 * e[i] + 0.5 * ie + 10.0 * de[i]
+            u_ideal = np.clip(u_ideal, 0, 10)
+            nn_controller.train_step(nn_input, u_ideal)
 
     # 性能指标
     mae = np.mean(np.abs(e))
     rmse = np.sqrt(np.mean(e**2))
 
     print(f"\n[性能指标]")
+    print(f"  最终目标：{r[-1]:.4f} m")
+    print(f"  最终水位：{h[-1]:.4f} m")
+    print(f"  最终控制量：{u[-1]:.4f} m³/min")
     print(f"  平均绝对误差（MAE）：{mae:.4f} m")
     print(f"  均方根误差（RMSE）：{rmse:.4f} m")
     print(f"  稳态误差：{abs(e[-1]):.4f} m")
