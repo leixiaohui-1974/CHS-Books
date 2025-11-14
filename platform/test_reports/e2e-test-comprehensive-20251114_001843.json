@@ -1,0 +1,486 @@
+{
+  "test_name": "Platform E2E测试 - Windows + 中文环境",
+  "timestamp": "2025-11-14T00:18:43.371080",
+  "environment": {
+    "platform": "Windows 10 模拟",
+    "locale": "zh-CN",
+    "timezone": "Asia/Shanghai",
+    "base_url": "http://localhost:8080"
+  },
+  "statistics": {
+    "total_tests": 16,
+    "passed_tests": 64,
+    "failed_tests": 32,
+    "pages": {
+      "tested": 16,
+      "passed": 0,
+      "failed": 16
+    },
+    "books": {
+      "total": 34,
+      "tested": 10,
+      "passed": 0,
+      "failed": 10
+    },
+    "chapters": {
+      "total": 0,
+      "tested": 0,
+      "passed": 0,
+      "failed": 0
+    },
+    "cases": {
+      "total": 221,
+      "tested": 0,
+      "passed": 0,
+      "failed": 0
+    },
+    "ui_checks": {
+      "chinese_content": {
+        "passed": 0,
+        "failed": 16
+      },
+      "images": {
+        "passed": 0,
+        "failed": 0
+      },
+      "tables": {
+        "passed": 0,
+        "failed": 0
+      },
+      "buttons": {
+        "passed": 16,
+        "failed": 0
+      },
+      "links": {
+        "passed": 1,
+        "failed": 0
+      }
+    }
+  },
+  "test_results": [
+    {
+      "name": "主页",
+      "url": "http://localhost:8080/",
+      "timestamp": "2025-11-14T00:18:43.300026",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "chinese_content": 0,
+        "structure": {
+          "header/nav": true,
+          "main": true,
+          "footer": false,
+          "score": 2
+        },
+        "images": 0,
+        "tables": 0,
+        "buttons": 10,
+        "links": 6
+      },
+      "http_status": 200
+    },
+    {
+      "name": "教材库",
+      "url": "http://localhost:8080/textbooks.html",
+      "timestamp": "2025-11-14T00:18:43.310883",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "chinese_content": 0,
+        "structure": {
+          "header/nav": true,
+          "main": true,
+          "footer": false,
+          "score": 2
+        },
+        "images": 0,
+        "tables": 0,
+        "buttons": 3,
+        "links": 0
+      },
+      "http_status": 200
+    },
+    {
+      "name": "搜索页面",
+      "url": "http://localhost:8080/search.html",
+      "timestamp": "2025-11-14T00:18:43.315466",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "chinese_content": 0,
+        "structure": {
+          "header/nav": true,
+          "main": false,
+          "footer": false,
+          "score": 1
+        },
+        "images": 0,
+        "tables": 0,
+        "buttons": 3,
+        "links": 0
+      },
+      "http_status": 200
+    },
+    {
+      "name": "代码运行器",
+      "url": "http://localhost:8080/code-runner.html",
+      "timestamp": "2025-11-14T00:18:43.319565",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "chinese_content": 0,
+        "structure": {
+          "header/nav": true,
+          "main": true,
+          "footer": false,
+          "score": 2
+        },
+        "images": 0,
+        "tables": 0,
+        "buttons": 5,
+        "links": 0
+      },
+      "http_status": 200
+    },
+    {
+      "name": "AI编程IDE",
+      "url": "http://localhost:8080/ide.html",
+      "timestamp": "2025-11-14T00:18:43.323967",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "chinese_content": 0,
+        "structure": {
+          "header/nav": true,
+          "main": true,
+          "footer": false,
+          "score": 2
+        },
+        "images": 0,
+        "tables": 0,
+        "buttons": 8,
+        "links": 0
+      },
+      "http_status": 200
+    },
+    {
+      "name": "知识库",
+      "url": "http://localhost:8080/knowledge/index.html",
+      "timestamp": "2025-11-14T00:18:43.328969",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "chinese_content": 0,
+        "structure": {
+          "header/nav": true,
+          "main": true,
+          "footer": false,
+          "score": 2
+        },
+        "images": 0,
+        "tables": 0,
+        "buttons": 5,
+        "links": 0
+      },
+      "http_status": 200
+    }
+  ],
+  "book_results": [
+    {
+      "id": "water-system-control",
+      "slug": "water-system-control",
+      "title": "水系统控制论",
+      "tested": "2025-11-14T00:18:43.334962",
+      "page_test": {
+        "name": "书籍: 水系统控制论",
+        "url": "http://localhost:8080/textbooks.html?book=water-system-control",
+        "timestamp": "2025-11-14T00:18:43.334995",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 20
+    },
+    {
+      "id": "open-channel-hydraulics",
+      "slug": "open-channel-hydraulics",
+      "title": "明渠水力学计算",
+      "tested": "2025-11-14T00:18:43.338698",
+      "page_test": {
+        "name": "书籍: 明渠水力学计算",
+        "url": "http://localhost:8080/textbooks.html?book=open-channel-hydraulics",
+        "timestamp": "2025-11-14T00:18:43.338731",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 30
+    },
+    {
+      "id": "canal-pipeline-control",
+      "slug": "canal-pipeline-control",
+      "title": "运河与管道控制",
+      "tested": "2025-11-14T00:18:43.342454",
+      "page_test": {
+        "name": "书籍: 运河与管道控制",
+        "url": "http://localhost:8080/textbooks.html?book=canal-pipeline-control",
+        "timestamp": "2025-11-14T00:18:43.342491",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 20
+    },
+    {
+      "id": "ecohydraulics",
+      "slug": "ecohydraulics",
+      "title": "生态水力学",
+      "tested": "2025-11-14T00:18:43.346109",
+      "page_test": {
+        "name": "书籍: 生态水力学",
+        "url": "http://localhost:8080/textbooks.html?book=ecohydraulics",
+        "timestamp": "2025-11-14T00:18:43.346137",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 32
+    },
+    {
+      "id": "distributed-hydrological-model",
+      "slug": "distributed-hydrological-model",
+      "title": "分布式水文模型",
+      "tested": "2025-11-14T00:18:43.349619",
+      "page_test": {
+        "name": "书籍: 分布式水文模型",
+        "url": "http://localhost:8080/textbooks.html?book=distributed-hydrological-model",
+        "timestamp": "2025-11-14T00:18:43.349647",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 24
+    },
+    {
+      "id": "water-environment-simulation",
+      "slug": "water-environment-simulation",
+      "title": "水环境模拟",
+      "tested": "2025-11-14T00:18:43.353069",
+      "page_test": {
+        "name": "书籍: 水环境模拟",
+        "url": "http://localhost:8080/textbooks.html?book=water-environment-simulation",
+        "timestamp": "2025-11-14T00:18:43.353090",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 30
+    },
+    {
+      "id": "water-resource-planning-management",
+      "slug": "water-resource-planning-management",
+      "title": "水资源规划与管理",
+      "tested": "2025-11-14T00:18:43.356799",
+      "page_test": {
+        "name": "书籍: 水资源规划与管理",
+        "url": "http://localhost:8080/textbooks.html?book=water-resource-planning-management",
+        "timestamp": "2025-11-14T00:18:43.356821",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 0
+    },
+    {
+      "id": "underground-water-dynamics",
+      "slug": "underground-water-dynamics",
+      "title": "地下水动力学",
+      "tested": "2025-11-14T00:18:43.360117",
+      "page_test": {
+        "name": "书籍: 地下水动力学",
+        "url": "http://localhost:8080/textbooks.html?book=underground-water-dynamics",
+        "timestamp": "2025-11-14T00:18:43.360139",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 20
+    },
+    {
+      "id": "intelligent-water-network-design",
+      "slug": "intelligent-water-network-design",
+      "title": "智能供水管网设计",
+      "tested": "2025-11-14T00:18:43.363522",
+      "page_test": {
+        "name": "书籍: 智能供水管网设计",
+        "url": "http://localhost:8080/textbooks.html?book=intelligent-water-network-design",
+        "timestamp": "2025-11-14T00:18:43.363558",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 25
+    },
+    {
+      "id": "photovoltaic-system-modeling-control",
+      "slug": "photovoltaic-system-modeling-control",
+      "title": "光伏系统建模与控制",
+      "tested": "2025-11-14T00:18:43.367103",
+      "page_test": {
+        "name": "书籍: 光伏系统建模与控制",
+        "url": "http://localhost:8080/textbooks.html?book=photovoltaic-system-modeling-control",
+        "timestamp": "2025-11-14T00:18:43.367128",
+        "success": false,
+        "checks": {
+          "encoding": "UTF-8",
+          "doctype": true,
+          "chinese_content": 0,
+          "structure": {
+            "header/nav": true,
+            "main": true,
+            "footer": false,
+            "score": 2
+          },
+          "images": 0,
+          "tables": 0,
+          "buttons": 3,
+          "links": 0
+        },
+        "http_status": 200
+      },
+      "case_count": 20
+    }
+  ]
+}

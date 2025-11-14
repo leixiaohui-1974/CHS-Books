@@ -1,0 +1,18 @@
+{
+  "start_time": "2025-11-14T00:32:20.823930",
+  "books_tested": 5,
+  "pages_loaded": 0,
+  "pages_failed": 7,
+  "errors": [
+    "主页: 异常 - Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/index.html\", waiting until \"load\"\n",
+    "教材库页面: 异常 - Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html\", waiting until \"load\"\n",
+    "书籍: 水系统控制论: 异常 - Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-system-control\", waiting until \"load\"\n",
+    "书籍: 明渠水力学计算: 异常 - Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=open-channel-hydraulics\", waiting until \"load\"\n",
+    "书籍: 运河与管道控制: 异常 - Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=canal-pipeline-control\", waiting until \"load\"\n",
+    "书籍: 生态水力学: 异常 - Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=ecohydraulics\", waiting until \"load\"\n",
+    "书籍: 分布式水文模型: 异常 - Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=distributed-hydrological-model\", waiting until \"load\"\n"
+  ],
+  "warnings": [],
+  "screenshots": [],
+  "end_time": "2025-11-14T00:32:29.150751"
+}
