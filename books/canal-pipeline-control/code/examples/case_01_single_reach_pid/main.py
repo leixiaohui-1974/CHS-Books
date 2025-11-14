@@ -192,10 +192,11 @@ class CanalReach:
         h_new[-1] = h_new[-2]  # 外推
         # 根据下游水头计算流量
         C_weir = 1.5
-        Q_new[-1] = C_weir * self.B * h_new[-1]**1.5
+        # 防止负水深导致NaN
+        Q_new[-1] = C_weir * self.B * max(h_new[-1], 0.0)**1.5
 
-        # 更新状态
-        self.h = h_new
+        # 更新状态（防止负水深）
+        self.h = np.maximum(h_new, 0.001)  # 最小水深1mm
         self.Q = Q_new
 
     def get_water_level_downstream(self):
