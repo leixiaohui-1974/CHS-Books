@@ -103,7 +103,7 @@ def analyze_double_tank_system():
     A2 = 2.0  # 下水箱面积 (m²)
     R1 = 1.5  # 上水箱阻力 (min/m²)
     R2 = 2.0  # 下水箱阻力 (min/m²)
-    K = 1.0   # 泵增益 (m³/min)
+    K = 1.5   # 泵增益 (m³/min) - 增大以达到2.5m目标
 
     print("\n[系统参数]")
     print(f"  上水箱：A1 = {A1} m², R1 = {R1} min/m²")
@@ -157,10 +157,10 @@ def single_loop_control(A1, A2, R1, R2, K):
     system.reset(h1_0=1.0, h2_0=1.0)
 
     # 单回路PID控制器（控制h2）
-    # 参数整定：基于二阶系统的Ziegler-Nichols方法
-    Kp = 0.8
-    Ki = 0.15
-    Kd = 1.0
+    # 参数整定：增大积分增益消除稳态误差
+    Kp = 1.2  # 提高比例增益
+    Ki = 0.4  # 显著提高积分增益，消除稳态误差
+    Kd = 1.5  # 提高微分增益，减少超调
 
     pid = PIDController(Kp=Kp, Ki=Ki, Kd=Kd, u_min=0.0, u_max=1.0)
 
@@ -246,19 +246,19 @@ def cascade_control(A1, A2, R1, R2, K):
     system = DoubleTank(A1=A1, A2=A2, R1=R1, R2=R2, K=K)
     system.reset(h1_0=1.0, h2_0=1.0)
 
-    # 副控制器（内环）：控制h1，响应快
-    Kp_slave = 1.5
-    Ki_slave = 0.5
-    Kd_slave = 0.3
+    # 副控制器（内环）：控制h1，响应快，增益大
+    Kp_slave = 3.5  # 显著增大比例增益（更快响应）
+    Ki_slave = 1.5  # 显著增大积分增益（消除误差）
+    Kd_slave = 0.8  # 增大微分增益（减少超调）
     pid_slave = PIDController(Kp=Kp_slave, Ki=Ki_slave, Kd=Kd_slave,
                                u_min=0.0, u_max=1.0)
 
-    # 主控制器（外环）：控制h2，输出作为h1的设定值
-    Kp_master = 0.6
-    Ki_master = 0.1
-    Kd_master = 0.5
+    # 主控制器（外环）：控制h2，输出平稳，避免过于激进
+    Kp_master = 0.8  # 降低比例增益（避免振荡）
+    Ki_master = 0.25  # 适中的积分增益
+    Kd_master = 1.2  # 较大的微分增益（平滑输出）
     pid_master = PIDController(Kp=Kp_master, Ki=Ki_master, Kd=Kd_master,
-                                u_min=0.5, u_max=4.0)  # h1的合理范围
+                                u_min=1.0, u_max=2.8)  # 合理的h1设定值范围
 
     print("\n[串级控制器参数]")
     print("  主控制器（控制h2）：")
