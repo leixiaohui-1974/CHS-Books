@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_18_digital_twin",
+    "book": "智能水网设计",
+    "generated_at": "2025-11-14T09:05:28.591050",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 446.89,
+    "memory_usage_mb": 42.21,
+    "flow_rate_m3s": 3.91,
+    "water_level_m": 2.91,
+    "velocity_ms": 1.44,
+    "gate_opening_percent": 58.6,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.82,
+        "water_level": 3.28,
+        "velocity": 1.04
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.35,
+        "water_level": 3.03,
+        "velocity": 1.05
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.66,
+        "water_level": 2.64,
+        "velocity": 1.06
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.2,
+        "water_level": 2.77,
+        "velocity": 1.32
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.2,
+        "water_level": 3.05,
+        "velocity": 1.12
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.06,
+        "water_level": 2.66,
+        "velocity": 1.22
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.56,
+        "water_level": 2.71,
+        "velocity": 1.36
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.47,
+        "water_level": 2.9,
+        "velocity": 1.16
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.35,
+        "water_level": 2.79,
+        "velocity": 1.22
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.01,
+        "water_level": 2.54,
+        "velocity": 1.06
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.34,
+        "water_level": 3.45,
+        "velocity": 1.35
+      }
+    ]
+  }
+}

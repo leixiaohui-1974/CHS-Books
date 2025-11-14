@@ -95,14 +95,19 @@ class CanalReach:
 
         Manning公式
         """
+        # 确保正水深
+        h = max(h, 0.01)  # 最小1cm
         A = self.B * h
         R = self.hydraulic_radius(h)
 
-        # 避免除零
-        if A < 1e-6:
-            return 0.0
+        # 避免除零和数值溢出
+        if A < 1e-6 or R < 1e-6:
+            return self.i0  # 返回渠底坡度作为默认值
 
         Sf = self.n**2 * Q**2 / (A**2 * R**(4/3))
+
+        # 限制合理范围（坡度通常在0.0001到0.01之间）
+        Sf = min(Sf, 0.1)  # 最大10%坡度（极限情况）
         return Sf
 
     def compute_fluxes(self, h, Q):
@@ -192,11 +197,12 @@ class CanalReach:
         h_new[-1] = h_new[-2]  # 外推
         # 根据下游水头计算流量
         C_weir = 1.5
-        Q_new[-1] = C_weir * self.B * h_new[-1]**1.5
+        # 防止负水深导致NaN
+        Q_new[-1] = C_weir * self.B * max(h_new[-1], 0.0)**1.5
 
-        # 更新状态
-        self.h = h_new
-        self.Q = Q_new
+        # 更新状态（防止负水深和极端值）
+        self.h = np.clip(h_new, 0.01, 10.0)  # 限制水深在1cm到10m之间
+        self.Q = np.clip(Q_new, 0.0, 100.0)  # 限制流量在0到100 m³/s之间
 
     def get_water_level_downstream(self):
         """获取下游水位"""
@@ -526,7 +532,7 @@ def main():
     # 仿真参数
     T_total = 3600  # 1小时
     dt_control = 60  # 控制周期60s
-    dt_sim = 30  # 仿真步长30s
+    dt_sim = 5  # 仿真步长5s（满足CFL稳定性条件）
     h_target = 2.0  # 目标水位2.0m
 
     # 运行仿真
@@ -601,7 +607,7 @@ def main():
     # 手动仿真循环（以便动态改变扰动）
     T_total = 2400
     dt_control = 60
-    dt_sim = 30
+    dt_sim = 5  # 满足CFL稳定性条件
 
     time = []
     h_downstream = []
@@ -644,10 +650,10 @@ def main():
     recovered_idx = np.where(np.abs(error[idx_after_dist]) < recovery_threshold)[0]
     if len(recovered_idx) > 0:
         recovery_time = time[idx_after_dist[recovered_idx[0]]] - disturbance_end
+        print(f"扰动恢复时间: {recovery_time:.1f} s ({recovery_time/60:.1f} min)")
     else:
-        recovery_time = np.nan
+        print(f"扰动恢复时间: 未恢复 (误差未降至{recovery_threshold} m以内)")
 
-    print(f"扰动恢复时间: {recovery_time:.1f} s ({recovery_time/60:.1f} min)")
     print(f"扰动期间最大偏差: {np.max(np.abs(error)):.4f} m")
 
     # 可视化
@@ -709,7 +715,7 @@ def main():
         system = ClosedLoopSystem(canal, gate, pid)
 
         # 仿真
-        time, h_history, _ = system.run(3600, 60, 30, 2.0)
+        time, h_history, _ = system.run(3600, 60, 5, 2.0)  # dt_sim=5s
         h_downstream = np.array([h[-1] for h in h_history])
 
         results.append({

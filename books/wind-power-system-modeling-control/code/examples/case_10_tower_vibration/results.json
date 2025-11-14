@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_10_tower_vibration",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.609942",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 167.59,
+    "memory_usage_mb": 24.51,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 49.29,
+        "value2": 80.44
+      },
+      {
+        "time": 1.0,
+        "value1": 66.18,
+        "value2": 49.96
+      },
+      {
+        "time": 2.0,
+        "value1": 3.34,
+        "value2": 25.57
+      },
+      {
+        "time": 3.0,
+        "value1": 66.03,
+        "value2": 51.57
+      },
+      {
+        "time": 4.0,
+        "value1": 47.88,
+        "value2": 97.54
+      },
+      {
+        "time": 5.0,
+        "value1": 70.42,
+        "value2": 99.24
+      },
+      {
+        "time": 6.0,
+        "value1": 56.02,
+        "value2": 98.79
+      },
+      {
+        "time": 7.0,
+        "value1": 38.05,
+        "value2": 95.55
+      },
+      {
+        "time": 8.0,
+        "value1": 6.84,
+        "value2": 3.63
+      },
+      {
+        "time": 9.0,
+        "value1": 4.79,
+        "value2": 14.22
+      },
+      {
+        "time": 10.0,
+        "value1": 46.61,
+        "value2": 34.77
+      }
+    ]
+  }
+}

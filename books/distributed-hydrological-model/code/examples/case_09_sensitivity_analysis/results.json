@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_09_sensitivity_analysis",
+    "book": "分布式水文模型",
+    "generated_at": "2025-11-14T09:05:28.617638",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 56.5,
+    "memory_usage_mb": 51.01,
+    "flow_rate_m3s": 7.46,
+    "water_level_m": 4.04,
+    "velocity_ms": 1.94,
+    "gate_opening_percent": 41.6,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.11,
+        "water_level": 3.4,
+        "velocity": 1.12
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.39,
+        "water_level": 3.2,
+        "velocity": 1.25
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.66,
+        "water_level": 3.27,
+        "velocity": 1.28
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.37,
+        "water_level": 2.62,
+        "velocity": 1.11
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.63,
+        "water_level": 3.11,
+        "velocity": 1.36
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.86,
+        "water_level": 2.64,
+        "velocity": 1.38
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.23,
+        "water_level": 3.25,
+        "velocity": 1.33
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.24,
+        "water_level": 2.77,
+        "velocity": 1.05
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.17,
+        "water_level": 3.44,
+        "velocity": 1.37
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.64,
+        "water_level": 2.69,
+        "velocity": 1.11
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.84,
+        "water_level": 2.65,
+        "velocity": 1.32
+      }
+    ]
+  }
+}

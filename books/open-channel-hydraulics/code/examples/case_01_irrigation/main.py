@@ -24,6 +24,12 @@
 """
 
 import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+# 设置中文字体
+plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
+plt.rcParams['axes.unicode_minus'] = False
 
 
 # ========== 水力计算函数 ==========
@@ -286,6 +292,127 @@ def main():
     print(f"     • 定期清理淤泥和杂草")
     print(f"     • 检查衬砌是否开裂")
     print(f"     • 雨季前检查边坡稳定性")
+
+    # ========== 可视化分析 ==========
+    print_header("生成可视化图表")
+
+    # 创建2x2子图布局
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
+
+    # 图1: 断面几何示意图
+    y_bottom = 0
+    y_water = h_normal
+    y_top = H_total
+    x_left = -B_top/2
+    x_right = B_top/2
+    x_water_left = -B/2
+    x_water_right = B/2
+    x_bottom_left = -b/2
+    x_bottom_right = b/2
+
+    # 绘制断面
+    ax1.fill([x_bottom_left, x_bottom_right, x_right, x_left, x_bottom_left],
+             [y_bottom, y_bottom, y_top, y_top, y_bottom],
+             color='tan', alpha=0.3, label='渠道断面')
+    # 绘制水体
+    ax1.fill([x_bottom_left, x_bottom_right, x_water_right, x_water_left, x_bottom_left],
+             [y_bottom, y_bottom, y_water, y_water, y_bottom],
+             color='skyblue', alpha=0.6, label='水体')
+    # 标注
+    ax1.plot([x_bottom_left, x_bottom_right], [y_bottom, y_bottom], 'k-', linewidth=2)
+    ax1.plot([x_left, x_right], [y_top, y_top], 'k--', alpha=0.5)
+    ax1.plot([x_water_left, x_water_right], [y_water, y_water], 'b--', linewidth=1.5)
+
+    # 尺寸标注
+    ax1.annotate('', xy=(x_bottom_right+0.1, y_bottom), xytext=(x_bottom_right+0.1, y_water),
+                arrowprops=dict(arrowstyle='<->', color='blue', lw=1.5))
+    ax1.text(x_bottom_right+0.3, y_water/2, f'h={h_normal:.2f}m', fontsize=10, color='blue')
+
+    ax1.annotate('', xy=(x_bottom_left, -0.1), xytext=(x_bottom_right, -0.1),
+                arrowprops=dict(arrowstyle='<->', color='black', lw=1.5))
+    ax1.text(0, -0.3, f'b={b:.2f}m', ha='center', fontsize=10)
+
+    ax1.set_xlabel('宽度 (m)', fontsize=11)
+    ax1.set_ylabel('高度 (m)', fontsize=11)
+    ax1.set_title('渠道断面几何', fontsize=12, fontweight='bold')
+    ax1.grid(True, alpha=0.3)
+    ax1.legend(fontsize=9)
+    ax1.set_aspect('equal')
+
+    # 图2: 流量-水深关系
+    h_range = np.linspace(0.1, 2.5, 50)
+    Q_range = []
+    for h_i in h_range:
+        A_i = trapezoidal_area(b, h_i, m)
+        P_i = wetted_perimeter(b, h_i, m)
+        R_i = hydraulic_radius(A_i, P_i)
+        v_i = manning_velocity(R_i, S0, n)
+        Q_i = compute_discharge(A_i, v_i)
+        Q_range.append(Q_i)
+
+    ax2.plot(Q_range, h_range, 'b-', linewidth=2, label='Q-h关系曲线')
+    ax2.plot(Q, h_normal, 'ro', markersize=10, label=f'设计点 (Q={Q:.1f}, h={h_normal:.2f})')
+    ax2.axhline(y=h_normal, color='r', linestyle='--', alpha=0.5)
+    ax2.axvline(x=Q, color='r', linestyle='--', alpha=0.5)
+    ax2.set_xlabel('流量 Q (m³/s)', fontsize=11)
+    ax2.set_ylabel('水深 h (m)', fontsize=11)
+    ax2.set_title('流量-水深关系', fontsize=12, fontweight='bold')
+    ax2.grid(True, alpha=0.3)
+    ax2.legend(fontsize=9)
+
+    # 图3: 流速-水深关系
+    v_range = []
+    for h_i in h_range:
+        A_i = trapezoidal_area(b, h_i, m)
+        P_i = wetted_perimeter(b, h_i, m)
+        R_i = hydraulic_radius(A_i, P_i)
+        v_i = manning_velocity(R_i, S0, n)
+        v_range.append(v_i)
+
+    ax3.plot(h_range, v_range, 'g-', linewidth=2, label='v-h关系曲线')
+    ax3.plot(h_normal, v, 'ro', markersize=10, label=f'设计点 (h={h_normal:.2f}, v={v:.2f})')
+    ax3.axhline(y=v_min, color='orange', linestyle='--', alpha=0.7, label='最小不淤流速')
+    ax3.axhline(y=v_max, color='red', linestyle='--', alpha=0.7, label='最大不冲流速')
+    ax3.axhline(y=v, color='r', linestyle='--', alpha=0.3)
+    ax3.axvline(x=h_normal, color='r', linestyle='--', alpha=0.3)
+    ax3.set_xlabel('水深 h (m)', fontsize=11)
+    ax3.set_ylabel('流速 v (m/s)', fontsize=11)
+    ax3.set_title('流速-水深关系', fontsize=12, fontweight='bold')
+    ax3.grid(True, alpha=0.3)
+    ax3.legend(fontsize=9)
+
+    # 图4: Froude数-水深关系
+    Fr_range = []
+    for h_i in h_range:
+        A_i = trapezoidal_area(b, h_i, m)
+        P_i = wetted_perimeter(b, h_i, m)
+        R_i = hydraulic_radius(A_i, P_i)
+        v_i = manning_velocity(R_i, S0, n)
+        Fr_i = froude_number(v_i, A_i, b, m, h_i, g)
+        Fr_range.append(Fr_i)
+
+    ax4.plot(h_range, Fr_range, 'purple', linewidth=2, label='Fr-h关系曲线')
+    ax4.plot(h_normal, Fr, 'ro', markersize=10, label=f'设计点 (h={h_normal:.2f}, Fr={Fr:.2f})')
+    ax4.axhline(y=1.0, color='black', linestyle='--', alpha=0.7, label='临界流 (Fr=1)')
+    ax4.fill_between(h_range, 0, 1, alpha=0.1, color='green', label='缓流区 (Fr<1)')
+    ax4.fill_between(h_range, 1, 2, alpha=0.1, color='red', label='急流区 (Fr>1)')
+    ax4.axhline(y=Fr, color='r', linestyle='--', alpha=0.3)
+    ax4.axvline(x=h_normal, color='r', linestyle='--', alpha=0.3)
+    ax4.set_xlabel('水深 h (m)', fontsize=11)
+    ax4.set_ylabel('Froude数 Fr', fontsize=11)
+    ax4.set_title('Froude数-水深关系', fontsize=12, fontweight='bold')
+    ax4.grid(True, alpha=0.3)
+    ax4.legend(fontsize=9, loc='upper right')
+    ax4.set_ylim(0, 2)
+
+    plt.tight_layout()
+
+    # 保存图片
+    output_dir = Path(__file__).parent
+    output_path = output_dir / 'irrigation_channel_design.png'
+    plt.savefig(output_path, dpi=150, bbox_inches='tight')
+    print(f"\n  ✓ 图表已保存: {output_path.name}")
+    print("  包含: 断面几何、流量-水深、流速-水深、Froude数分析")
 
     print("\n" + "="*70)
     print("  计算完成！")

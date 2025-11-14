@@ -44,7 +44,8 @@ def main():
     
     # 2. 水位恢复时间
     current_depth = 0.2  # m
-    inflow_scenarios = [5000, 10000, 15000, 20000]  # m³/d
+    # 补水流量需要超过蒸散发量(~750,000 m³/d)才能恢复水位
+    inflow_scenarios = [800000, 1000000, 1500000, 2000000]  # m³/d
     
     print(f"\n水位恢复时间分析（当前水深{current_depth}m）:")
     recovery_times = []

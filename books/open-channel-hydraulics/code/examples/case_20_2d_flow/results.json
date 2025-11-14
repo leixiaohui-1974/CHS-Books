@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_20_2d_flow",
+    "book": "明渠水力学",
+    "generated_at": "2025-11-14T09:05:28.583749",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 367.9,
+    "memory_usage_mb": 40.31,
+    "flow_rate_m3s": 6.03,
+    "water_level_m": 1.59,
+    "velocity_ms": 1.03,
+    "gate_opening_percent": 56.1,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.49,
+        "water_level": 3.16,
+        "velocity": 1.31
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.25,
+        "water_level": 2.8,
+        "velocity": 1.09
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.62,
+        "water_level": 3.31,
+        "velocity": 1.09
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.98,
+        "water_level": 2.61,
+        "velocity": 1.09
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.62,
+        "water_level": 3.15,
+        "velocity": 1.19
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.63,
+        "water_level": 2.52,
+        "velocity": 1.04
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.44,
+        "water_level": 2.77,
+        "velocity": 1.2
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.52,
+        "water_level": 2.52,
+        "velocity": 1.0
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.68,
+        "water_level": 3.22,
+        "velocity": 1.29
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.24,
+        "water_level": 2.87,
+        "velocity": 1.26
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.11,
+        "water_level": 3.17,
+        "velocity": 1.13
+      }
+    ]
+  }
+}

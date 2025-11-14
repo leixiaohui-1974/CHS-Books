@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_08_bridge",
+    "book": "明渠水力学",
+    "generated_at": "2025-11-14T09:05:28.577055",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 382.32,
+    "memory_usage_mb": 70.26,
+    "flow_rate_m3s": 5.72,
+    "water_level_m": 3.13,
+    "velocity_ms": 1.41,
+    "gate_opening_percent": 58.1,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.14,
+        "water_level": 3.32,
+        "velocity": 1.16
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.45,
+        "water_level": 2.82,
+        "velocity": 1.27
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.85,
+        "water_level": 3.48,
+        "velocity": 1.19
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.79,
+        "water_level": 2.98,
+        "velocity": 1.37
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.19,
+        "water_level": 2.86,
+        "velocity": 1.01
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.3,
+        "water_level": 2.6,
+        "velocity": 1.13
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.41,
+        "water_level": 2.67,
+        "velocity": 1.11
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.84,
+        "water_level": 3.0,
+        "velocity": 1.38
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.79,
+        "water_level": 3.05,
+        "velocity": 1.04
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.54,
+        "water_level": 3.46,
+        "velocity": 1.03
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.73,
+        "water_level": 3.28,
+        "velocity": 1.18
+      }
+    ]
+  }
+}

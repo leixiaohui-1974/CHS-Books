@@ -1,0 +1,49 @@
+{
+  "timestamp": "20251114_053736",
+  "summary": {
+    "total": 7,
+    "passed": 0,
+    "failed": 1,
+    "errors": 6,
+    "warnings": 0,
+    "pass_rate": "0.0%"
+  },
+  "results": [
+    {
+      "test": "主页展示",
+      "status": "ERROR",
+      "error": "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8000/static/index.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "test": "书籍列表页",
+      "status": "ERROR",
+      "error": "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8000/static/textbooks.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "test": "学习页面",
+      "status": "ERROR",
+      "error": "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8000/static/learning.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "test": "书籍API",
+      "status": "ERROR",
+      "error": "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8000/docs\", waiting until \"networkidle\"\n"
+    },
+    {
+      "test": "案例详情",
+      "status": "FAIL",
+      "error": "HTTP 404"
+    },
+    {
+      "test": "代码运行器",
+      "status": "ERROR",
+      "error": "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8000/static/code-runner.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "test": "搜索功能",
+      "status": "ERROR",
+      "error": "Page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8000/static/search.html\", waiting until \"networkidle\"\n"
+    }
+  ],
+  "screenshots_dir": "/home/user/CHS-Books/web_test_screenshots"
+}

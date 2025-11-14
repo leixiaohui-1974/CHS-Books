@@ -1,0 +1,17 @@
+{
+  "project_name": "低洼区排涝闸站智能调度设计",
+  "design_standard": "GB 50265-2016, SL 13-2015",
+  "gate_config": "5孔×3m×2m平板闸门",
+  "intelligence_level": "L3",
+  "performance_metrics": {
+    "max_water_level": 2.2399999999999736,
+    "avg_water_level": 2.1120666666666543,
+    "exceed_warning_count": 0,
+    "exceed_emergency_count": 0,
+    "control_actions": 1800,
+    "backflow_prevention_count": 687,
+    "forecast_dispatch_count": 64,
+    "total_discharge_m3": 0.0,
+    "max_discharge": 0.0
+  }
+}

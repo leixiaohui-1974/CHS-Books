@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_22_pump_and_treat",
+    "book": "水环境数值模拟",
+    "generated_at": "2025-11-14T09:05:28.566701",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 128.66,
+    "memory_usage_mb": 99.01,
+    "flow_rate_m3s": 5.75,
+    "water_level_m": 3.6,
+    "velocity_ms": 0.72,
+    "gate_opening_percent": 61.5,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.25,
+        "water_level": 2.73,
+        "velocity": 1.05
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.38,
+        "water_level": 2.57,
+        "velocity": 1.32
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.07,
+        "water_level": 2.76,
+        "velocity": 1.36
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.1,
+        "water_level": 2.99,
+        "velocity": 1.1
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.28,
+        "water_level": 3.46,
+        "velocity": 1.32
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.58,
+        "water_level": 2.71,
+        "velocity": 1.12
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.44,
+        "water_level": 3.35,
+        "velocity": 1.09
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.14,
+        "water_level": 2.8,
+        "velocity": 1.36
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.33,
+        "water_level": 2.88,
+        "velocity": 1.19
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.64,
+        "water_level": 3.15,
+        "velocity": 1.25
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.89,
+        "water_level": 2.8,
+        "velocity": 1.04
+      }
+    ]
+  }
+}

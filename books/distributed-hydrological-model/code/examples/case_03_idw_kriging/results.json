@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_03_idw_kriging",
+    "book": "分布式水文模型",
+    "generated_at": "2025-11-14T09:05:28.614341",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 147.98,
+    "memory_usage_mb": 32.17,
+    "flow_rate_m3s": 6.76,
+    "water_level_m": 4.86,
+    "velocity_ms": 1.28,
+    "gate_opening_percent": 87.4,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.44,
+        "water_level": 2.74,
+        "velocity": 1.24
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.39,
+        "water_level": 2.85,
+        "velocity": 1.21
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.7,
+        "water_level": 3.19,
+        "velocity": 1.15
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.96,
+        "water_level": 2.6,
+        "velocity": 1.28
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 6.0,
+        "water_level": 3.19,
+        "velocity": 1.35
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.92,
+        "water_level": 3.46,
+        "velocity": 1.28
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.86,
+        "water_level": 2.57,
+        "velocity": 1.0
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.37,
+        "water_level": 2.53,
+        "velocity": 1.15
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.87,
+        "water_level": 2.6,
+        "velocity": 1.2
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.86,
+        "water_level": 3.12,
+        "velocity": 1.17
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.43,
+        "water_level": 2.96,
+        "velocity": 1.04
+      }
+    ]
+  }
+}

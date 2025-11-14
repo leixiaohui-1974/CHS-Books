@@ -163,12 +163,8 @@ def main():
     print(f"\n下游边界（水深边界）：")
     print(f"  保持初始正常水深 h = {h0:.4f} m")
 
-    def bc_downstream(t):
-        """下游边界：保持初始水深"""
-        Q_down = Q0  # 简化：保持初始流量
-        return h0, Q_down
-
-    solver.set_boundary_conditions(bc_upstream, bc_downstream)
+    # 下游使用外推边界条件，允许洪峰自由传播
+    solver.set_boundary_conditions(bc_upstream, None)
 
     # ==================== 第七步：运行模拟 ====================
     print("\n【步骤7】运行非恒定流模拟")

@@ -1,0 +1,1318 @@
+{
+  "timestamp": "2025-11-14T05:53:43.715479",
+  "summary": {
+    "total_books": 8,
+    "total_cases_tested": 196,
+    "total_cases_passed": 1,
+    "total_cases_failed": 195,
+    "overall_pass_rate": "0.5%"
+  },
+  "books": [
+    {
+      "book_id": "ecohydraulics",
+      "book_name": "生态水力学",
+      "expected_cases": 32,
+      "tested_cases": 32,
+      "passed_cases": 0,
+      "failed_cases": 32,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_01",
+          "success": false
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_15",
+          "success": false
+        },
+        {
+          "case_id": "case_16",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_16",
+          "success": false
+        },
+        {
+          "case_id": "case_17",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_17",
+          "success": false
+        },
+        {
+          "case_id": "case_18",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_18",
+          "success": false
+        },
+        {
+          "case_id": "case_19",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_19",
+          "success": false
+        },
+        {
+          "case_id": "case_20",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_20",
+          "success": false
+        },
+        {
+          "case_id": "case_21",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_21",
+          "success": false
+        },
+        {
+          "case_id": "case_22",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_22",
+          "success": false
+        },
+        {
+          "case_id": "case_23",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_23",
+          "success": false
+        },
+        {
+          "case_id": "case_24",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_24",
+          "success": false
+        },
+        {
+          "case_id": "case_25",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_25",
+          "success": false
+        },
+        {
+          "case_id": "case_26",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_26",
+          "success": false
+        },
+        {
+          "case_id": "case_27",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_27",
+          "success": false
+        },
+        {
+          "case_id": "case_28",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_28",
+          "success": false
+        },
+        {
+          "case_id": "case_29",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_29",
+          "success": false
+        },
+        {
+          "case_id": "case_30",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_30",
+          "success": false
+        },
+        {
+          "case_id": "case_31",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_31",
+          "success": false
+        },
+        {
+          "case_id": "case_32",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/ecohydraulics/code/examples/case_32",
+          "success": false
+        }
+      ]
+    },
+    {
+      "book_id": "water-environment-simulation",
+      "book_name": "水环境数值模拟",
+      "expected_cases": 30,
+      "tested_cases": 30,
+      "passed_cases": 0,
+      "failed_cases": 30,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01",
+          "success": false
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_15",
+          "success": false
+        },
+        {
+          "case_id": "case_16",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_16",
+          "success": false
+        },
+        {
+          "case_id": "case_17",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_17",
+          "success": false
+        },
+        {
+          "case_id": "case_18",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_18",
+          "success": false
+        },
+        {
+          "case_id": "case_19",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_19",
+          "success": false
+        },
+        {
+          "case_id": "case_20",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_20",
+          "success": false
+        },
+        {
+          "case_id": "case_21",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_21",
+          "success": false
+        },
+        {
+          "case_id": "case_22",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_22",
+          "success": false
+        },
+        {
+          "case_id": "case_23",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_23",
+          "success": false
+        },
+        {
+          "case_id": "case_24",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_24",
+          "success": false
+        },
+        {
+          "case_id": "case_25",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_25",
+          "success": false
+        },
+        {
+          "case_id": "case_26",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_26",
+          "success": false
+        },
+        {
+          "case_id": "case_27",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_27",
+          "success": false
+        },
+        {
+          "case_id": "case_28",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_28",
+          "success": false
+        },
+        {
+          "case_id": "case_29",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_29",
+          "success": false
+        },
+        {
+          "case_id": "case_30",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/water-environment-simulation/code/examples/case_30",
+          "success": false
+        }
+      ]
+    },
+    {
+      "book_id": "open-channel-hydraulics",
+      "book_name": "明渠水力学",
+      "expected_cases": 30,
+      "tested_cases": 30,
+      "passed_cases": 0,
+      "failed_cases": 30,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_01",
+          "success": false
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_15",
+          "success": false
+        },
+        {
+          "case_id": "case_16",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_16",
+          "success": false
+        },
+        {
+          "case_id": "case_17",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_17",
+          "success": false
+        },
+        {
+          "case_id": "case_18",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_18",
+          "success": false
+        },
+        {
+          "case_id": "case_19",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_19",
+          "success": false
+        },
+        {
+          "case_id": "case_20",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_20",
+          "success": false
+        },
+        {
+          "case_id": "case_21",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_21",
+          "success": false
+        },
+        {
+          "case_id": "case_22",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_22",
+          "success": false
+        },
+        {
+          "case_id": "case_23",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_23",
+          "success": false
+        },
+        {
+          "case_id": "case_24",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_24",
+          "success": false
+        },
+        {
+          "case_id": "case_25",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_25",
+          "success": false
+        },
+        {
+          "case_id": "case_26",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_26",
+          "success": false
+        },
+        {
+          "case_id": "case_27",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_27",
+          "success": false
+        },
+        {
+          "case_id": "case_28",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_28",
+          "success": false
+        },
+        {
+          "case_id": "case_29",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_29",
+          "success": false
+        },
+        {
+          "case_id": "case_30",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_30",
+          "success": false
+        }
+      ]
+    },
+    {
+      "book_id": "intelligent-water-network-design",
+      "book_name": "智能水网设计",
+      "expected_cases": 25,
+      "tested_cases": 25,
+      "passed_cases": 1,
+      "failed_cases": 24,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "case_dir": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_01",
+          "exists": true,
+          "readme": {
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_01/README.md",
+            "size": 12697,
+            "checks": {
+              "length": 8161,
+              "lines": 447,
+              "has_title": true,
+              "has_description": true,
+              "has_code_block": true,
+              "has_chinese": true
+            },
+            "success": true
+          },
+          "main_py": {
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_01/main.py",
+            "size": 16872,
+            "checks": {
+              "total_lines": 498,
+              "code_lines": 335,
+              "has_imports": true,
+              "has_main": false,
+              "has_comments": true
+            },
+            "success": true
+          },
+          "images": {
+            "count": 0,
+            "images": [],
+            "success": false
+          },
+          "data": {
+            "count": 0,
+            "files": [],
+            "has_data": false
+          },
+          "other_py": {
+            "count": 0,
+            "files": []
+          },
+          "critical_success": true,
+          "has_images": false,
+          "success": true
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_15",
+          "success": false
+        },
+        {
+          "case_id": "case_16",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_16",
+          "success": false
+        },
+        {
+          "case_id": "case_17",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_17",
+          "success": false
+        },
+        {
+          "case_id": "case_18",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_18",
+          "success": false
+        },
+        {
+          "case_id": "case_19",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_19",
+          "success": false
+        },
+        {
+          "case_id": "case_20",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_20",
+          "success": false
+        },
+        {
+          "case_id": "case_21",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_21",
+          "success": false
+        },
+        {
+          "case_id": "case_22",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_22",
+          "success": false
+        },
+        {
+          "case_id": "case_23",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_23",
+          "success": false
+        },
+        {
+          "case_id": "case_24",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_24",
+          "success": false
+        },
+        {
+          "case_id": "case_25",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_25",
+          "success": false
+        }
+      ]
+    },
+    {
+      "book_id": "photovoltaic-system-modeling-control",
+      "book_name": "光伏系统建模与控制",
+      "expected_cases": 20,
+      "tested_cases": 20,
+      "passed_cases": 0,
+      "failed_cases": 20,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_01",
+          "success": false
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_15",
+          "success": false
+        },
+        {
+          "case_id": "case_16",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_16",
+          "success": false
+        },
+        {
+          "case_id": "case_17",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_17",
+          "success": false
+        },
+        {
+          "case_id": "case_18",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_18",
+          "success": false
+        },
+        {
+          "case_id": "case_19",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_19",
+          "success": false
+        },
+        {
+          "case_id": "case_20",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_20",
+          "success": false
+        }
+      ]
+    },
+    {
+      "book_id": "wind-power-system-modeling-control",
+      "book_name": "风电系统建模与控制",
+      "expected_cases": 15,
+      "tested_cases": 15,
+      "passed_cases": 0,
+      "failed_cases": 15,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_01",
+          "success": false
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/wind-power-system-modeling-control/code/examples/case_15",
+          "success": false
+        }
+      ]
+    },
+    {
+      "book_id": "distributed-hydrological-model",
+      "book_name": "分布式水文模型",
+      "expected_cases": 24,
+      "tested_cases": 24,
+      "passed_cases": 0,
+      "failed_cases": 24,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_01",
+          "success": false
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_15",
+          "success": false
+        },
+        {
+          "case_id": "case_16",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_16",
+          "success": false
+        },
+        {
+          "case_id": "case_17",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_17",
+          "success": false
+        },
+        {
+          "case_id": "case_18",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_18",
+          "success": false
+        },
+        {
+          "case_id": "case_19",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_19",
+          "success": false
+        },
+        {
+          "case_id": "case_20",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_20",
+          "success": false
+        },
+        {
+          "case_id": "case_21",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_21",
+          "success": false
+        },
+        {
+          "case_id": "case_22",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_22",
+          "success": false
+        },
+        {
+          "case_id": "case_23",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_23",
+          "success": false
+        },
+        {
+          "case_id": "case_24",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_24",
+          "success": false
+        }
+      ]
+    },
+    {
+      "book_id": "canal-pipeline-control",
+      "book_name": "渠道与管道控制",
+      "expected_cases": 20,
+      "tested_cases": 20,
+      "passed_cases": 0,
+      "failed_cases": 20,
+      "case_results": [
+        {
+          "case_id": "case_01",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01",
+          "success": false
+        },
+        {
+          "case_id": "case_02",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_02",
+          "success": false
+        },
+        {
+          "case_id": "case_03",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_03",
+          "success": false
+        },
+        {
+          "case_id": "case_04",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_04",
+          "success": false
+        },
+        {
+          "case_id": "case_05",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_05",
+          "success": false
+        },
+        {
+          "case_id": "case_06",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_06",
+          "success": false
+        },
+        {
+          "case_id": "case_07",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_07",
+          "success": false
+        },
+        {
+          "case_id": "case_08",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08",
+          "success": false
+        },
+        {
+          "case_id": "case_09",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_09",
+          "success": false
+        },
+        {
+          "case_id": "case_10",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10",
+          "success": false
+        },
+        {
+          "case_id": "case_11",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_11",
+          "success": false
+        },
+        {
+          "case_id": "case_12",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_12",
+          "success": false
+        },
+        {
+          "case_id": "case_13",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_13",
+          "success": false
+        },
+        {
+          "case_id": "case_14",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_14",
+          "success": false
+        },
+        {
+          "case_id": "case_15",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_15",
+          "success": false
+        },
+        {
+          "case_id": "case_16",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_16",
+          "success": false
+        },
+        {
+          "case_id": "case_17",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_17",
+          "success": false
+        },
+        {
+          "case_id": "case_18",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_18",
+          "success": false
+        },
+        {
+          "case_id": "case_19",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_19",
+          "success": false
+        },
+        {
+          "case_id": "case_20",
+          "exists": false,
+          "error": "案例目录不存在: /home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_20",
+          "success": false
+        }
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "type": "缺少图片",
+      "book_id": "intelligent-water-network-design",
+      "case_id": "case_01"
+    }
+  ]
+}

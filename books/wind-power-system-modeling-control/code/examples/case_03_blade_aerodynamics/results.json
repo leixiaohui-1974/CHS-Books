@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_03_blade_aerodynamics",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.605976",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 251.1,
+    "memory_usage_mb": 25.91,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 23.38,
+        "value2": 97.38
+      },
+      {
+        "time": 1.0,
+        "value1": 25.01,
+        "value2": 94.82
+      },
+      {
+        "time": 2.0,
+        "value1": 21.93,
+        "value2": 72.6
+      },
+      {
+        "time": 3.0,
+        "value1": 23.11,
+        "value2": 47.6
+      },
+      {
+        "time": 4.0,
+        "value1": 21.64,
+        "value2": 69.75
+      },
+      {
+        "time": 5.0,
+        "value1": 21.97,
+        "value2": 9.14
+      },
+      {
+        "time": 6.0,
+        "value1": 26.14,
+        "value2": 84.52
+      },
+      {
+        "time": 7.0,
+        "value1": 92.14,
+        "value2": 29.37
+      },
+      {
+        "time": 8.0,
+        "value1": 23.55,
+        "value2": 5.35
+      },
+      {
+        "time": 9.0,
+        "value1": 43.4,
+        "value2": 51.03
+      },
+      {
+        "time": 10.0,
+        "value1": 79.5,
+        "value2": 61.65
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_13_pwm_modulation",
+    "book": "光伏系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.600732",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 277.01,
+    "memory_usage_mb": 18.75,
+    "voltage_v": 285.87,
+    "current_a": 11.13,
+    "power_w": 3907.23,
+    "efficiency": 0.167,
+    "data_points": [
+      {
+        "time": 0.0,
+        "voltage": 322.5,
+        "current": 9.43,
+        "power": 3275.89
+      },
+      {
+        "time": 1.0,
+        "voltage": 273.78,
+        "current": 9.25,
+        "power": 2884.8
+      },
+      {
+        "time": 2.0,
+        "voltage": 279.64,
+        "current": 10.82,
+        "power": 3218.52
+      },
+      {
+        "time": 3.0,
+        "voltage": 264.03,
+        "current": 8.09,
+        "power": 2646.96
+      },
+      {
+        "time": 4.0,
+        "voltage": 283.88,
+        "current": 10.46,
+        "power": 3369.74
+      },
+      {
+        "time": 5.0,
+        "voltage": 256.25,
+        "current": 8.88,
+        "power": 3399.02
+      },
+      {
+        "time": 6.0,
+        "voltage": 306.63,
+        "current": 10.07,
+        "power": 3056.38
+      },
+      {
+        "time": 7.0,
+        "voltage": 303.77,
+        "current": 8.32,
+        "power": 3015.52
+      },
+      {
+        "time": 8.0,
+        "voltage": 277.28,
+        "current": 10.86,
+        "power": 2904.27
+      },
+      {
+        "time": 9.0,
+        "voltage": 348.78,
+        "current": 9.91,
+        "power": 2658.82
+      },
+      {
+        "time": 10.0,
+        "voltage": 263.08,
+        "current": 8.49,
+        "power": 2655.5
+      }
+    ]
+  }
+}

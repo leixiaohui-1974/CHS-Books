@@ -8,18 +8,19 @@
 日期: 2025-11-02
 """
 
+from pathlib import Path
 import sys
-sys.path.insert(0, '../../..')
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-from code.core.slope_routing import (
+from core.slope_routing import (
     KinematicWaveSlope, LinearReservoirSlope, NashCascade
 )
-from code.core.slope_routing.kinematic_wave import estimate_time_of_concentration
-from code.core.slope_routing.linear_reservoir import estimate_K_from_tc
+from core.slope_routing.kinematic_wave import estimate_time_of_concentration
+from core.slope_routing.linear_reservoir import estimate_K_from_tc
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']

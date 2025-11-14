@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_14_ecological_revetment",
+    "book": "生态水力学",
+    "generated_at": "2025-11-14T09:05:28.541832",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 200.67,
+    "memory_usage_mb": 66.8,
+    "flow_rate_m3s": 1.27,
+    "water_level_m": 2.86,
+    "velocity_ms": 0.75,
+    "gate_opening_percent": 77.1,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.64,
+        "water_level": 3.49,
+        "velocity": 1.2
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.68,
+        "water_level": 3.1,
+        "velocity": 1.0
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.69,
+        "water_level": 3.11,
+        "velocity": 1.0
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.66,
+        "water_level": 2.68,
+        "velocity": 1.02
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.81,
+        "water_level": 3.42,
+        "velocity": 1.21
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.81,
+        "water_level": 2.82,
+        "velocity": 1.03
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.55,
+        "water_level": 3.3,
+        "velocity": 1.22
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.81,
+        "water_level": 3.34,
+        "velocity": 1.24
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.53,
+        "water_level": 3.1,
+        "velocity": 1.16
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.17,
+        "water_level": 3.11,
+        "velocity": 1.28
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.64,
+        "water_level": 3.31,
+        "velocity": 1.08
+      }
+    ]
+  }
+}

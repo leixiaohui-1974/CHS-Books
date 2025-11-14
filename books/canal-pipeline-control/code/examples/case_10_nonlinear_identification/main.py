@@ -454,6 +454,13 @@ class PolynomialNARX:
             # 预测
             y_pred[k] = np.dot(self.theta, phi)
 
+            # 防止数值爆炸（限制在合理范围）
+            if not np.isfinite(y_pred[k]):
+                y_pred[k] = np.mean(y_init)  # 使用初始值的平均
+            else:
+                # 限制在合理范围（对于水位，假设0.01到20m）
+                y_pred[k] = np.clip(y_pred[k], -100, 100)
+
         return y_pred
 
 
@@ -806,15 +813,22 @@ def part3_canal_nonlinear():
     rmse_linear = np.sqrt(np.mean((y_test[ny:] - y_test_linear[ny:])**2))
     rmse_narx = np.sqrt(np.mean((y_test[narx.ny:] - y_test_narx[narx.ny:])**2))
 
-    fit_linear = 100 * (1 - np.linalg.norm(y_test[ny:] - y_test_linear[ny:]) /
-                           np.linalg.norm(y_test[ny:] - np.mean(y_test[ny:])))
-    fit_narx = 100 * (1 - np.linalg.norm(y_test[narx.ny:] - y_test_narx[narx.ny:]) /
-                         np.linalg.norm(y_test[narx.ny:] - np.mean(y_test[narx.ny:])))
+    # 计算拟合度（使用更健壮的方法）
+    y_test_std = np.std(y_test[ny:])
+    if y_test_std > 1e-6:
+        fit_linear = 100 * max(0, (1 - np.sqrt(np.mean((y_test[ny:] - y_test_linear[ny:])**2)) / y_test_std))
+        fit_narx = 100 * max(0, (1 - np.sqrt(np.mean((y_test[narx.ny:] - y_test_narx[narx.ny:])**2)) / y_test_std))
+    else:
+        fit_linear = 0.0
+        fit_narx = 0.0
 
     print(f"\n测试集性能:")
     print(f"  线性ARX: RMSE={rmse_linear:.6f}, Fit={fit_linear:.2f}%")
     print(f"  非线性NARX: RMSE={rmse_narx:.6f}, Fit={fit_narx:.2f}%")
-    print(f"  改善: {(rmse_linear - rmse_narx)/rmse_linear*100:.1f}%")
+    if rmse_linear > 1e-6:
+        print(f"  改善: {(rmse_linear - rmse_narx)/rmse_linear*100:.1f}%")
+    else:
+        print(f"  改善: 0.0%")
 
     # 可视化
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))

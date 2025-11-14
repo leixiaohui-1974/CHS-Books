@@ -1,0 +1,11 @@
+{
+  "project_name": "调水工程水量调度设计",
+  "system_config": "300km，3泵站+2水库，延迟18h",
+  "intelligence_level": "L2",
+  "performance_metrics": {
+    "total_energy": 6435360.0,
+    "total_cost": 4865760.0,
+    "reservoir1_mean": 10.0,
+    "reservoir2_mean": 14.827777777777776
+  }
+}

@@ -14,8 +14,8 @@ import sys
 
 # 配置
 BASE_URL = "http://localhost:8080"
-SCREENSHOTS_DIR = "platform/test_reports/screenshots"
-RESULTS_DIR = "platform/test_reports"
+SCREENSHOTS_DIR = "/home/user/CHS-Books/platform/test_reports/screenshots"
+RESULTS_DIR = "/home/user/CHS-Books/platform/test_reports"
 
 # 确保目录存在
 os.makedirs(SCREENSHOTS_DIR, exist_ok=True)

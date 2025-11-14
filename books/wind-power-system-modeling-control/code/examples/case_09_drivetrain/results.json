@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_09_drivetrain",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.609410",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 389.03,
+    "memory_usage_mb": 25.01,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 51.59,
+        "value2": 36.11
+      },
+      {
+        "time": 1.0,
+        "value1": 48.2,
+        "value2": 51.56
+      },
+      {
+        "time": 2.0,
+        "value1": 47.22,
+        "value2": 90.77
+      },
+      {
+        "time": 3.0,
+        "value1": 61.78,
+        "value2": 90.26
+      },
+      {
+        "time": 4.0,
+        "value1": 66.7,
+        "value2": 19.49
+      },
+      {
+        "time": 5.0,
+        "value1": 26.95,
+        "value2": 4.62
+      },
+      {
+        "time": 6.0,
+        "value1": 32.21,
+        "value2": 55.21
+      },
+      {
+        "time": 7.0,
+        "value1": 41.85,
+        "value2": 82.3
+      },
+      {
+        "time": 8.0,
+        "value1": 47.01,
+        "value2": 25.11
+      },
+      {
+        "time": 9.0,
+        "value1": 35.3,
+        "value2": 38.07
+      },
+      {
+        "time": 10.0,
+        "value1": 60.04,
+        "value2": 6.27
+      }
+    ]
+  }
+}

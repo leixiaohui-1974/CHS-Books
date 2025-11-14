@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_07_fish_swimming",
+    "book": "生态水力学",
+    "generated_at": "2025-11-14T09:05:28.538125",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 496.28,
+    "memory_usage_mb": 30.02,
+    "flow_rate_m3s": 9.56,
+    "water_level_m": 1.53,
+    "velocity_ms": 1.08,
+    "gate_opening_percent": 84.8,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.95,
+        "water_level": 2.72,
+        "velocity": 1.06
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.01,
+        "water_level": 3.21,
+        "velocity": 1.32
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.85,
+        "water_level": 3.15,
+        "velocity": 1.33
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.03,
+        "water_level": 3.17,
+        "velocity": 1.29
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.68,
+        "water_level": 2.92,
+        "velocity": 1.16
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.63,
+        "water_level": 3.32,
+        "velocity": 1.19
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.92,
+        "water_level": 2.58,
+        "velocity": 1.06
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.69,
+        "water_level": 3.21,
+        "velocity": 1.1
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.35,
+        "water_level": 3.09,
+        "velocity": 1.03
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.58,
+        "water_level": 3.41,
+        "velocity": 1.36
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.44,
+        "water_level": 3.35,
+        "velocity": 1.29
+      }
+    ]
+  }
+}

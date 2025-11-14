@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_33_wetland_restoration",
+    "book": "生态水力学",
+    "generated_at": "2025-11-14T09:05:28.547730",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 185.42,
+    "memory_usage_mb": 35.78,
+    "flow_rate_m3s": 3.46,
+    "water_level_m": 3.19,
+    "velocity_ms": 0.75,
+    "gate_opening_percent": 88.1,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.7,
+        "water_level": 2.8,
+        "velocity": 1.15
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.97,
+        "water_level": 3.05,
+        "velocity": 1.29
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.56,
+        "water_level": 3.11,
+        "velocity": 1.03
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.22,
+        "water_level": 3.47,
+        "velocity": 1.33
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.7,
+        "water_level": 2.89,
+        "velocity": 1.06
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.84,
+        "water_level": 2.66,
+        "velocity": 1.39
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.95,
+        "water_level": 2.64,
+        "velocity": 1.16
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.78,
+        "water_level": 3.18,
+        "velocity": 1.37
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.81,
+        "water_level": 2.53,
+        "velocity": 1.18
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.19,
+        "water_level": 2.96,
+        "velocity": 1.4
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.09,
+        "water_level": 3.46,
+        "velocity": 1.35
+      }
+    ]
+  }
+}

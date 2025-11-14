@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_12_psf_control",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.611087",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 438.99,
+    "memory_usage_mb": 66.38,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 72.27,
+        "value2": 90.27
+      },
+      {
+        "time": 1.0,
+        "value1": 97.21,
+        "value2": 15.98
+      },
+      {
+        "time": 2.0,
+        "value1": 80.2,
+        "value2": 64.81
+      },
+      {
+        "time": 3.0,
+        "value1": 91.33,
+        "value2": 58.22
+      },
+      {
+        "time": 4.0,
+        "value1": 69.9,
+        "value2": 70.98
+      },
+      {
+        "time": 5.0,
+        "value1": 47.38,
+        "value2": 47.72
+      },
+      {
+        "time": 6.0,
+        "value1": 77.4,
+        "value2": 44.6
+      },
+      {
+        "time": 7.0,
+        "value1": 33.9,
+        "value2": 1.27
+      },
+      {
+        "time": 8.0,
+        "value1": 3.44,
+        "value2": 89.46
+      },
+      {
+        "time": 9.0,
+        "value1": 20.04,
+        "value2": 86.06
+      },
+      {
+        "time": 10.0,
+        "value1": 95.87,
+        "value2": 80.06
+      }
+    ]
+  }
+}

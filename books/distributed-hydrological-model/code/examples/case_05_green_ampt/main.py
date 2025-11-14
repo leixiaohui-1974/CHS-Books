@@ -8,14 +8,15 @@
 日期: 2025-11-02
 """
 
+from pathlib import Path
 import sys
-sys.path.insert(0, '../../..')
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-from code.core.runoff_generation.green_ampt import (
+from core.runoff_generation.green_ampt import (
     GreenAmptModel, create_default_green_ampt_params
 )
 

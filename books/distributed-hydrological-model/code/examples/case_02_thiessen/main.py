@@ -8,18 +8,20 @@
 日期: 2025-11-02
 """
 
+from pathlib import Path
 import sys
-sys.path.insert(0, '../../..')
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 from scipy.spatial import Voronoi, voronoi_plot_2d
 
-from code.core.interpolation import (
+from core.interpolation import (
     thiessen_polygon, thiessen_weights, calculate_areal_rainfall
 )
-from code.core.interpolation.idw import inverse_distance_weighting
+from core.interpolation.idw import inverse_distance_weighting
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']

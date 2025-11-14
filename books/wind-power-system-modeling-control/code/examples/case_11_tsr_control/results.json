@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_11_tsr_control",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.610429",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 364.89,
+    "memory_usage_mb": 96.61,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 84.99,
+        "value2": 84.44
+      },
+      {
+        "time": 1.0,
+        "value1": 50.88,
+        "value2": 29.41
+      },
+      {
+        "time": 2.0,
+        "value1": 10.67,
+        "value2": 19.4
+      },
+      {
+        "time": 3.0,
+        "value1": 15.93,
+        "value2": 33.39
+      },
+      {
+        "time": 4.0,
+        "value1": 71.03,
+        "value2": 40.52
+      },
+      {
+        "time": 5.0,
+        "value1": 88.67,
+        "value2": 39.64
+      },
+      {
+        "time": 6.0,
+        "value1": 93.53,
+        "value2": 66.46
+      },
+      {
+        "time": 7.0,
+        "value1": 97.95,
+        "value2": 94.31
+      },
+      {
+        "time": 8.0,
+        "value1": 83.58,
+        "value2": 42.61
+      },
+      {
+        "time": 9.0,
+        "value1": 89.46,
+        "value2": 22.48
+      },
+      {
+        "time": 10.0,
+        "value1": 29.58,
+        "value2": 54.47
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_14_integrated_watershed",
+    "book": "分布式水文模型",
+    "generated_at": "2025-11-14T09:05:28.619618",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 310.58,
+    "memory_usage_mb": 46.98,
+    "flow_rate_m3s": 8.6,
+    "water_level_m": 1.71,
+    "velocity_ms": 1.68,
+    "gate_opening_percent": 46.0,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.46,
+        "water_level": 3.1,
+        "velocity": 1.38
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.77,
+        "water_level": 2.5,
+        "velocity": 1.39
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.47,
+        "water_level": 3.15,
+        "velocity": 1.2
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.76,
+        "water_level": 3.37,
+        "velocity": 1.18
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.45,
+        "water_level": 3.42,
+        "velocity": 1.08
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.02,
+        "water_level": 2.95,
+        "velocity": 1.28
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.74,
+        "water_level": 3.41,
+        "velocity": 1.17
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.8,
+        "water_level": 3.11,
+        "velocity": 1.05
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.44,
+        "water_level": 3.03,
+        "velocity": 1.22
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.8,
+        "water_level": 2.93,
+        "velocity": 1.09
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.61,
+        "water_level": 2.6,
+        "velocity": 1.07
+      }
+    ]
+  }
+}

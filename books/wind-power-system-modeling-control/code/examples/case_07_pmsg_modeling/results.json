@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_07_pmsg_modeling",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.608271",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 137.08,
+    "memory_usage_mb": 32.51,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 43.6,
+        "value2": 26.21
+      },
+      {
+        "time": 1.0,
+        "value1": 70.86,
+        "value2": 59.55
+      },
+      {
+        "time": 2.0,
+        "value1": 51.88,
+        "value2": 24.08
+      },
+      {
+        "time": 3.0,
+        "value1": 34.64,
+        "value2": 48.21
+      },
+      {
+        "time": 4.0,
+        "value1": 31.38,
+        "value2": 19.05
+      },
+      {
+        "time": 5.0,
+        "value1": 34.88,
+        "value2": 11.74
+      },
+      {
+        "time": 6.0,
+        "value1": 83.65,
+        "value2": 66.24
+      },
+      {
+        "time": 7.0,
+        "value1": 22.31,
+        "value2": 61.94
+      },
+      {
+        "time": 8.0,
+        "value1": 47.17,
+        "value2": 33.15
+      },
+      {
+        "time": 9.0,
+        "value1": 94.82,
+        "value2": 56.18
+      },
+      {
+        "time": 10.0,
+        "value1": 40.58,
+        "value2": 45.65
+      }
+    ]
+  }
+}

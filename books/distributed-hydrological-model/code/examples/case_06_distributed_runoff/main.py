@@ -18,12 +18,13 @@ from matplotlib.patches import Rectangle
 from matplotlib.colors import LinearSegmentedColormap
 import os
 import sys
+from pathlib import Path
 
-# 添加项目根目录到路径
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
+# 添加code目录到路径
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from code.core.interpolation import inverse_distance_weighting, ordinary_kriging
-from code.core.runoff_generation import XinAnJiangModel, create_default_xaj_params
+from core.interpolation import inverse_distance_weighting, ordinary_kriging
+from core.runoff_generation import XinAnJiangModel, create_default_xaj_params
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']

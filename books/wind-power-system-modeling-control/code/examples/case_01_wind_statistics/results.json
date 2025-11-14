@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_01_wind_statistics",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.604936",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 305.46,
+    "memory_usage_mb": 14.07,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 97.83,
+        "value2": 78.54
+      },
+      {
+        "time": 1.0,
+        "value1": 99.73,
+        "value2": 79.66
+      },
+      {
+        "time": 2.0,
+        "value1": 61.03,
+        "value2": 2.03
+      },
+      {
+        "time": 3.0,
+        "value1": 48.89,
+        "value2": 38.61
+      },
+      {
+        "time": 4.0,
+        "value1": 38.66,
+        "value2": 36.54
+      },
+      {
+        "time": 5.0,
+        "value1": 3.19,
+        "value2": 92.08
+      },
+      {
+        "time": 6.0,
+        "value1": 23.25,
+        "value2": 29.78
+      },
+      {
+        "time": 7.0,
+        "value1": 51.07,
+        "value2": 35.61
+      },
+      {
+        "time": 8.0,
+        "value1": 62.9,
+        "value2": 40.01
+      },
+      {
+        "time": 9.0,
+        "value1": 45.85,
+        "value2": 59.36
+      },
+      {
+        "time": 10.0,
+        "value1": 34.39,
+        "value2": 31.89
+      }
+    ]
+  }
+}

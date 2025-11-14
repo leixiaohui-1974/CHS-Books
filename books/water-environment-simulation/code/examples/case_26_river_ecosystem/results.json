@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_26_river_ecosystem",
+    "book": "水环境数值模拟",
+    "generated_at": "2025-11-14T09:05:28.568796",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 96.73,
+    "memory_usage_mb": 73.83,
+    "flow_rate_m3s": 8.73,
+    "water_level_m": 2.22,
+    "velocity_ms": 1.15,
+    "gate_opening_percent": 48.0,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.82,
+        "water_level": 2.72,
+        "velocity": 1.4
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.99,
+        "water_level": 2.58,
+        "velocity": 1.35
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.62,
+        "water_level": 2.89,
+        "velocity": 1.19
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.65,
+        "water_level": 3.45,
+        "velocity": 1.04
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.29,
+        "water_level": 3.1,
+        "velocity": 1.25
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.97,
+        "water_level": 2.82,
+        "velocity": 1.15
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.99,
+        "water_level": 3.47,
+        "velocity": 1.05
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.2,
+        "water_level": 3.5,
+        "velocity": 1.03
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.46,
+        "water_level": 2.68,
+        "velocity": 1.05
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.1,
+        "water_level": 2.6,
+        "velocity": 1.36
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.41,
+        "water_level": 3.28,
+        "velocity": 1.31
+      }
+    ]
+  }
+}

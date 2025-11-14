@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_17_power_factor_control",
+    "book": "光伏系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.602734",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 139.01,
+    "memory_usage_mb": 18.4,
+    "voltage_v": 399.02,
+    "current_a": 5.13,
+    "power_w": 4816.56,
+    "efficiency": 0.219,
+    "data_points": [
+      {
+        "time": 0.0,
+        "voltage": 313.71,
+        "current": 10.18,
+        "power": 2528.78
+      },
+      {
+        "time": 1.0,
+        "voltage": 301.63,
+        "current": 8.41,
+        "power": 3470.23
+      },
+      {
+        "time": 2.0,
+        "voltage": 252.39,
+        "current": 11.6,
+        "power": 2595.7
+      },
+      {
+        "time": 3.0,
+        "voltage": 258.83,
+        "current": 10.9,
+        "power": 2833.66
+      },
+      {
+        "time": 4.0,
+        "voltage": 299.16,
+        "current": 10.18,
+        "power": 3154.18
+      },
+      {
+        "time": 5.0,
+        "voltage": 328.28,
+        "current": 11.16,
+        "power": 3045.91
+      },
+      {
+        "time": 6.0,
+        "voltage": 320.11,
+        "current": 10.32,
+        "power": 3105.11
+      },
+      {
+        "time": 7.0,
+        "voltage": 321.02,
+        "current": 11.74,
+        "power": 3114.72
+      },
+      {
+        "time": 8.0,
+        "voltage": 279.99,
+        "current": 10.14,
+        "power": 3175.35
+      },
+      {
+        "time": 9.0,
+        "voltage": 341.31,
+        "current": 11.68,
+        "power": 3433.3
+      },
+      {
+        "time": 10.0,
+        "voltage": 291.16,
+        "current": 10.27,
+        "power": 3483.11
+      }
+    ]
+  }
+}

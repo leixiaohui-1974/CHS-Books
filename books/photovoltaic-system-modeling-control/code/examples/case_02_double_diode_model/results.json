@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_02_double_diode_model",
+    "book": "光伏系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.594736",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 108.04,
+    "memory_usage_mb": 62.97,
+    "voltage_v": 395.73,
+    "current_a": 7.01,
+    "power_w": 4913.33,
+    "efficiency": 0.205,
+    "data_points": [
+      {
+        "time": 0.0,
+        "voltage": 338.06,
+        "current": 11.79,
+        "power": 3023.56
+      },
+      {
+        "time": 1.0,
+        "voltage": 258.95,
+        "current": 8.77,
+        "power": 3095.24
+      },
+      {
+        "time": 2.0,
+        "voltage": 280.33,
+        "current": 8.1,
+        "power": 2638.19
+      },
+      {
+        "time": 3.0,
+        "voltage": 314.37,
+        "current": 10.95,
+        "power": 3323.64
+      },
+      {
+        "time": 4.0,
+        "voltage": 271.89,
+        "current": 11.84,
+        "power": 2972.05
+      },
+      {
+        "time": 5.0,
+        "voltage": 345.31,
+        "current": 9.08,
+        "power": 3429.86
+      },
+      {
+        "time": 6.0,
+        "voltage": 326.63,
+        "current": 8.8,
+        "power": 2803.67
+      },
+      {
+        "time": 7.0,
+        "voltage": 274.16,
+        "current": 11.54,
+        "power": 3013.73
+      },
+      {
+        "time": 8.0,
+        "voltage": 262.04,
+        "current": 10.7,
+        "power": 2750.15
+      },
+      {
+        "time": 9.0,
+        "voltage": 260.82,
+        "current": 9.52,
+        "power": 3460.57
+      },
+      {
+        "time": 10.0,
+        "voltage": 327.61,
+        "current": 10.15,
+        "power": 2659.18
+      }
+    ]
+  }
+}

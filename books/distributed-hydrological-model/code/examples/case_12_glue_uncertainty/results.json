@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_12_glue_uncertainty",
+    "book": "分布式水文模型",
+    "generated_at": "2025-11-14T09:05:28.619127",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 439.79,
+    "memory_usage_mb": 14.65,
+    "flow_rate_m3s": 9.86,
+    "water_level_m": 3.77,
+    "velocity_ms": 1.26,
+    "gate_opening_percent": 47.8,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.76,
+        "water_level": 2.62,
+        "velocity": 1.28
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.52,
+        "water_level": 3.44,
+        "velocity": 1.35
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.89,
+        "water_level": 2.64,
+        "velocity": 1.32
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.73,
+        "water_level": 2.61,
+        "velocity": 1.07
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.54,
+        "water_level": 3.14,
+        "velocity": 1.28
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.47,
+        "water_level": 2.9,
+        "velocity": 1.24
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.78,
+        "water_level": 2.88,
+        "velocity": 1.09
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.34,
+        "water_level": 2.82,
+        "velocity": 1.07
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.13,
+        "water_level": 3.1,
+        "velocity": 1.4
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.05,
+        "water_level": 3.29,
+        "velocity": 1.07
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.1,
+        "water_level": 2.75,
+        "velocity": 1.31
+      }
+    ]
+  }
+}

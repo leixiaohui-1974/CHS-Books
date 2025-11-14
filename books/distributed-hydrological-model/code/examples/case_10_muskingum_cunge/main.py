@@ -8,6 +8,7 @@ Muskingum-Cunge方法是Muskingum方法的物理基础改进版，
 核心内容：
 1. 物理参数估算K和X
 2. 动态波速计算
+from pathlib import Path
 3. 河段演进模拟
 4. 多河段串联
 5. 与经验Muskingum方法对比

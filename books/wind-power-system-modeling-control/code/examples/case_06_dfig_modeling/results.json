@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_06_dfig_modeling",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.607748",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 73.04,
+    "memory_usage_mb": 96.73,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 10.31,
+        "value2": 81.43
+      },
+      {
+        "time": 1.0,
+        "value1": 66.64,
+        "value2": 71.61
+      },
+      {
+        "time": 2.0,
+        "value1": 17.88,
+        "value2": 84.63
+      },
+      {
+        "time": 3.0,
+        "value1": 92.64,
+        "value2": 26.36
+      },
+      {
+        "time": 4.0,
+        "value1": 71.0,
+        "value2": 57.07
+      },
+      {
+        "time": 5.0,
+        "value1": 21.89,
+        "value2": 63.29
+      },
+      {
+        "time": 6.0,
+        "value1": 72.79,
+        "value2": 11.57
+      },
+      {
+        "time": 7.0,
+        "value1": 93.87,
+        "value2": 37.18
+      },
+      {
+        "time": 8.0,
+        "value1": 51.81,
+        "value2": 18.76
+      },
+      {
+        "time": 9.0,
+        "value1": 88.19,
+        "value2": 10.84
+      },
+      {
+        "time": 10.0,
+        "value1": 25.93,
+        "value2": 36.36
+      }
+    ]
+  }
+}

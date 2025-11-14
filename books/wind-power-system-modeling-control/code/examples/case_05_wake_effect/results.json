@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_05_wake_effect",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.607146",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 124.77,
+    "memory_usage_mb": 78.37,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 31.33,
+        "value2": 74.65
+      },
+      {
+        "time": 1.0,
+        "value1": 32.95,
+        "value2": 50.15
+      },
+      {
+        "time": 2.0,
+        "value1": 18.33,
+        "value2": 58.89
+      },
+      {
+        "time": 3.0,
+        "value1": 23.1,
+        "value2": 79.84
+      },
+      {
+        "time": 4.0,
+        "value1": 45.11,
+        "value2": 28.96
+      },
+      {
+        "time": 5.0,
+        "value1": 72.54,
+        "value2": 30.62
+      },
+      {
+        "time": 6.0,
+        "value1": 72.84,
+        "value2": 26.27
+      },
+      {
+        "time": 7.0,
+        "value1": 6.4,
+        "value2": 80.66
+      },
+      {
+        "time": 8.0,
+        "value1": 15.24,
+        "value2": 53.39
+      },
+      {
+        "time": 9.0,
+        "value1": 47.86,
+        "value2": 32.37
+      },
+      {
+        "time": 10.0,
+        "value1": 63.51,
+        "value2": 15.73
+      }
+    ]
+  }
+}

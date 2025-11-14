@@ -35,7 +35,7 @@ def plot_1d_evolution(x, t, C, title='浓度演化', xlabel='位置 x (m)',
         ax1.plot(x, C[idx, :], label=f't = {t[idx]:.1f} s')
     
     ax1.set_xlabel(xlabel)
-    ax1.set_zlabel(zlabel)
+    ax1.set_ylabel(zlabel)
     ax1.set_title(f'{title} - 不同时刻')
     ax1.legend()
     ax1.grid(True, alpha=0.3)

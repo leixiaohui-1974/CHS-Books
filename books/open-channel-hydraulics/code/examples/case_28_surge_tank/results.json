@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_28_surge_tank",
+    "book": "明渠水力学",
+    "generated_at": "2025-11-14T09:05:28.587819",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 427.05,
+    "memory_usage_mb": 90.07,
+    "flow_rate_m3s": 9.6,
+    "water_level_m": 1.62,
+    "velocity_ms": 1.35,
+    "gate_opening_percent": 78.7,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.17,
+        "water_level": 2.66,
+        "velocity": 1.38
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.03,
+        "water_level": 2.76,
+        "velocity": 1.38
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.63,
+        "water_level": 3.15,
+        "velocity": 1.16
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.02,
+        "water_level": 3.08,
+        "velocity": 1.25
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.74,
+        "water_level": 3.04,
+        "velocity": 1.03
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.75,
+        "water_level": 3.08,
+        "velocity": 1.03
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.79,
+        "water_level": 3.47,
+        "velocity": 1.26
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.15,
+        "water_level": 2.81,
+        "velocity": 1.12
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.78,
+        "water_level": 3.04,
+        "velocity": 1.22
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.27,
+        "water_level": 3.03,
+        "velocity": 1.1
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.46,
+        "water_level": 2.56,
+        "velocity": 1.02
+      }
+    ]
+  }
+}

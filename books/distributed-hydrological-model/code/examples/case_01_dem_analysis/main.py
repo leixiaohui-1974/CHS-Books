@@ -8,6 +8,7 @@
 4. 汇流累积计算
 5. 河网提取
 6. 子流域划分
+from pathlib import Path
 
 注：本案例使用纯NumPy实现，不依赖GDAL等GIS库
 

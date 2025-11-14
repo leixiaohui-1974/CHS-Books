@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_29_urban_blackwater",
+    "book": "水环境数值模拟",
+    "generated_at": "2025-11-14T09:05:28.571142",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 449.04,
+    "memory_usage_mb": 88.38,
+    "flow_rate_m3s": 9.31,
+    "water_level_m": 1.06,
+    "velocity_ms": 1.87,
+    "gate_opening_percent": 77.4,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.62,
+        "water_level": 3.2,
+        "velocity": 1.09
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.43,
+        "water_level": 2.88,
+        "velocity": 1.17
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.37,
+        "water_level": 3.49,
+        "velocity": 1.07
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.15,
+        "water_level": 2.6,
+        "velocity": 1.23
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.87,
+        "water_level": 2.6,
+        "velocity": 1.17
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.25,
+        "water_level": 3.15,
+        "velocity": 1.1
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.94,
+        "water_level": 2.52,
+        "velocity": 1.23
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.54,
+        "water_level": 3.0,
+        "velocity": 1.26
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.35,
+        "water_level": 3.28,
+        "velocity": 1.32
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.97,
+        "water_level": 2.7,
+        "velocity": 1.16
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.81,
+        "water_level": 2.68,
+        "velocity": 1.35
+      }
+    ]
+  }
+}
