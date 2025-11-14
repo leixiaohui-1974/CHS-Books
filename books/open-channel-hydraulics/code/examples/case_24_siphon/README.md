@@ -48,7 +48,7 @@
 3. 最高点真空度不超过允许值
 
 **能量方程：**
-```
+```python
 H1 = H2 + h_f_total + v²/(2g)
 ```
 
@@ -60,17 +60,17 @@ H1 = H2 + h_f_total + v²/(2g)
 真空度是指管内压力低于大气压力的程度。
 
 **真空度（相对真空度）：**
-```
+```python
 h_vac = p_atm - p_local  [m水柱]
 ```
 
 **绝对压力：**
-```
+```python
 p_abs = p_atm - h_vac  [m水柱]
 ```
 
 **最高点压力计算（能量方程）：**
-```
+```python
 p_peak/γ = H1 - H_peak - h_f_inlet - h_f_to_peak - v²/(2g)
 ```
 
@@ -84,7 +84,7 @@ p_peak/γ = H1 - H_peak - h_f_inlet - h_f_to_peak - v²/(2g)
 当管内压力降至水的饱和蒸汽压时，水会汽化产生气泡，气泡破裂产生汽蚀。
 
 **汽蚀条件：**
-```
+```python
 p_local ≤ p_vapor
 ```
 
@@ -94,7 +94,7 @@ p_local ≤ p_vapor
 - 30°C：0.433 m
 
 **汽蚀余量（NPSH）：**
-```
+```python
 NPSH = p_local/γ - p_vapor/γ - H_local
 ```
 
@@ -111,37 +111,37 @@ NPSH = p_local/γ - p_vapor/γ - H_local
 - 无真空问题，但需考虑压力承载
 
 **水力计算：**
-```
+```python
 H1 - H2 = h_f_entrance + h_f_pipe + h_f_exit
 ```
 
 **压力分布：**
 最低点压力最大：
-```
+```python
 p_min/γ = H1 - H_min - h_f_to_min - v²/(2g)
 ```
 
 ### 5. 水头损失计算
 
 **进口损失：**
-```
+```python
 h_f_entrance = ξ_e * v²/(2g)
 ```
 ξ_e = 0.5（直角进口）~ 0.1（渐变进口）
 
 **沿程损失：**
-```
+```python
 h_f = λ * (L/D) * (v²/2g)
 ```
 
 **出口损失：**
-```
+```python
 h_f_exit = ξ_o * v²/(2g)
 ```
 ξ_o = 1.0（突然扩大）~ 0.2（渐变扩大）
 
 **弯管损失：**
-```
+```python
 h_f_bend = ξ_b * v²/(2g)
 ```
 ξ_b = 0.1~0.5（取决于弯曲半径）

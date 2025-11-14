@@ -29,7 +29,7 @@
 
 ### 1. 系统架构
 
-```
+```python
 ┌──────────────┐
 │  降雨预报    │
 └──────┬───────┘
@@ -60,7 +60,7 @@ IF 预报有大洪水 THEN
     提前加大泄流，腾出库容
 ELSE
     常规调度
-```
+```python
 
 **预见期决策**:
 ```
@@ -70,7 +70,7 @@ IF max(Q_forecast) > Q_current × 1.5 THEN
     Q_outflow = Q_current × 1.2
 ELSE
     Q_outflow = 常规规则
-```
+```python
 
 ### 3. 滚动更新机制
 
@@ -79,7 +79,7 @@ ELSE
 时刻 t=1:  预报 [t+2, t+3, t+4] → 调度决策
 时刻 t=2:  预报 [t+3, t+4, t+5] → 调度决策
 ...
-```
+```python
 
 ---
 
@@ -106,7 +106,7 @@ class ForecastSystem:
         discharge = runoff * area / dt
         
         return discharge
-```
+```python
 
 #### 2. ForecastBasedOperation类
 
@@ -132,7 +132,7 @@ class ForecastBasedOperation:
             new_level = update_level(...)
         
         return results
-```
+```python
 
 ---
 
@@ -154,7 +154,7 @@ class ForecastBasedOperation:
 【预报调度改善效果】
   最高水位降低: 可配置
   防洪效益: 视预报准确度
-```
+```python
 
 ### 关键优势
 

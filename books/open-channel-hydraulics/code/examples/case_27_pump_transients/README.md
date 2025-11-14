@@ -36,21 +36,21 @@
 ### 1. 泵特性曲线
 
 **扬程-流量曲线：**
-```
+```python
 H = H₀ * [1 - a_h * (Q/Q₀)²]
 ```
 
 a_h：扬程系数（通常0.3~0.5）
 
 **转矩-流量曲线：**
-```
+```python
 M = M₀ * [a_m + b_m * (Q/Q₀)]
 ```
 
 M₀：额定转矩
 
 **相似定律：**
-```
+```python
 Q/Q₀ = (n/n₀)
 H/H₀ = (n/n₀)²
 M/M₀ = (n/n₀)²
@@ -61,17 +61,17 @@ n：转速，n₀：额定转速
 ### 2. 泵停机方程
 
 **转速衰减方程：**
-```
+```python
 dω/dt = -M_friction / (J + J_water)
 ```
 
 简化形式（惯性时间常数）：
-```
+```python
 n(t) = n₀ * exp(-t/T_i)
 ```
 
 其中：
-```
+```python
 T_i = (GD² * n₀) / (375 * M_friction)
 ```
 
@@ -97,7 +97,7 @@ GD²：飞轮转矩（kg·m²）
 ### 4. 水柱分离
 
 **分离条件：**
-```
+```python
 p_local ≤ p_vapor
 ```
 
@@ -113,7 +113,7 @@ p_local ≤ p_vapor
 ### 5. 保护措施
 
 **增加泵惯量（飞轮）：**
-```
+```python
 GD²_total = GD²_pump + GD²_flywheel
 ```
 
@@ -133,17 +133,17 @@ GD²_total = GD²_pump + GD²_flywheel
 **泵边界方程：**
 
 从管道侧（C⁺方程）：
-```
+```python
 H_p = H_A - (a/g)*(Q_p - Q_A) - R_A
 ```
 
 从泵特性（相似定律）：
-```
+```python
 H_p = H_s + H₀ * (n/n₀)² * [1 - a_h * (Q_p/(Q₀*n/n₀))²]
 ```
 
 转速方程：
-```
+```python
 dn/dt = -M(Q, n) / J
 ```
 

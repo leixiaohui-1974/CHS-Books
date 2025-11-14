@@ -25,7 +25,7 @@
 
 **越流（Leakage）**是指水量通过弱透水层在不同含水层之间的垂向流动。
 
-```
+```python
 地表
   ↓
 浅层含水层 (Aquifer 1)
@@ -73,27 +73,27 @@
 
 **达西定律的垂向形式**：
 
-```
+```python
 q = -K_v * dh/dz
 ```
 
 对于弱透水层：
-```
+```python
 Q = K_aquitard * A * (h_upper - h_lower) / b_aquitard
 ```
 
 **简化为**：
-```
+```python
 Q = C * (h_upper - h_lower)
 ```
 
 其中传导度：
-```
+```python
 C = K_aquitard * A / b_aquitard  (m²/day)
 ```
 
 **渗漏系数**：
-```
+```python
 L = K_aquitard / b_aquitard  (1/day)
 ```
 
@@ -103,7 +103,7 @@ L = K_aquitard / b_aquitard  (1/day)
 
 **由水头差决定**：
 
-```
+```python
 当 h_upper > h_lower:
     Q > 0  →  向下流动（上层流向下层）
 
@@ -118,7 +118,7 @@ L = K_aquitard / b_aquitard  (1/day)
 
 **三层系统示例**：
 
-```
+```python
 Layer 1: h₁ = 65m
    ↓ Q₁ = C₁(h₁ - h₂)
 Aquitard 1
@@ -133,7 +133,7 @@ Layer 3: h₃ = 50m
 **水量平衡**：
 
 对于第i层：
-```
+```python
 ∂h_i/∂t = ∇·(T_i∇h_i) + Q_from_above - Q_to_below + other_sources
 ```
 
@@ -146,7 +146,7 @@ Layer 3: h₃ = 50m
 **问题**：承压含水层抽水，考虑来自相邻含水层的越流补给。
 
 **控制方程**：
-```
+```python
 S ∂h/∂t = T ∇²h - L(h - h₀)
 ```
 
@@ -155,7 +155,7 @@ S ∂h/∂t = T ∇²h - L(h - h₀)
 - `h₀`: 相邻含水层水头（假设不变）
 
 **稳态径向流解**：
-```
+```python
 s = (Q / 2πT) * K₀(r/B)
 ```
 
@@ -171,7 +171,7 @@ s = (Q / 2πT) * K₀(r/B)
 ### 5. 渗漏因子
 
 **定义**：
-```
+```python
 B = √(T / L) = √(T * b_aquitard / K_aquitard)
 ```
 
@@ -181,7 +181,7 @@ B = √(T / L) = √(T * b_aquitard / K_aquitard)
 - B越大，越流越弱，影响范围越广
 
 **分类**：
-```
+```python
 B > 500m:   弱越流系统
 100-500m:   中等越流系统
 B < 100m:   强越流系统
@@ -256,7 +256,7 @@ system.add_aquifer_layer(
 )
 
 # ... 继续添加
-```
+```python
 
 ### 计算越流
 
@@ -275,7 +275,7 @@ leakage_fluxes = system.compute_leakage(heads, cell_area)
 # leakage_fluxes[i] 是第i层的净越流
 # 正值：流出该层（向下）
 # 负值：流入该层（向上）
-```
+```python
 
 ### 转换为源汇项
 
@@ -292,7 +292,7 @@ source_terms = system.compute_leakage_as_source(heads, cell_volumes)
 
 # 用于求解器
 # source_terms[i] 可直接加入第i层的源汇项
-```
+```python
 
 ### Hantush-Jacob解
 
@@ -312,7 +312,7 @@ s = hantush_jacob_solution(r, t, Q_well, T, S, leakance)
 
 # 对比无越流情况（Theis解）
 s_theis = hantush_jacob_solution(r, t, Q_well, T, S, leakance=0.0)
-```
+```python
 
 ### 渗漏因子
 
@@ -331,7 +331,7 @@ K_aquitard = 0.01  # m/day
 b_aquitard = 10.0  # m
 L = K_aquitard / b_aquitard
 B = estimate_leakage_factor(T, L)
-```
+```python
 
 ---
 
@@ -342,7 +342,7 @@ B = estimate_leakage_factor(T, L)
 ```bash
 cd code/examples/case_13
 python3 case_13_leakage.py
-```
+```python
 
 ### 预期输出
 
@@ -458,7 +458,7 @@ K_aquitard (m/day)    b=1m        b=5m       b=10m       b=20m
 1.000                  27.4        61.2        86.6       122.5
 
 ✅ 案例13执行完成！
-```
+```matlab
 
 ### 生成图片
 
@@ -536,7 +536,7 @@ K_aquitard (m/day)    b=1m        b=5m       b=10m       b=20m
 **趋势**：
 ```
 渗漏系数 L ↑ → 越流补给 ↑ → 降深 ↓
-```
+```python
 
 **对比**：
 - 无越流（L=0）：降深最大（Theis解）
@@ -594,7 +594,7 @@ for K in K_values:
         leakage = system.compute_leakage(heads, cell_area)
         
         # 分析结果
-```
+```python
 
 **预期**：
 - K增加 → 越流增加（线性关系）
@@ -613,7 +613,7 @@ for K in K_values:
 # - 各层降深分布
 # - 越流通量大小
 # - 影响范围
-```
+```python
 
 **预期**：
 - 浅层抽水：影响范围小，越流弱
@@ -636,7 +636,7 @@ wells = [
 # - 单井 vs 多井
 # - 越流总量变化
 # - 降深叠加效应
-```
+```python
 
 **预期**：
 - 越流补给显著增加

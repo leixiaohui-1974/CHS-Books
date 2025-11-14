@@ -67,7 +67,7 @@
 
 ### 题1：连续性方程
 **核心公式**：
-```
+```python
 Q = A₁v₁ = A₂v₂ = 常数
 v ∝ 1/d²
 ```
@@ -81,7 +81,7 @@ v ∝ 1/d²
 
 ### 题2：伯努利方程
 **核心公式**：
-```
+```python
 z + p/(ρg) + v²/(2g) = 常数
 ```
 
@@ -95,7 +95,7 @@ z + p/(ρg) + v²/(2g) = 常数
 
 ### 题6：动量方程
 **核心公式**：
-```
+```python
 ΣF = ρQ(v₂ - v₁)
 ```
 
@@ -109,7 +109,7 @@ z + p/(ρg) + v²/(2g) = 常数
 
 ### 题9：能量损失
 **核心公式**：
-```
+```python
 沿程损失：hf = λ(L/d)v²/(2g)
 局部损失：hm = ζv²/(2g)
 ```
@@ -158,12 +158,12 @@ Python 3.8+
 numpy
 matplotlib
 scipy
-```
+```python
 
 ### 2. 安装依赖
 ```bash
 pip install numpy matplotlib scipy
-```
+```python
 
 ### 3. 运行示例
 ```bash
@@ -184,7 +184,7 @@ python ch02_problem12_pipe_flow.py
 
 # 运行题15：综合应用
 python ch02_problem15_comprehensive.py
-```
+```python
 
 ### 4. 修改参数
 每个程序的`main()`函数中都可以修改输入参数：

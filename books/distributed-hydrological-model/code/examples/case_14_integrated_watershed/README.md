@@ -29,7 +29,7 @@
 
 ### 1. 建模流程
 
-```
+```python
 ┌────────────────────────┐
 │    流域网格化          │
 │   (20×20网格)         │
@@ -68,7 +68,7 @@
 center_x, center_y = nx * 500, ny * 500
 radius = min(nx, ny) * 400
 mask = ((X - center_x)**2 + (Y - center_y)**2) <= radius**2
-```
+```python
 
 **特点**:
 - 规则网格：1km × 1km
@@ -85,7 +85,7 @@ rainfall_valid = inverse_distance_weighting(
     valid_points, # 网格中心
     power=2       # IDW参数
 )
-```
+```python
 
 ### 4. 分布式产流
 
@@ -98,14 +98,14 @@ for i, j in zip(*valid_indices):
         np.array([EM[t]])
     )
     grid_runoff[i, j] = results['R'][0]
-```
+```python
 
 ### 5. 流域汇总
 
 **空间平均出流**:
 ```python
 total_runoff[t] = np.mean(grid_runoff[mask])
-```
+```python
 
 ---
 
@@ -128,7 +128,7 @@ def create_watershed_grid(nx=20, ny=20):
     mask = ((X - center_x)**2 + (Y - center_y)**2) <= radius**2
     
     return X, Y, mask
-```
+```python
 
 #### 2. 降雨插值
 
@@ -147,7 +147,7 @@ def interpolate_rainfall(grid_x, grid_y, mask, stations_xy, rainfall):
         rainfall_grid[mask] = rainfall_valid
     
     return rainfall_grid
-```
+```python
 
 #### 3. 分布式模拟
 
@@ -165,7 +165,7 @@ for t in range(n_days):
     
     # 3. 流域汇总
     total_runoff[t] = np.mean(grid_runoff[mask])
-```
+```python
 
 ---
 
@@ -215,7 +215,7 @@ for t in range(n_days):
   总径流: 239.6 mm
   径流系数: 0.680
   峰值径流: 26.48 mm
-```
+```python
 
 ### 可视化结果
 

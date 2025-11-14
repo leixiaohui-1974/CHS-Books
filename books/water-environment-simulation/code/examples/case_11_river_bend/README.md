@@ -55,12 +55,12 @@
 3. 宽深比B/H：比值越大，二次流越强
 
 **最大横向流速**:
-```
+```python
 v_max ≈ 0.1 * u * (B/R)
 ```
 
 对于本案例：
-```
+```python
 v_max ≈ 0.1 * 0.6 * (80/955) ≈ 0.005 m/s
 ```
 
@@ -74,7 +74,7 @@ v_max ≈ 0.1 * 0.6 * (80/955) ≈ 0.005 m/s
 - 有效扩散系数增大
 
 **增强系数**:
-```
+```python
 K_bend = 1 + C * (B/R)^n
 ```
 
@@ -84,14 +84,14 @@ K_bend = 1 + C * (B/R)^n
 - K_bend = 1.5-3.0
 
 **有效扩散系数**:
-```
+```python
 Ey_eff = Ey_straight * K_bend
 ```
 
 #### 混合长度缩短
 
 **Fischer公式**:
-```
+```python
 L_mix_bend = L_mix_straight / K_bend
 ```
 

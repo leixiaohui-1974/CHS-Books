@@ -19,12 +19,12 @@ Python >= 3.8
 numpy >= 1.20
 matplotlib >= 3.3
 scipy >= 1.6
-```
+```python
 
 ### 安装依赖
 ```bash
 pip install numpy matplotlib scipy
-```
+```python
 
 ### 运行示例
 ```bash
@@ -34,7 +34,7 @@ python3 problem_001_hydrostatic_pressure.py
 
 # 查看生成的图表
 ls problem_001_result.png
-```
+```python
 
 ---
 
@@ -312,7 +312,7 @@ python3 problem_001_hydrostatic_pressure.py
 
 # 查看生成的图表
 # problem_001_result.png (包含6个子图)
-```
+```python
 
 ---
 
@@ -329,7 +329,7 @@ python3 problem_001_hydrostatic_pressure.py
 5. 渗流（36-39）   → 地下水
 6. 水泵（40-41）   → 机械设备
 7. 综合（42-45）   → 系统整合
-```
+```python
 
 #### 考研复习（按知识点）
 ```
@@ -338,7 +338,7 @@ python3 problem_001_hydrostatic_pressure.py
 3. 综合应用：26, 35, 39, 42, 43
 4. 重点难点：16, 24, 25, 33, 45
 5. 冲刺模拟：101, 681, 751, 766, 904
-```
+```python
 
 #### 工程应用（按场景）
 ```
@@ -347,7 +347,7 @@ python3 problem_001_hydrostatic_pressure.py
 3. 农田水利：27, 32, 33, 34, 44
 4. 水电工程：25, 45
 5. 地下水：36, 37, 38, 39
-```
+```python
 
 ### 代码结构
 
@@ -374,7 +374,7 @@ def test_problem_xxx():
     solver.print_results()
     fig = solver.visualize()
     plt.savefig('problem_xxx_result.png')
-```
+```python
 
 ### 修改参数
 
@@ -388,7 +388,7 @@ class HydrostaticPressure:
         self.g = 9.8         # 修改重力加速度
         self.h = 5           # 修改水深
         # ... 其他参数
-```
+```python
 
 ---
 
@@ -400,7 +400,7 @@ class HydrostaticPressure:
 for i in {001..045}; do
     find . -name "problem_${i}_*.py" -exec python3 {} \;
 done
-```
+```python
 
 ### 导出数据
 ```python
@@ -414,7 +414,7 @@ def export_results(self):
     }
     with open('results.json', 'w') as f:
         json.dump(data, f, indent=2)
-```
+```python
 
 ### 集成应用
 ```python
@@ -426,7 +426,7 @@ solver = HydrostaticPressure()
 solver.h = 10  # 修改参数
 solver.calculate_pressure()
 print(f"压强: {solver.p:.2f} Pa")
-```
+```python
 
 ---
 
@@ -460,19 +460,19 @@ print(f"压强: {solver.p:.2f} Pa")
 ### Q1: 导入错误
 ```
 ModuleNotFoundError: No module named 'numpy'
-```
+```python
 **解决**: 安装依赖 `pip install numpy matplotlib scipy`
 
 ### Q2: 中文显示乱码
 ```
 UserWarning: Glyph missing from font
-```
+```python
 **解决**: 代码已配置多种中文字体，Mac用户自动使用Arial Unicode MS
 
 ### Q3: 计算不收敛
 ```
 RuntimeError: Failed to converge
-```
+```python
 **解决**: 调整初始猜测值或求解器参数（如`maxiter`、`xtol`）
 
 ### Q4: 图片保存失败

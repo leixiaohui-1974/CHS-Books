@@ -47,7 +47,7 @@ pytest books/open-channel-hydraulics/tests/test_integration.py -v
 
 # 运行性能测试
 pytest books/open-channel-hydraulics/tests/test_benchmark.py -v -s
-```
+```python
 
 ### 运行示例程序
 
@@ -57,7 +57,7 @@ python books/open-channel-hydraulics/code/examples/case_01_irrigation/main.py
 
 # 批量运行所有示例
 python books/open-channel-hydraulics/code/examples/run_all_examples.py
-```
+```python
 
 ## 教材概述
 
@@ -369,7 +369,7 @@ open-channel-hydraulics/
         ├── roughness.csv      # 糙率表
         ├── pump_curves.csv    # 水泵特性
         └── validation_data/   # 验证数据
-```
+```python
 
 ## 核心知识点
 
@@ -457,7 +457,7 @@ pip install numpy scipy matplotlib pandas pytest
 
 # 4. 验证安装
 python -c "import numpy, scipy, matplotlib; print('安装成功！')"
-```
+```python
 
 ## 学习路径
 

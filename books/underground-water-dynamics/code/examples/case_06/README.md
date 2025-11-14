@@ -27,19 +27,19 @@
 参数率定是反问题：给定观测数据，估计模型参数。
 
 **正演问题**：
-```
+```python
 参数 p → 模型 → 模拟值 h_sim
 ```
 
 **反演问题**：
-```
+```python
 观测值 h_obs → 优化 → 参数 p
 ```
 
 ### 目标函数
 
 **加权最小二乘目标函数**：
-```
+```python
 Φ(p) = Σ w_i [h_obs,i - h_sim,i(p)]²
 ```
 
@@ -53,14 +53,14 @@
 ### 敏感性矩阵（Jacobian矩阵）
 
 **定义**：
-```
+```python
 J_ij = ∂h_i / ∂p_j
 ```
 
 表示第i个观测对第j个参数的敏感性。
 
 **计算方法**：
-```
+```python
 J_ij ≈ [h_i(p + Δp_j) - h_i(p)] / Δp_j
 ```
 
@@ -69,7 +69,7 @@ J_ij ≈ [h_i(p + Δp_j) - h_i(p)] / Δp_j
 ### 1. 梯度下降法
 
 **更新公式**：
-```
+```python
 p_{k+1} = p_k - α ∇Φ(p_k)
 ```
 
@@ -91,7 +91,7 @@ p_{k+1} = p_k - α ∇Φ(p_k)
 ### 2. Gauss-Newton法
 
 **更新公式**：
-```
+```python
 p_{k+1} = p_k + (J^T W J)^{-1} J^T W r
 ```
 
@@ -115,7 +115,7 @@ p_{k+1} = p_k + (J^T W J)^{-1} J^T W r
 ### 3. Levenberg-Marquardt法
 
 **更新公式**：
-```
+```python
 p_{k+1} = p_k + (J^T W J + λI)^{-1} J^T W r
 ```
 
@@ -123,7 +123,7 @@ p_{k+1} = p_k + (J^T W J + λI)^{-1} J^T W r
 - λ: 阻尼因子（动态调整）
 
 **自适应策略**：
-```
+```python
 如果 Φ(p_{k+1}) < Φ(p_k):
     接受更新，λ ← λ/10
 否则:
@@ -145,7 +145,7 @@ p_{k+1} = p_k + (J^T W J + λI)^{-1} J^T W r
 ### 复合敏感性
 
 **定义**：
-```
+```python
 CSS_j = sqrt(Σ w_i (∂h_i/∂p_j)²)
 ```
 
@@ -157,7 +157,7 @@ CSS_j = sqrt(Σ w_i (∂h_i/∂p_j)²)
 ### 参数相关性
 
 **相关性矩阵**：
-```
+```python
 ρ_ij = (J^T W J)_ij / sqrt((J^T W J)_ii * (J^T W J)_jj)
 ```
 
@@ -171,7 +171,7 @@ CSS_j = sqrt(Σ w_i (∂h_i/∂p_j)²)
 ```bash
 cd code/examples/case_06
 python3 case_06_calibration.py
-```
+```matlab
 
 ## 输出结果
 
@@ -213,7 +213,7 @@ python3 case_06_calibration.py
 修改噪声水平：
 ```python
 noise_level = 0.1  # 10%噪声（原为5%）
-```
+```python
 
 **观察**：
 - 噪声增大，率定误差增大
@@ -224,7 +224,7 @@ noise_level = 0.1  # 10%噪声（原为5%）
 尝试不同的初始值：
 ```python
 K_init = 2.0  # 更差的初始猜测
-```
+```python
 
 **观察**：
 - 梯度下降可能需要更多迭代
@@ -236,7 +236,7 @@ K_init = 2.0  # 更差的初始猜测
 改变观测点数量：
 ```python
 obs_indices = np.linspace(10, 90, 20, dtype=int)  # 20个点
-```
+```python
 
 **观察**：
 - 观测点越多，率定越准确
@@ -251,7 +251,7 @@ bounds = [
     (18.0, 22.0),  # 更严格的h_left范围
     (8.0, 12.0)    # 更严格的h_right范围
 ]
-```
+```python
 
 **观察**：
 - 合理的边界约束有助于收敛
@@ -262,7 +262,7 @@ bounds = [
 对梯度下降法：
 ```python
 learning_rate = 0.001  # 减小学习率
-```
+```python
 
 **观察**：
 - 学习率过小：收敛慢
@@ -274,7 +274,7 @@ learning_rate = 0.001  # 减小学习率
 ```python
 # 分区K值
 params = [K1, K2, K3, h_left, h_right]
-```
+```python
 
 **观察**：
 - 参数越多，相关性越强
@@ -303,7 +303,7 @@ params = [K1, K2, K3, h_left, h_right]
 初始猜测差 → 梯度下降
 初始猜测好 → Gauss-Newton
 一般情况 → Levenberg-Marquardt（推荐）
-```
+```python
 
 ### Q3: 什么是目标函数的"良好"值？
 
@@ -338,30 +338,30 @@ params = [K1, K2, K3, h_left, h_right]
 目标函数：
 ```
 Φ(p) = (h_obs - h_sim(p))^T W (h_obs - h_sim(p))
-```
+```python
 
 梯度：
 ```
 ∇Φ = ∂Φ/∂p = -2 J^T W (h_obs - h_sim) = -2 J^T W r
-```
+```python
 
 ### Gauss-Newton推导
 
 **泰勒展开**：
 ```
 h_sim(p + Δp) ≈ h_sim(p) + J Δp
-```
+```python
 
 **线性化目标函数**：
 ```
 Φ(p + Δp) ≈ (h_obs - h_sim - J Δp)^T W (h_obs - h_sim - J Δp)
-```
+```python
 
 **求最优Δp**：
 ```
 ∂Φ/∂(Δp) = 0
 ⇒ (J^T W J) Δp = J^T W r
-```
+```python
 
 ### L-M算法的信赖域解释
 

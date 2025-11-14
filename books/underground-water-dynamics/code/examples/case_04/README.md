@@ -26,7 +26,7 @@
 
 二维瞬态渗流方程（均质承压含水层）：
 
-```
+```python
 S * ∂h/∂t = K * (∂²h/∂x² + ∂²h/∂y²) + Q
 ```
 
@@ -39,7 +39,7 @@ S * ∂h/∂t = K * (∂²h/∂x² + ∂²h/∂y²) + Q
 
 对于无限大承压含水层中的单井抽水：
 
-```
+```python
 s(r, t) = Q/(4πT) * W(u)
 ```
 
@@ -50,7 +50,7 @@ s(r, t) = Q/(4πT) * W(u)
 - u = r²S/(4Tt)
 
 井函数：
-```
+```python
 W(u) = -Ei(-u) = ∫[u,∞] e^(-y)/y dy
 ```
 
@@ -74,7 +74,7 @@ W(u) = -Ei(-u) = ∫[u,∞] e^(-y)/y dy
 
 **隐式欧拉法（向后欧拉）**：
 
-```
+```python
 S(h^(n+1) - h^n)/Δt = K∇²h^(n+1) + Q
 ```
 
@@ -88,7 +88,7 @@ S(h^(n+1) - h^n)/Δt = K∇²h^(n+1) + Q
 
 **显式欧拉法（向前欧拉）**：
 
-```
+```python
 S(h^(n+1) - h^n)/Δt = K∇²h^n + Q
 ```
 
@@ -104,12 +104,12 @@ S(h^(n+1) - h^n)/Δt = K∇²h^n + Q
 
 对于显式方法，稳定性条件：
 
-```
+```python
 K*Δt/S * (1/Δx² + 1/Δy²) ≤ 0.5
 ```
 
 即：
-```
+```python
 Δt ≤ 0.5 * S * min(Δx², Δy²) / K
 ```
 
@@ -118,7 +118,7 @@ K*Δt/S * (1/Δx² + 1/Δy²) ≤ 0.5
 ```bash
 cd code/examples/case_04
 python3 case_04_transient.py
-```
+```python
 
 ## 输出结果
 
@@ -155,7 +155,7 @@ python3 case_04_transient.py
 对于本问题：
 ```
 T_c = 0.001 × 1000² / 10 = 100 day
-```
+```python
 
 ## 实验探索
 
@@ -165,7 +165,7 @@ T_c = 0.001 × 1000² / 10 = 100 day
 
 ```python
 S_values = [0.0001, 0.001, 0.01]
-```
+```python
 
 **观察**：
 - S越小，降深发展越快
@@ -181,7 +181,7 @@ dt = 1.0, method='implicit'
 
 # 显式方法（小时间步）
 dt = 0.1, method='explicit'
-```
+```python
 
 **观察**：
 - 隐式方法稳定性更好
@@ -197,7 +197,7 @@ source = np.zeros((nt, ny, nx))
 source[:, ny//3, nx//3] = -50.0 / (dx * dy)
 # 井2
 source[:, 2*ny//3, 2*nx//3] = -50.0 / (dx * dy)
-```
+```python
 
 **观察**：降落漏斗的叠加效应。
 
@@ -210,7 +210,7 @@ source = np.zeros((nt, ny, nx))
 for t in range(nt):
     if (t // 20) % 2 == 0:  # 每20天切换一次
         source[t, well_i, well_j] = -Q_well / (dx * dy)
-```
+```python
 
 **观察**：水位恢复过程。
 
@@ -227,7 +227,7 @@ for t in range(nt):
     else:
         Q = 150.0
     source[t, well_i, well_j] = -Q / (dx * dy)
-```
+```python
 
 **观察**：降深的阶梯响应。
 
@@ -275,17 +275,17 @@ for t in range(nt):
 从径向流方程：
 ```
 S * ∂h/∂t = T * (∂²h/∂r² + 1/r * ∂h/∂r)
-```
+```python
 
 引入相似变换：
 ```
 u = r²/(4Tt/S)
-```
+```python
 
 得到降深：
 ```
 s = Q/(4πT) * W(u)
-```
+```python
 
 ### 数值稳定性分析
 
@@ -293,7 +293,7 @@ s = Q/(4πT) * W(u)
 
 ```
 |1 - 2α(cos(kxΔx) + cos(kyΔy) - 2)| ≤ 1
-```
+```python
 
 其中 α = KΔt/(SΔx²)
 

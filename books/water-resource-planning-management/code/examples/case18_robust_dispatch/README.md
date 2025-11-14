@@ -16,13 +16,13 @@
 ### 1. 鲁棒优化思想
 
 **确定性优化**：
-```
+```python
 min E[f(x, ξ)]
 ```
 追求期望最优，但可能在坏情景下表现很差
 
 **鲁棒优化**：
-```
+```python
 min max_ξ f(x, ξ)
 ```
 追求最坏情景最优，保守但稳健
@@ -30,28 +30,28 @@ min max_ξ f(x, ξ)
 ### 2. 鲁棒优化方法
 
 **Min-Max（最坏情景）**：
-```
+```python
 min_x max_s∈S f(x, s)
 ```
 
 **Min-Max Regret（最小后悔）**：
-```
+```python
 min_x max_s∈S [f(x,s) - f^*(s)]
 ```
 
 **加权鲁棒**：
-```
+```python
 min_x [α*E[f(x,s)] + (1-α)*max_s f(x,s)]
 ```
 
 **CVaR优化**：
-```
+```python
 min_x CVaR_α[f(x,s)]
 ```
 
 ## 技术路线
 
-```
+```python
 水库调度问题
   ├─ 目标：最大化发电
   ├─ 约束：水量平衡、库容
@@ -92,7 +92,7 @@ def robust_minmax(x0, scenarios):
     
     result = minimize(worst_case_objective, x0)
     return result
-```
+```python
 
 ### 2. Min-Max Regret
 
@@ -109,7 +109,7 @@ def robust_regret(x0, scenarios):
     
     result = minimize(regret_objective, x0)
     return result
-```
+```python
 
 ### 3. 加权鲁棒
 
@@ -123,7 +123,7 @@ def weighted_robust(x0, scenarios, alpha):
     
     result = minimize(objective, x0)
     return result
-```
+```python
 
 ## 运行方法
 

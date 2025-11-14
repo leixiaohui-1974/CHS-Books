@@ -36,14 +36,14 @@ Thiessen多边形法（又称泰森多边形、Voronoi图）是水文学中最�
 Thiessen多边形将流域空间划分为若干个区域，每个区域内的点到该站点的距离最近。
 
 **核心思想**:
-```
+```python
 任一点的降雨量 = 最近站点的降雨量
 ```
 
 ### 2. 面雨量计算
 
 **面积加权法**:
-```
+```python
 P_mean = Σ(Ai × Pi) / A_total
 ```
 
@@ -66,7 +66,7 @@ Thiessen多边形在数学上称为Voronoi图，具有以下性质：
 
 ```bash
 python main.py
-```
+```python
 
 ### 查看结果
 
@@ -76,7 +76,7 @@ ls outputs/
 # rainfall_distribution.png - 降雨空间分布
 # sensitivity_analysis.png - 站点数量敏感性分析
 # comparison.png - 不同方法对比
-```
+```matlab
 
 ## 📈 实验内容
 

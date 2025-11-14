@@ -28,7 +28,7 @@
 ### 遮挡效应
 
 **串联特性影响**:
-```
+```python
 串联电路: I_string = min(I1, I2, ..., In)
 → 最弱电池限制整串电流
 → 功率损失远大于遮挡面积比例
@@ -42,7 +42,7 @@
 ### 热斑效应
 
 **形成机制**:
-```
+```python
 1. 遮挡电池产生负电压
 2. 消耗功率而非产生功率
 3. 转化为热量
@@ -102,7 +102,7 @@ print(f"遮挡电池数: {result['num_shaded_cells']}/{module.Ns}")
 print(f"遮挡比例: {result['shading_ratio']*100:.1f}%")
 print(f"严重程度: {result['severity']}")
 print(f"受影响组: {result['num_affected_groups']}/{module.Nb}")
-```
+```python
 
 输出:
 ```
@@ -110,7 +110,7 @@ print(f"受影响组: {result['num_affected_groups']}/{module.Nb}")
 遮挡比例: 33.3%
 严重程度: 中度遮挡
 受影响组: 1/3
-```
+```python
 
 ### 2. 热斑风险评估
 
@@ -123,7 +123,7 @@ print(f"辐照度: {hotspot_result['weakest_cell_irradiance']} W/m²")
 print(f"预估温升: {hotspot_result['estimated_temp_rise']:.1f}°C")
 print(f"风险等级: {hotspot_result['risk_level']}")
 print(f"旁路激活: {'是' if hotspot_result['will_bypass_activate'] else '否'}")
-```
+```python
 
 输出:
 ```
@@ -132,7 +132,7 @@ print(f"旁路激活: {'是' if hotspot_result['will_bypass_activate'] else '否
 预估温升: 75.0°C
 风险等级: 高风险
 旁路激活: 是
-```
+```python
 
 ### 3. 功率损失估算
 
@@ -144,7 +144,7 @@ print(f"基准功率: {loss_result['baseline_power']:.2f} W")
 print(f"遮挡功率: {loss_result['shaded_power']:.2f} W")
 print(f"功率损失: {loss_result['power_loss']:.2f} W")
 print(f"损失比例: {loss_result['loss_percentage']:.1f}%")
-```
+```python
 
 ### 4. I-V曲线诊断
 
@@ -166,7 +166,7 @@ print(f"Pmpp: {analysis['Pmpp']:.2f} W")
 print(f"FF: {analysis['FF']:.3f}")
 print(f"台阶数: {analysis['num_steps']}")
 print(f"遮挡: {'是' if analysis['has_shading'] else '否'}")
-```
+```python
 
 ### 5. 故障检测
 
@@ -184,14 +184,14 @@ faults = diagnostics.detect_faults(V, I, reference)
 print("故障诊断:")
 for fault in faults:
     print(f"  • {fault}")
-```
+```python
 
 输出:
 ```
 故障诊断:
   • 检测到遮挡特征 - 3个台阶
   • 短路电流过低 - 可能遮挡或污染
-```
+```python
 
 ### 6. 性能评估
 
@@ -212,7 +212,7 @@ print(f"当前功率: {health['current_power']} W")
 print(f"期望功率: {health['expected_power']:.0f} W")
 print(f"性能比: {health['pr_percentage']:.1f}%")
 print(f"健康评级: {health['health_grade']}")
-```
+```matlab
 
 ---
 

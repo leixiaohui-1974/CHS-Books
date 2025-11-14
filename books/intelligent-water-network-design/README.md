@@ -16,7 +16,7 @@
 
 ### 与前三本书的关系（重点复用）
 
-```
+```python
 第1本：《水系统控制论》（20个案例）
          ↓ 复用
     - SingleTank、DoubleTank模型
@@ -208,7 +208,7 @@ openings_local = [PID[i].update() for i in range(4)]  # 局部控制
 ff_comp = feedforward_compensation(flow_change)        # 前馈补偿
 openings = decoupling_control(openings_local + ff_comp) # 解耦
 openings = global_optimization(openings, demands)      # 全局优化
-```
+```python
 
 **性能提升**:
 - 控制精度: ±3cm → ±2cm (L2→L3)
@@ -237,7 +237,7 @@ python dynamic_design_L3.py
 
 # 查看输出文件
 ls -lh *.png *.txt
-```
+```python
 
 ### 📊 三种方案对比
 
@@ -310,7 +310,7 @@ ls -lh *.png *.txt
    实现"设计即智能"
         ↓
    真实工程应用
-```
+```python
 
 ---
 
@@ -357,7 +357,7 @@ ls -lh *.png *.txt
 │  - 执行机构（泵、阀门、闸门等）               │
 │  - 水流过程（明渠流、管道流等）               │
 └─────────────────────────────────────────────┘
-```
+```matlab
 
 ### 智能化等级定义
 
@@ -834,7 +834,7 @@ Matplotlib 3.4+
 优化库：scipy.optimize, pymoo, deap
 仿真库：simpy
 可视化：plotly, dash
-```
+```python
 
 ### 硬件建议
 - CPU：4核以上（大规模仿真需要8核+）
@@ -985,7 +985,7 @@ intelligent-water-network-design/
     │   ├── agent_config.schema.json    # 智能体配置
     │   └── test_config.schema.json     # 测试配置
     └── images/                         # 图片资源
-```
+```python
 
 ---
 
@@ -995,13 +995,13 @@ intelligent-water-network-design/
 ```bash
 cd /workspace/books/intelligent-water-network-design
 pip install -r requirements.txt
-```
+```python
 
 ### 2. 运行第一个案例
 ```bash
 cd code/examples/case_01_irrigation_l2
 python main.py
-```
+```python
 
 ### 3. 查看结果
 ```bash

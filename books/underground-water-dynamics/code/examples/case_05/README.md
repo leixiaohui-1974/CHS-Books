@@ -20,7 +20,7 @@
 
 ### 强形式（偏微分方程）
 
-```
+```python
 -∇·(K∇h) = 0    in Ω (求解域)
 h = g            on Γ_D (Dirichlet边界)
 -K∂h/∂n = q      on Γ_N (Neumann边界)
@@ -30,7 +30,7 @@ h = g            on Γ_D (Dirichlet边界)
 
 对强形式乘以测试函数w并在Ω上积分：
 
-```
+```python
 ∫∫_Ω K ∇w · ∇h dA = 0    ∀w ∈ H₀¹(Ω)
 ```
 
@@ -39,7 +39,7 @@ h = g            on Γ_D (Dirichlet边界)
 ### 有限元离散
 
 **1. 近似解**：
-```
+```python
 h(x,y) ≈ h^h(x,y) = Σ N_i(x,y) · h_i
 ```
 
@@ -50,7 +50,7 @@ h(x,y) ≈ h^h(x,y) = Σ N_i(x,y) · h_i
 **2. 形函数（线性三角形）**：
 
 参考单元坐标(ξ, η)：
-```
+```python
 N₁ = 1 - ξ - η
 N₂ = ξ
 N₃ = η
@@ -58,12 +58,12 @@ N₃ = η
 
 **3. 单元刚度矩阵**：
 
-```
+```python
 K_elem[i,j] = ∫∫ K ∇N_i · ∇N_j dA
 ```
 
 对于常数K的三角形单元：
-```
+```python
 K_elem = K · (∇N)ᵀ · (∇N) · |det(J)| / 2
 ```
 
@@ -71,7 +71,7 @@ K_elem = K · (∇N)ᵀ · (∇N) · |det(J)| / 2
 
 **4. 全局系统组装**：
 
-```
+```json
 [K_global]{h} = {F}
 ```
 
@@ -96,7 +96,7 @@ K_elem = K · (∇N)ᵀ · (∇N) · |det(J)| / 2
 ```bash
 cd code/examples/case_05
 python3 case_05_finite_element.py
-```
+```python
 
 ## 输出结果
 
@@ -141,7 +141,7 @@ mesh_configs = [
     (21, 17),  # 细网格
     (41, 33)   # 很细网格
 ]
-```
+```python
 
 **观察**：误差随网格加密呈二次方下降。
 
@@ -151,7 +151,7 @@ mesh_configs = [
 ```python
 # 故意创建不规则网格
 vertices_perturbed = vertices + random_noise
-```
+```python
 
 **观察**：网格质量下降导致精度降低。
 
@@ -161,7 +161,7 @@ vertices_perturbed = vertices + random_noise
 # 分区设置K值
 K_elem = np.ones(mesh.n_elements) * 10.0
 K_elem[某些单元] = 1.0  # 低渗透区
-```
+```python
 
 **观察**：有限元更容易处理非均质。
 
@@ -171,7 +171,7 @@ K_elem[某些单元] = 1.0  # 低渗透区
 # 尝试使用meshpy生成圆形或L形区域
 import meshpy.triangle as triangle
 # ... 生成复杂几何
-```
+```python
 
 **观察**：有限元的几何灵活性优势。
 
@@ -180,7 +180,7 @@ import meshpy.triangle as triangle
 ```python
 # 使用二次三角形单元（6节点）
 # 需要修改形函数和刚度矩阵计算
-```
+```python
 
 **观察**：高阶单元精度更高但计算量更大。
 
@@ -201,7 +201,7 @@ import meshpy.triangle as triangle
 ```
 J = [∂x/∂ξ  ∂x/∂η]
     [∂y/∂ξ  ∂y/∂η]
-```
+```python
 
 用于：
 - 坐标变换
@@ -239,34 +239,34 @@ J = [∂x/∂ξ  ∂x/∂η]
 **步骤1**：乘以测试函数
 ```
 -∇·(K∇h) · w = 0
-```
+```python
 
 **步骤2**：在Ω上积分
 ```
 -∫∫_Ω ∇·(K∇h) · w dA = 0
-```
+```python
 
 **步骤3**：分部积分（散度定理）
 ```
 ∫∫_Ω K∇h · ∇w dA - ∫_Γ K∂h/∂n · w ds = 0
-```
+```python
 
 **步骤4**：应用Neumann边界条件
 ```
 ∫∫_Ω K∇h · ∇w dA = ∫_Γ_N q · w ds
-```
+```python
 
 ### Galerkin方法
 
 选择测试函数w与形函数N相同：
 ```
 w = N_i,  i = 1, 2, ..., n
-```
+```python
 
 得到离散系统：
 ```
 [K]{h} = {F}
-```
+```python
 
 ### 单元刚度矩阵推导
 
@@ -274,13 +274,13 @@ w = N_i,  i = 1, 2, ..., n
 
 ```
 K_elem[i,j] = ∫∫_Ω_e K ∇N_i · ∇N_j dA
-```
+```python
 
 因为∇N_i在单元内为常数：
 
 ```
 K_elem[i,j] = K · ∇N_i · ∇N_j · A_e
-```
+```python
 
 其中A_e是单元面积。
 

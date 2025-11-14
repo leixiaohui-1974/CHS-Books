@@ -30,7 +30,7 @@
 ### 1. 城镇化影响
 
 **不透水面积增加**:
-```
+```python
 城镇化 → 不透水面↑ → 蓄水容量↓ → 径流↑
 ```
 
@@ -43,7 +43,7 @@
 ### 2. 森林覆盖影响
 
 **生态调节作用**:
-```
+```python
 森林覆盖 → 蓄水能力↑ → 蒸散发↑ → 径流↓
            → 地下水补给↑
 ```
@@ -101,7 +101,7 @@ class LandUseScenario:
         params['KG'] = base_params['KG'] * (1.0 + 0.2 * forest)
         
         return params
-```
+```python
 
 #### 2. 情景生成
 
@@ -125,7 +125,7 @@ def generate_scenarios():
     # ... 更多情景
     
     return scenarios
-```
+```python
 
 #### 3. 多情景模拟
 
@@ -143,7 +143,7 @@ for scenario in scenarios:
         'runoff': output['R'],
         'params': params
     }
-```
+```python
 
 ---
 
@@ -164,7 +164,7 @@ for scenario in scenarios:
 轻度城镇化      179.7 mm    +1.8%    24.50    +2.9%
 中度城镇化      180.4 mm    +2.2%    25.30    +6.3%
 高度城镇化      169.4 mm    -4.0%    26.37   +10.8%
-```
+```matlab
 
 ### 关键发现
 

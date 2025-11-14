@@ -29,7 +29,7 @@
 
 ### 1. 耦合流程
 
-```
+```python
 ┌──────────────────┐
 │   降雨输入       │
 └────────┬─────────┘
@@ -63,12 +63,12 @@
 ### 2. Saint-Venant方程
 
 **连续方程**:
-```
+```python
 ∂A/∂t + ∂Q/∂x = 0
 ```
 
 **动量方程**:
-```
+```python
 ∂Q/∂t + ∂(Q²/A)/∂x + gA∂h/∂x = -gASf
 ```
 
@@ -80,7 +80,7 @@
 - g: 重力加速度
 
 **摩阻坡度** (曼宁公式):
-```
+```python
 Sf = n²Q² / (A²R^(4/3))
 ```
 
@@ -101,13 +101,13 @@ C2 = (K - K*X - 0.5*dt) / (K - K*X + 0.5*dt)
 
 # 流量更新
 Q[i] = C0*Q[i-1] + C1*Q_new[i-1] + C2*Q_old[i]
-```
+```python
 
 **水深更新**:
 ```python
 # 曼宁公式反算
 h = (Q*n / (B*S0^0.5))^(3/5)
-```
+```python
 
 ### 4. 单位转换
 
@@ -115,7 +115,7 @@ h = (Q*n / (B*S0^0.5))^(3/5)
 ```python
 volume = runoff(mm) * 1e-3 * area(km²) * 1e6  # m³
 discharge = volume / dt  # m³/s
-```
+```python
 
 ---
 
@@ -148,7 +148,7 @@ class SaintVenant1D:
         h_new[i] = (Q*n / (B*S0^0.5))^(3/5)
         
         return h_new, Q_new
-```
+```python
 
 #### 2. 耦合接口
 
@@ -169,7 +169,7 @@ def couple_simulation(rainfall, evaporation,
     )
     
     return results
-```
+```python
 
 ---
 
@@ -201,7 +201,7 @@ def couple_simulation(rainfall, evaporation,
   峰值流量: 571.8 m³/s
   峰值水深: 7.21 m
   平均水深: 0.35 m
-```
+```python
 
 ### 可视化结果
 

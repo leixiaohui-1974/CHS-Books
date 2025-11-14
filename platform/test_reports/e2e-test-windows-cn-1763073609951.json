@@ -1,0 +1,1321 @@
+{
+  "summary": {
+    "startTime": "2025-11-13T22:40:05.781Z",
+    "totalTests": 40,
+    "passedTests": 0,
+    "failedTests": 40,
+    "screenshots": 0,
+    "books": {
+      "total": 34,
+      "tested": 34,
+      "passed": 0,
+      "failed": 34
+    },
+    "chapters": {
+      "total": 0,
+      "tested": 0,
+      "passed": 0,
+      "failed": 0
+    },
+    "cases": {
+      "total": 236,
+      "tested": 30,
+      "passed": 30,
+      "failed": 0
+    },
+    "ui": {
+      "layout": {
+        "passed": 0,
+        "failed": 0
+      },
+      "typography": {
+        "passed": 0,
+        "failed": 0
+      },
+      "images": {
+        "passed": 0,
+        "failed": 0
+      },
+      "tables": {
+        "passed": 0,
+        "failed": 0
+      },
+      "buttons": {
+        "passed": 0,
+        "failed": 0
+      }
+    },
+    "endTime": "2025-11-13T22:40:09.951Z",
+    "duration": "4.17秒",
+    "environment": {
+      "locale": "zh-CN",
+      "timezone": "Asia/Shanghai",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  },
+  "books": [
+    {
+      "id": "water-system-control",
+      "slug": "water-system-control",
+      "title": "水系统控制论",
+      "tested": "2025-11-13T22:40:09.852Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_home_water_tower",
+          "name": "Case 01 Home Water Tower",
+          "title": "案例1：家庭水塔自动供水系统",
+          "tested": true
+        },
+        {
+          "id": "case_02_cooling_tower",
+          "name": "Case 02 Cooling Tower",
+          "title": "案例2：工业冷却塔精确水位控制",
+          "tested": true
+        },
+        {
+          "id": "case_03_water_supply_station",
+          "name": "Case 03 Water Supply Station",
+          "title": "案例3：供水泵站无静差控制",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水系统控制论",
+        "url": "http://localhost:8080/textbooks.html?book=water-system-control",
+        "timestamp": "2025-11-13T22:40:09.852Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-system-control\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-system-control\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "open-channel-hydraulics",
+      "slug": "open-channel-hydraulics",
+      "title": "明渠水力学计算",
+      "tested": "2025-11-13T22:40:09.854Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_irrigation",
+          "name": "Case 01 Irrigation",
+          "title": "案例1：农村灌溉渠流量计算",
+          "tested": true
+        },
+        {
+          "id": "case_02_drainage",
+          "name": "Case 02 Drainage",
+          "title": "案例2：城市雨水排水渠设计",
+          "tested": true
+        },
+        {
+          "id": "case_03_landscape",
+          "name": "Case 03 Landscape",
+          "title": "案例3：景观水渠水流状态分析",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 明渠水力学计算",
+        "url": "http://localhost:8080/textbooks.html?book=open-channel-hydraulics",
+        "timestamp": "2025-11-13T22:40:09.854Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=open-channel-hydraulics\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=open-channel-hydraulics\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "canal-pipeline-control",
+      "slug": "canal-pipeline-control",
+      "title": "运河与管道控制",
+      "tested": "2025-11-13T22:40:09.857Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_single_reach_pid",
+          "name": "Case 01 Single Reach Pid",
+          "title": "案例1：单渠段PID水位控制",
+          "tested": true
+        },
+        {
+          "id": "case_02_multipoint_pid",
+          "name": "Case 02 Multipoint Pid",
+          "title": "案例2：多点反馈分布式PID控制",
+          "tested": true
+        },
+        {
+          "id": "case_03_feedforward_feedback",
+          "name": "Case 03 Feedforward Feedback",
+          "title": "案例3：前馈-反馈复合控制",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 运河与管道控制",
+        "url": "http://localhost:8080/textbooks.html?book=canal-pipeline-control",
+        "timestamp": "2025-11-13T22:40:09.857Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=canal-pipeline-control\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=canal-pipeline-control\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "ecohydraulics",
+      "slug": "ecohydraulics",
+      "title": "生态水力学",
+      "tested": "2025-11-13T22:40:09.859Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_ecological_flow",
+          "name": "Case 01 Ecological Flow",
+          "title": "案例1：河流生态基流计算",
+          "tested": true
+        },
+        {
+          "id": "case_02_habitat_suitability",
+          "name": "Case 02 Habitat Suitability",
+          "title": "案例2：鱼类栖息地适宜性评价",
+          "tested": true
+        },
+        {
+          "id": "case_03_hydrologic_indicators",
+          "name": "Case 03 Hydrologic Indicators",
+          "title": "案例3：河流生态水力指标体系",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 生态水力学",
+        "url": "http://localhost:8080/textbooks.html?book=ecohydraulics",
+        "timestamp": "2025-11-13T22:40:09.859Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=ecohydraulics\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=ecohydraulics\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "distributed-hydrological-model",
+      "slug": "distributed-hydrological-model",
+      "title": "分布式水文模型",
+      "tested": "2025-11-13T22:40:09.861Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_dem_analysis",
+          "name": "Case 01 Dem Analysis",
+          "title": "案例1：DEM分析与河网提取",
+          "tested": true
+        },
+        {
+          "id": "case_02_thiessen",
+          "name": "Case 02 Thiessen",
+          "title": "案例2：Thiessen多边形降雨插值",
+          "tested": true
+        },
+        {
+          "id": "case_03_idw_kriging",
+          "name": "Case 03 Idw Kriging",
+          "title": "案例3：IDW与Kriging空间插值对比",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 分布式水文模型",
+        "url": "http://localhost:8080/textbooks.html?book=distributed-hydrological-model",
+        "timestamp": "2025-11-13T22:40:09.861Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=distributed-hydrological-model\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=distributed-hydrological-model\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "water-environment-simulation",
+      "slug": "water-environment-simulation",
+      "title": "水环境模拟",
+      "tested": "2025-11-13T22:40:09.863Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_diffusion",
+          "name": "Case 01 Diffusion",
+          "title": "案例1：污染物在静水中的扩散",
+          "tested": true
+        },
+        {
+          "id": "case_02_advection_diffusion",
+          "name": "Case 02 Advection Diffusion",
+          "title": "案例2：示踪剂在渠道中的对流-扩散",
+          "tested": true
+        },
+        {
+          "id": "case_03_reaction",
+          "name": "Case 03 Reaction",
+          "title": "案例3：河流中的降解反应与参数率定",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水环境模拟",
+        "url": "http://localhost:8080/textbooks.html?book=water-environment-simulation",
+        "timestamp": "2025-11-13T22:40:09.863Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-environment-simulation\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-environment-simulation\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "water-resource-planning-management",
+      "slug": "water-resource-planning-management",
+      "title": "水资源规划与管理",
+      "tested": "2025-11-13T22:40:09.865Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水资源规划与管理",
+        "url": "http://localhost:8080/textbooks.html?book=water-resource-planning-management",
+        "timestamp": "2025-11-13T22:40:09.865Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-resource-planning-management\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-resource-planning-management\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "underground-water-dynamics",
+      "slug": "underground-water-dynamics",
+      "title": "地下水动力学",
+      "tested": "2025-11-13T22:40:09.866Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01",
+          "name": "Case 01",
+          "title": "案例1：一维稳态地下水流动",
+          "tested": true
+        },
+        {
+          "id": "case_02",
+          "name": "Case 02",
+          "title": "案例2：二维稳态地下水流动与网格剖分",
+          "tested": true
+        },
+        {
+          "id": "case_03",
+          "name": "Case 03",
+          "title": "案例3：非均质含水层模拟",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 地下水动力学",
+        "url": "http://localhost:8080/textbooks.html?book=underground-water-dynamics",
+        "timestamp": "2025-11-13T22:40:09.866Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=underground-water-dynamics\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=underground-water-dynamics\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "intelligent-water-network-design",
+      "slug": "intelligent-water-network-design",
+      "title": "智能供水管网设计",
+      "tested": "2025-11-13T22:40:09.868Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01",
+          "name": "Case 01",
+          "title": "案例1：灌区智能化升级工程设计",
+          "tested": true
+        },
+        {
+          "id": "case_01_irrigation_gate",
+          "name": "Case 01 Irrigation Gate",
+          "tested": true
+        },
+        {
+          "id": "case_02_pump_station",
+          "name": "Case 02 Pump Station",
+          "title": "案例2：提水泵站智能化设计",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 智能供水管网设计",
+        "url": "http://localhost:8080/textbooks.html?book=intelligent-water-network-design",
+        "timestamp": "2025-11-13T22:40:09.868Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=intelligent-water-network-design\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=intelligent-water-network-design\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "photovoltaic-system-modeling-control",
+      "slug": "photovoltaic-system-modeling-control",
+      "title": "光伏系统建模与控制",
+      "tested": "2025-11-13T22:40:09.870Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_pv_cell_iv_characteristics",
+          "name": "Case 01 Pv Cell Iv Characteristics",
+          "title": "案例1: 光伏电池I-V特性建模",
+          "tested": true
+        },
+        {
+          "id": "case_02_double_diode_model",
+          "name": "Case 02 Double Diode Model",
+          "title": "案例2: 双二极管精确模型",
+          "tested": true
+        },
+        {
+          "id": "case_03_pv_module_modeling",
+          "name": "Case 03 Pv Module Modeling",
+          "title": "案例3: 光伏组件建模",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 光伏系统建模与控制",
+        "url": "http://localhost:8080/textbooks.html?book=photovoltaic-system-modeling-control",
+        "timestamp": "2025-11-13T22:40:09.870Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=photovoltaic-system-modeling-control\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=photovoltaic-system-modeling-control\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "wind-power-system-modeling-control",
+      "slug": "wind-power-system-modeling-control",
+      "title": "风电系统建模与控制",
+      "tested": "2025-11-13T22:40:09.871Z",
+      "chapters": [],
+      "cases": [
+        {
+          "id": "case_01_wind_statistics",
+          "name": "Case 01 Wind Statistics",
+          "title": "案例1: 风速统计分析",
+          "tested": true
+        },
+        {
+          "id": "case_02_wind_shear",
+          "name": "Case 02 Wind Shear",
+          "title": "案例2: 风切变与湍流",
+          "tested": true
+        },
+        {
+          "id": "case_03_blade_aerodynamics",
+          "name": "Case 03 Blade Aerodynamics",
+          "tested": true
+        }
+      ],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 风电系统建模与控制",
+        "url": "http://localhost:8080/textbooks.html?book=wind-power-system-modeling-control",
+        "timestamp": "2025-11-13T22:40:09.871Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=wind-power-system-modeling-control\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=wind-power-system-modeling-control\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "energy-storage-system-modeling-control",
+      "slug": "energy-storage-system-modeling-control",
+      "title": "储能系统建模与控制",
+      "tested": "2025-11-13T22:40:09.873Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 储能系统建模与控制",
+        "url": "http://localhost:8080/textbooks.html?book=energy-storage-system-modeling-control",
+        "timestamp": "2025-11-13T22:40:09.873Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=energy-storage-system-modeling-control\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=energy-storage-system-modeling-control\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "integrated-energy-system-simulation-optimization",
+      "slug": "integrated-energy-system-simulation-optimization",
+      "title": "综合能源系统仿真优化",
+      "tested": "2025-11-13T22:40:09.875Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 综合能源系统仿真优化",
+        "url": "http://localhost:8080/textbooks.html?book=integrated-energy-system-simulation-optimization",
+        "timestamp": "2025-11-13T22:40:09.875Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=integrated-energy-system-simulation-optimization\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=integrated-energy-system-simulation-optimization\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "renewable-energy-system-identification-testing",
+      "slug": "renewable-energy-system-identification-testing",
+      "title": "可再生能源系统识别测试",
+      "tested": "2025-11-13T22:40:09.876Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 可再生能源系统识别测试",
+        "url": "http://localhost:8080/textbooks.html?book=renewable-energy-system-identification-testing",
+        "timestamp": "2025-11-13T22:40:09.876Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=renewable-energy-system-identification-testing\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=renewable-energy-system-identification-testing\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "hydraulics-core-100",
+      "slug": "hydraulics-core-100",
+      "title": "水力学核心100题",
+      "tested": "2025-11-13T22:40:09.879Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水力学核心100题",
+        "url": "http://localhost:8080/textbooks.html?book=hydraulics-core-100",
+        "timestamp": "2025-11-13T22:40:09.879Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-core-100\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-core-100\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "hydraulics-advanced",
+      "slug": "hydraulics-advanced",
+      "title": "水力学考研高分突破",
+      "tested": "2025-11-13T22:40:09.880Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水力学考研高分突破",
+        "url": "http://localhost:8080/textbooks.html?book=hydraulics-advanced",
+        "timestamp": "2025-11-13T22:40:09.880Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-advanced\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-advanced\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "hydrology-advanced",
+      "slug": "hydrology-advanced",
+      "title": "水文学考研高分突破",
+      "tested": "2025-11-13T22:40:09.881Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水文学考研高分突破",
+        "url": "http://localhost:8080/textbooks.html?book=hydrology-advanced",
+        "timestamp": "2025-11-13T22:40:09.881Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydrology-advanced\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydrology-advanced\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "math1-handbook",
+      "slug": "math1-handbook",
+      "title": "数学一速成手册",
+      "tested": "2025-11-13T22:40:09.882Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 数学一速成手册",
+        "url": "http://localhost:8080/textbooks.html?book=math1-handbook",
+        "timestamp": "2025-11-13T22:40:09.882Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=math1-handbook\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=math1-handbook\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "30days-sprint",
+      "slug": "30days-sprint",
+      "title": "30天考研冲刺宝典",
+      "tested": "2025-11-13T22:40:09.883Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 30天考研冲刺宝典",
+        "url": "http://localhost:8080/textbooks.html?book=30days-sprint",
+        "timestamp": "2025-11-13T22:40:09.884Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=30days-sprint\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=30days-sprint\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "hydraulics-1000",
+      "slug": "hydraulics-1000",
+      "title": "水力学1000题详解",
+      "tested": "2025-11-13T22:40:09.885Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水力学1000题详解",
+        "url": "http://localhost:8080/textbooks.html?book=hydraulics-1000",
+        "timestamp": "2025-11-13T22:40:09.885Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-1000\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-1000\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "python-practice",
+      "slug": "python-practice",
+      "title": "水利工程Python编程实战",
+      "tested": "2025-11-13T22:40:09.886Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水利工程Python编程实战",
+        "url": "http://localhost:8080/textbooks.html?book=python-practice",
+        "timestamp": "2025-11-13T22:40:09.886Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=python-practice\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=python-practice\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "numerical-methods",
+      "slug": "numerical-methods",
+      "title": "水利工程数值计算方法",
+      "tested": "2025-11-13T22:40:09.887Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水利工程数值计算方法",
+        "url": "http://localhost:8080/textbooks.html?book=numerical-methods",
+        "timestamp": "2025-11-13T22:40:09.887Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=numerical-methods\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=numerical-methods\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "water-structures",
+      "slug": "water-structures",
+      "title": "水工建筑物设计考研专题",
+      "tested": "2025-11-13T22:40:09.888Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水工建筑物设计考研专题",
+        "url": "http://localhost:8080/textbooks.html?book=water-structures",
+        "timestamp": "2025-11-13T22:40:09.888Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-structures\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-structures\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "water-resources",
+      "slug": "water-resources",
+      "title": "水资源规划管理考研专题",
+      "tested": "2025-11-13T22:40:09.889Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水资源规划管理考研专题",
+        "url": "http://localhost:8080/textbooks.html?book=water-resources",
+        "timestamp": "2025-11-13T22:40:09.889Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-resources\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-resources\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "water-environment",
+      "slug": "water-environment",
+      "title": "水环境模拟考研专题",
+      "tested": "2025-11-13T22:40:09.890Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水环境模拟考研专题",
+        "url": "http://localhost:8080/textbooks.html?book=water-environment",
+        "timestamp": "2025-11-13T22:40:09.890Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-environment\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-environment\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "groundwater",
+      "slug": "groundwater",
+      "title": "地下水动力学考研专题",
+      "tested": "2025-11-13T22:40:09.892Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 地下水动力学考研专题",
+        "url": "http://localhost:8080/textbooks.html?book=groundwater",
+        "timestamp": "2025-11-13T22:40:09.892Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=groundwater\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=groundwater\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "ecohydraulics-exam",
+      "slug": "ecohydraulics-exam",
+      "title": "生态水力学考研专题",
+      "tested": "2025-11-13T22:40:09.893Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 生态水力学考研专题",
+        "url": "http://localhost:8080/textbooks.html?book=ecohydraulics-exam",
+        "timestamp": "2025-11-13T22:40:09.893Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=ecohydraulics-exam\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=ecohydraulics-exam\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "mock-exams",
+      "slug": "mock-exams",
+      "title": "水利考研全真模拟试卷",
+      "tested": "2025-11-13T22:40:09.894Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水利考研全真模拟试卷",
+        "url": "http://localhost:8080/textbooks.html?book=mock-exams",
+        "timestamp": "2025-11-13T22:40:09.894Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=mock-exams\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=mock-exams\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "interview-guide",
+      "slug": "interview-guide",
+      "title": "水利考研面试宝典",
+      "tested": "2025-11-13T22:40:09.895Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水利考研面试宝典",
+        "url": "http://localhost:8080/textbooks.html?book=interview-guide",
+        "timestamp": "2025-11-13T22:40:09.895Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=interview-guide\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=interview-guide\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "hydraulics-exam-solutions",
+      "slug": "hydraulics-exam-solutions",
+      "title": "水力学考研真题解析",
+      "tested": "2025-11-13T22:40:09.896Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水力学考研真题解析",
+        "url": "http://localhost:8080/textbooks.html?book=hydraulics-exam-solutions",
+        "timestamp": "2025-11-13T22:40:09.896Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-exam-solutions\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-exam-solutions\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "hydrology-sprint",
+      "slug": "hydrology-sprint",
+      "title": "水文学30天冲刺",
+      "tested": "2025-11-13T22:40:09.897Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 水文学30天冲刺",
+        "url": "http://localhost:8080/textbooks.html?book=hydrology-sprint",
+        "timestamp": "2025-11-13T22:40:09.897Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydrology-sprint\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydrology-sprint\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "math-quick",
+      "slug": "math-quick",
+      "title": "数学快速突破",
+      "tested": "2025-11-13T22:40:09.899Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 数学快速突破",
+        "url": "http://localhost:8080/textbooks.html?book=math-quick",
+        "timestamp": "2025-11-13T22:40:09.899Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=math-quick\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=math-quick\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "linear-algebra-breakthrough",
+      "slug": "linear-algebra-breakthrough",
+      "title": "线性代数突破",
+      "tested": "2025-11-13T22:40:09.900Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 线性代数突破",
+        "url": "http://localhost:8080/textbooks.html?book=linear-algebra-breakthrough",
+        "timestamp": "2025-11-13T22:40:09.900Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=linear-algebra-breakthrough\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=linear-algebra-breakthrough\", waiting until \"networkidle\"\n"
+      }
+    },
+    {
+      "id": "probability-stats-guide",
+      "slug": "probability-stats-guide",
+      "title": "概率统计指南",
+      "tested": "2025-11-13T22:40:09.901Z",
+      "chapters": [],
+      "cases": [],
+      "success": false,
+      "pageTest": {
+        "name": "书籍: 概率统计指南",
+        "url": "http://localhost:8080/textbooks.html?book=probability-stats-guide",
+        "timestamp": "2025-11-13T22:40:09.901Z",
+        "success": false,
+        "loadTime": 0,
+        "checks": {},
+        "screenshot": null,
+        "errors": [
+          "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=probability-stats-guide\", waiting until \"networkidle\"\n"
+        ],
+        "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=probability-stats-guide\", waiting until \"networkidle\"\n"
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "主页",
+      "url": "http://localhost:8080/",
+      "timestamp": "2025-11-13T22:40:06.846Z",
+      "success": false,
+      "loadTime": 2982,
+      "checks": {},
+      "screenshot": null,
+      "errors": [
+        "page.$: Target crashed "
+      ],
+      "httpStatus": 200,
+      "error": "page.$: Target crashed "
+    },
+    {
+      "name": "教材库",
+      "url": "http://localhost:8080/textbooks.html",
+      "timestamp": "2025-11-13T22:40:09.837Z",
+      "success": false,
+      "loadTime": 0,
+      "checks": {},
+      "screenshot": null,
+      "errors": [
+        "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html\", waiting until \"networkidle\"\n"
+      ],
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "name": "搜索页面",
+      "url": "http://localhost:8080/search.html",
+      "timestamp": "2025-11-13T22:40:09.841Z",
+      "success": false,
+      "loadTime": 0,
+      "checks": {},
+      "screenshot": null,
+      "errors": [
+        "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/search.html\", waiting until \"networkidle\"\n"
+      ],
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/search.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "name": "代码运行器",
+      "url": "http://localhost:8080/code-runner.html",
+      "timestamp": "2025-11-13T22:40:09.844Z",
+      "success": false,
+      "loadTime": 0,
+      "checks": {},
+      "screenshot": null,
+      "errors": [
+        "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/code-runner.html\", waiting until \"networkidle\"\n"
+      ],
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/code-runner.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "name": "AI编程IDE",
+      "url": "http://localhost:8080/ide.html",
+      "timestamp": "2025-11-13T22:40:09.847Z",
+      "success": false,
+      "loadTime": 0,
+      "checks": {},
+      "screenshot": null,
+      "errors": [
+        "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/ide.html\", waiting until \"networkidle\"\n"
+      ],
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/ide.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "name": "知识库",
+      "url": "http://localhost:8080/knowledge/index.html",
+      "timestamp": "2025-11-13T22:40:09.849Z",
+      "success": false,
+      "loadTime": 0,
+      "checks": {},
+      "screenshot": null,
+      "errors": [
+        "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/knowledge/index.html\", waiting until \"networkidle\"\n"
+      ],
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/knowledge/index.html\", waiting until \"networkidle\"\n"
+    }
+  ],
+  "issues": [
+    {
+      "type": "error",
+      "name": "主页",
+      "url": "http://localhost:8080/",
+      "error": "page.$: Target crashed "
+    },
+    {
+      "type": "error",
+      "name": "教材库",
+      "url": "http://localhost:8080/textbooks.html",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "搜索页面",
+      "url": "http://localhost:8080/search.html",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/search.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "代码运行器",
+      "url": "http://localhost:8080/code-runner.html",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/code-runner.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "AI编程IDE",
+      "url": "http://localhost:8080/ide.html",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/ide.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "知识库",
+      "url": "http://localhost:8080/knowledge/index.html",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/knowledge/index.html\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水系统控制论",
+      "url": "http://localhost:8080/textbooks.html?book=water-system-control",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-system-control\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 明渠水力学计算",
+      "url": "http://localhost:8080/textbooks.html?book=open-channel-hydraulics",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=open-channel-hydraulics\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 运河与管道控制",
+      "url": "http://localhost:8080/textbooks.html?book=canal-pipeline-control",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=canal-pipeline-control\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 生态水力学",
+      "url": "http://localhost:8080/textbooks.html?book=ecohydraulics",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=ecohydraulics\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 分布式水文模型",
+      "url": "http://localhost:8080/textbooks.html?book=distributed-hydrological-model",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=distributed-hydrological-model\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水环境模拟",
+      "url": "http://localhost:8080/textbooks.html?book=water-environment-simulation",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-environment-simulation\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水资源规划与管理",
+      "url": "http://localhost:8080/textbooks.html?book=water-resource-planning-management",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-resource-planning-management\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 地下水动力学",
+      "url": "http://localhost:8080/textbooks.html?book=underground-water-dynamics",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=underground-water-dynamics\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 智能供水管网设计",
+      "url": "http://localhost:8080/textbooks.html?book=intelligent-water-network-design",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=intelligent-water-network-design\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 光伏系统建模与控制",
+      "url": "http://localhost:8080/textbooks.html?book=photovoltaic-system-modeling-control",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=photovoltaic-system-modeling-control\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 风电系统建模与控制",
+      "url": "http://localhost:8080/textbooks.html?book=wind-power-system-modeling-control",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=wind-power-system-modeling-control\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 储能系统建模与控制",
+      "url": "http://localhost:8080/textbooks.html?book=energy-storage-system-modeling-control",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=energy-storage-system-modeling-control\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 综合能源系统仿真优化",
+      "url": "http://localhost:8080/textbooks.html?book=integrated-energy-system-simulation-optimization",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=integrated-energy-system-simulation-optimization\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 可再生能源系统识别测试",
+      "url": "http://localhost:8080/textbooks.html?book=renewable-energy-system-identification-testing",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=renewable-energy-system-identification-testing\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水力学核心100题",
+      "url": "http://localhost:8080/textbooks.html?book=hydraulics-core-100",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-core-100\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水力学考研高分突破",
+      "url": "http://localhost:8080/textbooks.html?book=hydraulics-advanced",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-advanced\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水文学考研高分突破",
+      "url": "http://localhost:8080/textbooks.html?book=hydrology-advanced",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydrology-advanced\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 数学一速成手册",
+      "url": "http://localhost:8080/textbooks.html?book=math1-handbook",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=math1-handbook\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 30天考研冲刺宝典",
+      "url": "http://localhost:8080/textbooks.html?book=30days-sprint",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=30days-sprint\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水力学1000题详解",
+      "url": "http://localhost:8080/textbooks.html?book=hydraulics-1000",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-1000\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水利工程Python编程实战",
+      "url": "http://localhost:8080/textbooks.html?book=python-practice",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=python-practice\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水利工程数值计算方法",
+      "url": "http://localhost:8080/textbooks.html?book=numerical-methods",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=numerical-methods\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水工建筑物设计考研专题",
+      "url": "http://localhost:8080/textbooks.html?book=water-structures",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-structures\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水资源规划管理考研专题",
+      "url": "http://localhost:8080/textbooks.html?book=water-resources",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-resources\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水环境模拟考研专题",
+      "url": "http://localhost:8080/textbooks.html?book=water-environment",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=water-environment\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 地下水动力学考研专题",
+      "url": "http://localhost:8080/textbooks.html?book=groundwater",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=groundwater\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 生态水力学考研专题",
+      "url": "http://localhost:8080/textbooks.html?book=ecohydraulics-exam",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=ecohydraulics-exam\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水利考研全真模拟试卷",
+      "url": "http://localhost:8080/textbooks.html?book=mock-exams",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=mock-exams\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水利考研面试宝典",
+      "url": "http://localhost:8080/textbooks.html?book=interview-guide",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=interview-guide\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水力学考研真题解析",
+      "url": "http://localhost:8080/textbooks.html?book=hydraulics-exam-solutions",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydraulics-exam-solutions\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 水文学30天冲刺",
+      "url": "http://localhost:8080/textbooks.html?book=hydrology-sprint",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=hydrology-sprint\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 数学快速突破",
+      "url": "http://localhost:8080/textbooks.html?book=math-quick",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=math-quick\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 线性代数突破",
+      "url": "http://localhost:8080/textbooks.html?book=linear-algebra-breakthrough",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=linear-algebra-breakthrough\", waiting until \"networkidle\"\n"
+    },
+    {
+      "type": "error",
+      "name": "书籍: 概率统计指南",
+      "url": "http://localhost:8080/textbooks.html?book=probability-stats-guide",
+      "error": "page.goto: Page crashed\nCall log:\n  - navigating to \"http://localhost:8080/textbooks.html?book=probability-stats-guide\", waiting until \"networkidle\"\n"
+    }
+  ]
+}

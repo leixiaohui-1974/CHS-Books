@@ -18,7 +18,7 @@
 
 在灌溉渠道系统中，需要维持下游水位稳定，以保证农田灌溉用水需求。典型场景：
 
-```
+```python
       上游水源
          ↓
     ┌────┴────┐
@@ -55,12 +55,12 @@
 明渠非恒定流由**Saint-Venant方程组**描述：
 
 **连续性方程**（质量守恒）：
-```
+```python
 ∂A/∂t + ∂Q/∂x = q_lat
 ```
 
 **动量方程**（能量守恒）：
-```
+```python
 ∂Q/∂t + ∂(Q²/A)/∂x + gA∂h/∂x = -gAS_f + gAS_0
 ```
 
@@ -77,7 +77,7 @@
 
 ### 2.2 摩阻坡度（Manning公式）
 
-```
+```python
 S_f = n²Q²/(A²R^(4/3))
 ```
 
@@ -90,7 +90,7 @@ S_f = n²Q²/(A²R^(4/3))
 
 对于宽度B=5m的矩形断面：
 
-```
+```python
 A(h) = B × h
 χ(h) = B + 2h
 R(h) = A/χ = Bh/(B+2h)
@@ -99,12 +99,12 @@ R(h) = A/χ = Bh/(B+2h)
 ### 2.4 边界条件
 
 **上游边界**（x=0）：流量边界
-```
+```python
 Q(0, t) = Q_in(t)  # 由闸门控制
 ```
 
 闸孔出流公式：
-```
+```python
 Q_in = μ × u × B × √(2gh_up)
 ```
 - μ：流量系数 ≈ 0.6
@@ -112,12 +112,12 @@ Q_in = μ × u × B × √(2gh_up)
 - h_up：上游水头 [m]
 
 **下游边界**（x=L）：水位-流量关系（如堰流）
-```
+```python
 Q(L, t) = C × h_d^1.5  # 简化模型
 ```
 
 **初始条件**：均匀流
-```
+```python
 h(x, 0) = h_0 = 2.0m
 Q(x, 0) = Q_0 = 10 m³/s
 ```
@@ -129,31 +129,31 @@ Q(x, 0) = Q_0 = 10 m³/s
 ### 3.1 Lax-Wendroff格式（二阶精度）
 
 将Saint-Venant方程写成守恒型：
-```
+```python
 ∂U/∂t + ∂F/∂x = S
 ```
 
 其中：
-```
+```python
 U = [A, Q]ᵀ          # 守恒变量
 F = [Q, Q²/A + gA²/2]ᵀ  # 通量
 S = [q_lat, -gAS_f]ᵀ    # 源项
 ```
 
 **Lax-Wendroff离散**：
-```
+```python
 U_i^(n+1) = U_i^n - (Δt/Δx)[F_(i+1/2) - F_(i-1/2)] + ΔtS_i
 ```
 
 其中：
-```
+```python
 F_(i+1/2) = 0.5(F_i + F_(i+1)) - (Δx/2Δt)(U_(i+1) - U_i)
 ```
 
 ### 3.2 CFL稳定性条件
 
 为保证数值稳定性，时间步长需满足：
-```
+```python
 Δt ≤ Δx / (|v| + c)
 ```
 
@@ -174,7 +174,7 @@ F_(i+1/2) = 0.5(F_i + F_(i+1)) - (Δx/2Δt)(U_(i+1) - U_i)
 
 经典PID控制器：
 
-```
+```python
 u(t) = Kp × e(t) + Ki × ∫e(τ)dτ + Kd × de/dt
 ```
 
@@ -191,7 +191,7 @@ integral += e_k * Ts
 derivative = (e_k - e_prev) / Ts
 
 u_k = Kp * e_k + Ki * integral + Kd * derivative
-```
+```python
 
 ### 4.2 参数整定
 
@@ -206,7 +206,7 @@ u_k = Kp * e_k + Ki * integral + Kd * derivative
 Kp = 0.6 × Ku
 Ki = 2Kp / Tu
 Kd = Kp × Tu / 8
-```
+```python
 
 **本案例参数**（经验整定）：
 - Kp = 2.0  [m/m]
@@ -225,7 +225,7 @@ if u_min <= u_raw <= u_max:
     integral += e_k * Ts  # 正常积分
 else:
     integral = integral  # 饱和时停止积分
-```
+```python
 
 ---
 
@@ -240,7 +240,7 @@ else:
             │                                    │
             │          h_d(t)                   │
             └────────── 传感器 ←─────────────────┘
-```
+```python
 
 ### 5.2 传递函数近似
 
@@ -248,7 +248,7 @@ else:
 
 ```
 G(s) = K × e^(-τs) / (Ts + 1)^n
-```
+```matlab
 
 典型参数（本案例）：
 - K = 0.02  [m/(m³/s)]：稳态增益
@@ -299,7 +299,7 @@ for t in time_steps:
 
     # 演化
     canal.step(Q_in, dt)
-```
+```python
 
 ### 6.2 初始化策略
 
@@ -307,7 +307,7 @@ for t in time_steps:
 ```python
 h_initial = 1.8m  # 初始水位略低于目标
 目标轨迹: h_target(t) = 1.8 + 0.2 × (1 - e^(-t/600))  # 平滑增长
-```
+```python
 
 ### 6.3 扰动模拟
 
@@ -317,7 +317,7 @@ if 1000 < t < 2000:
     q_lat = 0.1 m²/s  # 沿程均匀取水
 else:
     q_lat = 0
-```
+```python
 
 ---
 
@@ -354,39 +354,39 @@ else:
 **上升时间**（10%-90%）：
 ```
 t_r = 800s ≈ 13min
-```
+```python
 
 **调节时间**（±2%误差带）：
 ```
 t_s = 2000s ≈ 33min
-```
+```python
 
 **超调量**：
 ```
 σ = (h_max - h_target) / h_target × 100% ≈ 8%
-```
+```python
 
 **稳态误差**：
 ```
 e_ss = lim(t→∞) |h_target - h_d(t)| < 0.01m
-```
+```python
 
 ### 8.2 积分指标
 
 **IAE**（Integral Absolute Error）：
 ```
 IAE = ∫|e(t)|dt = 45 m·s
-```
+```python
 
 **ISE**（Integral Squared Error）：
 ```
 ISE = ∫e²(t)dt = 0.82 m²·s
-```
+```python
 
 **ITAE**（Integral Time Absolute Error）：
 ```
 ITAE = ∫t|e(t)|dt = 35000 m·s²
-```
+```matlab
 
 ---
 

@@ -30,7 +30,7 @@
 3. **优化算法**：寻找最优方案
 4. **决策分析**：权衡多个目标
 
-```
+```python
 ┌─────────────────────────────────────────────────────────────┐
 │        智能决策支持系统 (IDSS) 架构                        │
 ├─────────────────────────────────────────────────────────────┤
@@ -94,7 +94,7 @@
 
 #### 神经网络结构
 
-```
+```python
 输入层           隐藏层                    输出层
 (Q₁, Q₂, Q₃) → [50神经元] → [30] → [20] → (总抽水量)
    3维                                       1维
@@ -103,7 +103,7 @@
 ```
 
 **激活函数**：ReLU (Rectified Linear Unit)
-```
+```python
 ReLU(x) = max(0, x)
 ```
 
@@ -129,7 +129,7 @@ ReLU(x) = max(0, x)
 3. 随机排列，确保无重复
 
 **数学表示**：
-```
+```python
 xᵢⱼ = (πⱼ(i) - uᵢⱼ) / n
 
 其中：
@@ -151,7 +151,7 @@ xᵢⱼ = (πⱼ(i) - uᵢⱼ) / n
 
 所有帕累托最优解在目标空间的集合。
 
-```
+```python
 目标2 (最小化)
   ↑
   │     ○ 非帕累托解（被支配）
@@ -167,7 +167,7 @@ xᵢⱼ = (πⱼ(i) - uᵢⱼ) / n
 **1. 加权和法 (Weighted Sum)**
 
 将多目标转化为单目标：
-```
+```python
 minimize Σ wᵢ·fᵢ(x)
 
 约束：Σ wᵢ = 1, wᵢ ≥ 0
@@ -179,7 +179,7 @@ minimize Σ wᵢ·fᵢ(x)
 **2. ε-约束法 (Epsilon-Constraint)**
 
 优化一个主目标，其他作为约束：
-```
+```python
 minimize f₁(x)
 subject to: fᵢ(x) ≤ εᵢ, i = 2,...,m
 ```
@@ -197,7 +197,7 @@ subject to: fᵢ(x) ≤ εᵢ, i = 2,...,m
 - 精英策略：保留最优解
 
 **算法流程**：
-```
+```python
 1. 初始化种群P₀
 2. For t = 1 to T:
    a. 评估目标值
@@ -223,7 +223,7 @@ subject to: fᵢ(x) ≤ εᵢ, i = 2,...,m
 
 ### 模块结构
 
-```
+```python
 gwflow/surrogate/               # 代理模型
 ├── neural_network.py           # 神经网络
 └── sampling.py                 # 采样方法
@@ -259,7 +259,7 @@ y_pred = nn.predict(X_test)
 metrics = nn.evaluate(X_test, y_test)
 print(f"R² = {metrics['r2']:.4f}")
 print(f"RMSE = {metrics['rmse']:.2f}")
-```
+```python
 
 **关键参数**：
 - `hidden_layers`: 网络结构，如(100,)是单层，(50,30)是两层
@@ -281,7 +281,7 @@ samples = latin_hypercube_sampling(
     seed=42
 )
 # samples.shape = (200, 3)
-```
+```python
 
 #### 3. SimpleNSGAII
 
@@ -307,7 +307,7 @@ nsga = SimpleNSGAII(
 )
 
 pareto_solutions, pareto_objectives = nsga.run(verbose=True)
-```
+```python
 
 **关键参数**：
 - `population_size`: 种群大小，通常50-200
@@ -355,7 +355,7 @@ pareto_solutions, pareto_objectives = nsga.run(verbose=True)
 最大化: 总抽水量
 约束: 生态影响 ≤ 3.0 m
 变量: Q₁, Q₂, Q₃ ∈ [100, 2000] m³/d
-```
+```python
 
 **结果**：
 - 最优方案：井1=1850, 井2=1900, 井3=1750 m³/d

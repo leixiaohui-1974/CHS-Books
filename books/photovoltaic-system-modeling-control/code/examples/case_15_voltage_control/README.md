@@ -55,7 +55,7 @@ i_{ref} = i_{ref,PI} + \frac{P_{load}}{V_{dc}}
 ### 2. 交流电压控制（双环）
 
 #### 控制结构
-```
+```python
         +------+       +------+       +------+
 V_ref → | 电压环 | → | 电流环 | → | 逆变器 | → V_out
         | (PI) |     | (PI) |     | +PWM |
@@ -100,7 +100,7 @@ C \frac{dv_C}{dt} = i_L - i_{load}
 ### 3. 三相双环控制（dq坐标系）
 
 #### 系统结构
-```
+```python
        DC电压环        dq电流环
 V_dc → [  PI  ] → i_d → [ PI + 解耦 ] → v_abc
                   i_q=0
@@ -137,7 +137,7 @@ i_ref = dc_ctrl.update(
     p_load=2000.0,         # 负载功率（前馈）
     enable_feedforward=True
 )
-```
+```python
 
 ### 2. AC电压控制器（双环）
 
@@ -170,7 +170,7 @@ v_out = ac_ctrl.update(
     i_load=5.0,            # 负载电流（前馈）
     enable_decoupling=True
 )
-```
+```python
 
 ### 3. 三相双环控制器
 
@@ -195,7 +195,7 @@ v_a, v_b, v_c = ctrl.update(
     enable_feedforward=True,
     enable_decoupling=True
 )
-```
+```matlab
 
 ---
 

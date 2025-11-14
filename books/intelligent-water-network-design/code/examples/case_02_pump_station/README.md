@@ -90,7 +90,7 @@ pump = Pump(
 # 计算工况点
 H, eta, P = pump.compute_operating_point(Q=1.0)
 print(f"流量1.0m³/s时：扬程{H:.2f}m, 效率{eta:.2%}, 功率{P:.2f}kW")
-```
+```python
 
 ### 从第1本书复用（水系统控制）
 
@@ -112,14 +112,14 @@ level_controller = PIDController(
 from books.water_system_control.code.examples.case_06_step_response import (
     calculate_step_response_metrics
 )
-```
+```python
 
 ### 从第3本书复用（渠道管道控制）
 
 ```python
 # 复用第3本书的数字孪生思想（案例13）
 # 复用多智能体协调控制方法
-```
+```python
 
 ---
 
@@ -144,7 +144,7 @@ Q_actual = Q_pump_station / 3 = 4.9 m³/s
 
 # 取整后：设计流量 Q = 5.0 m³/s
 # 装机方案：3×1.2 = 3.6 m³/s（2开1备）
-```
+```python
 
 **设计扬程计算**:
 ```python
@@ -161,7 +161,7 @@ h_m = compute_local_loss(v=3.0, loss_coef=[0.5, 1.0, 0.2])  # 进口、弯头、
 
 H_design = H_static + h_f + h_m + margin
 print(f"设计扬程 H = {H_design:.2f} m")
-```
+```python
 
 #### 1.2 水泵选型
 
@@ -179,7 +179,7 @@ print(f"设计扬程 H = {H_design:.2f} m")
 - 额定效率：78%
 - 额定功率：80 kW
 - 转速：1450 rpm
-```
+```python
 
 **特性曲线数据**:
 ```python
@@ -190,7 +190,7 @@ pump_curve_data = {
     'eta': [0.65, 0.72, 0.76, 0.78, 0.75, 0.68],  # 效率
     'P': [65, 70, 75, 80, 85, 90]  # 功率 kW
 }
-```
+```python
 
 #### 1.3 进出水池设计
 
@@ -204,7 +204,7 @@ V_inlet = 3.6 m³/s × 5分钟 = 1080 m³
 # 平面：15m × 15m = 225 m²
 # 深度：5.0m（有效水深3.0-4.5m）
 # 有效容积：225 × 1.5 = 337.5 m³（调整为500 m³）
-```
+```python
 
 **出水池设计**:
 ```python
@@ -213,7 +213,7 @@ V_outlet = Q_pump * T_stabilize
 V_outlet = 2.4 m³/s × 3分钟 = 432 m³
 
 # 池体尺寸：12m × 12m × 4m
-```
+```python
 
 ---
 
@@ -248,7 +248,7 @@ V_outlet = 2.4 m³/s × 3分钟 = 432 m³
 │  - 电流、电压、功率检测                 │
 │  - 振动、温度监测                       │
 └─────────────────────────────────────────┘
-```
+```matlab
 
 #### 2.2 传感器配置
 
@@ -292,7 +292,7 @@ def control_single_pump(water_level, dt):
         pump_command = 'OFF'
     
     return pump_command
-```
+```python
 
 **2.3.2 多泵协调控制（L3）**
 
@@ -418,7 +418,7 @@ class MultiPumpController:
                 self.last_switch_time[i] = self.current_time
                 stopped += 1
                 print(f"  ✓ 停止泵#{i+1}（累计运行{self.run_time[i]:.1f}h）")
-```
+```python
 
 ---
 
@@ -453,7 +453,7 @@ class WaterHammerProtection:
         closure_curve = np.linspace(current_flow, 0, n_steps)
         
         return closure_curve
-```
+```python
 
 #### 3.2 能耗优化调度
 
@@ -486,7 +486,7 @@ def optimize_pump_schedule(water_level, electricity_price, storage_capacity):
     else:
         # 平电，正常控制
         return normal_control(water_level)
-```
+```python
 
 #### 3.3 预测性维护
 
@@ -522,7 +522,7 @@ class PredictiveMaintenance:
         
         if eta_current < 0.9 * eta_rated:
             trigger_warning('效率下降>10%，建议检修')
-```
+```matlab
 
 ---
 
@@ -611,7 +611,7 @@ def run_all_scenarios():
     
     # 生成报告
     generate_report(performance, grade)
-```
+```matlab
 
 ---
 

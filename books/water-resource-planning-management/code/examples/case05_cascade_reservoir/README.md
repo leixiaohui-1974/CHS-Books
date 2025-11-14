@@ -18,7 +18,7 @@
 **决策变量**：各水库各时段的出库流量
 
 **目标函数**：
-```
+```python
 max Σ_t Σ_i P_i(Q_i,t, H_i,t) × Δt
 ```
 其中：
@@ -52,7 +52,7 @@ max Σ_t Σ_i P_i(Q_i,t, H_i,t) × Δt
 
 ## 技术路线
 
-```
+```python
 问题建模
   ├─ 状态变量：库容
   ├─ 决策变量：出库流量
@@ -109,7 +109,7 @@ max Σ_t Σ_i P_i(Q_i,t, H_i,t) × Δt
 ```bash
 cd code/examples/case05_cascade_reservoir
 python main.py
-```
+```python
 
 ## 核心算法
 
@@ -119,7 +119,7 @@ python main.py
 ```
 f_t(V_t) = max{P_t(V_t, Q_t) + f_t+1(V_t+1)}
          Q_t
-```
+```python
 
 **算法步骤**：
 1. 离散化状态空间（水库库容）
@@ -153,12 +153,12 @@ repeat:
         更新水库i的调度方案
     计算目标函数
 until 收敛或达到最大迭代次数
-```
+```python
 
 **收敛判定**：
 ```
 |obj_k - obj_k-1| / obj_k-1 < ε
-```
+```python
 
 **优点**：
 - 避免维数灾难
@@ -173,12 +173,12 @@ until 收敛或达到最大迭代次数
 **出力公式**：
 ```
 P = 9.81 × Q × H × η / 1000  (MW)
-```
+```python
 
 **净水头**：
 ```
 H = (Z_up + Z_down) / 2 - Z_tailwater
-```
+```python
 
 **电量**：
 ```

@@ -26,7 +26,7 @@
 
 光伏电池可用单二极管等效电路表示:
 
-```
+```python
     ┌──Rs──┬─────────┐
     │      │    D    │
 Iph ⚡     │   ─┬─   │  Rsh
@@ -37,7 +37,7 @@ Iph ⚡     │   ─┬─   │  Rsh
 
 **核心方程**:
 
-```
+```python
 I = Iph - I0 * [exp((V + I*Rs)/(n*Vt)) - 1] - (V + I*Rs)/Rsh
 ```
 
@@ -81,7 +81,7 @@ I = Iph - I0 * [exp((V + I*Rs)/(n*Vt)) - 1] - (V + I*Rs)/Rsh
 **运行命令**:
 ```bash
 python experiments.py
-```
+```python
 选择实验2
 
 **关键发现**:
@@ -95,7 +95,7 @@ python experiments.py
 dVoc/dT  ≈ -2.3 mV/°C  (-0.38%/°C)
 dIsc/dT  ≈ +4.8 mA/°C  (+0.06%/°C)
 dPmpp/dT ≈ -18 mW/°C   (-0.50%/°C)
-```
+```python
 
 ### 实验3: 辐照度影响分析
 
@@ -112,7 +112,7 @@ dPmpp/dT ≈ -18 mW/°C   (-0.50%/°C)
 Isc(G) ≈ Isc(1000) × (G/1000)
 Voc(G) ≈ Voc(1000) + n*Vt*ln(G/1000)
 Pmpp(G) ≈ Pmpp(1000) × (G/1000)
-```
+```python
 
 ### 实验4: 参数敏感性分析
 
@@ -148,7 +148,7 @@ case_01_pv_cell_iv_characteristics/
     ├── exp2_temperature_effect.png
     ├── exp3_irradiance_effect.png
     └── exp4_parameter_sensitivity.png
-```
+```python
 
 ## 快速开始
 
@@ -157,7 +157,7 @@ case_01_pv_cell_iv_characteristics/
 ```bash
 cd code/examples/case_01_pv_cell_iv_characteristics
 python main.py
-```
+```python
 
 输出:
 - 模型参数
@@ -170,7 +170,7 @@ python main.py
 
 ```bash
 python experiments.py
-```
+```python
 
 运行全部4个实验,生成详细分析图表。
 
@@ -179,7 +179,7 @@ python experiments.py
 ```bash
 cd ../../../tests
 python test_pv_cell.py
-```
+```python
 
 运行单元测试,验证模型正确性。
 
@@ -199,7 +199,7 @@ pv = SingleDiodeModel(
     T=298.15,     # 温度 25°C
     G=1000.0      # 辐照度 1000W/m²
 )
-```
+```python
 
 ### 计算I-V特性
 
@@ -210,7 +210,7 @@ I = pv.calculate_current(V)
 P = pv.calculate_power(V)
 
 print(f"V={V}V: I={I:.3f}A, P={P:.3f}W")
-```
+```python
 
 ### 获取完整特性曲线
 
@@ -227,7 +227,7 @@ plt.plot(V_array, I_array)
 plt.xlabel('Voltage (V)')
 plt.ylabel('Current (A)')
 plt.show()
-```
+```python
 
 ### 寻找最大功率点
 
@@ -243,7 +243,7 @@ print(f"  Pmpp = {pmpp:.4f} W")
 # 计算填充因子
 FF = pmpp / (pv.Voc * pv.Isc)
 print(f"  FF = {FF:.4f}")
-```
+```python
 
 ### 更新工作条件
 

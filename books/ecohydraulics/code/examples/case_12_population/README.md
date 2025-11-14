@@ -19,7 +19,7 @@
 
 Dendritic Connectivity Index（树枝状连通性指数）：
 
-```
+```python
 DCIp = Σ(li × lj × pij) / L²
 
 其中：
@@ -46,7 +46,7 @@ L = 河流总长度
 
 **Logistic增长模型**：
 
-```
+```python
 dN/dt = r × N × (1 - N/K)
 
 解析解：
@@ -89,7 +89,7 @@ N₀ = 初始种群数量
 ```bash
 cd code/examples/case_12_population
 python main.py
-```
+```python
 
 ## 结果示例
 

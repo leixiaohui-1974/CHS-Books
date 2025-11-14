@@ -16,7 +16,7 @@
 
 **POD（Proper Orthogonal Decomposition，本征正交分解）** 是最经典的模型降阶方法之一，也称为Karhunen-Loève展开或主成分分析（PCA）。
 
-```
+```matlab
 模型降阶示意图：
 
 全阶模型（High-dimensional）
@@ -237,7 +237,7 @@ snapshots = []
 for scenario in training_scenarios:
     h, Q = run_full_order_model(scenario)
     snapshots.append(h)
-```
+```python
 
 **步骤2：SVD分解**
 ```python
@@ -250,7 +250,7 @@ U, S, Vt = np.linalg.svd(X, full_matrices=False)
 # 选择前r个模态
 r = 10
 Phi = U[:, :r]  # POD基
-```
+```python
 
 **步骤3：降阶模型构建**
 ```python
@@ -266,7 +266,7 @@ def reduced_dynamics(a, t, u):
     da_dt = Phi.T @ f_full
 
     return da_dt
-```
+```python
 
 **步骤4：控制器设计**
 ```python
@@ -278,7 +278,7 @@ a_current = ...  # 低维状态
 h_reconstructed = Phi @ a_current  # 重构到全阶
 h_d = h_reconstructed[-1]  # 下游水位
 u = pid.compute(2.0, h_d)
-```
+```bash
 
 ### 3. 降阶维数选择指南
 
@@ -306,7 +306,7 @@ for Q_in in [8, 10, 12]:  # 不同流量
     for h_target in [1.8, 2.0, 2.2]:  # 不同目标水位
         h = simulate(Q_in, h_target)
         snapshots.append(h)
-```
+```python
 
 **技巧2：增量POD**
 ```python
@@ -316,14 +316,14 @@ if reconstruction_error > threshold:
     snapshots.append(h_new)
     # 重新计算POD基
     Phi = update_POD(Phi, h_new)
-```
+```python
 
 **技巧3：局部POD**
 ```python
 # 对不同区域使用不同POD基
 Phi_upstream = POD(snapshots_upstream)
 Phi_downstream = POD(snapshots_downstream)
-```
+```bash
 
 ## 参数说明
 

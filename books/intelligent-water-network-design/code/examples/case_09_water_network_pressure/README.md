@@ -76,7 +76,7 @@ from case_04_valve_station import ElectricValve
 from case_04_valve_station import SimplePIDController
 
 # 3. 阀站控制器（扩展为5个）
-```
+```python
 
 **复用率**：85%（仅增加多区协调逻辑）
 
@@ -110,7 +110,7 @@ class LeakageModel:
     漏损率 ∝ 压力^1.5
     """
     pass
-```
+```python
 
 ---
 
@@ -136,7 +136,7 @@ class LeakageModel:
   
 目标压力：P_target = 0.28 MPa (各区)
 实际压力：P_i = P_water - ρgH_i - ΔP_valve_i - ΔP_pipe_i
-```
+```python
 
 **控制目标**：
 - 高区1/2：P = 0.28 MPa（海拔高，需减压少）
@@ -174,7 +174,7 @@ leakage_rate = 10 * (P / 0.28) ** 1.5
 # P = 0.28 MPa → 漏损率 = 10%
 # P = 0.35 MPa → 漏损率 = 13.5%
 # P = 0.40 MPa → 漏损率 = 17.1%
-```
+```python
 
 **价值**：压力从0.35降到0.28 MPa，漏损率从13.5%降到10%，节水25%！
 
@@ -195,7 +195,7 @@ opening2 = PID2.update(P2)
 # - 压力不均衡（高区0.25，低区0.35）
 # - 漏损率高（低区压力过高）
 # - 未考虑相互影响
-```
+```python
 
 **协调控制（本案例）**：
 ```python
@@ -206,7 +206,7 @@ opening1, opening2, ..., opening5 = NetworkController.update(P1, P2, ..., P5)
 # - 压力均衡（各区0.28±0.03 MPa）
 # - 降低漏损（统一优化压力）
 # - 考虑管网耦合
-```
+```python
 
 #### 2.2 压力分区协调控制器设计
 
@@ -297,7 +297,7 @@ class PressureZoneCoordinator:
         opening5 = np.clip(u5, 10, 100)
         
         return opening1, opening2, opening3, opening4, opening5
-```
+```python
 
 #### 2.3 压力均衡优化原理
 
@@ -317,7 +317,7 @@ class PressureZoneCoordinator:
 解决：压力均衡优化
 目标：各区压力0.28±0.03 MPa
 方法：调整阀门开度，最小化压力方差
-```
+```python
 
 **优化目标**：
 ```python
@@ -325,7 +325,7 @@ minimize: Var(P1, P2, P3, P4, P5)  # 压力方差
 subject to:
     0.25 <= P_i <= 0.35  # 各区压力范围
     Σ leakage_i = min    # 总漏损最小
-```
+```matlab
 
 ---
 

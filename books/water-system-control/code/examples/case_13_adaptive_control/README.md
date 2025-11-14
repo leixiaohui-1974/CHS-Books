@@ -66,28 +66,28 @@
 
 ### 2. 模型参考自适应控制（MRAC）
 **结构**：
-```
+```python
 参考模型：Gm(s) = bm/(s + am)（期望特性）
 实际系统：G(s) = b/(s + a)（参数未知）
 控制律：u = θ1*r + θ2*y（自适应增益）
 ```
 
 **MIT规则**（最简单的自适应律）：
-```
+```python
 e = y - ym（跟踪误差）
 dθ1/dt = -γ1 * e * ∂e/∂θ1
 dθ2/dt = -γ2 * e * ∂e/∂θ2
 ```
 
 **Lyapunov设计**（保证稳定性）：
-```
+```python
 选择Lyapunov函数 V = e²/2 + 误差项
 设计自适应律使 dV/dt ≤ 0
 ```
 
 ### 3. 递推最小二乘法（RLS）
 **参数估计问题**：
-```
+```python
 y(t) = φ(t)^T θ + 噪声
 ```
 
@@ -95,7 +95,7 @@ y(t) = φ(t)^T θ + 噪声
 - **φ(t)**：回归向量（包含过去的输入输出）
 - **θ**：待估计参数
 **RLS算法**：
-```
+```python
 θ̂(k) = θ̂(k-1) + K(k)[y(k) - φ(k)^T θ̂(k-1)]
 K(k) = P(k-1)φ(k) / [λ + φ(k)^T P(k-1)φ(k)]
 P(k) = [I - K(k)φ(k)^T]P(k-1) / λ
@@ -150,7 +150,7 @@ P(k) = [I - K(k)φ(k)^T]P(k-1) / λ
 cd books/water-system-control/code/examples/case_13_adaptive_control
 python main.py
 python experiments.py
-```
+```python
 
 ## 预期结果
 1. **MRAC性能**：
@@ -202,14 +202,14 @@ python experiments.py
 ```
 e = y - ym
 dθ/dt = -Γ * e * (∂e/∂θ)
-```
+```python
 
 ### RLS算法
 ```
 θ̂(k) = θ̂(k-1) + K(k)*[y(k) - φ(k)^T*θ̂(k-1)]
 K(k) = P(k-1)*φ(k) / [λ + φ(k)^T*P(k-1)*φ(k)]
 P(k) = [I - K(k)*φ(k)^T]*P(k-1) / λ
-```
+```python
 
 ### 自校正控制
 ```

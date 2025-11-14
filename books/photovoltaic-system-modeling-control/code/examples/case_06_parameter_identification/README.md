@@ -22,7 +22,7 @@
 ### 单二极管模型参数
 
 **5个关键参数**:
-```
+```python
 Iph - 光生电流 (A)
 I0  - 反向饱和电流 (A)
 Rs  - 串联电阻 (Ω)
@@ -31,7 +31,7 @@ n   - 理想因子
 ```
 
 **模型方程**:
-```
+```python
 I = Iph - I0[exp((V+I*Rs)/(n*Vt)) - 1] - (V+I*Rs)/Rsh
 ```
 
@@ -79,7 +79,7 @@ print(f"I0  = {params['I0']:.3e} A")
 print(f"Rs  = {params['Rs']:.6f} Ω")
 print(f"Rsh = {params['Rsh']:.3f} Ω")
 print(f"n   = {params['n']:.3f}")
-```
+```python
 
 ### 2. 优化法(曲线拟合)
 
@@ -104,7 +104,7 @@ for key in ['Iph', 'I0', 'Rs', 'Rsh', 'n']:
 print(f"\n拟合质量:")
 print(f"  RMSE = {result['rmse']:.6f} A")
 print(f"  R²   = {result['r2']:.6f}")
-```
+```python
 
 ### 3. 方法对比
 
@@ -126,7 +126,7 @@ results = comparator.compare_methods(
 for method, result in results.items():
     if result and 'rmse' in result:
         print(f"{method}: RMSE={result['rmse']:.6f}, R²={result['r2']:.6f}")
-```
+```python
 
 ### 4. 精度评估
 
@@ -143,7 +143,7 @@ print(f"  MAE  = {accuracy['mae']:.6f} A")
 print(f"  RMSE = {accuracy['rmse']:.6f} A")
 print(f"  MAPE = {accuracy['mape']:.3f} %")
 print(f"  R²   = {accuracy['r2']:.6f}")
-```
+```python
 
 ---
 
@@ -201,7 +201,7 @@ print(f"  R²   = {accuracy['r2']:.6f}")
   → 对比标称值
   → 检查参数合理性
   → 重复测试确认
-```
+```python
 
 ---
 

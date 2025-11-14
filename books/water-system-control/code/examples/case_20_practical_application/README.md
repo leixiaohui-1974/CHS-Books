@@ -80,7 +80,7 @@
 - 硬实时：必须在截止时间前完成（安全关键）
 - 软实时：尽量满足，偶尔超时可接受（性能优化）
 **控制周期选择**：
-```
+```python
 T_sample ≤ 1/(10 * BW_system)
 ```
 其中BW_system是系统带宽。
@@ -91,13 +91,13 @@ T_sample ≤ 1/(10 * BW_system)
 
 ### 3. 传感器处理
 **原始信号处理链**：
-```
+```python
 物理量 → 传感器 → 模拟信号 → ADC → 数字值 → 标定 → 工程单位 → 滤波 → 控制器
 ```
 
 **关键技术**：
 - **标定（Calibration）**：原始值 → 物理值
-  ```
+  ```python
   y_physical = k * ADC_value + b
   ```
 - **滤波（Filtering）**：去除噪声
@@ -111,13 +111,13 @@ T_sample ≤ 1/(10 * BW_system)
 
 ### 4. 执行器控制
 **PWM控制**（脉宽调制）：
-```
+```python
 占空比 = u / u_max
 PWM频率通常 1-100 kHz
 ```
 
 **饱和处理**：
-```
+```python
 if u > u_max:
     u = u_max
     anti_windup()  # 抗饱和
@@ -133,7 +133,7 @@ elif u < u_min:
 
 ### 5. 状态机设计
 **控制器状态**：
-```
+```python
 IDLE（空闲） → INIT（初始化） → READY（就绪） → RUN（运行）
                                       ↓
                                    ERROR（错误）
@@ -152,7 +152,7 @@ IDLE（空闲） → INIT（初始化） → READY（就绪） → RUN（运行�
 ## 软件架构设计
 
 ### 1. 模块化设计
-```
+```python
 ┌──────────────────────────────────────────┐
 │            应用层（Application）           │
 │  - 业务逻辑                               │
@@ -198,7 +198,7 @@ class Controller:
     def update_state(self, event):
         """状态转移"""
         pass
-```
+```python
 
 **Sensor类**（传感器抽象）：
 ```python
@@ -216,7 +216,7 @@ class Sensor:
     def check_health(self):
         """健康检查"""
         pass
-```
+```python
 
 **Actuator类**（执行器抽象）：
 ```python
@@ -229,7 +229,7 @@ class Actuator:
         u_saturated = np.clip(u, self.u_min, self.u_max)
         self.write_dac(u_saturated)
         return u_saturated
-```
+```python
 
 ### 3. 配置管理
 **YAML配置文件**：
@@ -258,7 +258,7 @@ safety:
   h_min: 0.0
   h_max: 4.0
   emergency_stop_enabled: true
-```
+```python
 
 ## 故障处理与安全
 
@@ -286,7 +286,7 @@ def check_sensor_fault(y, y_history, dt):
         if np.std(y_history[-10:]) < noise_threshold:
             return Fault.STUCK
     return Fault.NONE
-```
+```python
 
 **故障响应**：
 - 切换到备用传感器
@@ -318,7 +318,7 @@ def anti_windup_pid(e, integral, u, u_min, u_max, Ki, dt):
         u_actual = u_ideal
         integral += e * dt
     return u_actual, integral
-```
+```python
 
 ### 3. 通信故障
 **超时处理**：
@@ -331,7 +331,7 @@ def read_with_timeout(sensor, timeout=1.0):
         except TimeoutError:
             continue
     raise CommunicationError("Sensor read timeout")
-```
+```python
 
 **心跳机制**：
 ```python
@@ -343,7 +343,7 @@ class Heartbeat:
         self.last_beat = time.time()
     def is_alive(self):
         return (time.time() - self.last_beat) < 2 * self.interval
-```
+```python
 
 ## 数据记录与监控
 
@@ -362,7 +362,7 @@ class Heartbeat:
 2025-10-30 10:31:15.678 [WARNING] Sensor: High noise detected, σ = 0.05
 2025-10-30 10:32:00.000 [ERROR] Sensor: Out of range, h = 4.5 m
 2025-10-30 10:32:00.100 [CRITICAL] Safety: Emergency stop triggered
-```
+```python
 
 ### 2. 实时监控
 **监控指标**：
@@ -391,7 +391,7 @@ def log_data(timestamp, h, u, sp, state):
         .field("state", state) \
         .time(timestamp)
     write_api.write(bucket="control_data", record=point)
-```
+```python
 
 ## 部署与维护
 
@@ -425,7 +425,7 @@ for i in range(100):
     actuator.set(u_test)
     log(h, u_test)
     time.sleep(0.1)
-```
+```python
 
 **阶跃响应测试**：
 ```python
@@ -434,7 +434,7 @@ u_test = [0, 5, 0, 8, 0]
 for u in u_test:
     actuator.set(u)
     time.sleep(10)  # 等待稳定
-```
+```python
 
 **闭环调试**：
 - 先使用P控制（Kp），观察响应
@@ -478,7 +478,7 @@ for u in u_test:
 u_ff = calculate_feedforward(sp, disturbance)
 u_fb = pid.compute(error)
 u = u_ff + u_fb
-```
+```python
 
 **增益调度**：
 ```python
@@ -489,7 +489,7 @@ elif h < 3.0:
     Kp, Ki, Kd = 8, 2, 4   # 中液位：标准
 else:
     Kp, Ki, Kd = 6, 1.5, 3  # 高液位：保守
-```
+```python
 
 ### 2. 计算性能优化
 **定点运算**（嵌入式系统）：
@@ -512,7 +512,7 @@ int16_t fixed_point_pid(int16_t error) {
     int32_t u = (p_term + i_term + d_term) >> 8;
     return CLAMP(u, 0, 10 << 8);
 }
-```
+```python
 
 **查表法**（Table Lookup）：
 ```python
@@ -521,7 +521,7 @@ tanh_table = [np.tanh(x) for x in np.linspace(-5, 5, 1000)]
 def fast_tanh(x):
     idx = int((x + 5) * 100)  # 映射到[0, 1000]
     return tanh_table[np.clip(idx, 0, 999)]
-```
+```python
 
 ## 工业标准与认证
 
@@ -557,7 +557,7 @@ def fast_tanh(x):
 cd books/water-system-control/code/examples/case_20_practical_application
 python main.py
 python experiments.py
-```
+```python
 
 ## 预期结果
 
@@ -602,24 +602,24 @@ python experiments.py
 **Nyquist-Shannon采样定理**：
 ```
 f_sample ≥ 2 × f_max
-```
+```python
 
 **控制系统经验法则**：
 ```
 f_sample ≥ 10 × BW_system
-```
+```python
 
 ### 数字PID离散化
 **位置式PID**：
 ```
 u[k] = Kp·e[k] + Ki·Σe[i]·Δt + Kd·(e[k]-e[k-1])/Δt
-```
+```python
 
 **增量式PID**：
 ```
 Δu[k] = Kp·(e[k]-e[k-1]) + Ki·e[k]·Δt + Kd·(e[k]-2e[k-1]+e[k-2])/Δt
 u[k] = u[k-1] + Δu[k]
-```
+```python
 
 ### 低通滤波器
 **一阶低通滤波器（离散）**：

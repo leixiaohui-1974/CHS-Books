@@ -71,7 +71,7 @@ from case_10_irrigation_system import (
 from case_13_multi_source_water_supply import MultiSourceOptimizer
 
 # 扩展：5灌区+3水库群优化
-```
+```matlab
 
 **复用率**：75%（案例10 40% + 案例13 35%）
 
@@ -103,7 +103,7 @@ class RegionalRotationCoordinator:
     - 配水公平性保障
     """
     pass
-```
+```python
 
 ---
 
@@ -128,7 +128,7 @@ class RegionalRotationCoordinator:
 └─ 灌区5：10万亩，果树
     │
 总计：60万亩
-```
+```python
 
 #### 1.2 灌区参数
 
@@ -208,7 +208,7 @@ class RegionalIrrigationCoordinator:
         )
         
         return allocations
-```
+```python
 
 ---
 

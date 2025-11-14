@@ -83,7 +83,7 @@ from case_01_irrigation_gate import SimplePIDController
 
 # 4. 数字孪生框架（复用）
 # 扩展为3级串联系统
-```
+```python
 
 **复用率**：90%（仅增加串联逻辑和协调控制）
 
@@ -116,7 +116,7 @@ class HydraulicDelay:
     功能：计算水流从上游到下游的传播时间
     """
     pass
-```
+```python
 
 ---
 
@@ -132,7 +132,7 @@ class HydraulicDelay:
 
 取水口1 ←─┘                  取水口2 ←─┘                  取水口3 ←─┘
 目标水位h1=3.0m              目标水位h2=2.5m              目标水位h3=2.0m
-```
+```python
 
 **控制目标**：
 - 取水口1水位：h1 = 3.0 m
@@ -160,7 +160,7 @@ tau = L / (v + c)  # 传播时间 [s]
 # v = 10/20 = 0.5 m/s
 # c = sqrt(9.8*3) = 5.4 m/s
 # tau = 5000 / (0.5 + 5.4) = 847 s ≈ 14分钟
-```
+```python
 
 **关键**：上游调节需要约15分钟才能影响下游！
 
@@ -189,7 +189,7 @@ opening3 = PID3.update(h3)  # 只看h3
 # - 闸门1调节→h1变化→影响h2/h3
 # - 产生水力干扰
 # - 波动逐级放大
-```
+```python
 
 **协调控制（本案例）**：
 ```python
@@ -200,7 +200,7 @@ opening1, opening2, opening3 = CascadeController.update(h1, h2, h3, q1, q2, q3)
 # - 下游需求提前告知上游（前馈）
 # - 考虑相互影响（协调）
 # - 补偿水力延迟
-```
+```python
 
 #### 2.2 串级协调控制器设计
 
@@ -281,7 +281,7 @@ class CascadeController:
         opening3 = np.clip(opening3, 0.2, 2.0)
         
         return opening1, opening2, opening3
-```
+```python
 
 #### 2.3 前馈控制原理
 
@@ -307,7 +307,7 @@ class CascadeController:
   t=15min: 额外流量到达h3，h3恢复
   
   总延迟：15分钟（减少60%）
-```
+```python
 
 **前馈增益计算**：
 ```python
@@ -316,7 +316,7 @@ class CascadeController:
 
 K_ff12 = (delta_Q2 / delta_opening2) / (delta_Q1 / delta_opening1)
       ≈ 0.8  # 闸门2增加1m，闸门1增加0.8m
-```
+```matlab
 
 ---
 

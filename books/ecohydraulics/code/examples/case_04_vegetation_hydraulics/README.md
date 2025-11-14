@@ -34,12 +34,12 @@
 植被增加河道糙率，影响水流速度。
 
 **综合糙率公式**（植物未淹没）:
-```
+```python
 n_eff = n_bare * (1 + k * coverage * (h_veg/h))
 ```
 
 **综合糙率公式**（植物淹没）:
-```
+```python
 n_eff = (n_lower * h_veg + n_upper * h_clear) / h
 ```
 
@@ -55,7 +55,7 @@ n_eff = (n_lower * h_veg + n_upper * h_clear) / h
 植物对水流产生阻力。
 
 **阻力公式**:
-```
+```python
 F_d = 0.5 * ρ * C_d * A * v²
 ```
 
@@ -66,7 +66,7 @@ F_d = 0.5 * ρ * C_d * A * v²
 - v: 流速
 
 **单位面积迎流面积**:
-```
+```python
 a = n * d * h
 ```
 
@@ -80,7 +80,7 @@ a = n * d * h
 判断植物是否会被冲刷。
 
 **安全系数**:
-```
+```python
 SF = v_critical / v_actual
 ```
 
@@ -95,7 +95,7 @@ SF = v_critical / v_actual
 植物生长需要适宜的淹水条件。
 
 **淹水比例**:
-```
+```python
 R_sub = 淹水天数 / 总天数
 ```
 

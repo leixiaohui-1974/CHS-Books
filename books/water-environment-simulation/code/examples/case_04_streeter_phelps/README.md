@@ -40,7 +40,7 @@
 
 **控制方程**:
 
-```
+```python
 BOD降解:
 dL/dt = -kd · L
 
@@ -58,22 +58,22 @@ dD/dt = kd · L - ka · D
 ### 2. 解析解
 
 **BOD浓度**:
-```
+```python
 L(t) = L₀ · exp(-kd · t)
 ```
 
 **DO亏损** (ka ≠ kd):
-```
+```python
 D(t) = (kd·L₀)/(ka-kd) · [exp(-kd·t) - exp(-ka·t)] + D₀·exp(-ka·t)
 ```
 
 **特殊情况** (ka = kd):
-```
+```python
 D(t) = kd · L₀ · t · exp(-kd·t) + D₀ · exp(-ka·t)
 ```
 
 **DO浓度**:
-```
+```python
 DO(t) = DOs - D(t)
 ```
 
@@ -89,17 +89,17 @@ DO(t) = DOs - D(t)
 临界点条件：dD/dt = 0
 
 **临界时间** (ka ≠ kd):
-```
+```python
 tc = ln[ka/kd · (1 - D₀·(ka-kd)/(kd·L₀))] / (ka - kd)
 ```
 
 **临界亏损**:
-```
+```python
 Dc = (kd·L₀)/ka · exp(-kd·tc)
 ```
 
 **临界DO**:
-```
+```python
 DOc = DOs - Dc
 ```
 
@@ -114,17 +114,17 @@ DOc = DOs - Dc
 **经验公式**:
 
 **Owens公式** (浅水河流，H < 1m):
-```
+```python
 ka = 5.32 · u^0.67 / H^1.85
 ```
 
 **Churchill公式** (大河):
-```
+```python
 ka = 5.026 · u / H^1.673
 ```
 
 **O'Connor-Dobbins公式** (深水河流):
-```
+```python
 ka = 3.93 · u^0.5 / H^1.5
 ```
 
@@ -136,19 +136,19 @@ ka = 3.93 · u^0.5 / H^1.5
 ### 5. 温度校正
 
 **kd温度校正**:
-```
+```python
 kd(T) = kd(20°C) · θd^(T-20)
 θd ≈ 1.047
 ```
 
 **ka温度校正**:
-```
+```python
 ka(T) = ka(20°C) · θa^(T-20)
 θa ≈ 1.024
 ```
 
 **饱和DO温度校正** (淡水，0-30°C):
-```
+```python
 DOs(T) = 14.652 - 0.41022·T + 0.007991·T² - 0.000077774·T³
 ```
 

@@ -13,7 +13,7 @@
 
 ### 系统特点
 
-```
+```python
 明渠段（Open Channel）:
     ✓ 自由水面，大气压
     ✓ 水力半径小，流速慢
@@ -43,7 +43,7 @@
 
 ### 2.1 明渠段（Saint-Venant方程）
 
-```
+```python
 连续性方程:
     ∂A/∂t + ∂Q/∂x = 0
 
@@ -66,7 +66,7 @@
 
 ### 2.2 管道段（水锤方程）
 
-```
+```python
 连续性方程:
     ∂H/∂t + (a²/g)·∂V/∂x = 0
 
@@ -85,7 +85,7 @@
 
 #### 类型1：明渠→管道（进水口）
 
-```
+```python
 场景: 运河通过闸门进入压力管道
 
 边界条件:
@@ -102,7 +102,7 @@
 
 #### 类型2：管道→明渠（出水口）
 
-```
+```python
 场景: 压力管道出流到运河
 
 边界条件:
@@ -120,7 +120,7 @@
 
 #### 类型3：泵站（提升）
 
-```
+```python
 场景: 从明渠抽水进入高位管道
 
 泵特性曲线:
@@ -139,7 +139,7 @@
 
 ### 3.1 分区耦合法（Domain Decomposition）
 
-```
+```python
 基本思路:
     1. 明渠段: Preissmann格式（隐式）
     2. 管道段: 特征线法（显式）
@@ -179,7 +179,7 @@
 # 组成非线性方程组，牛顿迭代求解
 F(A[n+1], Q[n+1]) = 0
 J·ΔX = -F  （雅可比矩阵）
-```
+```python
 
 ### 3.3 特征线法（管道）
 
@@ -193,7 +193,7 @@ C⁻: H[i] = C_m - B·Q[i]
 # 求解
 H[i] = (C_p + C_m) / 2
 Q[i] = (C_p - C_m) / (2B)
-```
+```python
 
 ### 3.4 耦合迭代
 
@@ -217,7 +217,7 @@ def couple_iteration(canal_state, pipe_state, max_iter=10):
             break
 
     return Q_interface, H_interface
-```
+```python
 
 ---
 
@@ -240,7 +240,7 @@ Level 1: 局部控制层
     ├─ 明渠段: PID/MPC水位控制
     ├─ 管道段: 压力/流量控制
     └─ 泵站: 转速/台数控制
-```
+```python
 
 ### 4.2 前馈-反馈控制
 
@@ -276,7 +276,7 @@ class FeedforwardFeedbackController:
         u_total = u_feedback + u_feedforward
 
         return u_total
-```
+```python
 
 ### 4.3 MPC协调控制
 
@@ -321,7 +321,7 @@ def mpc_optimization(x_current, x_ref, N_pred, N_control):
     u_optimal = minimize(cost, constraints)
 
     return u_optimal[0]  # 返回第一个控制动作
-```
+```python
 
 ### 4.4 故障应急控制
 
@@ -354,7 +354,7 @@ def emergency_control(system_state, fault_type):
         ]
 
     return actions
-```
+```python
 
 ---
 
@@ -382,7 +382,7 @@ def emergency_control(system_state, fault_type):
    - 明渠超高 ≥ 0.5m
    - 管道压力裕度 ≥ 30%
    - 流速限制: 运河<1.5m/s, 管道<3.0m/s
-```
+```python
 
 ### 5.2 启动/停机程序
 
@@ -403,7 +403,7 @@ def emergency_control(system_state, fault_type):
 
 紧急停机:
     立即关闭泵站 + 启动水锤防护装置
-```
+```python
 
 ### 5.3 常见问题及对策
 
@@ -474,7 +474,7 @@ def emergency_control(system_state, fault_type):
     年调水量: 95亿m³
     输水效率: >90%
     事故率: <0.1次/年
-```
+```python
 
 ### 7.2 某灌区配水系统
 

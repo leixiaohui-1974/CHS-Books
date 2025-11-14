@@ -78,7 +78,7 @@ from case_06_multi_function_gate import (
 )
 
 # 扩展：5个水体+8个闸站（网络拓扑）
-```
+```matlab
 
 **复用率**：80%（案例5 40% + 案例6 40%）
 
@@ -111,7 +111,7 @@ class LandscapeConstraint:
     功能：确保各水体水位在景观范围
     """
     pass
-```
+```python
 
 ---
 
@@ -141,7 +141,7 @@ class LandscapeConstraint:
 - 闸6：河道2 → 河道3
 - 闸7：河道3 → 外江（泄洪闸）
 - 闸8：外江 → 河道1（进水闸）
-```
+```python
 
 #### 1.2 水体参数
 
@@ -253,7 +253,7 @@ class RiverNetworkCoordinator:
             openings = [0.5] * 8
         
         return openings
-```
+```python
 
 ---
 

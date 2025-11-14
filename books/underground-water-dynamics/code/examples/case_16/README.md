@@ -41,12 +41,12 @@
 ### 抽水井的物理过程
 
 **水力学响应**：
-```
+```python
 抽水 → 井筒降深 → 水力梯度 → 径向流动 → 降落漏斗
 ```
 
 **时间演化**：
-```
+```python
 早期：局部影响
  ↓
 中期：漏斗扩大
@@ -72,21 +72,21 @@
 **控制方程**：
 
 径向流动方程：
-```
+```python
 ∂²h/∂r² + (1/r) * ∂h/∂r = (S/T) * ∂h/∂t
 ```
 
 **Theis解**（1935）：
 
 降深：
-```
+```python
 s(r,t) = (Q / 4πT) * W(u)
 
 u = r²S / (4Tt)
 ```
 
 井函数：
-```
+```python
 W(u) = ∫[u,∞] (e^(-x) / x) dx
 ```
 
@@ -107,19 +107,19 @@ W(u) = ∫[u,∞] (e^(-x) / x) dx
 **适用条件**：
 
 当 `u < 0.01` 时（大时间或小距离），W(u)可近似为：
-```
+```python
 W(u) ≈ -0.5772 - ln(u) = ln(2.25Tt / r²S)
 ```
 
 **近似解**：
-```
+```python
 s(r,t) = (Q / 4πT) * ln(2.25Tt / r²S)
 
 = (2.3Q / 4πT) * log₁₀(2.25Tt / r²S)
 ```
 
 **时间条件**：
-```
+```python
 t > 25 r²S / T
 
 或
@@ -142,14 +142,14 @@ t > 25 S / K  （在井筒r≈0.1m处）
 **适用**：稳定流（∂h/∂t = 0）
 
 **解**：
-```
+```python
 s(r) = (Q / 2πT) * ln(R / r)
 
 R: 影响半径（s=0处）
 ```
 
 **两井法**：
-```
+```python
 T = Q * ln(r₂/r₁) / (2π(s₁ - s₂))
 
 已知两个观测点的降深，求T
@@ -160,7 +160,7 @@ T = Q * ln(r₂/r₁) / (2π(s₁ - s₂))
 **线性系统**：
 
 多井系统的总降深 = 各井单独作用的降深之和
-```
+```python
 s_total(x,y,t) = Σ s_i(x,y,t)
 ```
 
@@ -177,7 +177,7 @@ s_total(x,y,t) = Σ s_i(x,y,t)
 ### 5. 井函数W(u)的性质
 
 **特殊值**：
-```
+```python
 W(10⁻¹⁵) ≈ 34.04
 W(10⁻¹⁰) ≈ 22.45
 W(10⁻⁵) ≈ 10.94
@@ -186,13 +186,13 @@ W(1) ≈ 0.22
 ```
 
 **渐近行为**：
-```
+```python
 u → 0: W(u) → -ln(u) - 0.5772
 u → ∞: W(u) → 0
 ```
 
 **导数**：
-```
+```python
 dW/du = -e^(-u) / u
 ```
 
@@ -220,7 +220,7 @@ def theis_solution(r, t, Q, T, S):
     W_u = theis_well_function(u)
     s = (Q / (4 * np.pi * T)) * W_u
     return s
-```
+```python
 
 ### Cooper-Jacob实现
 
@@ -233,7 +233,7 @@ def cooper_jacob_solution(r, t, Q, T, S):
     """
     s = (Q / (4 * np.pi * T)) * np.log(2.25 * T * t / (r**2 * S))
     return s
-```
+```python
 
 ### 叠加原理实现
 
@@ -254,7 +254,7 @@ def superposition_principle(wells, x, y, t, T, S):
         s_total += s_well
     
     return s_total
-```
+```python
 
 ### 抽水井类
 
@@ -273,7 +273,7 @@ class PumpingWell:
         r = np.sqrt((x_obs - self.x)**2 + (y_obs - self.y)**2)
         r = np.maximum(r, self.r_well)
         return theis_solution(r, t, self.Q, T, S)
-```
+```python
 
 ### 井群管理
 
@@ -293,7 +293,7 @@ class WellField:
             s = well.compute_drawdown(x, y, t, T, S)
             s_total += s
         return s_total
-```
+```python
 
 ---
 
@@ -304,7 +304,7 @@ class WellField:
 ```bash
 cd code/examples/case_16
 python3 case_16_pumping_optimization.py
-```
+```python
 
 ### 预期输出
 
@@ -475,7 +475,7 @@ S的影响（Q, T固定）：
   S×2.00: s=5.87m, 变化-7.2%
 
 ✅ 案例16执行完成！
-```
+```python
 
 ### 生成图片
 
@@ -543,7 +543,7 @@ S的影响（Q, T固定）：
 **干扰系数**：
 ```
 IC = s_多井 / s_单井
-```
+```matlab
 
 **本例**：
 - 两井对称，IC = 2.00
@@ -600,7 +600,7 @@ IC = s_多井 / s_单井
 **参数估计优先级**：
 ```
 T > Q > S
-```
+```python
 
 ---
 
@@ -616,7 +616,7 @@ times = [0.1, 1, 10, 100]  # days
 for t in times:
     s = theis_solution(r_grid, t, Q, T, S)
     # 绘制等值线图
-```
+```python
 
 **预期**：
 - t增加，降深增加
@@ -636,7 +636,7 @@ for d in distances:
     s = superposition_principle(wells, x_obs, y_obs, t, T, S)
     IC = s / s_single
     print(f"井距{d}m: IC={IC:.2f}")
-```
+```python
 
 **预期**：
 - 井距小 → IC大（强干扰）
@@ -654,7 +654,7 @@ wells = [
 ]
 
 s = superposition_principle(wells, X, Y, t, T, S)
-```
+```python
 
 **预期**：
 - 回灌井处形成水丘（s<0）
@@ -675,7 +675,7 @@ S_unconfined = 0.15
 s_unconfined = theis_solution(r, t, Q, T, S_unconfined)
 
 # 对比
-```
+```python
 
 **预期**：
 - 潜水S大，降深小
@@ -695,7 +695,7 @@ image_well = (-100, 0, -Q)  # 负Q表示补给
 
 wells = [real_well, image_well]
 s = superposition_principle(wells, X, Y, t, T, S)
-```
+```python
 
 **预期**：
 - 河流附近降深小（有补给）
@@ -740,7 +740,7 @@ s = superposition_principle(wells, X, Y, t, T, S)
 计算 u = r²S / (4Tt)
 如果 u < 0.01，用CJ
 否则用Theis
-```
+```python
 
 ### Q3: 如何估计影响半径？
 
@@ -750,12 +750,12 @@ s = superposition_principle(wells, X, Y, t, T, S)
 ```
 定义s_threshold（如0.01m）
 找到满足s(R) = s_threshold的R
-```
+```python
 
 **2. Cooper-Jacob公式**：
 ```
 R = √(2.25Tt / S)  （s=0处）
-```
+```python
 
 **3. 经验公式**：
 ```

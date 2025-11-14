@@ -38,7 +38,7 @@
 **主要过程**:
 
 #### 硝化作用（Nitrification）
-```
+```python
 NH4+ + 2O2 → NO3- + 2H+ + H2O
 
 速率方程: dNH4/dt = -k_n · NH4
@@ -55,7 +55,7 @@ NH4+ + 2O2 → NO3- + 2H+ + H2O
 **温度系数**: θ = 1.08
 
 #### 反硝化作用（Denitrification）
-```
+```python
 NO3- → N2↑ (在厌氧条件下)
 
 速率方程: dNO3/dt = -k_dn · NO3
@@ -69,7 +69,7 @@ NO3- → N2↑ (在厌氧条件下)
 **温度系数**: θ = 1.045
 
 #### 氨化作用（Ammonification）
-```
+```python
 有机氮 → NH4+
 
 速率方程: dOrgN/dt = -k_am · OrgN
@@ -84,14 +84,14 @@ NO3- → N2↑ (在厌氧条件下)
 **主要过程**:
 
 #### 矿化作用（Mineralization）
-```
+```python
 有机磷 → PO4³⁻
 
 速率方程: dOrgP/dt = -k_mp · OrgP
 ```
 
 #### 沉降（Settling）
-```
+```python
 颗粒磷 → 底泥
 
 速率方程: dOrgP/dt = -k_s · OrgP
@@ -117,22 +117,22 @@ NO3- → N2↑ (在厌氧条件下)
 #### Carlson营养状态指数（TSI）
 
 **基于叶绿素a**:
-```
+```python
 TSI(Chl) = 9.81 · ln(Chl) + 30.6
 ```
 
 **基于总磷**:
-```
+```python
 TSI(TP) = 14.42 · ln(TP) + 4.15
 ```
 
 **基于透明度**:
-```
+```python
 TSI(SD) = 60 - 14.41 · ln(SD)
 ```
 
 **综合TSI**:
-```
+```python
 TSI = [TSI(Chl) + TSI(TP) + TSI(SD)] / 3
 ```
 
@@ -144,7 +144,7 @@ TSI = [TSI(Chl) + TSI(TP) + TSI(SD)] / 3
 
 #### 中国湖泊综合营养状态指数（TLI）
 
-```
+```python
 TLI(Σ) = Σ Wj · TLI(j)
 
 其中：
@@ -165,12 +165,12 @@ TLI(CODMn) = 10 · (0.109 + 2.661 · ln(CODMn))
 ### 5. 限制性营养元素判断
 
 **Redfield比值**（原子比）:
-```
+```python
 C : N : P = 106 : 16 : 1
 ```
 
 **质量比**:
-```
+```python
 N : P ≈ 7.2 : 1
 ```
 

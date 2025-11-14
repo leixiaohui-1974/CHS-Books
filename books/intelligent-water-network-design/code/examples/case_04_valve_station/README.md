@@ -87,7 +87,7 @@ pressure_drop = compute_pressure_drop(
     Q=0.08,     # 流量80 L/s
     roughness=0.0002  # 钢管粗糙度
 )
-```
+```python
 
 ### 从第1本书复用（水系统控制）
 
@@ -104,7 +104,7 @@ pressure_controller = PIDController(
     output_limits=(0, 100),  # 阀门开度0-100%
     windup_limit=20.0
 )
-```
+```python
 
 ### 从案例2复用（泵站）
 
@@ -112,7 +112,7 @@ pressure_controller = PIDController(
 # 复用数字孪生仿真思想
 # 复用在环测试框架
 # 复用性能评估方法
-```
+```python
 
 ---
 
@@ -138,7 +138,7 @@ K_h = 2.5  # 高峰系数
 
 # 设计流量（高峰时）
 Q_design = Q_avg_day * K_h  # = 78 L/s ≈ 80 L/s
-```
+```python
 
 #### 1.2 压力设计
 
@@ -160,7 +160,7 @@ P_downstream = 0.30  # MPa
 
 # 需要减压
 delta_P = P_upstream - P_downstream  # = 0.30 MPa
-```
+```python
 
 #### 1.3 阀门选型
 
@@ -198,7 +198,7 @@ def valve_Kv(opening_percent):
         流量系数
     """
     return Kv_max * R**((opening_percent - 100) / 100)
-```
+```python
 
 ---
 
@@ -232,7 +232,7 @@ def valve_Kv(opening_percent):
 │  - 温度传感器                           │
 │  - 泄漏检测                             │
 └─────────────────────────────────────────┘
-```
+```matlab
 
 #### 2.2 传感器配置
 
@@ -321,7 +321,7 @@ class ValveStationController:
             print(f"  ⚠️ 出口压力过低({outlet_pressure:.3f}MPa)，紧急关阀")
         
         return self.valve_opening
-```
+```python
 
 #### 2.4 阀门水力模型
 
@@ -389,7 +389,7 @@ class ElectricValve:
         Q_m3s = Q_m3h / 3600  # 转换为m³/s
         
         return Q_m3s
-```
+```python
 
 ---
 
@@ -428,7 +428,7 @@ def adaptive_gain_scheduling(Q_current, Q_design):
         Kd = 2.0
     
     return Kp, Ki, Kd
-```
+```python
 
 #### 3.2 水锤预防
 
@@ -458,7 +458,7 @@ class WaterHammerPrevention:
         closing_rate = min(closing_rate, max_rate)
         
         return closing_rate
-```
+```python
 
 #### 3.3 管网漏损优化
 
@@ -475,7 +475,7 @@ def leakage_estimation(P_avg, P_design=0.30):
     
     # 如果压力降低10%，漏损减少约11.5%
     return leakage_ratio
-```
+```matlab
 
 ---
 

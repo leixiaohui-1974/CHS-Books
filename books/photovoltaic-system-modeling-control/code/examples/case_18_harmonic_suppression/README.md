@@ -105,7 +105,7 @@ for n in range(2, 11):
     if n in result['harmonics']:
         h = result['harmonics'][n]
         print(f"{n}次谐波: {h['magnitude']:.2f} A ({h['magnitude']/result['fundamental']*100:.2f}%)")
-```
+```python
 
 ### 2. 多谐振PR控制器
 
@@ -136,7 +136,7 @@ for t in time:
     
     # 应用到逆变器
     apply_voltage(v_out)
-```
+```python
 
 ### 3. THD评估
 
@@ -156,7 +156,7 @@ def evaluate_thd(current_signal, fs):
     
     print(f"THD: {thd*100:.2f}% - {grade}")
     return thd
-```
+```matlab
 
 ---
 
@@ -242,7 +242,7 @@ C = 5e-6   # 5uF
 # 验证截止频率
 f_c = 1 / (2 * np.pi * np.sqrt(L * C))
 print(f"截止频率: {f_c:.0f} Hz")  # 应约1kHz
-```
+```python
 
 ### 3. 实时监测
 

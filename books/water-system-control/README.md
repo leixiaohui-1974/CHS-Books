@@ -34,7 +34,7 @@
 
 ## 目录结构
 
-```
+```python
 water-system-control/
 ├── README.md                    # 本文件
 ├── START_HERE.md               # 快速入门指南
@@ -270,7 +270,7 @@ pip install numpy matplotlib pytest
 
 # 3. 运行测试验证安装
 pytest tests/
-```
+```python
 
 ## 如何使用
 
@@ -284,7 +284,7 @@ python demo_on_off_control.py
 # 运行案例2: 冷却塔
 cd code/examples/case_02_cooling_tower
 python demo_proportional_control.py
-```
+```python
 
 ### 运行测试
 
@@ -294,7 +294,7 @@ pytest tests/
 
 # 运行特定测试
 pytest tests/tests/models/water_tank/test_single_tank.py
-```
+```python
 
 ### 导入模型和控制器
 

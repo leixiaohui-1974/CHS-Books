@@ -51,7 +51,7 @@
 
 ## 技术路线
 
-```
+```python
 问题建模
   ├─ 决策变量定义
   ├─ 目标函数构建
@@ -106,7 +106,7 @@
 ```bash
 cd code/examples/case04_multi_objective_allocation
 python main.py
-```
+```python
 
 ## 核心算法
 
@@ -120,7 +120,7 @@ python main.py
 ```
 min -w1·效益 + w2·缺水量
 其中 w1 + w2 = 1
-```
+```python
 
 ### 2. 遗传算法（GA）
 
@@ -130,7 +130,7 @@ min -w1·效益 + w2·缺水量
 **适应度函数**：
 ```python
 fitness = w1·benefit - w2·shortage - penalty·violation
-```
+```python
 
 **遗传操作**：
 - 选择：锦标赛选择
@@ -142,12 +142,12 @@ fitness = w1·benefit - w2·shortage - penalty·violation
 **速度更新**：
 ```
 v = w·v + c1·r1·(pbest - x) + c2·r2·(gbest - x)
-```
+```python
 
 **位置更新**：
 ```
 x = x + v
-```
+```python
 
 **参数**：
 - w=0.7（惯性权重）

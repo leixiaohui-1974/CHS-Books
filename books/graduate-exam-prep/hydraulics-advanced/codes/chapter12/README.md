@@ -2,7 +2,7 @@
 
 ## 目录结构
 
-```
+```python
 chapter12/
 ├── ch12_problem01_river_bed_evolution.py      # 题1：河床演变计算
 ├── ch12_problem04_meandering_river.py         # 题4：弯曲河道水流分析
@@ -20,7 +20,7 @@ chapter12/
 某河段长度L = 10km，河道平均宽度B = 200m，上游来水流量Q = 1000 m³/s，含沙量S₀ = 5 kg/m³，河床泥沙中值粒径d₅₀ = 0.25mm，河床坡度i = 0.0002。
 
 **核心公式：**
-```
+```python
 1. 挟沙能力：S* = K·V^m·h^n
 2. 冲淤量：ΔV = (S₀-S*)·Q·T/γₛ
 3. 床面剪切力：τ₀ = γ·R·i
@@ -51,7 +51,7 @@ chapter12/
 某弯曲河道，弯曲半径R = 500m，河道宽度B = 100m，流量Q = 500 m³/s，平均水深h = 5m，弯道中心角θ = 90°，河床坡度i = 0.0001。
 
 **核心公式：**
-```
+```python
 1. 横向水面比降：J_s = v²/(g·R)
 2. 环流强度：Γ = K·v²/R
 3. 弯曲度：P = L_c/L_v
@@ -84,7 +84,7 @@ chapter12/
 某河段统计数据：多年平均流量Q = 800 m³/s，河道宽度B = 150m，平均水深h = 6m，河床坡度i = 0.0003，河床泥沙d₅₀ = 0.3mm。
 
 **核心公式：**
-```
+```python
 1. 河宽关系：B = K_B·Q^b
 2. 水深关系：h = K_h·Q^f
 3. 流速关系：v = K_v·Q^m
@@ -115,7 +115,7 @@ chapter12/
 某河段流量Q = 1000 m³/s，河宽B = 200m，水深h = 5m，河床坡度i = 0.0002，河床泥沙d₅₀ = 0.2mm，上游含沙量S₀ = 3 kg/m³。
 
 **核心公式：**
-```
+```python
 1. 起动流速：v_c = K·√[(γ_s-γ_w)/γ_w·g·d]
 2. 推移质：Q_b = K_b·(τ-τ_c)^1.5
 3. 悬移质：Q_s = α·S·Q
@@ -148,7 +148,7 @@ chapter12/
 某河段治理工程，河道长度L = 5km，多年平均流量Q = 1000 m³/s，设计洪峰Qp = 3000 m³/s，河道宽度B = 150m，河床坡度i = 0.0003。
 
 **核心内容：**
-```
+```python
 1. 河道断面设计
 2. 防洪能力评估
 3. 生态护岸设计
@@ -221,7 +221,7 @@ chapter12/
 - **连续性约束**：b + f + m = 1
 
 **典型系数（冲积平原）：**
-```
+```python
 B = 4.7·Q^0.5
 h = 0.56·Q^0.36
 v = 0.38·Q^0.14
@@ -273,7 +273,7 @@ python3 ch12_problem04_meandering_river.py
 python3 ch12_problem07_river_regime.py
 python3 ch12_problem10_sediment_transport.py
 python3 ch12_problem13_comprehensive.py
-```
+```python
 
 ### 2. 修改参数进行计算：
 在每个程序的 `main()` 函数中修改参数值，例如：

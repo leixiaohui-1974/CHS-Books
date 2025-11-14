@@ -31,7 +31,7 @@
 
 #### 电路拓扑
 
-```
+```python
 Vin --L-- Diode --+-- Cout -- Rload
             |     |
            SW     ⏚
@@ -71,7 +71,7 @@ Vin --L-- Diode --+-- Cout -- Rload
 
 #### 电路拓扑
 
-```
+```python
 Vin --SW--+-- L --+-- Cout -- Rload
           |       |
         Diode     ⏚
@@ -101,7 +101,7 @@ Vin --SW--+-- L --+-- Cout -- Rload
 
 #### 电路拓扑
 
-```
+```python
 Vin --SW--+
           |
           L
@@ -157,7 +157,7 @@ for _ in range(10000):
 
 print(f"输出电压: {v_C:.2f}V")
 print(f"理论值: {V_in/(1-d):.2f}V")
-```
+```python
 
 ### 2. Buck变换器
 
@@ -174,7 +174,7 @@ for _ in range(10000):
 
 print(f"输出电压: {v_C:.2f}V")
 print(f"理论值: {d*V_in:.2f}V")
-```
+```python
 
 ### 3. Buck-Boost变换器
 
@@ -191,7 +191,7 @@ for _ in range(10000):
 
 print(f"输出电压: {abs(v_C):.2f}V (负极性)")
 print(f"理论值: {abs(d/(1-d)*V_in):.2f}V")
-```
+```matlab
 
 ---
 
@@ -327,7 +327,7 @@ dv_C = 0.01 * V_dc  # 4V
 C = I_out * D / (f_s * dv_C)  # = 86uF
 
 print(f"设计结果: L={L*1e6:.0f}uH, C={C*1e6:.0f}uF")
-```
+```python
 
 ### 3. 控制策略
 

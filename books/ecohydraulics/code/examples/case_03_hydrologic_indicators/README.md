@@ -42,7 +42,7 @@ IHA（Indicators of Hydrologic Alteration）是由The Nature Conservancy开发�
 - 零流量天数
 
 **公式**:
-```
+```python
 基流指数 = 7日最小流量 / 年平均流量
 ```
 
@@ -71,7 +71,7 @@ IHA（Indicators of Hydrologic Alteration）是由The Nature Conservancy开发�
 - 流量反转次数
 
 **公式**:
-```
+```python
 涨水速率 = Δ流量 / Δ时间 （当流量上升时）
 反转次数 = 流量变化方向改变的次数
 ```
@@ -85,7 +85,7 @@ IHA（Indicators of Hydrologic Alteration）是由The Nature Conservancy开发�
 度量流量分布的多样性。
 
 **公式**:
-```
+```python
 H' = -Σ(p_i × ln(p_i))
 ```
 
@@ -99,7 +99,7 @@ H' = -Σ(p_i × ln(p_i))
 度量流量分布的均匀性。
 
 **公式**:
-```
+```python
 D = 1 - Σ(p_i²)
 ```
 
@@ -111,7 +111,7 @@ D = 1 - Σ(p_i²)
 标准化的Shannon指数。
 
 **公式**:
-```
+```python
 J' = H' / ln(S)
 ```
 
@@ -121,7 +121,7 @@ J' = H' / ln(S)
 ### 3. 水文改变度评估
 
 **改变度公式**:
-```
+```python
 改变度 = |post - pre| / pre × 100%
 ```
 
@@ -148,7 +148,7 @@ J' = H' / ln(S)
 ```bash
 cd /workspace/books/ecohydraulics/code/examples/case_03_hydrologic_indicators
 python main.py
-```
+```matlab
 
 ### 预期输出
 
@@ -190,7 +190,7 @@ python main.py
   中位改变度: 48.5%
   最大改变度: 195.0%
   改变等级: 较大改变
-```
+```matlab
 
 ### 水力多样性分析
 
@@ -317,7 +317,7 @@ case_03_hydrologic_indicators/
     ├── alteration_assessment.png
     ├── diversity_indices.png
     └── iha_report.txt
-```
+```python
 
 ## 核心代码说明
 
@@ -337,7 +337,7 @@ indicators = calculator.calculate_all_indicators()
 
 # 建坝前后对比
 results = calculator.compare_periods(pre_dates, post_dates)
-```
+```python
 
 ### 水力多样性
 
@@ -352,7 +352,7 @@ D = HydraulicDiversityIndex.simpson_index(flow_data, bins=20)
 
 # Pielou均匀度
 J = HydraulicDiversityIndex.pielou_evenness(flow_data, bins=20)
-```
+```python
 
 ### 改变度评估
 

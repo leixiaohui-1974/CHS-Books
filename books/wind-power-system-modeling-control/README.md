@@ -102,21 +102,21 @@ scipy >= 1.5
 matplotlib >= 3.3
 control >= 0.9  # 控制系统工具箱
 pandas >= 1.1   # 数据处理
-```
+```python
 
 ### 安装依赖
 
 ```bash
 cd books/wind-power-system-modeling-control
 pip install -r requirements.txt
-```
+```python
 
 ### 运行第一个案例
 
 ```bash
 cd code/examples/case_01_wind_statistics
 python main.py
-```
+```python
 
 ---
 

@@ -30,7 +30,7 @@ scipy >= 1.5.0
 matplotlib >= 3.3.0
 pandas >= 1.1.0
 scikit-learn >= 0.23.0
-```
+```python
 
 ### 安装依赖
 
@@ -40,7 +40,7 @@ cd water-resource-planning-management
 
 # 安装依赖（如果需要）
 pip install numpy scipy matplotlib pandas scikit-learn
-```
+```python
 
 ### 运行案例
 
@@ -54,7 +54,7 @@ python main.py
 # 查看结果
 # - 控制台会输出分析结果
 # - results/figures/ 目录下会生成可视化图表
-```
+```python
 
 ## 📚 目录结构
 
@@ -81,7 +81,7 @@ water-resource-planning-management/
 ├── 项目100%完成-最终报告.md   # 详细完成报告
 ├── 最终总结.md                 # 教材使用指南
 └── README.md                   # 本文件
-```
+```python
 
 ## 🎓 教材内容
 
@@ -214,7 +214,7 @@ result = frequency_analysis(data, distribution='pearson3')
 
 # 水量平衡
 balance = calculate_water_balance(supply, demand)
-```
+```python
 
 ### 2. forecasting - 预测方法
 
@@ -228,7 +228,7 @@ forecast = ma.fit(data).predict(steps=5)
 # 灰色预测
 gm = GreyPredictor()
 forecast = gm.fit(data).predict(steps=5)
-```
+```python
 
 ### 3. decision - 决策分析
 
@@ -240,7 +240,7 @@ weights, cr = ahp(judgment_matrix)
 
 # TOPSIS评估
 scores, ranking = topsis(decision_matrix, weights, criteria_types)
-```
+```python
 
 ### 4. optimization - 优化算法
 
@@ -253,7 +253,7 @@ result = solve_linear_programming(c, A_ub, b_ub)
 # 遗传算法
 ga = GeneticAlgorithm(objective, n_variables, bounds)
 best_x, best_fitness = ga.optimize()
-```
+```python
 
 ### 5. control - 控制理论
 
@@ -267,7 +267,7 @@ output = controller.compute(current_value)
 # MPC控制
 mpc = MPCController(model, prediction_horizon=10)
 u_optimal = mpc.compute(x_current)
-```
+```python
 
 ### 6. ml - 机器学习
 
@@ -281,7 +281,7 @@ nn.train(X_train, y_train)
 # LSTM预测
 lstm = LSTMPredictor(input_dim=5, hidden_dim=20)
 forecast = lstm.predict(X_test)
-```
+```python
 
 ### 7. digital_twin - 数字孪生
 
@@ -296,7 +296,7 @@ kf.update(measurement)
 # 虚拟传感器
 sensor = VirtualSensor(model=physical_model)
 value = sensor.measure(inputs)
-```
+```python
 
 ### 8. risk - 风险管理
 
@@ -314,7 +314,7 @@ var = var_calc.calculate_historical(returns)
 # 鲁棒优化
 optimizer = RobustOptimizer(objective, constraints)
 result = optimizer.optimize_worst_case(scenarios, x0)
-```
+```python
 
 ## 📊 案例特色
 
@@ -390,7 +390,7 @@ Python文件:           80个
 README文档:           20个
 算法实现:             42个
 可视化图表:          100+个
-```
+```python
 
 ## 💡 技术亮点
 
@@ -421,7 +421,7 @@ README文档:           20个
 ```bash
 cd code/examples/case01_frequency_analysis
 python main.py
-```
+```python
 
 ### Q2: 缺少依赖库怎么办？
 

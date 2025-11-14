@@ -24,7 +24,7 @@
 - 经济分析（成本效益，投资回收期）
 
 **关键公式**：
-```
+```python
 Q_设 = W/(T×86400×η)            # 设计流量
 Q = A×R^(2/3)×J^(1/2)/n        # 曼宁公式
 hc = (q²/g)^(1/3)               # 临界水深
@@ -58,7 +58,7 @@ Jc = n²q²/(R^(4/3))             # 临界坡度
 - 经济效益评估
 
 **关键公式**：
-```
+```python
 N = 9.81·η·Q·H/1000          # 出力 (MW)
 E = N·T                      # 发电量 (MW·h)
 V(t+1) = V(t) + (Q_in-Q_out)·Δt  # 水量平衡
@@ -91,7 +91,7 @@ V(t+1) = V(t) + (Q_in-Q_out)·Δt  # 水量平衡
 - 调节运行分析（变速/变角/变台）
 
 **关键公式**：
-```
+```python
 P = ρgQH/η                      # 功率
 年费用 = (投资×折旧率) + 年运行费
 并联：Q_总 = ΣQ_i, H = H_单台
@@ -125,7 +125,7 @@ P = ρgQH/η                      # 功率
 - 技术经济评价
 
 **关键公式**：
-```
+```python
 hf = λ·L/D·v²/(2g)           # 沿程损失
 hj = Σξ·v²/(2g)              # 局部损失
 N = 9.81·η·Q·H_净/1000      # 出力
@@ -159,7 +159,7 @@ N = 9.81·η·Q·H_净/1000      # 出力
 - 减灾效益评价
 
 **关键公式**：
-```
+```python
 Q = A·R^(2/3)·i^(1/2)/n        # 曼宁公式
 Q_分 = Q_总 - Q_河              # 分洪流量
 减灾效益 = Σ(损失_无 - 损失_有)
@@ -255,7 +255,7 @@ class ProblemSolver:
         
     def print_results(self):
         """结果输出"""
-```
+```python
 
 ## 核心公式汇总
 
@@ -265,21 +265,21 @@ Q = A·R^(2/3)·i^(1/2)/n         # 曼宁公式（明渠）
 hf = λ·L/D·v²/(2g)              # 沿程损失（管流）
 hj = Σξ·v²/(2g)                 # 局部损失
 Fr = v/√(gh)                    # 弗劳德数
-```
+```python
 
 ### 水工建筑物
 ```
 H_堤 = h_设计 + h_波浪 + h_安全    # 堤防高度
 V_库 = k·(Z - Z_死)²             # 库容-水位关系
 Q_分 = Q_总 - Q_河               # 分洪流量
-```
+```python
 
 ### 水电计算
 ```
 N = 9.81·η·Q·H/1000           # 出力 (MW)
 E = N·T                       # 电量 (kW·h)
 V(t+1) = V(t) + (Q_in-Q_out)·Δt  # 水量平衡
-```
+```python
 
 ### 经济分析
 ```
@@ -287,7 +287,7 @@ V(t+1) = V(t) + (Q_in-Q_out)·Δt  # 水量平衡
 B/C = 总效益/总成本
 NPV = Σ[B_t/(1+r)^t] - I
 IRR: NPV = 0时的r
-```
+```python
 
 ## 考试要点
 
@@ -351,7 +351,7 @@ IRR: NPV = 0时的r
 ```bash
 cd /workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter14
 python3 ch14_problem01_irrigation_canal_design.py
-```
+```python
 
 ### 批量运行
 ```bash
@@ -360,7 +360,7 @@ for file in ch14_problem*.py; do
     echo "运行 $file..."
     python3 "$file"
 done
-```
+```python
 
 ### 参数自定义
 每个程序的 `main()` 函数都可以修改参数：

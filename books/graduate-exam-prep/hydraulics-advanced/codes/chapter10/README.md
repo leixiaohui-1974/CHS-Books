@@ -28,7 +28,7 @@
 - 水头-流量关系
 
 **核心公式**：
-```
+```python
 自由出流: Q = m·b·H^(3/2)·√(2g)
 堰顶水深: h₀ = (2/3)H
 淹没系数: σ = f(s), s = h_下/H
@@ -56,7 +56,7 @@
 - 与宽顶堰对比
 
 **核心公式**：
-```
+```python
 矩形: Q = (2/3)m·b·√(2g)·H^(3/2)
 三角形: Q = (8/15)m·tanθ·√(2g)·H^(5/2)
 侧收缩: b_eff = b - 0.1nH
@@ -84,7 +84,7 @@
 - Fr数沿程分布
 
 **核心公式**：
-```
+```python
 自由出流: Q = μ·b·e·√(2gH₁)
 淹没出流: Q = μs·b·e·√(2g(H₁-H₂))
 收缩水深: hc = ε·e (ε≈0.62)
@@ -113,7 +113,7 @@
 - 水跃类型判别（5种）
 
 **核心公式**：
-```
+```python
 Froude数: Fr₁ = v₁/√(gh₁)
 共轭水深: h₂ = (h₁/2)(√(1+8Fr₁²)-1)
 水跃长度: Lj ≈ 6h₂
@@ -150,7 +150,7 @@ Froude数: Fr₁ = v₁/√(gh₁)
 - 综合评价
 
 **核心公式**：
-```
+```python
 堰流: Q_weir = m·b·H^(3/2)·√(2g)
 闸流: Q_gate = μ·b·e·√(2gH)
 总流量: Q_total = Q_weir + Q_gate
@@ -224,7 +224,7 @@ from ch10_problem01_broad_crested_weir import BroadCrestedWeir
 weir = BroadCrestedWeir(b=3, H=1.5, P=2.0, m=0.385)
 weir.print_results()
 weir.plot_analysis()
-```
+```python
 
 ## 依赖库
 
@@ -232,7 +232,7 @@ weir.plot_analysis()
 numpy >= 1.19.0
 matplotlib >= 3.3.0
 scipy >= 1.5.0
-```
+```python
 
 ## 开发规范
 
@@ -300,7 +300,7 @@ weir = BroadCrestedWeir(3, 1.5, 2.0, 0.385)
 Q = weir.discharge_free()  # 18.72 m³/s
 h0 = weir.crest_depth()     # 1.00 m
 vc = weir.crest_velocity()  # 3.13 m/s
-```
+```python
 
 ### 例2：闸孔出流判别
 已知：b=4m, e=0.6m, H₁=3m, H₂=1.5m
@@ -311,7 +311,7 @@ vc = weir.crest_velocity()  # 3.13 m/s
 gate = SluiceGate(4, 0.6, 3, 1.5)
 is_free = gate.is_free_flow()  # False（淹没）
 Q = gate.discharge()            # 11.94 m³/s
-```
+```python
 
 ### 例3：水跃计算
 已知：b=3m, Q=15m³/s, h₁=0.8m

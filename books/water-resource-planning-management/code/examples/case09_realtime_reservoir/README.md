@@ -47,7 +47,7 @@
 
 ## 技术路线
 
-```
+```python
 实时调度系统
   ├─ 信息采集
   │   ├─ 水位监测
@@ -89,12 +89,12 @@
 ### 1. MPC滚动优化
 
 **预测模型**：
-```
+```python
 V_{t+1} = V_t + (I_t - Q_t) * Δt
 ```
 
 **优化问题**：
-```
+```python
 max Σ_{t=0}^{H-1} P_t
 s.t. 水量平衡
      水位约束
@@ -112,19 +112,19 @@ s.t. 水量平衡
 ### 2. 鲁棒MPC
 
 **不确定集合**：
-```
+```python
 I_t ∈ [I_forecast - δ, I_forecast + δ]
 ```
 
 **鲁棒优化**：
-```
+```python
 max min_{I∈Ω} Σ P_t(I)
 ```
 
 ### 3. 反馈修正
 
 **状态估计**：
-```
+```python
 V_actual = V_measured
 ΔV = V_actual - V_predicted
 ```

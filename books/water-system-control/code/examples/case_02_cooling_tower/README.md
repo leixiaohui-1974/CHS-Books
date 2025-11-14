@@ -1,4 +1,37 @@
 # 案例2：工业冷却塔精确水位控制
+
+## 系统示意图
+
+### 图1：问题描述与系统架构
+
+<table>
+<tr>
+<td width="50%"><img src="cooling_tower_diagram.png" alt="系统示意图" width="100%"/></td>
+<td width="50%">
+
+**系统架构说明：**
+
+这张图展示了本案例的核心问题和系统架构：
+
+**核心要素：**
+1. **控制对象**：水箱系统及其动态特性
+2. **控制目标**：精确的水位控制和性能优化
+3. **控制策略**：本案例采用的具体控制方法
+4. **系统特性**：关键参数和性能指标
+
+**应用价值：**
+- 理解控制系统的基本原理
+- 掌握实际工程问题的建模方法
+- 学习控制器设计和参数调优
+- 分析系统性能和鲁棒性
+
+**学习重点：**
+通过本案例，您将深入理解控制理论在实际系统中的应用。
+
+</td>
+</tr>
+</table>
+
 **难度等级：** ⭐⭐ 基础
 **学习时间：** 6学时（3学时理论 + 3学时实验）
 **前置知识：** 案例1、微积分基础
@@ -117,7 +150,7 @@
 
 ### 数学模型
 **一阶系统：**
-```
+```python
 τ dh/dt + h = K × u
 其中：
 - τ = A × R = 4.0 分钟（时间常数）
@@ -125,7 +158,7 @@
 ```
 
 **比例控制律：**
-```
+```python
 u = Kp × e = Kp × (h_setpoint - h)
 其中：
 - e: 控制误差
@@ -134,7 +167,7 @@ u = Kp × e = Kp × (h_setpoint - h)
 ```
 
 **闭环传递函数：**
-```
+```python
 H(s) = (K × Kp) / (τs + 1 + K × Kp)
 稳态增益 = (K × Kp) / (1 + K × Kp)
 时间常数 = τ / (1 + K × Kp)
@@ -160,7 +193,7 @@ H(s) = (K × Kp) / (τs + 1 + K × Kp)
 ```bash
 cd books/water-system-control/code/examples/case_02_cooling_tower
 python main.py
-```
+```python
 
 ### 核心代码
 ```python
@@ -188,7 +221,7 @@ for step in range(N_steps):
 
     # 记录数据
     print(f"t={tank.t:.1f}, h={tank.h:.3f}, u={u:.2f}, e={setpoint-tank.h:.3f}")
-```
+```matlab
 
 ---
 
@@ -315,7 +348,7 @@ for step in range(N_steps):
 h_ss = K × u_ss = K × Kp × (h_setpoint - h_ss)
 => h_ss = (K·Kp)/(1+K·Kp) × h_setpoint
 => e_ss = h_setpoint / (1 + K·Kp)
-```
+```python
 
 **结论：**
 - 比例控制必然存在稳态误差（除非Kp→∞）
@@ -424,7 +457,7 @@ h_ss × (1 + K × Kp) = K × Kp × h_setpoint
 h_ss = (K × Kp) / (1 + K × Kp) × h_setpoint
 稳态误差：
 e_ss = h_setpoint - h_ss = h_setpoint / (1 + K × Kp)
-```
+```python
 
 **结论：**
 - 只要K×Kp是有限值，必然存在稳态误差
@@ -449,7 +482,7 @@ e_ss = h_setpoint - h_ss = h_setpoint / (1 + K × Kp)
 ```
 Kp = τ / (K × T_d)
 其中 T_d 是期望的响应时间
-```
+```python
 
 推荐：Kp = 2.0（对于本系统）
 </details>
@@ -461,7 +494,7 @@ Kp = τ / (K × T_d)
 # 一阶低通滤波器
 alpha = 0.9  # 滤波系数
 h_filtered = alpha * h_filtered_prev + (1 - alpha) * h_measured
-```
+```python
 
 **方法2：死区**
 ```python
@@ -470,7 +503,7 @@ if abs(error) < deadband:
     u = u_prev  # 保持上次控制量
 else:
     u = Kp * error
-```
+```python
 
 **方法3：限幅**
 ```python

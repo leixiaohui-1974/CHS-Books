@@ -41,7 +41,7 @@ regime = reynolds.flow_regime()  # "紊流"
 # 打印结果并绘图
 reynolds.print_results()
 reynolds.plot_analysis()
-```
+```python
 
 ---
 
@@ -80,7 +80,7 @@ dp = friction.pressure_drop()  # 压力降 (Pa)
 # 打印结果并绘图
 friction.print_results()
 friction.plot_analysis()
-```
+```python
 
 ---
 
@@ -124,7 +124,7 @@ h_opt, A_opt, chi_opt, R_opt, v_opt, Q_opt = channel.optimal_section_analysis()
 # 打印结果并绘图
 channel.print_results()
 channel.plot_analysis()
-```
+```python
 
 ---
 
@@ -169,7 +169,7 @@ h_array, E_array = critical.specific_energy_curve()
 # 打印结果并绘图
 critical.print_results()
 critical.plot_analysis()
-```
+```python
 
 ---
 
@@ -223,7 +223,7 @@ d_array, Q_array, h_loss_array, eff_array = system.diameter_optimization()
 # 打印结果并绘图
 system.print_results()
 system.plot_analysis()
-```
+```python
 
 ---
 
@@ -266,12 +266,12 @@ Python >= 3.8
 numpy >= 1.20.0
 matplotlib >= 3.3.0
 scipy >= 1.6.0
-```
+```python
 
 ### 安装依赖
 ```bash
 pip install numpy matplotlib scipy
-```
+```python
 
 ### 运行示例
 ```bash

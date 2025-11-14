@@ -1,4 +1,37 @@
 # 案例4：PID控制与参数整定
+
+## 系统示意图
+
+### 图1：问题描述与系统架构
+
+<table>
+<tr>
+<td width="50%"><img src="pid_system_diagram.png" alt="系统示意图" width="100%"/></td>
+<td width="50%">
+
+**系统架构说明：**
+
+这张图展示了本案例的核心问题和系统架构：
+
+**核心要素：**
+1. **控制对象**：水箱系统及其动态特性
+2. **控制目标**：精确的水位控制和性能优化
+3. **控制策略**：本案例采用的具体控制方法
+4. **系统特性**：关键参数和性能指标
+
+**应用价值：**
+- 理解控制系统的基本原理
+- 掌握实际工程问题的建模方法
+- 学习控制器设计和参数调优
+- 分析系统性能和鲁棒性
+
+**学习重点：**
+通过本案例，您将深入理解控制理论在实际系统中的应用。
+
+</td>
+</tr>
+</table>
+
 **难度等级：** ⭐⭐⭐ 中级
 **学习时间：** 8学时（4学时理论 + 4学时实验）
 **前置知识：** 案例1-3、自动控制原理基础
@@ -30,7 +63,7 @@
 5. **管路系统**：进水管和出水管构成闭环控制回路
 
 **PID控制律：**
-```
+```python
 u(t) = Kp·e(t) + Ki·∫e dt + Kd·de/dt
 ```
 
@@ -99,20 +132,20 @@ u(t) = Kp·e(t) + Ki·∫e dt + Kd·de/dt
 
 ### PID控制律
 **标准形式：**
-```
+```python
 u(t) = Kp × e(t) + Ki × ∫₀ᵗ e(τ) dτ + Kd × de/dt
 离散形式：
 u[k] = Kp × e[k] + Ki × Σe[i]×dt + Kd × (e[k]-e[k-1])/dt
 ```
 
 **并行形式：**
-```
+```python
 u = P项 + I项 + D项
   = Kp×e + Ki×∫e dt + Kd×de/dt
 ```
 
 **串联形式：**
-```
+```python
 u = Kp × [e + (1/Ti)×∫e dt + Td×de/dt]
 其中：
 - Ti = Kp/Ki （积分时间常数）
@@ -125,7 +158,7 @@ u = Kp × [e + (1/Ti)×∫e dt + Td×de/dt]
 - 正微分：误差在增大 → 加强控制
 - 负微分：误差在减小 → 减弱控制（提前制动）
 **减小超调的机制：**
-```
+```python
 接近目标时：
 - 误差e减小 → de/dt < 0 （负微分）
 - D项产生负控制量
@@ -199,7 +232,7 @@ u = Kp × [e + (1/Ti)×∫e dt + Td×de/dt]
 ```bash
 cd books/water-system-control/code/examples/case_04_pid_tuning
 python main.py
-```
+```python
 
 ### 核心代码
 ```python
@@ -228,7 +261,7 @@ dt = 0.1
 for step in range(600):
     u = controller.control(tank.h, dt=dt)
     tank.step(u, dt=dt)
-```
+```python
 
 ### Ziegler-Nichols自动整定
 ```python
@@ -243,7 +276,7 @@ params = ziegler_nichols_first_method(
 print(f"Kp = {params['Kp']:.3f}")
 print(f"Ki = {params['Ki']:.3f}")
 print(f"Kd = {params['Kd']:.3f}")
-```
+```matlab
 
 ---
 

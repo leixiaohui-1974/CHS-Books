@@ -23,7 +23,7 @@
 ### 1. Vollenweider模型
 
 **控制方程**：
-```
+```python
 dP/dt = L/V - P*Q/V - σ*P*A/V
 ```
 
@@ -36,14 +36,14 @@ dP/dt = L/V - P*Q/V - σ*P*A/V
 - A: 面积 (m²)
 
 **稳态浓度**：
-```
+```python
 P_ss = L / (Q + σ*A)
 ```
 
 ### 2. 磷滞留系数
 
 **定义**：
-```
+```python
 R = 1 - P_ss*Q/L = σ*A/(Q + σ*A)
 ```
 

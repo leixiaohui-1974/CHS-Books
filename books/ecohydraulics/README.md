@@ -22,7 +22,7 @@
 
 ### 与《明渠水力学》的关系
 
-```
+```python
 明渠水力学（基础课程）
     ↓ 提供水力计算方法
 生态水力学（本课程）
@@ -86,7 +86,7 @@
 ```bash
 cd /workspace/books/ecohydraulics
 pip install -r requirements.txt
-```
+```python
 
 ### 运行案例（全部6个案例）
 
@@ -108,7 +108,7 @@ cd ../case_05_thermal_stratification && python main.py
 
 # 案例6: 底栖生物栖息地
 cd ../case_06_benthic_habitat && python main.py
-```
+```python
 
 ### 运行测试（107个测试全部通过）
 
@@ -126,7 +126,7 @@ pytest tests/test_indicators.py -v
 pytest tests/test_vegetation.py -v
 pytest tests/test_thermal.py -v
 pytest tests/test_benthic.py -v
-```
+```matlab
 
 ---
 
@@ -166,7 +166,7 @@ pytest tests/test_benthic.py -v
 通过: 30
 失败: 0
 成功率: 100%
-```
+```python
 
 ### 测试覆盖
 
@@ -217,7 +217,7 @@ ecohydraulics/
 └── resources/                     # 资源文件
     ├── data/                      # 数据文件
     └── images/                    # 图片资源
-```
+```python
 
 ---
 
@@ -254,7 +254,7 @@ ecohydraulics/
 #### 1. Tennant法（蒙大拿法）
 ```
 Q_eco = α × Q_MAF
-```
+```python
 - α: 生态保护等级系数（10%-100%）
 - 优点: 简单易用，应用广泛
 - 缺点: 未考虑河道特征
@@ -262,7 +262,7 @@ Q_eco = α × Q_MAF
 #### 2. 湿周法
 ```
 找到 P(Q) 曲线的拐点
-```
+```python
 - 基于湿周-流量关系
 - 优点: 考虑河道形态
 - 缺点: 需要详细地形数据
@@ -271,7 +271,7 @@ Q_eco = α × Q_MAF
 ```
 h_target = 0.25 × h_max
 Q_eco = Q(h_target)
-```
+```python
 - 基于水深-流量关系
 - 优点: 物理意义明确
 - 缺点: 经验系数选择影响大
@@ -282,7 +282,7 @@ Q_eco = Q(h_target)
 ```
 v = (1/n) × R^(2/3) × S0^(1/2)
 Q = A × v
-```
+```python
 
 #### 河道水力要素
 ```
@@ -290,7 +290,7 @@ Q = A × v
 湿周: χ = b + 2×h×√(1 + m²)
 水力半径: R = A / χ
 水面宽度: B = b + 2×m×h
-```
+```python
 
 ---
 

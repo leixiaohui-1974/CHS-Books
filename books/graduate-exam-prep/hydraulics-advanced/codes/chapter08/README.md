@@ -28,7 +28,7 @@
 - 成本估算（施工费+运行费）
 
 **核心公式**：
-```
+```python
 承压水: Q = 2πKM·s/ln(R/r0)
 无压水: Q = πK(H0²-hw²)/ln(R/r0)
 井数: n ≥ Q_基坑/(Q_单井) × 安全系数
@@ -54,7 +54,7 @@
 - 管涌验证（出逸坡降）
 
 **核心公式**：
-```
+```python
 单宽流量: q = K·ΔH·(nf/nd)
 渗透坡降: i = Δh/Δl
 出逸坡降: i_出 = Δh/Δl（最后一格）
@@ -86,7 +86,7 @@
 - 排水设施设计
 
 **核心公式**：
-```
+```python
 浸润线: y² = y0² - (2q/K)x（抛物线）
 单宽流量: q = K·H1²/(2L)
 基点: A点（卡萨格兰德法）
@@ -113,7 +113,7 @@
 - 抽水周期与费用
 
 **核心公式**：
-```
+```python
 等效半径: r0 = √(LB/π)
 涌水量: Q = 2πKM·s/ln(R/r0)
 修正: Q' = α·Q
@@ -140,7 +140,7 @@
 - 防治措施建议
 
 **核心公式**：
-```
+```python
 渗透力: j = i·γw
 管涌临界坡降: [i] = (γs-γw)/γw ≈ 1.6
 流土临界坡降: ic = (γs-γw)/(γw·n) ≈ 4.0
@@ -211,7 +211,7 @@ from ch08_problem01_dupuit_formula import DupuitDewatering
 dew = DupuitDewatering(L=50, B=30, M=10, K=0.001, R=100, s0=5)
 dew.print_results()
 dew.plot_analysis()
-```
+```python
 
 ## 依赖库
 
@@ -219,7 +219,7 @@ dew.plot_analysis()
 numpy >= 1.19.0
 matplotlib >= 3.3.0
 scipy >= 1.5.0
-```
+```python
 
 ## 开发规范
 
@@ -286,7 +286,7 @@ dew = DupuitDewatering(50, 30, 10, 0.001, 100, 5)
 Q_conf = dew.confined_well_discharge()  # 承压井
 n = dew.well_count(Q_conf)  # 井数
 cost = dew.cost_estimate(n, 20)  # 费用
-```
+```python
 
 ### 例2：渗流网（流量计算）
 已知：ΔH=16m, K=0.0001m/s, nf=4, nd=10
@@ -297,7 +297,7 @@ cost = dew.cost_estimate(n, 20)  # 费用
 net = SeepageNet(20, 40, 18, 2, 10, 0.0001)
 q = net.unit_seepage(nf=4, nd=10)
 # q = K·ΔH·(nf/nd) = 6.4×10⁻⁵ m³/(s·m)
-```
+```python
 
 ### 例3：管涌判别（稳定性）
 已知：i=0.8, γs=26kN/m³, γw=10kN/m³

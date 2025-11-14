@@ -51,7 +51,7 @@ from books.open_channel_hydraulics.code.solvers.steady.uniform_flow import (
 # 使用示例
 channel = TrapezoidalChannel(b=3.0, m=1.5, n=0.020, S0=0.0003)
 h_normal = channel.compute_normal_depth(Q=5.0)  # 设计流量5.0 m³/s
-```
+```python
 
 ### 从第1本书复用（水系统控制）
 
@@ -65,7 +65,7 @@ gate_controller = PIDController(
     setpoint=1.8,  # 目标水位1.8m
     output_limits=(0.0, 1.0)  # 开度0-100%
 )
-```
+```python
 
 ### 从第3本书复用（渠道管道控制）
 
@@ -81,7 +81,7 @@ canal = CanalReach(
     roughness=0.020, # 糙率
     n_nodes=51      # 空间节点数
 )
-```
+```python
 
 ---
 
@@ -113,7 +113,7 @@ print(f"正常水深 h_n = {h_n:.3f} m")
 print(f"临界水深 h_c = {h_c:.3f} m")
 print(f"Froude数 Fr = {Fr:.3f}")
 print(f"流速 v = {elements['流速_v']:.3f} m/s")
-```
+```python
 
 **设计输出**：
 - 正常水深：h_n = 1.752 m
@@ -130,7 +130,7 @@ print(f"流速 v = {elements['流速_v']:.3f} m/s")
 branch_1 = TrapezoidalChannel(b=1.0, m=1.5, n=0.020, S0=0.0005)
 h_n1 = branch_1.compute_normal_depth(Q=0.5)
 # ... 其他9条支渠类似
-```
+```python
 
 #### 1.3 量水设施选型
 
@@ -141,7 +141,7 @@ h_n1 = branch_1.compute_normal_depth(Q=0.5)
 # - 堰宽 b_weir = 1.5 m
 # - 流量系数 C_d = 0.40
 # - 设计水头 h_weir = 0.30 m
-```
+```python
 
 ---
 
@@ -177,7 +177,7 @@ h_n1 = branch_1.compute_normal_depth(Q=0.5)
 │  - 10个电动闸门                          │
 │  - 量水堰                                │
 └─────────────────────────────────────────┘
-```
+```python
 
 #### 2.2 控制器设计
 
@@ -197,7 +197,7 @@ for i in range(10):
         windup_limit=0.5  # 抗积分饱和
     )
     gate_controllers.append(controller)
-```
+```matlab
 
 **参数整定方法**（复用第1本书案例4 PID整定）：
 1. 使用Ziegler-Nichols方法初步整定
@@ -254,7 +254,7 @@ for i in range(10):
         controller=gate_controllers[i],
         target=f'branch_{i+1}'
     )
-```
+```python
 
 #### 3.2 测试工况设计
 
@@ -285,7 +285,7 @@ scenarios = generate_test_scenarios(
 
 # 批量运行测试
 results = twin.run_batch_test(scenarios, parallel=True, n_workers=8)
-```
+```matlab
 
 #### 3.3 性能评估指标
 
@@ -323,7 +323,7 @@ print(f"各项指标: {score.breakdown}")
 #     '鲁棒性': 82,
 #     '可维护性': 87
 # }
-```
+```matlab
 
 ---
 
@@ -385,13 +385,13 @@ print(f"各项指标: {score.breakdown}")
 ```bash
 cd /workspace/books/intelligent-water-network-design/code/examples/case_01
 python main.py
-```
+```python
 
 ### 运行在环测试
 
 ```bash
 python run_hil_test.py --config config.json --scenarios 100
-```
+```python
 
 ### 生成设计文档
 

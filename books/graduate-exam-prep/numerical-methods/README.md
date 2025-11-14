@@ -146,14 +146,14 @@ pip install numpy scipy matplotlib pandas sympy
 
 # 可选：高性能计算
 pip install numba cupy  # CUDA加速（需要NVIDIA GPU）
-```
+```python
 
 ### 运行第一个项目
 
 ```bash
 cd codes/chapter1_linear_systems
 python project_01_direct_methods.py
-```
+```matlab
 
 ---
 
@@ -193,7 +193,7 @@ python project_01_direct_methods.py
    基础方法                深入方法
    
 难度梯度: ★★★☆☆  →  ★★★★☆
-```
+```bash
 
 ---
 

@@ -207,7 +207,7 @@ cd python-practice
 
 # 4. 运行第一个项目
 python codes/part1_basics/project_01_data_types.py
-```
+```python
 
 ### 目录结构
 

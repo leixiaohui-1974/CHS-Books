@@ -25,7 +25,7 @@
 
 地表水（河流、湖泊）和地下水之间存在密切的水力联系：
 
-```
+```python
 地表水
   ↕ 交换通量
 河床/湖底（弱透水层）
@@ -60,7 +60,7 @@
 
 **基本公式**（第三类边界条件）：
 
-```
+```python
 Q = C * (H_river - h_gw)
 ```
 
@@ -78,7 +78,7 @@ Q = C * (H_river - h_gw)
 
 **定义**：
 
-```
+```python
 C = K_bed * A / b_bed
 ```
 
@@ -89,7 +89,7 @@ C = K_bed * A / b_bed
 
 **渗漏系数**（Leakance）：
 
-```
+```python
 L = K_bed / b_bed  (1/day)
 ```
 
@@ -114,7 +114,7 @@ L = K_bed / b_bed  (1/day)
 当地下水位降到河底以下时会发生什么？
 
 **标准公式的问题**：
-```
+```python
 如果 h_gw = 15m, river_bottom = 20m, river_stage = 30m
 Q = C * (30 - 15) = 15C  
 
@@ -124,7 +124,7 @@ Q = C * (30 - 15) = 15C
 
 **断开机制**（Disconnected Mechanism）：
 
-```
+```python
 当 h_gw > river_bottom:
     Q = C * (river_stage - h_gw)  # 正常连接
 
@@ -145,12 +145,12 @@ MODFLOW的River包使用此机制，是工业标准。
 地表水和地下水的控制方程相互耦合：
 
 **地下水方程**：
-```
+```python
 ∂h/∂t = ∇·(K∇h) + Q_exchange
 ```
 
 **地表水方程**（简化）：
-```
+```python
 ∂H/∂t = ... - Q_exchange
 ```
 
@@ -166,7 +166,7 @@ MODFLOW的River包使用此机制，是工业标准。
 
 **算法流程**（每个时间步）：
 
-```
+```python
 1. 初始化：h_gw^(0), h_sw^(0)
 
 2. 迭代 k = 1, 2, ...:
@@ -221,7 +221,7 @@ river_bottom = 20.0       # 河底 (m)
 river_bed_K = 1.0         # 河床K (m/day)
 river_bed_thickness = 2.0 # 河床厚度 (m)
 river_width = 50.0        # 河宽 (m)
-```
+```python
 
 ### 创建河流边界
 
@@ -239,7 +239,7 @@ river = RiverBoundary(
 
 print(f"传导度: {river.conductance:.2e} m²/day")
 print(f"渗漏系数: {river.leakance:.3f} 1/day")
-```
+```python
 
 ### 弱耦合迭代
 
@@ -271,7 +271,7 @@ for iter_num in range(max_iter):
     if error < tol:
         print(f"收敛! 迭代{iter_num+1}次")
         break
-```
+```python
 
 ### 断开机制
 
@@ -283,7 +283,7 @@ flux_standard = river.compute_flux(h_gw, method='standard')
 flux_disconnected = river.compute_flux(h_gw, method='disconnected')
 
 # 当 h_gw < river_bottom 时，两者不同
-```
+```python
 
 ---
 
@@ -294,7 +294,7 @@ flux_disconnected = river.compute_flux(h_gw, method='disconnected')
 ```bash
 cd code/examples/case_11
 python3 case_11_coupling_basic.py
-```
+```python
 
 ### 预期输出
 
@@ -349,7 +349,7 @@ K_bed = 5.0 m/day: Q = 7845.12 m³/day
 4. 弱耦合方法8次迭代达到收敛
 
 ✅ 案例11执行完成！
-```
+```python
 
 ### 生成图片
 
@@ -390,7 +390,7 @@ K_bed = 5.0 m/day: Q = 7845.12 m³/day
 **发现**：
 ```
 C ∝ K_bed  ⇒  Q ∝ K_bed
-```
+```python
 
 **通量-渗透系数关系**：
 - 线性正相关
@@ -429,7 +429,7 @@ river_stages = [28.0, 30.0, 32.0, 35.0]
 for stage in river_stages:
     river.update_stage(stage)
     # 重新求解并比较
-```
+```python
 
 **预期**：
 - 水位越高，渗漏量越大
@@ -444,7 +444,7 @@ bed_thicknesses = [0.5, 1.0, 2.0, 5.0]
 
 # C = K * A / b_bed
 # b_bed 越大，C 越小，Q 越小
-```
+```python
 
 **预期**：
 - 薄河床：强交互
@@ -461,7 +461,7 @@ river_positions = [0.25, 0.5, 0.75]  # 相对位置
 for pos in river_positions:
     river_pos_idx = int(pos * nx)
     # 重新求解
-```
+```python
 
 **预期**：
 - 中央位置：对称影响
@@ -478,7 +478,7 @@ river_positions = [30, 70]  # 索引
 for pos in river_positions:
     # 分别计算通量
     Q_river[pos] = ...
-```
+```python
 
 **预期**：
 - 每条河流独立补给

@@ -23,7 +23,7 @@ CV(Constant Voltage)是最简单的MPPT算法:
 
 **核心原理**: MPP电压与Voc成比例
 
-```
+```python
 Vmpp ≈ k × Voc
 
 典型k值:
@@ -37,7 +37,7 @@ Vmpp ≈ k × Voc
 **为什么MPP在0.76×Voc附近?**
 
 从I-V曲线特性:
-```
+```python
 P = V × I
 Pmax 在 dP/dV = 0
 
@@ -49,7 +49,7 @@ Pmax 在 dP/dV = 0
 
 ### 算法流程
 
-```
+```python
 步骤1: 测量或估算Voc
      → 开路测量
      → 从数据手册获取
@@ -91,7 +91,7 @@ for step in range(100):
     
     # 电压跟踪
     v_pv = v_pv + 0.5 * (v_ref - v_pv)
-```
+```python
 
 ### 2. 改进型CV(带温度补偿)
 
@@ -111,7 +111,7 @@ v_ref = cv_improved.update(
     current=i_pv,
     temperature=temperature  # 实时温度
 )
-```
+```python
 
 ### 3. 不同比例对比
 
@@ -127,7 +127,7 @@ for ratio in ratios:
     
     perf = controller.evaluate_performance(pmpp)
     print(f"k={ratio}: 效率={perf['efficiency']:.1f}%")
-```
+```matlab
 
 ---
 
@@ -212,14 +212,14 @@ voc_measured = measure_voltage()
 reconnect_load()
 
 cv.set_voc(voc_measured)
-```
+```python
 
 **方法2: 数据手册**(简单)
 ```python
 # 从组件数据手册
 voc_stc = 36.0  # STC条件下
 cv = ConstantVoltage(voltage_ratio=0.76, voc=voc_stc)
-```
+```python
 
 **方法3: 温度补偿**(精确)
 ```python
@@ -228,7 +228,7 @@ temp_coef = -0.0035  # /°C
 temperature = 40.0  # 当前温度
 
 voc_actual = voc_25 * (1 + temp_coef * (temperature - 25))
-```
+```python
 
 ### 定期更新Voc
 
@@ -239,7 +239,7 @@ cv = ConstantVoltage(
     update_voc=True,           # 启用更新
     voc_update_interval=100    # 每100步更新一次
 )
-```
+```python
 
 ---
 
@@ -266,7 +266,7 @@ def measure_voc_fast():
     set_voltage(v_work)
     
     return voc
-```
+```python
 
 ### 2. 温度补偿
 
@@ -282,7 +282,7 @@ class CVWithTempComp:
     def get_vref(self, temperature, k=0.76):
         voc = self.get_voc(temperature)
         return k * voc
-```
+```python
 
 ### 3. 与P&O混合
 
@@ -309,7 +309,7 @@ class HybridMPPT:
                 self.mode = 'P&O'
                 self.po.v_ref = self.cv.v_ref  # 继承CV的电压
             return self.po.update(v, i)
-```
+```matlab
 
 ---
 
@@ -336,14 +336,14 @@ class HybridMPPT:
 响应时间:   <0.1s (瞬时)
 稳态振荡:   0 W
 建立时间:   0 步
-```
+```python
 
 **不同k值影响**:
 ```
 k=0.70:  88.5%效率 (偏离较远)
 k=0.76:  92.5%效率 (最优)
 k=0.80:  90.8%效率 (偏离)
-```
+```python
 
 ---
 

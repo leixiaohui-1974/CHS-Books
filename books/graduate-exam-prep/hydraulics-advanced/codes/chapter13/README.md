@@ -23,7 +23,7 @@
 - 月径流分配
 
 **关键公式**：
-```
+```python
 R = α × P × A     # 年径流量
 M = R/A           # 径流模数
 α = R/P           # 径流系数
@@ -55,7 +55,7 @@ R_基流 = (1-α) × R  # 基流
 - 供水保证率评估
 
 **关键公式**：
-```
+```matlab
 V_b = V - V_d                    # 兴利库容
 V_r = max(ΔW) - min(ΔW)         # 调节库容
 β = V_r/W_年                     # 调节系数
@@ -89,7 +89,7 @@ P = (1 - 缺水次数/总次数)×100%   # 保证率
 - 综合效益分析
 
 **关键公式**：
-```
+```python
 W_供 = W_需 + W_损失              # 水资源平衡
 η = (W_需 - W_供)/W_需           # 缺水率
 B = Σ(w_i × b_i)                # 综合效益
@@ -127,7 +127,7 @@ B = Σ(w_i × b_i)                # 综合效益
 - 可持续发展建议
 
 **关键公式**：
-```
+```python
 P_max = (W_可用 - W_生态 - W_生产)/(q_p × 365)  # 承载人口
 GDP_max = (W_可用 - W_生态 - W_生活)/q_GDP     # 承载GDP
 CI = W_用/W_可用                             # 承载指数
@@ -168,7 +168,7 @@ CI = W_用/W_可用                             # 承载指数
 - 综合效益评估（经济、生态、社会）
 
 **关键公式**：
-```
+```python
 W = P × A × α                        # 水资源总量
 W_需 = W_生活 + W_生产 + W_生态          # 需水量
 W_供 = W_地表 + W_地下 + W_外调          # 供水量
@@ -261,7 +261,7 @@ B/C = 总效益/总投资                   # 效益成本比
 ```bash
 cd /workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter13
 python3 ch13_problem01_runoff_calculation.py
-```
+```python
 
 ### 运行全部程序
 ```bash
@@ -270,7 +270,7 @@ for file in ch13_problem*.py; do
     echo "运行 $file..."
     python3 "$file"
 done
-```
+```python
 
 ### 自定义参数
 编辑各程序的 `main()` 函数，修改参数值：

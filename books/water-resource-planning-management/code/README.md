@@ -4,7 +4,7 @@
 
 ## 📂 目录结构
 
-```
+```python
 code/
 ├── core/                   # 核心模块（8个）
 │   ├── hydrology/         # 水文分析
@@ -181,7 +181,7 @@ cd examples/case01_frequency_analysis
 
 # 运行主程序
 python main.py
-```
+```python
 
 ### 2. 导入核心模块
 
@@ -191,21 +191,21 @@ sys.path.insert(0, 'path/to/code')
 
 from core.hydrology import frequency_analysis
 from core.optimization import GeneticAlgorithm
-```
+```python
 
 ### 3. 修改参数
 
 编辑案例目录下的配置文件：
 ```bash
 nano data/parameters.yaml
-```
+```python
 
 ### 4. 使用自己的数据
 
 替换案例目录下的数据文件：
 ```bash
 cp your_data.csv data/input_data.csv
-```
+```python
 
 ## 📊 代码统计
 

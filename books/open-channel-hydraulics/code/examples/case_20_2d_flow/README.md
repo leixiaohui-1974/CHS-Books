@@ -34,7 +34,7 @@
 
 **1.1 基本假设**
 
-```
+```python
 1. 浅水假设：水深 << 波长
 2. 垂线平均：流速沿水深均匀分布
 3. 静水压强：压强服从静水分布
@@ -43,7 +43,7 @@
 
 **1.2 守恒形式方程组**
 
-```
+```python
 守恒变量：
 U = [h, hu, hv]ᵀ
 
@@ -56,7 +56,7 @@ U = [h, hu, hv]ᵀ
 
 **1.3 连续性方程**
 
-```
+```python
 ∂h/∂t + ∂(hu)/∂x + ∂(hv)/∂y = 0
 
 物理意义：
@@ -69,7 +69,7 @@ U = [h, hu, hv]ᵀ
 
 **1.4 x方向动量方程**
 
-```
+```python
 ∂(hu)/∂t + ∂(hu²+gh²/2)/∂x + ∂(huv)/∂y = -gh·∂z_b/∂x - ghn²u√(u²+v²)/h^(4/3)
 
 各项物理意义：
@@ -83,7 +83,7 @@ U = [h, hu, hv]ᵀ
 
 **1.5 y方向动量方程**
 
-```
+```python
 ∂(hv)/∂t + ∂(huv)/∂x + ∂(hv²+gh²/2)/∂y = -gh·∂z_b/∂y - ghn²v√(u²+v²)/h^(4/3)
 
 结构与x方向类似
@@ -91,7 +91,7 @@ U = [h, hu, hv]ᵀ
 
 **1.6 矩阵形式**
 
-```
+```python
 ∂U/∂t + ∂F/∂x + ∂G/∂y = S
 
 其中：
@@ -117,7 +117,7 @@ S_fy = ghn²v√(u²+v²)/h^(4/3)
 
 **2.1 控制体积离散**
 
-```
+```python
 将计算域划分为矩形网格单元：
 
      j+1  ┌─────┬─────┬─────┐
@@ -137,7 +137,7 @@ S_fy = ghn²v√(u²+v²)/h^(4/3)
 
 **2.2 积分形式**
 
-```
+```python
 对单元(i,j)进行面积分：
 
 ∫∫_Ω (∂U/∂t) dA + ∫∫_Ω (∂F/∂x) dA + ∫∫_Ω (∂G/∂y) dA = ∫∫_Ω S dA
@@ -151,7 +151,7 @@ S_fy = ghn²v√(u²+v²)/h^(4/3)
 
 **2.3 离散方程**
 
-```
+```python
 dU_{i,j}/dt = -(F_{i+1/2,j}^n - F_{i-1/2,j}^n)/Δx
               -(G_{i,j+1/2}^n - G_{i,j-1/2}^n)/Δy + S_{i,j}
 
@@ -166,7 +166,7 @@ dU_{i,j}/dt = -(F_{i+1/2,j}^n - F_{i-1/2,j}^n)/Δx
 
 界面通量使用数值通量函数：
 
-```
+```python
 F_{i+1/2,j} = F_numerical(U_L, U_R)
 
 其中：
@@ -177,7 +177,7 @@ F_{i+1/2,j} = F_numerical(U_L, U_R)
 **常用数值通量格式：**
 
 **Lax-Friedrichs通量（简单但耗散大）：**
-```
+```python
 F_LF = (F(U_L) + F(U_R))/2 - α/2 · (U_R - U_L)
 
 其中：
@@ -186,7 +186,7 @@ F_LF = (F(U_L) + F(U_R))/2 - α/2 · (U_R - U_L)
 ```
 
 **HLL通量（Harten-Lax-van Leer）：**
-```
+```python
          ⎧ F(U_L)                     if S_L ≥ 0
 F_HLL = ⎨ (S_R·F(U_L) - S_L·F(U_R) + S_L·S_R·(U_R - U_L))/(S_R - S_L)  if S_L < 0 < S_R
          ⎩ F(U_R)                     if S_R ≤ 0
@@ -199,19 +199,19 @@ S_R = max(u_L + c_L, u_R + c_R)
 **2.5 时间积分**
 
 **显式欧拉（一阶）：**
-```
+```python
 U_{i,j}^{n+1} = U_{i,j}^n + Δt · RHS(U^n)
 ```
 
 **Runge-Kutta 2阶（RK2）：**
-```
+```python
 U^* = U^n + Δt · RHS(U^n)
 U^{n+1} = U^n + Δt/2 · (RHS(U^n) + RHS(U^*))
 ```
 
 **2.6 CFL条件**
 
-```
+```python
 Δt ≤ CFL · min(Δx, Δy) / max(|u| + c, |v| + c)
 
 其中：
@@ -223,7 +223,7 @@ U^{n+1} = U^n + Δt/2 · (RHS(U^n) + RHS(U^*))
 
 **3.1 干湿判定**
 
-```
+```python
 定义临界水深 h_dry（通常0.001-0.01 m）：
 
 湿单元：h ≥ h_dry
@@ -232,7 +232,7 @@ U^{n+1} = U^n + Δt/2 · (RHS(U^n) + RHS(U^*))
 
 **3.2 界面通量修正**
 
-```
+```python
 如果界面两侧有干单元，特殊处理：
 
 Case 1: 两侧都是干单元
@@ -253,7 +253,7 @@ Case 3: 左干右湿
 
 **3.3 水深非负保证**
 
-```
+```python
 After time update:
   if h_{i,j}^{n+1} < 0:
     h_{i,j}^{n+1} = 0
@@ -265,7 +265,7 @@ After time update:
 
 **4.1 底坡源项**
 
-```
+```python
 S_b,x = -gh · ∂z_b/∂x
 S_b,y = -gh · ∂z_b/∂y
 
@@ -277,7 +277,7 @@ S_b,y = -gh · ∂z_b/∂y
 **平衡性（Well-balanced）：**
 
 静水状态下，压力项与底坡项应平衡：
-```
+```python
 ∂(gh²/2)/∂x + gh·∂z_b/∂x = 0
 
 即：
@@ -288,7 +288,7 @@ S_b,y = -gh · ∂z_b/∂y
 
 **4.2 摩阻源项**
 
-```
+```python
 S_f,x = -gn²u√(u²+v²)/h^(4/3)
 S_f,y = -gn²v√(u²+v²)/h^(4/3)
 
@@ -304,7 +304,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **5.1 入流边界（上游）**
 
-```
+```python
 固定流量：
   Q_total = ∑ (hu)_{i,j} · Δy
 
@@ -317,7 +317,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **5.2 出流边界（下游）**
 
-```
+```python
 自由出流（外推）：
   U_{boundary} = U_{interior}
 
@@ -328,7 +328,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **5.3 固壁边界（侧边）**
 
-```
+```python
 无渗透条件：
   法向流速 = 0
 
@@ -343,7 +343,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **6.1 流线与迹线**
 
-```
+```python
 流线：某一时刻的流速矢量切线
   dx/ds = u
   dy/ds = v
@@ -357,7 +357,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **6.2 涡度**
 
-```
+```python
 ω = ∂v/∂x - ∂u/∂y
 
 涡度表示流体微团的旋转
@@ -367,7 +367,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **6.3 环流**
 
-```
+```python
 Γ = ∮_C (u·dx + v·dy)
 
 沿闭合曲线的速度环量
@@ -390,7 +390,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **8.1 主槽-滩地相互作用**
 
-```
+```python
 漫滩阶段：
 1. 水位上涨，主槽水深增加
 2. 水位超过滩地高程
@@ -407,7 +407,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **8.2 动量交换**
 
-```
+```python
 主槽与滩地流速差异：
 - 主槽：流速快，水深大
 - 滩地：流速慢，水深小，糙率大
@@ -420,7 +420,7 @@ C_f = gn²√(u²+v²)/h^(4/3)
 
 **8.3 复合断面流量**
 
-```
+```python
 Q_total = Q_main + Q_floodplain
 
 Q_main = ∫∫_{main} hu dA
@@ -436,7 +436,7 @@ Q_floodplain = ∫∫_{flood} hu dA
 
 **9.1 算法流程**
 
-```
+```python
 1. 初始化：
    - 网格生成
    - 地形赋值
@@ -481,7 +481,7 @@ n_manning = np.zeros((Nx, Ny))  # 糙率
 # 通量数组
 F_x = np.zeros((Nx+1, Ny, 3))  # x方向通量
 F_y = np.zeros((Nx, Ny+1, 3))  # y方向通量
-```
+```python
 
 ### 10. 可视化方法
 
@@ -490,27 +490,27 @@ F_y = np.zeros((Nx, Ny+1, 3))  # y方向通量
 ```python
 plt.contourf(X, Y, h, levels=20, cmap='Blues')
 plt.colorbar(label='水深 (m)')
-```
+```python
 
 **10.2 矢量场（Quiver）**
 
 ```python
 plt.quiver(X[::skip, ::skip], Y[::skip, ::skip],
           u[::skip, ::skip], v[::skip, ::skip])
-```
+```python
 
 **10.3 流线图（Streamplot）**
 
 ```python
 plt.streamplot(X, Y, u, v, density=1.5, color=速度大小)
-```
+```python
 
 **10.4 三维曲面（Surface）**
 
 ```python
 from mpl_toolkits.mplot3d import Axes3D
 ax.plot_surface(X, Y, h+z_b, cmap='viridis')
-```
+```python
 
 **10.5 动画（Animation）**
 
@@ -521,7 +521,7 @@ def update(frame):
     plt.contourf(X, Y, h_history[frame])
 
 ani = FuncAnimation(fig, update, frames=N_frames)
-```
+```python
 
 ## 计算任务
 

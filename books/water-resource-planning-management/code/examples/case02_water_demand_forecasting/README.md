@@ -47,7 +47,7 @@
 
 ## 技术路线
 
-```
+```python
 历史数据准备
   ├─ 需水量历史数据（20年）
   ├─ 社会经济指标（人口、GDP等）
@@ -112,12 +112,12 @@
 ```bash
 cd code/examples/case02_water_demand_forecasting
 python main.py
-```
+```python
 
 ### 方法2：使用配置
 ```bash
 python main.py --config config.yaml
-```
+```python
 
 ### 方法3：训练神经网络模型
 ```bash

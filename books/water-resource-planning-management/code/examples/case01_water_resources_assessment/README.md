@@ -36,7 +36,7 @@
 
 ## 技术路线
 
-```
+```python
 输入数据
   ├─ 多年径流序列（30-50年）
   ├─ 流域基本参数（面积、河长等）
@@ -90,17 +90,17 @@
 ```bash
 cd code/examples/case01_water_resources_assessment
 python main.py
-```
+```python
 
 ### 方法2：使用配置文件
 ```bash
 python main.py --config config.yaml
-```
+```python
 
 ### 方法3：交互式运行（Jupyter Notebook）
 ```bash
 jupyter notebook case01_analysis.ipynb
-```
+```bash
 
 ## 核心技术
 
@@ -135,14 +135,14 @@ $$
 多年平均径流量: 25.3 亿m³
 变差系数 Cv: 0.25
 偏态系数 Cs: 0.50
-```
+```python
 
 ### 2. 不同保证率径流量
 ```
 P=50%:  25.0 亿m³
 P=75%:  20.5 亿m³
 P=95%:  15.2 亿m³
-```
+```python
 
 ### 3. 可利用水资源量
 ```

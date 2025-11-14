@@ -69,7 +69,7 @@
 
 ### 2. 滑模面设计
 对于一阶系统，典型的滑模面：
-```
+```python
 s = e + λ∫e dt
 ```
 
@@ -80,7 +80,7 @@ s = e + λ∫e dt
 
 ### 3. 滑模到达条件
 **Lyapunov稳定性条件**：
-```
+```python
 s·ṡ < 0
 ```
 
@@ -94,7 +94,7 @@ s·ṡ < 0
 - 克服不确定性和扰动
 - 典型形式：k·sign(s) 或 k·sat(s/φ)
 **总控制律**：
-```
+```python
 u = ueq + usw
 ```
 
@@ -104,7 +104,7 @@ u = ueq + usw
 - 实际系统有延迟、惯性
 **抑制方法**：
 1. **边界层法**：用饱和函数替代符号函数
-   ```
+   ```json
    sat(s/φ) = { s/φ,     |s| ≤ φ
               { sign(s),  |s| > φ
    ```
@@ -148,7 +148,7 @@ u = ueq + usw
 cd books/water-system-control/code/examples/case_15_sliding_mode_control
 python main.py
 python experiments.py
-```
+```python
 
 ## 预期结果
 1. **基本性能**：
@@ -203,25 +203,25 @@ python experiments.py
 ```
 s = e + λ∫e dt
   = (r - y) + λ∫(r - y) dt
-```
+```python
 
 ### 到达律
 ```
 ṡ = -k·sign(s) - ε·s
-```
+```python
 
 ### 控制律
 ```
 u = ueq + usw
 ueq：通过 ṡ = 0 求解
 usw = -k·sat(s/φ)
-```
+```python
 
 ### 饱和函数
 ```
 sat(x) = { x,        |x| ≤ 1
          { sign(x),  |x| > 1
-```
+```python
 
 ## 扩展学习
 experiments.py包含：
@@ -237,7 +237,7 @@ experiments.py包含：
 ```
 u = -k1|s|^(1/2)·sign(s) + u1
 du1/dt = -k2·sign(s)
-```
+```python
 
 **优点**：连续控制，无抖振
 
@@ -245,7 +245,7 @@ du1/dt = -k2·sign(s)
 **非线性滑模面**：
 ```
 s = e + β·|e|^α·sign(e)
-```
+```python
 
 其中 0 < α < 1，实现有限时间收敛。
 

@@ -75,7 +75,7 @@ from case_02_pump_station import Pump, MultiPumpController
 from case_09_water_network_pressure import PressureZoneCoordinator
 
 # 扩展：4水源+3水厂+8分区
-```
+```matlab
 
 **复用率**：70%（案例2 30% + 案例9 40%）
 
@@ -123,7 +123,7 @@ class EmergencyDispatch:
     - 保证70%供水
     """
     pass
-```
+```python
 
 ---
 
@@ -151,7 +151,7 @@ class EmergencyDispatch:
 ├─ 分区1-4：居民区（生活用水，高质）
 ├─ 分区5-6：工业区（工业用水，中质）
 └─ 分区7-8：农业区（农业用水，低质）
-```
+```matlab
 
 #### 1.2 水源参数
 
@@ -282,7 +282,7 @@ class MultiSourceCoordinator:
         allocation['total_cost'] = total_cost
         
         return allocation
-```
+```matlab
 
 ---
 

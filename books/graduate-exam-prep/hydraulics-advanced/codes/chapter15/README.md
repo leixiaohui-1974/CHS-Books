@@ -108,7 +108,7 @@
    ```bash
    cd /workspace/books/graduate-exam-prep/hydraulics-advanced/codes/chapter15
    python3 ch15_exam01_foundation_test.py
-   ```
+   ```python
    - 打印试卷
    - 独立作答
    - 严格计时
@@ -196,40 +196,40 @@
 ```
 p = p0 + γh                    # 静水压强
 P = γhc·A                      # 总压力
-```
+```python
 
 **能量方程**：
 ```
 z1 + p1/γ + v1²/(2g) = z2 + p2/γ + v2²/(2g) + hw
-```
+```python
 
 **连续方程**：
 ```
 Q = A1v1 = A2v2
-```
+```python
 
 **雷诺数**：
 ```
 Re = vd/ν                      # 判别流态
 Re_c = 2320（圆管）
-```
+```python
 
 **沿程损失**：
 ```
 hf = λ·L/d·v²/(2g)            # 管流
 层流：λ = 64/Re
 紊流：λ = f(Re, Δ/d)
-```
+```python
 
 **曼宁公式**：
 ```
 Q = A·R^(2/3)·i^(1/2)/n       # 明渠流
-```
+```python
 
 **临界水深**：
 ```
 hc = (q²/g)^(1/3)             # 矩形断面
-```
+```python
 
 **弗劳德数**：
 ```
@@ -237,24 +237,24 @@ Fr = v/√(gh)
 Fr<1: 缓流
 Fr=1: 临界流
 Fr>1: 急流
-```
+```python
 
 **达西定律**：
 ```
 v = Ki                         # 渗流
-```
+```python
 
 **重力坝稳定**：
 ```
 Kc = f·ΣV/ΣH ≥ 3.0           # 抗滑
 σ = ΣV/B ± 6ΣM/B²             # 应力
-```
+```python
 
 **泵的相似定律**：
 ```
 Q1/Q2 = (n1/n2)(D1/D2)³
 H1/H2 = (n1/n2)²(D1/D2)²
-```
+```python
 
 **水电站出力**：
 ```

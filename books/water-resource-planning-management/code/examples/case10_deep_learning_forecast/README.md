@@ -42,7 +42,7 @@
 
 ## 技术路线
 
-```
+```python
 数据准备
   ├─ 数据收集
   ├─ 缺失值处理
@@ -82,7 +82,7 @@
 ### 1. LSTM神经网络
 
 **结构**：
-```
+```python
 Input Layer (window_size, n_features)
     ↓
 LSTM Layer 1 (64 units)
@@ -107,14 +107,14 @@ Output Layer (1 unit)
 - is_weekend: 是否周末 (0/1)
 - month: 月份 (1-12)
 - season: 季节 (1-4)
-```
+```python
 
 **统计特征**：
 ```python
 - rolling_mean_7: 7天滑动平均
 - rolling_std_7: 7天滑动标准差
 - lag_1, lag_7: 滞后1天、7天
-```
+```python
 
 ### 3. 多步预测策略
 

@@ -58,7 +58,7 @@ MODFLOW River包（RIV Package）是最常用的地表水-地下水交互边界�
 
 **对于每个河流单元**：
 
-```
+```python
 当 h_gw > RBOT:
     Q_river = CRIV * (HRIV - h_gw)
 
@@ -77,7 +77,7 @@ MODFLOW River包（RIV Package）是最常用的地表水-地下水交互边界�
 
 **基本公式**：
 
-```
+```python
 CRIV = K_bed * L * W / b_bed
 ```
 
@@ -90,7 +90,7 @@ CRIV = K_bed * L * W / b_bed
 **实际估算**：
 
 对于模型单元：
-```
+```python
 CRIV = K_bed * (dx或dy) * W / b_bed
 ```
 
@@ -116,7 +116,7 @@ CRIV = K_bed * (dx或dy) * W / b_bed
 
 **数据结构**：
 
-```
+```python
 河流网络
 ├── 河段1（主河流）
 │   ├── Reach 1
@@ -139,13 +139,13 @@ CRIV = K_bed * (dx或dy) * W / b_bed
 - 地下水水头：20m（低于河底！）
 
 **标准公式问题**：
-```
+```python
 Q = CRIV * (30 - 20) = 10 * CRIV
 ```
 通量过大，不符合物理实际！
 
 **断开机制修正**：
-```
+```python
 Q = CRIV * (30 - 25) = 5 * CRIV
 ```
 通量被限制在河流深度范围内。
@@ -191,7 +191,7 @@ riv.add_river_cell(
     bottom=20.0,
     segment_id=1
 )
-```
+```python
 
 2. **添加河流河段**：
 ```python
@@ -206,7 +206,7 @@ riv.add_river_segment(
     bottom=25.0,
     segment_id=1
 )
-```
+```python
 
 3. **计算通量**：
 ```python
@@ -218,7 +218,7 @@ total_flux = riv.get_total_flux(h_gw)
 
 # 分河段通量
 seg_flux = riv.get_segment_flux(segment_id=1, head=h_gw)
-```
+```python
 
 4. **统计分析**：
 ```python
@@ -228,7 +228,7 @@ for seg_id, info in stats.items():
     print(f"河段 {seg_id}:")
     print(f"  总通量: {info['total_flux']:.2f} m³/day")
     print(f"  平均通量: {info['avg_flux']:.2f} m³/day/cell")
-```
+```python
 
 5. **应用为源汇项**：
 ```python
@@ -241,7 +241,7 @@ source = riv.apply_flux_to_source(
 
 # source 的shape与head相同
 # 可以直接用于地下水求解器
-```
+```python
 
 ### 河流网络设计
 
@@ -255,7 +255,7 @@ source = riv.apply_flux_to_source(
             ↑
             ↑
         南支流 (Segment 3)
-```
+```python
 
 **代码实现**：
 
@@ -283,7 +283,7 @@ riv.add_river_segment(
 )
 
 # 南支流：类似
-```
+```python
 
 ### 弱耦合求解
 
@@ -305,7 +305,7 @@ for iteration in range(max_iter):
         break
     
     h = h_new
-```
+```python
 
 ---
 
@@ -316,7 +316,7 @@ for iteration in range(max_iter):
 ```bash
 cd code/examples/case_12
 python3 case_12_river_package.py
-```
+```python
 
 ### 预期输出
 
@@ -403,7 +403,7 @@ python3 case_12_river_package.py
   类型: 河流补给地下水
 
 ✅ 案例12执行完成！
-```
+```python
 
 ### 生成图片
 
@@ -469,7 +469,7 @@ python3 case_12_river_package.py
 C = 0.5×原值 → Q ≈ 0.5×原值
 C = 2.0×原值 → Q ≈ 2.0×原值
 C = 5.0×原值 → Q ≈ 5.0×原值
-```
+```python
 
 **线性关系**：
 - 通量正比于传导度
@@ -494,7 +494,7 @@ C = 5.0×原值 → Q ≈ 5.0×原值
 for stage in [31.0, 33.0, 35.0, 37.0]:
     riv.update_stage(stage, segment_id=1)
     # 重新求解并分析
-```
+```python
 
 **预期**：
 - 水位越高，补给越多
@@ -512,7 +512,7 @@ h_pumping = h - 10.0  # 模拟大量抽水
 # 对比断开前后
 flux_normal = riv.compute_flux(h, use_disconnection=False)
 flux_disconnected = riv.compute_flux(h_pumping, use_disconnection=True)
-```
+```python
 
 **预期**：
 - 无断开机制：通量继续线性增大（不合理）
@@ -529,7 +529,7 @@ riv_main_only = RiverPackage()
 riv_main_only.add_river_segment(...)
 
 # 对比全网络 vs 仅主河流
-```
+```matlab
 
 **预期**：
 - 总通量减少~25-30%
@@ -546,7 +546,7 @@ for cell in riv.river_cells:
     if cell.segment_id == 1:  # 主河流
         # 传导度减半（模拟淤积）
         cell.conductance *= 0.5
-```
+```python
 
 **预期**：
 - 主河流通量减少
@@ -641,7 +641,7 @@ for cell in riv.river_cells:
 for cell in riv.river_cells:
     cell.stage = low_stage
     # 或者直接移除部分河流单元
-```
+```python
 
 **丰水期**：
 ```python

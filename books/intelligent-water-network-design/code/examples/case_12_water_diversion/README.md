@@ -74,7 +74,7 @@ from case_08_multi_pump_stations import MultiStationCoordinator
 from case_10_irrigation_system import IrrigationSystemCoordinator
 
 # 扩展：泵站+渠道+水库混合系统
-```
+```matlab
 
 **复用率**：75%（案例2 25% + 案例7 20% + 案例8 20% + 案例10 10%）
 
@@ -95,7 +95,7 @@ class LongDistanceDelayCompensator:
 class DiversionOptimizer:
     """能耗优化+时间优化"""
     pass
-```
+```python
 
 ---
 
@@ -125,7 +125,7 @@ class DiversionOptimizer:
                   │水库2 │→│用户  │
                   │30万m³│  │需求  │
                   └──────┘  └──────┘
-```
+```python
 
 #### 1.2 系统参数
 
@@ -218,7 +218,7 @@ class WaterDiversionCoordinator:
             pump_commands.append(n_pumps)
         
         return pump_commands
-```
+```matlab
 
 ---
 

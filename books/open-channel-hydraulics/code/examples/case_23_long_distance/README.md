@@ -35,7 +35,7 @@
 ### 1. 经济管径原理
 
 **总费用构成：**
-```
+```python
 C_total = C_construction + C_operation_annual * n
 ```
 
@@ -45,24 +45,24 @@ C_total = C_construction + C_operation_annual * n
 - n：折算年限（通常取项目寿命期）
 
 **建设费用（管材费用）：**
-```
+```python
 C_construction = k_1 * D^a * L
 ```
 
 经验公式：a ≈ 1.5~2.0，对于钢管通常取1.5~1.8
 
 **年运行费用（电费）：**
-```
+```python
 C_operation_annual = C_e * P * T
 ```
 
 **泵站功率：**
-```
+```python
 P = (ρ * g * Q * H) / (1000 * η_pump)  [kW]
 ```
 
 **扬程H包括：**
-```
+```python
 H = Δz + h_f + h_m
 ```
 - Δz：地形高差
@@ -75,17 +75,17 @@ H = Δz + h_f + h_m
 ### 2. 沿程损失计算
 
 **达西-魏斯巴赫公式：**
-```
+```python
 h_f = λ * (L/D) * (v²/2g)
 ```
 
 **流速与管径关系：**
-```
+```python
 v = 4Q/(πD²)
 ```
 
 代入得：
-```
+```python
 h_f = λ * L * (8Q²)/(π²gD⁵)
 ```
 
@@ -94,17 +94,17 @@ h_f = λ * L * (8Q²)/(π²gD⁵)
 ### 3. 经济流速
 
 **经验公式（对于钢管）：**
-```
+```python
 v_economic = (1.0~1.2) * Q^0.4  [m/s]
 ```
 
 **经济管径估算：**
-```
+```python
 D_economic ≈ 1.13 * Q^0.45  [m]
 ```
 
 对于Q=2.0 m³/s：
-```
+```python
 D_economic ≈ 1.13 * 2.0^0.45 ≈ 1.45 m
 ```
 
@@ -144,7 +144,7 @@ D_economic ≈ 1.13 * 2.0^0.45 ≈ 1.45 m
 ### 任务2：经济管径确定
 
 假设管材单价（元/m）：
-```
+```python
 C_pipe(D) = 8000 * D^1.6
 ```
 
@@ -170,7 +170,7 @@ python main.py
 
 # 运行实验
 python experiments.py
-```
+```matlab
 
 ## 预期结果
 
@@ -211,17 +211,17 @@ python experiments.py
 ```
 年电费 = 单价 × 功率 × 运行小时
 C_annual = C_e × P × T
-```
+```python
 
 **折算到全寿命周期：**
 ```
 C_operation_total = C_annual × 现值系数
-```
+```python
 
 **现值系数：**
 ```
 PV = [(1+r)^n - 1] / [r(1+r)^n]
-```
+```python
 r：折现率（通常取6~8%），n：年限（通常取30~50年）
 
 ### 优化目标函数

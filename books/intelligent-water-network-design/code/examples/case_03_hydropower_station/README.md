@@ -77,7 +77,7 @@ from books.open_channel_hydraulics.code.solvers.steady.pipe_flow import (
 
 # 2. 复用非恒定流模块（水库水量平衡）
 # 类似案例13-15的非恒定流计算
-```
+```python
 
 ### 从第1本书复用（水系统控制）
 
@@ -94,7 +94,7 @@ frequency_controller = PIDController(
     output_limits=(-100, 100),  # 导叶开度变化量
     windup_limit=50.0
 )
-```
+```python
 
 ### 从案例1/2复用
 
@@ -102,7 +102,7 @@ frequency_controller = PIDController(
 # 复用数字孪生框架
 # 复用在环测试方法
 # 复用性能评估方法
-```
+```matlab
 
 ---
 
@@ -132,7 +132,7 @@ frequency_controller = PIDController(
 # η-Q曲线（效率-流量）
 # P-Q曲线（功率-流量）
 # n-Q曲线（转速-流量）
-```
+```python
 
 #### 1.2 水力计算
 
@@ -160,7 +160,7 @@ H_net = H_total - h_f - h_m = 40 - 0.65 - 0.3 = 39.05 m
 # 水轮机出力
 P = 9.81 * Q * H_net * η
 P = 9.81 * 1.4 * 39.05 * 0.92 = 493 kW ≈ 500 kW
-```
+```python
 
 #### 1.3 上游水库设计
 
@@ -174,7 +174,7 @@ P = 9.81 * 1.4 * 39.05 * 0.92 = 493 kW ≈ 500 kW
 **水量平衡**：
 ```
 dV/dt = Q_in - Q_turbine - Q_overflow - Q_eco
-```
+```python
 
 ---
 
@@ -208,7 +208,7 @@ dV/dt = Q_in - Q_turbine - Q_overflow - Q_eco
 │  - 导叶伺服机构                         │
 │  - 进水阀门                             │
 └─────────────────────────────────────────┘
-```
+```matlab
 
 #### 2.2 传感器配置
 
@@ -309,7 +309,7 @@ class GovernorController:
         )
         
         return self.guide_vane_opening
-```
+```python
 
 #### 2.4 三目标协调控制（L3核心）
 
@@ -368,7 +368,7 @@ class CoordinatedController:
             opening = max(opening - 10, 10)
         
         return opening
-```
+```python
 
 ---
 
@@ -428,7 +428,7 @@ class FrancisTurbine:
         eta = eta_max * np.exp(-((Q_ratio - 1)**2 + (opening_ratio - 1)**2) / 0.5)
         
         return max(0.5, min(eta, 0.95))
-```
+```python
 
 #### 3.2 发电机动态模型
 
@@ -481,7 +481,7 @@ class SynchronousGenerator:
         frequency = self.omega / (2 * np.pi) * 60 / (750 / 50)  # Hz
         
         return frequency
-```
+```python
 
 #### 3.3 生态流量保障
 
@@ -504,7 +504,7 @@ def compute_ecological_flow(month):
         Q_eco = 0.20 * Q_avg_annual  # 20%（枯水期可适当降低）
     
     return max(Q_eco, 0.3)  # 绝对最小0.3 m³/s
-```
+```matlab
 
 ---
 
