@@ -1,6 +1,6 @@
 # CHS-Books 智能案例测试报告
 
-**测试日期**: 2025-11-14 08:07:13
+**测试日期**: 2025-11-14 08:17:31
 **测试方式**: 智能发现 + 综合评分
 
 ---
@@ -14,7 +14,7 @@
 | ✅ 通过案例 | 197 |
 | ❌ 失败案例 | 0 |
 | 📈 通过率 | **100.0%** |
-| 🎯 平均分 | **89.4/100** |
+| 🎯 平均分 | **90.0/100** |
 | 🏆 总体评级 | **A 良好** |
 
 ### 评分标准
@@ -41,7 +41,7 @@
 |------|--------|------|------|--------|--------|------|
 | ✅ 生态水力学 | 32 | 32 | 0 | 100.0% | 90.2 | A+ 优秀 |
 | ✅ 水环境数值模拟 | 30 | 30 | 0 | 100.0% | 90.0 | A+ 优秀 |
-| ✅ 明渠水力学 | 30 | 30 | 0 | 100.0% | 89.7 | A 良好 |
+| ✅ 明渠水力学 | 30 | 30 | 0 | 100.0% | 93.3 | A+ 优秀 |
 | ✅ 智能水网设计 | 26 | 26 | 0 | 100.0% | 91.3 | A+ 优秀 |
 | ✅ 光伏系统建模与控制 | 20 | 20 | 0 | 100.0% | 90.2 | A+ 优秀 |
 | ✅ 风电系统建模与控制 | 15 | 15 | 0 | 100.0% | 80.0 | A 良好 |
@@ -74,8 +74,8 @@
 
 **书籍ID**: `open-channel-hydraulics`  
 **测试结果**: 30/30 通过 (100.0%)  
-**平均分**: 89.7/100  
-**评级**: A 良好
+**平均分**: 93.3/100  
+**评级**: A+ 优秀
 
 ---
 
@@ -126,19 +126,8 @@
 
 ## ⚠️ 问题分类汇总
 
-### 缺少图片 (41个)
+### 缺少图片 (30个)
 
-- `open-channel-hydraulics/case_02_drainage`
-- `open-channel-hydraulics/case_03_landscape`
-- `open-channel-hydraulics/case_04_weir`
-- `open-channel-hydraulics/case_05_gate`
-- `open-channel-hydraulics/case_06_drop`
-- `open-channel-hydraulics/case_07_profile`
-- `open-channel-hydraulics/case_08_bridge`
-- `open-channel-hydraulics/case_09_roughness`
-- `open-channel-hydraulics/case_10_compound`
-- `open-channel-hydraulics/case_11_transition`
-- `open-channel-hydraulics/case_12_culvert`
 - `intelligent-water-network-design/case_19_basin_coordination`
 - `intelligent-water-network-design/case_20_smart_city_water`
 - `intelligent-water-network-design/case_21_inter_basin`
@@ -148,8 +137,19 @@
 - `intelligent-water-network-design/comparison_static_vs_dynamic`
 - `photovoltaic-system-modeling-control/case_13_pwm_modulation`
 - `photovoltaic-system-modeling-control/case_14_current_control`
+- `photovoltaic-system-modeling-control/case_15_voltage_control`
+- `photovoltaic-system-modeling-control/case_16_grid_synchronization`
+- `photovoltaic-system-modeling-control/case_17_power_factor_control`
+- `photovoltaic-system-modeling-control/case_18_harmonic_suppression`
+- `photovoltaic-system-modeling-control/case_19_dcdc_converter`
+- `photovoltaic-system-modeling-control/case_20_dc_bus_control`
+- `wind-power-system-modeling-control/case_01_wind_statistics`
+- `wind-power-system-modeling-control/case_02_wind_shear`
+- `wind-power-system-modeling-control/case_03_blade_aerodynamics`
+- `wind-power-system-modeling-control/case_04_rotor_performance`
+- `wind-power-system-modeling-control/case_05_wake_effect`
 
-... 还有21个
+... 还有10个
 
 ---
 
@@ -162,11 +162,11 @@
 - 为更多案例添加结果图表
 - 考虑添加更多示例数据
 
-3. **结果图表** (41/197个案例缺少, 20.8%)
+3. **结果图表** (30/197个案例缺少, 15.2%)
    - 建议为每个案例添加结果图表
    - 图表应展示计算结果或模型效果
    - 支持格式: PNG, JPG, SVG等
 
 ---
 
-**报告生成时间**: 2025-11-14 08:07:13
+**报告生成时间**: 2025-11-14 08:17:31

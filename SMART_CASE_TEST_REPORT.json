@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-11-14T08:07:13.847809",
+  "timestamp": "2025-11-14T08:17:31.441710",
   "summary": {
     "total_books": 8,
     "total_cases_tested": 197,
     "total_cases_passed": 197,
     "total_cases_failed": 0,
     "overall_pass_rate": "100.0%",
-    "overall_avg_score": "89.4",
+    "overall_avg_score": "90.0",
     "overall_grade": "A 良好"
   },
   "books": [
@@ -56,9 +56,9 @@
             "count": 3,
             "images": [
               {
-                "filename": "ecological_flow_comparison.png",
-                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_01_ecological_flow/ecological_flow_comparison.png",
-                "size": 106640,
+                "filename": "depth_discharge_curve.png",
+                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_01_ecological_flow/depth_discharge_curve.png",
+                "size": 129901,
                 "extension": ".png"
               },
               {
@@ -68,9 +68,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "depth_discharge_curve.png",
-                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_01_ecological_flow/depth_discharge_curve.png",
-                "size": 129901,
+                "filename": "ecological_flow_comparison.png",
+                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_01_ecological_flow/ecological_flow_comparison.png",
+                "size": 106640,
                 "extension": ".png"
               }
             ],
@@ -212,9 +212,9 @@
             "count": 5,
             "images": [
               {
-                "filename": "flow_timeseries.png",
-                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_03_hydrologic_indicators/flow_timeseries.png",
-                "size": 364662,
+                "filename": "extreme_flow_comparison.png",
+                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_03_hydrologic_indicators/extreme_flow_comparison.png",
+                "size": 135051,
                 "extension": ".png"
               },
               {
@@ -236,9 +236,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "extreme_flow_comparison.png",
-                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_03_hydrologic_indicators/extreme_flow_comparison.png",
-                "size": 135051,
+                "filename": "flow_timeseries.png",
+                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_03_hydrologic_indicators/flow_timeseries.png",
+                "size": 364662,
                 "extension": ".png"
               }
             ],
@@ -312,9 +312,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "stability_assessment.png",
-                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_04_vegetation_hydraulics/stability_assessment.png",
-                "size": 423147,
+                "filename": "suitability_matrix.png",
+                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_04_vegetation_hydraulics/suitability_matrix.png",
+                "size": 101970,
                 "extension": ".png"
               },
               {
@@ -324,15 +324,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "suitability_matrix.png",
-                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_04_vegetation_hydraulics/suitability_matrix.png",
-                "size": 101970,
-                "extension": ".png"
-              },
-              {
                 "filename": "velocity_reduction.png",
                 "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_04_vegetation_hydraulics/velocity_reduction.png",
                 "size": 167572,
+                "extension": ".png"
+              },
+              {
+                "filename": "stability_assessment.png",
+                "path": "/home/user/CHS-Books/books/ecohydraulics/code/examples/case_04_vegetation_hydraulics/stability_assessment.png",
+                "size": 423147,
                 "extension": ".png"
               }
             ],
@@ -2169,27 +2169,27 @@
             "count": 7,
             "images": [
               {
+                "filename": "diffusion_explicit_evolution.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_explicit_evolution.png",
+                "size": 77823,
+                "extension": ".png"
+              },
+              {
                 "filename": "tidal_effect.png",
                 "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/tidal_effect.png",
                 "size": 78057,
                 "extension": ".png"
               },
               {
+                "filename": "diffusion_scheme_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_scheme_comparison.png",
+                "size": 164151,
+                "extension": ".png"
+              },
+              {
                 "filename": "intrusion_comparison.png",
                 "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intrusion_comparison.png",
                 "size": 24632,
-                "extension": ".png"
-              },
-              {
-                "filename": "intake_risk.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intake_risk.png",
-                "size": 37175,
-                "extension": ".png"
-              },
-              {
-                "filename": "diffusion_explicit_evolution.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_explicit_evolution.png",
-                "size": 77823,
                 "extension": ".png"
               },
               {
@@ -2205,9 +2205,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "diffusion_scheme_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_scheme_comparison.png",
-                "size": 164151,
+                "filename": "intake_risk.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intake_risk.png",
+                "size": 37175,
                 "extension": ".png"
               }
             ],
@@ -2268,6 +2268,12 @@
             "count": 3,
             "images": [
               {
+                "filename": "advection_diffusion_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_02_advection_diffusion/advection_diffusion_comparison.png",
+                "size": 175286,
+                "extension": ".png"
+              },
+              {
                 "filename": "numerical_oscillation.png",
                 "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_02_advection_diffusion/numerical_oscillation.png",
                 "size": 181707,
@@ -2277,12 +2283,6 @@
                 "filename": "numerical_dissipation.png",
                 "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_02_advection_diffusion/numerical_dissipation.png",
                 "size": 164024,
-                "extension": ".png"
-              },
-              {
-                "filename": "advection_diffusion_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_02_advection_diffusion/advection_diffusion_comparison.png",
-                "size": 175286,
                 "extension": ".png"
               }
             ],
@@ -2343,9 +2343,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "temperature_effect.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_03_reaction/temperature_effect.png",
-                "size": 47065,
+                "filename": "parameter_calibration.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_03_reaction/parameter_calibration.png",
+                "size": 68014,
                 "extension": ".png"
               },
               {
@@ -2361,9 +2361,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "parameter_calibration.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_03_reaction/parameter_calibration.png",
-                "size": 68014,
+                "filename": "temperature_effect.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_03_reaction/temperature_effect.png",
+                "size": 47065,
                 "extension": ".png"
               }
             ],
@@ -2424,21 +2424,15 @@
             "count": 5,
             "images": [
               {
-                "filename": "L0_effect.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04_streeter_phelps/L0_effect.png",
-                "size": 92899,
-                "extension": ".png"
-              },
-              {
                 "filename": "temperature_effect.png",
                 "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04_streeter_phelps/temperature_effect.png",
                 "size": 88790,
                 "extension": ".png"
               },
               {
-                "filename": "streeter_phelps_basic.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04_streeter_phelps/streeter_phelps_basic.png",
-                "size": 111684,
+                "filename": "discharge_standard.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04_streeter_phelps/discharge_standard.png",
+                "size": 61138,
                 "extension": ".png"
               },
               {
@@ -2448,9 +2442,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "discharge_standard.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04_streeter_phelps/discharge_standard.png",
-                "size": 61138,
+                "filename": "streeter_phelps_basic.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04_streeter_phelps/streeter_phelps_basic.png",
+                "size": 111684,
+                "extension": ".png"
+              },
+              {
+                "filename": "L0_effect.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_04_streeter_phelps/L0_effect.png",
+                "size": 92899,
                 "extension": ".png"
               }
             ],
@@ -2592,15 +2592,15 @@
             "count": 4,
             "images": [
               {
-                "filename": "self_purification_coefficient.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_06_self_purification/self_purification_coefficient.png",
-                "size": 43455,
+                "filename": "functional_zone_classification.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_06_self_purification/functional_zone_classification.png",
+                "size": 37580,
                 "extension": ".png"
               },
               {
-                "filename": "environmental_capacity.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_06_self_purification/environmental_capacity.png",
-                "size": 42295,
+                "filename": "self_purification_coefficient.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_06_self_purification/self_purification_coefficient.png",
+                "size": 43455,
                 "extension": ".png"
               },
               {
@@ -2610,9 +2610,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "functional_zone_classification.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_06_self_purification/functional_zone_classification.png",
-                "size": 37580,
+                "filename": "environmental_capacity.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_06_self_purification/environmental_capacity.png",
+                "size": 42295,
                 "extension": ".png"
               }
             ],
@@ -2673,15 +2673,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "optimization_scheme.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_07_multi_source/optimization_scheme.png",
-                "size": 34244,
-                "extension": ".png"
-              },
-              {
-                "filename": "sensitivity_analysis.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_07_multi_source/sensitivity_analysis.png",
-                "size": 56768,
+                "filename": "multi_source_analysis.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_07_multi_source/multi_source_analysis.png",
+                "size": 138978,
                 "extension": ".png"
               },
               {
@@ -2691,9 +2685,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "multi_source_analysis.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_07_multi_source/multi_source_analysis.png",
-                "size": 138978,
+                "filename": "sensitivity_analysis.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_07_multi_source/sensitivity_analysis.png",
+                "size": 56768,
+                "extension": ".png"
+              },
+              {
+                "filename": "optimization_scheme.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_07_multi_source/optimization_scheme.png",
+                "size": 34244,
                 "extension": ".png"
               }
             ],
@@ -2760,9 +2760,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "first_flush.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_08_nonpoint_source/first_flush.png",
-                "size": 61117,
+                "filename": "bmp_reduction.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_08_nonpoint_source/bmp_reduction.png",
+                "size": 28908,
                 "extension": ".png"
               },
               {
@@ -2772,9 +2772,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "bmp_reduction.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_08_nonpoint_source/bmp_reduction.png",
-                "size": 28908,
+                "filename": "first_flush.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_08_nonpoint_source/first_flush.png",
+                "size": 61117,
                 "extension": ".png"
               }
             ],
@@ -2835,15 +2835,15 @@
             "count": 4,
             "images": [
               {
-                "filename": "longitudinal_temperature.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_09_thermal_pollution/longitudinal_temperature.png",
-                "size": 48975,
-                "extension": ".png"
-              },
-              {
                 "filename": "thermal_tolerance.png",
                 "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_09_thermal_pollution/thermal_tolerance.png",
                 "size": 33342,
+                "extension": ".png"
+              },
+              {
+                "filename": "temperature_field.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_09_thermal_pollution/temperature_field.png",
+                "size": 91286,
                 "extension": ".png"
               },
               {
@@ -2853,9 +2853,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "temperature_field.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_09_thermal_pollution/temperature_field.png",
-                "size": 91286,
+                "filename": "longitudinal_temperature.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_09_thermal_pollution/longitudinal_temperature.png",
+                "size": 48975,
                 "extension": ".png"
               }
             ],
@@ -2997,9 +2997,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "longitudinal_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_11_river_bend/longitudinal_comparison.png",
-                "size": 69747,
+                "filename": "mixing_length_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_11_river_bend/mixing_length_comparison.png",
+                "size": 25190,
                 "extension": ".png"
               },
               {
@@ -3009,9 +3009,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "mixing_length_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_11_river_bend/mixing_length_comparison.png",
-                "size": 25190,
+                "filename": "longitudinal_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_11_river_bend/longitudinal_comparison.png",
+                "size": 69747,
                 "extension": ".png"
               },
               {
@@ -3084,9 +3084,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "tidal_effect.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_12_estuary/tidal_effect.png",
-                "size": 78057,
+                "filename": "intake_risk.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_12_estuary/intake_risk.png",
+                "size": 37175,
                 "extension": ".png"
               },
               {
@@ -3096,9 +3096,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "intake_risk.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_12_estuary/intake_risk.png",
-                "size": 37175,
+                "filename": "tidal_effect.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_12_estuary/tidal_effect.png",
+                "size": 78057,
                 "extension": ".png"
               }
             ],
@@ -3165,9 +3165,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "transient_response.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_13_lake_cmfr/transient_response.png",
-                "size": 79814,
+                "filename": "flushing_rate_effect.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_13_lake_cmfr/flushing_rate_effect.png",
+                "size": 68266,
                 "extension": ".png"
               },
               {
@@ -3177,9 +3177,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "flushing_rate_effect.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_13_lake_cmfr/flushing_rate_effect.png",
-                "size": 68266,
+                "filename": "transient_response.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_13_lake_cmfr/transient_response.png",
+                "size": 79814,
                 "extension": ".png"
               }
             ],
@@ -4402,10 +4402,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_02_drainage/visualization_auto.png",
+                "size": 88365,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4425,10 +4432,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_03_landscape",
@@ -4465,10 +4472,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_03_landscape/visualization_auto.png",
+                "size": 90305,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4488,10 +4502,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_04_weir",
@@ -4528,10 +4542,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_04_weir/visualization_auto.png",
+                "size": 84835,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4551,10 +4572,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_05_gate",
@@ -4591,10 +4612,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_05_gate/visualization_auto.png",
+                "size": 85926,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4614,10 +4642,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_06_drop",
@@ -4654,10 +4682,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_06_drop/visualization_auto.png",
+                "size": 86298,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4677,10 +4712,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_07_profile",
@@ -4717,10 +4752,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_07_profile/visualization_auto.png",
+                "size": 85573,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4740,10 +4782,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_08_bridge",
@@ -4780,10 +4822,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_08_bridge/visualization_auto.png",
+                "size": 87566,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4803,10 +4852,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_09_roughness",
@@ -4843,10 +4892,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_09_roughness/visualization_auto.png",
+                "size": 89353,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4866,10 +4922,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_10_compound",
@@ -4906,10 +4962,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_10_compound/visualization_auto.png",
+                "size": 88559,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4929,10 +4992,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_11_transition",
@@ -4969,10 +5032,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_11_transition/visualization_auto.png",
+                "size": 85502,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -4992,10 +5062,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_12_culvert",
@@ -5032,10 +5102,17 @@
             "quality": "优秀"
           },
           "images": {
-            "count": 0,
-            "images": [],
-            "success": false,
-            "quality": "无图片"
+            "count": 1,
+            "images": [
+              {
+                "filename": "visualization_auto.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_12_culvert/visualization_auto.png",
+                "size": 85556,
+                "extension": ".png"
+              }
+            ],
+            "success": true,
+            "quality": "良好"
           },
           "data": {
             "count": 0,
@@ -5055,10 +5132,10 @@
             "has_modules": true
           },
           "critical_success": true,
-          "has_images": false,
+          "has_images": true,
           "success": true,
-          "score": 85,
-          "grade": "A 良好"
+          "score": 95,
+          "grade": "A+ 优秀"
         },
         {
           "case_name": "case_13_unsteady",
@@ -5808,15 +5885,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "velocity_power_analysis.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_23_long_distance/velocity_power_analysis.png",
-                "size": 190332,
-                "extension": ".png"
-              },
-              {
                 "filename": "cost_vs_diameter.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_23_long_distance/cost_vs_diameter.png",
                 "size": 200019,
+                "extension": ".png"
+              },
+              {
+                "filename": "velocity_power_analysis.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_23_long_distance/velocity_power_analysis.png",
+                "size": 190332,
                 "extension": ".png"
               }
             ],
@@ -5883,12 +5960,6 @@
                 "extension": ".png"
               },
               {
-                "filename": "demo1_inverted_siphon.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_24_siphon/demo1_inverted_siphon.png",
-                "size": 209921,
-                "extension": ".png"
-              },
-              {
                 "filename": "demo2_siphon_vacuum.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_24_siphon/demo2_siphon_vacuum.png",
                 "size": 262517,
@@ -5898,6 +5969,12 @@
                 "filename": "demo3_flow_rate_effect.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_24_siphon/demo3_flow_rate_effect.png",
                 "size": 157402,
+                "extension": ".png"
+              },
+              {
+                "filename": "demo1_inverted_siphon.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_24_siphon/demo1_inverted_siphon.png",
+                "size": 209921,
                 "extension": ".png"
               }
             ],
@@ -5958,6 +6035,12 @@
             "count": 3,
             "images": [
               {
+                "filename": "water_hammer_time_history.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_25_water_hammer/water_hammer_time_history.png",
+                "size": 177907,
+                "extension": ".png"
+              },
+              {
                 "filename": "water_hammer_propagation.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_25_water_hammer/water_hammer_propagation.png",
                 "size": 215338,
@@ -5967,12 +6050,6 @@
                 "filename": "closure_time_comparison.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_25_water_hammer/closure_time_comparison.png",
                 "size": 169499,
-                "extension": ".png"
-              },
-              {
-                "filename": "water_hammer_time_history.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_25_water_hammer/water_hammer_time_history.png",
-                "size": 177907,
                 "extension": ".png"
               }
             ],
@@ -6033,9 +6110,9 @@
             "count": 3,
             "images": [
               {
-                "filename": "pressure_time_space.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_26_moc/pressure_time_space.png",
-                "size": 847813,
+                "filename": "velocity_profiles.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_26_moc/velocity_profiles.png",
+                "size": 913201,
                 "extension": ".png"
               },
               {
@@ -6045,9 +6122,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "velocity_profiles.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_26_moc/velocity_profiles.png",
-                "size": 913201,
+                "filename": "pressure_time_space.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_26_moc/pressure_time_space.png",
+                "size": 847813,
                 "extension": ".png"
               }
             ],
@@ -6108,12 +6185,6 @@
             "count": 4,
             "images": [
               {
-                "filename": "demo3_four_quadrant.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_27_pump_transients/demo3_four_quadrant.png",
-                "size": 358439,
-                "extension": ".png"
-              },
-              {
                 "filename": "demo2_speed_decay.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_27_pump_transients/demo2_speed_decay.png",
                 "size": 391859,
@@ -6123,6 +6194,12 @@
                 "filename": "demo4_flywheel_design.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_27_pump_transients/demo4_flywheel_design.png",
                 "size": 142376,
+                "extension": ".png"
+              },
+              {
+                "filename": "demo3_four_quadrant.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_27_pump_transients/demo3_four_quadrant.png",
+                "size": 358439,
                 "extension": ".png"
               },
               {
@@ -6189,12 +6266,6 @@
             "count": 3,
             "images": [
               {
-                "filename": "surge_oscillation.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_28_surge_tank/surge_oscillation.png",
-                "size": 376137,
-                "extension": ".png"
-              },
-              {
                 "filename": "surge_tank_schematic.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_28_surge_tank/surge_tank_schematic.png",
                 "size": 29812,
@@ -6204,6 +6275,12 @@
                 "filename": "surge_tank_area_comparison.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_28_surge_tank/surge_tank_area_comparison.png",
                 "size": 201641,
+                "extension": ".png"
+              },
+              {
+                "filename": "surge_oscillation.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_28_surge_tank/surge_oscillation.png",
+                "size": 376137,
                 "extension": ".png"
               }
             ],
@@ -6264,12 +6341,6 @@
             "count": 4,
             "images": [
               {
-                "filename": "demo3_pipe_diameter_optimization.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_29_channel_pipe/demo3_pipe_diameter_optimization.png",
-                "size": 311152,
-                "extension": ".png"
-              },
-              {
                 "filename": "demo4_design_recommendations.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_29_channel_pipe/demo4_design_recommendations.png",
                 "size": 102792,
@@ -6285,6 +6356,12 @@
                 "filename": "demo2_energy_balance.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_29_channel_pipe/demo2_energy_balance.png",
                 "size": 227318,
+                "extension": ".png"
+              },
+              {
+                "filename": "demo3_pipe_diameter_optimization.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_29_channel_pipe/demo3_pipe_diameter_optimization.png",
+                "size": 311152,
                 "extension": ".png"
               }
             ],
@@ -6345,12 +6422,6 @@
             "count": 4,
             "images": [
               {
-                "filename": "demo1_full_system_hydraulics.png",
-                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_30_comprehensive/demo1_full_system_hydraulics.png",
-                "size": 171404,
-                "extension": ".png"
-              },
-              {
                 "filename": "demo3_operating_conditions.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_30_comprehensive/demo3_operating_conditions.png",
                 "size": 428352,
@@ -6366,6 +6437,12 @@
                 "filename": "demo4_optimization_recommendations.png",
                 "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_30_comprehensive/demo4_optimization_recommendations.png",
                 "size": 401331,
+                "extension": ".png"
+              },
+              {
+                "filename": "demo1_full_system_hydraulics.png",
+                "path": "/home/user/CHS-Books/books/open-channel-hydraulics/code/examples/case_30_comprehensive/demo1_full_system_hydraulics.png",
+                "size": 171404,
                 "extension": ".png"
               }
             ],
@@ -6389,8 +6466,8 @@
           "grade": "A+ 优秀"
         }
       ],
-      "total_score": 2690,
-      "average_score": 89.66666666666667
+      "total_score": 2800,
+      "average_score": 93.33333333333333
     },
     {
       "book_id": "intelligent-water-network-design",
@@ -6564,6 +6641,12 @@
             "count": 4,
             "images": [
               {
+                "filename": "pump_characteristics.png",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02_pump_station/pump_characteristics.png",
+                "size": 80791,
+                "extension": ".png"
+              },
+              {
                 "filename": "scenario_3_results.png",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02_pump_station/scenario_3_results.png",
                 "size": 97542,
@@ -6573,12 +6656,6 @@
                 "filename": "scenario_2_results.png",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02_pump_station/scenario_2_results.png",
                 "size": 82128,
-                "extension": ".png"
-              },
-              {
-                "filename": "pump_characteristics.png",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02_pump_station/pump_characteristics.png",
-                "size": 80791,
                 "extension": ".png"
               },
               {
@@ -6595,15 +6672,15 @@
             "count": 2,
             "files": [
               {
-                "filename": "design_report.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02_pump_station/design_report.json",
-                "size": 322,
-                "extension": ".json"
-              },
-              {
                 "filename": "config.json",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02_pump_station/config.json",
                 "size": 4099,
+                "extension": ".json"
+              },
+              {
+                "filename": "design_report.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_02_pump_station/design_report.json",
+                "size": 322,
                 "extension": ".json"
               }
             ],
@@ -6658,12 +6735,6 @@
             "count": 4,
             "images": [
               {
-                "filename": "hydro_scenario_3_results.png",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_03_hydropower_station/hydro_scenario_3_results.png",
-                "size": 134213,
-                "extension": ".png"
-              },
-              {
                 "filename": "hydro_scenario_1_results.png",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_03_hydropower_station/hydro_scenario_1_results.png",
                 "size": 106260,
@@ -6679,6 +6750,12 @@
                 "filename": "hydro_scenario_2_results.png",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_03_hydropower_station/hydro_scenario_2_results.png",
                 "size": 111972,
+                "extension": ".png"
+              },
+              {
+                "filename": "hydro_scenario_3_results.png",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_03_hydropower_station/hydro_scenario_3_results.png",
+                "size": 134213,
                 "extension": ".png"
               }
             ],
@@ -6752,9 +6829,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "valve_characteristics.png",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_04_valve_station/valve_characteristics.png",
-                "size": 107772,
+                "filename": "valve_scenario_2_results.png",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_04_valve_station/valve_scenario_2_results.png",
+                "size": 69334,
                 "extension": ".png"
               },
               {
@@ -6764,9 +6841,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "valve_scenario_2_results.png",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_04_valve_station/valve_scenario_2_results.png",
-                "size": 69334,
+                "filename": "valve_characteristics.png",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_04_valve_station/valve_characteristics.png",
+                "size": 107772,
                 "extension": ".png"
               }
             ],
@@ -8188,9 +8265,51 @@
             "count": 11,
             "files": [
               {
+                "filename": "default_config.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/default_config.json",
+                "size": 1329,
+                "extension": ".json"
+              },
+              {
+                "filename": "medium_gate_config.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_config.json",
+                "size": 1338,
+                "extension": ".json"
+              },
+              {
+                "filename": "pid_tuning_results.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/pid_tuning_results.txt",
+                "size": 2324,
+                "extension": ".txt"
+              },
+              {
+                "filename": "batch_test_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_test_report.txt",
+                "size": 1275,
+                "extension": ".txt"
+              },
+              {
                 "filename": "intelligence_evaluation_L2.txt",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/intelligence_evaluation_L2.txt",
                 "size": 2079,
+                "extension": ".txt"
+              },
+              {
+                "filename": "performance_analysis_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analysis_report.txt",
+                "size": 4726,
+                "extension": ".txt"
+              },
+              {
+                "filename": "static_design_operation_manual.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design_operation_manual.txt",
+                "size": 1222,
+                "extension": ".txt"
+              },
+              {
+                "filename": "sensitivity_analysis_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analysis_report.txt",
+                "size": 1537,
                 "extension": ".txt"
               },
               {
@@ -8210,48 +8329,6 @@
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/intelligence_evaluation_L3.txt",
                 "size": 2086,
                 "extension": ".txt"
-              },
-              {
-                "filename": "sensitivity_analysis_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analysis_report.txt",
-                "size": 1537,
-                "extension": ".txt"
-              },
-              {
-                "filename": "batch_test_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_test_report.txt",
-                "size": 1275,
-                "extension": ".txt"
-              },
-              {
-                "filename": "static_design_operation_manual.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design_operation_manual.txt",
-                "size": 1222,
-                "extension": ".txt"
-              },
-              {
-                "filename": "pid_tuning_results.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/pid_tuning_results.txt",
-                "size": 2324,
-                "extension": ".txt"
-              },
-              {
-                "filename": "performance_analysis_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analysis_report.txt",
-                "size": 4726,
-                "extension": ".txt"
-              },
-              {
-                "filename": "default_config.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/default_config.json",
-                "size": 1329,
-                "extension": ".json"
-              },
-              {
-                "filename": "medium_gate_config.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_config.json",
-                "size": 1338,
-                "extension": ".json"
               }
             ],
             "has_data": true
@@ -8260,10 +8337,16 @@
             "count": 17,
             "files": [
               {
-                "filename": "performance_analyzer.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analyzer.py",
-                "size": 22198,
-                "lines": 600
+                "filename": "static_design.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design.py",
+                "size": 12313,
+                "lines": 384
+              },
+              {
+                "filename": "cli.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cli.py",
+                "size": 12077,
+                "lines": 387
               },
               {
                 "filename": "report_generator.py",
@@ -8278,22 +8361,10 @@
                 "lines": 385
               },
               {
-                "filename": "sensitivity_analyzer.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analyzer.py",
-                "size": 21040,
-                "lines": 551
-              },
-              {
-                "filename": "demo_presenter.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/demo_presenter.py",
-                "size": 23999,
-                "lines": 565
-              },
-              {
-                "filename": "batch_runner.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_runner.py",
-                "size": 6759,
-                "lines": 224
+                "filename": "performance_analyzer.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analyzer.py",
+                "size": 22198,
+                "lines": 600
               },
               {
                 "filename": "run_all_comparison.py",
@@ -8302,46 +8373,16 @@
                 "lines": 400
               },
               {
-                "filename": "intelligence_evaluator.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/intelligence_evaluator.py",
-                "size": 22365,
-                "lines": 569
-              },
-              {
-                "filename": "data_exporter.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/data_exporter.py",
-                "size": 14285,
-                "lines": 423
-              },
-              {
-                "filename": "dynamic_design_L3.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/dynamic_design_L3.py",
-                "size": 26710,
-                "lines": 740
-              },
-              {
                 "filename": "pid_tuner.py",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/pid_tuner.py",
                 "size": 16661,
                 "lines": 467
               },
               {
-                "filename": "cost_benefit_calculator.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cost_benefit_calculator.py",
-                "size": 21897,
-                "lines": 497
-              },
-              {
-                "filename": "medium_gate_case.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_case.py",
-                "size": 668,
-                "lines": 31
-              },
-              {
-                "filename": "cli.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cli.py",
-                "size": 12077,
-                "lines": 387
+                "filename": "sensitivity_analyzer.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analyzer.py",
+                "size": 21040,
+                "lines": 551
               },
               {
                 "filename": "dynamic_design_L2.py",
@@ -8350,16 +8391,52 @@
                 "lines": 647
               },
               {
+                "filename": "dynamic_design_L3.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/dynamic_design_L3.py",
+                "size": 26710,
+                "lines": 740
+              },
+              {
                 "filename": "config_generator.py",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/config_generator.py",
                 "size": 16346,
                 "lines": 473
               },
               {
-                "filename": "static_design.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design.py",
-                "size": 12313,
-                "lines": 384
+                "filename": "medium_gate_case.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_case.py",
+                "size": 668,
+                "lines": 31
+              },
+              {
+                "filename": "cost_benefit_calculator.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cost_benefit_calculator.py",
+                "size": 21897,
+                "lines": 497
+              },
+              {
+                "filename": "intelligence_evaluator.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/intelligence_evaluator.py",
+                "size": 22365,
+                "lines": 569
+              },
+              {
+                "filename": "batch_runner.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_runner.py",
+                "size": 6759,
+                "lines": 224
+              },
+              {
+                "filename": "demo_presenter.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/demo_presenter.py",
+                "size": 23999,
+                "lines": 565
+              },
+              {
+                "filename": "data_exporter.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/data_exporter.py",
+                "size": 14285,
+                "lines": 423
               }
             ],
             "has_modules": true
@@ -8438,16 +8515,16 @@
             "count": 2,
             "files": [
               {
-                "filename": "experiments.py",
-                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_01_pv_cell_iv_characteristics/experiments.py",
-                "size": 17607,
-                "lines": 518
-              },
-              {
                 "filename": "__init__.py",
                 "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_01_pv_cell_iv_characteristics/__init__.py",
                 "size": 89,
                 "lines": 5
+              },
+              {
+                "filename": "experiments.py",
+                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_01_pv_cell_iv_characteristics/experiments.py",
+                "size": 17607,
+                "lines": 518
               }
             ],
             "has_modules": true
@@ -8514,16 +8591,16 @@
             "count": 2,
             "files": [
               {
-                "filename": "experiments.py",
-                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_02_double_diode_model/experiments.py",
-                "size": 13715,
-                "lines": 408
-              },
-              {
                 "filename": "__init__.py",
                 "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_02_double_diode_model/__init__.py",
                 "size": 77,
                 "lines": 5
+              },
+              {
+                "filename": "experiments.py",
+                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_02_double_diode_model/experiments.py",
+                "size": 13715,
+                "lines": 408
               }
             ],
             "has_modules": true
@@ -8590,16 +8667,16 @@
             "count": 2,
             "files": [
               {
-                "filename": "experiments.py",
-                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_03_pv_module_modeling/experiments.py",
-                "size": 16125,
-                "lines": 488
-              },
-              {
                 "filename": "__init__.py",
                 "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_03_pv_module_modeling/__init__.py",
                 "size": 63,
                 "lines": 5
+              },
+              {
+                "filename": "experiments.py",
+                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_03_pv_module_modeling/experiments.py",
+                "size": 16125,
+                "lines": 488
               }
             ],
             "has_modules": true
@@ -10631,6 +10708,12 @@
                 "extension": ".png"
               },
               {
+                "filename": "dem.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_01_dem_analysis/outputs/dem.png",
+                "size": 736192,
+                "extension": ".png"
+              },
+              {
                 "filename": "flow_accumulation.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_01_dem_analysis/outputs/flow_accumulation.png",
                 "size": 102502,
@@ -10646,12 +10729,6 @@
                 "filename": "slope_aspect.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_01_dem_analysis/outputs/slope_aspect.png",
                 "size": 177171,
-                "extension": ".png"
-              },
-              {
-                "filename": "dem.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_01_dem_analysis/outputs/dem.png",
-                "size": 736192,
                 "extension": ".png"
               }
             ],
@@ -10712,12 +10789,6 @@
             "count": 3,
             "images": [
               {
-                "filename": "methods_comparison.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_02_thiessen/outputs/methods_comparison.png",
-                "size": 242578,
-                "extension": ".png"
-              },
-              {
                 "filename": "thiessen_polygon.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_02_thiessen/outputs/thiessen_polygon.png",
                 "size": 177717,
@@ -10727,6 +10798,12 @@
                 "filename": "sensitivity_stations.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_02_thiessen/outputs/sensitivity_stations.png",
                 "size": 169956,
+                "extension": ".png"
+              },
+              {
+                "filename": "methods_comparison.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_02_thiessen/outputs/methods_comparison.png",
+                "size": 242578,
                 "extension": ".png"
               }
             ],
@@ -10787,9 +10864,21 @@
             "count": 5,
             "images": [
               {
+                "filename": "idw_interpolation.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_03_idw_kriging/outputs/idw_interpolation.png",
+                "size": 651725,
+                "extension": ".png"
+              },
+              {
                 "filename": "cross_validation.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_03_idw_kriging/outputs/cross_validation.png",
                 "size": 242685,
+                "extension": ".png"
+              },
+              {
+                "filename": "variogram.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_03_idw_kriging/outputs/variogram.png",
+                "size": 169648,
                 "extension": ".png"
               },
               {
@@ -10802,18 +10891,6 @@
                 "filename": "kriging_interpolation.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_03_idw_kriging/outputs/kriging_interpolation.png",
                 "size": 666860,
-                "extension": ".png"
-              },
-              {
-                "filename": "idw_interpolation.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_03_idw_kriging/outputs/idw_interpolation.png",
-                "size": 651725,
-                "extension": ".png"
-              },
-              {
-                "filename": "variogram.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_03_idw_kriging/outputs/variogram.png",
-                "size": 169648,
                 "extension": ".png"
               }
             ],
@@ -10880,12 +10957,6 @@
                 "extension": ".png"
               },
               {
-                "filename": "water_sources.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_04_xaj_model/outputs/water_sources.png",
-                "size": 203934,
-                "extension": ".png"
-              },
-              {
                 "filename": "sensitivity_B.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_04_xaj_model/outputs/sensitivity_B.png",
                 "size": 139275,
@@ -10895,6 +10966,12 @@
                 "filename": "soil_moisture.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_04_xaj_model/outputs/soil_moisture.png",
                 "size": 171734,
+                "extension": ".png"
+              },
+              {
+                "filename": "water_sources.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_04_xaj_model/outputs/water_sources.png",
+                "size": 203934,
                 "extension": ".png"
               },
               {
@@ -10961,9 +11038,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "parameter_sensitivity.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_05_green_ampt/outputs/parameter_sensitivity.png",
-                "size": 396283,
+                "filename": "infiltration_process.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_05_green_ampt/outputs/infiltration_process.png",
+                "size": 223061,
                 "extension": ".png"
               },
               {
@@ -10979,9 +11056,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "infiltration_process.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_05_green_ampt/outputs/infiltration_process.png",
-                "size": 223061,
+                "filename": "parameter_sensitivity.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_05_green_ampt/outputs/parameter_sensitivity.png",
+                "size": 396283,
                 "extension": ".png"
               }
             ],
@@ -11042,6 +11119,12 @@
             "count": 4,
             "images": [
               {
+                "filename": "rainfall_interpolation.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_06_distributed_runoff/outputs/rainfall_interpolation.png",
+                "size": 287429,
+                "extension": ".png"
+              },
+              {
                 "filename": "basin_setup.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_06_distributed_runoff/outputs/basin_setup.png",
                 "size": 207786,
@@ -11051,12 +11134,6 @@
                 "filename": "runoff_spatial.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_06_distributed_runoff/outputs/runoff_spatial.png",
                 "size": 378048,
-                "extension": ".png"
-              },
-              {
-                "filename": "rainfall_interpolation.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_06_distributed_runoff/outputs/rainfall_interpolation.png",
-                "size": 287429,
                 "extension": ".png"
               },
               {
@@ -11123,27 +11200,27 @@
             "count": 4,
             "images": [
               {
-                "filename": "kinematic_wave_process.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_07_slope_routing/outputs/kinematic_wave_process.png",
-                "size": 198292,
-                "extension": ".png"
-              },
-              {
                 "filename": "method_comparison.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_07_slope_routing/outputs/method_comparison.png",
                 "size": 419759,
                 "extension": ".png"
               },
               {
-                "filename": "linear_reservoir_comparison.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_07_slope_routing/outputs/linear_reservoir_comparison.png",
-                "size": 496782,
+                "filename": "kinematic_wave_process.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_07_slope_routing/outputs/kinematic_wave_process.png",
+                "size": 198292,
                 "extension": ".png"
               },
               {
                 "filename": "nash_cascade_effect.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_07_slope_routing/outputs/nash_cascade_effect.png",
                 "size": 231011,
+                "extension": ".png"
+              },
+              {
+                "filename": "linear_reservoir_comparison.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_07_slope_routing/outputs/linear_reservoir_comparison.png",
+                "size": 496782,
                 "extension": ".png"
               }
             ],
@@ -11204,9 +11281,9 @@
             "count": 3,
             "images": [
               {
-                "filename": "convolution_demo.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_08_unit_hydrograph/outputs/convolution_demo.png",
-                "size": 246381,
+                "filename": "uh_comparison.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_08_unit_hydrograph/outputs/uh_comparison.png",
+                "size": 471549,
                 "extension": ".png"
               },
               {
@@ -11216,9 +11293,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "uh_comparison.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_08_unit_hydrograph/outputs/uh_comparison.png",
-                "size": 471549,
+                "filename": "convolution_demo.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_08_unit_hydrograph/outputs/convolution_demo.png",
+                "size": 246381,
                 "extension": ".png"
               }
             ],
@@ -11279,15 +11356,15 @@
             "count": 5,
             "images": [
               {
-                "filename": "correlation_scatter.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_09_sensitivity_analysis/outputs/correlation_scatter.png",
-                "size": 744277,
-                "extension": ".png"
-              },
-              {
                 "filename": "morris_screening.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_09_sensitivity_analysis/outputs/morris_screening.png",
                 "size": 100160,
+                "extension": ".png"
+              },
+              {
+                "filename": "oat_sensitivity.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_09_sensitivity_analysis/outputs/oat_sensitivity.png",
+                "size": 336702,
                 "extension": ".png"
               },
               {
@@ -11303,9 +11380,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "oat_sensitivity.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_09_sensitivity_analysis/outputs/oat_sensitivity.png",
-                "size": 336702,
+                "filename": "correlation_scatter.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_09_sensitivity_analysis/outputs/correlation_scatter.png",
+                "size": 744277,
                 "extension": ".png"
               }
             ],
@@ -11366,18 +11443,6 @@
             "count": 4,
             "images": [
               {
-                "filename": "parameters_evolution.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_10_muskingum_cunge/outputs/parameters_evolution.png",
-                "size": 200041,
-                "extension": ".png"
-              },
-              {
-                "filename": "cascade_routing.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_10_muskingum_cunge/outputs/cascade_routing.png",
-                "size": 385600,
-                "extension": ".png"
-              },
-              {
                 "filename": "attenuation_comparison.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_10_muskingum_cunge/outputs/attenuation_comparison.png",
                 "size": 85766,
@@ -11387,6 +11452,18 @@
                 "filename": "routing_comparison.png",
                 "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_10_muskingum_cunge/outputs/routing_comparison.png",
                 "size": 176525,
+                "extension": ".png"
+              },
+              {
+                "filename": "parameters_evolution.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_10_muskingum_cunge/outputs/parameters_evolution.png",
+                "size": 200041,
+                "extension": ".png"
+              },
+              {
+                "filename": "cascade_routing.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_10_muskingum_cunge/outputs/cascade_routing.png",
+                "size": 385600,
                 "extension": ".png"
               }
             ],
@@ -11453,9 +11530,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "calibration_progress.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_11_sce_calibration/outputs/calibration_progress.png",
-                "size": 137784,
+                "filename": "simulation_comparison.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_11_sce_calibration/outputs/simulation_comparison.png",
+                "size": 336859,
                 "extension": ".png"
               },
               {
@@ -11465,9 +11542,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "simulation_comparison.png",
-                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_11_sce_calibration/outputs/simulation_comparison.png",
-                "size": 336859,
+                "filename": "calibration_progress.png",
+                "path": "/home/user/CHS-Books/books/distributed-hydrological-model/code/examples/case_11_sce_calibration/outputs/calibration_progress.png",
+                "size": 137784,
                 "extension": ".png"
               }
             ],
@@ -12371,6 +12448,12 @@
             "count": 4,
             "images": [
               {
+                "filename": "part4_spatiotemporal.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part4_spatiotemporal.png",
+                "size": 170715,
+                "extension": ".png"
+              },
+              {
                 "filename": "part3_pid_parameters.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part3_pid_parameters.png",
                 "size": 269605,
@@ -12380,12 +12463,6 @@
                 "filename": "part1_step_response.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part1_step_response.png",
                 "size": 247124,
-                "extension": ".png"
-              },
-              {
-                "filename": "part4_spatiotemporal.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part4_spatiotemporal.png",
-                "size": 170715,
                 "extension": ".png"
               },
               {
@@ -12452,15 +12529,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "part4_fault_tolerance.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_02_multipoint_pid/part4_fault_tolerance.png",
-                "size": 88885,
-                "extension": ".png"
-              },
-              {
-                "filename": "part2_sensor_number.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_02_multipoint_pid/part2_sensor_number.png",
-                "size": 358168,
+                "filename": "part3_adaptive_weights.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_02_multipoint_pid/part3_adaptive_weights.png",
+                "size": 555006,
                 "extension": ".png"
               },
               {
@@ -12470,9 +12541,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "part3_adaptive_weights.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_02_multipoint_pid/part3_adaptive_weights.png",
-                "size": 555006,
+                "filename": "part2_sensor_number.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_02_multipoint_pid/part2_sensor_number.png",
+                "size": 358168,
+                "extension": ".png"
+              },
+              {
+                "filename": "part4_fault_tolerance.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_02_multipoint_pid/part4_fault_tolerance.png",
+                "size": 88885,
                 "extension": ".png"
               }
             ],
@@ -12533,9 +12610,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "part1_strategy_comparison.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_03_feedforward_feedback/part1_strategy_comparison.png",
-                "size": 405820,
+                "filename": "part3_disturbance_location.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_03_feedforward_feedback/part3_disturbance_location.png",
+                "size": 313521,
                 "extension": ".png"
               },
               {
@@ -12551,9 +12628,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "part3_disturbance_location.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_03_feedforward_feedback/part3_disturbance_location.png",
-                "size": 313521,
+                "filename": "part1_strategy_comparison.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_03_feedforward_feedback/part1_strategy_comparison.png",
+                "size": 405820,
                 "extension": ".png"
               }
             ],
@@ -12614,12 +12691,6 @@
             "count": 3,
             "images": [
               {
-                "filename": "part1_pod_modes.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_04_pod_reduction/part1_pod_modes.png",
-                "size": 320476,
-                "extension": ".png"
-              },
-              {
                 "filename": "part2_dimension_comparison.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_04_pod_reduction/part2_dimension_comparison.png",
                 "size": 231999,
@@ -12629,6 +12700,12 @@
                 "filename": "part3_control_performance.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_04_pod_reduction/part3_control_performance.png",
                 "size": 178971,
+                "extension": ".png"
+              },
+              {
+                "filename": "part1_pod_modes.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_04_pod_reduction/part1_pod_modes.png",
+                "size": 320476,
                 "extension": ".png"
               }
             ],
@@ -12689,15 +12766,15 @@
             "count": 3,
             "images": [
               {
-                "filename": "part3_dmd_prediction.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_05_dmd/part3_dmd_prediction.png",
-                "size": 232965,
-                "extension": ".png"
-              },
-              {
                 "filename": "part1_dmd_modes.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_05_dmd/part1_dmd_modes.png",
                 "size": 235441,
+                "extension": ".png"
+              },
+              {
+                "filename": "part3_dmd_prediction.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_05_dmd/part3_dmd_prediction.png",
+                "size": 232965,
                 "extension": ".png"
               },
               {
@@ -12764,15 +12841,15 @@
             "count": 3,
             "images": [
               {
-                "filename": "part2_galerkin_reconstruction.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_06_galerkin_reduction/part2_galerkin_reconstruction.png",
-                "size": 185454,
-                "extension": ".png"
-              },
-              {
                 "filename": "part1_basis_comparison.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_06_galerkin_reduction/part1_basis_comparison.png",
                 "size": 296926,
+                "extension": ".png"
+              },
+              {
+                "filename": "part2_galerkin_reconstruction.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_06_galerkin_reduction/part2_galerkin_reconstruction.png",
+                "size": 185454,
                 "extension": ".png"
               },
               {
@@ -12908,15 +12985,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "part3_canal_identification.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part3_canal_identification.png",
-                "size": 310493,
-                "extension": ".png"
-              },
-              {
                 "filename": "part2_order_selection.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part2_order_selection.png",
                 "size": 76008,
+                "extension": ".png"
+              },
+              {
+                "filename": "part3_canal_identification.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part3_canal_identification.png",
+                "size": 310493,
                 "extension": ".png"
               },
               {
@@ -12983,6 +13060,12 @@
             "count": 4,
             "images": [
               {
+                "filename": "part3_canal_frequency.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_09_frequency_identification/part3_canal_frequency.png",
+                "size": 257799,
+                "extension": ".png"
+              },
+              {
                 "filename": "part1_etfe_method.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_09_frequency_identification/part1_etfe_method.png",
                 "size": 206960,
@@ -12992,12 +13075,6 @@
                 "filename": "part4_model_fitting.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_09_frequency_identification/part4_model_fitting.png",
                 "size": 153208,
-                "extension": ".png"
-              },
-              {
-                "filename": "part3_canal_frequency.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_09_frequency_identification/part3_canal_frequency.png",
-                "size": 257799,
                 "extension": ".png"
               },
               {
@@ -13064,15 +13141,15 @@
             "count": 4,
             "images": [
               {
-                "filename": "part2_narx_model.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part2_narx_model.png",
-                "size": 244040,
-                "extension": ".png"
-              },
-              {
                 "filename": "part4_method_comparison.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part4_method_comparison.png",
                 "size": 224670,
+                "extension": ".png"
+              },
+              {
+                "filename": "part2_narx_model.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part2_narx_model.png",
+                "size": 244040,
                 "extension": ".png"
               },
               {
@@ -13145,15 +13222,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "part2_library_comparison.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_11_sindy_identification/part2_library_comparison.png",
-                "size": 237172,
-                "extension": ".png"
-              },
-              {
-                "filename": "part1_sindy_lorenz.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_11_sindy_identification/part1_sindy_lorenz.png",
-                "size": 352587,
+                "filename": "part4_ensemble_sindy.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_11_sindy_identification/part4_ensemble_sindy.png",
+                "size": 390724,
                 "extension": ".png"
               },
               {
@@ -13163,9 +13234,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "part4_ensemble_sindy.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_11_sindy_identification/part4_ensemble_sindy.png",
-                "size": 390724,
+                "filename": "part2_library_comparison.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_11_sindy_identification/part2_library_comparison.png",
+                "size": 237172,
+                "extension": ".png"
+              },
+              {
+                "filename": "part1_sindy_lorenz.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_11_sindy_identification/part1_sindy_lorenz.png",
+                "size": 352587,
                 "extension": ".png"
               }
             ],
@@ -13232,15 +13309,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "part4_ekf_vs_ukf.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_12_ekf_state_estimation/part4_ekf_vs_ukf.png",
-                "size": 737411,
-                "extension": ".png"
-              },
-              {
                 "filename": "part3_sensor_fusion.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_12_ekf_state_estimation/part3_sensor_fusion.png",
                 "size": 393169,
+                "extension": ".png"
+              },
+              {
+                "filename": "part4_ekf_vs_ukf.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_12_ekf_state_estimation/part4_ekf_vs_ukf.png",
+                "size": 737411,
                 "extension": ".png"
               },
               {
@@ -13307,15 +13384,15 @@
             "count": 4,
             "images": [
               {
-                "filename": "part4_maintenance_optimization.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_13_digital_twin/part4_maintenance_optimization.png",
-                "size": 273419,
-                "extension": ".png"
-              },
-              {
                 "filename": "part2_rul_prediction.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_13_digital_twin/part2_rul_prediction.png",
                 "size": 278674,
+                "extension": ".png"
+              },
+              {
+                "filename": "part4_maintenance_optimization.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_13_digital_twin/part4_maintenance_optimization.png",
+                "size": 273419,
                 "extension": ".png"
               },
               {
@@ -13394,6 +13471,12 @@
                 "extension": ".png"
               },
               {
+                "filename": "part1_linear_mpc.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_14_mpc_control/part1_linear_mpc.png",
+                "size": 246545,
+                "extension": ".png"
+              },
+              {
                 "filename": "part3_constraint_handling.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_14_mpc_control/part3_constraint_handling.png",
                 "size": 260022,
@@ -13403,12 +13486,6 @@
                 "filename": "part2_canal_mpc.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_14_mpc_control/part2_canal_mpc.png",
                 "size": 209855,
-                "extension": ".png"
-              },
-              {
-                "filename": "part1_linear_mpc.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_14_mpc_control/part1_linear_mpc.png",
-                "size": 246545,
                 "extension": ".png"
               }
             ],
@@ -13475,9 +13552,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "part3_robustness_test.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_15_adaptive_control/part3_robustness_test.png",
-                "size": 262574,
+                "filename": "part1_scalar_mrac.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_15_adaptive_control/part1_scalar_mrac.png",
+                "size": 225455,
                 "extension": ".png"
               },
               {
@@ -13487,9 +13564,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "part1_scalar_mrac.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_15_adaptive_control/part1_scalar_mrac.png",
-                "size": 225455,
+                "filename": "part3_robustness_test.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_15_adaptive_control/part3_robustness_test.png",
+                "size": 262574,
                 "extension": ".png"
               }
             ],
@@ -13550,9 +13627,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "part4_canal_sliding_mode.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_16_robust_control/part4_canal_sliding_mode.png",
-                "size": 205327,
+                "filename": "part3_canal_hinf.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_16_robust_control/part3_canal_hinf.png",
+                "size": 153057,
                 "extension": ".png"
               },
               {
@@ -13562,15 +13639,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "part3_canal_hinf.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_16_robust_control/part3_canal_hinf.png",
-                "size": 153057,
-                "extension": ".png"
-              },
-              {
                 "filename": "part1_hinf_basics.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_16_robust_control/part1_hinf_basics.png",
                 "size": 127319,
+                "extension": ".png"
+              },
+              {
+                "filename": "part4_canal_sliding_mode.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_16_robust_control/part4_canal_sliding_mode.png",
+                "size": 205327,
                 "extension": ".png"
               }
             ],
@@ -13637,15 +13714,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "part1_system_identification.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_17_intelligent_control/part1_system_identification.png",
-                "size": 230198,
-                "extension": ".png"
-              },
-              {
                 "filename": "part2_neural_adaptive_control.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_17_intelligent_control/part2_neural_adaptive_control.png",
                 "size": 132419,
+                "extension": ".png"
+              },
+              {
+                "filename": "part1_system_identification.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_17_intelligent_control/part1_system_identification.png",
+                "size": 230198,
                 "extension": ".png"
               }
             ],
@@ -13706,15 +13783,15 @@
             "count": 4,
             "images": [
               {
-                "filename": "part4_pump_shutdown.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_18_pressurized_pipeline/part4_pump_shutdown.png",
-                "size": 196690,
-                "extension": ".png"
-              },
-              {
                 "filename": "part1_joukowsky_validation.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_18_pressurized_pipeline/part1_joukowsky_validation.png",
                 "size": 106035,
+                "extension": ".png"
+              },
+              {
+                "filename": "part4_pump_shutdown.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_18_pressurized_pipeline/part4_pump_shutdown.png",
+                "size": 196690,
                 "extension": ".png"
               },
               {
@@ -13787,15 +13864,15 @@
             "count": 4,
             "images": [
               {
-                "filename": "part1_coupling_simulation.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_19_coupled_system/part1_coupling_simulation.png",
-                "size": 100462,
-                "extension": ".png"
-              },
-              {
                 "filename": "part4_spatial_profiles.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_19_coupled_system/part4_spatial_profiles.png",
                 "size": 129880,
+                "extension": ".png"
+              },
+              {
+                "filename": "part2_feedforward_feedback_control.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_19_coupled_system/part2_feedforward_feedback_control.png",
+                "size": 141532,
                 "extension": ".png"
               },
               {
@@ -13805,9 +13882,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "part2_feedforward_feedback_control.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_19_coupled_system/part2_feedforward_feedback_control.png",
-                "size": 141532,
+                "filename": "part1_coupling_simulation.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_19_coupled_system/part1_coupling_simulation.png",
+                "size": 100462,
                 "extension": ".png"
               }
             ],
@@ -13868,27 +13945,27 @@
             "count": 4,
             "images": [
               {
-                "filename": "part4_predictive_maintenance.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_20_integrated_system/part4_predictive_maintenance.png",
-                "size": 159533,
-                "extension": ".png"
-              },
-              {
                 "filename": "part1_pod_acceleration.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_20_integrated_system/part1_pod_acceleration.png",
                 "size": 118935,
                 "extension": ".png"
               },
               {
-                "filename": "part3_digital_twin_synchronization.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_20_integrated_system/part3_digital_twin_synchronization.png",
-                "size": 146896,
-                "extension": ".png"
-              },
-              {
                 "filename": "part2_sindy_identification.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_20_integrated_system/part2_sindy_identification.png",
                 "size": 151587,
+                "extension": ".png"
+              },
+              {
+                "filename": "part4_predictive_maintenance.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_20_integrated_system/part4_predictive_maintenance.png",
+                "size": 159533,
+                "extension": ".png"
+              },
+              {
+                "filename": "part3_digital_twin_synchronization.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_20_integrated_system/part3_digital_twin_synchronization.png",
+                "size": 146896,
                 "extension": ".png"
               }
             ],
@@ -13917,61 +13994,6 @@
     }
   ],
   "issues": [
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_02_drainage"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_03_landscape"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_04_weir"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_05_gate"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_06_drop"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_07_profile"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_08_bridge"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_09_roughness"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_10_compound"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_11_transition"
-    },
-    {
-      "type": "缺少图片",
-      "book_id": "open-channel-hydraulics",
-      "case_name": "case_12_culvert"
-    },
     {
       "type": "缺少图片",
       "book_id": "intelligent-water-network-design",
