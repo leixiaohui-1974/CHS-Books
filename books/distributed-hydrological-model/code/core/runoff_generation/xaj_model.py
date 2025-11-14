@@ -306,9 +306,10 @@ class XinAnJiangModel:
         if PE_permeable <= 0:
             R_permeable = 0
         else:
-            # 计算蓄水容量
-            A = WM * (1 - (1 - W / WM) ** (1 / (1 + B)))  # 已蓄满面积对应的蓄水容量
-            
+            # 计算蓄水容量（防止W超过WM导致NaN）
+            W_ratio = min(W / WM, 1.0)  # 确保不超过1
+            A = WM * (1 - (1 - W_ratio) ** (1 / (1 + B)))  # 已蓄满面积对应的蓄水容量
+
             if PE_permeable + A >= WM:
                 # 全部产流
                 R_permeable = PE_permeable - (WM - W)
@@ -316,8 +317,9 @@ class XinAnJiangModel:
                 # 部分产流
                 # 新的蓄满面积对应的蓄水容量
                 A_new = PE_permeable + A
-                # 产流面积
-                FR = 1 - (1 - A_new / WM) ** (1 + B)
+                # 产流面积（防止A_new超过WM导致NaN）
+                A_new_ratio = min(A_new / WM, 1.0)
+                FR = 1 - (1 - A_new_ratio) ** (1 + B)
                 R_permeable = PE_permeable * FR
         
         # 总产流
