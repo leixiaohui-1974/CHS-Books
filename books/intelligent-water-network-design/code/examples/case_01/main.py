@@ -53,7 +53,7 @@ except ImportError:
     # 提供简化版本作为后备
     class TrapezoidalChannel:
         def __init__(self, b, m, n, S0, length=None):
-            self.b, self.m, self.n, S0 = b, m, n, S0
+            self.b, self.m, self.n, self.S0 = b, m, n, S0
             self.length = length
         
         def area(self, h):
