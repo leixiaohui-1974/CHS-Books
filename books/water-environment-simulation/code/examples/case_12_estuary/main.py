@@ -63,7 +63,8 @@ def main():
         model.set_initial_salinity(S_sea=30, S_river=0)
         
         # 时间演化（模拟1个潮周期）
-        dt = 300  # 时间步长 5分钟
+        # 稳定性条件: dt ≤ dx²/(2*K_x) ≈ 201²/(2*100) ≈ 202s
+        dt = 150  # 时间步长 2.5分钟（满足稳定性条件）
         n_steps = int(tidal_period / dt)
         
         # 记录不同潮时的盐度

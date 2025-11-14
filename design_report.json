@@ -1,0 +1,12 @@
+{
+  "project_name": "灌区首部提水泵站智能化设计",
+  "design_standard": "GB 50265-2022",
+  "pump_config": "3×ZLB-1200型立式轴流泵",
+  "intelligence_level": "L1",
+  "test_summary": {
+    "total_scenarios": 5,
+    "avg_error": 1.3631111111111083,
+    "avg_switches_per_hour": 21.6,
+    "pass": false
+  }
+}

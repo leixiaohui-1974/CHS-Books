@@ -1,0 +1,12 @@
+{
+  "project_name": "流域防洪调度设计",
+  "system_config": "5座梯级水库（100亿m³），保护3城市",
+  "intelligence_level": "L3",
+  "performance_metrics": {
+    "peak_inflow": 21000.0,
+    "peak_downstream": 8000.0,
+    "peak_reduction": 61.904761904761905,
+    "safety_exceedance": 0,
+    "safety_rate": 100.0
+  }
+}
