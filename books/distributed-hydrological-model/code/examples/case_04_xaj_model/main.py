@@ -8,16 +8,17 @@
 日期: 2025-11-02
 """
 
+from pathlib import Path
 import sys
-sys.path.insert(0, '../../..')
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-from code.core.runoff_generation import XinAnJiangModel, create_default_xaj_params
-from code.core.utils.metrics import nash_sutcliffe, evaluate_model
-from code.core.utils.plotting import plot_hydrograph, plot_rainfall_runoff
+from core.runoff_generation import XinAnJiangModel, create_default_xaj_params
+from core.utils.metrics import nash_sutcliffe, evaluate_model
+from core.utils.plotting import plot_hydrograph, plot_rainfall_runoff
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']

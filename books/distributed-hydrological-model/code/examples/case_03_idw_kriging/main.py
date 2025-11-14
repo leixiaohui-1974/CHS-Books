@@ -8,20 +8,21 @@
 日期: 2025-11-02
 """
 
+from pathlib import Path
 import sys
-sys.path.insert(0, '../../..')
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 import numpy as np
 import matplotlib.pyplot as plt
 from pathlib import Path
 import time
 
-from code.core.interpolation import (
+from core.interpolation import (
     inverse_distance_weighting, ordinary_kriging,
     experimental_variogram, cross_validation_idw
 )
-from code.core.interpolation.idw import idw_grid
-from code.core.utils.metrics import rmse, correlation_coefficient
+from core.interpolation.idw import idw_grid
+from core.utils.metrics import rmse, correlation_coefficient
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
@@ -181,7 +182,7 @@ def plot_variogram(stations_xy, rainfall, save_path=None):
     
     # 理论模型
     h_theory = np.linspace(0, max_dist, 100)
-    from code.core.interpolation.kriging import spherical_variogram
+    from core.interpolation.kriging import spherical_variogram
     gamma_theory = spherical_variogram(h_theory, nugget, sill, range_param)
     
     # 绘图

@@ -8,6 +8,7 @@
 1. SCE-UA算法原理
 2. 目标函数设计
 3. 参数约束处理
+from pathlib import Path
 4. 率定过程可视化
 5. 率定结果验证
 

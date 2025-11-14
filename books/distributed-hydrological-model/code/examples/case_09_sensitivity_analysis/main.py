@@ -8,6 +8,7 @@
 4. 敏感性可视化（龙卷风图、散点图、热图）
 5. 参数重要性排序
 
+from pathlib import Path
 作者: CHS-Books项目组
 日期: 2025-11-02
 """
@@ -22,7 +23,7 @@ from typing import Dict, List, Tuple, Callable
 # 添加项目根目录到路径
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
-from code.core.runoff_generation import XinAnJiangModel, create_default_xaj_params
+from core.runoff_generation import XinAnJiangModel, create_default_xaj_params
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']

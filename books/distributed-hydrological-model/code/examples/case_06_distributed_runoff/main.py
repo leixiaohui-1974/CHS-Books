@@ -8,6 +8,7 @@
 4. 汇总得到流域总产流
 5. 可视化空间分布
 
+from pathlib import Path
 作者: CHS-Books项目组
 日期: 2025-11-02
 """
@@ -22,8 +23,8 @@ import sys
 # 添加项目根目录到路径
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
-from code.core.interpolation import inverse_distance_weighting, ordinary_kriging
-from code.core.runoff_generation import XinAnJiangModel, create_default_xaj_params
+from core.interpolation import inverse_distance_weighting, ordinary_kriging
+from core.runoff_generation import XinAnJiangModel, create_default_xaj_params
 
 # 设置中文字体
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
