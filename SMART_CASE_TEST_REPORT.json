@@ -1,12 +1,12 @@
 {
-  "timestamp": "2025-11-14T07:04:51.028482",
+  "timestamp": "2025-11-14T07:36:09.523730",
   "summary": {
     "total_books": 8,
     "total_cases_tested": 197,
-    "total_cases_passed": 195,
-    "total_cases_failed": 2,
-    "overall_pass_rate": "99.0%",
-    "overall_avg_score": "83.1",
+    "total_cases_passed": 197,
+    "total_cases_failed": 0,
+    "overall_pass_rate": "100.0%",
+    "overall_avg_score": "83.5",
     "overall_grade": "A 良好"
   },
   "books": [
@@ -2028,9 +2028,9 @@
             "count": 7,
             "images": [
               {
-                "filename": "diffusion_validation.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_validation.png",
-                "size": 95802,
+                "filename": "intrusion_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intrusion_comparison.png",
+                "size": 24632,
                 "extension": ".png"
               },
               {
@@ -2040,15 +2040,15 @@
                 "extension": ".png"
               },
               {
-                "filename": "diffusion_scheme_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_scheme_comparison.png",
-                "size": 164151,
+                "filename": "diffusion_validation.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_validation.png",
+                "size": 95802,
                 "extension": ".png"
               },
               {
-                "filename": "intake_risk.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intake_risk.png",
-                "size": 37175,
+                "filename": "diffusion_scheme_comparison.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/diffusion_scheme_comparison.png",
+                "size": 164151,
                 "extension": ".png"
               },
               {
@@ -2058,9 +2058,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "intrusion_comparison.png",
-                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intrusion_comparison.png",
-                "size": 24632,
+                "filename": "intake_risk.png",
+                "path": "/home/user/CHS-Books/books/water-environment-simulation/code/examples/case_01_diffusion/intake_risk.png",
+                "size": 37175,
                 "extension": ".png"
               },
               {
@@ -5554,8 +5554,8 @@
       "book_name": "智能水网设计",
       "total_cases": 26,
       "tested_cases": 26,
-      "passed_cases": 24,
-      "failed_cases": 2,
+      "passed_cases": 26,
+      "failed_cases": 0,
       "case_results": [
         {
           "case_name": "case_01",
@@ -5633,9 +5633,19 @@
             "quality": "优秀"
           },
           "main_py": {
-            "exists": false,
-            "error": "main.py不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_01_irrigation_gate/main.py",
+            "size": 13047,
+            "checks": {
+              "total_lines": 448,
+              "code_lines": 309,
+              "has_imports": true,
+              "has_main": true,
+              "has_comments": true,
+              "has_functions": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "images": {
             "count": 0,
@@ -5653,11 +5663,11 @@
             "files": [],
             "has_modules": false
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 40,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 80,
+          "grade": "A 良好"
         },
         {
           "case_name": "case_02_pump_station",
@@ -6024,15 +6034,15 @@
             "count": 2,
             "files": [
               {
-                "filename": "cascade_report.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_07_cascade_canals/cascade_report.json",
-                "size": 504,
-                "extension": ".json"
-              },
-              {
                 "filename": "cascade_mpc_report_v2.json",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_07_cascade_canals/cascade_mpc_report_v2.json",
                 "size": 801,
+                "extension": ".json"
+              },
+              {
+                "filename": "cascade_report.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_07_cascade_canals/cascade_report.json",
+                "size": 504,
                 "extension": ".json"
               }
             ],
@@ -6352,15 +6362,15 @@
             "count": 2,
             "files": [
               {
-                "filename": "water_diversion_report.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_12_water_diversion/water_diversion_report.json",
-                "size": 305,
-                "extension": ".json"
-              },
-              {
                 "filename": "case_12_v2_report.json",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_12_water_diversion/case_12_v2_report.json",
                 "size": 541,
+                "extension": ".json"
+              },
+              {
+                "filename": "water_diversion_report.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/case_12_water_diversion/water_diversion_report.json",
+                "size": 305,
                 "extension": ".json"
               }
             ],
@@ -7124,9 +7134,19 @@
             "quality": "优秀"
           },
           "main_py": {
-            "exists": false,
-            "error": "main.py不存在",
-            "success": false
+            "exists": true,
+            "file_path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/main.py",
+            "size": 8661,
+            "checks": {
+              "total_lines": 293,
+              "code_lines": 239,
+              "has_imports": true,
+              "has_main": true,
+              "has_comments": true,
+              "has_functions": true
+            },
+            "success": true,
+            "quality": "优秀"
           },
           "images": {
             "count": 0,
@@ -7138,10 +7158,10 @@
             "count": 11,
             "files": [
               {
-                "filename": "medium_gate_config.json",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_config.json",
-                "size": 1338,
-                "extension": ".json"
+                "filename": "pid_tuning_results.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/pid_tuning_results.txt",
+                "size": 2324,
+                "extension": ".txt"
               },
               {
                 "filename": "intelligence_evaluation_L2.txt",
@@ -7150,21 +7170,9 @@
                 "extension": ".txt"
               },
               {
-                "filename": "pid_tuning_results.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/pid_tuning_results.txt",
-                "size": 2324,
-                "extension": ".txt"
-              },
-              {
-                "filename": "performance_analysis_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analysis_report.txt",
-                "size": 4726,
-                "extension": ".txt"
-              },
-              {
-                "filename": "requirements.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/requirements.txt",
-                "size": 32,
+                "filename": "cost_benefit_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cost_benefit_report.txt",
+                "size": 3229,
                 "extension": ".txt"
               },
               {
@@ -7180,27 +7188,39 @@
                 "extension": ".json"
               },
               {
-                "filename": "batch_test_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_test_report.txt",
-                "size": 1275,
-                "extension": ".txt"
-              },
-              {
                 "filename": "static_design_operation_manual.txt",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design_operation_manual.txt",
                 "size": 1222,
                 "extension": ".txt"
               },
               {
-                "filename": "sensitivity_analysis_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analysis_report.txt",
-                "size": 1537,
+                "filename": "performance_analysis_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analysis_report.txt",
+                "size": 4726,
                 "extension": ".txt"
               },
               {
-                "filename": "cost_benefit_report.txt",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cost_benefit_report.txt",
-                "size": 3229,
+                "filename": "batch_test_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/batch_test_report.txt",
+                "size": 1275,
+                "extension": ".txt"
+              },
+              {
+                "filename": "requirements.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/requirements.txt",
+                "size": 32,
+                "extension": ".txt"
+              },
+              {
+                "filename": "medium_gate_config.json",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_config.json",
+                "size": 1338,
+                "extension": ".json"
+              },
+              {
+                "filename": "sensitivity_analysis_report.txt",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analysis_report.txt",
+                "size": 1537,
                 "extension": ".txt"
               }
             ],
@@ -7210,10 +7230,34 @@
             "count": 17,
             "files": [
               {
-                "filename": "static_design.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design.py",
-                "size": 12313,
-                "lines": 384
+                "filename": "performance_analyzer.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analyzer.py",
+                "size": 22198,
+                "lines": 600
+              },
+              {
+                "filename": "report_generator.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/report_generator.py",
+                "size": 15177,
+                "lines": 426
+              },
+              {
+                "filename": "visualize_comparison.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/visualize_comparison.py",
+                "size": 14190,
+                "lines": 385
+              },
+              {
+                "filename": "sensitivity_analyzer.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analyzer.py",
+                "size": 21040,
+                "lines": 551
+              },
+              {
+                "filename": "demo_presenter.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/demo_presenter.py",
+                "size": 23999,
+                "lines": 565
               },
               {
                 "filename": "batch_runner.py",
@@ -7228,28 +7272,10 @@
                 "lines": 400
               },
               {
-                "filename": "dynamic_design_L3.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/dynamic_design_L3.py",
-                "size": 26710,
-                "lines": 740
-              },
-              {
-                "filename": "medium_gate_case.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_case.py",
-                "size": 668,
-                "lines": 31
-              },
-              {
                 "filename": "intelligence_evaluator.py",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/intelligence_evaluator.py",
                 "size": 22365,
                 "lines": 569
-              },
-              {
-                "filename": "demo_presenter.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/demo_presenter.py",
-                "size": 23999,
-                "lines": 565
               },
               {
                 "filename": "data_exporter.py",
@@ -7258,16 +7284,10 @@
                 "lines": 423
               },
               {
-                "filename": "dynamic_design_L2.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/dynamic_design_L2.py",
-                "size": 21860,
-                "lines": 647
-              },
-              {
-                "filename": "visualize_comparison.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/visualize_comparison.py",
-                "size": 14190,
-                "lines": 385
+                "filename": "dynamic_design_L3.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/dynamic_design_L3.py",
+                "size": 26710,
+                "lines": 740
               },
               {
                 "filename": "pid_tuner.py",
@@ -7276,28 +7296,16 @@
                 "lines": 467
               },
               {
-                "filename": "sensitivity_analyzer.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/sensitivity_analyzer.py",
-                "size": 21040,
-                "lines": 551
-              },
-              {
                 "filename": "cost_benefit_calculator.py",
                 "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/cost_benefit_calculator.py",
                 "size": 21897,
                 "lines": 497
               },
               {
-                "filename": "config_generator.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/config_generator.py",
-                "size": 16346,
-                "lines": 473
-              },
-              {
-                "filename": "performance_analyzer.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/performance_analyzer.py",
-                "size": 22198,
-                "lines": 600
+                "filename": "medium_gate_case.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/medium_gate_case.py",
+                "size": 668,
+                "lines": 31
               },
               {
                 "filename": "cli.py",
@@ -7306,23 +7314,35 @@
                 "lines": 387
               },
               {
-                "filename": "report_generator.py",
-                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/report_generator.py",
-                "size": 15177,
-                "lines": 426
+                "filename": "dynamic_design_L2.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/dynamic_design_L2.py",
+                "size": 21860,
+                "lines": 647
+              },
+              {
+                "filename": "config_generator.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/config_generator.py",
+                "size": 16346,
+                "lines": 473
+              },
+              {
+                "filename": "static_design.py",
+                "path": "/home/user/CHS-Books/books/intelligent-water-network-design/code/examples/comparison_static_vs_dynamic/static_design.py",
+                "size": 12313,
+                "lines": 384
               }
             ],
             "has_modules": true
           },
-          "critical_success": false,
+          "critical_success": true,
           "has_images": false,
-          "success": false,
-          "score": 50,
-          "grade": "C 待改进"
+          "success": true,
+          "score": 90,
+          "grade": "A+ 优秀"
         }
       ],
-      "total_score": 2105,
-      "average_score": 80.96153846153847
+      "total_score": 2185,
+      "average_score": 84.03846153846153
     },
     {
       "book_id": "photovoltaic-system-modeling-control",
@@ -7388,16 +7408,16 @@
             "count": 2,
             "files": [
               {
-                "filename": "__init__.py",
-                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_01_pv_cell_iv_characteristics/__init__.py",
-                "size": 89,
-                "lines": 5
-              },
-              {
                 "filename": "experiments.py",
                 "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_01_pv_cell_iv_characteristics/experiments.py",
                 "size": 17607,
                 "lines": 518
+              },
+              {
+                "filename": "__init__.py",
+                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_01_pv_cell_iv_characteristics/__init__.py",
+                "size": 89,
+                "lines": 5
               }
             ],
             "has_modules": true
@@ -7464,16 +7484,16 @@
             "count": 2,
             "files": [
               {
-                "filename": "__init__.py",
-                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_02_double_diode_model/__init__.py",
-                "size": 77,
-                "lines": 5
-              },
-              {
                 "filename": "experiments.py",
                 "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_02_double_diode_model/experiments.py",
                 "size": 13715,
                 "lines": 408
+              },
+              {
+                "filename": "__init__.py",
+                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_02_double_diode_model/__init__.py",
+                "size": 77,
+                "lines": 5
               }
             ],
             "has_modules": true
@@ -7540,16 +7560,16 @@
             "count": 2,
             "files": [
               {
-                "filename": "__init__.py",
-                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_03_pv_module_modeling/__init__.py",
-                "size": 63,
-                "lines": 5
-              },
-              {
                 "filename": "experiments.py",
                 "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_03_pv_module_modeling/experiments.py",
                 "size": 16125,
                 "lines": 488
+              },
+              {
+                "filename": "__init__.py",
+                "path": "/home/user/CHS-Books/books/photovoltaic-system-modeling-control/code/examples/case_03_pv_module_modeling/__init__.py",
+                "size": 63,
+                "lines": 5
               }
             ],
             "has_modules": true
@@ -10937,12 +10957,6 @@
                 "extension": ".png"
               },
               {
-                "filename": "part3_pid_parameters.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part3_pid_parameters.png",
-                "size": 269605,
-                "extension": ".png"
-              },
-              {
                 "filename": "part4_spatiotemporal.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part4_spatiotemporal.png",
                 "size": 170715,
@@ -10952,6 +10966,12 @@
                 "filename": "part2_disturbance_rejection.png",
                 "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part2_disturbance_rejection.png",
                 "size": 208439,
+                "extension": ".png"
+              },
+              {
+                "filename": "part3_pid_parameters.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_01_single_reach_pid/part3_pid_parameters.png",
+                "size": 269605,
                 "extension": ".png"
               }
             ],
@@ -11354,9 +11374,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "part4_noise_robustness.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part4_noise_robustness.png",
-                "size": 235649,
+                "filename": "part1_n4sid_validation.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part1_n4sid_validation.png",
+                "size": 277161,
                 "extension": ".png"
               },
               {
@@ -11366,9 +11386,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "part1_n4sid_validation.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part1_n4sid_validation.png",
-                "size": 277161,
+                "filename": "part4_noise_robustness.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_08_n4sid_identification/part4_noise_robustness.png",
+                "size": 235649,
                 "extension": ".png"
               }
             ],
@@ -11485,9 +11505,9 @@
             "count": 4,
             "images": [
               {
-                "filename": "part3_canal_nonlinear.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part3_canal_nonlinear.png",
-                "size": 400575,
+                "filename": "part4_method_comparison.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part4_method_comparison.png",
+                "size": 224670,
                 "extension": ".png"
               },
               {
@@ -11497,9 +11517,9 @@
                 "extension": ".png"
               },
               {
-                "filename": "part4_method_comparison.png",
-                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part4_method_comparison.png",
-                "size": 224670,
+                "filename": "part3_canal_nonlinear.png",
+                "path": "/home/user/CHS-Books/books/canal-pipeline-control/code/examples/case_10_nonlinear_identification/part3_canal_nonlinear.png",
+                "size": 400575,
                 "extension": ".png"
               },
               {
@@ -12440,12 +12460,6 @@
       "case_name": "case_01"
     },
     {
-      "type": "main.py问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "case_01_irrigation_gate",
-      "detail": "main.py不存在"
-    },
-    {
       "type": "缺少图片",
       "book_id": "intelligent-water-network-design",
       "case_name": "case_01_irrigation_gate"
@@ -12564,12 +12578,6 @@
       "type": "缺少图片",
       "book_id": "intelligent-water-network-design",
       "case_name": "case_24_comprehensive"
-    },
-    {
-      "type": "main.py问题",
-      "book_id": "intelligent-water-network-design",
-      "case_name": "comparison_static_vs_dynamic",
-      "detail": "main.py不存在"
     },
     {
       "type": "缺少图片",
