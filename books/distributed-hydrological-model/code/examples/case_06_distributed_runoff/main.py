@@ -8,7 +8,6 @@
 4. 汇总得到流域总产流
 5. 可视化空间分布
 
-from pathlib import Path
 作者: CHS-Books项目组
 日期: 2025-11-02
 """
@@ -19,9 +18,10 @@ from matplotlib.patches import Rectangle
 from matplotlib.colors import LinearSegmentedColormap
 import os
 import sys
+from pathlib import Path
 
-# 添加项目根目录到路径
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
+# 添加code目录到路径
+sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from core.interpolation import inverse_distance_weighting, ordinary_kriging
 from core.runoff_generation import XinAnJiangModel, create_default_xaj_params
