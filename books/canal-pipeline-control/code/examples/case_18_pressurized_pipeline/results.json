@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_18_pressurized_pipeline",
+    "book": "渠道与管道控制",
+    "generated_at": "2025-11-14T09:05:28.635237",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 191.61,
+    "memory_usage_mb": 94.04,
+    "flow_rate_m3s": 3.81,
+    "water_level_m": 4.55,
+    "velocity_ms": 1.55,
+    "gate_opening_percent": 83.5,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.96,
+        "water_level": 2.63,
+        "velocity": 1.18
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.74,
+        "water_level": 3.3,
+        "velocity": 1.21
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.16,
+        "water_level": 3.5,
+        "velocity": 1.39
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.19,
+        "water_level": 2.77,
+        "velocity": 1.24
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.25,
+        "water_level": 2.72,
+        "velocity": 1.27
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.41,
+        "water_level": 2.72,
+        "velocity": 1.1
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.45,
+        "water_level": 3.4,
+        "velocity": 1.02
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.85,
+        "water_level": 3.29,
+        "velocity": 1.25
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.65,
+        "water_level": 2.64,
+        "velocity": 1.05
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.73,
+        "water_level": 3.08,
+        "velocity": 1.08
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.7,
+        "water_level": 3.37,
+        "velocity": 1.25
+      }
+    ]
+  }
+}

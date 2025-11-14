@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_16_gravel_supplement",
+    "book": "生态水力学",
+    "generated_at": "2025-11-14T09:05:28.542888",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 399.15,
+    "memory_usage_mb": 77.78,
+    "flow_rate_m3s": 9.94,
+    "water_level_m": 3.18,
+    "velocity_ms": 1.39,
+    "gate_opening_percent": 37.6,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.35,
+        "water_level": 2.89,
+        "velocity": 1.17
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.52,
+        "water_level": 3.38,
+        "velocity": 1.4
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.64,
+        "water_level": 3.46,
+        "velocity": 1.37
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.45,
+        "water_level": 2.73,
+        "velocity": 1.26
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.79,
+        "water_level": 2.69,
+        "velocity": 1.24
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.99,
+        "water_level": 2.86,
+        "velocity": 1.07
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.39,
+        "water_level": 3.36,
+        "velocity": 1.0
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.58,
+        "water_level": 3.27,
+        "velocity": 1.27
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.96,
+        "water_level": 2.71,
+        "velocity": 1.2
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.64,
+        "water_level": 2.92,
+        "velocity": 1.36
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.46,
+        "water_level": 2.88,
+        "velocity": 1.22
+      }
+    ]
+  }
+}

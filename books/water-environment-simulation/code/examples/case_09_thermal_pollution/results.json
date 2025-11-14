@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_09_thermal_pollution",
+    "book": "水环境数值模拟",
+    "generated_at": "2025-11-14T09:05:28.557281",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 456.81,
+    "memory_usage_mb": 85.42,
+    "flow_rate_m3s": 4.63,
+    "water_level_m": 2.19,
+    "velocity_ms": 0.84,
+    "gate_opening_percent": 50.1,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.69,
+        "water_level": 2.95,
+        "velocity": 1.33
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.12,
+        "water_level": 2.79,
+        "velocity": 1.24
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.64,
+        "water_level": 2.71,
+        "velocity": 1.35
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.38,
+        "water_level": 2.58,
+        "velocity": 1.14
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.62,
+        "water_level": 3.02,
+        "velocity": 1.13
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.46,
+        "water_level": 2.77,
+        "velocity": 1.06
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.91,
+        "water_level": 2.69,
+        "velocity": 1.2
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.79,
+        "water_level": 3.45,
+        "velocity": 1.05
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.15,
+        "water_level": 3.09,
+        "velocity": 1.24
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.2,
+        "water_level": 3.37,
+        "velocity": 1.35
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.96,
+        "water_level": 3.48,
+        "velocity": 1.33
+      }
+    ]
+  }
+}

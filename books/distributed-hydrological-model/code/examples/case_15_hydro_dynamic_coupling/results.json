@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_15_hydro_dynamic_coupling",
+    "book": "分布式水文模型",
+    "generated_at": "2025-11-14T09:05:28.620087",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 136.1,
+    "memory_usage_mb": 51.64,
+    "flow_rate_m3s": 3.83,
+    "water_level_m": 1.12,
+    "velocity_ms": 0.54,
+    "gate_opening_percent": 85.5,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.18,
+        "water_level": 2.71,
+        "velocity": 1.03
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.11,
+        "water_level": 2.64,
+        "velocity": 1.08
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.74,
+        "water_level": 3.11,
+        "velocity": 1.13
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.09,
+        "water_level": 2.74,
+        "velocity": 1.18
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.71,
+        "water_level": 3.36,
+        "velocity": 1.24
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.73,
+        "water_level": 2.54,
+        "velocity": 1.02
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.77,
+        "water_level": 3.37,
+        "velocity": 1.15
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.51,
+        "water_level": 2.92,
+        "velocity": 1.32
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.23,
+        "water_level": 3.34,
+        "velocity": 1.25
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.25,
+        "water_level": 2.65,
+        "velocity": 1.29
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.66,
+        "water_level": 2.9,
+        "velocity": 1.16
+      }
+    ]
+  }
+}

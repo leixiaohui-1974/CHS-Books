@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_02_advection_diffusion",
+    "book": "水环境数值模拟",
+    "generated_at": "2025-11-14T09:05:28.553085",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 215.15,
+    "memory_usage_mb": 34.94,
+    "flow_rate_m3s": 2.31,
+    "water_level_m": 2.98,
+    "velocity_ms": 1.78,
+    "gate_opening_percent": 82.0,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.18,
+        "water_level": 2.56,
+        "velocity": 1.01
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.62,
+        "water_level": 2.82,
+        "velocity": 1.01
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.72,
+        "water_level": 2.86,
+        "velocity": 1.0
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.34,
+        "water_level": 2.82,
+        "velocity": 1.38
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.62,
+        "water_level": 3.42,
+        "velocity": 1.02
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.65,
+        "water_level": 2.75,
+        "velocity": 1.09
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.01,
+        "water_level": 3.4,
+        "velocity": 1.28
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.79,
+        "water_level": 3.08,
+        "velocity": 1.32
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.8,
+        "water_level": 2.78,
+        "velocity": 1.09
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.85,
+        "water_level": 2.77,
+        "velocity": 1.38
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.56,
+        "water_level": 3.36,
+        "velocity": 1.25
+      }
+    ]
+  }
+}

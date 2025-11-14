@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_15_floodplain_wetland",
+    "book": "生态水力学",
+    "generated_at": "2025-11-14T09:05:28.542334",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 440.04,
+    "memory_usage_mb": 77.79,
+    "flow_rate_m3s": 3.12,
+    "water_level_m": 1.43,
+    "velocity_ms": 0.92,
+    "gate_opening_percent": 41.0,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.01,
+        "water_level": 2.58,
+        "velocity": 1.14
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.83,
+        "water_level": 3.45,
+        "velocity": 1.17
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.41,
+        "water_level": 3.2,
+        "velocity": 1.23
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.85,
+        "water_level": 3.25,
+        "velocity": 1.08
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.7,
+        "water_level": 3.41,
+        "velocity": 1.25
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.66,
+        "water_level": 3.25,
+        "velocity": 1.26
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.3,
+        "water_level": 3.23,
+        "velocity": 1.02
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.95,
+        "water_level": 2.79,
+        "velocity": 1.23
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.3,
+        "water_level": 2.62,
+        "velocity": 1.22
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.73,
+        "water_level": 3.25,
+        "velocity": 1.1
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.33,
+        "water_level": 3.39,
+        "velocity": 1.27
+      }
+    ]
+  }
+}

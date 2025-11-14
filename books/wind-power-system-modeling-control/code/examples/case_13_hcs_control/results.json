@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_13_hcs_control",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.611606",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 391.15,
+    "memory_usage_mb": 75.67,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 26.36,
+        "value2": 97.86
+      },
+      {
+        "time": 1.0,
+        "value1": 20.43,
+        "value2": 61.73
+      },
+      {
+        "time": 2.0,
+        "value1": 45.33,
+        "value2": 19.37
+      },
+      {
+        "time": 3.0,
+        "value1": 18.25,
+        "value2": 64.6
+      },
+      {
+        "time": 4.0,
+        "value1": 9.56,
+        "value2": 37.43
+      },
+      {
+        "time": 5.0,
+        "value1": 97.07,
+        "value2": 73.95
+      },
+      {
+        "time": 6.0,
+        "value1": 21.54,
+        "value2": 44.95
+      },
+      {
+        "time": 7.0,
+        "value1": 86.0,
+        "value2": 88.61
+      },
+      {
+        "time": 8.0,
+        "value1": 94.04,
+        "value2": 87.7
+      },
+      {
+        "time": 9.0,
+        "value1": 94.49,
+        "value2": 95.68
+      },
+      {
+        "time": 10.0,
+        "value1": 76.64,
+        "value2": 83.73
+      }
+    ]
+  }
+}

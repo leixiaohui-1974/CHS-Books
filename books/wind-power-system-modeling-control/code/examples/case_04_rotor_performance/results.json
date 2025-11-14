@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_04_rotor_performance",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.606460",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 355.44,
+    "memory_usage_mb": 59.15,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 18.18,
+        "value2": 85.09
+      },
+      {
+        "time": 1.0,
+        "value1": 45.12,
+        "value2": 96.34
+      },
+      {
+        "time": 2.0,
+        "value1": 88.26,
+        "value2": 99.94
+      },
+      {
+        "time": 3.0,
+        "value1": 39.08,
+        "value2": 50.09
+      },
+      {
+        "time": 4.0,
+        "value1": 78.58,
+        "value2": 51.01
+      },
+      {
+        "time": 5.0,
+        "value1": 44.51,
+        "value2": 72.94
+      },
+      {
+        "time": 6.0,
+        "value1": 49.01,
+        "value2": 67.18
+      },
+      {
+        "time": 7.0,
+        "value1": 21.62,
+        "value2": 62.34
+      },
+      {
+        "time": 8.0,
+        "value1": 84.11,
+        "value2": 74.0
+      },
+      {
+        "time": 9.0,
+        "value1": 28.08,
+        "value2": 72.87
+      },
+      {
+        "time": 10.0,
+        "value1": 18.64,
+        "value2": 17.36
+      }
+    ]
+  }
+}

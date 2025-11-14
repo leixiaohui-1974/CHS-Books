@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_15_dam_break",
+    "book": "明渠水力学",
+    "generated_at": "2025-11-14T09:05:28.581153",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 408.4,
+    "memory_usage_mb": 48.95,
+    "flow_rate_m3s": 9.19,
+    "water_level_m": 4.63,
+    "velocity_ms": 0.63,
+    "gate_opening_percent": 33.4,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.85,
+        "water_level": 3.08,
+        "velocity": 1.17
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.24,
+        "water_level": 2.77,
+        "velocity": 1.13
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.17,
+        "water_level": 2.69,
+        "velocity": 1.26
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.83,
+        "water_level": 3.49,
+        "velocity": 1.29
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 4.62,
+        "water_level": 3.02,
+        "velocity": 1.27
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.41,
+        "water_level": 3.4,
+        "velocity": 1.01
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.27,
+        "water_level": 2.77,
+        "velocity": 1.28
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.21,
+        "water_level": 3.04,
+        "velocity": 1.04
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.93,
+        "water_level": 3.03,
+        "velocity": 1.27
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.2,
+        "water_level": 2.97,
+        "velocity": 1.09
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.24,
+        "water_level": 2.59,
+        "velocity": 1.05
+      }
+    ]
+  }
+}

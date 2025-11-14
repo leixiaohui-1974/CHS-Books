@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_19_groundwater_column",
+    "book": "水环境数值模拟",
+    "generated_at": "2025-11-14T09:05:28.565089",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 390.83,
+    "memory_usage_mb": 20.22,
+    "flow_rate_m3s": 9.69,
+    "water_level_m": 2.71,
+    "velocity_ms": 1.54,
+    "gate_opening_percent": 84.8,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.38,
+        "water_level": 3.05,
+        "velocity": 1.31
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.11,
+        "water_level": 2.82,
+        "velocity": 1.27
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.55,
+        "water_level": 2.78,
+        "velocity": 1.18
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.54,
+        "water_level": 3.05,
+        "velocity": 1.21
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.73,
+        "water_level": 2.73,
+        "velocity": 1.18
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.03,
+        "water_level": 3.41,
+        "velocity": 1.27
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.53,
+        "water_level": 3.21,
+        "velocity": 1.25
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.33,
+        "water_level": 2.8,
+        "velocity": 1.4
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.7,
+        "water_level": 3.27,
+        "velocity": 1.26
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.17,
+        "water_level": 2.87,
+        "velocity": 1.28
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.23,
+        "water_level": 3.35,
+        "velocity": 1.14
+      }
+    ]
+  }
+}

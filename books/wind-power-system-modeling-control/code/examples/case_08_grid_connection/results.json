@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_08_grid_connection",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.608853",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 351.66,
+    "memory_usage_mb": 33.16,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 76.75,
+        "value2": 28.59
+      },
+      {
+        "time": 1.0,
+        "value1": 38.77,
+        "value2": 28.01
+      },
+      {
+        "time": 2.0,
+        "value1": 81.49,
+        "value2": 72.33
+      },
+      {
+        "time": 3.0,
+        "value1": 45.6,
+        "value2": 43.76
+      },
+      {
+        "time": 4.0,
+        "value1": 6.01,
+        "value2": 57.29
+      },
+      {
+        "time": 5.0,
+        "value1": 0.97,
+        "value2": 55.33
+      },
+      {
+        "time": 6.0,
+        "value1": 90.64,
+        "value2": 46.33
+      },
+      {
+        "time": 7.0,
+        "value1": 26.29,
+        "value2": 87.52
+      },
+      {
+        "time": 8.0,
+        "value1": 32.81,
+        "value2": 10.11
+      },
+      {
+        "time": 9.0,
+        "value1": 43.03,
+        "value2": 78.35
+      },
+      {
+        "time": 10.0,
+        "value1": 9.42,
+        "value2": 92.67
+      }
+    ]
+  }
+}

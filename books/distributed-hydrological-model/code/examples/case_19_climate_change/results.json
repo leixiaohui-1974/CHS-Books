@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_19_climate_change",
+    "book": "分布式水文模型",
+    "generated_at": "2025-11-14T09:05:28.622297",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 424.25,
+    "memory_usage_mb": 49.26,
+    "flow_rate_m3s": 1.05,
+    "water_level_m": 2.78,
+    "velocity_ms": 0.85,
+    "gate_opening_percent": 41.4,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.22,
+        "water_level": 2.81,
+        "velocity": 1.11
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.63,
+        "water_level": 3.24,
+        "velocity": 1.25
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.5,
+        "water_level": 2.74,
+        "velocity": 1.1
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.39,
+        "water_level": 2.65,
+        "velocity": 1.18
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.54,
+        "water_level": 3.29,
+        "velocity": 1.09
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.72,
+        "water_level": 2.59,
+        "velocity": 1.28
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.69,
+        "water_level": 3.33,
+        "velocity": 1.12
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.81,
+        "water_level": 2.57,
+        "velocity": 1.33
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.23,
+        "water_level": 2.85,
+        "velocity": 1.33
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.2,
+        "water_level": 2.62,
+        "velocity": 1.2
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.83,
+        "water_level": 3.42,
+        "velocity": 1.1
+      }
+    ]
+  }
+}

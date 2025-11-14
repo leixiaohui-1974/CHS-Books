@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_31_riparian_buffer",
+    "book": "生态水力学",
+    "generated_at": "2025-11-14T09:05:28.546756",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 368.78,
+    "memory_usage_mb": 74.08,
+    "flow_rate_m3s": 5.37,
+    "water_level_m": 1.24,
+    "velocity_ms": 1.65,
+    "gate_opening_percent": 33.2,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 5.63,
+        "water_level": 3.24,
+        "velocity": 1.27
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 4.2,
+        "water_level": 2.53,
+        "velocity": 1.13
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.5,
+        "water_level": 2.96,
+        "velocity": 1.29
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.32,
+        "water_level": 2.59,
+        "velocity": 1.18
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.78,
+        "water_level": 3.19,
+        "velocity": 1.27
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.38,
+        "water_level": 2.62,
+        "velocity": 1.15
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.85,
+        "water_level": 3.23,
+        "velocity": 1.11
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.46,
+        "water_level": 3.04,
+        "velocity": 1.28
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.29,
+        "water_level": 2.52,
+        "velocity": 1.36
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.31,
+        "water_level": 3.12,
+        "velocity": 1.4
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.74,
+        "water_level": 3.12,
+        "velocity": 1.03
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_08_incremental_conductance",
+    "book": "光伏系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.598166",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 136.03,
+    "memory_usage_mb": 84.61,
+    "voltage_v": 346.09,
+    "current_a": 6.24,
+    "power_w": 4495.53,
+    "efficiency": 0.18,
+    "data_points": [
+      {
+        "time": 0.0,
+        "voltage": 315.72,
+        "current": 8.95,
+        "power": 3068.11
+      },
+      {
+        "time": 1.0,
+        "voltage": 323.35,
+        "current": 11.83,
+        "power": 2599.54
+      },
+      {
+        "time": 2.0,
+        "voltage": 342.98,
+        "current": 9.8,
+        "power": 3452.31
+      },
+      {
+        "time": 3.0,
+        "voltage": 346.41,
+        "current": 10.47,
+        "power": 3062.91
+      },
+      {
+        "time": 4.0,
+        "voltage": 276.58,
+        "current": 8.27,
+        "power": 2656.71
+      },
+      {
+        "time": 5.0,
+        "voltage": 260.19,
+        "current": 10.13,
+        "power": 3096.86
+      },
+      {
+        "time": 6.0,
+        "voltage": 255.64,
+        "current": 8.1,
+        "power": 2667.59
+      },
+      {
+        "time": 7.0,
+        "voltage": 261.22,
+        "current": 10.1,
+        "power": 2855.7
+      },
+      {
+        "time": 8.0,
+        "voltage": 250.19,
+        "current": 10.78,
+        "power": 2804.51
+      },
+      {
+        "time": 9.0,
+        "voltage": 312.24,
+        "current": 8.39,
+        "power": 2670.65
+      },
+      {
+        "time": 10.0,
+        "voltage": 301.69,
+        "current": 8.5,
+        "power": 2865.08
+      }
+    ]
+  }
+}

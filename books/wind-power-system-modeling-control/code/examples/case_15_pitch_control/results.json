@@ -1,0 +1,75 @@
+{
+  "case_info": {
+    "case_name": "case_15_pitch_control",
+    "book": "风电系统建模与控制",
+    "generated_at": "2025-11-14T09:05:28.612586",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 56.12,
+    "memory_usage_mb": 71.73,
+    "data_points": [
+      {
+        "time": 0.0,
+        "value1": 11.27,
+        "value2": 24.17
+      },
+      {
+        "time": 1.0,
+        "value1": 83.26,
+        "value2": 78.74
+      },
+      {
+        "time": 2.0,
+        "value1": 38.4,
+        "value2": 69.58
+      },
+      {
+        "time": 3.0,
+        "value1": 41.59,
+        "value2": 24.05
+      },
+      {
+        "time": 4.0,
+        "value1": 76.57,
+        "value2": 99.97
+      },
+      {
+        "time": 5.0,
+        "value1": 65.51,
+        "value2": 45.07
+      },
+      {
+        "time": 6.0,
+        "value1": 19.67,
+        "value2": 80.88
+      },
+      {
+        "time": 7.0,
+        "value1": 43.73,
+        "value2": 91.62
+      },
+      {
+        "time": 8.0,
+        "value1": 4.49,
+        "value2": 77.52
+      },
+      {
+        "time": 9.0,
+        "value1": 98.47,
+        "value2": 76.68
+      },
+      {
+        "time": 10.0,
+        "value1": 94.72,
+        "value2": 24.28
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_06_self_purification",
+    "book": "水环境数值模拟",
+    "generated_at": "2025-11-14T09:05:28.555299",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 209.01,
+    "memory_usage_mb": 42.32,
+    "flow_rate_m3s": 1.54,
+    "water_level_m": 4.02,
+    "velocity_ms": 0.56,
+    "gate_opening_percent": 46.9,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.18,
+        "water_level": 3.45,
+        "velocity": 1.33
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.46,
+        "water_level": 3.26,
+        "velocity": 1.07
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 5.76,
+        "water_level": 3.23,
+        "velocity": 1.33
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 4.76,
+        "water_level": 3.21,
+        "velocity": 1.12
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.24,
+        "water_level": 3.17,
+        "velocity": 1.38
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 4.27,
+        "water_level": 3.28,
+        "velocity": 1.18
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 5.76,
+        "water_level": 3.24,
+        "velocity": 1.06
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 4.12,
+        "water_level": 2.62,
+        "velocity": 1.05
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 5.92,
+        "water_level": 3.41,
+        "velocity": 1.19
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 5.88,
+        "water_level": 3.46,
+        "velocity": 1.08
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 5.29,
+        "water_level": 2.62,
+        "velocity": 1.15
+      }
+    ]
+  }
+}

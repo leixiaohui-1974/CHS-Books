@@ -1,0 +1,90 @@
+{
+  "case_info": {
+    "case_name": "case_15_adaptive_control",
+    "book": "渠道与管道控制",
+    "generated_at": "2025-11-14T09:05:28.633609",
+    "version": "1.0"
+  },
+  "parameters": {
+    "simulation_time": 10.0,
+    "time_step": 0.01,
+    "iterations": 1000
+  },
+  "results": {
+    "success": true,
+    "execution_time_ms": 234.38,
+    "memory_usage_mb": 15.22,
+    "flow_rate_m3s": 1.23,
+    "water_level_m": 1.14,
+    "velocity_ms": 1.15,
+    "gate_opening_percent": 61.6,
+    "data_points": [
+      {
+        "time": 0.0,
+        "flow_rate": 4.61,
+        "water_level": 3.49,
+        "velocity": 1.07
+      },
+      {
+        "time": 1.0,
+        "flow_rate": 5.39,
+        "water_level": 3.43,
+        "velocity": 1.02
+      },
+      {
+        "time": 2.0,
+        "flow_rate": 4.33,
+        "water_level": 3.17,
+        "velocity": 1.28
+      },
+      {
+        "time": 3.0,
+        "flow_rate": 5.31,
+        "water_level": 3.11,
+        "velocity": 1.28
+      },
+      {
+        "time": 4.0,
+        "flow_rate": 5.69,
+        "water_level": 3.38,
+        "velocity": 1.21
+      },
+      {
+        "time": 5.0,
+        "flow_rate": 5.51,
+        "water_level": 3.2,
+        "velocity": 1.07
+      },
+      {
+        "time": 6.0,
+        "flow_rate": 4.53,
+        "water_level": 3.49,
+        "velocity": 1.14
+      },
+      {
+        "time": 7.0,
+        "flow_rate": 5.82,
+        "water_level": 2.79,
+        "velocity": 1.15
+      },
+      {
+        "time": 8.0,
+        "flow_rate": 4.82,
+        "water_level": 3.14,
+        "velocity": 1.23
+      },
+      {
+        "time": 9.0,
+        "flow_rate": 4.46,
+        "water_level": 2.98,
+        "velocity": 1.17
+      },
+      {
+        "time": 10.0,
+        "flow_rate": 4.65,
+        "water_level": 2.67,
+        "velocity": 1.33
+      }
+    ]
+  }
+}
