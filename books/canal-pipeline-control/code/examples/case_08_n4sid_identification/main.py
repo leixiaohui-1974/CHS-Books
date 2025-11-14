@@ -343,8 +343,12 @@ def compute_fit(y_true, y_pred):
     计算拟合度
     Fit = 100 * (1 - ||y - y_pred|| / ||y - mean(y)||)
     """
-    y_mean = np.mean(y_true)
-    fit = 100 * (1 - np.linalg.norm(y_true - y_pred) / np.linalg.norm(y_true - y_mean))
+    y_std = np.std(y_true)
+    if y_std < 1e-6:
+        return 0.0  # 如果数据没有变化，拟合度无意义
+
+    rmse = np.sqrt(np.mean((y_true - y_pred)**2))
+    fit = 100 * max(0, (1 - rmse / y_std))
     return fit
 
 
@@ -529,7 +533,16 @@ def part2_order_selection():
             residual = y_true.flatten() - y_pred.flatten()
             rss = np.sum(residual**2)
             n_params = n * (n + 1 + 1)  # A, B, C的参数数量
-            aic = 2 * n_params + N * np.log(rss / N)
+
+            # 防止log的参数过大或过小
+            rss_per_sample = max(rss / N, 1e-10)  # 防止log(0)
+            if rss_per_sample > 1e10:  # 防止log(过大数)导致inf
+                aic = 1e10  # 使用一个大的惩罚值
+            else:
+                aic = 2 * n_params + N * np.log(rss_per_sample)
+
+            # 限制AIC在合理范围内
+            aic = min(aic, 1e10)
             aics.append(aic)
 
             print(f"  n={n:2d}: Fit={fit:6.2f}%, AIC={aic:8.2f}")
