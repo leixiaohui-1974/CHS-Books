@@ -1,6 +1,6 @@
 # CHS-Books 智能案例测试报告
 
-**测试日期**: 2025-11-14 07:36:09
+**测试日期**: 2025-11-14 07:54:44
 **测试方式**: 智能发现 + 综合评分
 
 ---
@@ -14,7 +14,7 @@
 | ✅ 通过案例 | 197 |
 | ❌ 失败案例 | 0 |
 | 📈 通过率 | **100.0%** |
-| 🎯 平均分 | **83.5/100** |
+| 🎯 平均分 | **89.4/100** |
 | 🏆 总体评级 | **A 良好** |
 
 ### 评分标准
@@ -39,14 +39,14 @@
 
 | 书籍 | 案例数 | 通过 | 失败 | 通过率 | 平均分 | 评级 |
 |------|--------|------|------|--------|--------|------|
-| ✅ 生态水力学 | 32 | 32 | 0 | 100.0% | 87.3 | A 良好 |
-| ✅ 水环境数值模拟 | 30 | 30 | 0 | 100.0% | 80.3 | A 良好 |
-| ✅ 明渠水力学 | 30 | 30 | 0 | 100.0% | 83.3 | A 良好 |
-| ✅ 智能水网设计 | 26 | 26 | 0 | 100.0% | 84.0 | A 良好 |
+| ✅ 生态水力学 | 32 | 32 | 0 | 100.0% | 90.2 | A+ 优秀 |
+| ✅ 水环境数值模拟 | 30 | 30 | 0 | 100.0% | 90.0 | A+ 优秀 |
+| ✅ 明渠水力学 | 30 | 30 | 0 | 100.0% | 89.3 | A 良好 |
+| ✅ 智能水网设计 | 26 | 26 | 0 | 100.0% | 91.3 | A+ 优秀 |
 | ✅ 光伏系统建模与控制 | 20 | 20 | 0 | 100.0% | 90.2 | A+ 优秀 |
 | ✅ 风电系统建模与控制 | 15 | 15 | 0 | 100.0% | 80.0 | A 良好 |
-| ✅ 分布式水文模型 | 24 | 24 | 0 | 100.0% | 80.0 | A 良好 |
-| ✅ 渠道与管道控制 | 20 | 20 | 0 | 100.0% | 81.5 | A 良好 |
+| ✅ 分布式水文模型 | 24 | 24 | 0 | 100.0% | 90.0 | A+ 优秀 |
+| ✅ 渠道与管道控制 | 20 | 20 | 0 | 100.0% | 90.0 | A+ 优秀 |
 
 ---
 
@@ -56,8 +56,8 @@
 
 **书籍ID**: `ecohydraulics`  
 **测试结果**: 32/32 通过 (100.0%)  
-**平均分**: 87.3/100  
-**评级**: A 良好
+**平均分**: 90.2/100  
+**评级**: A+ 优秀
 
 ---
 
@@ -65,8 +65,8 @@
 
 **书籍ID**: `water-environment-simulation`  
 **测试结果**: 30/30 通过 (100.0%)  
-**平均分**: 80.3/100  
-**评级**: A 良好
+**平均分**: 90.0/100  
+**评级**: A+ 优秀
 
 ---
 
@@ -74,7 +74,7 @@
 
 **书籍ID**: `open-channel-hydraulics`  
 **测试结果**: 30/30 通过 (100.0%)  
-**平均分**: 83.3/100  
+**平均分**: 89.3/100  
 **评级**: A 良好
 
 ---
@@ -83,8 +83,8 @@
 
 **书籍ID**: `intelligent-water-network-design`  
 **测试结果**: 26/26 通过 (100.0%)  
-**平均分**: 84.0/100  
-**评级**: A 良好
+**平均分**: 91.3/100  
+**评级**: A+ 优秀
 
 ---
 
@@ -110,8 +110,8 @@
 
 **书籍ID**: `distributed-hydrological-model`  
 **测试结果**: 24/24 通过 (100.0%)  
-**平均分**: 80.0/100  
-**评级**: A 良好
+**平均分**: 90.0/100  
+**评级**: A+ 优秀
 
 ---
 
@@ -119,37 +119,37 @@
 
 **书籍ID**: `canal-pipeline-control`  
 **测试结果**: 20/20 通过 (100.0%)  
-**平均分**: 81.5/100  
-**评级**: A 良好
+**平均分**: 90.0/100  
+**评级**: A+ 优秀
 
 ---
 
 ## ⚠️ 问题分类汇总
 
-### 缺少图片 (158个)
+### 缺少图片 (42个)
 
-- `ecohydraulics/case_01_ecological_flow`
-- `ecohydraulics/case_02_habitat_suitability`
-- `ecohydraulics/case_03_hydrologic_indicators`
-- `ecohydraulics/case_04_vegetation_hydraulics`
-- `ecohydraulics/case_05_thermal_stratification`
-- `ecohydraulics/case_06_benthic_habitat`
-- `ecohydraulics/case_07_fish_swimming`
-- `ecohydraulics/case_08_fishway`
-- `ecohydraulics/case_10_spawning_ground`
-- `water-environment-simulation/case_02_advection_diffusion`
-- `water-environment-simulation/case_03_reaction`
-- `water-environment-simulation/case_04_streeter_phelps`
-- `water-environment-simulation/case_05_nutrients`
-- `water-environment-simulation/case_06_self_purification`
-- `water-environment-simulation/case_07_multi_source`
-- `water-environment-simulation/case_08_nonpoint_source`
-- `water-environment-simulation/case_09_thermal_pollution`
-- `water-environment-simulation/case_10_lateral_mixing`
-- `water-environment-simulation/case_11_river_bend`
-- `water-environment-simulation/case_12_estuary`
+- `open-channel-hydraulics/case_01_irrigation`
+- `open-channel-hydraulics/case_02_drainage`
+- `open-channel-hydraulics/case_03_landscape`
+- `open-channel-hydraulics/case_04_weir`
+- `open-channel-hydraulics/case_05_gate`
+- `open-channel-hydraulics/case_06_drop`
+- `open-channel-hydraulics/case_07_profile`
+- `open-channel-hydraulics/case_08_bridge`
+- `open-channel-hydraulics/case_09_roughness`
+- `open-channel-hydraulics/case_10_compound`
+- `open-channel-hydraulics/case_11_transition`
+- `open-channel-hydraulics/case_12_culvert`
+- `intelligent-water-network-design/case_19_basin_coordination`
+- `intelligent-water-network-design/case_20_smart_city_water`
+- `intelligent-water-network-design/case_21_inter_basin`
+- `intelligent-water-network-design/case_22_big_data_platform`
+- `intelligent-water-network-design/case_23_ai_water_management`
+- `intelligent-water-network-design/case_24_comprehensive`
+- `intelligent-water-network-design/comparison_static_vs_dynamic`
+- `photovoltaic-system-modeling-control/case_13_pwm_modulation`
 
-... 还有138个
+... 还有22个
 
 ---
 
@@ -162,11 +162,11 @@
 - 为更多案例添加结果图表
 - 考虑添加更多示例数据
 
-3. **结果图表** (158/197个案例缺少, 80.2%)
+3. **结果图表** (42/197个案例缺少, 21.3%)
    - 建议为每个案例添加结果图表
    - 图表应展示计算结果或模型效果
    - 支持格式: PNG, JPG, SVG等
 
 ---
 
-**报告生成时间**: 2025-11-14 07:36:09
+**报告生成时间**: 2025-11-14 07:54:44

@@ -1,0 +1,1155 @@
+{
+  "total_cases": 161,
+  "has_code": 143,
+  "success": 142,
+  "failed": 1,
+  "images_before": 42,
+  "images_after": 261,
+  "images_generated": 219,
+  "results": [
+    {
+      "book": "生态水力学",
+      "case": "case_01_ecological_flow",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_02_habitat_suitability",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_03_hydrologic_indicators",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 5,
+      "images_new": 5
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_04_vegetation_hydraulics",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 5,
+      "images_new": 5
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_05_thermal_stratification",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_06_benthic_habitat",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_07_fish_swimming",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_08_fishway",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_09_denil_fishway",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_10_spawning_ground",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_11_feeding_ground",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_12_population",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_13_river_morphology",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_14_ecological_revetment",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_15_floodplain_wetland",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_16_gravel_supplement",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_17_estuary",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_18_restoration_assessment",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_21_hydropower",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_29_lake_hydrodynamics",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_30_constructed_wetland",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_31_riparian_buffer",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_32_lake_stratification",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_33_wetland_restoration",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_34_sponge_city",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_35_urban_river",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_36_rain_garden",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_37_flood_control",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_38_salt_wedge",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_39_mangrove",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_40_revetment",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "生态水力学",
+      "case": "case_41_wetland_carbon",
+      "status": "success",
+      "images_before": 1,
+      "images_after": 1,
+      "images_new": 0
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_01_diffusion",
+      "status": "success",
+      "images_before": 7,
+      "images_after": 7,
+      "images_new": 0
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_02_advection_diffusion",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_03_reaction",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_04_streeter_phelps",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 5,
+      "images_new": 5
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_05_nutrients",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_06_self_purification",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_07_multi_source",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_08_nonpoint_source",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_09_thermal_pollution",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_10_lateral_mixing",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_11_river_bend",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_12_estuary",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_13_lake_cmfr",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_14_lake_nutrient",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 2,
+      "images_new": 2
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_15_stratified_reservoir",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 2,
+      "images_new": 2
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_16_density_current",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_17_algae_dynamics",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_18_lake_3d_eutrophication",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_19_groundwater_column",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_20_aquifer_2d",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_21_multilayer_aquifer",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_22_pump_and_treat",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_23_watershed",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_24_river_network",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_25_water_transfer",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_26_river_ecosystem",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_27_lake_regime_shift",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_28_wetland",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_29_urban_blackwater",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "水环境数值模拟",
+      "case": "case_30_watershed_platform",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_13_unsteady",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_14_flood_routing",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_15_dam_break",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_16_canal_operation",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_17_tidal_river",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_18_wave_reflection",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_19_dynamic_scheduling",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_20_2d_flow",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_21_pipe_flow",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 2,
+      "images_new": 2
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_22_pipe_network",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_23_long_distance",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_24_siphon",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_25_water_hammer",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_26_moc",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_27_pump_transients",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_28_surge_tank",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_29_channel_pipe",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "明渠水力学",
+      "case": "case_30_comprehensive",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_01",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_01_irrigation_gate",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_02_pump_station",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_03_hydropower_station",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_04_valve_station",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_05_drainage_gate",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_06_multi_function_gate",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_07_cascade_canals",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_08_multi_pump_stations",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_09_water_network_pressure",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_10_irrigation_system",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_11_urban_river_network",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_12_water_diversion",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_13_multi_source_water_supply",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_14_regional_irrigation",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_15_flood_control",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_16_water_resource_allocation",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_17_smart_water",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "智能水网设计",
+      "case": "case_18_digital_twin",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_01_dem_analysis",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_02_thiessen",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_03_idw_kriging",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_04_xaj_model",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_05_green_ampt",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_06_distributed_runoff",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_07_slope_routing",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_08_unit_hydrograph",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_09_sensitivity_analysis",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_10_muskingum_cunge",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_11_sce_calibration",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_12_glue_uncertainty",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_14_integrated_watershed",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_15_hydro_dynamic_coupling",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_16_human_impact",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_17_reservoir_operation",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_18_forecast_operation",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_19_climate_change",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_20_cascade_reservoirs",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_21_realtime_correction",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_22_gis_integration",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_23_full_coupling",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_24_digital_twin",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "分布式水文模型",
+      "case": "case_25_intelligent_forecast",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 0,
+      "images_new": 0
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_01_single_reach_pid",
+      "status": "success",
+      "images_before": 4,
+      "images_after": 4,
+      "images_new": 0
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_02_multipoint_pid",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_03_feedforward_feedback",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_04_pod_reduction",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_05_dmd",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_06_galerkin_reduction",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 3,
+      "images_new": 3
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_07_neural_network_rom",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 1,
+      "images_new": 1
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_08_n4sid_identification",
+      "status": "success",
+      "images_before": 4,
+      "images_after": 4,
+      "images_new": 0
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_09_frequency_identification",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_10_nonlinear_identification",
+      "status": "success",
+      "images_before": 4,
+      "images_after": 4,
+      "images_new": 0
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_11_sindy_identification",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_12_ekf_state_estimation",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_13_digital_twin",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_14_mpc_control",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_15_adaptive_control",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_16_robust_control",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_17_intelligent_control",
+      "status": "failed",
+      "error": "超时（>30秒）",
+      "images_before": 0,
+      "images_after": 3
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_18_pressurized_pipeline",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_19_coupled_system",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    },
+    {
+      "book": "渠道与管道控制",
+      "case": "case_20_integrated_system",
+      "status": "success",
+      "images_before": 0,
+      "images_after": 4,
+      "images_new": 4
+    }
+  ]
+}

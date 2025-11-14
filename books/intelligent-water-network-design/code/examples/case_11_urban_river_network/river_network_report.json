@@ -3,13 +3,13 @@
   "system_config": "5水体+8闸站，网络拓扑",
   "intelligence_level": "L3",
   "performance_metrics": {
-    "water_level_mean": 2.843631009292606,
-    "water_level_std": 0.43670493458410603,
+    "water_level_mean": 2.8668989640266482,
+    "water_level_std": 0.48471521208597973,
     "mode_distribution": {
       "flood": 36,
-      "landscape": 165,
-      "ecology": 22,
-      "circulation": 65,
+      "landscape": 158,
+      "ecology": 32,
+      "circulation": 62,
       "normal": 0
     }
   }
