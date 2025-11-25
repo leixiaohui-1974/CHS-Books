@@ -509,13 +509,15 @@ def plot_results(system, scenario2_data, scenario3_data, hantush_data, leakage_f
     
     # 图5: 场景3 - 径向剖面
     ax5 = fig.add_subplot(gs[1, 1])
-    
+
     # 取一条径向剖面
     center_row = heads3[0].shape[0] // 2
-    r_profile = np.linspace(0, 1400, heads3[0].shape[1]//2)
-    
+    slice_start = heads3[0].shape[1] // 2
+    slice_len = heads3[0].shape[1] - slice_start
+    r_profile = np.linspace(0, 1400, slice_len)
+
     for i in range(3):
-        h_radial = heads3[i][center_row, heads3[i].shape[1]//2:]
+        h_radial = heads3[i][center_row, slice_start:]
         ax5.plot(r_profile, h_radial, 'o-', linewidth=2, markersize=3,
                 label=f'第{i+1}层')
     
