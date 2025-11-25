@@ -1,0 +1,1591 @@
+{
+  "timestamp": "2025-11-25T07:29:53.249669",
+  "unit_tests": [
+    {
+      "book": "distributed-hydrological-model",
+      "file": "test_channel_routing.py",
+      "path": "books/distributed-hydrological-model/tests/test_channel_routing.py",
+      "status": "FAIL",
+      "duration": 2.0505833625793457,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/distributed-hydrological-model/tests/test_channel_routing.py\", line 12, in <module>\n    from code.core.channel_routing import (\nModuleNotFoundError: No module named 'code.core'; 'code' is not a package\n"
+    },
+    {
+      "book": "distributed-hydrological-model",
+      "file": "test_interpolation.py",
+      "path": "books/distributed-hydrological-model/tests/test_interpolation.py",
+      "status": "FAIL",
+      "duration": 0.5222411155700684,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/distributed-hydrological-model/tests/test_interpolation.py\", line 12, in <module>\n    from code.core.interpolation import (\nModuleNotFoundError: No module named 'code.core'; 'code' is not a package\n"
+    },
+    {
+      "book": "distributed-hydrological-model",
+      "file": "test_metrics.py",
+      "path": "books/distributed-hydrological-model/tests/test_metrics.py",
+      "status": "FAIL",
+      "duration": 0.5222909450531006,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/distributed-hydrological-model/tests/test_metrics.py\", line 12, in <module>\n    from code.core.utils.metrics import (\nModuleNotFoundError: No module named 'code.core'; 'code' is not a package\n"
+    },
+    {
+      "book": "distributed-hydrological-model",
+      "file": "test_slope_routing.py",
+      "path": "books/distributed-hydrological-model/tests/test_slope_routing.py",
+      "status": "FAIL",
+      "duration": 0.508281946182251,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/distributed-hydrological-model/tests/test_slope_routing.py\", line 12, in <module>\n    from code.core.slope_routing import (\nModuleNotFoundError: No module named 'code.core'; 'code' is not a package\n"
+    },
+    {
+      "book": "distributed-hydrological-model",
+      "file": "test_xaj_model.py",
+      "path": "books/distributed-hydrological-model/tests/test_xaj_model.py",
+      "status": "FAIL",
+      "duration": 0.509303092956543,
+      "output": "",
+      "error": " (most recent call last):\n  File \"/home/user/CHS-Books/books/distributed-hydrological-model/tests/test_xaj_model.py\", line 12, in <module>\n    from code.core.runoff_generation import XinAnJiangModel, create_default_xaj_params\nModuleNotFoundError: No module named 'code.core'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_advanced_simulation.py",
+      "path": "books/ecohydraulics/tests/test_advanced_simulation.py",
+      "status": "FAIL",
+      "duration": 0.48009562492370605,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_advanced_simulation.py\", line 5, in <module>\n    from code.models.advanced_simulation import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_benthic.py",
+      "path": "books/ecohydraulics/tests/test_benthic.py",
+      "status": "PASS",
+      "duration": 16.486908197402954,
+      "output": "xture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollecting ... collected 4 items\n\ntests/test_benthic.py::TestBenthicModel::test_bed_shear_stress PASSED    [ 25%]\ntests/test_benthic.py::TestBenthicModel::test_shields_number PASSED      [ 50%]\ntests/test_benthic.py::TestBenthicModel::test_substrate_stability PASSED [ 75%]\ntests/test_benthic.py::TestBenthicModel::test_complete_workflow PASSED   [100%]\n\n============================== 4 passed in 0.60s ===============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_channel.py",
+      "path": "books/ecohydraulics/tests/test_channel.py",
+      "status": "PASS",
+      "duration": 3.125051736831665,
+      "output": "           [ 70%]\ntests/test_channel.py::TestRiver::test_average_wetted_perimeter PASSED   [ 76%]\ntests/test_channel.py::TestEdgeCases::test_zero_depth PASSED             [ 82%]\ntests/test_channel.py::TestEdgeCases::test_large_depth PASSED            [ 88%]\ntests/test_channel.py::TestEdgeCases::test_steep_slope PASSED            [ 94%]\ntests/test_channel.py::TestEdgeCases::test_gentle_slope PASSED           [100%]\n\n============================== 17 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_denil_fishway.py",
+      "path": "books/ecohydraulics/tests/test_denil_fishway.py",
+      "status": "FAIL",
+      "duration": 0.46535205841064453,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_denil_fishway.py\", line 5, in <module>\n    from code.models.denil_fishway import DenilFishway, create_denil_design\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_ecological_flow.py",
+      "path": "books/ecohydraulics/tests/test_ecological_flow.py",
+      "status": "PASS",
+      "duration": 3.42972993850708,
+      "output": "tor::test_comprehensive_assessment_with_q7_10 PASSED [ 69%]\ntests/test_ecological_flow.py::TestEcologicalFlowCalculator::test_generate_report PASSED [ 76%]\ntests/test_ecological_flow.py::TestMethodConsistency::test_methods_give_similar_results PASSED [ 84%]\ntests/test_ecological_flow.py::TestRobustness::test_small_river PASSED   [ 92%]\ntests/test_ecological_flow.py::TestRobustness::test_large_river PASSED   [100%]\n\n============================== 13 passed in 0.59s ==============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_ecological_revetment.py",
+      "path": "books/ecohydraulics/tests/test_ecological_revetment.py",
+      "status": "FAIL",
+      "duration": 0.49383544921875,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_ecological_revetment.py\", line 5, in <module>\n    from code.models.ecological_revetment import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_estuary_coastal.py",
+      "path": "books/ecohydraulics/tests/test_estuary_coastal.py",
+      "status": "FAIL",
+      "duration": 0.4880039691925049,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_estuary_coastal.py\", line 5, in <module>\n    from code.models.estuary_coastal import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_fish_behavior.py",
+      "path": "books/ecohydraulics/tests/test_fish_behavior.py",
+      "status": "FAIL",
+      "duration": 0.4791529178619385,
+      "output": "",
+      "error": "eback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_fish_behavior.py\", line 5, in <module>\n    from code.models.fish_behavior import FeedingGroundModel, create_grass_carp_feeding_model\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_fish_population.py",
+      "path": "books/ecohydraulics/tests/test_fish_population.py",
+      "status": "FAIL",
+      "duration": 0.4976069927215576,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_fish_population.py\", line 5, in <module>\n    from code.models.fish_population import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_fish_swimming.py",
+      "path": "books/ecohydraulics/tests/test_fish_swimming.py",
+      "status": "PASS",
+      "duration": 3.4010117053985596,
+      "output": "t_fish_swimming.py::TestDesignApplications::test_swimming_performance_summary PASSED [ 78%]\ntests/test_fish_swimming.py::TestEdgeCases::test_small_fish PASSED       [ 84%]\ntests/test_fish_swimming.py::TestEdgeCases::test_large_fish PASSED       [ 89%]\ntests/test_fish_swimming.py::TestEdgeCases::test_extreme_temperature PASSED [ 94%]\ntests/test_fish_swimming.py::TestEdgeCases::test_zero_passage_length PASSED [100%]\n\n============================== 19 passed in 0.40s ==============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_fishway.py",
+      "path": "books/ecohydraulics/tests/test_fishway.py",
+      "status": "PASS",
+      "duration": 3.2502496242523193,
+      "output": " 75%]\ntests/test_fishway.py::TestStandardFishway::test_create_standard_fishway PASSED [ 80%]\ntests/test_fishway.py::TestStandardFishway::test_different_dam_heights PASSED [ 85%]\ntests/test_fishway.py::TestEdgeCases::test_small_water_depth PASSED      [ 90%]\ntests/test_fishway.py::TestEdgeCases::test_large_discharge PASSED        [ 95%]\ntests/test_fishway.py::TestEdgeCases::test_zero_pools PASSED             [100%]\n\n============================== 20 passed in 0.36s ==============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_floodplain_wetland.py",
+      "path": "books/ecohydraulics/tests/test_floodplain_wetland.py",
+      "status": "FAIL",
+      "duration": 0.5136473178863525,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_floodplain_wetland.py\", line 5, in <module>\n    from code.models.floodplain_wetland import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_habitat.py",
+      "path": "books/ecohydraulics/tests/test_habitat.py",
+      "status": "PASS",
+      "duration": 3.4622914791107178,
+      "output": "habitat.py::TestCarpModels::test_carp_models_wua_calculation PASSED [ 83%]\ntests/test_habitat.py::TestWUAConsistency::test_wua_increases_with_quality PASSED [ 87%]\ntests/test_habitat.py::TestWUAConsistency::test_wua_with_different_cell_numbers PASSED [ 91%]\ntests/test_habitat.py::TestEdgeCases::test_very_low_flow PASSED          [ 95%]\ntests/test_habitat.py::TestEdgeCases::test_very_high_flow PASSED         [100%]\n\n============================== 24 passed in 0.51s ==============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_indicators.py",
+      "path": "books/ecohydraulics/tests/test_indicators.py",
+      "status": "PASS",
+      "duration": 3.837986946105957,
+      "output": "st_indicators.py::TestHydrologicAlterationAssessment::test_alteration_grades PASSED [ 80%]\ntests/test_indicators.py::TestReportGeneration::test_generate_iha_report PASSED [ 85%]\ntests/test_indicators.py::TestEdgeCases::test_short_time_series PASSED   [ 90%]\ntests/test_indicators.py::TestEdgeCases::test_constant_flow PASSED       [ 95%]\ntests/test_indicators.py::TestEdgeCases::test_extreme_values PASSED      [100%]\n\n============================== 21 passed in 0.89s ==============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_lake_wetland.py",
+      "path": "books/ecohydraulics/tests/test_lake_wetland.py",
+      "status": "FAIL",
+      "duration": 0.5312678813934326,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_lake_wetland.py\", line 5, in <module>\n    from code.models.lake_wetland import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_part4_part5.py",
+      "path": "books/ecohydraulics/tests/test_part4_part5.py",
+      "status": "FAIL",
+      "duration": 0.45424747467041016,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_part4_part5.py\", line 5, in <module>\n    from code.models.hydraulic_structures import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_river_morphology.py",
+      "path": "books/ecohydraulics/tests/test_river_morphology.py",
+      "status": "FAIL",
+      "duration": 0.4662210941314697,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_river_morphology.py\", line 5, in <module>\n    from code.models.river_morphology import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_sediment_gravel.py",
+      "path": "books/ecohydraulics/tests/test_sediment_gravel.py",
+      "status": "FAIL",
+      "duration": 0.4932377338409424,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_sediment_gravel.py\", line 5, in <module>\n    from code.models.sediment_gravel import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_spawning_ground.py",
+      "path": "books/ecohydraulics/tests/test_spawning_ground.py",
+      "status": "PASS",
+      "duration": 3.056826114654541,
+      "output": "uspension_velocity_threshold PASSED [ 42%]\ntests/test_spawning_ground.py::TestSpawningGround::test_drift_distance PASSED [ 57%]\ntests/test_spawning_ground.py::TestSpawningGround::test_optimal_flow_velocity_range PASSED [ 71%]\ntests/test_spawning_ground.py::TestSpawningGround::test_substrate_suitability PASSED [ 85%]\ntests/test_spawning_ground.py::TestSpawningGround::test_spawning_condition_assessment PASSED [100%]\n\n============================== 7 passed in 0.33s ===============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_thermal.py",
+      "path": "books/ecohydraulics/tests/test_thermal.py",
+      "status": "PASS",
+      "duration": 3.185575246810913,
+      "output": "           [ 16%]\ntests/test_thermal.py::TestThermalModel::test_water_density PASSED       [ 33%]\ntests/test_thermal.py::TestThermalModel::test_thermocline PASSED         [ 50%]\ntests/test_thermal.py::TestDOModel::test_init PASSED                     [ 66%]\ntests/test_thermal.py::TestDOModel::test_DO_saturation PASSED            [ 83%]\ntests/test_thermal.py::TestDOModel::test_simulation PASSED               [100%]\n\n============================== 6 passed in 0.35s ===============================\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_urban_ecohydraulics.py",
+      "path": "books/ecohydraulics/tests/test_urban_ecohydraulics.py",
+      "status": "FAIL",
+      "duration": 0.502385139465332,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/ecohydraulics/tests/test_urban_ecohydraulics.py\", line 5, in <module>\n    from code.models.urban_ecohydraulics import (\nModuleNotFoundError: No module named 'code.models'; 'code' is not a package\n"
+    },
+    {
+      "book": "ecohydraulics",
+      "file": "test_vegetation.py",
+      "path": "books/ecohydraulics/tests/test_vegetation.py",
+      "status": "PASS",
+      "duration": 3.172673225402832,
+      "output": " [ 77%]\ntests/test_vegetation.py::TestPresetPlants::test_create_cattail PASSED   [ 81%]\ntests/test_vegetation.py::TestPresetPlants::test_create_willow PASSED    [ 86%]\ntests/test_vegetation.py::TestPresetPlants::test_plant_differences PASSED [ 90%]\ntests/test_vegetation.py::TestIntegration::test_complete_workflow PASSED [ 95%]\ntests/test_vegetation.py::TestIntegration::test_multiple_plants_comparison PASSED [100%]\n\n============================== 22 passed in 0.37s ==============================\n"
+    },
+    {
+      "book": "python-practice",
+      "file": "test_basic.py",
+      "path": "books/graduate-exam-prep/python-practice/tests/test_basic.py",
+      "status": "FAIL",
+      "duration": 2.7601382732391357,
+      "output": ".png\n\n============================================================\n测试数据处理\n============================================================\n数据行数: 3\n平均水位: 126.27 m\n最大流量: 4500 m³/s\n✅ 数据处理测试通过\n\n============================================================\n测试总结\n============================================================\nPython版本     ✅ 通过\n核心库导入        ❌ 失败\n基础计算         ✅ 通过\n绘图功能         ✅ 通过\n数据处理         ✅ 通过\n\n总计: 4/5 通过\n\n⚠️ 1 个测试失败，请检查环境配置\n\n安装建议:\n  pip install numpy matplotlib pandas scipy sympy jupyter\n",
+      "error": "Unknown error"
+    },
+    {
+      "book": "intelligent-water-network-design",
+      "file": "test_case_02_pump_station.py",
+      "path": "books/intelligent-water-network-design/tests/test_case_02_pump_station.py",
+      "status": "PASS",
+      "duration": 3.7752058506011963,
+      "output": "nknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.slow\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED tests/test_case_02_pump_station.py::TestPump::test_pump_initialization\n=================== 1 failed, 16 passed, 1 warning in 1.37s ====================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_benchmark.py",
+      "path": "books/open-channel-hydraulics/tests/test_benchmark.py",
+      "status": "PASS",
+      "duration": 1.6978116035461426,
+      "output": "/test_benchmark.py::TestNumericalMethodsPerformance::test_hardy_cross_iteration_performance \nHardy-Cross单次迭代: 4.01±1.94 μs\nPASSED\ntests/test_benchmark.py::TestNumericalMethodsPerformance::test_moc_characteristic_equation_performance \nMOC C+方程: 0.21±0.09 μs\nMOC C-方程: 0.21±0.13 μs\nPASSED\ntests/test_benchmark.py::TestPerformanceRegression::test_critical_path_performance \n完整渠道设计计算: 1.72±1.00 μs\n性能基准: < 100 μs ✓\nPASSED\n\n============================== 10 passed in 0.47s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_01_irrigation.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_01_irrigation.py",
+      "status": "PASS",
+      "duration": 1.523209810256958,
+      "output": "/test_case_01_irrigation.py::TestEdgeCases::test_rectangular_section PASSED [ 82%]\ntests/test_case_01_irrigation.py::TestEdgeCases::test_very_steep_slope PASSED [ 86%]\ntests/test_case_01_irrigation.py::TestEdgeCases::test_very_gentle_slope PASSED [ 91%]\ntests/test_case_01_irrigation.py::TestEdgeCases::test_wide_channel PASSED [ 95%]\ntests/test_case_01_irrigation.py::TestEdgeCases::test_narrow_channel PASSED [100%]\n\n============================== 23 passed in 0.31s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_02_drainage.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_02_drainage.py",
+      "status": "PASS",
+      "duration": 1.5109503269195557,
+      "output": "ests/test_case_02_drainage.py::TestEdgeCases::test_very_wide_channel PASSED [ 81%]\ntests/test_case_02_drainage.py::TestEdgeCases::test_very_narrow_channel PASSED [ 86%]\ntests/test_case_02_drainage.py::TestEdgeCases::test_zero_slope PASSED    [ 90%]\ntests/test_case_02_drainage.py::TestEdgeCases::test_very_small_discharge PASSED [ 95%]\ntests/test_case_02_drainage.py::TestEdgeCases::test_large_discharge PASSED [100%]\n\n============================== 22 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_03_landscape.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_03_landscape.py",
+      "status": "PASS",
+      "duration": 1.5074307918548584,
+      "output": "andscapeCanal::test_subcritical_flow_properties PASSED [ 69%]\ntests/test_case_03_landscape.py::TestCase03LandscapeCanal::test_supercritical_flow_properties PASSED [ 76%]\ntests/test_case_03_landscape.py::TestEdgeCases::test_very_small_flow PASSED [ 84%]\ntests/test_case_03_landscape.py::TestEdgeCases::test_very_large_flow PASSED [ 92%]\ntests/test_case_03_landscape.py::TestEdgeCases::test_critical_slope PASSED [100%]\n\n============================== 13 passed in 0.32s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_04_weir.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_04_weir.py",
+      "status": "PASS",
+      "duration": 1.580700397491455,
+      "output": "sts/test_case_04_weir.py::TestCase04WeirFlowMeasurement::test_accuracy_requirements PASSED [ 71%]\ntests/test_case_04_weir.py::TestEdgeCases::test_very_small_head PASSED   [ 78%]\ntests/test_case_04_weir.py::TestEdgeCases::test_large_head PASSED        [ 85%]\ntests/test_case_04_weir.py::TestEdgeCases::test_wide_weir PASSED         [ 92%]\ntests/test_case_04_weir.py::TestEdgeCases::test_narrow_weir PASSED       [100%]\n\n============================== 14 passed in 0.33s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_05_gate.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_05_gate.py",
+      "status": "PASS",
+      "duration": 1.6167707443237305,
+      "output": "SED     [ 73%]\ntests/test_case_05_gate.py::TestEdgeCases::test_low_head PASSED          [ 78%]\ntests/test_case_05_gate.py::TestEdgeCases::test_high_head PASSED         [ 84%]\ntests/test_case_05_gate.py::TestEdgeCases::test_wide_gate PASSED         [ 89%]\ntests/test_case_05_gate.py::TestEdgeCases::test_narrow_gate PASSED       [ 94%]\ntests/test_case_05_gate.py::TestEdgeCases::test_critical_submergence PASSED [100%]\n\n============================== 19 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_06_drop.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_06_drop.py",
+      "status": "PASS",
+      "duration": 1.6465003490447998,
+      "output": "PASSED [ 73%]\ntests/test_case_06_drop.py::TestEdgeCases::test_shallow_depth PASSED     [ 78%]\ntests/test_case_06_drop.py::TestEdgeCases::test_deep_depth PASSED        [ 84%]\ntests/test_case_06_drop.py::TestEdgeCases::test_narrow_channel PASSED    [ 89%]\ntests/test_case_06_drop.py::TestEdgeCases::test_wide_channel PASSED      [ 94%]\ntests/test_case_06_drop.py::TestEdgeCases::test_invalid_froude_number PASSED [100%]\n\n============================== 19 passed in 0.36s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_07_profile.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_07_profile.py",
+      "status": "PASS",
+      "duration": 1.5356404781341553,
+      "output": "PASSED [ 72%]\ntests/test_case_07_profile.py::TestEdgeCases::test_very_deep_depth PASSED [ 77%]\ntests/test_case_07_profile.py::TestEdgeCases::test_no_backwater PASSED   [ 83%]\ntests/test_case_07_profile.py::TestEdgeCases::test_large_backwater PASSED [ 88%]\ntests/test_case_07_profile.py::TestEdgeCases::test_small_step_size PASSED [ 94%]\ntests/test_case_07_profile.py::TestEdgeCases::test_large_step_size PASSED [100%]\n\n============================== 18 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_08_bridge.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_08_bridge.py",
+      "status": "PASS",
+      "duration": 1.462686538696289,
+      "output": "PASSED [ 68%]\ntests/test_case_08_bridge.py::TestEdgeCases::test_no_contraction PASSED  [ 75%]\ntests/test_case_08_bridge.py::TestEdgeCases::test_severe_contraction PASSED [ 81%]\ntests/test_case_08_bridge.py::TestEdgeCases::test_mild_contraction PASSED [ 87%]\ntests/test_case_08_bridge.py::TestEdgeCases::test_small_discharge PASSED [ 93%]\ntests/test_case_08_bridge.py::TestEdgeCases::test_large_discharge PASSED [100%]\n\n============================== 16 passed in 0.32s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_09_roughness.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_09_roughness.py",
+      "status": "PASS",
+      "duration": 1.4605739116668701,
+      "output": "ED [ 66%]\ntests/test_case_09_roughness.py::TestEdgeCases::test_rough_channel PASSED [ 73%]\ntests/test_case_09_roughness.py::TestEdgeCases::test_shallow_water PASSED [ 80%]\ntests/test_case_09_roughness.py::TestEdgeCases::test_deep_water PASSED   [ 86%]\ntests/test_case_09_roughness.py::TestEdgeCases::test_small_discharge PASSED [ 93%]\ntests/test_case_09_roughness.py::TestEdgeCases::test_large_discharge PASSED [100%]\n\n============================== 15 passed in 0.32s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_10_compound.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_10_compound.py",
+      "status": "PASS",
+      "duration": 1.5522325038909912,
+      "output": "s/test_case_10_compound.py::TestEdgeCases::test_shallow_flooding PASSED [ 73%]\ntests/test_case_10_compound.py::TestEdgeCases::test_deep_flooding PASSED [ 80%]\ntests/test_case_10_compound.py::TestEdgeCases::test_narrow_main_channel PASSED [ 86%]\ntests/test_case_10_compound.py::TestEdgeCases::test_wide_main_channel PASSED [ 93%]\ntests/test_case_10_compound.py::TestEdgeCases::test_asymmetric_floodplains PASSED [100%]\n\n============================== 15 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_11_transition.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_11_transition.py",
+      "status": "PASS",
+      "duration": 1.651099443435669,
+      "output": "0%]\ntests/test_case_11_transition.py::TestEdgeCases::test_very_long_transition PASSED [ 84%]\ntests/test_case_11_transition.py::TestEdgeCases::test_steep_slope PASSED [ 88%]\ntests/test_case_11_transition.py::TestEdgeCases::test_mild_slope PASSED  [ 92%]\ntests/test_case_11_transition.py::TestEdgeCases::test_high_discharge PASSED [ 96%]\ntests/test_case_11_transition.py::TestEdgeCases::test_low_discharge PASSED [100%]\n\n============================== 25 passed in 0.38s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_12_culvert.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_12_culvert.py",
+      "status": "PASS",
+      "duration": 1.5299437046051025,
+      "output": "rt PASSED  [ 81%]\ntests/test_case_12_culvert.py::TestEdgeCases::test_wide_culvert PASSED   [ 85%]\ntests/test_case_12_culvert.py::TestEdgeCases::test_narrow_culvert PASSED [ 88%]\ntests/test_case_12_culvert.py::TestEdgeCases::test_high_culvert PASSED   [ 92%]\ntests/test_case_12_culvert.py::TestEdgeCases::test_smooth_culvert PASSED [ 96%]\ntests/test_case_12_culvert.py::TestEdgeCases::test_rough_culvert PASSED  [100%]\n\n============================== 27 passed in 0.35s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_13_unsteady.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_13_unsteady.py",
+      "status": "PASS",
+      "duration": 1.6572554111480713,
+      "output": "]\ntests/test_case_13_unsteady.py::TestEdgeCases::test_fine_grid PASSED     [ 81%]\ntests/test_case_13_unsteady.py::TestEdgeCases::test_coarse_grid PASSED   [ 86%]\ntests/test_case_13_unsteady.py::TestEdgeCases::test_auto_timestep_mode PASSED [ 90%]\ntests/test_case_13_unsteady.py::TestEdgeCases::test_fixed_timestep_mode PASSED [ 95%]\ntests/test_case_13_unsteady.py::TestEdgeCases::test_very_short_channel PASSED [100%]\n\n============================== 22 passed in 0.43s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_14_flood_routing.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_14_flood_routing.py",
+      "status": "PASS",
+      "duration": 1.9545819759368896,
+      "output": "_flood_magnitude PASSED [ 80%]\ntests/test_case_14_flood_routing.py::TestEdgeCases::test_large_flood_magnitude PASSED [ 85%]\ntests/test_case_14_flood_routing.py::TestEdgeCases::test_very_short_duration PASSED [ 90%]\ntests/test_case_14_flood_routing.py::TestEdgeCases::test_very_long_duration PASSED [ 95%]\ntests/test_case_14_flood_routing.py::TestEdgeCases::test_storage_with_no_inflow_outflow_difference PASSED [100%]\n\n============================== 20 passed in 0.69s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_15_dam_break.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_15_dam_break.py",
+      "status": "PASS",
+      "duration": 1.542842149734497,
+      "output": "_dam_break.py::TestEdgeCases::test_upstream_location PASSED [ 80%]\ntests/test_case_15_dam_break.py::TestEdgeCases::test_downstream_far_location PASSED [ 85%]\ntests/test_case_15_dam_break.py::TestEdgeCases::test_small_downstream_depth PASSED [ 90%]\ntests/test_case_15_dam_break.py::TestEdgeCases::test_large_depth_ratio PASSED [ 95%]\ntests/test_case_15_dam_break.py::TestEdgeCases::test_small_depth_ratio PASSED [100%]\n\n============================== 20 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_16_canal_operation.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_16_canal_operation.py",
+      "status": "PASS",
+      "duration": 1.5626802444458008,
+      "output": "tment PASSED [ 81%]\ntests/test_case_16_canal_operation.py::TestEdgeCases::test_decreasing_opening_adjustment PASSED [ 86%]\ntests/test_case_16_canal_operation.py::TestEdgeCases::test_very_short_adjustment_time PASSED [ 90%]\ntests/test_case_16_canal_operation.py::TestEdgeCases::test_very_long_adjustment_time PASSED [ 95%]\ntests/test_case_16_canal_operation.py::TestEdgeCases::test_short_channel_lag_time PASSED [100%]\n\n============================== 22 passed in 0.35s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_17_tidal_river.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_17_tidal_river.py",
+      "status": "PASS",
+      "duration": 1.6424870491027832,
+      "output": "se_17_tidal_river.py::TestEdgeCases::test_deep_water PASSED [ 84%]\ntests/test_case_17_tidal_river.py::TestEdgeCases::test_very_short_period PASSED [ 88%]\ntests/test_case_17_tidal_river.py::TestEdgeCases::test_very_long_period PASSED [ 92%]\ntests/test_case_17_tidal_river.py::TestEdgeCases::test_complete_tidal_cycle PASSED [ 96%]\ntests/test_case_17_tidal_river.py::TestEdgeCases::test_phase_shift_effect PASSED [100%]\n\n============================== 26 passed in 0.37s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_18_wave_reflection.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_18_wave_reflection.py",
+      "status": "PASS",
+      "duration": 1.6039557456970215,
+      "output": "dgeCases::test_very_short_channel PASSED [ 87%]\ntests/test_case_18_wave_reflection.py::TestEdgeCases::test_high_mode_number PASSED [ 90%]\ntests/test_case_18_wave_reflection.py::TestEdgeCases::test_complete_reflection PASSED [ 93%]\ntests/test_case_18_wave_reflection.py::TestEdgeCases::test_no_reflection PASSED [ 96%]\ntests/test_case_18_wave_reflection.py::TestEdgeCases::test_wave_period_from_frequency PASSED [100%]\n\n============================== 31 passed in 0.37s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_19_dynamic_scheduling.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_19_dynamic_scheduling.py",
+      "status": "PASS",
+      "duration": 1.6434166431427002,
+      "output": "st_zero_velocity_pso PASSED [ 86%]\ntests/test_case_19_dynamic_scheduling.py::TestEdgeCases::test_negative_violations PASSED [ 89%]\ntests/test_case_19_dynamic_scheduling.py::TestEdgeCases::test_zero_max_iterations PASSED [ 93%]\ntests/test_case_19_dynamic_scheduling.py::TestEdgeCases::test_rmse_single_point PASSED [ 96%]\ntests/test_case_19_dynamic_scheduling.py::TestEdgeCases::test_repair_already_valid PASSED [100%]\n\n============================== 29 passed in 0.40s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_20_2d_flow.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_20_2d_flow.py",
+      "status": "PASS",
+      "duration": 1.5871272087097168,
+      "output": "s/test_case_20_2d_flow.py::TestEdgeCases::test_very_high_roughness PASSED [ 84%]\ntests/test_case_20_2d_flow.py::TestEdgeCases::test_flat_bed PASSED       [ 88%]\ntests/test_case_20_2d_flow.py::TestEdgeCases::test_cfl_very_small_grid PASSED [ 92%]\ntests/test_case_20_2d_flow.py::TestEdgeCases::test_cfl_large_grid PASSED [ 96%]\ntests/test_case_20_2d_flow.py::TestEdgeCases::test_primitives_from_zero_depth PASSED [100%]\n\n============================== 25 passed in 0.36s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_21_pipe_flow.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_21_pipe_flow.py",
+      "status": "PASS",
+      "duration": 1.545940637588501,
+      "output": "t_case_21_pipe_flow.py::TestEdgeCases::test_very_large_pipe PASSED [ 84%]\ntests/test_case_21_pipe_flow.py::TestEdgeCases::test_smooth_pipe_limit PASSED [ 88%]\ntests/test_case_21_pipe_flow.py::TestEdgeCases::test_rough_pipe_limit PASSED [ 92%]\ntests/test_case_21_pipe_flow.py::TestEdgeCases::test_low_reynolds_number PASSED [ 96%]\ntests/test_case_21_pipe_flow.py::TestEdgeCases::test_high_reynolds_number PASSED [100%]\n\n============================== 26 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_22_pipe_network.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_22_pipe_network.py",
+      "status": "PASS",
+      "duration": 1.552257776260376,
+      "output": "_network.py::TestEdgeCases::test_very_large_flow PASSED [ 84%]\ntests/test_case_22_pipe_network.py::TestEdgeCases::test_high_resistance_pipe PASSED [ 88%]\ntests/test_case_22_pipe_network.py::TestEdgeCases::test_low_resistance_pipe PASSED [ 92%]\ntests/test_case_22_pipe_network.py::TestEdgeCases::test_all_forward_flow PASSED [ 96%]\ntests/test_case_22_pipe_network.py::TestEdgeCases::test_all_reverse_flow PASSED [100%]\n\n============================== 26 passed in 0.35s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_23_long_distance.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_23_long_distance.py",
+      "status": "PASS",
+      "duration": 1.5541870594024658,
+      "output": "y::TestEdgeCases::test_very_large_flow PASSED [ 84%]\ntests/test_case_23_long_distance.py::TestEdgeCases::test_high_efficiency_pump PASSED [ 88%]\ntests/test_case_23_long_distance.py::TestEdgeCases::test_low_efficiency_pump PASSED [ 92%]\ntests/test_case_23_long_distance.py::TestEdgeCases::test_very_small_diameter PASSED [ 96%]\ntests/test_case_23_long_distance.py::TestEdgeCases::test_very_large_diameter PASSED [100%]\n\n============================== 26 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_24_siphon.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_24_siphon.py",
+      "status": "PASS",
+      "duration": 1.5533387660980225,
+      "output": "iphon::test_inverted_siphon_no_vacuum_issue PASSED [ 86%]\ntests/test_case_24_siphon.py::TestEdgeCases::test_zero_flow_velocity PASSED [ 90%]\ntests/test_case_24_siphon.py::TestEdgeCases::test_zero_head_loss_at_zero_velocity PASSED [ 93%]\ntests/test_case_24_siphon.py::TestEdgeCases::test_atmospheric_pressure_limit PASSED [ 96%]\ntests/test_case_24_siphon.py::TestEdgeCases::test_zero_elevation_difference PASSED [100%]\n\n============================== 30 passed in 0.35s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_25_water_hammer.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_25_water_hammer.py",
+      "status": "PASS",
+      "duration": 1.5612075328826904,
+      "output": "_hammer.py::TestEdgeCases::test_zero_velocity_change PASSED [ 86%]\ntests/test_case_25_water_hammer.py::TestEdgeCases::test_very_slow_closure PASSED [ 90%]\ntests/test_case_25_water_hammer.py::TestEdgeCases::test_instantaneous_closure PASSED [ 93%]\ntests/test_case_25_water_hammer.py::TestEdgeCases::test_very_long_pipe PASSED [ 96%]\ntests/test_case_25_water_hammer.py::TestEdgeCases::test_very_short_pipe PASSED [100%]\n\n============================== 30 passed in 0.33s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_26_moc.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_26_moc.py",
+      "status": "PASS",
+      "duration": 1.6054723262786865,
+      "output": "s/test_case_26_moc.py::TestMOCSimulation::test_pressure_wave_propagation_direction PASSED [ 87%]\ntests/test_case_26_moc.py::TestEdgeCases::test_zero_wave_speed PASSED    [ 90%]\ntests/test_case_26_moc.py::TestEdgeCases::test_very_small_timestep PASSED [ 93%]\ntests/test_case_26_moc.py::TestEdgeCases::test_very_large_pipe PASSED    [ 96%]\ntests/test_case_26_moc.py::TestEdgeCases::test_reverse_flow PASSED       [100%]\n\n============================== 31 passed in 0.36s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_27_pump_transients.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_27_pump_transients.py",
+      "status": "PASS",
+      "duration": 1.5788664817810059,
+      "output": ":TestEdgeCases::test_zero_speed PASSED [ 86%]\ntests/test_case_27_pump_transients.py::TestEdgeCases::test_zero_flow PASSED [ 89%]\ntests/test_case_27_pump_transients.py::TestEdgeCases::test_very_large_inertia PASSED [ 93%]\ntests/test_case_27_pump_transients.py::TestEdgeCases::test_very_small_inertia PASSED [ 96%]\ntests/test_case_27_pump_transients.py::TestEdgeCases::test_long_time_speed_approaches_zero PASSED [100%]\n\n============================== 29 passed in 0.36s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_28_surge_tank.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_28_surge_tank.py",
+      "status": "PASS",
+      "duration": 1.519869327545166,
+      "output": "ts/test_case_28_surge_tank.py::TestEdgeCases::test_zero_velocity PASSED [ 85%]\ntests/test_case_28_surge_tank.py::TestEdgeCases::test_very_large_area PASSED [ 88%]\ntests/test_case_28_surge_tank.py::TestEdgeCases::test_very_small_area PASSED [ 92%]\ntests/test_case_28_surge_tank.py::TestEdgeCases::test_zero_head_stability PASSED [ 96%]\ntests/test_case_28_surge_tank.py::TestEdgeCases::test_negative_surge PASSED [100%]\n\n============================== 27 passed in 0.33s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_29_channel_pipe.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_29_channel_pipe.py",
+      "status": "PASS",
+      "duration": 1.5393846035003662,
+      "output": "29_channel_pipe.py::TestCase29ChannelPipe::test_system_case_study PASSED [ 77%]\ntests/test_case_29_channel_pipe.py::TestEdgeCases::test_zero_slope PASSED [ 83%]\ntests/test_case_29_channel_pipe.py::TestEdgeCases::test_very_steep_slope PASSED [ 88%]\ntests/test_case_29_channel_pipe.py::TestEdgeCases::test_very_small_diameter PASSED [ 94%]\ntests/test_case_29_channel_pipe.py::TestEdgeCases::test_zero_flow PASSED [100%]\n\n============================== 18 passed in 0.35s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_case_30_comprehensive.py",
+      "path": "books/open-channel-hydraulics/tests/test_case_30_comprehensive.py",
+      "status": "PASS",
+      "duration": 1.5604169368743896,
+      "output": "duce_pipe_loss_by_diameter PASSED [ 80%]\ntests/test_case_30_comprehensive.py::TestOptimization::test_system_efficiency_optimization PASSED [ 85%]\ntests/test_case_30_comprehensive.py::TestEdgeCases::test_zero_flow_power PASSED [ 90%]\ntests/test_case_30_comprehensive.py::TestEdgeCases::test_100_percent_efficiency PASSED [ 95%]\ntests/test_case_30_comprehensive.py::TestEdgeCases::test_very_low_efficiency PASSED [100%]\n\n============================== 21 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_channel.py",
+      "path": "books/open-channel-hydraulics/tests/test_channel.py",
+      "status": "PASS",
+      "duration": 0.25688767433166504,
+      "output": ""
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_integration.py",
+      "path": "books/open-channel-hydraulics/tests/test_integration.py",
+      "status": "PASS",
+      "duration": 1.6514108180999756,
+      "output": "protection PASSED [ 55%]\ntests/test_integration.py::TestIntegrationHybridSystem::test_channel_to_pipe_transition PASSED [ 66%]\ntests/test_integration.py::TestIntegrationHybridSystem::test_comprehensive_pump_channel_pipe_system PASSED [ 77%]\ntests/test_integration.py::TestDataConsistency::test_unit_conversions PASSED [ 88%]\ntests/test_integration.py::TestDataConsistency::test_manning_chezy_equivalence PASSED [100%]\n\n============================== 9 passed in 0.36s ===============================\n"
+    },
+    {
+      "book": "open-channel-hydraulics",
+      "file": "test_saint_venant.py",
+      "path": "books/open-channel-hydraulics/tests/test_saint_venant.py",
+      "status": "PASS",
+      "duration": 1.593355417251587,
+      "output": "ASSED [ 61%]\ntests/test_saint_venant.py::TestSaintVenantSolver::test_single_step PASSED [ 69%]\ntests/test_saint_venant.py::TestSaintVenantSolver::test_conservation PASSED [ 76%]\ntests/test_saint_venant.py::TestEdgeCases::test_zero_slope PASSED        [ 84%]\ntests/test_saint_venant.py::TestEdgeCases::test_large_manning PASSED     [ 92%]\ntests/test_saint_venant.py::TestEdgeCases::test_small_depth PASSED       [100%]\n\n============================== 13 passed in 0.35s ==============================\n"
+    },
+    {
+      "book": "photovoltaic-system-modeling-control",
+      "file": "test_double_diode.py",
+      "path": "books/photovoltaic-system-modeling-control/tests/test_double_diode.py",
+      "status": "PASS",
+      "duration": 1.5056006908416748,
+      "output": ""
+    },
+    {
+      "book": "photovoltaic-system-modeling-control",
+      "file": "test_mppt_algorithms.py",
+      "path": "books/photovoltaic-system-modeling-control/tests/test_mppt_algorithms.py",
+      "status": "PASS",
+      "duration": 4.19916558265686,
+      "output": "切换到P&O于第11步\n"
+    },
+    {
+      "book": "photovoltaic-system-modeling-control",
+      "file": "test_pv_array.py",
+      "path": "books/photovoltaic-system-modeling-control/tests/test_pv_array.py",
+      "status": "PASS",
+      "duration": 2.566098690032959,
+      "output": ""
+    },
+    {
+      "book": "photovoltaic-system-modeling-control",
+      "file": "test_pv_cell.py",
+      "path": "books/photovoltaic-system-modeling-control/tests/test_pv_cell.py",
+      "status": "PASS",
+      "duration": 1.3133773803710938,
+      "output": ""
+    },
+    {
+      "book": "photovoltaic-system-modeling-control",
+      "file": "test_pv_diagnostics.py",
+      "path": "books/photovoltaic-system-modeling-control/tests/test_pv_diagnostics.py",
+      "status": "PASS",
+      "duration": 1.3307056427001953,
+      "output": ""
+    },
+    {
+      "book": "photovoltaic-system-modeling-control",
+      "file": "test_pv_identification.py",
+      "path": "books/photovoltaic-system-modeling-control/tests/test_pv_identification.py",
+      "status": "TIMEOUT",
+      "duration": 60,
+      "output": ""
+    },
+    {
+      "book": "photovoltaic-system-modeling-control",
+      "file": "test_pv_module.py",
+      "path": "books/photovoltaic-system-modeling-control/tests/test_pv_module.py",
+      "status": "PASS",
+      "duration": 1.3143999576568604,
+      "output": ""
+    },
+    {
+      "book": "underground-water-dynamics",
+      "file": "test_grid.py",
+      "path": "books/underground-water-dynamics/tests/test_grid.py",
+      "status": "FAIL",
+      "duration": 0.4922294616699219,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/underground-water-dynamics/tests/test_grid.py\", line 14, in <module>\n    from gwflow.grid.structured import (\nModuleNotFoundError: No module named 'gwflow'\n"
+    },
+    {
+      "book": "underground-water-dynamics",
+      "file": "test_solvers.py",
+      "path": "books/underground-water-dynamics/tests/test_solvers.py",
+      "status": "FAIL",
+      "duration": 0.49347472190856934,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/underground-water-dynamics/tests/test_solvers.py\", line 13, in <module>\n    from gwflow.solvers.steady_state import (\nModuleNotFoundError: No module named 'gwflow'\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_advection_diffusion.py",
+      "path": "books/water-environment-simulation/tests/test_advection_diffusion.py",
+      "status": "PASS",
+      "duration": 3.644948720932007,
+      "output": ":TestAdvectionDiffusion1D::test_lax_wendroff_scheme PASSED [ 60%]\ntests/test_advection_diffusion.py::TestAdvectionDiffusion1D::test_peak_movement PASSED [ 70%]\ntests/test_advection_diffusion.py::TestAdvectionDiffusion1D::test_diffusion_spreads PASSED [ 80%]\ntests/test_advection_diffusion.py::test_pure_advection PASSED            [ 90%]\ntests/test_advection_diffusion.py::test_pure_diffusion PASSED            [100%]\n\n============================== 10 passed in 1.24s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_algae_dynamics.py",
+      "path": "books/water-environment-simulation/tests/test_algae_dynamics.py",
+      "status": "PASS",
+      "duration": 2.4562246799468994,
+      "output": "algae_dynamics.py::TestAlgaeGrowthModel::test_initialization PASSED [ 20%]\ntests/test_algae_dynamics.py::TestAlgaeGrowthModel::test_growth_rate PASSED [ 40%]\ntests/test_algae_dynamics.py::TestAlgaeGrowthModel::test_solve PASSED    [ 60%]\ntests/test_algae_dynamics.py::TestAlgaeGrowthModel::test_nutrient_consumption PASSED [ 80%]\ntests/test_algae_dynamics.py::TestHelperFunctions::test_assess_bloom_risk PASSED [100%]\n\n============================== 5 passed in 0.35s ===============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_aquifer_2d.py",
+      "path": "books/water-environment-simulation/tests/test_aquifer_2d.py",
+      "status": "PASS",
+      "duration": 2.3260207176208496,
+      "output": "o-1.3.0, cov-7.0.0\nasyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollecting ... collected 3 items\n\ntests/test_aquifer_2d.py::TestAquifer2D::test_initialization PASSED      [ 33%]\ntests/test_aquifer_2d.py::TestAquifer2D::test_solve_transport PASSED     [ 66%]\ntests/test_aquifer_2d.py::TestHelperFunctions::test_assess_well_risk PASSED [100%]\n\n============================== 3 passed in 0.37s ===============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_density_current.py",
+      "path": "books/water-environment-simulation/tests/test_density_current.py",
+      "status": "PASS",
+      "duration": 2.3681859970092773,
+      "output": "calculate_plunge_point PASSED [ 42%]\ntests/test_density_current.py::TestDensityCurrent2D::test_simulate_underflow PASSED [ 57%]\ntests/test_density_current.py::TestDensityCurrent2D::test_assess_intake_risk PASSED [ 71%]\ntests/test_density_current.py::TestHelperFunctions::test_calculate_densimetric_froude PASSED [ 85%]\ntests/test_density_current.py::TestHelperFunctions::test_estimate_underflow_velocity PASSED [100%]\n\n============================== 7 passed in 0.32s ===============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_diffusion.py",
+      "path": "books/water-environment-simulation/tests/test_diffusion.py",
+      "status": "PASS",
+      "duration": 2.6603872776031494,
+      "output": "SSED  [ 54%]\ntests/test_diffusion.py::TestDiffusion1D::test_crank_nicolson_accuracy PASSED [ 63%]\ntests/test_diffusion.py::TestDiffusion2D::test_initialization PASSED     [ 72%]\ntests/test_diffusion.py::TestDiffusion2D::test_2d_explicit_solve PASSED  [ 81%]\ntests/test_diffusion.py::test_diffusion_decreases_peak PASSED            [ 90%]\ntests/test_diffusion.py::test_diffusion_spreads PASSED                   [100%]\n\n============================== 11 passed in 0.64s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_dissolved_oxygen.py",
+      "path": "books/water-environment-simulation/tests/test_dissolved_oxygen.py",
+      "status": "PASS",
+      "duration": 2.43969988822937,
+      "output": "[ 61%]\ntests/test_dissolved_oxygen.py::TestDOBODCoupled::test_initial_conditions PASSED [ 69%]\ntests/test_dissolved_oxygen.py::TestDOBODCoupled::test_coupled_solve PASSED [ 76%]\ntests/test_dissolved_oxygen.py::test_reaeration_coefficient PASSED       [ 84%]\ntests/test_dissolved_oxygen.py::test_oxygen_recovery PASSED              [ 92%]\ntests/test_dissolved_oxygen.py::test_low_ka_high_depletion PASSED        [100%]\n\n============================== 13 passed in 0.42s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_estuary.py",
+      "path": "books/water-environment-simulation/tests/test_estuary.py",
+      "status": "PASS",
+      "duration": 2.3342714309692383,
+      "output": "stHelperFunctions::test_estimate_intake_risk PASSED [ 73%]\ntests/test_estuary.py::TestHelperFunctions::test_higher_flow_reduces_intrusion PASSED [ 80%]\ntests/test_estuary.py::TestPhysicalBehavior::test_tidal_oscillation PASSED [ 86%]\ntests/test_estuary.py::TestPhysicalBehavior::test_salinity_gradient PASSED [ 93%]\ntests/test_estuary.py::TestPhysicalBehavior::test_higher_tidal_range_stronger_intrusion PASSED [100%]\n\n============================== 15 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_groundwater_transport.py",
+      "path": "books/water-environment-simulation/tests/test_groundwater_transport.py",
+      "status": "PASS",
+      "duration": 2.212918281555176,
+      "output": "ation PASSED [ 20%]\ntests/test_groundwater_transport.py::TestGroundwaterColumn1D::test_solve PASSED [ 40%]\ntests/test_groundwater_transport.py::TestGroundwaterColumn1D::test_retardation_effect PASSED [ 60%]\ntests/test_groundwater_transport.py::TestHelperFunctions::test_calculate_retardation_factor PASSED [ 80%]\ntests/test_groundwater_transport.py::TestHelperFunctions::test_calculate_breakthrough_time PASSED [100%]\n\n============================== 5 passed in 0.31s ===============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_lake_3d_eutrophication.py",
+      "path": "books/water-environment-simulation/tests/test_lake_3d_eutrophication.py",
+      "status": "PASS",
+      "duration": 2.346797466278076,
+      "output": "efault_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollecting ... collected 3 items\n\ntests/test_lake_3d_eutrophication.py::TestLake3DEutrophication::test_initialization PASSED [ 33%]\ntests/test_lake_3d_eutrophication.py::TestLake3DEutrophication::test_simulate_wind_driven_transport PASSED [ 66%]\ntests/test_lake_3d_eutrophication.py::TestHelperFunctions::test_calculate_bloom_area PASSED [100%]\n\n============================== 3 passed in 0.34s ===============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_lake_cmfr.py",
+      "path": "books/water-environment-simulation/tests/test_lake_cmfr.py",
+      "status": "PASS",
+      "duration": 2.460134744644165,
+      "output": "st_lake_cmfr.py::TestPhysicalBehavior::test_flushing_effect PASSED [ 77%]\ntests/test_lake_cmfr.py::TestPhysicalBehavior::test_internal_source_effect PASSED [ 83%]\ntests/test_lake_cmfr.py::TestPhysicalBehavior::test_transient_to_steady PASSED [ 88%]\ntests/test_lake_cmfr.py::TestPhysicalBehavior::test_hrt_effect_on_response PASSED [ 94%]\ntests/test_lake_cmfr.py::TestPhysicalBehavior::test_zero_outflow PASSED  [100%]\n\n============================== 18 passed in 0.37s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_lake_nutrient.py",
+      "path": "books/water-environment-simulation/tests/test_lake_nutrient.py",
+      "status": "PASS",
+      "duration": 2.295069932937622,
+      "output": "Functions::test_predict_response_time PASSED [ 73%]\ntests/test_lake_nutrient.py::TestPhysicalBehavior::test_load_reduction_effect PASSED [ 80%]\ntests/test_lake_nutrient.py::TestPhysicalBehavior::test_settling_effect PASSED [ 86%]\ntests/test_lake_nutrient.py::TestPhysicalBehavior::test_retention_coefficient_range PASSED [ 93%]\ntests/test_lake_nutrient.py::TestPhysicalBehavior::test_transient_to_steady PASSED [100%]\n\n============================== 15 passed in 0.34s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_lateral_mixing.py",
+      "path": "books/water-environment-simulation/tests/test_lateral_mixing.py",
+      "status": "PASS",
+      "duration": 2.408541679382324,
+      "output": "th_width PASSED [ 75%]\ntests/test_lateral_mixing.py::TestHelperFunctions::test_mixing_time_decreases_with_Ey PASSED [ 81%]\ntests/test_lateral_mixing.py::TestHelperFunctions::test_mixing_distance_proportional_to_velocity PASSED [ 87%]\ntests/test_lateral_mixing.py::TestPhysicalBehavior::test_mass_conservation PASSED [ 93%]\ntests/test_lateral_mixing.py::TestPhysicalBehavior::test_higher_Ey_faster_mixing PASSED [100%]\n\n============================== 16 passed in 0.42s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_multi_source.py",
+      "path": "books/water-environment-simulation/tests/test_multi_source.py",
+      "status": "PASS",
+      "duration": 2.3583590984344482,
+      "output": "ulti_source.py::TestMultiSourceRiver1D::test_compliance_distance PASSED [ 66%]\ntests/test_multi_source.py::TestMultiSourceRiver1D::test_max_concentration PASSED [ 75%]\ntests/test_multi_source.py::test_multiple_sources_increase_concentration PASSED [ 83%]\ntests/test_multi_source.py::test_higher_flow_dilutes_concentration PASSED [ 91%]\ntests/test_multi_source.py::test_higher_decay_reduces_concentration PASSED [100%]\n\n============================== 12 passed in 0.36s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_multilayer_aquifer.py",
+      "path": "books/water-environment-simulation/tests/test_multilayer_aquifer.py",
+      "status": "PASS",
+      "duration": 2.3715083599090576,
+      "output": "e=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollecting ... collected 3 items\n\ntests/test_multilayer_aquifer.py::TestMultilayerAquifer::test_initialization PASSED [ 33%]\ntests/test_multilayer_aquifer.py::TestMultilayerAquifer::test_solve PASSED [ 66%]\ntests/test_multilayer_aquifer.py::TestHelperFunctions::test_assess_aquitard_protection PASSED [100%]\n\n============================== 3 passed in 0.32s ===============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_nonpoint_source.py",
+      "path": "books/water-environment-simulation/tests/test_nonpoint_source.py",
+      "status": "PASS",
+      "duration": 2.409442901611328,
+      "output": "rce.py::TestNonPointSourceRiver1D::test_solve_with_source PASSED [ 71%]\ntests/test_nonpoint_source.py::TestNonPointSourceRiver1D::test_solve_no_source PASSED [ 78%]\ntests/test_nonpoint_source.py::test_first_flush_factor PASSED            [ 85%]\ntests/test_nonpoint_source.py::test_buildup_washoff PASSED               [ 92%]\ntests/test_nonpoint_source.py::test_distributed_source_increases_concentration PASSED [100%]\n\n============================== 14 passed in 0.36s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_nutrients.py",
+      "path": "books/water-environment-simulation/tests/test_nutrients.py",
+      "status": "PASS",
+      "duration": 2.4649200439453125,
+      "output": "s/test_nutrients.py::TestEutrophicationIndex::test_carlson_tsi_comprehensive PASSED [ 78%]\ntests/test_nutrients.py::TestEutrophicationIndex::test_china_tli PASSED  [ 84%]\ntests/test_nutrients.py::TestEutrophicationIndex::test_limiting_nutrient PASSED [ 89%]\ntests/test_nutrients.py::test_oxygen_consumption PASSED                  [ 94%]\ntests/test_nutrients.py::test_nitrogen_loss_by_denitrification PASSED    [100%]\n\n============================== 19 passed in 0.38s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_phase6_models.py",
+      "path": "books/water-environment-simulation/tests/test_phase6_models.py",
+      "status": "PASS",
+      "duration": 2.490485191345215,
+      "output": "est_calculate_biodiversity_index PASSED [ 83%]\ntests/test_phase6_models.py::TestHelperFunctions::test_find_critical_load PASSED [ 87%]\ntests/test_phase6_models.py::TestHelperFunctions::test_assess_seasonal_variation PASSED [ 91%]\ntests/test_phase6_models.py::TestHelperFunctions::test_optimize_treatment_plan PASSED [ 95%]\ntests/test_phase6_models.py::TestHelperFunctions::test_perform_scenario_analysis PASSED [100%]\n\n============================== 24 passed in 0.38s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_pump_and_treat.py",
+      "path": "books/water-environment-simulation/tests/test_pump_and_treat.py",
+      "status": "PASS",
+      "duration": 2.4400711059570312,
+      "output": "syncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollecting ... collected 3 items\n\ntests/test_pump_and_treat.py::TestPumpAndTreat::test_initialization PASSED [ 33%]\ntests/test_pump_and_treat.py::TestPumpAndTreat::test_simulate_remediation PASSED [ 66%]\ntests/test_pump_and_treat.py::TestHelperFunctions::test_optimize_well_location PASSED [100%]\n\n============================== 3 passed in 0.36s ===============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_reaction.py",
+      "path": "books/water-environment-simulation/tests/test_reaction.py",
+      "status": "PASS",
+      "duration": 2.8862037658691406,
+      "output": "SSED [ 58%]\ntests/test_reaction.py::TestReactionKinetics::test_fit_first_order PASSED [ 66%]\ntests/test_reaction.py::TestReactionTransport1D::test_initialization PASSED [ 75%]\ntests/test_reaction.py::TestReactionTransport1D::test_coupled_solve PASSED [ 83%]\ntests/test_reaction.py::test_decay_reduces_concentration PASSED          [ 91%]\ntests/test_reaction.py::test_no_reaction_no_change PASSED                [100%]\n\n============================== 12 passed in 0.84s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_river_bend.py",
+      "path": "books/water-environment-simulation/tests/test_river_bend.py",
+      "status": "PASS",
+      "duration": 2.3886098861694336,
+      "output": "ow_strength PASSED [ 69%]\ntests/test_river_bend.py::TestHelperFunctions::test_higher_bend_curvature_stronger_secondary_flow PASSED [ 76%]\ntests/test_river_bend.py::TestPhysicalBehavior::test_bend_enhances_mixing PASSED [ 84%]\ntests/test_river_bend.py::TestPhysicalBehavior::test_bend_mixing_length_reduction PASSED [ 92%]\ntests/test_river_bend.py::TestPhysicalBehavior::test_width_curvature_ratio_effect PASSED [100%]\n\n============================== 13 passed in 0.41s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_self_purification.py",
+      "path": "books/water-environment-simulation/tests/test_self_purification.py",
+      "status": "PASS",
+      "duration": 2.3517656326293945,
+      "output": "lf_purification.py::TestWaterQualityIndex::test_comprehensive_pollution_index PASSED [ 63%]\ntests/test_self_purification.py::test_assimilative_capacity PASSED       [ 72%]\ntests/test_self_purification.py::test_functional_zone_classification PASSED [ 81%]\ntests/test_self_purification.py::test_high_ka_strong_purification PASSED [ 90%]\ntests/test_self_purification.py::test_degradation_increases_capacity PASSED [100%]\n\n============================== 11 passed in 0.35s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_stratified_reservoir.py",
+      "path": "books/water-environment-simulation/tests/test_stratified_reservoir.py",
+      "status": "PASS",
+      "duration": 2.4498517513275146,
+      "output": "_frequency PASSED [ 63%]\ntests/test_stratified_reservoir.py::TestHelperFunctions::test_calculate_richardson_number PASSED [ 72%]\ntests/test_stratified_reservoir.py::TestHelperFunctions::test_estimate_mixing_depth PASSED [ 81%]\ntests/test_stratified_reservoir.py::TestPhysicalBehavior::test_temperature_diffusion PASSED [ 90%]\ntests/test_stratified_reservoir.py::TestPhysicalBehavior::test_do_consumption PASSED [100%]\n\n============================== 11 passed in 0.41s ==============================\n"
+    },
+    {
+      "book": "water-environment-simulation",
+      "file": "test_thermal_pollution.py",
+      "path": "books/water-environment-simulation/tests/test_thermal_pollution.py",
+      "status": "PASS",
+      "duration": 2.491042375564575,
+      "output": "stCoolingEfficiency::test_basic_calculation PASSED [ 80%]\ntests/test_thermal_pollution.py::TestCoolingEfficiency::test_perfect_cooling PASSED [ 85%]\ntests/test_thermal_pollution.py::TestCoolingEfficiency::test_no_cooling PASSED [ 90%]\ntests/test_thermal_pollution.py::TestCoolingEfficiency::test_partial_cooling PASSED [ 95%]\ntests/test_thermal_pollution.py::TestCoolingEfficiency::test_flow_rate_effect PASSED [100%]\n\n============================== 20 passed in 0.41s ==============================\n"
+    },
+    {
+      "book": "water-resource-planning-management",
+      "file": "test_installation.py",
+      "path": "books/water-resource-planning-management/tests/test_installation.py",
+      "status": "PASS",
+      "duration": 1.0573005676269531,
+      "output": "=====================================================\n检查开发环境\n============================================================\n✓ Python版本: 3.11.14 (main, Oct 10 2025, 08:54:04) [GCC 13.3.0]\n\n检查必要的依赖包:\n------------------------------------------------------------\n✓ NumPy版本: 2.3.5\n✓ Pandas版本: 2.3.3\n✓ Matplotlib版本: 3.10.7\n✓ SciPy版本: 1.16.3\n✓ PyYAML已安装\n\n============================================================\n测试结果汇总\n============================================================\n\n通过: 5/5\n\n✓ 所有必要的依赖包已安装!\n"
+    },
+    {
+      "book": "tests",
+      "file": "test_control.py",
+      "path": "books/water-system-control/tests/tests/test_control.py",
+      "status": "FAIL",
+      "duration": 0.34497642517089844,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/water-system-control/tests/tests/test_control.py\", line 8, in <module>\n    from control.pid import PIDController\nModuleNotFoundError: No module named 'control'\n"
+    },
+    {
+      "book": "tests",
+      "file": "test_pid_controller.py",
+      "path": "books/water-system-control/tests/tests/test_pid_controller.py",
+      "status": "FAIL",
+      "duration": 0.3477013111114502,
+      "output": "",
+      "error": "Traceback (most recent call last):\n  File \"/home/user/CHS-Books/books/water-system-control/tests/tests/test_pid_controller.py\", line 9, in <module>\n    from control.pid import PIDController\nModuleNotFoundError: No module named 'control'\n"
+    }
+  ],
+  "case_execution": [
+    {
+      "case": "case_01_single_reach_pid",
+      "path": "books/canal-pipeline-control/code/examples/case_01_single_reach_pid",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_02_multipoint_pid",
+      "path": "books/canal-pipeline-control/code/examples/case_02_multipoint_pid",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_03_feedforward_feedback",
+      "path": "books/canal-pipeline-control/code/examples/case_03_feedforward_feedback",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_04_pod_reduction",
+      "path": "books/canal-pipeline-control/code/examples/case_04_pod_reduction",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_05_dmd",
+      "path": "books/canal-pipeline-control/code/examples/case_05_dmd",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_06_galerkin_reduction",
+      "path": "books/canal-pipeline-control/code/examples/case_06_galerkin_reduction",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_07_neural_network_rom",
+      "path": "books/canal-pipeline-control/code/examples/case_07_neural_network_rom",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_08_n4sid_identification",
+      "path": "books/canal-pipeline-control/code/examples/case_08_n4sid_identification",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_09_frequency_identification",
+      "path": "books/canal-pipeline-control/code/examples/case_09_frequency_identification",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_10_nonlinear_identification",
+      "path": "books/canal-pipeline-control/code/examples/case_10_nonlinear_identification",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_11_sindy_identification",
+      "path": "books/canal-pipeline-control/code/examples/case_11_sindy_identification",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_12_ekf_state_estimation",
+      "path": "books/canal-pipeline-control/code/examples/case_12_ekf_state_estimation",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_13_digital_twin",
+      "path": "books/canal-pipeline-control/code/examples/case_13_digital_twin",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_14_mpc_control",
+      "path": "books/canal-pipeline-control/code/examples/case_14_mpc_control",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_15_adaptive_control",
+      "path": "books/canal-pipeline-control/code/examples/case_15_adaptive_control",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_16_robust_control",
+      "path": "books/canal-pipeline-control/code/examples/case_16_robust_control",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_17_intelligent_control",
+      "path": "books/canal-pipeline-control/code/examples/case_17_intelligent_control",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_18_pressurized_pipeline",
+      "path": "books/canal-pipeline-control/code/examples/case_18_pressurized_pipeline",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_19_coupled_system",
+      "path": "books/canal-pipeline-control/code/examples/case_19_coupled_system",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_20_integrated_system",
+      "path": "books/canal-pipeline-control/code/examples/case_20_integrated_system",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_01_dem_analysis",
+      "path": "books/distributed-hydrological-model/code/examples/case_01_dem_analysis",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_02_thiessen",
+      "path": "books/distributed-hydrological-model/code/examples/case_02_thiessen",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_03_idw_kriging",
+      "path": "books/distributed-hydrological-model/code/examples/case_03_idw_kriging",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_04_xaj_model",
+      "path": "books/distributed-hydrological-model/code/examples/case_04_xaj_model",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_05_green_ampt",
+      "path": "books/distributed-hydrological-model/code/examples/case_05_green_ampt",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_06_distributed_runoff",
+      "path": "books/distributed-hydrological-model/code/examples/case_06_distributed_runoff",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_07_slope_routing",
+      "path": "books/distributed-hydrological-model/code/examples/case_07_slope_routing",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_08_unit_hydrograph",
+      "path": "books/distributed-hydrological-model/code/examples/case_08_unit_hydrograph",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_09_sensitivity_analysis",
+      "path": "books/distributed-hydrological-model/code/examples/case_09_sensitivity_analysis",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_10_muskingum_cunge",
+      "path": "books/distributed-hydrological-model/code/examples/case_10_muskingum_cunge",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_11_sce_calibration",
+      "path": "books/distributed-hydrological-model/code/examples/case_11_sce_calibration",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_12_glue_uncertainty",
+      "path": "books/distributed-hydrological-model/code/examples/case_12_glue_uncertainty",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_14_integrated_watershed",
+      "path": "books/distributed-hydrological-model/code/examples/case_14_integrated_watershed",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_15_hydro_dynamic_coupling",
+      "path": "books/distributed-hydrological-model/code/examples/case_15_hydro_dynamic_coupling",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_16_human_impact",
+      "path": "books/distributed-hydrological-model/code/examples/case_16_human_impact",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_17_reservoir_operation",
+      "path": "books/distributed-hydrological-model/code/examples/case_17_reservoir_operation",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_18_forecast_operation",
+      "path": "books/distributed-hydrological-model/code/examples/case_18_forecast_operation",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_19_climate_change",
+      "path": "books/distributed-hydrological-model/code/examples/case_19_climate_change",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_20_cascade_reservoirs",
+      "path": "books/distributed-hydrological-model/code/examples/case_20_cascade_reservoirs",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_21_realtime_correction",
+      "path": "books/distributed-hydrological-model/code/examples/case_21_realtime_correction",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_22_gis_integration",
+      "path": "books/distributed-hydrological-model/code/examples/case_22_gis_integration",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_23_full_coupling",
+      "path": "books/distributed-hydrological-model/code/examples/case_23_full_coupling",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_24_digital_twin",
+      "path": "books/distributed-hydrological-model/code/examples/case_24_digital_twin",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_25_intelligent_forecast",
+      "path": "books/distributed-hydrological-model/code/examples/case_25_intelligent_forecast",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_01_ecological_flow",
+      "path": "books/ecohydraulics/code/examples/case_01_ecological_flow",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_02_habitat_suitability",
+      "path": "books/ecohydraulics/code/examples/case_02_habitat_suitability",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_03_hydrologic_indicators",
+      "path": "books/ecohydraulics/code/examples/case_03_hydrologic_indicators",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_04_vegetation_hydraulics",
+      "path": "books/ecohydraulics/code/examples/case_04_vegetation_hydraulics",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_05_thermal_stratification",
+      "path": "books/ecohydraulics/code/examples/case_05_thermal_stratification",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_06_benthic_habitat",
+      "path": "books/ecohydraulics/code/examples/case_06_benthic_habitat",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_07_fish_swimming",
+      "path": "books/ecohydraulics/code/examples/case_07_fish_swimming",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_08_fishway",
+      "path": "books/ecohydraulics/code/examples/case_08_fishway",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_09_denil_fishway",
+      "path": "books/ecohydraulics/code/examples/case_09_denil_fishway",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_10_spawning_ground",
+      "path": "books/ecohydraulics/code/examples/case_10_spawning_ground",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_11_feeding_ground",
+      "path": "books/ecohydraulics/code/examples/case_11_feeding_ground",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_12_population",
+      "path": "books/ecohydraulics/code/examples/case_12_population",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_13_river_morphology",
+      "path": "books/ecohydraulics/code/examples/case_13_river_morphology",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_14_ecological_revetment",
+      "path": "books/ecohydraulics/code/examples/case_14_ecological_revetment",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_15_floodplain_wetland",
+      "path": "books/ecohydraulics/code/examples/case_15_floodplain_wetland",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_16_gravel_supplement",
+      "path": "books/ecohydraulics/code/examples/case_16_gravel_supplement",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_17_estuary",
+      "path": "books/ecohydraulics/code/examples/case_17_estuary",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_18_restoration_assessment",
+      "path": "books/ecohydraulics/code/examples/case_18_restoration_assessment",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_21_hydropower",
+      "path": "books/ecohydraulics/code/examples/case_21_hydropower",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_29_lake_hydrodynamics",
+      "path": "books/ecohydraulics/code/examples/case_29_lake_hydrodynamics",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_30_constructed_wetland",
+      "path": "books/ecohydraulics/code/examples/case_30_constructed_wetland",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_31_riparian_buffer",
+      "path": "books/ecohydraulics/code/examples/case_31_riparian_buffer",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_32_lake_stratification",
+      "path": "books/ecohydraulics/code/examples/case_32_lake_stratification",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_33_wetland_restoration",
+      "path": "books/ecohydraulics/code/examples/case_33_wetland_restoration",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_34_sponge_city",
+      "path": "books/ecohydraulics/code/examples/case_34_sponge_city",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_35_urban_river",
+      "path": "books/ecohydraulics/code/examples/case_35_urban_river",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_36_rain_garden",
+      "path": "books/ecohydraulics/code/examples/case_36_rain_garden",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_37_flood_control",
+      "path": "books/ecohydraulics/code/examples/case_37_flood_control",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_38_salt_wedge",
+      "path": "books/ecohydraulics/code/examples/case_38_salt_wedge",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_39_mangrove",
+      "path": "books/ecohydraulics/code/examples/case_39_mangrove",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_40_revetment",
+      "path": "books/ecohydraulics/code/examples/case_40_revetment",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_41_wetland_carbon",
+      "path": "books/ecohydraulics/code/examples/case_41_wetland_carbon",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_01",
+      "path": "books/intelligent-water-network-design/code/examples/case_01",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_01_irrigation_gate",
+      "path": "books/intelligent-water-network-design/code/examples/case_01_irrigation_gate",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 3
+    },
+    {
+      "case": "case_02_pump_station",
+      "path": "books/intelligent-water-network-design/code/examples/case_02_pump_station",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_03_hydropower_station",
+      "path": "books/intelligent-water-network-design/code/examples/case_03_hydropower_station",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_04_valve_station",
+      "path": "books/intelligent-water-network-design/code/examples/case_04_valve_station",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_05_drainage_gate",
+      "path": "books/intelligent-water-network-design/code/examples/case_05_drainage_gate",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_06_multi_function_gate",
+      "path": "books/intelligent-water-network-design/code/examples/case_06_multi_function_gate",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_07_cascade_canals",
+      "path": "books/intelligent-water-network-design/code/examples/case_07_cascade_canals",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_08_multi_pump_stations",
+      "path": "books/intelligent-water-network-design/code/examples/case_08_multi_pump_stations",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_09_water_network_pressure",
+      "path": "books/intelligent-water-network-design/code/examples/case_09_water_network_pressure",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_10_irrigation_system",
+      "path": "books/intelligent-water-network-design/code/examples/case_10_irrigation_system",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_11_urban_river_network",
+      "path": "books/intelligent-water-network-design/code/examples/case_11_urban_river_network",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_12_water_diversion",
+      "path": "books/intelligent-water-network-design/code/examples/case_12_water_diversion",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_13_multi_source_water_supply",
+      "path": "books/intelligent-water-network-design/code/examples/case_13_multi_source_water_supply",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_14_regional_irrigation",
+      "path": "books/intelligent-water-network-design/code/examples/case_14_regional_irrigation",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_15_flood_control",
+      "path": "books/intelligent-water-network-design/code/examples/case_15_flood_control",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_16_water_resource_allocation",
+      "path": "books/intelligent-water-network-design/code/examples/case_16_water_resource_allocation",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_17_smart_water",
+      "path": "books/intelligent-water-network-design/code/examples/case_17_smart_water",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_18_digital_twin",
+      "path": "books/intelligent-water-network-design/code/examples/case_18_digital_twin",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_19_basin_coordination",
+      "path": "books/intelligent-water-network-design/code/examples/case_19_basin_coordination",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_20_smart_city_water",
+      "path": "books/intelligent-water-network-design/code/examples/case_20_smart_city_water",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_21_inter_basin",
+      "path": "books/intelligent-water-network-design/code/examples/case_21_inter_basin",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_22_big_data_platform",
+      "path": "books/intelligent-water-network-design/code/examples/case_22_big_data_platform",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    },
+    {
+      "case": "case_23_ai_water_management",
+      "path": "books/intelligent-water-network-design/code/examples/case_23_ai_water_management",
+      "status": "PASS",
+      "main_file": "main.py",
+      "files_count": 2
+    }
+  ],
+  "syntax_check": [],
+  "import_check": [
+    {
+      "module": "numpy",
+      "status": "PASS"
+    },
+    {
+      "module": "scipy",
+      "status": "PASS"
+    },
+    {
+      "module": "matplotlib",
+      "status": "PASS"
+    },
+    {
+      "module": "pandas",
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "unit_tests": {
+      "total": 98,
+      "passed": 75,
+      "failed": 22,
+      "skipped": 1
+    },
+    "case_execution": {
+      "total": 100,
+      "passed": 100,
+      "failed": 0,
+      "skipped": 0
+    },
+    "syntax_check": {
+      "total": 1201,
+      "passed": 1201,
+      "failed": 0,
+      "skipped": 0
+    },
+    "import_check": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0
+    },
+    "api_test": {
+      "total": 5,
+      "passed": 0,
+      "failed": 5,
+      "skipped": 0
+    }
+  },
+  "api_tests": [
+    {
+      "name": "根路径",
+      "status": "ERROR",
+      "error": "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+    },
+    {
+      "name": "健康检查",
+      "status": "ERROR",
+      "error": "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+    },
+    {
+      "name": "系统信息",
+      "status": "ERROR",
+      "error": "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+    },
+    {
+      "name": "统计信息",
+      "status": "ERROR",
+      "error": "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+    },
+    {
+      "name": "创建会话",
+      "status": "ERROR",
+      "error": "Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]"
+    }
+  ]
+}
