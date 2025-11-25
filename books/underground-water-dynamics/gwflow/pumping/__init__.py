@@ -17,7 +17,9 @@ from .analytical import (
     theis_solution,
     cooper_jacob_solution,
     thiem_solution,
-    superposition_principle
+    superposition_principle,
+    distance_drawdown_curve,
+    time_drawdown_curve
 )
 
 from .optimization import (
@@ -39,6 +41,8 @@ __all__ = [
     'cooper_jacob_solution',
     'thiem_solution',
     'superposition_principle',
+    'distance_drawdown_curve',
+    'time_drawdown_curve',
     
     # 优化
     'optimize_pumping_rates',

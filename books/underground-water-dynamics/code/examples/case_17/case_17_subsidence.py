@@ -38,7 +38,8 @@ from matplotlib.gridspec import GridSpec
 
 # 导入gwflow模块
 import sys
-sys.path.insert(0, '/workspace/books/underground-water-dynamics')
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
 from gwflow.subsidence import (
     SoilLayer,
