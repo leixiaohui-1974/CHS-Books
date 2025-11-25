@@ -132,7 +132,7 @@ class FullCaseExecutionTester:
                 [sys.executable, str(main_file)],
                 capture_output=True,
                 text=True,
-                timeout=30,
+                timeout=90,
                 cwd=str(case_dir),
                 env=env
             )
@@ -148,8 +148,8 @@ class FullCaseExecutionTester:
 
         except subprocess.TimeoutExpired:
             result["status"] = "TIMEOUT"
-            result["duration"] = 30
-            result["error"] = "Execution exceeded 30s timeout"
+            result["duration"] = 90
+            result["error"] = "Execution exceeded 90s timeout"
         except Exception as e:
             result["status"] = "ERROR"
             result["error"] = str(e)

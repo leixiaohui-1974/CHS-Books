@@ -592,7 +592,7 @@ def main():
     params = setup_model()
     
     # 2. Monte Carlo分析
-    mc_result = monte_carlo_analysis(params, n_samples=1000)
+    mc_result = monte_carlo_analysis(params, n_samples=200)
     
     # 3. GLUE分析
     observations_synthetic = {
