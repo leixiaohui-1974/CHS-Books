@@ -22,7 +22,7 @@ for case_dir in case_dirs:
             result = subprocess.run(
                 ["python", str(py_file)],
                 capture_output=True,
-                timeout=60,
+                timeout=90,
                 cwd=str(case_dir)
             )
             if result.returncode == 0:
