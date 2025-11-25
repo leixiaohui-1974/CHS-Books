@@ -1,0 +1,33 @@
+{
+  "timestamp": "2025-11-25T13:32:39.567Z",
+  "environment": {
+    "frontend": "http://localhost:8080",
+    "backend": "http://localhost:8000"
+  },
+  "tests": [
+    {
+      "name": "API健康检查",
+      "url": "http://localhost:8000/health",
+      "success": true,
+      "checks": {
+        "status": "healthy",
+        "version": "1.0.0",
+        "database": "sqlite"
+      }
+    }
+  ],
+  "statistics": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "pages": [],
+    "screenshots": [],
+    "errors": [
+      {
+        "page": "测试框架",
+        "error": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1200/chrome-headless-shell-linux64/chrome-headless-shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+      }
+    ]
+  },
+  "passRate": "100.0%"
+}
