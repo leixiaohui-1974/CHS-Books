@@ -3,11 +3,11 @@
   "system_config": "4水源+3水厂+8分区，100万m³/日",
   "intelligence_level": "L3",
   "performance_metrics": {
-    "total_cost": 1332.5637612143491,
-    "avg_cost_per_day": 133.25637612143493,
+    "total_cost": 1326.0438691939953,
+    "avg_cost_per_day": 132.60438691939953,
     "single_source_cost": 180.0,
-    "savings_per_day": 46.743623878565074,
-    "savings_per_year": 17061.422715676254,
+    "savings_per_day": 47.39561308060047,
+    "savings_per_year": 17299.398774419173,
     "emergency_count": 1
   }
 }
