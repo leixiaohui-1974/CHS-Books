@@ -66,9 +66,9 @@ def forward_model_1d(params: np.ndarray) -> np.ndarray:
     h = solve_1d_steady_gw(
         K=K,
         L=L,
-        nx=nx,
-        h_left=h_left,
-        h_right=h_right
+        h0=h_left,
+        hL=h_right,
+        nx=nx
     )
     
     # 在观测点位置提取模拟值

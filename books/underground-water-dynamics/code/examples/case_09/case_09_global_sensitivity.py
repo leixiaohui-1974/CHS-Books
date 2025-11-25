@@ -59,7 +59,7 @@ def forward_model_1d(params: np.ndarray) -> float:
     L = 1000.0
     nx = 100
     
-    h = solve_1d_steady_gw(K=K, L=L, nx=nx, h_left=h_left, h_right=h_right)
+    h = solve_1d_steady_gw(K=K, L=L, h0=h_left, hL=h_right, nx=nx)
     
     # 返回中点水头
     return h[nx // 2]
@@ -163,7 +163,7 @@ def forward_model_local(params):
     K, h_left, h_right = params
     L = 1000.0
     nx = 100
-    h = solve_1d_steady_gw(K=K, L=L, nx=nx, h_left=h_left, h_right=h_right)
+    h = solve_1d_steady_gw(K=K, L=L, h0=h_left, hL=h_right, nx=nx)
     # 返回10个观测点
     obs_indices = np.linspace(10, 90, 10, dtype=int)
     return h[obs_indices]
