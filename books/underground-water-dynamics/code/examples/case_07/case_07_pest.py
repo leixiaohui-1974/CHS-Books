@@ -63,10 +63,10 @@ def forward_model_2d(params_vector: np.ndarray) -> np.ndarray:
     
     # 边界条件
     boundary_conditions = {
-        'left': ('dirichlet', h_left),
-        'right': ('dirichlet', h_right),
-        'top': ('neumann', 0.0),
-        'bottom': ('neumann', 0.0)
+        'left': {'type': 'dirichlet', 'value': h_left},
+        'right': {'type': 'dirichlet', 'value': h_right},
+        'top': {'type': 'neumann', 'value': 0.0},
+        'bottom': {'type': 'neumann', 'value': 0.0}
     }
     
     # 求解

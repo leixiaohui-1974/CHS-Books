@@ -35,7 +35,6 @@ from gwflow.digital_twin import (
     GroundwaterDigitalTwin,
     compute_rmse
 )
-from gwflow.solvers import SteadyStateSolver2D
 
 plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
 plt.rcParams['axes.unicode_minus'] = False

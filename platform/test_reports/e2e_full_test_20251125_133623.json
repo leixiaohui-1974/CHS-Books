@@ -1,0 +1,306 @@
+{
+  "test_name": "CHS-Books Platform E2E全面测试",
+  "timestamp": "2025-11-25T13:36:23.534174",
+  "environment": {
+    "frontend_url": "http://localhost:8080",
+    "backend_url": "http://localhost:8000"
+  },
+  "statistics": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "pages": {
+      "tested": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "api": {
+      "tested": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "ui_checks": {
+      "chinese_content": {
+        "passed": 10,
+        "failed": 0
+      },
+      "images": {
+        "passed": 0,
+        "failed": 0
+      },
+      "links": {
+        "passed": 1,
+        "failed": 0
+      },
+      "forms": {
+        "passed": 0,
+        "failed": 0
+      }
+    },
+    "errors": []
+  },
+  "pass_rate": "100.0%",
+  "results": [
+    {
+      "name": "API健康检查",
+      "url": "http://localhost:8000/health",
+      "success": true,
+      "data": {
+        "status": "healthy",
+        "version": "1.0.0",
+        "database": "sqlite"
+      }
+    },
+    {
+      "name": "API文档",
+      "url": "http://localhost:8000/docs",
+      "success": true
+    },
+    {
+      "name": "API根端点",
+      "url": "http://localhost:8000/",
+      "success": true,
+      "data": {
+        "message": "📚 Textbook API Server",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "status": "running"
+      }
+    },
+    {
+      "name": "教材API",
+      "url": "http://localhost:8000/api/v1/textbooks/",
+      "success": true
+    },
+    {
+      "name": "主页",
+      "url": "http://localhost:8080/index.html",
+      "timestamp": "2025-11-25T13:36:23.478478",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "水系统控制理论教程 - 智能学习平台 v3.1 (修复版)",
+        "chinese_content": 52,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 6,
+        "forms": 0,
+        "buttons": 7,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "教材库",
+      "url": "http://localhost:8080/textbooks.html",
+      "timestamp": "2025-11-25T13:36:23.485662",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "教材阅读器 - CHS-Books",
+        "chinese_content": 13,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 3,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "搜索页面",
+      "url": "http://localhost:8080/search.html",
+      "timestamp": "2025-11-25T13:36:23.489912",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "统一搜索 - CHS-Books",
+        "chinese_content": 12,
+        "structure": {
+          "header": true,
+          "main": false,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 3,
+        "scripts": 1
+      },
+      "http_status": 200
+    },
+    {
+      "name": "代码运行器",
+      "url": "http://localhost:8080/code-runner.html",
+      "timestamp": "2025-11-25T13:36:23.494420",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "代码在线运行 - CHS-Books",
+        "chinese_content": 15,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 5,
+        "scripts": 4
+      },
+      "http_status": 200
+    },
+    {
+      "name": "AI编程IDE",
+      "url": "http://localhost:8080/ide.html",
+      "timestamp": "2025-11-25T13:36:23.499177",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "AI编程学习IDE - 水系统控制教程",
+        "chinese_content": 30,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 8,
+        "scripts": 5
+      },
+      "http_status": 200
+    },
+    {
+      "name": "学习页面",
+      "url": "http://localhost:8080/learning.html",
+      "timestamp": "2025-11-25T13:36:23.505631",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "水系统控制理论 - 统一学习平台",
+        "chinese_content": 27,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 4,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "统一入口",
+      "url": "http://localhost:8080/unified.html",
+      "timestamp": "2025-11-25T13:36:23.512158",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "水系统控制理论教程 - 统一智能平台",
+        "chinese_content": 43,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 27,
+        "scripts": 4
+      },
+      "http_status": 200
+    },
+    {
+      "name": "知识库",
+      "url": "http://localhost:8080/knowledge/index.html",
+      "timestamp": "2025-11-25T13:36:23.523055",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "水利水电水务知识库平台",
+        "chinese_content": 31,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 5,
+        "scripts": 1
+      },
+      "http_status": 200
+    },
+    {
+      "name": "知识图谱",
+      "url": "http://localhost:8080/knowledge/knowledge_graph_viz.html",
+      "timestamp": "2025-11-25T13:36:23.527192",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "知识图谱可视化 - 水利水电水务知识库",
+        "chinese_content": 27,
+        "structure": {
+          "header": true,
+          "main": false,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 3,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "增强教材阅读器",
+      "url": "http://localhost:8080/textbook-reader-enhanced.html",
+      "timestamp": "2025-11-25T13:36:23.530800",
+      "success": true,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "教材阅读器增强版 - CHS-Books",
+        "chinese_content": 21,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 6,
+        "scripts": 2
+      },
+      "http_status": 200
+    }
+  ]
+}

@@ -12,9 +12,13 @@ from gwflow.visualization.plots import (
     plot_transient_animation
 )
 
+# Aliases for backward compatibility
+plot_2d_contour = plot_2d_head
+
 __all__ = [
     "plot_1d_head",
     "plot_2d_head",
     "plot_2d_velocity",
     "plot_transient_animation",
+    "plot_2d_contour",  # alias
 ]

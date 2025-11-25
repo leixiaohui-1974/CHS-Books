@@ -1,0 +1,142 @@
+{
+  "timestamp": "2025-11-25T07:16:39.267598",
+  "tests": [
+    {
+      "name": "API: 根路径",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: 健康检查",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: 系统信息",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: 统计信息",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: 创建会话",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: 加载代码",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: 验证代码",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: 分析代码",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: AI代码讲解",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: AI错误诊断",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "API: AI问答",
+      "status": "PASS",
+      "details": "状态码: 200",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: 主页",
+      "status": "PASS",
+      "details": "26.8KB",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: 学习页面",
+      "status": "PASS",
+      "details": "51.7KB",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: IDE编程页面",
+      "status": "PASS",
+      "details": "51.5KB",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: 代码运行器",
+      "status": "PASS",
+      "details": "24.6KB",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: 缓存管理器",
+      "status": "PASS",
+      "details": "19.0KB",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: 懒加载脚本",
+      "status": "PASS",
+      "details": "9.9KB",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: UI工具函数",
+      "status": "PASS",
+      "details": "5.5KB",
+      "screenshot": ""
+    },
+    {
+      "name": "前端: 通用样式",
+      "status": "PASS",
+      "details": "6.1KB",
+      "screenshot": ""
+    },
+    {
+      "name": "API集成流程",
+      "status": "PASS",
+      "details": "完整流程测试通过",
+      "screenshot": ""
+    },
+    {
+      "name": "案例API测试",
+      "status": "PASS",
+      "details": "20/20 通过",
+      "screenshot": ""
+    },
+    {
+      "name": "浏览器测试",
+      "status": "FAIL",
+      "details": "Page.screenshot: Protocol error (Page.captureScreenshot): Unable to capture screenshot\nCall log:\n  - taking page screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n",
+      "screenshot": ""
+    }
+  ],
+  "summary": {
+    "total": 22,
+    "passed": 21,
+    "failed": 1
+  }
+}

@@ -185,8 +185,12 @@ def test_book(book_path):
     print(f"⚠️ 有问题: {issues}")
     print(f"❌ 失败: {failed}")
     print(f"📊 总计: {total}")
-    print(f"通过率: {passed/total*100:.1f}%")
-    print(f"完美率: {passed/total*100:.1f}%")
+    if total > 0:
+        print(f"通过率: {passed/total*100:.1f}%")
+        print(f"完美率: {passed/total*100:.1f}%")
+    else:
+        print(f"通过率: N/A (无可测试案例)")
+        print(f"完美率: N/A (无可测试案例)")
 
     return {
         'book_name': book_name,
@@ -250,8 +254,12 @@ def main():
     print(f"✅ 完美通过: {total_passed}")
     print(f"⚠️ 有问题: {total_issues}")
     print(f"❌ 失败: {total_failed}")
-    print(f"通过率: {total_passed/total_cases*100:.1f}%")
-    print(f"完美率: {total_passed/total_cases*100:.1f}%")
+    if total_cases > 0:
+        print(f"通过率: {total_passed/total_cases*100:.1f}%")
+        print(f"完美率: {total_passed/total_cases*100:.1f}%")
+    else:
+        print(f"通过率: N/A")
+        print(f"完美率: N/A")
 
     # 显示有问题的书籍
     if total_issues > 0 or total_failed > 0:
@@ -274,7 +282,7 @@ def main():
             'total_passed': total_passed,
             'total_issues': total_issues,
             'total_failed': total_failed,
-            'pass_rate': total_passed/total_cases*100,
+            'pass_rate': (total_passed/total_cases*100) if total_cases > 0 else 0,
         },
         'books': all_results
     }

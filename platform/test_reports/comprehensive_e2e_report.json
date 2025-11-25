@@ -1,0 +1,359 @@
+{
+  "timestamp": "2025-11-25T07:02:51.533388",
+  "tests": [
+    {
+      "category": "结构",
+      "name": "目录 books",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "目录 platform",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "目录 platform/backend",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "目录 platform/frontend",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "目录 platform/backend/app",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "目录 platform/backend/tests",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "文件 README.md",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "文件 platform/backend/requirements.txt",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "文件 platform/backend/pytest.ini",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "结构",
+      "name": "文件 platform/frontend/index.html",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "书籍",
+      "name": "canal-pipeline-control",
+      "status": "WARN",
+      "details": "章节: 0, 案例: 20, 代码文件: 40"
+    },
+    {
+      "category": "书籍",
+      "name": "distributed-hydrological-model",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 24, 代码文件: 80"
+    },
+    {
+      "category": "书籍",
+      "name": "ecohydraulics",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 32, 代码文件: 89"
+    },
+    {
+      "category": "书籍",
+      "name": "energy-storage-system-modeling-control",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 0, 代码文件: 4"
+    },
+    {
+      "category": "书籍",
+      "name": "graduate-exam-prep",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 0, 代码文件: 0"
+    },
+    {
+      "category": "书籍",
+      "name": "integrated-energy-system-simulation-optimization",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 0, 代码文件: 8"
+    },
+    {
+      "category": "书籍",
+      "name": "intelligent-water-network-design",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 25, 代码文件: 70"
+    },
+    {
+      "category": "书籍",
+      "name": "open-channel-hydraulics",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 30, 代码文件: 73"
+    },
+    {
+      "category": "书籍",
+      "name": "photovoltaic-system-modeling-control",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 20, 代码文件: 54"
+    },
+    {
+      "category": "书籍",
+      "name": "renewable-energy-system-identification-testing",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 0, 代码文件: 3"
+    },
+    {
+      "category": "书籍",
+      "name": "underground-water-dynamics",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 20, 代码文件: 20"
+    },
+    {
+      "category": "书籍",
+      "name": "water-environment-simulation",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 30, 代码文件: 96"
+    },
+    {
+      "category": "书籍",
+      "name": "water-resource-planning-management",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 0, 代码文件: 80"
+    },
+    {
+      "category": "书籍",
+      "name": "water-system-control",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 20, 代码文件: 64"
+    },
+    {
+      "category": "书籍",
+      "name": "wind-power-system-modeling-control",
+      "status": "PASS",
+      "details": "章节: 0, 案例: 15, 代码文件: 37"
+    },
+    {
+      "category": "语法",
+      "name": "Python文件语法检查",
+      "status": "FAIL",
+      "details": "3个语法错误"
+    },
+    {
+      "category": "案例",
+      "name": "intelligent-water-network-design/case_23_ai_water_management",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "intelligent-water-network-design/case_19_basin_coordination",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "canal-pipeline-control/case_03_feedforward_feedback",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "canal-pipeline-control/case_09_frequency_identification",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "water-system-control/case_18_reinforcement_learning_control",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "water-system-control/case_12_observer_lqr",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "water-environment-simulation/case_11_river_bend",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "water-environment-simulation/case_29_urban_blackwater",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "distributed-hydrological-model/case_22_gis_integration",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "distributed-hydrological-model/case_23_full_coupling",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "open-channel-hydraulics/case_23_long_distance",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "open-channel-hydraulics/case_24_siphon",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "ecohydraulics/case_04_vegetation_hydraulics",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "ecohydraulics/case_36_rain_garden",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "photovoltaic-system-modeling-control/case_06_parameter_identification",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "photovoltaic-system-modeling-control/case_16_grid_synchronization",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "wind-power-system-modeling-control/case_10_tower_vibration",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "案例",
+      "name": "wind-power-system-modeling-control/case_05_wake_effect",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "后端模块 app/main.py",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "后端模块 app/core/config.py",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "后端模块 app/core/database.py",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "后端模块 app/api/__init__.py",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "后端模块 app/models/__init__.py",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "后端模块 app/services/__init__.py",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "前端文件 index.html",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "前端文件 learning.html",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "前端文件 ide.html",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "平台",
+      "name": "前端文件 cache-manager.js",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "category": "文档",
+      "name": "项目主README",
+      "status": "PASS",
+      "details": "23.2KB"
+    },
+    {
+      "category": "文档",
+      "name": "平台README",
+      "status": "PASS",
+      "details": "15.0KB"
+    },
+    {
+      "category": "文档",
+      "name": "贡献指南",
+      "status": "PASS",
+      "details": "6.1KB"
+    },
+    {
+      "category": "文档",
+      "name": "更新日志",
+      "status": "PASS",
+      "details": "7.4KB"
+    }
+  ],
+  "summary": {
+    "total": 58,
+    "passed": 56,
+    "failed": 1,
+    "warnings": 1
+  }
+}

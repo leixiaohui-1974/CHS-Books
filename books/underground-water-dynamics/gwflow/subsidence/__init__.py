@@ -12,7 +12,8 @@ from .consolidation import (
     SoilLayer,
     terzaghi_consolidation_1d,
     consolidation_degree,
-    consolidation_settlement
+    consolidation_settlement,
+    compute_settlement_time
 )
 
 from .subsidence_model import (
@@ -31,6 +32,7 @@ __all__ = [
     'terzaghi_consolidation_1d',
     'consolidation_degree',
     'consolidation_settlement',
+    'compute_settlement_time',
     
     # 沉降模型
     'SubsidenceModel',

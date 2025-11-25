@@ -1,0 +1,306 @@
+{
+  "test_name": "CHS-Books Platform E2E全面测试",
+  "timestamp": "2025-11-25T13:35:17.733997",
+  "environment": {
+    "frontend_url": "http://localhost:8080",
+    "backend_url": "http://localhost:8000"
+  },
+  "statistics": {
+    "total": 14,
+    "passed": 4,
+    "failed": 10,
+    "pages": {
+      "tested": 10,
+      "passed": 0,
+      "failed": 10
+    },
+    "api": {
+      "tested": 4,
+      "passed": 4,
+      "failed": 0
+    },
+    "ui_checks": {
+      "chinese_content": {
+        "passed": 0,
+        "failed": 10
+      },
+      "images": {
+        "passed": 0,
+        "failed": 0
+      },
+      "links": {
+        "passed": 1,
+        "failed": 0
+      },
+      "forms": {
+        "passed": 0,
+        "failed": 0
+      }
+    },
+    "errors": []
+  },
+  "pass_rate": "28.6%",
+  "results": [
+    {
+      "name": "API健康检查",
+      "url": "http://localhost:8000/health",
+      "success": true,
+      "data": {
+        "status": "healthy",
+        "version": "1.0.0",
+        "database": "sqlite"
+      }
+    },
+    {
+      "name": "API文档",
+      "url": "http://localhost:8000/docs",
+      "success": true
+    },
+    {
+      "name": "API根端点",
+      "url": "http://localhost:8000/",
+      "success": true,
+      "data": {
+        "message": "📚 Textbook API Server",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "status": "running"
+      }
+    },
+    {
+      "name": "教材API",
+      "url": "http://localhost:8000/api/v1/textbooks/",
+      "success": true
+    },
+    {
+      "name": "主页",
+      "url": "http://localhost:8080/index.html",
+      "timestamp": "2025-11-25T13:35:17.686715",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "æ°´ç³»ç»æ§å¶çè®ºæç¨ - æºè½å­¦ä¹ å¹³å° v3.1 (ä¿®å¤ç)",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 6,
+        "forms": 0,
+        "buttons": 7,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "教材库",
+      "url": "http://localhost:8080/textbooks.html",
+      "timestamp": "2025-11-25T13:35:17.693873",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "ææéè¯»å¨ - CHS-Books",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 3,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "搜索页面",
+      "url": "http://localhost:8080/search.html",
+      "timestamp": "2025-11-25T13:35:17.697713",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "ç»ä¸æç´¢ - CHS-Books",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": false,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 3,
+        "scripts": 1
+      },
+      "http_status": 200
+    },
+    {
+      "name": "代码运行器",
+      "url": "http://localhost:8080/code-runner.html",
+      "timestamp": "2025-11-25T13:35:17.701105",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "ä»£ç å¨çº¿è¿è¡ - CHS-Books",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 5,
+        "scripts": 4
+      },
+      "http_status": 200
+    },
+    {
+      "name": "AI编程IDE",
+      "url": "http://localhost:8080/ide.html",
+      "timestamp": "2025-11-25T13:35:17.705069",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "AIç¼ç¨å­¦ä¹ IDE - æ°´ç³»ç»æ§å¶æç¨",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 8,
+        "scripts": 5
+      },
+      "http_status": 200
+    },
+    {
+      "name": "学习页面",
+      "url": "http://localhost:8080/learning.html",
+      "timestamp": "2025-11-25T13:35:17.710624",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "æ°´ç³»ç»æ§å¶çè®º - ç»ä¸å­¦ä¹ å¹³å°",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 4,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "统一入口",
+      "url": "http://localhost:8080/unified.html",
+      "timestamp": "2025-11-25T13:35:17.715074",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "æ°´ç³»ç»æ§å¶çè®ºæç¨ - ç»ä¸æºè½å¹³å°",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 27,
+        "scripts": 4
+      },
+      "http_status": 200
+    },
+    {
+      "name": "知识库",
+      "url": "http://localhost:8080/knowledge/index.html",
+      "timestamp": "2025-11-25T13:35:17.723173",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "æ°´å©æ°´çµæ°´å¡ç¥è¯åºå¹³å°",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 5,
+        "scripts": 1
+      },
+      "http_status": 200
+    },
+    {
+      "name": "知识图谱",
+      "url": "http://localhost:8080/knowledge/knowledge_graph_viz.html",
+      "timestamp": "2025-11-25T13:35:17.726855",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "ç¥è¯å¾è°±å¯è§å - æ°´å©æ°´çµæ°´å¡ç¥è¯åº",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": false,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 3,
+        "scripts": 2
+      },
+      "http_status": 200
+    },
+    {
+      "name": "增强教材阅读器",
+      "url": "http://localhost:8080/textbook-reader-enhanced.html",
+      "timestamp": "2025-11-25T13:35:17.730533",
+      "success": false,
+      "checks": {
+        "encoding": "UTF-8",
+        "doctype": true,
+        "title": "ææéè¯»å¨å¢å¼ºç - CHS-Books",
+        "chinese_content": 0,
+        "structure": {
+          "header": true,
+          "main": true,
+          "footer": false
+        },
+        "images": 0,
+        "links": 0,
+        "forms": 0,
+        "buttons": 6,
+        "scripts": 2
+      },
+      "http_status": 200
+    }
+  ]
+}

@@ -37,7 +37,8 @@ from matplotlib.gridspec import GridSpec
 
 # 导入gwflow模块
 import sys
-sys.path.insert(0, '/workspace/books/underground-water-dynamics')
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 
 from gwflow.coupling import RiverBoundary, compute_exchange_flux
 from gwflow.grid import generate_1d_grid
@@ -85,20 +86,16 @@ def solve_no_river_case(params):
     print("\n" + "="*60)
     print("场景1：无河流补给（基准情况）")
     print("="*60)
-    
+
     # 稳态求解
-    result = solve_1d_steady_gw(
+    h = solve_1d_steady_gw(
         K=params['K'],
-        b=params['b'],
         L=params['L'],
-        nx=params['nx'],
-        bc_left=('dirichlet', params['h_left']),
-        bc_right=('dirichlet', params['h_right']),
-        recharge=0.0
+        h0=params['h_left'],
+        hL=params['h_right'],
+        nx=params['nx']
     )
-    
-    h = result['head']
-    
+
     print(f"最大水头: {np.max(h):.2f} m")
     print(f"最小水头: {np.min(h):.2f} m")
     print(f"平均水头: {np.mean(h):.2f} m")
@@ -154,16 +151,14 @@ def solve_with_river_standard(params):
         Q_river[params['river_pos_idx']] = flux / cell_volume
         
         # 求解地下水
-        result = solve_1d_steady_gw(
+        h = solve_1d_steady_gw(
             K=params['K'],
-            b=params['b'],
             L=params['L'],
+            h0=params['h_left'],
+            hL=params['h_right'],
             nx=params['nx'],
-            bc_left=('dirichlet', params['h_left']),
-            bc_right=('dirichlet', params['h_right']),
             source=Q_river
         )
-        h = result['head']
         
         # 检查收敛
         error = np.max(np.abs(h - h_old))
@@ -225,17 +220,15 @@ def solve_with_river_disconnected(params):
         cell_volume = params['dx'] * params['river_width'] * params['b']
         Q_river[params['river_pos_idx']] = flux / cell_volume
         
-        result = solve_1d_steady_gw(
+        h = solve_1d_steady_gw(
             K=params['K'],
-            b=params['b'],
             L=params['L'],
+            h0=params['h_left'],
+            hL=params['h_right'],
             nx=params['nx'],
-            bc_left=('dirichlet', params['h_left']),
-            bc_right=('dirichlet', params['h_right']),
             source=Q_river
         )
-        h = result['head']
-        
+
         if np.max(np.abs(h - h_old)) < 1e-6:
             print(f"收敛! 迭代次数: {iter_num + 1}")
             break
@@ -283,17 +276,15 @@ def analyze_conductance_sensitivity(params):
             cell_volume = params['dx'] * params['river_width'] * params['b']
             Q_river[params['river_pos_idx']] = flux / cell_volume
             
-            result = solve_1d_steady_gw(
+            h = solve_1d_steady_gw(
                 K=params['K'],
-                b=params['b'],
                 L=params['L'],
+                h0=params['h_left'],
+                hL=params['h_right'],
                 nx=params['nx'],
-                bc_left=('dirichlet', params['h_left']),
-                bc_right=('dirichlet', params['h_right']),
                 source=Q_river
             )
-            h = result['head']
-            
+
             if np.max(np.abs(h - h_old)) < 1e-6:
                 break
         

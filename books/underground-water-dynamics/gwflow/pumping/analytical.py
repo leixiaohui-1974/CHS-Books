@@ -232,15 +232,16 @@ def superposition_principle(
     >>> wells = [(0, 0, 1000), (500, 0, 800)]  # 两口井
     >>> s = superposition_principle(wells, x=250, y=0, t=10, T=500, S=0.0002)
     """
-    s_total = np.zeros_like(x, dtype=float)
-    
+    # Initialize s_total with correct shape handling
+    s_total = 0.0
+
     for x_well, y_well, Q_well in wells:
         # 计算距离
         r = np.sqrt((x - x_well)**2 + (y - y_well)**2)
-        
+
         # 避免r=0
         r = np.maximum(r, 0.1)  # 井半径约0.1m
-        
+
         # 根据方法选择
         if method == 'theis':
             s_well = theis_solution(r, t, Q_well, T, S)
@@ -248,9 +249,10 @@ def superposition_principle(
             s_well = cooper_jacob_solution(r, t, Q_well, T, S)
         else:
             raise ValueError(f"Unknown method: {method}")
-        
-        s_total += s_well
-    
+
+        # Use addition (not in-place) to handle broadcasting
+        s_total = s_total + s_well
+
     return s_total
 
 
