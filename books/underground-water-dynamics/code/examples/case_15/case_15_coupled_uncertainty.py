@@ -254,15 +254,27 @@ def glue_analysis_method(params, mc_result, observations_synthetic):
     
     # 似然函数（基于河流通量）
     residuals = flux_predictions - flux_obs
-    sigma = 100.0  # 观测误差标准差
+    sigma = max(200.0, np.std(flux_predictions))  # 使用较大的观测误差标准差
     likelihoods = np.exp(-0.5 * (residuals / sigma)**2)
-    
-    # 归一化
-    likelihoods = likelihoods / np.sum(likelihoods)
-    
+
+    # 归一化（处理全零情况）
+    likelihood_sum = np.sum(likelihoods)
+    if likelihood_sum > 0:
+        likelihoods = likelihoods / likelihood_sum
+    else:
+        # 如果所有似然接近零，使用均匀分布
+        likelihoods = np.ones_like(likelihoods) / len(likelihoods)
+
     # 定义阈值（前10%为行为参数集）
     threshold = np.percentile(likelihoods, 90)
     behavioral_mask = likelihoods >= threshold
+
+    # 确保至少有一些行为参数
+    if np.sum(behavioral_mask) < 5:
+        # 取似然最高的10%
+        n_behavioral = max(5, len(likelihoods) // 10)
+        threshold = np.sort(likelihoods)[-n_behavioral]
+        behavioral_mask = likelihoods >= threshold
     
     n_behavioral = np.sum(behavioral_mask)
     
@@ -344,7 +356,7 @@ def uncertainty_decomposition(params, mc_result):
     # 1. 仅K变化
     print(f"\n计算仅K参数不确定性...")
     flux_K_only = []
-    K_samples_subset = np.random.choice(mc_result['K_samples'], 200)
+    K_samples_subset = np.random.choice(mc_result['K_samples'], 50)
     
     for K in K_samples_subset:
         try:
@@ -359,7 +371,7 @@ def uncertainty_decomposition(params, mc_result):
     # 2. 仅C变化
     print(f"计算仅河流参数不确定性...")
     flux_C_only = []
-    C_samples_subset = np.random.choice(mc_result['C_samples'], 200)
+    C_samples_subset = np.random.choice(mc_result['C_samples'], 50)
     
     for C in C_samples_subset:
         try:
@@ -592,7 +604,7 @@ def main():
     params = setup_model()
     
     # 2. Monte Carlo分析
-    mc_result = monte_carlo_analysis(params, n_samples=200)
+    mc_result = monte_carlo_analysis(params, n_samples=100)
     
     # 3. GLUE分析
     observations_synthetic = {
