@@ -481,7 +481,7 @@ def experiment_4_parameter_sensitivity():
     print("   • Rsh应尽可能大 (>1000Ω)")
     
     print("\n3. 理想因子n的影响:")
-    print("   • n增加 → 曲线"膝部"变圆润")
+    print("   • n增加 → 曲线'膝部'变圆润")
     print("   • n增加 → Pmpp下降")
     print("   • 单晶硅n≈1.0-1.2, 多晶硅n≈1.2-1.3")
     
