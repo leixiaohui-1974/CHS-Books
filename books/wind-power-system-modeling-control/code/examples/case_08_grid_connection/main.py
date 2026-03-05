@@ -1,3 +1,37 @@
+# --- CHS AUTOMATED ENVIRONMENT FIX ---
+import sys, os
+# Super safe I/O override for Windows legacy scripts
+class SafeWriter:
+    def __init__(self, target):
+        self.target = target
+    def write(self, s):
+        try:
+            self.target.write(s)
+        except UnicodeEncodeError:
+            self.target.write(s.encode('utf-8', 'backslashreplace').decode('gbk', 'ignore'))
+    def flush(self):
+        if hasattr(self.target, 'flush'): self.target.flush()
+    def __getattr__(self, name):
+        return getattr(self.target, name)
+
+if not getattr(sys.stdout, '_chs_safe', False):
+    sys.stdout = SafeWriter(sys.stdout)
+    sys.stdout._chs_safe = True
+if not getattr(sys.stderr, '_chs_safe', False):
+    sys.stderr = SafeWriter(sys.stderr)
+    sys.stderr._chs_safe = True
+
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+for i in range(4):
+    _test_path = os.path.abspath(os.path.join(_current_dir, *(['..'] * i)))
+    if os.path.exists(os.path.join(_test_path, 'core')) or os.path.exists(os.path.join(_test_path, 'gwflow')) or os.path.exists(os.path.join(_test_path, 'models')) or os.path.exists(os.path.join(_test_path, 'code', 'core')):
+        if _test_path not in sys.path:
+            sys.path.insert(0, _test_path)
+        code_dir = os.path.join(_test_path, 'code')
+        if os.path.exists(code_dir) and code_dir not in sys.path:
+            sys.path.insert(0, code_dir)
+        break
+# -------------------------------------
 """
 案例8: 并网动态特性
 

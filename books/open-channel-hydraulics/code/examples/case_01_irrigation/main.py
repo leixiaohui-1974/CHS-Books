@@ -1,423 +1,129 @@
-#!/usr/bin/env python3
-"""
-案例1可执行示例：农村灌溉渠道设计
+# --- CHS AUTOMATED ENVIRONMENT FIX ---
+import sys, os
+# Super safe I/O override for Windows legacy scripts
+class SafeWriter:
+    def __init__(self, target):
+        self.target = target
+    def write(self, s):
+        try:
+            self.target.write(s)
+        except UnicodeEncodeError:
+            self.target.write(s.encode('utf-8', 'backslashreplace').decode('gbk', 'ignore'))
+    def flush(self):
+        if hasattr(self.target, 'flush'): self.target.flush()
+    def __getattr__(self, name):
+        return getattr(self.target, name)
 
-问题描述：
-某农村灌区灌溉渠道设计，已知：
-- 设计流量 Q = 5.0 m³/s
-- 渠底宽度 b = 3.0 m
-- 边坡系数 m = 1.5
-- 渠底坡度 S0 = 0.0003
-- Manning糙率 n = 0.02（混凝土衬砌）
+if not getattr(sys.stdout, '_chs_safe', False):
+    sys.stdout = SafeWriter(sys.stdout)
+    sys.stdout._chs_safe = True
+if not getattr(sys.stderr, '_chs_safe', False):
+    sys.stderr = SafeWriter(sys.stderr)
+    sys.stderr._chs_safe = True
 
-求解：
-1. 正常水深 h_n
-2. 流速 v
-3. Froude数和流态
-4. 所有水力要素
-
-运行方式：
-    python main.py
-
-作者：CHS-Books项目
-日期：2025-10-30
-"""
-
-import numpy as np
-import matplotlib.pyplot as plt
+_current_dir = os.path.dirname(os.path.abspath(__file__))
+for i in range(4):
+    _test_path = os.path.abspath(os.path.join(_current_dir, *(['..'] * i)))
+    if os.path.exists(os.path.join(_test_path, 'core')) or os.path.exists(os.path.join(_test_path, 'gwflow')) or os.path.exists(os.path.join(_test_path, 'models')) or os.path.exists(os.path.join(_test_path, 'code', 'core')):
+        if _test_path not in sys.path:
+            sys.path.insert(0, _test_path)
+        code_dir = os.path.join(_test_path, 'code')
+        if os.path.exists(code_dir) and code_dir not in sys.path:
+            sys.path.insert(0, code_dir)
+        break
+# -------------------------------------
+from __future__ import annotations
+import json
+import math
+from dataclasses import asdict, dataclass
 from pathlib import Path
+import matplotlib.pyplot as plt
+import numpy as np
 
-# 设置中文字体
-plt.rcParams['font.sans-serif'] = ['SimHei', 'DejaVu Sans']
-plt.rcParams['axes.unicode_minus'] = False
+@dataclass(frozen=True)
+class CaseInput:
+    Q: float = 0.5
+    b: float = 1.0
+    m: float = 1.5
+    S0: float = 2e-4
+    n: float = 0.025
+    g: float = 9.81
 
-
-# ========== 水力计算函数 ==========
-
-def trapezoidal_area(b, h, m):
-    """计算梯形断面面积 [m²]"""
-    A = (b + m * h) * h
-    return A
-
-
-def wetted_perimeter(b, h, m):
-    """计算湿周 [m]"""
-    P = b + 2 * h * np.sqrt(1 + m**2)
-    return P
-
-
-def hydraulic_radius(A, P):
-    """计算水力半径 [m]"""
-    if P == 0:
-        return 0
+def hydraulic_elements(h: float, p: CaseInput) -> dict:
+    if h <= 0: raise ValueError("Depth h must be positive.")
+    A = (p.b + p.m * h) * h
+    P = p.b + 2.0 * h * math.sqrt(1.0 + p.m ** 2)
     R = A / P
-    return R
-
-
-def top_width(b, h, m):
-    """计算水面宽度 [m]"""
-    B = b + 2 * m * h
-    return B
-
-
-def manning_velocity(R, S0, n):
-    """Manning流速公式 [m/s]"""
-    v = (1/n) * R**(2/3) * S0**(1/2)
-    return v
-
-
-def compute_discharge(A, v):
-    """计算流量 [m³/s]"""
-    Q = A * v
-    return Q
-
-
-def froude_number(v, A, b, m, h, g=9.81):
-    """计算Froude数"""
-    B = b + 2 * m * h
+    B = p.b + 2.0 * p.m * h
     D = A / B
-    Fr = v / np.sqrt(g * D)
-    return Fr
+    v = (1.0 / p.n) * (R ** (2.0 / 3.0)) * math.sqrt(p.S0)
+    Q = A * v
+    Fr = v / math.sqrt(p.g * D)
+    return {"h": h, "A": A, "P": P, "R": R, "B": B, "D": D, "v": v, "Q": Q, "Fr": Fr}
 
+def discharge_for_depth(h: float, p: CaseInput) -> float:
+    return hydraulic_elements(h, p)["Q"]
 
-def determine_flow_regime(Fr):
-    """判别流态"""
-    if Fr < 1.0:
-        return "subcritical"
-    elif Fr > 1.0:
-        return "supercritical"
-    else:
-        return "critical"
+def solve_normal_depth(p: CaseInput, tol: float = 1e-10, max_iter: int = 100) -> tuple[float, int, float]:
+    low, high = 1e-4, 1.0
+    while discharge_for_depth(high, p) < p.Q:
+        high *= 1.5
+        if high > 100: raise RuntimeError("Failed to bracket normal depth.")
 
+    h = 0.5 * (low + high)
+    for i in range(1, max_iter + 1):
+        Qh = discharge_for_depth(h, p)
+        res = Qh - p.Q
+        if abs(res) <= tol: return h, i, res
+        dh = max(1e-6, h * 1e-6)
+        dQdh = (discharge_for_depth(h + dh, p) - Qh) / dh
 
-def print_header(title, width=70):
-    """打印标题"""
-    print("\n" + "="*width)
-    print(f"  {title}")
-    print("="*width)
+        if res > 0: high = h
+        else: low = h
 
+        if abs(dQdh) < 1e-12: h_new = 0.5 * (low + high)
+        else:
+            h_new = h - res / dQdh
+            if not (low < h_new < high): h_new = 0.5 * (low + high)
+        h = h_new
 
-def print_param(name, value, unit="", width=50):
-    """打印参数"""
-    if unit:
-        print(f"  {name:.<{width}} {value:>12.4f} {unit}")
-    else:
-        print(f"  {name:.<{width}} {value:>12}")
+    raise RuntimeError("Normal depth solver did not converge.")
 
-
-def calculate_normal_depth(Q, b, m, S0, n, g=9.81, tol=1e-6, max_iter=100):
-    """
-    迭代计算正常水深
-
-    使用Newton-Raphson方法求解隐式方程：
-    Q = A * (1/n) * R^(2/3) * S0^(1/2)
-    """
-    h = 1.0  # 初始猜测值
-
-    for iteration in range(max_iter):
-        # 计算当前水深对应的流量
-        A = trapezoidal_area(b, h, m)
-        P = wetted_perimeter(b, h, m)
-        R = hydraulic_radius(A, P)
-        v = manning_velocity(R, S0, n)
-        Q_calc = compute_discharge(A, v)
-
-        # 计算残差
-        residual = Q_calc - Q
-
-        if abs(residual) < tol * Q:
-            return h, iteration + 1
-
-        # Newton-Raphson更新
-        dA_dh = b + 2 * m * h
-        dP_dh = 2 * np.sqrt(1 + m**2)
-        dR_dh = (P * dA_dh - A * dP_dh) / P**2
-        dv_dh = (1/n) * S0**0.5 * (2/3) * R**(-1/3) * dR_dh
-        dQ_dh = dA_dh * v + A * dv_dh
-
-        h = h - residual / dQ_dh
-
-        # 限制水深范围
-        h = max(0.1, min(h, 10.0))
-
-    return h, max_iter
-
-
-def main():
-    """主函数"""
-
-    print_header("案例1：农村灌溉渠道设计")
-
-    # ========== 输入参数 ==========
-    print("\n【输入参数】")
-    Q = 5.0       # 设计流量 (m³/s)
-    b = 3.0       # 底宽 (m)
-    m = 1.5       # 边坡系数
-    S0 = 0.0003   # 底坡
-    n = 0.02      # Manning糙率系数（混凝土衬砌）
-    g = 9.81      # 重力加速度 (m/s²)
-
-    print_param("设计流量 Q", Q, "m³/s")
-    print_param("渠道底宽 b", b, "m")
-    print_param("边坡系数 m", m, "")
-    print_param("渠底坡度 S₀", S0, "")
-    print_param("Manning糙率系数 n", n, "")
-    print(f"\n  边坡形式: 1:{m} (垂直:水平)")
-    print(f"  渠道材料: 混凝土衬砌 (n={n})")
-
-    # ========== 计算正常水深 ==========
-    print_header("计算正常水深")
-    print("\n  方法: Newton-Raphson迭代法")
-    print(f"  求解方程: Q = A × (1/n) × R^(2/3) × S₀^(1/2) = {Q} m³/s")
-
-    h_normal, iterations = calculate_normal_depth(Q, b, m, S0, n, g)
-
-    print(f"\n  迭代次数: {iterations}")
-    print(f"  收敛精度: {1e-6 * Q:.2e} m³/s")
-
-    # ========== 计算水力要素 ==========
-    print_header("水力要素计算")
-
-    A = trapezoidal_area(b, h_normal, m)
-    P = wetted_perimeter(b, h_normal, m)
-    R = hydraulic_radius(A, P)
-    B = top_width(b, h_normal, m)
-    v = manning_velocity(R, S0, n)
-    Q_check = compute_discharge(A, v)
-
-    print("\n【断面几何】")
-    print_param("正常水深 h_n", h_normal, "m")
-    print_param("过流面积 A", A, "m²")
-    print_param("湿周 P", P, "m")
-    print_param("水力半径 R", R, "m")
-    print_param("水面宽度 B", B, "m")
-
-    print("\n【流速与流量】")
-    print_param("平均流速 v", v, "m/s")
-    print_param("实际流量 Q", Q_check, "m³/s")
-    print_param("流量误差", abs(Q_check - Q) / Q * 100, "%")
-
-    # ========== 流态分析 ==========
-    print_header("流态分析")
-
-    Fr = froude_number(v, A, b, m, h_normal, g)
-    regime = determine_flow_regime(Fr)
-
-    print("\n【Froude数分析】")
-    print_param("Froude数 Fr", Fr, "")
-    print_param("临界Froude数", 1.0, "")
-    print_param("流态类型", regime, "")
-
-    if regime == "subcritical":
-        print("\n  ✓ 缓流状态 (Fr < 1)：水深较大，流速较小")
-        print("    - 水流稳定，适合灌溉渠道")
-        print("    - 水面线为壅水曲线")
-    elif regime == "supercritical":
-        print("\n  ✗ 急流状态 (Fr > 1)：水深较小，流速较大")
-        print("    - 可能产生冲刷")
-        print("    - 需要采取防护措施")
-    else:
-        print("\n  ! 临界流状态 (Fr = 1)")
-        print("    - 不稳定状态，需要调整设计")
-
-    # ========== 设计校核 ==========
-    print_header("设计校核")
-
-    print("\n【流速校核】")
-    v_min = 0.5   # 最小不淤流速 (m/s)
-    v_max = 1.5   # 最大不冲流速 (m/s，混凝土衬砌)
-
-    print_param("计算流速", v, "m/s")
-    print_param("最小不淤流速", v_min, "m/s")
-    print_param("最大不冲流速", v_max, "m/s")
-
-    if v_min <= v <= v_max:
-        print("  ✓ 流速在允许范围内")
-    elif v < v_min:
-        print("  ✗ 流速过小，可能产生淤积")
-    else:
-        print("  ✗ 流速过大，可能产生冲刷")
-
-    print("\n【流态校核】")
-    if regime == "subcritical":
-        print("  ✓ 流态为缓流，符合灌溉渠道要求")
-    else:
-        print("  ✗ 流态不符合要求，需要调整设计")
-
-    # ========== 断面设计建议 ==========
-    print_header("断面设计建议")
-
-    # 安全超高（20%水深，最小0.3m）
-    freeboard = max(0.3, 0.2 * h_normal)
-    H_total = h_normal + freeboard
-    B_top = b + 2 * m * H_total
-
-    print("\n【断面尺寸】")
-    print_param("渠底宽度 b", b, "m")
-    print_param("设计水深 h", h_normal, "m")
-    print_param("安全超高 Δh", freeboard, "m")
-    print_param("总深度 H", H_total, "m")
-    print_param("顶部宽度 B_top", B_top, "m")
-    print_param("边坡比例", f"1:{m}", "")
-
-    print("\n【土方量估算】（每100m渠道长度）")
-    L = 100  # 渠道长度 (m)
-    V_excavation = ((b + B_top) / 2) * H_total * L
-    V_concrete = ((b + b + 2*m*h_normal) / 2) * h_normal * L
-
-    print_param("开挖土方量", V_excavation, "m³")
-    print_param("混凝土衬砌量（估算）", V_concrete * 0.1, "m³")
-
-    # ========== 工程建议 ==========
-    print_header("工程建议")
-
-    print("\n  1. 渠道断面采用：")
-    print(f"     • 底宽 b = {b:.2f} m")
-    print(f"     • 设计水深 h = {h_normal:.2f} m")
-    print(f"     • 总深度 H = {H_total:.2f} m（含超高）")
-    print(f"     • 边坡 1:{m}")
-
-    print("\n  2. 水力特性：")
-    print(f"     • 设计流量 Q = {Q:.2f} m³/s")
-    print(f"     • 平均流速 v = {v:.2f} m/s")
-    print(f"     • 流态：{regime}（缓流稳定）")
-
-    print("\n  3. 施工建议：")
-    print(f"     • 渠底坡度：i = {S0:.4f} = {S0*1000:.2f}‰")
-    print(f"     • 衬砌材料：混凝土（n = {n}）")
-    print(f"     • 衬砌厚度：8-10 cm")
-    print(f"     • 每隔20-30m设置伸缩缝")
-
-    print("\n  4. 运行维护：")
-    print(f"     • 定期清理淤泥和杂草")
-    print(f"     • 检查衬砌是否开裂")
-    print(f"     • 雨季前检查边坡稳定性")
-
-    # ========== 可视化分析 ==========
-    print_header("生成可视化图表")
-
-    # 创建2x2子图布局
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 10))
-
-    # 图1: 断面几何示意图
-    y_bottom = 0
-    y_water = h_normal
-    y_top = H_total
-    x_left = -B_top/2
-    x_right = B_top/2
-    x_water_left = -B/2
-    x_water_right = B/2
-    x_bottom_left = -b/2
-    x_bottom_right = b/2
-
-    # 绘制断面
-    ax1.fill([x_bottom_left, x_bottom_right, x_right, x_left, x_bottom_left],
-             [y_bottom, y_bottom, y_top, y_top, y_bottom],
-             color='tan', alpha=0.3, label='渠道断面')
-    # 绘制水体
-    ax1.fill([x_bottom_left, x_bottom_right, x_water_right, x_water_left, x_bottom_left],
-             [y_bottom, y_bottom, y_water, y_water, y_bottom],
-             color='skyblue', alpha=0.6, label='水体')
-    # 标注
-    ax1.plot([x_bottom_left, x_bottom_right], [y_bottom, y_bottom], 'k-', linewidth=2)
-    ax1.plot([x_left, x_right], [y_top, y_top], 'k--', alpha=0.5)
-    ax1.plot([x_water_left, x_water_right], [y_water, y_water], 'b--', linewidth=1.5)
-
-    # 尺寸标注
-    ax1.annotate('', xy=(x_bottom_right+0.1, y_bottom), xytext=(x_bottom_right+0.1, y_water),
-                arrowprops=dict(arrowstyle='<->', color='blue', lw=1.5))
-    ax1.text(x_bottom_right+0.3, y_water/2, f'h={h_normal:.2f}m', fontsize=10, color='blue')
-
-    ax1.annotate('', xy=(x_bottom_left, -0.1), xytext=(x_bottom_right, -0.1),
-                arrowprops=dict(arrowstyle='<->', color='black', lw=1.5))
-    ax1.text(0, -0.3, f'b={b:.2f}m', ha='center', fontsize=10)
-
-    ax1.set_xlabel('宽度 (m)', fontsize=11)
-    ax1.set_ylabel('高度 (m)', fontsize=11)
-    ax1.set_title('渠道断面几何', fontsize=12, fontweight='bold')
-    ax1.grid(True, alpha=0.3)
-    ax1.legend(fontsize=9)
-    ax1.set_aspect('equal')
-
-    # 图2: 流量-水深关系
-    h_range = np.linspace(0.1, 2.5, 50)
-    Q_range = []
-    for h_i in h_range:
-        A_i = trapezoidal_area(b, h_i, m)
-        P_i = wetted_perimeter(b, h_i, m)
-        R_i = hydraulic_radius(A_i, P_i)
-        v_i = manning_velocity(R_i, S0, n)
-        Q_i = compute_discharge(A_i, v_i)
-        Q_range.append(Q_i)
-
-    ax2.plot(Q_range, h_range, 'b-', linewidth=2, label='Q-h关系曲线')
-    ax2.plot(Q, h_normal, 'ro', markersize=10, label=f'设计点 (Q={Q:.1f}, h={h_normal:.2f})')
-    ax2.axhline(y=h_normal, color='r', linestyle='--', alpha=0.5)
-    ax2.axvline(x=Q, color='r', linestyle='--', alpha=0.5)
-    ax2.set_xlabel('流量 Q (m³/s)', fontsize=11)
-    ax2.set_ylabel('水深 h (m)', fontsize=11)
-    ax2.set_title('流量-水深关系', fontsize=12, fontweight='bold')
-    ax2.grid(True, alpha=0.3)
-    ax2.legend(fontsize=9)
-
-    # 图3: 流速-水深关系
-    v_range = []
-    for h_i in h_range:
-        A_i = trapezoidal_area(b, h_i, m)
-        P_i = wetted_perimeter(b, h_i, m)
-        R_i = hydraulic_radius(A_i, P_i)
-        v_i = manning_velocity(R_i, S0, n)
-        v_range.append(v_i)
-
-    ax3.plot(h_range, v_range, 'g-', linewidth=2, label='v-h关系曲线')
-    ax3.plot(h_normal, v, 'ro', markersize=10, label=f'设计点 (h={h_normal:.2f}, v={v:.2f})')
-    ax3.axhline(y=v_min, color='orange', linestyle='--', alpha=0.7, label='最小不淤流速')
-    ax3.axhline(y=v_max, color='red', linestyle='--', alpha=0.7, label='最大不冲流速')
-    ax3.axhline(y=v, color='r', linestyle='--', alpha=0.3)
-    ax3.axvline(x=h_normal, color='r', linestyle='--', alpha=0.3)
-    ax3.set_xlabel('水深 h (m)', fontsize=11)
-    ax3.set_ylabel('流速 v (m/s)', fontsize=11)
-    ax3.set_title('流速-水深关系', fontsize=12, fontweight='bold')
-    ax3.grid(True, alpha=0.3)
-    ax3.legend(fontsize=9)
-
-    # 图4: Froude数-水深关系
-    Fr_range = []
-    for h_i in h_range:
-        A_i = trapezoidal_area(b, h_i, m)
-        P_i = wetted_perimeter(b, h_i, m)
-        R_i = hydraulic_radius(A_i, P_i)
-        v_i = manning_velocity(R_i, S0, n)
-        Fr_i = froude_number(v_i, A_i, b, m, h_i, g)
-        Fr_range.append(Fr_i)
-
-    ax4.plot(h_range, Fr_range, 'purple', linewidth=2, label='Fr-h关系曲线')
-    ax4.plot(h_normal, Fr, 'ro', markersize=10, label=f'设计点 (h={h_normal:.2f}, Fr={Fr:.2f})')
-    ax4.axhline(y=1.0, color='black', linestyle='--', alpha=0.7, label='临界流 (Fr=1)')
-    ax4.fill_between(h_range, 0, 1, alpha=0.1, color='green', label='缓流区 (Fr<1)')
-    ax4.fill_between(h_range, 1, 2, alpha=0.1, color='red', label='急流区 (Fr>1)')
-    ax4.axhline(y=Fr, color='r', linestyle='--', alpha=0.3)
-    ax4.axvline(x=h_normal, color='r', linestyle='--', alpha=0.3)
-    ax4.set_xlabel('水深 h (m)', fontsize=11)
-    ax4.set_ylabel('Froude数 Fr', fontsize=11)
-    ax4.set_title('Froude数-水深关系', fontsize=12, fontweight='bold')
-    ax4.grid(True, alpha=0.3)
-    ax4.legend(fontsize=9, loc='upper right')
-    ax4.set_ylim(0, 2)
-
+def plot_qh_curve(p: CaseInput, h_star: float, out_png: Path) -> None:
+    h_arr = np.linspace(0.2, 1.6, 200)
+    q_arr = np.array([discharge_for_depth(float(h), p) for h in h_arr])
+    plt.figure(figsize=(8, 5))
+    plt.plot(q_arr, h_arr, lw=2, label="Q-h curve")
+    plt.scatter([p.Q], [h_star], c="red", zorder=3, label=f"design point ({p.Q:.2f}, {h_star:.3f})")
+    plt.xlabel("Q (m^3/s)")
+    plt.ylabel("h (m)")
+    plt.title("Uniform Flow Manning Q-h Relation (Case 1)")
+    plt.grid(alpha=0.3)
+    plt.legend()
     plt.tight_layout()
+    out_png.parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(out_png, dpi=150)
+    plt.close()
 
-    # 保存图片
-    output_dir = Path(__file__).parent
-    output_path = output_dir / 'irrigation_channel_design.png'
-    plt.savefig(output_path, dpi=150, bbox_inches='tight')
-    print(f"\n  ✓ 图表已保存: {output_path.name}")
-    print("  包含: 断面几何、流量-水深、流速-水深、Froude数分析")
-
-    print("\n" + "="*70)
-    print("  计算完成！")
-    print("="*70 + "\n")
-
+def run_case() -> dict:
+    p = CaseInput()
+    h, iters, residual = solve_normal_depth(p)
+    elems = hydraulic_elements(h, p)
+    return {
+        "input": asdict(p),
+        "solver": {"iterations": iters, "residual_Q": residual},
+        "result": elems
+    }
 
 if __name__ == "__main__":
-    main()
+    out_dir = Path(__file__).resolve().parent / "results"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    result = run_case()
+    
+    json_path = out_dir / "results_refined.json"
+    json_path.write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+    
+    plot_path = out_dir / "q_h_curve.png"
+    p = CaseInput(**result["input"])
+    plot_qh_curve(p, result["result"]["h"], plot_path)
+    print("Execution complete. Found normal depth: ", result["result"]["h"])
